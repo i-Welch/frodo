@@ -2,7 +2,7 @@ import { Elysia } from 'elysia';
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
-const LEGAL_DIR = join(import.meta.dirname, '../../../legal');
+const LEGAL_DIR = join(process.cwd(), 'legal');
 
 /**
  * Legal/policy pages — serves static HTML pages from the legal/ directory.
