@@ -1,0 +1,66 @@
+[
+  {
+    "provider": "truework",
+    "endpoint": "/verification-requests/",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "id": "tw-ver-001",
+      "state": "completed",
+      "target": {
+        "first_name": "Peregrin",
+        "last_name": "Took",
+        "social_security_number": "***-**-1234"
+      },
+      "employer": {
+        "name": "Tookland Farms",
+        "address": { "line_1": "1 Great Smials", "city": "Tuckborough", "state": "SH", "zip": "00003" }
+      },
+      "reports": [
+        {
+          "employer": { "name": "Tookland Farms" },
+          "employee": {
+            "first_name": "Peregrin",
+            "last_name": "Took",
+            "status": "active",
+            "hire_date": "2021-06-01",
+            "termination_date": null
+          },
+          "position": {
+            "title": "Thain",
+            "start_date": "2023-01-15",
+            "end_date": null
+          },
+          "salary": {
+            "gross_pay": 95000,
+            "pay_frequency": "annual",
+            "hours_per_week": 40
+          }
+        },
+        {
+          "employer": { "name": "The Green Dragon" },
+          "employee": {
+            "first_name": "Peregrin",
+            "last_name": "Took",
+            "status": "inactive",
+            "hire_date": "2018-03-01",
+            "termination_date": "2021-05-30"
+          },
+          "position": {
+            "title": "Server",
+            "start_date": "2018-03-01",
+            "end_date": "2021-05-30"
+          },
+          "salary": {
+            "gross_pay": 2200,
+            "pay_frequency": "bi-weekly",
+            "hours_per_week": 30
+          }
+        }
+      ],
+      "created": "2026-03-22T10:00:00.000Z"
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

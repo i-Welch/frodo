@@ -1,0 +1,18 @@
+services:
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    ports:
+      - "8000:8000"
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb", "-inMemory"]
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DYNAMODB_ENDPOINT=http://dynamodb-local:8000
+      - KMS_ENDPOINT=local
+      - NODE_ENV=development
+      - COOKIE_SECRET=local-dev-secret
+    depends_on:
+      - dynamodb-local

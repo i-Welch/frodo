@@ -1,0 +1,82 @@
+[
+  {
+    "provider": "experian",
+    "endpoint": "/oauth2/v1/token",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "access_token": "exp-sandbox-token-abc123",
+      "token_type": "Bearer",
+      "expires_in": 1800
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  },
+  {
+    "provider": "experian",
+    "endpoint": "/consumerservices/credit-profile/v2/credit-report",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "consumerPii": {
+        "primaryAddress": {
+          "streetAddress": "123 Main St",
+          "city": "Austin",
+          "state": "TX",
+          "zip": "78701"
+        }
+      },
+      "creditProfile": {
+        "riskModel": [
+          {
+            "modelIndicator": "V4",
+            "score": 742,
+            "scoreFactors": [
+              { "code": "014", "description": "Length of time accounts have been established" },
+              { "code": "009", "description": "Too many accounts with balances" }
+            ]
+          }
+        ],
+        "tradeline": [
+          {
+            "creditorName": "CHASE CARD SERVICES",
+            "accountType": "revolving",
+            "currentBalance": 2340,
+            "highCredit": 15000,
+            "paymentStatus": "current",
+            "openDate": "2019-03-15",
+            "statusDate": "2026-03-01"
+          },
+          {
+            "creditorName": "DISCOVER BANK",
+            "accountType": "revolving",
+            "currentBalance": 890,
+            "highCredit": 8000,
+            "paymentStatus": "current",
+            "openDate": "2020-07-22",
+            "statusDate": "2026-03-01"
+          },
+          {
+            "creditorName": "AUTO LOAN SERVICES",
+            "accountType": "installment",
+            "currentBalance": 12500,
+            "highCredit": 25000,
+            "paymentStatus": "current",
+            "openDate": "2022-01-10",
+            "statusDate": "2026-03-01"
+          }
+        ],
+        "inquiry": [
+          {
+            "subscriberName": "CAPITAL ONE",
+            "inquiryDate": "2026-01-15",
+            "inquiryType": "individual"
+          }
+        ]
+      },
+      "request_id": "exp-req-xyz789"
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

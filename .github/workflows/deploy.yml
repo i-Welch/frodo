@@ -1,0 +1,102 @@
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    uses: ./.github/workflows/ci.yml
+
+  deploy-staging:
+    needs: ci
+    runs-on: ubuntu-latest
+    environment: staging
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - uses: aws-actions/amazon-ecr-login@v2
+        id: ecr
+      - name: Build and push image
+        env:
+          ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/frodo:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/frodo:$IMAGE_TAG
+      - name: Register new task definition (staging)
+        id: task-def
+        env:
+          ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET_STAGING }}
+        run: |
+          TASK_DEF=$(aws ecs describe-task-definition --task-definition frodo-api-staging --query 'taskDefinition' --output json)
+          NEW_TASK_DEF=$(echo "$TASK_DEF" | jq \
+            --arg IMAGE "$ECR_REGISTRY/frodo:$IMAGE_TAG" \
+            --arg COOKIE_SECRET "$COOKIE_SECRET" \
+            '.containerDefinitions[0].image = $IMAGE |
+             .containerDefinitions[0].environment = [.containerDefinitions[0].environment[] | select(.name != "COOKIE_SECRET")] + [{"name":"COOKIE_SECRET","value":$COOKIE_SECRET}] |
+             del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)')
+          NEW_ARN=$(aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF" --query 'taskDefinition.taskDefinitionArn' --output text)
+          echo "task_def_arn=$NEW_ARN" >> "$GITHUB_OUTPUT"
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service --cluster frodo-staging --service frodo-api --task-definition ${{ steps.task-def.outputs.task_def_arn }}
+      - name: Wait for deployment
+        run: aws ecs wait services-stable --cluster frodo-staging --services frodo-api
+      - name: Smoke test
+        run: |
+          STAGING_URL="${{ vars.STAGING_URL }}"
+          curl -sf "$STAGING_URL/health" | jq -e '.status == "ok"'
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$STAGING_URL/api/v1/users/nonexistent" -H "Authorization: Bearer invalid")
+          [ "$STATUS" = "401" ] || (echo "Expected 401, got $STATUS" && exit 1)
+
+  deploy-production:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+      - uses: aws-actions/amazon-ecr-login@v2
+        id: ecr
+      - name: Register new task definition (production)
+        id: task-def
+        env:
+          ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+          COOKIE_SECRET: ${{ secrets.COOKIE_SECRET_PRODUCTION }}
+        run: |
+          TASK_DEF=$(aws ecs describe-task-definition --task-definition frodo-api-production --query 'taskDefinition' --output json)
+          NEW_TASK_DEF=$(echo "$TASK_DEF" | jq \
+            --arg IMAGE "$ECR_REGISTRY/frodo:$IMAGE_TAG" \
+            --arg COOKIE_SECRET "$COOKIE_SECRET" \
+            '.containerDefinitions[0].image = $IMAGE |
+             .containerDefinitions[0].environment = [.containerDefinitions[0].environment[] | select(.name != "COOKIE_SECRET")] + [{"name":"COOKIE_SECRET","value":$COOKIE_SECRET}] |
+             del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)')
+          NEW_ARN=$(aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF" --query 'taskDefinition.taskDefinitionArn' --output text)
+          echo "task_def_arn=$NEW_ARN" >> "$GITHUB_OUTPUT"
+      - name: Deploy to ECS
+        run: |
+          aws ecs update-service --cluster frodo-production --service frodo-api --task-definition ${{ steps.task-def.outputs.task_def_arn }}
+      - name: Wait for deployment
+        run: aws ecs wait services-stable --cluster frodo-production --services frodo-api
+      - name: Smoke test
+        run: |
+          curl -sf "${{ vars.PRODUCTION_URL }}/health" | jq -e '.status == "ok"'

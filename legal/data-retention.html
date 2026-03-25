@@ -1,0 +1,134 @@
+<h1>Data Retention and Disposal Policy</h1>
+<p class="last-updated">Last updated: March 24, 2026</p>
+
+<h2>1. Purpose</h2>
+<p>This policy defines how RAVEN retains, archives, and disposes of consumer data processed through our platform. It ensures compliance with applicable laws including the Fair Credit Reporting Act (FCRA), Gramm-Leach-Bliley Act (GLBA), state privacy laws, and contractual obligations to our customers.</p>
+
+<h2>2. Data Categories and Retention Periods</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Category</th>
+      <th>Examples</th>
+      <th>Retention Period</th>
+      <th>Basis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Identity verification data</strong></td>
+      <td>Name, DOB, SSN match results</td>
+      <td>7 years from last activity</td>
+      <td>FCRA, BSA/AML requirements</td>
+    </tr>
+    <tr>
+      <td><strong>Credit report data</strong></td>
+      <td>Scores, tradelines, inquiries</td>
+      <td>2 years or per source TTL</td>
+      <td>FCRA permissible purpose records</td>
+    </tr>
+    <tr>
+      <td><strong>Financial account data</strong></td>
+      <td>Bank accounts, balances, transactions</td>
+      <td>1 year from last enrichment</td>
+      <td>Service necessity</td>
+    </tr>
+    <tr>
+      <td><strong>Employment/income data</strong></td>
+      <td>Employer, salary, verification reports</td>
+      <td>3 years from verification date</td>
+      <td>Lending regulation</td>
+    </tr>
+    <tr>
+      <td><strong>Property/residence data</strong></td>
+      <td>Address, ownership, valuations</td>
+      <td>3 years from last enrichment</td>
+      <td>Lending regulation</td>
+    </tr>
+    <tr>
+      <td><strong>Education data</strong></td>
+      <td>Enrollment, degrees</td>
+      <td>3 years from verification date</td>
+      <td>FERPA, service necessity</td>
+    </tr>
+    <tr>
+      <td><strong>Consent records</strong></td>
+      <td>User consent timestamps, text hashes</td>
+      <td>7 years from consent date</td>
+      <td>Legal compliance, audit</td>
+    </tr>
+    <tr>
+      <td><strong>Audit/event logs</strong></td>
+      <td>Data access logs, enrichment events</td>
+      <td>7 years</td>
+      <td>Regulatory examination</td>
+    </tr>
+    <tr>
+      <td><strong>API access logs</strong></td>
+      <td>Tenant API calls, request metadata</td>
+      <td>2 years</td>
+      <td>Security, troubleshooting</td>
+    </tr>
+    <tr>
+      <td><strong>Session data</strong></td>
+      <td>Verification sessions, OTP state</td>
+      <td>24 hours (auto-expired via DynamoDB TTL)</td>
+      <td>Operational</td>
+    </tr>
+    <tr>
+      <td><strong>Form tokens</strong></td>
+      <td>Verification form links</td>
+      <td>1 hour (auto-expired via DynamoDB TTL)</td>
+      <td>Operational</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Staleness and Data Freshness</h2>
+<p>All enriched data carries a "goodBy" expiration date determined by the source provider's TTL configuration. After this date:</p>
+<ul>
+  <li>The data is flagged as stale in our system</li>
+  <li>Stale data is excluded from materialized views (the current state of a user's profile)</li>
+  <li>The raw event history is retained for audit purposes per the retention periods above</li>
+  <li>Customers are notified of stale data via the staleness detection API</li>
+</ul>
+
+<h2>4. Encryption</h2>
+<p>All consumer data is encrypted at rest using AES-256-GCM with per-user Data Encryption Keys (DEKs). DEKs are themselves encrypted using AWS KMS (envelope encryption). Encryption is applied at the field level — each field in each module for each user is independently encrypted.</p>
+
+<h2>5. Data Disposal</h2>
+
+<h3>5.1 Automatic Disposal</h3>
+<ul>
+  <li>Session data and form tokens are automatically deleted via DynamoDB TTL</li>
+  <li>Stale enrichment data is automatically excluded from active use after its goodBy date</li>
+</ul>
+
+<h3>5.2 Customer-Initiated Disposal</h3>
+<ul>
+  <li>Customers may request deletion of a user's data via <code>DELETE /api/v1/users/:id</code></li>
+  <li>This removes all module data, events, provider tokens, consent records, and identity lookups for the user</li>
+  <li>Deletion is permanent and irreversible</li>
+</ul>
+
+<h3>5.3 Consumer-Initiated Disposal</h3>
+<ul>
+  <li>Consumers may request deletion of their data by contacting privacy@reportraven.tech</li>
+  <li>We will verify the consumer's identity before processing the request</li>
+  <li>Deletion is completed within 30 days of a verified request</li>
+  <li>Certain data may be retained if required by law (e.g., FCRA dispute records)</li>
+</ul>
+
+<h3>5.4 Disposal Method</h3>
+<p>Data disposal is performed by deleting the encrypted records from DynamoDB. Since data is encrypted with per-user DEKs, destroying the DEK renders all associated data permanently unrecoverable even if database backups exist.</p>
+
+<h2>6. Data Portability</h2>
+<p>Consumers may request an export of their data in machine-readable format (JSON). Requests are processed within 30 days.</p>
+
+<h2>7. Contact</h2>
+<p>For questions about data retention or to submit a deletion/portability request:</p>
+<ul>
+  <li>Email: privacy@reportraven.tech</li>
+  <li>Web: reportraven.tech</li>
+</ul>

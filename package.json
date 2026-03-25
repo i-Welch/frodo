@@ -1,0 +1,47 @@
+{
+  "name": "frodo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --target=bun --outdir=dist",
+    "start": "bun dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/ test/ --ext .ts",
+    "lint:fix": "eslint src/ test/ --ext .ts --fix",
+    "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
+    "format:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
+    "build:collect": "bun build src/collect/frodo-collect.ts --outfile=dist/frodo-collect.js --minify",
+    "typecheck": "tsc --noEmit",
+    "db:create": "bun scripts/create-tables.ts",
+    "db:seed": "bun scripts/seed.ts",
+    "db:reset": "bun scripts/create-tables.ts && bun scripts/seed.ts",
+    "ops": "bun scripts/ops.ts",
+    "ops:local": "bun scripts/ops-local.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^8.57.1",
+    "@typescript-eslint/parser": "^8.57.1",
+    "@vitest/coverage-v8": "^4.1.0",
+    "eslint": "^10.1.0",
+    "prettier": "^3.8.1",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1014.0",
+    "@aws-sdk/client-kms": "^3.1014.0",
+    "@aws-sdk/lib-dynamodb": "^3.1014.0",
+    "@elysiajs/cookie": "^0.8.0",
+    "@elysiajs/html": "^1.4.0",
+    "elysia": "^1.4.28",
+    "eta": "^4.5.1",
+    "pino": "^10.3.1",
+    "zod": "^4.3.6"
+  }
+}

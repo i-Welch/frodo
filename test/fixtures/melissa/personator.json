@@ -1,0 +1,35 @@
+[
+  {
+    "provider": "melissa",
+    "endpoint": "/WEB/ContactVerify/doContactVerify?id=test-api-key&act=Check%2CVerify%2CAppend&cols=GrpPropertyData%2CGrpAddressDetails%2CGrpNameDetails%2CGrpDemographicDetails&a1=1+Bag+End&city=Hobbiton&state=SH&postal=00001&ctry=US&format=json",
+    "method": "GET",
+    "status": 200,
+    "responseBody": {
+      "Version": "7.0.1",
+      "TransmissionReference": "",
+      "TransmissionResults": "",
+      "TotalRecords": "1",
+      "Records": [
+        {
+          "RecordID": "1",
+          "Results": "AS01,AS02,AS03",
+          "AddressLine1": "1 Bag End",
+          "City": "Hobbiton",
+          "State": "SH",
+          "PostalCode": "00001",
+          "Country": "US",
+          "AddressDeliveryInstallation": "",
+          "AddressKey": "addr-key-001",
+          "PropertyOwnerType": "O",
+          "PropertyUseType": "SFR",
+          "DateOfBirth": "1968-09-22",
+          "MoveDate": "2001-12-19",
+          "NameFirst": "Bilbo",
+          "NameLast": "Baggins"
+        }
+      ]
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

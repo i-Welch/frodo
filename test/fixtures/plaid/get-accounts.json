@@ -1,0 +1,54 @@
+[
+  {
+    "provider": "plaid",
+    "endpoint": "/accounts/get",
+    "method": "POST",
+    "requestBody": {
+      "access_token": "access-sandbox-test",
+      "client_id": "test-client-id",
+      "secret": "test-secret"
+    },
+    "status": 200,
+    "responseBody": {
+      "accounts": [
+        {
+          "account_id": "acc_checking_001",
+          "name": "Plaid Checking",
+          "official_name": "Chase Total Checking",
+          "type": "depository",
+          "subtype": "checking",
+          "mask": "0000",
+          "balances": {
+            "current": 11050.25,
+            "available": 10950.00,
+            "limit": null,
+            "iso_currency_code": "USD"
+          }
+        },
+        {
+          "account_id": "acc_savings_001",
+          "name": "Plaid Saving",
+          "official_name": "Chase Savings",
+          "type": "depository",
+          "subtype": "savings",
+          "mask": "1111",
+          "balances": {
+            "current": 25000.00,
+            "available": 25000.00,
+            "limit": null,
+            "iso_currency_code": "USD"
+          }
+        }
+      ],
+      "item": {
+        "item_id": "item_001",
+        "institution_id": "ins_3"
+      },
+      "request_id": "plaid-req-abc123"
+    },
+    "headers": {
+      "content-type": "application/json"
+    },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

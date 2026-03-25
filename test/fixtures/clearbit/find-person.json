@@ -1,0 +1,23 @@
+[
+  {
+    "provider": "clearbit",
+    "endpoint": "/v2/people/find?email=frodo%40shire.co",
+    "method": "GET",
+    "status": 200,
+    "responseBody": {
+      "id": "cb_person_001",
+      "email": "frodo@shire.co",
+      "phone": "+15551234567",
+      "name": { "fullName": "Frodo Baggins", "givenName": "Frodo", "familyName": "Baggins" },
+      "employment": { "name": "Bag End LLC", "title": "Ring Bearer", "role": "leadership" },
+      "linkedin": { "handle": "frodob" },
+      "twitter": { "handle": "ringbearer" },
+      "facebook": null,
+      "github": { "handle": "frodob" }
+    },
+    "headers": {
+      "content-type": "application/json"
+    },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

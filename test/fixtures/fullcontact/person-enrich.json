@@ -1,0 +1,24 @@
+[
+  {
+    "provider": "fullcontact",
+    "endpoint": "/v3/person.enrich",
+    "method": "POST",
+    "requestBody": { "email": "samwise@shire.co" },
+    "status": 200,
+    "responseBody": {
+      "fullName": "Samwise Gamgee",
+      "ageRange": "30-39",
+      "gender": "Male",
+      "location": "Hobbiton, The Shire",
+      "title": "Head Gardener",
+      "organization": "Bag End Estate",
+      "twitter": "https://twitter.com/samwisegardener",
+      "linkedin": "https://linkedin.com/in/samwise-gamgee",
+      "bio": "Loyal friend, gardener, and Ring-bearer's companion.",
+      "avatar": "https://example.com/avatars/samwise.jpg",
+      "details": null
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-23T12:00:00.000Z"
+  }
+]

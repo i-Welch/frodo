@@ -1,0 +1,92 @@
+[
+  {
+    "provider": "attom",
+    "endpoint": "/property/detail?address1=3+Bagshot+Row&address2=Hobbiton%2C+SH+00001",
+    "method": "GET",
+    "status": 200,
+    "responseBody": {
+      "status": { "version": "1.0.0", "code": 0, "msg": "Success", "total": 1, "page": 1, "pagesize": 10 },
+      "property": [
+        {
+          "identifier": { "obPropId": 100001, "fips": "06001", "apn": "SH-003-001", "attomId": 55501234 },
+          "address": {
+            "country": "US",
+            "countrySubd": "SH",
+            "line1": "3 Bagshot Row",
+            "line2": "Hobbiton, SH 00001",
+            "locality": "Hobbiton",
+            "matchCode": "ExAStr",
+            "oneLine": "3 Bagshot Row, Hobbiton, SH 00001",
+            "postal1": "00001",
+            "postal2": "",
+            "postal3": ""
+          },
+          "location": {
+            "accuracy": "Rooftop",
+            "elevation": 120,
+            "latitude": "37.8715",
+            "longitude": "-122.2580"
+          },
+          "lot": {
+            "depth": 100,
+            "frontage": 60,
+            "lotnum": "3",
+            "lotsize1": 6000,
+            "lotsize2": 0.14
+          },
+          "building": {
+            "rooms": { "beds": 2, "bathstotal": 1, "bathsfull": 1, "bathshalf": 0 },
+            "size": { "bldgsize": 980, "grosssize": 1050, "livingsize": 980, "universalsize": 980 },
+            "construction": { "constructiontype": "Earth Sheltered", "foundationtype": "Stone", "roofcover": "Sod", "roofShape": "Round" },
+            "summary": { "archStyle": "Hobbit Hole", "levels": 1, "storyDesc": "1 Story", "yearbuilt": 1320 }
+          },
+          "summary": {
+            "propclass": "Residential",
+            "proptype": "SFR",
+            "propsubtype": "Single Family Residence",
+            "yearbuilt": 1320,
+            "legal1": "LOT 3 BAGSHOT ROW"
+          },
+          "vintage": { "lastModified": "2026-03-01", "pubDate": "2026-02-15" }
+        }
+      ]
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-23T12:00:00.000Z"
+  },
+  {
+    "provider": "attom",
+    "endpoint": "/avm/detail?address1=3+Bagshot+Row&address2=Hobbiton%2C+SH+00001",
+    "method": "GET",
+    "status": 200,
+    "responseBody": {
+      "status": { "version": "1.0.0", "code": 0, "msg": "Success", "total": 1, "page": 1, "pagesize": 10 },
+      "property": [
+        {
+          "identifier": { "attomId": 55501234 },
+          "address": { "oneLine": "3 Bagshot Row, Hobbiton, SH 00001" },
+          "avm": {
+            "eventDate": "2026-03-15",
+            "amount": {
+              "scr": 82,
+              "value": 195000,
+              "high": 214500,
+              "low": 175500,
+              "valueRange": 39000
+            },
+            "calculations": {
+              "perSizeUnit": 198.98,
+              "ratioTaxAmt": 112.5,
+              "ratioTaxValue": 3.8,
+              "monthlyChgPct": 0.3,
+              "monthlyChgValue": 585,
+              "rangePctOfValue": 20
+            }
+          }
+        }
+      ]
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-23T12:00:00.000Z"
+  }
+]

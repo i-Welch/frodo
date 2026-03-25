@@ -1,0 +1,101 @@
+[
+  {
+    "provider": "transunion",
+    "endpoint": "/creditreport/v2/report",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "creditReport": {
+        "borrower": {
+          "borrowerName": { "firstName": "Meriadoc", "lastName": "Brandybuck" },
+          "borrowerAddress": {
+            "streetAddress": "1 Brandy Hall",
+            "city": "Bucklebury",
+            "state": "SH",
+            "postalCode": "00002"
+          }
+        },
+        "scores": [
+          {
+            "modelName": "CreditVision New Account",
+            "value": 718,
+            "factors": [
+              { "code": "001", "description": "Amount owed on accounts is too high" },
+              { "code": "014", "description": "Length of time accounts have been established" }
+            ],
+            "scoreDate": "2026-03-22"
+          }
+        ],
+        "tradelines": [
+          {
+            "subscriberName": "BANK OF BREE",
+            "accountType": "Revolving",
+            "currentBalance": 1850,
+            "creditLimit": 10000,
+            "highBalance": 3200,
+            "paymentStatus": "Current",
+            "dateOpened": "2020-05-10",
+            "dateReported": "2026-03-01",
+            "accountCondition": "Open"
+          },
+          {
+            "subscriberName": "SHIRE CREDIT UNION",
+            "accountType": "Revolving",
+            "currentBalance": 420,
+            "creditLimit": 5000,
+            "highBalance": 1100,
+            "paymentStatus": "Current",
+            "dateOpened": "2021-11-22",
+            "dateReported": "2026-03-01",
+            "accountCondition": "Open"
+          },
+          {
+            "subscriberName": "GONDOR AUTO FINANCE",
+            "accountType": "Installment",
+            "currentBalance": 18200,
+            "creditLimit": 0,
+            "highBalance": 28000,
+            "paymentStatus": "Current",
+            "dateOpened": "2023-01-15",
+            "dateReported": "2026-03-01",
+            "accountCondition": "Open"
+          },
+          {
+            "subscriberName": "RIVENDELL BANK",
+            "accountType": "Revolving",
+            "currentBalance": 0,
+            "creditLimit": 3000,
+            "highBalance": 750,
+            "paymentStatus": "Current",
+            "dateOpened": "2019-03-01",
+            "dateReported": "2025-12-15",
+            "accountCondition": "Closed"
+          }
+        ],
+        "inquiries": [
+          {
+            "subscriberName": "PRANCING PONY INSURANCE",
+            "inquiryDate": "2026-02-10",
+            "inquiryType": "Individual"
+          },
+          {
+            "subscriberName": "MINAS TIRITH MORTGAGE",
+            "inquiryDate": "2026-01-05",
+            "inquiryType": "Joint"
+          }
+        ],
+        "publicRecords": [
+          {
+            "type": "TaxLien",
+            "dateFiled": "2024-06-15",
+            "amount": 2300,
+            "status": "Released"
+          }
+        ]
+      },
+      "transactionId": "tu-txn-merry-001"
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]

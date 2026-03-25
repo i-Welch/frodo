@@ -1,0 +1,39 @@
+[
+  {
+    "provider": "socure",
+    "endpoint": "/EmailAuthScore",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "referenceId": "socure-ref-001",
+      "nameAddressCorrelation": {
+        "reasonCodes": ["I100"],
+        "score": 0.95
+      },
+      "kyc": {
+        "reasonCodes": [],
+        "fieldValidations": {
+          "firstName": 0.99,
+          "surName": 0.99,
+          "streetAddress": 0.95,
+          "city": 0.95,
+          "state": 0.95,
+          "zip": 0.95,
+          "dob": 0.90,
+          "ssn": 0.98,
+          "mobileNumber": 0.85
+        }
+      },
+      "nameAddressPhone": {
+        "name": { "first": "Samwise", "middle": "", "last": "Gamgee" },
+        "address": { "street": "3 Bagshot Row", "city": "Hobbiton", "state": "SH", "zip": "00001" },
+        "phone": "+15559876543",
+        "dob": "1983-04-06"
+      }
+    },
+    "headers": {
+      "content-type": "application/json"
+    },
+    "recordedAt": "2026-03-22T12:00:00.000Z"
+  }
+]
