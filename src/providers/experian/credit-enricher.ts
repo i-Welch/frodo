@@ -99,7 +99,7 @@ const experianCreditMapper = createMapper({
       from: 'creditProfile.tradeline',
       to: 'utilization',
       transform: (tradelines) => {
-        const trades = tradelines as ExperianCreditResponse['creditProfile']['tradeline'][];
+        const trades = tradelines as ExperianCreditResponse['creditProfile']['tradeline'];
         let totalBalance = 0;
         let totalLimit = 0;
         for (const t of trades) {

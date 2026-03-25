@@ -70,7 +70,7 @@ export const plaidWebhookHandler: WebhookHandler = {
     //
     // For now, we expect the webhook body to include a frodo_user_id
     // that was set via Plaid Link's webhook metadata.
-    const userId = (payload as Record<string, unknown>).frodo_user_id as string | undefined;
+    const userId = (payload as unknown as Record<string, unknown>).frodo_user_id as string | undefined;
     if (!userId) {
       // Cannot resolve user — skip
       return events;

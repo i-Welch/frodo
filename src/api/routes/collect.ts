@@ -1,18 +1,13 @@
 import { Elysia } from 'elysia';
-import { resolve, dirname } from 'node:path';
+import { join } from 'node:path';
 import { readFileSync, existsSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 
 // ---------------------------------------------------------------------------
 // Load the bundled library at startup (or serve a stub in dev/test)
 // ---------------------------------------------------------------------------
 
-const __dirname = typeof import.meta.dir === 'string'
-  ? import.meta.dir
-  : dirname(fileURLToPath(import.meta.url));
-
-const DIST_PATH = resolve(__dirname, '../../../dist/frodo-collect.js');
-const SRC_PATH = resolve(__dirname, '../../collect/frodo-collect.ts');
+const DIST_PATH = join(process.cwd(), 'dist/frodo-collect.js');
+const SRC_PATH = join(process.cwd(), 'src/collect/frodo-collect.ts');
 
 function loadBundle(): string {
   if (existsSync(DIST_PATH)) {
