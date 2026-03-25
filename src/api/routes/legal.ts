@@ -1,5 +1,5 @@
 import { Elysia } from 'elysia';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const LEGAL_DIR = join(process.cwd(), 'legal');
@@ -65,7 +65,6 @@ interface LegalPage {
 function getLegalPages(): LegalPage[] {
   if (!existsSync(LEGAL_DIR)) return [];
 
-  const { readdirSync } = require('node:fs');
   const files = readdirSync(LEGAL_DIR) as string[];
 
   return files

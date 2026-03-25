@@ -9,8 +9,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "lint": "eslint src/ test/ --ext .ts",
-    "lint:fix": "eslint src/ test/ --ext .ts --fix",
+    "lint": "eslint src/ test/",
+    "lint:fix": "eslint src/ test/ --fix",
     "format": "prettier --write 'src/**/*.ts' 'test/**/*.ts'",
     "format:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "build:collect": "bun build src/collect/frodo-collect.ts --outfile=dist/frodo-collect.js --minify",
@@ -22,12 +22,14 @@
     "ops:local": "bun scripts/ops-local.ts"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "^8.57.1",
     "@typescript-eslint/parser": "^8.57.1",
     "@vitest/coverage-v8": "^4.1.0",
     "eslint": "^10.1.0",
     "prettier": "^3.8.1",
+    "typescript-eslint": "^8.57.2",
     "vitest": "^4.1.0"
   },
   "peerDependencies": {

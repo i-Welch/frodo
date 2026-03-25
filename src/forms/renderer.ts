@@ -327,7 +327,7 @@ function renderPage(params: {
   fieldsHtml: string;
   token: string;
   formType: string;
-  fields?: import('./types.js').FormField[];
+  fields?: FormField[];
 }): string {
   const collectFields = (params.fields ?? [])
     .map((f) => {

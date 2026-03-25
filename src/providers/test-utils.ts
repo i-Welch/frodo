@@ -1,6 +1,6 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
-import { ProviderHttpClient, type ProviderRequestOptions, type ProviderResponse } from './http-client.js';
+import type { ProviderRequestOptions, ProviderResponse, ProviderHttpClient } from './http-client.js';
 import { getProviderCredentials } from './credentials.js';
 import type { BaseEnricher } from './base-enricher.js';
 
