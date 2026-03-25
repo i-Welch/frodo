@@ -1,7 +1,7 @@
 # Build stage
 FROM oven/bun:1 AS build
 WORKDIR /app
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 COPY tsconfig.json ./
 COPY src/ ./src/
@@ -13,5 +13,6 @@ WORKDIR /app
 COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package.json ./
+COPY legal/ ./legal/
 EXPOSE 3000
 CMD ["bun", "dist/index.js"]
