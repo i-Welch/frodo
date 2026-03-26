@@ -111,6 +111,7 @@ export class TrueworkEmploymentEnricher extends BaseEnricher<EmploymentData> {
             ...(dob ? { date_of_birth: dob } : {}),
             ...companyPayload,
           },
+          metadata: { ravenUserId: userId },
         },
       },
     );

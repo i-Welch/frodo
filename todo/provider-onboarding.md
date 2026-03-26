@@ -234,19 +234,43 @@ Before reaching out to regulated providers, have these ready:
 
 ### Truework
 - **Module:** employment
-- **Credentials needed:** API Key (Bearer token)
+- **Credentials needed:** API Key (Bearer token, prefix `tw_sk_test_` for sandbox, `tw_sk_` for production)
 - **How to sign up:** truework.com — sales-driven, requires use case review
 - **Who to contact:** sales@truework.com or truework.com/contact
-- **Pricing:** Per-verification
+- **Pricing:** Per-verification (sandbox is free)
 - **Env vars:**
   ```
   PROVIDER_TRUEWORK_API_KEY=
+  TRUEWORK_ENV=sandbox  # sandbox | production
   ```
-- [ ] Submit contact form or email sales
-- [ ] Obtain Sandbox API key
-- [ ] Test enrichment pipeline in Sandbox
-- [ ] Obtain Production API key
-- [ ] Set production env vars
+
+**What's built:**
+- **Employment enricher** — creates verification requests via `POST /verification-requests/`
+- Automatically pulls identity data (name, SSN, DOB) from user's identity module for the request
+- Handles both `employment` and `employment-income` verification types
+- Sends `use_case: "lending"` and `permissible_purpose: "credit-application"` for FCRA compliance
+- Handles async verification state (`pending-approval` → `completed`) — Truework contacts the employer
+- Reports parsed into employment module: employer, title, start date, salary (normalized to annual), history
+- **Shared config** — `src/providers/truework/config.ts` reads `TRUEWORK_ENV`
+  - Sandbox: `api.truework-sandbox.com`
+  - Production: `api.truework.com`
+
+**Note:** Truework verification is asynchronous. When you submit a request, Truework contacts the employer's payroll system (instant via integrations like ADP/Workday, or manual outreach). The state progresses: `pending-approval` → `processing` → `completed`. Reports populate once the employer confirms.
+
+**Done:**
+- [x] Signed up for Truework
+- [x] Sandbox API key in `.env`
+- [x] Fixed BaseEnricher credential initialization order
+- [x] Enricher pulls identity data (name, SSN, DOB) from identity module
+- [x] Verified live sandbox API call works (2026-03-26)
+- [x] Verification request created successfully in sandbox
+- [x] Shared config with `TRUEWORK_ENV` for sandbox/production URL
+
+**Still needed:**
+- [ ] Build webhook handler for Truework verification completion notifications
+- [ ] Handle polling for verification status (for sync enrichment use cases)
+- [ ] Test with a Truework sandbox test employer that returns instant results
+- [ ] Apply for Truework Production access
 - [ ] Replace mock enricher with `registerTrueworkProvider()` in `src/index.ts`
 
 ---
