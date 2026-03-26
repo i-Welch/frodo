@@ -310,7 +310,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
 
     // Advance to the next step
     const nextStep = currentStep + 1;
-    await updateFormToken(formToken.token, { currentStep: nextStep } as Partial<FormToken>);
+    await updateFormToken(formToken.token, { currentStep: nextStep } as Partial<FormTokenType>);
 
     // Render the next step
     const updatedToken = { ...formToken, currentStep: nextStep };
@@ -485,7 +485,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     }
 
     // Auto-enrichment: if this form was created by /onboard, run enrichers
-    const onboardModules = (formToken as Record<string, unknown>).onboardModules as string[] | undefined;
+    const onboardModules = (formToken as unknown as Record<string, unknown>).onboardModules as string[] | undefined;
     if (onboardModules && onboardModules.length > 0) {
       log.info({ userId: formToken.userId, modules: onboardModules }, 'Auto-enriching after form completion');
       // Run enrichment in the background — don't block the user's response

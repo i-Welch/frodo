@@ -249,8 +249,8 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
           ...(person.phone ? { phone: person.phone } : {}),
         });
 
-        if (person.email) await addIdentifier('email', person.email, userId);
-        if (person.phone) await addIdentifier('phone', person.phone, userId);
+        if (person.email) await addIdentifier('EMAIL', person.email, userId);
+        if (person.phone) await addIdentifier('PHONE', person.phone, userId);
       }
     }
 
