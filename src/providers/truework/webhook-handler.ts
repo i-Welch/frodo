@@ -57,9 +57,17 @@ export const trueworkWebhookHandler: WebhookHandler = {
   provider: 'truework',
 
   validate(headers, body): boolean {
-    // Truework webhooks can be validated via HMAC signature.
-    // For now, check that body has the expected shape.
-    // TODO: validate X-Truework-Signature header with webhook secret
+    // Truework includes the webhook token in the X-Truework-Token header.
+    // Reject requests that don't match.
+    const expectedToken = process.env.PROVIDER_TRUEWORK_WEBHOOK_SECRET;
+    if (expectedToken) {
+      const receivedToken = headers['x-truework-token'];
+      if (receivedToken !== expectedToken) {
+        log.warn('Truework webhook token mismatch — rejecting');
+        return false;
+      }
+    }
+
     const payload = body as Record<string, unknown>;
     return !!payload?.event_type && !!payload?.verification_request;
   },
