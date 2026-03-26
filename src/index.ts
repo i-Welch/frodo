@@ -29,8 +29,10 @@ import { registerMockEnrichers } from './enrichment/mock/mock-enricher.js';
 // Side-effect import — registers built-in custom field components
 import { registerBuiltinComponents } from './forms/components/index.js';
 import { initOtpProvider } from './forms/otp-provider.js';
+import { registerFullContactProvider } from './providers/fullcontact/index.js';
 
 registerMockEnrichers();
+registerFullContactProvider();
 registerBuiltinComponents();
 initOtpProvider();
 
