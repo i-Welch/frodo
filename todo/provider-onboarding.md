@@ -17,25 +17,57 @@ Before reaching out to regulated providers, have these ready:
 ## Active Enrichers (built and tested)
 
 ### Plaid
-- **Modules:** financial, buying-patterns
-- **Credentials needed:** Client ID, Secret, Webhook Secret
+- **Modules:** financial, buying-patterns, credit, identity
+- **Credentials needed:** Client ID, Secret, Webhook Secret (optional for sandbox)
 - **How to sign up:** dashboard.plaid.com — Sandbox is self-serve. Production requires application review.
 - **Who to contact:** Apply through dashboard, or email sales@plaid.com for enterprise pricing
 - **Pricing:** Per-connection
-- **Notes:** You'll need Plaid Link integrated in your frontend for the OAuth flow that generates per-user access tokens. Register your webhook endpoint in the Plaid dashboard: `https://reportraven.tech/webhooks/plaid`.
+- **Webhook URL:** `https://reportraven.tech/webhooks/plaid`
 - **Env vars:**
   ```
   PROVIDER_PLAID_CLIENT_ID=
   PROVIDER_PLAID_SECRET=
   PROVIDER_PLAID_WEBHOOK_SECRET=
+  PLAID_ENV=sandbox  # sandbox | development | production
   ```
-- [ ] Sign up for Sandbox (immediate)
-- [ ] Integrate Plaid Link in frontend
-- [ ] Test enrichment pipeline end-to-end in Sandbox
-- [ ] Register webhook URL in Plaid dashboard
-- [ ] Apply for Development/Production access
-- [ ] Set production env vars
-- [ ] Replace mock enricher with `registerPlaidProvider()` in `src/index.ts`
+
+**What's built:**
+- 5 enrichers:
+  - **Financial** (`/accounts/get`) — bank accounts, balances by type (checking/savings/investment)
+  - **Buying Patterns** (`/transactions/get`) — spending categories, purchase frequency, avg transaction size from 30-day history
+  - **Income** (`/credit/bank_income/get`) — verified income streams with employer name, annualized amount, pay frequency
+  - **Liabilities** (`/liabilities/get`) — credit cards, mortgages, student loans with balances, limits, rates → credit module
+  - **Identity** (`/identity/get`) — bank-verified name, DOB, email, phone, address for cross-referencing
+- **Plaid Link form component** (`inputType: 'plaid-link'`) — drop-in bank connection widget for forms
+- **Multi-institution support** — users can link multiple banks, each token stored separately by item ID
+- **Webhook handler** — processes TRANSACTIONS webhooks and auto re-enriches financial + buying-patterns
+- **Plaid base URL config** — `src/providers/plaid/config.ts` reads `PLAID_ENV` (sandbox/development/production)
+- **API routes:**
+  - `POST /plaid/create-link-token` — creates a Plaid Link token for forms
+  - `POST /plaid/exchange-token` — exchanges public token, stores encrypted access token
+
+**Done:**
+- [x] Sign up for Sandbox
+- [x] Sandbox credentials in `.env`
+- [x] Plaid Link integrated as form component
+- [x] Tested financial enrichment end-to-end in Sandbox (accounts, balances)
+- [x] Tested buying patterns enrichment in Sandbox (transactions → spending categories)
+- [x] Multi-step onboarding form with Plaid Link as final step
+- [x] Webhook handler with auto re-enrichment
+- [x] Base URL reads from `PLAID_ENV` env var (no hardcoded sandbox URLs)
+
+**Still needed for production:**
+- [ ] Apply for Plaid Production access (dashboard → production application, 1-2 week review)
+- [ ] Request access to additional Plaid products:
+  - [ ] **Liabilities** — requires Plaid approval
+  - [ ] **Income** (Bank Income) — requires Plaid approval
+  - [ ] **Identity** — requires Plaid approval
+  - [ ] Transactions + Auth are enabled by default
+- [ ] Set production env vars (`PLAID_ENV=production`, production secret)
+- [ ] Register webhook URL in Plaid dashboard: `https://reportraven.tech/webhooks/plaid`
+- [ ] Replace `registerMockEnrichers()` with `registerPlaidProvider()` in `src/index.ts`
+- [ ] Test Plaid Link update mode (for expired bank credentials — `ITEM_LOGIN_REQUIRED` webhook)
+- [ ] Asset reports (`/asset_report/create` — Fannie Mae compatible, needed for mortgage origination)
 
 ---
 
@@ -94,20 +126,50 @@ Before reaching out to regulated providers, have these ready:
 
 ### Socure
 - **Module:** identity
-- **Credentials needed:** API Key for ID+ product
-- **How to sign up:** socure.com — request a demo / sandbox access
-- **Who to contact:** sales@socure.com or request form on socure.com
-- **Pricing:** Contract-based
+- **Product:** RiskOS — Prefill > KYC + Fraud + Watchlist > DocV Step up ($1.30/evaluation)
+- **How to sign up:** socure.com — self-serve pricing tiers available
+- **Webhook URL:** `https://reportraven.tech/webhooks/socure`
 - **Env vars:**
   ```
   PROVIDER_SOCURE_API_KEY=
+  PROVIDER_SOCURE_SDK_KEY=
+  PROVIDER_SOCURE_WORKFLOW_NAME=non_hosted_advanced_pre_fill
+  SOCURE_ENV=sandbox  # sandbox | production
   ```
-- [ ] Submit contact form or email sales
-- [ ] Schedule demo
-- [ ] Obtain Sandbox API key
-- [ ] Test enrichment pipeline in Sandbox
-- [ ] Obtain Production API key
-- [ ] Set production env vars
+
+**What's built:**
+- **Identity enricher** — server-side KYC via RiskOS Evaluation API (`POST /api/evaluation`)
+- **Interactive verification routes:**
+  - `POST /socure/start-evaluation` — initiate Prefill + OTP with DOB + phone
+  - `POST /socure/verify-otp` — verify 6-digit SMS code, unlock prefill data
+  - `POST /socure/submit-kyc` — submit full PII for KYC + Watchlist decision
+- **Webhook handler** — receives `evaluation_completed` events after async DocV
+- **Shared config** — `src/providers/socure/config.ts` reads `SOCURE_ENV` for base URL
+- **Decisions:** ACCEPT → continue, REJECT → stop, REVIEW → DocV step-up
+
+**Socure verification flow:**
+1. Collect DOB + phone → `POST /socure/start-evaluation` → triggers OTP to phone
+2. User enters 6-digit code → `POST /socure/verify-otp` → unlocks prefilled identity data
+3. Display prefilled form (lock DOB + phone) → user confirms → `POST /socure/submit-kyc`
+4. If ACCEPT → identity verified. If REVIEW → launch DocV SDK for ID scan + selfie
+5. DocV completes async → webhook delivers final decision
+
+**Done:**
+- [x] Sign up for Socure
+- [x] Sandbox API key in `.env`
+- [x] SDK key in `.env`
+- [x] Workflow name configured
+- [x] Verified Socure sandbox API call works (2026-03-26)
+- [x] Enricher rebuilt for RiskOS Evaluation API
+- [x] Interactive verification routes (start → OTP → KYC)
+- [x] Webhook handler for DocV completion
+
+**Still needed:**
+- [ ] Build Socure DocV form component (`inputType: 'socure-docv'`) using SDK key + Web SDK
+- [ ] Build Digital Intelligence session token generation (frontend `@socure-inc/device-risk-sdk`)
+- [ ] Register webhook URL in Socure dashboard
+- [ ] Test full interactive flow in Sandbox (Prefill → OTP → KYC → DocV)
+- [ ] Apply for Socure Production access
 - [ ] Replace mock enricher with `registerSocureProvider()` in `src/index.ts`
 
 ---

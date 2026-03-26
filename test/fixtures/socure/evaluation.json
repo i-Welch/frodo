@@ -1,0 +1,40 @@
+[
+  {
+    "provider": "socure",
+    "endpoint": "/api/evaluation",
+    "method": "POST",
+    "status": 200,
+    "responseBody": {
+      "eval_id": "socure-eval-001",
+      "decision": "ACCEPT",
+      "status": "CLOSED",
+      "tags": ["KYC Approved", "Watchlist Clear"],
+      "data_enrichments": [
+        {
+          "name": "Prefill",
+          "response": {
+            "data": {
+              "individual": {
+                "given_name": "Samwise",
+                "family_name": "Gamgee",
+                "date_of_birth": "1983-04-06",
+                "phone_number": "+15559876543",
+                "address": {
+                  "line_1": "3 Bagshot Row",
+                  "locality": "Hobbiton",
+                  "major_admin_division": "SH",
+                  "postal_code": "00001",
+                  "country": "US"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "headers": {
+      "content-type": "application/json"
+    },
+    "recordedAt": "2026-03-26T12:00:00.000Z"
+  }
+]

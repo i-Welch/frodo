@@ -19,6 +19,7 @@ import { providerStatusRoutes } from './api/routes/provider-status.js';
 import { legalRoutes } from './api/routes/legal.js';
 import { plaidLinkRoutes } from './api/routes/plaid-link.js';
 import { onboardRoutes } from './api/routes/onboard.js';
+import { socureVerifyRoutes } from './api/routes/socure-verify.js';
 import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
@@ -136,6 +137,7 @@ const app = new Elysia()
   .use(legalRoutes)
   .use(plaidLinkRoutes)
   .use(onboardRoutes)
+  .use(socureVerifyRoutes)
   .listen(config.port);
 
 logger.info(
