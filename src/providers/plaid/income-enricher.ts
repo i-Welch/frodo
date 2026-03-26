@@ -1,5 +1,6 @@
 import { BaseEnricher } from '../base-enricher.js';
 import { getProviderToken } from '../token-store.js';
+import { getPlaidBaseUrl } from './config.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
@@ -71,7 +72,7 @@ export class PlaidIncomeEnricher extends BaseEnricher<FinancialData> {
   timeoutMs = 30_000;
 
   protected getBaseUrl(): string {
-    return 'https://sandbox.plaid.com';
+    return getPlaidBaseUrl();
   }
 
   protected async fetchData(

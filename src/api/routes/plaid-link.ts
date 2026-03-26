@@ -5,11 +5,9 @@ import { createChildLogger } from '../../logger.js';
 
 const log = createChildLogger({ module: 'plaid-link' });
 
-const PLAID_BASE = process.env.PLAID_ENV === 'production'
-  ? 'https://production.plaid.com'
-  : process.env.PLAID_ENV === 'development'
-    ? 'https://development.plaid.com'
-    : 'https://sandbox.plaid.com';
+import { getPlaidBaseUrl } from '../../providers/plaid/config.js';
+
+const PLAID_BASE = getPlaidBaseUrl();
 
 async function plaidRequest<T>(path: string, body: Record<string, unknown>): Promise<T> {
   const clientId = process.env.PROVIDER_PLAID_CLIENT_ID;

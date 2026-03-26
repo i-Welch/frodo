@@ -13,7 +13,12 @@
  */
 
 const BASE = process.env.BASE_URL ?? 'http://localhost:3000';
-const PLAID_BASE = 'https://sandbox.plaid.com';
+const PLAID_URLS: Record<string, string> = {
+  sandbox: 'https://sandbox.plaid.com',
+  development: 'https://development.plaid.com',
+  production: 'https://production.plaid.com',
+};
+const PLAID_BASE = PLAID_URLS[process.env.PLAID_ENV ?? 'sandbox'];
 const CLIENT_ID = process.env.PROVIDER_PLAID_CLIENT_ID!;
 const SECRET = process.env.PROVIDER_PLAID_SECRET!;
 
