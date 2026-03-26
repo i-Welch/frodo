@@ -100,6 +100,55 @@ export async function getProviderToken(
   };
 }
 
+/**
+ * Get all tokens of a given type prefix for a provider (e.g., all "access_token" entries for "plaid").
+ * Supports multi-institution: tokenType can be "access_token#item1", "access_token#item2", etc.
+ */
+export async function getProviderTokensByPrefix(
+  userId: string,
+  provider: string,
+  tokenTypePrefix: string,
+): Promise<ProviderToken[]> {
+  const skPrefix = `PROVIDERTOKEN#${provider}#${tokenTypePrefix}`;
+  const result = await queryItems({
+    pk: `USER#${userId}`,
+    skPrefix,
+  });
+
+  if (result.items.length === 0) return [];
+
+  const dekCache = new Map<string, Buffer>();
+  const tokens: ProviderToken[] = [];
+
+  for (const item of result.items) {
+    const encryptedDekBase64 = item.encryptedDek as string;
+    let plaintextDek = dekCache.get(encryptedDekBase64);
+    if (!plaintextDek) {
+      const encryptedDekBuffer = Buffer.from(encryptedDekBase64, 'base64');
+      plaintextDek = await kmsService.decryptDataKey(encryptedDekBuffer, userId);
+      dekCache.set(encryptedDekBase64, plaintextDek);
+    }
+
+    const decryptedValue = decryptField(
+      plaintextDek,
+      item.encryptedValue as EncryptedField,
+    ) as string;
+
+    tokens.push({
+      userId: item.userId as string,
+      provider: item.provider as string,
+      tokenType: item.tokenType as string,
+      value: decryptedValue,
+      expiresAt: item.expiresAt as string | undefined,
+      metadata: item.metadata as Record<string, unknown> | undefined,
+      createdAt: item.createdAt as string,
+      updatedAt: item.updatedAt as string,
+    });
+  }
+
+  return tokens;
+}
+
 export async function deleteProviderTokens(
   userId: string,
   provider?: string,

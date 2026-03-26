@@ -80,22 +80,23 @@ export const plaidWebhookHandler: WebhookHandler = {
       case 'INITIAL_UPDATE':
       case 'DEFAULT_UPDATE':
       case 'HISTORICAL_UPDATE':
-        // Signal that new transactions are available — the enricher should be re-run
-        // We emit an event marking the data as needing refresh
+        // New transactions available — re-enrich financial + buying patterns
         events.push({
           userId,
           module: 'financial',
-          fields: {},   // Empty — signals a refresh is needed but doesn't overwrite data
+          fields: {},
           metadata: {
             webhookType: payload.webhook_type,
             webhookCode: payload.webhook_code,
             itemId: payload.item_id,
             newTransactions: payload.new_transactions ?? 0,
+            reEnrichModules: ['financial', 'buying-patterns'],
           },
         });
         break;
 
       case 'TRANSACTIONS_REMOVED':
+        // Transactions removed — re-enrich buying patterns
         events.push({
           userId,
           module: 'buying-patterns',
@@ -104,6 +105,7 @@ export const plaidWebhookHandler: WebhookHandler = {
             webhookType: payload.webhook_type,
             webhookCode: payload.webhook_code,
             removedTransactions: payload.removed_transactions ?? [],
+            reEnrichModules: ['buying-patterns'],
           },
         });
         break;

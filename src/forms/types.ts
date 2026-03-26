@@ -1,10 +1,22 @@
 import type { Duration, VerificationTier } from '../types.js';
 
+export interface FormStep {
+  /** Step title shown above the fields */
+  title: string;
+  /** Optional description shown below the title */
+  description?: string;
+  /** Fields for this step */
+  fields: FormField[];
+}
+
 export interface FormDefinition {
   formId: string;
   title: string;
   type: 'data_collection' | 'identity_verification' | 'otp_verification';
+  /** Flat field list — used for single-step forms (backwards compatible) */
   fields: FormField[];
+  /** Multi-step form — when present, `fields` is ignored and each step defines its own fields */
+  steps?: FormStep[];
   expiresIn?: Duration | null; // null = never expires, default 1 hour
 }
 
@@ -36,6 +48,8 @@ export interface FormToken {
   expiresAt: string | null; // null = never
   /** OTP state if applicable */
   otpState?: OtpState;
+  /** Current step index for multi-step forms (0-based). Undefined = single-step form. */
+  currentStep?: number;
 }
 
 export interface OtpState {

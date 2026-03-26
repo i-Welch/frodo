@@ -7,8 +7,8 @@ export interface OtpProvider {
 }
 
 /**
- * Console-based OTP provider for development.
- * In production, replace with an SES/SNS/Twilio implementation.
+ * Console-based OTP provider for development/testing.
+ * Logs the OTP code to the console instead of sending it.
  */
 export class ConsoleOtpProvider implements OtpProvider {
   async sendOtp(channel: 'email' | 'phone', destination: string, code: string): Promise<void> {
@@ -24,4 +24,19 @@ export function setOtpProvider(p: OtpProvider): void {
 
 export function getOtpProvider(): OtpProvider {
   return provider;
+}
+
+/**
+ * Initialize the OTP provider based on environment.
+ * Call this at startup after env vars are loaded.
+ *
+ * Uses AWS SES+SNS in production/staging, console in development/test.
+ */
+export async function initOtpProvider(): Promise<void> {
+  const env = process.env.NODE_ENV ?? 'development';
+  if (env === 'production' || env === 'staging') {
+    const { AwsOtpProvider } = await import('./aws-otp-provider.js');
+    provider = new AwsOtpProvider();
+  }
+  // Otherwise, keep the ConsoleOtpProvider default
 }

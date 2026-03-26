@@ -2,12 +2,13 @@ import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
 import { resolveAuth, AuthError, type AuthContext } from '../middleware/api-key-auth.js';
 import { createFormToken, getFormToken, updateFormToken, deleteFormToken } from '../../forms/tokens.js';
-import { renderForm, renderConsent, renderSuccess, renderError, renderOtpEntry, renderOtpSend } from '../../forms/renderer.js';
+import { renderForm, renderStep, renderConsent, renderSuccess, renderError, renderOtpEntry, renderOtpSend } from '../../forms/renderer.js';
 import { generateOtp, verifyOtp, isOtpExpired } from '../../forms/otp.js';
 import { getOtpProvider } from '../../forms/otp-provider.js';
 import { verifyIdentity } from '../../forms/verification.js';
 import { recordConsent, buildConsentText } from '../../forms/consent.js';
 import { isValidInputType, isCustomComponent, getComponent } from '../../forms/components/registry.js';
+import { enrichModule } from '../../enrichment/engine.js';
 import { getModule as getModuleDef } from '../../modules/registry.js';
 import { putModule } from '../../store/user-store.js';
 import { getModule } from '../../store/user-store.js';
@@ -80,8 +81,13 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
       return err;
     }
 
+    // Collect all fields from both flat and step-based definitions
+    const allFields = formDefinition.steps
+      ? formDefinition.steps.flatMap((s) => s.fields)
+      : formDefinition.fields;
+
     // Validate all field inputTypes
-    for (const field of formDefinition.fields) {
+    for (const field of allFields) {
       if (!isValidInputType(field.inputType)) {
         set.status = 400;
         const err: ApiError = {
@@ -108,8 +114,8 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
       return err;
     }
 
-    // Collect requested modules from the fields
-    const requestedModules = [...new Set(formDefinition.fields.map((f) => f.module))];
+    // Collect requested modules from all fields (flat or step-based)
+    const requestedModules = [...new Set(allFields.map((f) => f.module))];
 
     const token = await createFormToken({
       formDefinition,
@@ -191,6 +197,124 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
 
     // Identity verification: render the identity form fields
     return html(renderForm(formToken));
+  })
+
+  // -----------------------------------------------------------------------
+  // POST /forms/:token/step — Submit current step and advance to next
+  // -----------------------------------------------------------------------
+  .post('/:token/step', async ({ params, body, headers }) => {
+    const formToken = await getFormToken(params.token);
+    if (!formToken) {
+      return html(renderError('This form link has expired or is invalid.'), 404);
+    }
+
+    const steps = formToken.formDefinition.steps;
+    if (!steps || steps.length === 0) {
+      return html(renderError('This form does not have steps.'), 400);
+    }
+
+    const currentStep = formToken.currentStep ?? 0;
+    const step = steps[currentStep];
+
+    // Validate and persist the current step's data
+    const raw = body as Record<string, unknown>;
+    const submitted = normalizeSubmission(raw);
+
+    const errors: string[] = [];
+    for (const field of step.fields) {
+      const key = `${field.module}.${field.field}`;
+      let value = submitted[key];
+
+      if (isCustomComponent(field.inputType)) {
+        const component = getComponent(field.inputType)!;
+        if (value === undefined) {
+          value = assembleSubFields(submitted, field.field);
+        }
+        const err = component.validate(value, field);
+        if (err) errors.push(`${field.label}: ${err}`);
+      } else {
+        if (field.required && (value === undefined || value === null || value === '')) {
+          errors.push(`${field.label} is required`);
+        }
+        if (field.pattern && typeof value === 'string' && value) {
+          const re = new RegExp(`^${field.pattern}$`);
+          if (!re.test(value)) errors.push(`${field.label} has an invalid format`);
+        }
+      }
+    }
+
+    if (errors.length > 0) {
+      // Re-render the current step with errors
+      // For now, show a simple error. TODO: inline field errors
+      return html(renderError('Please fix the following:\\n' + errors.join('\\n')), 400);
+    }
+
+    // Persist the step's data (same logic as final submit)
+    const moduleData = new Map<string, Record<string, unknown>>();
+    for (const field of step.fields) {
+      const key = `${field.module}.${field.field}`;
+      let value = submitted[key];
+
+      if (isCustomComponent(field.inputType)) {
+        const component = getComponent(field.inputType)!;
+        if (value === undefined) {
+          value = assembleSubFields(submitted, field.field);
+        }
+        if (component.transformValue) {
+          value = component.transformValue(value, field);
+        }
+      }
+
+      if (value === undefined || value === null || value === '') continue;
+
+      if (!moduleData.has(field.module)) {
+        moduleData.set(field.module, {});
+      }
+      moduleData.get(field.module)![field.field] = value;
+    }
+
+    // Write data for this step
+    for (const [moduleName, data] of moduleData) {
+      const existing = await getModule(formToken.userId, moduleName);
+      await putModule(formToken.userId, moduleName, {
+        ...(existing ?? {}),
+        ...data,
+      });
+
+      const changes: FieldChange[] = [];
+      for (const [fieldName, newValue] of Object.entries(data)) {
+        changes.push({
+          field: fieldName,
+          previousValue: existing?.[fieldName] ?? null,
+          newValue,
+          confidence: 1.0,
+          goodBy: new Date(Date.now() + 365 * 86_400_000).toISOString(),
+        });
+      }
+
+      const event: DataEvent = {
+        eventId: crypto.randomUUID(),
+        userId: formToken.userId,
+        module: moduleName,
+        source: {
+          source: 'user',
+          actor: `form:${formToken.formDefinition.formId}:step${currentStep}`,
+          tenantId: formToken.tenantId,
+        },
+        changes,
+        timestamp: new Date().toISOString(),
+      };
+
+      await appendEvent(event);
+    }
+
+    // Advance to the next step
+    const nextStep = currentStep + 1;
+    await updateFormToken(formToken.token, { currentStep: nextStep } as Partial<FormToken>);
+
+    // Render the next step
+    const updatedToken = { ...formToken, currentStep: nextStep };
+    return html(renderStep(updatedToken, nextStep));
   })
 
   // -----------------------------------------------------------------------
@@ -358,6 +482,22 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
 
       await appendEvent(event);
       eventsCreated++;
+    }
+
+    // Auto-enrichment: if this form was created by /onboard, run enrichers
+    const onboardModules = (formToken as Record<string, unknown>).onboardModules as string[] | undefined;
+    if (onboardModules && onboardModules.length > 0) {
+      log.info({ userId: formToken.userId, modules: onboardModules }, 'Auto-enriching after form completion');
+      // Run enrichment in the background — don't block the user's response
+      const enrichmentPromises = onboardModules.map((mod) =>
+        enrichModule(formToken.userId, mod, `form:${formToken.formDefinition.formId}`, formToken.tenantId)
+          .catch((err) => log.warn({ module: mod, error: String(err) }, 'Auto-enrichment failed for module')),
+      );
+      // Fire and forget — enrichment runs after the response is sent
+      Promise.allSettled(enrichmentPromises).then((results) => {
+        const succeeded = results.filter((r) => r.status === 'fulfilled').length;
+        log.info({ userId: formToken.userId, succeeded, total: results.length }, 'Auto-enrichment complete');
+      });
     }
 
     // Clean up the form token
@@ -585,10 +725,15 @@ function normalizeSubmission(body: Record<string, unknown>): Record<string, unkn
 }
 
 /**
- * Detect if the request is from a JSON client (e.g., Frodo Collect via fetch)
- * rather than an HTML form submission.
+ * Detect if the request is from a programmatic JSON client (e.g., Frodo Collect)
+ * rather than an HTMX form submission from the browser.
+ *
+ * HTMX sends "HX-Request: true" — these should get HTML responses.
+ * Frodo Collect sends plain JSON without the HX-Request header.
  */
 function isJsonRequest(headers: Record<string, string | undefined>): boolean {
+  // HTMX browser forms always get HTML back, even though they send JSON
+  if (headers['hx-request'] === 'true') return false;
   const ct = headers['content-type'] ?? '';
   return ct.includes('application/json');
 }

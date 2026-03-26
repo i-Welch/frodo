@@ -160,18 +160,89 @@ async function main() {
   console.log(`OTP VERIFICATION (verify via email or phone code):`);
   console.log(`  ${BASE}${otpForm.url}\n`);
 
+  // 5d. Bank Connection Form (Plaid Link)
+  const plaidFormRes = await fetch(`${BASE}/forms`, {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({
+      userId,
+      formDefinition: {
+        formId: 'demo-plaid-link',
+        title: 'Connect Your Bank Account',
+        type: 'data_collection',
+        fields: [
+          { module: 'financial', field: 'plaidLink', label: 'Bank Account', inputType: 'plaid-link', required: true },
+        ],
+      },
+    }),
+  });
+  const plaidForm = await plaidFormRes.json() as { token: string; url: string };
+  console.log(`BANK CONNECTION (Plaid Link — connect a bank account):`);
+  console.log(`  ${BASE}${plaidForm.url}\n`);
+
+  // 5e. Multi-Step Loan Application
+  const multiStepRes = await fetch(`${BASE}/forms`, {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({
+      userId,
+      formDefinition: {
+        formId: 'demo-loan-application',
+        title: 'Loan Application',
+        type: 'data_collection',
+        fields: [], // ignored when steps are present
+        steps: [
+          {
+            title: 'Personal Information',
+            description: 'Let\'s start with your basic details.',
+            fields: [
+              { module: 'identity', field: 'firstName', label: 'First Name', inputType: 'text', required: true },
+              { module: 'identity', field: 'lastName', label: 'Last Name', inputType: 'text', required: true },
+              { module: 'contact', field: 'email', label: 'Email Address', inputType: 'email', required: true },
+              { module: 'contact', field: 'phone', label: 'Phone Number', inputType: 'phone', required: true },
+            ],
+          },
+          {
+            title: 'Employment & Income',
+            description: 'Tell us about your current employment.',
+            fields: [
+              { module: 'employment', field: 'employer', label: 'Current Employer', inputType: 'text', required: true },
+              { module: 'employment', field: 'title', label: 'Job Title', inputType: 'text', required: true },
+              { module: 'employment', field: 'salary', label: 'Annual Salary', inputType: 'currency', required: true },
+            ],
+          },
+          {
+            title: 'Home Address',
+            description: 'Your current residential address.',
+            fields: [
+              { module: 'residence', field: 'currentAddress', label: 'Home Address', inputType: 'address', required: true },
+            ],
+          },
+          {
+            title: 'Connect Bank Account',
+            description: 'Securely link your bank to verify your financial information.',
+            fields: [
+              { module: 'financial', field: 'plaidLink', label: 'Bank Account', inputType: 'plaid-link', required: true },
+            ],
+          },
+        ],
+      },
+    }),
+  });
+  const multiStepForm = await multiStepRes.json() as { token: string; url: string };
+  console.log(`MULTI-STEP LOAN APPLICATION (4 steps: info → employment → address → bank):`);
+  console.log(`  ${BASE}${multiStepForm.url}\n`);
+
   console.log('--- How to test ---\n');
-  console.log('1. Open the DATA COLLECTION link in a browser. Fill in the fields and submit.');
-  console.log('   The data is persisted to the user\'s modules with full audit trail.\n');
-  console.log('2. Open the IDENTITY VERIFICATION link. You\'ll see a consent screen first.');
-  console.log('   After consenting, enter the name and SSN. The system matches against');
-  console.log('   the enriched identity data. On success, a verified session is created.\n');
-  console.log('   Hint: Check the enriched identity data first:');
-  console.log(`   curl -H "Authorization: Bearer ${rawKey}" ${BASE}/api/v1/users/${userId}/modules/identity | jq\n`);
-  console.log('3. Open the OTP VERIFICATION link. After consent, choose email or phone.');
-  console.log('   The OTP code is logged to the server console (ConsoleOtpProvider).');
-  console.log('   Enter the 6-digit code from the server logs to complete verification.\n');
-  console.log('Forms expire in 1 hour. All three flows create audit events in the event store.');
+  console.log('1. DATA COLLECTION — fill in fields and submit.\n');
+  console.log('2. IDENTITY VERIFICATION — consent, then enter name + SSN.');
+  console.log('   Hint: curl -H "Authorization: Bearer ' + rawKey + '" ' + BASE + '/api/v1/users/' + userId + '/modules/identity | jq\n');
+  console.log('3. OTP VERIFICATION — choose channel, check server logs for code.');
+  console.log('   tail -f /tmp/frodo-server.log | grep -i otp\n');
+  console.log('4. BANK CONNECTION — click Connect, use sandbox: user_good / pass_good\n');
+  console.log('5. MULTI-STEP LOAN APPLICATION — walk through all 4 steps.');
+  console.log('   Data is saved after each step. Plaid Link on the last step.\n');
+  console.log('Forms expire in 1 hour. All flows create audit events in the event store.');
 }
 
 main().catch(console.error);

@@ -4,6 +4,7 @@ import { config } from './config/app-config.js';
 import { logger } from './logger.js';
 import { requestIdMiddleware } from './api/middleware/request-id.js';
 import { errorHandler } from './api/middleware/error-handler.js';
+import { landingRoute } from './api/routes/landing.js';
 import { tenantRoutes } from './api/routes/tenants.js';
 import { userRoutes } from './api/routes/users.js';
 import { moduleRoutes } from './api/routes/modules.js';
@@ -16,6 +17,8 @@ import { webhookRoutes } from './api/routes/webhooks.js';
 import { stalenessRoutes, adminRefreshRoute } from './api/routes/staleness.js';
 import { providerStatusRoutes } from './api/routes/provider-status.js';
 import { legalRoutes } from './api/routes/legal.js';
+import { plaidLinkRoutes } from './api/routes/plaid-link.js';
+import { onboardRoutes } from './api/routes/onboard.js';
 import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
@@ -24,9 +27,11 @@ import './modules/index.js';
 import { registerMockEnrichers } from './enrichment/mock/mock-enricher.js';
 // Side-effect import — registers built-in custom field components
 import { registerBuiltinComponents } from './forms/components/index.js';
+import { initOtpProvider } from './forms/otp-provider.js';
 
 registerMockEnrichers();
 registerBuiltinComponents();
+initOtpProvider();
 
 const startTime = Date.now();
 
@@ -114,6 +119,7 @@ const app = new Elysia()
       checks,
     };
   })
+  .use(landingRoute)
   .use(tenantRoutes)
   .use(userRoutes)
   .use(moduleRoutes)
@@ -128,6 +134,8 @@ const app = new Elysia()
   .use(adminRefreshRoute)
   .use(providerStatusRoutes)
   .use(legalRoutes)
+  .use(plaidLinkRoutes)
+  .use(onboardRoutes)
   .listen(config.port);
 
 logger.info(

@@ -5,6 +5,7 @@ import { appendEvent } from '../store/event-store.js';
 import { getModule } from '../store/user-store.js';
 import { materializeModule } from '../events/materializer.js';
 import { durationToMs } from '../types.js';
+import { enrichModule } from '../enrichment/engine.js';
 import { createChildLogger } from '../logger.js';
 import type { WebhookEvent } from './types.js';
 import type { DataEvent, FieldChange } from '../events/types.js';
@@ -103,8 +104,23 @@ async function processWebhookEvent(
     metadata: event.metadata,
   };
 
-  await appendEvent(dataEvent);
-  await materializeModule(event.userId, event.module, { persist: true });
+  if (changes.length > 0) {
+    await appendEvent(dataEvent);
+    await materializeModule(event.userId, event.module, { persist: true });
+  }
+
+  // Auto re-enrichment: if the webhook signals modules should be refreshed
+  const reEnrichModules = (event.metadata?.reEnrichModules as string[]) ?? [];
+  if (reEnrichModules.length > 0) {
+    log.info(
+      { provider, userId: event.userId, modules: reEnrichModules },
+      'Webhook triggering re-enrichment',
+    );
+    for (const mod of reEnrichModules) {
+      enrichModule(event.userId, mod, 'webhook', undefined)
+        .catch((err) => log.warn({ module: mod, error: String(err) }, 'Webhook re-enrichment failed'));
+    }
+  }
 
   log.debug(
     { provider, userId: event.userId, module: event.module, fields: Object.keys(event.fields) },

@@ -1,5 +1,6 @@
 import { registerComponent } from './registry.js';
 import { addressComponent } from './address.js';
+import { plaidLinkComponent } from './plaid-link.js';
 
 /**
  * Register all built-in custom field components.
@@ -7,4 +8,5 @@ import { addressComponent } from './address.js';
  */
 export function registerBuiltinComponents(): void {
   registerComponent(addressComponent);
+  registerComponent(plaidLinkComponent);
 }

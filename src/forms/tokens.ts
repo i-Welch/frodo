@@ -106,6 +106,7 @@ export async function getFormToken(token: string): Promise<FormToken | null> {
     createdAt: item.createdAt as string,
     expiresAt,
     otpState: item.otpState as FormToken['otpState'],
+    currentStep: item.currentStep as number | undefined,
   };
 }
 
@@ -125,6 +126,7 @@ export async function updateFormToken(
   let idx = 0;
   for (const [field, value] of Object.entries(updates)) {
     if (field === 'token') continue; // don't overwrite the key
+    if (value === undefined) continue; // skip undefined values
     const alias = `#f${idx}`;
     const valAlias = `:v${idx}`;
     expressionNames[alias] = field;

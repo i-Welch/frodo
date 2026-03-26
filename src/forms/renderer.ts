@@ -1,5 +1,5 @@
 import { isCustomComponent, getComponent } from './components/registry.js';
-import type { FormField, FormToken } from './types.js';
+import type { FormField, FormStep, FormToken } from './types.js';
 
 // ---------------------------------------------------------------------------
 // Public API
@@ -7,8 +7,18 @@ import type { FormField, FormToken } from './types.js';
 
 /**
  * Render a complete HTML page for the given form token.
+ * For multi-step forms, renders the current step.
  */
 export function renderForm(formToken: FormToken): string {
+  const { steps } = formToken.formDefinition;
+
+  // Multi-step: render the current step
+  if (steps && steps.length > 0) {
+    const stepIndex = formToken.currentStep ?? 0;
+    return renderStep(formToken, stepIndex);
+  }
+
+  // Single-step: render all fields
   const fieldsHtml = formToken.formDefinition.fields
     .map((field, i) => {
       const html = isCustomComponent(field.inputType)
@@ -25,6 +35,105 @@ export function renderForm(formToken: FormToken): string {
     formType: formToken.formDefinition.type,
     fields: formToken.formDefinition.fields,
   });
+}
+
+/**
+ * Render a single step of a multi-step form.
+ */
+export function renderStep(formToken: FormToken, stepIndex: number): string {
+  const steps = formToken.formDefinition.steps!;
+  const step = steps[stepIndex];
+  const totalSteps = steps.length;
+  const isLast = stepIndex === totalSteps - 1;
+
+  const fieldsHtml = step.fields
+    .map((field, i) => {
+      const html = isCustomComponent(field.inputType)
+        ? getComponent(field.inputType)!.render(field, formToken.token)
+        : renderStandardField(field);
+      return `<div class="field-group" style="animation-delay: ${i * 60}ms">${html}</div>`;
+    })
+    .join('\n');
+
+  const progressHtml = renderProgress(stepIndex, totalSteps, steps);
+  const descriptionHtml = step.description
+    ? `<p class="step-description">${escapeHtml(step.description)}</p>`
+    : '';
+
+  const buttonLabel = isLast ? 'Submit' : 'Continue';
+  const buttonIcon = isLast
+    ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+    : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+
+  // Step submits to /forms/:token/step which validates, persists, and returns the next step
+  const submitUrl = isLast
+    ? `/forms/${formToken.token}/submit`
+    : `/forms/${formToken.token}/step`;
+
+  const collectFields = step.fields
+    .map((f) => {
+      const req = f.required ? 'true' : 'false';
+      return `  collect.addField({ module: '${escapeJs(f.module)}', field: '${escapeJs(f.field)}', required: ${req} });`;
+    })
+    .join('\n');
+
+  const collectScript = `
+    <script src="/frodo-collect.js"></script>
+    <script>
+      var collect = new FrodoCollect({
+        token: '${escapeJs(formToken.token)}',
+        source: 'user',
+      });
+${collectFields}
+    </script>
+  `;
+
+  const body = `
+    <div class="card form-card">
+      ${progressHtml}
+      <h1>${escapeHtml(step.title)}</h1>
+      ${descriptionHtml}
+      <form hx-post="${submitUrl}" hx-target="body" hx-swap="innerHTML" hx-ext="json-enc" class="form-body">
+        ${fieldsHtml}
+        <div class="step-actions">
+          ${stepIndex > 0 ? `<button type="button" class="btn-secondary" onclick="history.back()">Back</button>` : '<span></span>'}
+          <button type="submit" class="btn-primary">
+            ${buttonLabel}
+            ${buttonIcon}
+          </button>
+        </div>
+      </form>
+    </div>
+    ${collectScript}
+  `;
+
+  return renderLayout(formToken.formDefinition.title, body);
+}
+
+function renderProgress(current: number, total: number, steps: FormStep[]): string {
+  const segments = steps.map((step, i) => {
+    let state = 'upcoming';
+    if (i < current) state = 'completed';
+    if (i === current) state = 'active';
+    return `
+      <div class="progress-step ${state}">
+        <div class="progress-dot">
+          ${state === 'completed'
+            ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
+            : `<span>${i + 1}</span>`}
+        </div>
+        <span class="progress-label">${escapeHtml(step.title)}</span>
+      </div>`;
+  }).join('\n');
+
+  return `
+    <div class="progress-bar">
+      ${segments}
+      <div class="progress-track">
+        <div class="progress-fill" style="width: ${total > 1 ? (current / (total - 1)) * 100 : 100}%"></div>
+      </div>
+    </div>
+  `;
 }
 
 /**
@@ -371,6 +480,7 @@ function renderLayout(title: string, bodyContent: string): string {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(title)} — RAVEN</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cstyle%3Epath%7Bfill:%230A0A0A%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23fff%7D%7D%3C/style%3E%3Cpath d='M0 0L305 0C345 0 400 2 420 30C415 75 310 140 235 195C160 255 140 400 162 512L0 512Z'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -382,7 +492,7 @@ function renderLayout(title: string, bodyContent: string): string {
 <body>
   <header class="top-bar">
     <div class="brand">
-      <svg class="brand-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+      <svg class="brand-icon" width="24" height="24" viewBox="0 0 3000 3000" fill="currentColor"><path d="M2162.9,2626.4c17.1-6.3,35.7-13.6,48.6-20.1-51.8-.7-99,.5-146.3-2.5-162.9-10.5-321.8-40.2-475.8-94.7-166.9-59.1-321-140.7-453.7-259.6-62.1-55.7-115.4-118.4-149.3-195.7-26.4-60.1-37.6-122.5-21.4-187.2,40.1-160.7,200.7-247.3,361.8-218-40.9,6.9-78.6,15.9-111.1,38.7-32.7,22.9-58.8,51.1-72.2,91.7,36.3-26.9,91.2-50.3,120.1-51.6-2.5,1.9-4.3,3.6-6.4,5-68.4,45.2-101.9,109.3-103.6,190.8-1.5,69.4,23.3,130.2,60.2,187.1,59.4,91.5,140.5,160.3,231.8,217.9,111.4,70.2,231,119.8,354.7,155.9,104,30.3,211.3,49.4,320,51.4,13.3.2,26.7,0,40,0-6.1-6.8-12.7-10.1-19-13.8-49-29.3-81.5-73.1-106-123.2-29.6-60.7-58.7-122.2-87.8-183.2-61.6-129.2-138.6-248-238.7-351.1-71.7-73.8-152.5-134.8-247.9-174.8-6.9-2.9-11.5-7.8-15.8-13.5-29.2-38.3-54-79.1-69.9-124.8-20.3-58.6-22.5-117.4.7-175.8,26.8-67.4,77.5-111.8,140.8-143.3,59.7-29.7,123.7-45.2,189.1-56.1,85.4-14.3,171.3-19.1,257.7-11.2,26.4,2.4,52.3,8.2,79.6,12.8-1.6-3.8-2.4-6.2-3.5-8.4-2.8-5.4-5.4-10.8-8.6-16-37.3-61.5-87.7-110.2-148.5-148.2-110.1-68.9-232.1-98.4-360.2-105.6-33.6-1.9-61.3-9.6-89.6-30.3-109.5-80.1-233.4-107.2-367.7-91.9-103.9,11.8-197.9,48.4-283.8,107.6-91.3,62.8-170.3,141.4-263.4,201.4,1.3,3.6,3.6,2.7,5.4,2.8,70.6,3.8,138.8-11.9,207.7-25.2-142.7,75.7-262.1,171.7-303,338.1,41.4-38.3,88-67.6,140.8-87.1-39,42-68.8,89.9-92.5,141.4-79.6,173.1-94.5,354.4-61,539.8,31.9,177,108.7,333.6,226.4,469.8,6.6,7.6,13.6,14.9,20.7,22.1,6.6,6.8,13.5,13.3,23.1,22.7l254,162c139.8,87.7,294.6,130.1,457.6,141.8,166.5,12,330.1-7.8,489.8-57.3,12.2-3.8,24.1-8.5,36-13.1s19.2-8.2,28.5-13.1l114-60.6c31.6-16.8,64.3-31.5,97.9-43.8ZM1326.1,1075.5c50.8-26.4,106-35.6,161.9-39.4,111.3-7.5,221.7-2.3,329.1,32,28.7,9.2,56.6,20.3,85.5,35-222-20.9-439.8-17.1-656.4,43.6,23-29.9,47.6-54.5,79.8-71.3ZM1150.4,943.8c31.7.5,57,26.5,56.9,58.5,0,30.6-26.9,56.6-57.6,55.9-31.8-.8-57-27-56.6-58.8.4-31.6,25.6-56,57.3-55.5Z"/><circle cx="1500" cy="1500" r="1319.5" fill="none" stroke="currentColor" stroke-width="109"/></svg>
       <span class="brand-name">RAVEN</span>
     </div>
     <span class="brand-tagline">Secure Verification</span>
@@ -673,6 +783,145 @@ const CSS = `
   .address-state, .address-zip {
     grid-column: span 1;
   }
+
+  /* --- Multi-step progress bar --- */
+  .progress-bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+  }
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 1;
+    flex: 1;
+  }
+  .progress-dot {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 600;
+    border: 2px solid var(--gray-300);
+    background: var(--white);
+    color: var(--gray-400);
+    transition: all 300ms ease;
+  }
+  .progress-step.active .progress-dot {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+  }
+  .progress-step.completed .progress-dot {
+    border-color: var(--black);
+    background: var(--black);
+    color: var(--white);
+  }
+  .progress-label {
+    font-size: 0.7rem;
+    color: var(--gray-400);
+    text-align: center;
+    max-width: 80px;
+    line-height: 1.2;
+  }
+  .progress-step.active .progress-label { color: var(--black); font-weight: 500; }
+  .progress-step.completed .progress-label { color: var(--gray-600); }
+  .progress-track {
+    position: absolute;
+    top: 13px;
+    left: 14%;
+    right: 14%;
+    height: 2px;
+    background: var(--gray-200);
+    z-index: 0;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--black);
+    transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .step-description {
+    color: var(--gray-500) !important;
+    font-size: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .step-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .btn-secondary {
+    font-family: var(--font); font-size: 0.85rem; font-weight: 500;
+    background: var(--white); color: var(--gray-600);
+    border: 1px solid var(--gray-300); border-radius: var(--radius-sm);
+    padding: 0.6rem 1.25rem; cursor: pointer;
+    transition: all var(--transition);
+  }
+  .btn-secondary:hover { color: var(--black); border-color: var(--gray-400); }
+  .step-actions .btn-primary { width: auto; flex: 1; max-width: 200px; margin-top: 0; }
+
+  @media (max-width: 580px) {
+    .progress-label { display: none; }
+    .progress-track { left: 10%; right: 10%; }
+    .step-actions .btn-primary { max-width: none; flex: 1; }
+  }
+
+  /* --- Plaid Link component --- */
+  .plaid-link-field { margin-bottom: 0.25rem; }
+  .plaid-link-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    margin: 0.5rem 0;
+  }
+  .plaid-link-icon { color: var(--gray-500); flex-shrink: 0; }
+  .plaid-link-text { display: flex; flex-direction: column; gap: 0.15rem; }
+  .plaid-link-text strong { font-size: 0.9rem; color: var(--black); }
+  .plaid-link-text span { font-size: 0.8rem; color: var(--gray-500); }
+  .plaid-link-card span { font-size: 0.85rem; color: var(--gray-500); }
+  .btn-plaid {
+    font-family: var(--font); font-size: 0.85rem; font-weight: 500;
+    background: var(--white); color: var(--black);
+    border: 1.5px solid var(--black); border-radius: var(--radius-sm);
+    padding: 0.6rem 1.25rem; cursor: pointer;
+    transition: all var(--transition);
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .btn-plaid:hover { background: var(--black); color: var(--white); }
+  .btn-plaid:active { transform: translateY(1px); }
+  .plaid-link-success-card {
+    border-color: var(--green-500);
+    background: var(--green-50);
+  }
+  .plaid-link-success-card svg { color: var(--green-500); flex-shrink: 0; }
+  .plaid-link-success-card strong { color: var(--green-900); }
+  .plaid-link-success-card span { color: var(--green-900); opacity: 0.7; }
+  .plaid-link-error-card {
+    border-color: var(--red-500);
+    background: var(--red-50);
+  }
+  .plaid-link-error-card svg { color: var(--red-500); flex-shrink: 0; }
+  .plaid-link-error-card strong { color: var(--red-900); }
+  .plaid-link-error-card span { color: var(--red-900); opacity: 0.7; }
+  .plaid-link-spinner {
+    width: 20px; height: 20px;
+    border: 2px solid var(--gray-200);
+    border-top-color: var(--black);
+    border-radius: 50%;
+    animation: plaidSpin 0.6s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes plaidSpin { to { transform: rotate(360deg); } }
 
   @media (max-width: 580px) {
     .main { padding: 1.5rem 1rem 3rem; }

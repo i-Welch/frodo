@@ -1,5 +1,21 @@
 import type { CustomFieldComponent } from '../types.js';
 
+const US_STATES: [string, string][] = [
+  ['AL', 'Alabama'], ['AK', 'Alaska'], ['AZ', 'Arizona'], ['AR', 'Arkansas'],
+  ['CA', 'California'], ['CO', 'Colorado'], ['CT', 'Connecticut'], ['DE', 'Delaware'],
+  ['FL', 'Florida'], ['GA', 'Georgia'], ['HI', 'Hawaii'], ['ID', 'Idaho'],
+  ['IL', 'Illinois'], ['IN', 'Indiana'], ['IA', 'Iowa'], ['KS', 'Kansas'],
+  ['KY', 'Kentucky'], ['LA', 'Louisiana'], ['ME', 'Maine'], ['MD', 'Maryland'],
+  ['MA', 'Massachusetts'], ['MI', 'Michigan'], ['MN', 'Minnesota'], ['MS', 'Mississippi'],
+  ['MO', 'Missouri'], ['MT', 'Montana'], ['NE', 'Nebraska'], ['NV', 'Nevada'],
+  ['NH', 'New Hampshire'], ['NJ', 'New Jersey'], ['NM', 'New Mexico'], ['NY', 'New York'],
+  ['NC', 'North Carolina'], ['ND', 'North Dakota'], ['OH', 'Ohio'], ['OK', 'Oklahoma'],
+  ['OR', 'Oregon'], ['PA', 'Pennsylvania'], ['RI', 'Rhode Island'], ['SC', 'South Carolina'],
+  ['SD', 'South Dakota'], ['TN', 'Tennessee'], ['TX', 'Texas'], ['UT', 'Utah'],
+  ['VT', 'Vermont'], ['VA', 'Virginia'], ['WA', 'Washington'], ['WV', 'West Virginia'],
+  ['WI', 'Wisconsin'], ['WY', 'Wyoming'], ['DC', 'District of Columbia'],
+];
+
 /**
  * Structured address input with autocomplete support.
  *
@@ -27,7 +43,10 @@ export const addressComponent: CustomFieldComponent = {
             <input type="text" name="${field.field}.city" class="form-input" placeholder="Austin"${req} />
           </label>
           <label class="form-label address-state"><span class="label-text">State</span>
-            <input type="text" name="${field.field}.state" class="form-input" maxlength="2" placeholder="TX"${req} />
+            <select name="${field.field}.state" class="form-input"${req}>
+              <option value="">--</option>
+              ${US_STATES.map((s) => `<option value="${s[0]}">${s[0]} — ${s[1]}</option>`).join('\n              ')}
+            </select>
           </label>
           <label class="form-label address-zip"><span class="label-text">ZIP</span>
             <input type="text" name="${field.field}.zip" class="form-input" inputmode="numeric" pattern="\\d{5}" placeholder="78701"${req} />
