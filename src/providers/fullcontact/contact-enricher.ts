@@ -54,18 +54,15 @@ export class FullContactContactEnricher extends BaseEnricher<ContactData> {
     userId: string,
     current: Partial<ContactData>,
   ): Promise<EnrichmentResult<ContactData>> {
-    if (!current.email) {
-      throw new Error('FullContact enrichment requires an email address');
+    if (!current.email && !current.phone) {
+      throw new Error('FullContact enrichment requires an email or phone number');
     }
 
     // FullContact accepts multiple identifier types for matching.
-    // We send email as the primary identifier, plus phone if available.
-    const body: Record<string, unknown> = {
-      email: current.email,
-    };
-    if (current.phone) {
-      body.phone = current.phone;
-    }
+    // Send whatever we have — email, phone, or both.
+    const body: Record<string, unknown> = {};
+    if (current.email) body.email = current.email;
+    if (current.phone) body.phone = current.phone;
 
     const res = await this.http.request<FullContactPersonResponse>(
       '/v3/person.enrich',
