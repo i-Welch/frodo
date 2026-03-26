@@ -138,37 +138,61 @@ Before reaching out to regulated providers, have these ready:
   ```
 
 **What's built:**
-- **Identity enricher** — server-side KYC via RiskOS Evaluation API (`POST /api/evaluation`)
-- **Interactive verification routes:**
-  - `POST /socure/start-evaluation` — initiate Prefill + OTP with DOB + phone
-  - `POST /socure/verify-otp` — verify 6-digit SMS code, unlock prefill data
-  - `POST /socure/submit-kyc` — submit full PII for KYC + Watchlist decision
+
+*Server-side enricher:*
+- **Identity enricher** — submits full PII (name, SSN, DOB, email, phone, address) to RiskOS Evaluation API for KYC + Fraud + Watchlist screening
+- Automatically pulls email/phone from contact module and address from residence module for better match quality
+- Extracts verified identity data from Socure's response (name, DOB from nameAddressPhone enrichment)
+- Stores risk scores in event metadata: phoneRiskScore, namePhoneCorrelationScore, tags, reason codes
+- Tested end-to-end with Socure sandbox test persona (Jerri Hogarth) — Socure returned verified DOB we didn't have
+
+*Interactive verification form component (`inputType: 'socure-verify'`):*
+- Multi-step inline flow: DOB + phone → OTP → "Is this you?" confirmation → KYC decision
+- After OTP, shows prefilled name + last 4 of SSN — user confirms "Yes, that's me" or "No" to fall back to manual
+- Every error path falls back to manual data collection (never a dead end)
+- "Enter information manually instead" skip link on the initial screen
+- Self-managing component — hides the step's Continue button automatically
+
+*API routes for interactive flow:*
+- `POST /socure/start-evaluation` — initiate Prefill + OTP with DOB + phone
+- `POST /socure/verify-otp` — verify 6-digit SMS code, unlock prefill data
+- `POST /socure/submit-kyc` — submit full PII for KYC + Watchlist decision
+
+*Infrastructure:*
 - **Webhook handler** — receives `evaluation_completed` events after async DocV
 - **Shared config** — `src/providers/socure/config.ts` reads `SOCURE_ENV` for base URL
-- **Decisions:** ACCEPT → continue, REJECT → stop, REVIEW → DocV step-up
+- **Decisions:** ACCEPT → continue, REJECT → fall back to manual, REVIEW → DocV step-up
 
-**Socure verification flow:**
-1. Collect DOB + phone → `POST /socure/start-evaluation` → triggers OTP to phone
-2. User enters 6-digit code → `POST /socure/verify-otp` → unlocks prefilled identity data
-3. Display prefilled form (lock DOB + phone) → user confirms → `POST /socure/submit-kyc`
-4. If ACCEPT → identity verified. If REVIEW → launch DocV SDK for ID scan + selfie
-5. DocV completes async → webhook delivers final decision
+*Sandbox test personas (from Synctera docs):*
+
+| Outcome | Name | SSN | DOB |
+|---------|------|-----|-----|
+| ACCEPT | Jerri Hogarth | 293-00-1642 | 1976-08-09 |
+| REVIEW | Jane Doe | 123-45-7812 | 1976-08-09 |
+| REJECT | Jerri Hogarth | 555-55-1111 | 1976-08-09 |
 
 **Done:**
 - [x] Sign up for Socure
 - [x] Sandbox API key in `.env`
 - [x] SDK key in `.env`
-- [x] Workflow name configured
+- [x] Workflow name configured (`non_hosted_advanced_pre_fill`)
 - [x] Verified Socure sandbox API call works (2026-03-26)
-- [x] Enricher rebuilt for RiskOS Evaluation API
-- [x] Interactive verification routes (start → OTP → KYC)
+- [x] Identity enricher — server-side KYC with full PII submission
+- [x] Enricher pulls contact + residence data automatically for better match
+- [x] Risk scores (phone risk, name-phone correlation) saved in metadata
+- [x] Interactive verification form component (`socure-verify`)
+- [x] "Is this you?" confirmation flow instead of editable prefill form
+- [x] Manual fallback on any error or user rejection
+- [x] Interactive API routes (start → OTP → KYC)
 - [x] Webhook handler for DocV completion
+- [x] Tested full enricher flow with sandbox test persona
 
 **Still needed:**
-- [ ] Build Socure DocV form component (`inputType: 'socure-docv'`) using SDK key + Web SDK
+- [ ] Ask Socure rep about sandbox OTP behavior (fixed codes? whitelisted numbers? or real SMS?)
+- [ ] Build DocV step-up using Socure Web SDK (`https://websdk.socure.com/bundle.js`) + SDK key
 - [ ] Build Digital Intelligence session token generation (frontend `@socure-inc/device-risk-sdk`)
-- [ ] Register webhook URL in Socure dashboard
-- [ ] Test full interactive flow in Sandbox (Prefill → OTP → KYC → DocV)
+- [ ] Register webhook URL in Socure dashboard: `https://reportraven.tech/webhooks/socure`
+- [ ] Request a `kyc_only` workflow from Socure for server-side enrichment without OTP
 - [ ] Apply for Socure Production access
 - [ ] Replace mock enricher with `registerSocureProvider()` in `src/index.ts`
 

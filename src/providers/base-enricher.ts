@@ -24,11 +24,11 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
 
   private ensureInitialized(): void {
     if (!this.http) {
+      this.credentials = getProviderCredentials(this.source);
       this.http = new ProviderHttpClient({
         baseUrl: this.getBaseUrl(),
         defaultHeaders: this.getDefaultHeaders(),
       });
-      this.credentials = getProviderCredentials(this.source);
     }
   }
 

@@ -95,7 +95,18 @@ export async function getFormToken(token: string): Promise<FormToken | null> {
     return null;
   }
 
+  // Build the token with known fields, then spread any extra fields
+  // (e.g., socureEvalId, onboardModules, plaidLinked) that were added via updateFormToken
+  const knownKeys = new Set(['PK', 'SK', 'ttl']);
+  const extraFields: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(item)) {
+    if (!knownKeys.has(key)) {
+      extraFields[key] = value;
+    }
+  }
+
   return {
+    ...extraFields,
     token: item.token as string,
     formDefinition: item.formDefinition as FormToken['formDefinition'],
     userId: item.userId as string,
@@ -107,7 +118,7 @@ export async function getFormToken(token: string): Promise<FormToken | null> {
     expiresAt,
     otpState: item.otpState as FormToken['otpState'],
     currentStep: item.currentStep as number | undefined,
-  };
+  } as FormToken;
 }
 
 /**

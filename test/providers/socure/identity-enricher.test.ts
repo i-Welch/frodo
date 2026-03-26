@@ -26,14 +26,21 @@ describe('SocureIdentityEnricher', () => {
       dateOfBirth: '1983-04-06',
     });
 
-    // Prefill data extracted from enrichments
+    // Identity data extracted from nameAddressPhone enrichment
     expect(result.data.firstName).toBe('Samwise');
     expect(result.data.lastName).toBe('Gamgee');
     expect(result.data.dateOfBirth).toBe('1983-04-06');
 
-    // Metadata includes KYC decision
+    // KYC decision
     expect(result.metadata?.evalId).toBe('socure-eval-001');
     expect(result.metadata?.decision).toBe('ACCEPT');
-    expect(result.metadata?.kycDecision).toBe('ACCEPT');
+
+    // Risk scores
+    expect(result.metadata?.phoneRiskScore).toBe(0.12);
+    expect(result.metadata?.namePhoneCorrelationScore).toBe(0.95);
+
+    // Enrichment details
+    expect(result.metadata?.enrichmentsRun).toHaveLength(1);
+    expect(result.metadata?.enrichmentsRun[0].name).toBe('Socure Phone Risk');
   });
 });

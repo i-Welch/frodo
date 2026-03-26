@@ -1,6 +1,7 @@
 import { registerComponent } from './registry.js';
 import { addressComponent } from './address.js';
 import { plaidLinkComponent } from './plaid-link.js';
+import { socureVerifyComponent } from './socure-verify.js';
 
 /**
  * Register all built-in custom field components.
@@ -9,4 +10,5 @@ import { plaidLinkComponent } from './plaid-link.js';
 export function registerBuiltinComponents(): void {
   registerComponent(addressComponent);
   registerComponent(plaidLinkComponent);
+  registerComponent(socureVerifyComponent);
 }

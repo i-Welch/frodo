@@ -60,6 +60,11 @@ export function renderStep(formToken: FormToken, stepIndex: number): string {
     ? `<p class="step-description">${escapeHtml(step.description)}</p>`
     : '';
 
+  // Hide the step's submit button when all fields are self-managing components
+  // (e.g., plaid-link and socure-verify handle their own submit flow)
+  const SELF_MANAGING_TYPES = new Set(['plaid-link', 'socure-verify']);
+  const allSelfManaging = step.fields.every((f) => SELF_MANAGING_TYPES.has(f.inputType));
+
   const buttonLabel = isLast ? 'Submit' : 'Continue';
   const buttonIcon = isLast
     ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
@@ -95,13 +100,13 @@ ${collectFields}
       ${descriptionHtml}
       <form hx-post="${submitUrl}" hx-target="body" hx-swap="innerHTML" hx-ext="json-enc" class="form-body">
         ${fieldsHtml}
-        <div class="step-actions">
-          ${stepIndex > 0 ? `<button type="button" class="btn-secondary" onclick="history.back()">Back</button>` : '<span></span>'}
+        ${allSelfManaging ? '' : `<div class="step-actions">
+          ${stepIndex > 0 ? '<button type="button" class="btn-secondary" onclick="history.back()">Back</button>' : '<span></span>'}
           <button type="submit" class="btn-primary">
             ${buttonLabel}
             ${buttonIcon}
           </button>
-        </div>
+        </div>`}
       </form>
     </div>
     ${collectScript}
@@ -869,6 +874,61 @@ const CSS = `
     .progress-label { display: none; }
     .progress-track { left: 10%; right: 10%; }
     .step-actions .btn-primary { max-width: none; flex: 1; }
+  }
+
+  /* --- Socure Verify component --- */
+  .socure-verify-field { margin-bottom: 0.25rem; }
+  .socure-step { animation: fieldIn 350ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .socure-card {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.25rem; border: 2px solid var(--gray-200);
+    border-radius: var(--radius-sm); margin: 0.5rem 0;
+  }
+  .socure-card-icon { color: var(--gray-500); flex-shrink: 0; }
+  .socure-card strong { font-size: 0.9rem; color: var(--black); display: block; }
+  .socure-card span { font-size: 0.8rem; color: var(--gray-500); }
+  .socure-card-info {
+    border-color: var(--gray-300); background: var(--gray-50);
+    padding: 0.9rem 1.25rem; gap: 0.75rem;
+  }
+  .socure-card-info svg { color: var(--gray-400); flex-shrink: 0; }
+  .socure-card-info span { font-size: 0.8rem; color: var(--gray-500); }
+  .socure-card-success { border-color: var(--green-500); background: var(--green-50); }
+  .socure-card-success svg { color: var(--green-500); flex-shrink: 0; }
+  .socure-card-success strong { color: var(--green-900); }
+  .socure-card-success span { color: var(--green-900); opacity: 0.7; }
+  .socure-card-error { border-color: var(--red-500); background: var(--red-50); }
+  .socure-card-error svg { color: var(--red-500); flex-shrink: 0; }
+  .socure-card-error strong { color: var(--red-900); }
+  .socure-card-error span { color: var(--red-900); opacity: 0.7; }
+  .socure-form-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.75rem; margin: 1rem 0;
+  }
+  .socure-full-width { grid-column: 1 / -1; }
+  .socure-confirm-card {
+    background: var(--gray-50); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm); padding: 1.25rem;
+    margin: 1rem 0; display: flex; flex-direction: column; gap: 0.75rem;
+  }
+  .socure-confirm-row {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .socure-confirm-label {
+    font-size: 0.8rem; font-weight: 500; color: var(--gray-500);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .socure-confirm-value {
+    font-size: 1rem; font-weight: 500; color: var(--black);
+    letter-spacing: 0.02em;
+  }
+  .socure-error {
+    background: var(--red-50); color: var(--red-900);
+    border: 1px solid rgba(239,68,68,0.2); border-radius: var(--radius-sm);
+    padding: 0.7rem 1rem; font-size: 0.85rem; margin-bottom: 0.75rem;
+  }
+  @media (max-width: 580px) {
+    .socure-form-grid { grid-template-columns: 1fr; }
   }
 
   /* --- Plaid Link component --- */

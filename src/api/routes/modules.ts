@@ -4,6 +4,7 @@ import { getLink } from '../../store/tenant-user-store.js';
 import {
   putModule,
   getModule,
+  getAllModules,
 } from '../../store/user-store.js';
 import { getModule as getModuleDef } from '../../modules/registry.js';
 import type { ApiError } from '../../types.js';
@@ -20,6 +21,24 @@ export const moduleRoutes = new Elysia({ prefix: '/api/v1/users' })
   })
   .derive(async ({ headers }) => {
     return resolveAuth(headers) as Promise<AuthContext & Record<string, unknown>>;
+  })
+  // -----------------------------------------------------------------------
+  // GET /api/v1/users/:id/modules — Get all module data
+  // -----------------------------------------------------------------------
+  .get('/:id/modules', async ({ params, tenant, set }) => {
+    const link = await getLink(tenant.tenantId, params.id);
+    if (!link) {
+      set.status = 404;
+      const err: ApiError = {
+        status: 404,
+        code: 'NOT_FOUND',
+        message: `User ${params.id} not found or not linked to this tenant`,
+      };
+      return err;
+    }
+
+    const modules = await getAllModules(params.id);
+    return { userId: params.id, modules };
   })
   // -----------------------------------------------------------------------
   // GET /api/v1/users/:id/modules/:module — Get module data

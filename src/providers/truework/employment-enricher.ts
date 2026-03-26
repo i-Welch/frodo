@@ -1,4 +1,6 @@
 import { BaseEnricher } from '../base-enricher.js';
+import { getTrueworkBaseUrl } from './config.js';
+import { getModule } from '../../store/user-store.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
@@ -64,7 +66,7 @@ export class TrueworkEmploymentEnricher extends BaseEnricher<EmploymentData> {
   timeoutMs = 20_000;
 
   protected getBaseUrl(): string {
-    return 'https://api.truework.com';
+    return getTrueworkBaseUrl();
   }
 
   protected getDefaultHeaders(): Record<string, string> {
@@ -78,6 +80,21 @@ export class TrueworkEmploymentEnricher extends BaseEnricher<EmploymentData> {
     userId: string,
     current: Partial<EmploymentData>,
   ): Promise<EnrichmentResult<EmploymentData>> {
+    // Pull identity data to populate the verification request
+    const identity = await getModule(userId, 'identity');
+    const firstName = (identity?.firstName as string) ?? '';
+    const lastName = (identity?.lastName as string) ?? '';
+    const ssn = (identity?.ssn as string) ?? '';
+    const dob = (identity?.dateOfBirth as string) ?? '';
+
+    if (!firstName || !lastName) {
+      throw new Error('Truework requires first name and last name (from identity module)');
+    }
+
+    // Employer is optional — if not provided, Truework searches across all employers
+    const companyName = current.employer ?? '';
+    const companyPayload = companyName ? { company: { name: companyName } } : {};
+
     // Create a verification request
     const createRes = await this.http.request<TrueworkVerificationResponse>(
       '/verification-requests/',
@@ -86,11 +103,13 @@ export class TrueworkEmploymentEnricher extends BaseEnricher<EmploymentData> {
         body: {
           type: 'employment-income',
           permissible_purpose: 'credit-application',
+          use_case: 'lending',
           target: {
-            // In production, these would come from the user's identity module
-            first_name: userId,
-            social_security_number: '', // Would be populated from identity
-            company: { name: current.employer ?? '' },
+            first_name: firstName,
+            last_name: lastName,
+            ...(ssn ? { social_security_number: ssn } : {}),
+            ...(dob ? { date_of_birth: dob } : {}),
+            ...companyPayload,
           },
         },
       },

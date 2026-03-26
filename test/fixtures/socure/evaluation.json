@@ -8,29 +8,34 @@
       "eval_id": "socure-eval-001",
       "decision": "ACCEPT",
       "status": "CLOSED",
+      "sub_status": "Accept",
       "tags": ["KYC Approved", "Watchlist Clear"],
       "data_enrichments": [
         {
-          "name": "Prefill",
+          "enrichment_name": "Socure Phone Risk",
+          "enrichment_provider": "Socure",
+          "status_code": 200,
           "response": {
-            "data": {
-              "individual": {
-                "given_name": "Samwise",
-                "family_name": "Gamgee",
-                "date_of_birth": "1983-04-06",
-                "phone_number": "+15559876543",
-                "address": {
-                  "line_1": "3 Bagshot Row",
-                  "locality": "Hobbiton",
-                  "major_admin_division": "SH",
-                  "postal_code": "00001",
-                  "country": "US"
-                }
-              }
-            }
-          }
+            "namePhoneCorrelation": {
+              "reasonCodes": ["I618"],
+              "score": 0.95
+            },
+            "phoneRisk": {
+              "reasonCodes": ["I601"],
+              "score": 0.12
+            },
+            "nameAddressPhone": {
+              "name": { "first": "Samwise", "middle": "", "last": "Gamgee" },
+              "address": { "street": "3 Bagshot Row", "city": "Hobbiton", "state": "SH", "zip": "00001" },
+              "phone": "+15559876543",
+              "dob": "1983-04-06"
+            },
+            "referenceId": "socure-ref-001"
+          },
+          "is_source_cache": false
         }
-      ]
+      ],
+      "eval_status": "evaluation_completed"
     },
     "headers": {
       "content-type": "application/json"

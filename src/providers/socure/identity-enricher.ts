@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { BaseEnricher } from '../base-enricher.js';
 import { getSocureBaseUrl, getSocureWorkflowName } from './config.js';
+import { getModule } from '../../store/user-store.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
@@ -15,36 +16,31 @@ interface IdentityData {
 }
 
 // ---------------------------------------------------------------------------
-// Socure RiskOS Evaluation API response types
-// POST /api/evaluation
-// PATCH /api/evaluation/:eval_id
+// Socure RiskOS Evaluation API response
 // ---------------------------------------------------------------------------
 
 interface SocureEvaluationResponse {
   eval_id: string;
   decision: 'ACCEPT' | 'REJECT' | 'REVIEW';
   status: 'CLOSED' | 'ON_HOLD';
+  sub_status?: string;
   tags?: string[];
   data_enrichments?: {
-    name: string;
-    response: {
-      data: Record<string, unknown>;
-    };
+    enrichment_name: string;
+    enrichment_provider: string;
+    status_code: number;
+    response: Record<string, unknown>;
+    is_source_cache: boolean;
   }[];
+  eval_status?: string;
 }
 
 // ---------------------------------------------------------------------------
 // Enricher
 //
-// This enricher submits full PII to the RiskOS Evaluation API for KYC +
-// Watchlist screening. It does NOT handle OTP or DocV — those are interactive
-// flows handled by the Socure form component and API routes.
-//
-// For the full interactive flow (Prefill → OTP → KYC → DocV), use the
-// Socure form component and /socure/* API routes.
-//
-// This enricher is for server-side KYC when you already have the user's PII
-// (e.g., after form collection or from another source).
+// Submits full PII to the RiskOS Evaluation API for KYC + Fraud + Watchlist
+// screening. Pulls contact and residence data from the user's existing modules
+// to improve match quality.
 // ---------------------------------------------------------------------------
 
 export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
@@ -72,7 +68,11 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
       throw new Error('Socure KYC requires at least first name and last name');
     }
 
-    // Submit full PII for KYC evaluation (skipping OTP/Prefill — direct KYC)
+    // Pull contact and residence data for better Socure match quality
+    const contact = await getModule(userId, 'contact');
+    const residence = await getModule(userId, 'residence');
+    const address = residence?.currentAddress as Record<string, string> | undefined;
+
     const res = await this.http.request<SocureEvaluationResponse>(
       '/api/evaluation',
       {
@@ -87,7 +87,15 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
               family_name: current.lastName,
               ...(current.dateOfBirth ? { date_of_birth: current.dateOfBirth } : {}),
               ...(current.ssn ? { national_id: current.ssn } : {}),
-              address: { country: 'US' },
+              ...(contact?.email ? { email: contact.email as string } : {}),
+              ...(contact?.phone ? { phone_number: contact.phone as string } : {}),
+              address: {
+                country: 'US',
+                ...(address?.street ? { line_1: address.street } : {}),
+                ...(address?.city ? { locality: address.city } : {}),
+                ...(address?.state ? { major_admin_division: address.state } : {}),
+                ...(address?.zip ? { postal_code: address.zip } : {}),
+              },
             },
           },
         },
@@ -97,27 +105,58 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
     const data: Partial<IdentityData> = {};
 
     // Extract prefilled data from enrichments if available
-    const prefillEnrichment = res.data.data_enrichments?.find(
-      (e) => e.name === 'prefill' || e.name === 'Prefill',
-    );
-    if (prefillEnrichment?.response?.data) {
-      const prefill = prefillEnrichment.response.data as Record<string, unknown>;
-      const individual = prefill.individual as Record<string, unknown> | undefined;
-      if (individual) {
-        if (individual.given_name) data.firstName = individual.given_name as string;
-        if (individual.family_name) data.lastName = individual.family_name as string;
-        if (individual.date_of_birth) data.dateOfBirth = individual.date_of_birth as string;
+    for (const enrichment of res.data.data_enrichments ?? []) {
+      const respData = enrichment.response as Record<string, unknown>;
+
+      // Check for prefill/name data
+      if (respData.nameAddressPhone) {
+        const nap = respData.nameAddressPhone as Record<string, unknown>;
+        const name = nap.name as Record<string, string> | undefined;
+        if (name?.first) data.firstName = name.first;
+        if (name?.last) data.lastName = name.last;
+        if (nap.dob) data.dateOfBirth = nap.dob as string;
+      }
+
+      // Check for individual-level prefill
+      if (respData.individual) {
+        const ind = respData.individual as Record<string, unknown>;
+        if (ind.given_name) data.firstName = ind.given_name as string;
+        if (ind.family_name) data.lastName = ind.family_name as string;
+        if (ind.date_of_birth) data.dateOfBirth = ind.date_of_birth as string;
       }
     }
+
+    // Extract risk scores from enrichments
+    const phoneRiskEnrichment = res.data.data_enrichments?.find(
+      (e) => e.enrichment_name === 'Socure Phone Risk',
+    );
+    const phoneRiskData = phoneRiskEnrichment?.response as Record<string, unknown> | undefined;
+    const phoneRisk = phoneRiskData?.phoneRisk as Record<string, unknown> | undefined;
+    const namePhoneCorrelation = phoneRiskData?.namePhoneCorrelation as Record<string, unknown> | undefined;
 
     return {
       data,
       metadata: {
+        // Socure evaluation
         evalId: res.data.eval_id,
         decision: res.data.decision,
         status: res.data.status,
+        subStatus: res.data.sub_status,
         tags: res.data.tags,
-        kycDecision: res.data.decision,
+
+        // Risk scores
+        phoneRiskScore: phoneRisk?.score,
+        phoneRiskReasonCodes: phoneRisk?.reasonCodes,
+        namePhoneCorrelationScore: namePhoneCorrelation?.score,
+        namePhoneCorrelationReasonCodes: namePhoneCorrelation?.reasonCodes,
+
+        // Enrichment details
+        enrichmentsRun: res.data.data_enrichments?.map((e) => ({
+          name: e.enrichment_name,
+          provider: e.enrichment_provider,
+          statusCode: e.status_code,
+          cached: e.is_source_cache,
+        })),
       },
     };
   }
