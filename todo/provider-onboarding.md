@@ -56,6 +56,22 @@ Before reaching out to regulated providers, have these ready:
 - [x] Webhook handler with auto re-enrichment
 - [x] Base URL reads from `PLAID_ENV` env var (no hardcoded sandbox URLs)
 
+**Cross-module writes:**
+- Plaid Identity enricher also writes bank-verified address → `residence.currentAddress`
+- Plaid Identity enricher also writes bank-verified email/phone → `contact.email`, `contact.phone`
+
+**Done:**
+- [x] Sign up for Sandbox
+- [x] Sandbox credentials in `.env`
+- [x] Plaid Link integrated as form component
+- [x] Tested financial enrichment end-to-end in Sandbox (accounts, balances)
+- [x] Tested buying patterns enrichment in Sandbox (transactions → spending categories)
+- [x] Multi-step onboarding form with Plaid Link as final step
+- [x] Webhook handler with auto re-enrichment
+- [x] Base URL reads from `PLAID_ENV` env var (no hardcoded sandbox URLs)
+- [x] Identity enricher writes bank-verified address to residence module
+- [x] Identity enricher writes bank-verified email/phone to contact module
+
 **Still needed for production:**
 - [ ] Apply for Plaid Production access (dashboard → production application, 1-2 week review)
 - [ ] Request access to additional Plaid products:
@@ -143,7 +159,8 @@ Before reaching out to regulated providers, have these ready:
 - **Identity enricher** — submits full PII (name, SSN, DOB, email, phone, address) to RiskOS Evaluation API for KYC + Fraud + Watchlist screening
 - Automatically pulls email/phone from contact module and address from residence module for better match quality
 - Extracts verified identity data from Socure's response (name, DOB from nameAddressPhone enrichment)
-- Stores risk scores in event metadata: phoneRiskScore, namePhoneCorrelationScore, tags, reason codes
+- Stores ALL risk scores in event metadata: phoneRisk, emailRisk, addressRisk, fraud/sigma, synthetic identity, watchlist/globalWatchlist (OFAC/sanctions/PEP), KYC field validations, nameAddressCorrelation, digitalIntelligence
+- Writes Socure-verified address to `residence.currentAddress` when available
 - Tested end-to-end with Socure sandbox test persona (Jerri Hogarth) — Socure returned verified DOB we didn't have
 
 *Interactive verification form component (`inputType: 'socure-verify'`):*
@@ -179,7 +196,8 @@ Before reaching out to regulated providers, have these ready:
 - [x] Verified Socure sandbox API call works (2026-03-26)
 - [x] Identity enricher — server-side KYC with full PII submission
 - [x] Enricher pulls contact + residence data automatically for better match
-- [x] Risk scores (phone risk, name-phone correlation) saved in metadata
+- [x] All risk scores saved in metadata (phone, email, address, fraud, synthetic, watchlist, KYC, digital intelligence)
+- [x] Verified address written to residence module from Socure enrichment
 - [x] Interactive verification form component (`socure-verify`)
 - [x] "Is this you?" confirmation flow instead of editable prefill form
 - [x] Manual fallback on any error or user rejection
@@ -251,11 +269,13 @@ Before reaching out to regulated providers, have these ready:
 - Sends `use_case: "lending"` and `permissible_purpose: "credit-application"` for FCRA compliance
 - Handles async verification state (`pending-approval` → `completed`) — Truework contacts the employer
 - Reports parsed into employment module: employer, title, start date, salary (normalized to annual), history
+- **Webhook handler** — receives Truework verification completion notifications, parses reports, updates employment module
+- Enricher includes `ravenUserId` in verification metadata so webhook can map results back to the user
 - **Shared config** — `src/providers/truework/config.ts` reads `TRUEWORK_ENV`
   - Sandbox: `api.truework-sandbox.com`
   - Production: `api.truework.com`
 
-**Note:** Truework verification is asynchronous. When you submit a request, Truework contacts the employer's payroll system (instant via integrations like ADP/Workday, or manual outreach). The state progresses: `pending-approval` → `processing` → `completed`. Reports populate once the employer confirms.
+**Note:** Truework verification is asynchronous. When you submit a request, Truework contacts the employer's payroll system (instant via integrations like ADP/Workday, or manual outreach). The state progresses: `pending-approval` → `processing` → `completed`. Reports populate once the employer confirms. The webhook handler automatically updates the employment module when verification completes.
 
 **Done:**
 - [x] Signed up for Truework
@@ -265,9 +285,11 @@ Before reaching out to regulated providers, have these ready:
 - [x] Verified live sandbox API call works (2026-03-26)
 - [x] Verification request created successfully in sandbox
 - [x] Shared config with `TRUEWORK_ENV` for sandbox/production URL
+- [x] Webhook handler for async verification completion
+- [x] Webhook maps back to user via `ravenUserId` in verification metadata
 
 **Still needed:**
-- [ ] Build webhook handler for Truework verification completion notifications
+- [ ] Register webhook URL in Truework dashboard: `https://reportraven.tech/webhooks/truework`
 - [ ] Handle polling for verification status (for sync enrichment use cases)
 - [ ] Test with a Truework sandbox test employer that returns instant results
 - [ ] Apply for Truework Production access
@@ -280,17 +302,25 @@ Before reaching out to regulated providers, have these ready:
 - **Credentials needed:** API Key (Bearer token)
 - **How to sign up:** fullcontact.com — self-serve, may need sales approval for higher tiers
 - **Who to contact:** fullcontact.com/contact
-- **API:** `POST https://api.fullcontact.com/v3/person.enrich` — sends email/phone, returns full name, age range, gender, location, title, organization, social profile URLs (Twitter, LinkedIn)
+- **API:** `POST https://api.fullcontact.com/v3/person.enrich` — sends email and/or phone, returns full name, age range, gender, location, title, organization, social profile URLs (Twitter, LinkedIn)
 - **Pricing:** Free tier, paid for volume
 - **Env vars:**
   ```
   PROVIDER_FULLCONTACT_API_KEY=
   ```
+
+**What's built:**
+- Enricher accepts email, phone, or both (no longer requires email — works with phone-only)
+- Returns social profiles (LinkedIn, Twitter) + person metadata (name, title, org, location, age range, gender)
+- **Activated in production** — registered at startup in `src/index.ts`
+
+**Done:**
 - [x] Sign up at fullcontact.com
 - [x] Obtain API key
 - [x] Add API key to `.env`
 - [x] Verified live API call works (2026-03-24)
-- [ ] Register with `registerFullContactProvider()` in `src/index.ts`
+- [x] Registered with `registerFullContactProvider()` in `src/index.ts`
+- [x] Updated enricher to accept phone or email (not just email)
 
 ---
 
@@ -587,15 +617,32 @@ Source configs exist in `src/config/source-configs.ts` but no enricher has been 
 
 ---
 
-## Recommended Order
+## Current Status Summary
 
-Start with the fastest path to validate the pipeline end-to-end, then tackle longer onboarding cycles:
+**Live with real API keys (sandbox):**
+- **Plaid** — financial, buying-patterns, credit (liabilities), identity, contact, residence (cross-module writes)
+- **Socure** — identity (KYC + fraud + watchlist + all risk scores), residence (cross-module writes)
+- **Truework** — employment (async verification with webhook)
+- **FullContact** — contact (activated in production, accepts email or phone)
 
-1. **Clearbit**, **Melissa**, **HouseCanary**, **FullContact** — self-serve, credentials in minutes
-2. **Plaid** — fast sandbox, but needs frontend Plaid Link integration
-3. **Socure** and **Truework** — sales-driven but typically 1-2 weeks
-4. **First American**, **Cotality**, **Canopy**, **Attom** — sales-driven, 2-4 weeks
-5. **MX**, **Finicity** — sales + integration work (frontend widget), 2-4 weeks
-6. **LexisNexis** — sales + compliance review, 3-6 weeks
-7. **Experian**, **TransUnion**, **Equifax** — longest lead time (4-8 weeks), start the process early
-8. **NSC** — membership application + FERPA review, variable timeline
+**Enrichers built, waiting for API keys:**
+- **HouseCanary** — residence (AVM, property details, owner-occupied) — *requested*
+- **ATTOM** — residence (property detail, AVM) — *requested*
+- **Clearbit** — contact (person enrichment)
+- **Melissa** — residence (address verification, property data)
+- **Experian** — credit (bureau reports)
+- **TransUnion** — credit (bureau reports)
+
+**Minimum viable borrower profile (2 form fields + bank connection):**
+Name + SSN → Plaid Link → enrich all → identity (Socure), contact (FullContact/Plaid), residence (Plaid/Socure), financial (Plaid), credit (Plaid liabilities), buying-patterns (Plaid transactions), employment (Truework)
+
+## Recommended Next Steps
+
+1. **HouseCanary** and **ATTOM** — waiting for API keys, enrichers ready to activate
+2. **Clearbit** and **Melissa** — self-serve, sign up and get keys today
+3. **Experian** — start FCRA process now (4-8 week lead time)
+4. **First American**, **Cotality**, **Canopy** — sales-driven, 2-4 weeks
+5. **MX**, **Finicity** — Plaid alternatives, lower priority unless bank requires them
+6. **LexisNexis** — overlaps with Socure for fraud/watchlist, lower priority
+7. **Equifax**, **TransUnion** — additional bureaus after Experian is live
+8. **NSC** — education verification, niche use case
