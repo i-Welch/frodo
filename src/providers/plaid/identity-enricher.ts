@@ -1,6 +1,7 @@
 import { BaseEnricher } from '../base-enricher.js';
 import { getProviderToken } from '../token-store.js';
 import { getPlaidBaseUrl } from './config.js';
+import { putModule, getModule } from '../../store/user-store.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
@@ -110,13 +111,38 @@ export class PlaidIdentityEnricher extends BaseEnricher<IdentityData> {
       data.dateOfBirth = primaryOwner.date_of_birth;
     }
 
-    // Collect emails, phones, addresses as metadata for cross-referencing
+    // Collect emails, phones, addresses for cross-referencing
     const primaryEmail = primaryOwner.emails.find((e) => e.primary)?.data
       ?? primaryOwner.emails[0]?.data;
     const primaryPhone = primaryOwner.phone_numbers.find((p) => p.primary)?.data
       ?? primaryOwner.phone_numbers[0]?.data;
     const primaryAddress = primaryOwner.addresses.find((a) => a.primary)?.data
       ?? primaryOwner.addresses[0]?.data;
+
+    // Write bank-verified address to the residence module
+    if (primaryAddress?.street) {
+      const existingResidence = await getModule(userId, 'residence');
+      await putModule(userId, 'residence', {
+        ...(existingResidence ?? {}),
+        currentAddress: {
+          street: primaryAddress.street,
+          city: primaryAddress.city,
+          state: primaryAddress.region,
+          zip: primaryAddress.postal_code,
+          country: primaryAddress.country || 'US',
+        },
+      });
+    }
+
+    // Write bank-verified contact info to the contact module
+    if (primaryEmail || primaryPhone) {
+      const existingContact = await getModule(userId, 'contact');
+      await putModule(userId, 'contact', {
+        ...(existingContact ?? {}),
+        ...(primaryEmail ? { email: primaryEmail } : {}),
+        ...(primaryPhone ? { phone: primaryPhone } : {}),
+      });
+    }
 
     return {
       data,

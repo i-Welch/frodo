@@ -1,7 +1,7 @@
 import crypto from 'node:crypto';
 import { BaseEnricher } from '../base-enricher.js';
 import { getSocureBaseUrl, getSocureWorkflowName } from './config.js';
-import { getModule } from '../../store/user-store.js';
+import { getModule, putModule } from '../../store/user-store.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
@@ -105,25 +105,60 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
     const data: Partial<IdentityData> = {};
 
     // Extract prefilled data from enrichments if available
+    let verifiedAddress: Record<string, string> | null = null;
+
     for (const enrichment of res.data.data_enrichments ?? []) {
       const respData = enrichment.response as Record<string, unknown>;
 
-      // Check for prefill/name data
+      // Check for prefill/name data + address from nameAddressPhone
       if (respData.nameAddressPhone) {
         const nap = respData.nameAddressPhone as Record<string, unknown>;
         const name = nap.name as Record<string, string> | undefined;
         if (name?.first) data.firstName = name.first;
         if (name?.last) data.lastName = name.last;
         if (nap.dob) data.dateOfBirth = nap.dob as string;
+
+        // Extract verified address
+        const addr = nap.address as Record<string, string> | undefined;
+        if (addr?.street) {
+          verifiedAddress = {
+            street: addr.street,
+            city: addr.city,
+            state: addr.state,
+            zip: addr.zip,
+            country: 'US',
+          };
+        }
       }
 
-      // Check for individual-level prefill
+      // Check for individual-level prefill (RiskOS format)
       if (respData.individual) {
         const ind = respData.individual as Record<string, unknown>;
         if (ind.given_name) data.firstName = ind.given_name as string;
         if (ind.family_name) data.lastName = ind.family_name as string;
         if (ind.date_of_birth) data.dateOfBirth = ind.date_of_birth as string;
+
+        // Extract address from individual-level prefill
+        const addr = ind.address as Record<string, string> | undefined;
+        if (addr?.line_1) {
+          verifiedAddress = {
+            street: addr.line_1,
+            city: addr.locality,
+            state: addr.major_admin_division,
+            zip: addr.postal_code,
+            country: addr.country || 'US',
+          };
+        }
       }
+    }
+
+    // Write Socure-verified address to the residence module
+    if (verifiedAddress) {
+      const existingResidence = await getModule(userId, 'residence');
+      await putModule(userId, 'residence', {
+        ...(existingResidence ?? {}),
+        currentAddress: verifiedAddress,
+      });
     }
 
     // Extract all risk scores and signals from every enrichment
