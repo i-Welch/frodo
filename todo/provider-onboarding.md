@@ -256,9 +256,11 @@ Before reaching out to regulated providers, have these ready:
 - **How to sign up:** truework.com — sales-driven, requires use case review
 - **Who to contact:** sales@truework.com or truework.com/contact
 - **Pricing:** Per-verification (sandbox is free)
+- **Webhook URL:** `https://reportraven.tech/webhooks/truework`
 - **Env vars:**
   ```
   PROVIDER_TRUEWORK_API_KEY=
+  PROVIDER_TRUEWORK_WEBHOOK_SECRET=
   TRUEWORK_ENV=sandbox  # sandbox | production
   ```
 
@@ -270,6 +272,8 @@ Before reaching out to regulated providers, have these ready:
 - Handles async verification state (`pending-approval` → `completed`) — Truework contacts the employer
 - Reports parsed into employment module: employer, title, start date, salary (normalized to annual), history
 - **Webhook handler** — receives Truework verification completion notifications, parses reports, updates employment module
+  - Validates `X-Truework-Token` header against `PROVIDER_TRUEWORK_WEBHOOK_SECRET`
+  - Rejects requests with mismatched tokens
 - Enricher includes `ravenUserId` in verification metadata so webhook can map results back to the user
 - **Shared config** — `src/providers/truework/config.ts` reads `TRUEWORK_ENV`
   - Sandbox: `api.truework-sandbox.com`
@@ -287,9 +291,11 @@ Before reaching out to regulated providers, have these ready:
 - [x] Shared config with `TRUEWORK_ENV` for sandbox/production URL
 - [x] Webhook handler for async verification completion
 - [x] Webhook maps back to user via `ravenUserId` in verification metadata
+- [x] Webhook validation via `X-Truework-Token` header
+- [x] Webhook secret in `.env`, GitHub secrets (staging + production), and ECS task definitions
+- [x] Registered webhook URL in Truework dashboard
 
 **Still needed:**
-- [ ] Register webhook URL in Truework dashboard: `https://reportraven.tech/webhooks/truework`
 - [ ] Handle polling for verification status (for sync enrichment use cases)
 - [ ] Test with a Truework sandbox test employer that returns instant results
 - [ ] Apply for Truework Production access
