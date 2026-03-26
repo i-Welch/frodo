@@ -126,13 +126,94 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
       }
     }
 
-    // Extract risk scores from enrichments
-    const phoneRiskEnrichment = res.data.data_enrichments?.find(
-      (e) => e.enrichment_name === 'Socure Phone Risk',
-    );
-    const phoneRiskData = phoneRiskEnrichment?.response as Record<string, unknown> | undefined;
-    const phoneRisk = phoneRiskData?.phoneRisk as Record<string, unknown> | undefined;
-    const namePhoneCorrelation = phoneRiskData?.namePhoneCorrelation as Record<string, unknown> | undefined;
+    // Extract all risk scores and signals from every enrichment
+    const riskScores: Record<string, unknown> = {};
+
+    for (const enrichment of res.data.data_enrichments ?? []) {
+      if (enrichment.status_code !== 200) continue;
+      const resp = enrichment.response as Record<string, unknown>;
+
+      // Phone Risk module
+      if (resp.phoneRisk) {
+        const pr = resp.phoneRisk as Record<string, unknown>;
+        riskScores.phoneRiskScore = pr.score;
+        riskScores.phoneRiskReasonCodes = pr.reasonCodes;
+      }
+      if (resp.namePhoneCorrelation) {
+        const npc = resp.namePhoneCorrelation as Record<string, unknown>;
+        riskScores.namePhoneCorrelationScore = npc.score;
+        riskScores.namePhoneCorrelationReasonCodes = npc.reasonCodes;
+      }
+
+      // Email Risk module
+      if (resp.emailRisk) {
+        const er = resp.emailRisk as Record<string, unknown>;
+        riskScores.emailRiskScore = er.score;
+        riskScores.emailRiskReasonCodes = er.reasonCodes;
+      }
+
+      // Address Risk module
+      if (resp.addressRisk) {
+        const ar = resp.addressRisk as Record<string, unknown>;
+        riskScores.addressRiskScore = ar.score;
+        riskScores.addressRiskReasonCodes = ar.reasonCodes;
+      }
+
+      // Fraud module (Sigma / synthetic identity)
+      if (resp.fraud) {
+        const fr = resp.fraud as Record<string, unknown>;
+        riskScores.fraudScore = fr.score;
+        riskScores.fraudReasonCodes = fr.reasonCodes;
+      }
+      if (resp.synthetic) {
+        const syn = resp.synthetic as Record<string, unknown>;
+        riskScores.syntheticIdentityScore = syn.score;
+        riskScores.syntheticReasonCodes = syn.reasonCodes;
+      }
+      if (resp.sigma) {
+        const sig = resp.sigma as Record<string, unknown>;
+        riskScores.sigmaScore = sig.score;
+        riskScores.sigmaReasonCodes = sig.reasonCodes;
+      }
+
+      // KYC module
+      if (resp.kyc) {
+        const kyc = resp.kyc as Record<string, unknown>;
+        riskScores.kycScore = kyc.score;
+        riskScores.kycReasonCodes = kyc.reasonCodes;
+        if (kyc.fieldValidations) {
+          riskScores.kycFieldValidations = kyc.fieldValidations;
+        }
+      }
+
+      // Watchlist / Global Watchlist module
+      if (resp.watchlist) {
+        const wl = resp.watchlist as Record<string, unknown>;
+        riskScores.watchlistScore = wl.score;
+        riskScores.watchlistReasonCodes = wl.reasonCodes;
+        if (wl.hits) riskScores.watchlistHits = wl.hits;
+      }
+      if (resp.globalWatchlist) {
+        const gw = resp.globalWatchlist as Record<string, unknown>;
+        riskScores.globalWatchlistScore = gw.score;
+        riskScores.globalWatchlistReasonCodes = gw.reasonCodes;
+        if (gw.hits) riskScores.globalWatchlistHits = gw.hits;
+      }
+
+      // Name-Address correlation
+      if (resp.nameAddressCorrelation) {
+        const nac = resp.nameAddressCorrelation as Record<string, unknown>;
+        riskScores.nameAddressCorrelationScore = nac.score;
+        riskScores.nameAddressCorrelationReasonCodes = nac.reasonCodes;
+      }
+
+      // Digital Intelligence (device/network risk)
+      if (resp.digitalIntelligence) {
+        const di = resp.digitalIntelligence as Record<string, unknown>;
+        riskScores.digitalIntelligenceScore = di.score;
+        riskScores.digitalIntelligenceReasonCodes = di.reasonCodes;
+      }
+    }
 
     return {
       data,
@@ -144,11 +225,8 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
         subStatus: res.data.sub_status,
         tags: res.data.tags,
 
-        // Risk scores
-        phoneRiskScore: phoneRisk?.score,
-        phoneRiskReasonCodes: phoneRisk?.reasonCodes,
-        namePhoneCorrelationScore: namePhoneCorrelation?.score,
-        namePhoneCorrelationReasonCodes: namePhoneCorrelation?.reasonCodes,
+        // All risk scores from every module
+        ...riskScores,
 
         // Enrichment details
         enrichmentsRun: res.data.data_enrichments?.map((e) => ({
