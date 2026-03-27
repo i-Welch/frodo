@@ -163,7 +163,7 @@ export const socureVerifyComponent: CustomFieldComponent = {
         <input type="hidden" name="${field.module}.${field.field}" id="socure-result" value="" ${req} />
       </div>
 
-      ${sdkKey ? '<script src="https://websdk.socure.com/bundle.js"><\/script>' : ''}
+      ${sdkKey ? '<script src="https://websdk.socure.com/bundle.js"><' + '/script>' : ''}
       <script>
         var socureFormToken = '${formToken}';
         var socureSdkKey = '${sdkKey}';
@@ -311,7 +311,7 @@ export const socureVerifyComponent: CustomFieldComponent = {
               firstName = ind.given_name || '';
               lastName = ind.family_name || '';
               if (ind.national_id) {
-                var ssn = String(ind.national_id).replace(/\D/g, '');
+                var ssn = String(ind.national_id).replace(/[^0-9]/g, '');
                 ssnLast4 = ssn.length >= 4 ? '***-**-' + ssn.slice(-4) : '';
               }
             }
