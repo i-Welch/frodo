@@ -42,3 +42,6 @@ bun.lockb
 
 # docker
 docker-compose.override.yml
+dashboard/.env.local
+dashboard/.next
+dashboard/node_modules
