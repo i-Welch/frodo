@@ -1,5 +1,6 @@
 import { auth } from '@clerk/nextjs/server';
 import { api } from '@/lib/api';
+import { CopyLinkButton } from './copy-link-button';
 
 export default async function VerificationDetailPage({
   params,
@@ -44,17 +45,21 @@ export default async function VerificationDetailPage({
         </p>
       </div>
 
+      {/* Form link info — show when not complete */}
+      {status !== 'complete' && typeof verification.formUrl === 'string' && (
+        <FormLinkCard
+          formUrl={verification.formUrl}
+          createdAt={verification.createdAt as string}
+          status={status}
+        />
+      )}
+
       {!report ? (
-        <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
-          <p className="text-gray-500">
-            {status === 'complete' ? 'Loading report...' : `Waiting for borrower to complete the form. Status: ${status}`}
-          </p>
-          {typeof verification.formUrl === 'string' && (
-            <p className="text-sm text-gray-400 mt-2">
-              Form URL: <code className="bg-gray-100 px-1 rounded">{verification.formUrl}</code>
-            </p>
-          )}
-        </div>
+        status === 'complete' ? (
+          <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
+            <p className="text-gray-500">Loading report...</p>
+          </div>
+        ) : null
       ) : (
         <div className="space-y-6">
           {/* Report sections */}
@@ -135,6 +140,48 @@ function StatusText({ status }: { status: string }) {
     complete: 'Complete',
   };
   return <span className="font-medium">{labels[status] ?? status}</span>;
+}
+
+function FormLinkCard({ formUrl, createdAt, status }: { formUrl: string; createdAt: string; status: string }) {
+  // Form tokens expire 24 hours after creation
+  const created = new Date(createdAt);
+  const expiresAt = new Date(created.getTime() + 24 * 60 * 60 * 1000);
+  const now = new Date();
+  const msRemaining = expiresAt.getTime() - now.getTime();
+  const expired = msRemaining <= 0;
+  const hoursRemaining = Math.max(0, Math.floor(msRemaining / (60 * 60 * 1000)));
+  const minutesRemaining = Math.max(0, Math.floor((msRemaining % (60 * 60 * 1000)) / (60 * 1000)));
+
+  const statusMessages: Record<string, string> = {
+    created: 'Waiting for borrower to open the link.',
+    form_sent: 'Link sent to borrower. Waiting for them to start.',
+    form_started: 'Borrower has opened the form and is filling it out.',
+    form_completed: 'Borrower completed the form. Enrichment in progress.',
+    enriching: 'Verifying borrower data with providers...',
+  };
+
+  return (
+    <div className={`rounded-lg border bg-white p-5 mb-6 ${expired ? 'border-red-200' : 'border-gray-200'}`}>
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex-1">
+          <p className="text-sm text-gray-600 mb-2">
+            {statusMessages[status] ?? 'Processing...'}
+          </p>
+          <div className="flex items-center gap-2 mb-2">
+            <code className="flex-1 text-xs bg-gray-50 border border-gray-200 rounded px-3 py-2 font-mono text-gray-700 truncate block">
+              {formUrl}
+            </code>
+            <CopyLinkButton url={formUrl} />
+          </div>
+          <p className={`text-xs ${expired ? 'text-red-600 font-medium' : 'text-gray-400'}`}>
+            {expired
+              ? 'This link has expired. Create a new verification.'
+              : `Expires in ${hoursRemaining}h ${minutesRemaining}m`}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 /** Convert camelCase field names to readable labels */
