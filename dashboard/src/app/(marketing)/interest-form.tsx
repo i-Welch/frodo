@@ -14,7 +14,7 @@ export function InterestForm() {
     setErrorMsg('');
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? '';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://app.reportraven.tech';
       const res = await fetch(`${apiUrl}/api/v1/interest`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
