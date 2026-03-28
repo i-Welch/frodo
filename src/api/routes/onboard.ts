@@ -30,17 +30,42 @@ interface ModuleStepConfig {
  * Maps requested modules to form steps. The order matters —
  * identity/contact first, then employment, residence, then bank connection last.
  */
-const MODULE_STEP_MAP: Record<string, ModuleStepConfig> = {
+/**
+ * Modules that REQUIRE user interaction in the form.
+ * Everything else can be enriched automatically by providers.
+ *
+ * - identity: we always need name + SSN from the user (no enricher provides SSN)
+ * - financial: requires Plaid Link (user must connect their bank)
+ *
+ * These modules are SKIPPED in the form (enriched automatically):
+ * - employment: Truework verifies with the employer directly
+ * - residence: Plaid Identity and Socure return verified addresses
+ * - contact: Plaid Identity returns bank-verified email/phone, or we already have it from the onboard request
+ * - credit: Plaid liabilities + bureau enrichers handle this
+ * - buying-patterns: derived from Plaid transactions automatically
+ * - education: NSC verification (when available)
+ */
+
+const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: boolean }> = {
   identity: {
     title: 'Personal Information',
-    description: 'Please provide your legal name and Social Security Number for identity verification.',
+    description: 'We need your legal name and Social Security Number for identity verification.',
     fields: [
       { module: 'identity', field: 'firstName', label: 'First Name', inputType: 'text', required: true },
       { module: 'identity', field: 'lastName', label: 'Last Name', inputType: 'text', required: true },
-      { module: 'identity', field: 'dateOfBirth', label: 'Date of Birth', inputType: 'date', required: true },
       { module: 'identity', field: 'ssn', label: 'Social Security Number', inputType: 'ssn', required: true },
     ],
+    requiresUserInput: true,
   },
+  financial: {
+    title: 'Bank Verification',
+    description: 'Securely connect your bank account to verify your financial information.',
+    fields: [
+      { module: 'financial', field: 'plaidLink', label: 'Bank Account', inputType: 'plaid-link', required: true },
+    ],
+    requiresUserInput: true,
+  },
+  // These are only shown if we don't have the data AND can't get it from enrichers
   contact: {
     title: 'Contact Information',
     description: 'How can we reach you?',
@@ -48,6 +73,7 @@ const MODULE_STEP_MAP: Record<string, ModuleStepConfig> = {
       { module: 'contact', field: 'email', label: 'Email Address', inputType: 'email', required: true },
       { module: 'contact', field: 'phone', label: 'Phone Number', inputType: 'phone', required: true },
     ],
+    requiresUserInput: false, // Plaid Identity returns bank-verified email/phone
   },
   employment: {
     title: 'Employment',
@@ -57,6 +83,7 @@ const MODULE_STEP_MAP: Record<string, ModuleStepConfig> = {
       { module: 'employment', field: 'title', label: 'Job Title', inputType: 'text', required: true },
       { module: 'employment', field: 'salary', label: 'Annual Salary', inputType: 'currency', required: true },
     ],
+    requiresUserInput: false, // Truework verifies with employer directly
   },
   residence: {
     title: 'Home Address',
@@ -64,52 +91,72 @@ const MODULE_STEP_MAP: Record<string, ModuleStepConfig> = {
     fields: [
       { module: 'residence', field: 'currentAddress', label: 'Home Address', inputType: 'address', required: true },
     ],
-  },
-  financial: {
-    title: 'Bank Verification',
-    description: 'Securely connect your bank account to verify your financial information.',
-    fields: [
-      { module: 'financial', field: 'plaidLink', label: 'Bank Account', inputType: 'plaid-link', required: true },
-    ],
-    requiresPlaidLink: true,
+    requiresUserInput: false, // Plaid Identity / Socure return verified addresses
   },
 };
 
 /** Order steps should appear in the form */
-const STEP_ORDER = ['identity', 'contact', 'employment', 'residence', 'financial'];
+const STEP_ORDER = ['identity', 'financial'];
 
 /**
  * Build form steps from a list of requested modules.
- * Combines identity + contact into one step if both are requested.
+ * Only includes steps that REQUIRE user interaction.
+ * Modules that can be enriched automatically are skipped.
+ *
+ * If contact info (email/phone) was provided in the onboard request,
+ * the contact step is skipped since we already have it.
  */
-function buildFormSteps(modules: string[]): FormStep[] {
+function buildFormSteps(modules: string[], providedPerson?: { email?: string; phone?: string; firstName?: string; lastName?: string }): FormStep[] {
   const steps: FormStep[] = [];
   const requested = new Set(modules);
 
-  // Combine identity + contact into a single "Personal Information" step
-  if (requested.has('identity') && requested.has('contact')) {
-    const identityCfg = MODULE_STEP_MAP.identity;
-    const contactCfg = MODULE_STEP_MAP.contact;
-    steps.push({
-      title: 'Personal Information',
-      description: 'Your identity and contact details.',
-      fields: [...identityCfg.fields, ...contactCfg.fields],
+  // Identity: always show (we need name + SSN), but skip fields we already have
+  if (requested.has('identity')) {
+    const identityFields = [...FORM_STEPS_CONFIG.identity.fields];
+
+    // If we already have first/last name from the onboard request, remove those fields
+    // (they'll be pre-seeded in the module, but we still need SSN)
+    const filteredFields = identityFields.filter((f) => {
+      if (f.field === 'firstName' && providedPerson?.firstName) return false;
+      if (f.field === 'lastName' && providedPerson?.lastName) return false;
+      return true;
     });
-    requested.delete('identity');
-    requested.delete('contact');
+
+    // If all we need is SSN (name was provided), simplify the title
+    const hasNameFields = filteredFields.some((f) => f.field === 'firstName' || f.field === 'lastName');
+
+    steps.push({
+      title: hasNameFields ? 'Personal Information' : 'Identity Verification',
+      description: hasNameFields
+        ? 'We need your legal name and Social Security Number for identity verification.'
+        : 'Please provide your Social Security Number to verify your identity.',
+      fields: filteredFields,
+    });
   }
 
-  // Add remaining steps in order
-  for (const mod of STEP_ORDER) {
-    if (!requested.has(mod)) continue;
-    const cfg = MODULE_STEP_MAP[mod];
-    if (!cfg) continue;
+  // Contact: only show if we DON'T have email/phone from the onboard request
+  // AND Plaid (financial) is not being requested (Plaid Identity provides contact info)
+  if (requested.has('contact') && !providedPerson?.email && !providedPerson?.phone && !requested.has('financial')) {
     steps.push({
-      title: cfg.title,
-      description: cfg.description,
-      fields: cfg.fields,
+      title: FORM_STEPS_CONFIG.contact.title,
+      description: FORM_STEPS_CONFIG.contact.description,
+      fields: FORM_STEPS_CONFIG.contact.fields,
     });
   }
+
+  // Financial: always show if requested (Plaid Link requires user interaction)
+  if (requested.has('financial')) {
+    steps.push({
+      title: FORM_STEPS_CONFIG.financial.title,
+      description: FORM_STEPS_CONFIG.financial.description,
+      fields: FORM_STEPS_CONFIG.financial.fields,
+    });
+  }
+
+  // Employment, Residence, Credit, Buying Patterns, Education:
+  // These are all enriched automatically — NO form steps needed.
+  // Truework handles employment, Plaid Identity/Socure handle residence,
+  // Plaid liabilities handle credit, Plaid transactions handle buying patterns.
 
   return steps;
 }
@@ -256,7 +303,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
     }
 
     // Build the form
-    const steps = buildFormSteps(modules);
+    const steps = buildFormSteps(modules, person);
     const allFields = steps.flatMap((s) => s.fields);
     const requestedModules = [...new Set(allFields.map((f) => f.module))];
 
