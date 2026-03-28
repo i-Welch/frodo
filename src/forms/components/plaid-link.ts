@@ -135,6 +135,19 @@ export const plaidLinkComponent: CustomFieldComponent = {
                       accountCount: result.accountCount,
                     });
                     showState('success');
+
+                    // Auto-submit the form after a short delay so the user sees the success state
+                    setTimeout(function() {
+                      var form = document.getElementById('plaid-link-value').closest('form');
+                      if (form) {
+                        // Trigger HTMX submission
+                        if (window.htmx) {
+                          window.htmx.trigger(form, 'submit');
+                        } else {
+                          form.requestSubmit();
+                        }
+                      }
+                    }, 1500);
                   } else {
                     document.getElementById('plaid-error-msg').textContent = result.error || 'Exchange failed';
                     showState('error');

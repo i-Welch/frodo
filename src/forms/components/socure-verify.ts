@@ -171,6 +171,19 @@ export const socureVerifyComponent: CustomFieldComponent = {
         var socureStoredDob = '';
         var socurePrefillData = null;
 
+        function socureAutoSubmit() {
+          setTimeout(function() {
+            var form = document.getElementById('socure-result').closest('form');
+            if (form) {
+              if (window.htmx) {
+                window.htmx.trigger(form, 'submit');
+              } else {
+                form.requestSubmit();
+              }
+            }
+          }, 1500);
+        }
+
         function socureShowStep(step) {
           ['start','otp','kyc','docv','loading','success','fallback'].forEach(function(s) {
             var el = document.getElementById('socure-step-' + s);
@@ -216,6 +229,7 @@ export const socureVerifyComponent: CustomFieldComponent = {
           document.getElementById('socure-success-title').textContent = 'Information collected';
           document.getElementById('socure-success-detail').textContent = 'Your details have been recorded.';
           socureShowStep('success');
+          socureAutoSubmit();
         }
 
         function socureShowError(containerId, msg) {
@@ -259,6 +273,7 @@ export const socureVerifyComponent: CustomFieldComponent = {
             } else if (data.decision === 'ACCEPT') {
               document.getElementById('socure-result').value = JSON.stringify({verified:true,decision:'ACCEPT'});
               socureShowStep('success');
+          socureAutoSubmit();
             } else if (data.decision === 'REJECT') {
               // Rejected — fall back to manual collection
               socureFallback();
@@ -364,6 +379,7 @@ export const socureVerifyComponent: CustomFieldComponent = {
                 firstName: ind.given_name, lastName: ind.family_name
               });
               socureShowStep('success');
+          socureAutoSubmit();
             } else if (data.decision === 'REJECT') {
               // KYC rejected — fall back to manual
               socureFallback();
