@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { InterestForm } from './interest-form';
 
 export const metadata: Metadata = {
   title: 'RAVEN — Borrower Verification for Regional Banks',
@@ -328,24 +329,85 @@ export default function LandingPage() {
           line-height: 1.7;
           margin-bottom: 2rem;
         }
-        .cta-email {
-          font-family: 'DM Sans', sans-serif;
-          font-size: 1.1rem;
-          font-weight: 500;
-          color: var(--white);
-          text-decoration: none;
-          padding: 0.9rem 2rem;
-          border: 1px solid rgba(255,255,255,0.2);
-          border-radius: 8px;
-          display: inline-block;
-          transition: all 200ms;
-          letter-spacing: 0.01em;
+        .interest-form {
+          max-width: 520px;
+          margin: 0 auto;
         }
-        .cta-email:hover {
+        .form-row {
+          display: flex;
+          gap: 0.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .form-input {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.9rem;
+          padding: 0.8rem 1rem;
+          border-radius: 8px;
+          border: 1px solid rgba(255,255,255,0.15);
+          background: rgba(255,255,255,0.05);
+          color: var(--white);
+          outline: none;
+          transition: border-color 200ms;
+          flex: 1;
+          min-width: 160px;
+        }
+        .form-input::placeholder { color: var(--gray-500); }
+        .form-input:focus { border-color: rgba(255,255,255,0.4); }
+        .form-btn {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.9rem;
+          font-weight: 500;
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
+          border: none;
           background: var(--white);
           color: var(--black);
-          border-color: var(--white);
+          cursor: pointer;
+          transition: opacity 200ms;
+          white-space: nowrap;
         }
+        .form-btn:hover { opacity: 0.85; }
+        .form-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .form-error {
+          color: #ef4444;
+          font-size: 0.8rem;
+          margin-top: 0.75rem;
+        }
+        .form-success {
+          text-align: center;
+        }
+        .form-success-check {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: rgba(34,197,94,0.15);
+          color: #22c55e;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+        }
+        .form-success-title {
+          font-size: 1.2rem;
+          font-weight: 600;
+          margin-bottom: 0.3rem;
+        }
+        .form-success-sub {
+          font-size: 0.9rem;
+          color: var(--gray-400);
+        }
+        .cta-alt {
+          margin-top: 1.25rem;
+          font-size: 0.8rem;
+          color: var(--gray-500);
+        }
+        .cta-alt a {
+          color: var(--gray-300);
+          text-decoration: none;
+          transition: color 200ms;
+        }
+        .cta-alt a:hover { color: var(--white); }
 
         /* --- Footer --- */
         .landing footer {
@@ -608,12 +670,14 @@ export default function LandingPage() {
             <div className="section-tag">Get started</div>
             <h2>Ready to move faster?</h2>
             <p>
-              RAVEN is currently in early access for regional banks and lending platforms. Contact us
-              to schedule a demo and see how verification works for your team.
+              RAVEN is currently in early access for regional banks and lending platforms. Leave your
+              info and we&apos;ll reach out to schedule a demo.
             </p>
-            <a href="mailto:contact@reportraven.tech" className="cta-email">
-              contact@reportraven.tech
-            </a>
+            <InterestForm />
+            <p className="cta-alt">
+              Or email us directly at{' '}
+              <a href="mailto:contact@reportraven.tech">contact@reportraven.tech</a>
+            </p>
           </div>
         </section>
 
