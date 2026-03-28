@@ -19,7 +19,8 @@
     "db:seed": "bun scripts/seed.ts",
     "db:reset": "bun scripts/create-tables.ts && bun scripts/seed.ts",
     "ops": "bun scripts/ops.ts",
-    "ops:local": "bun scripts/ops-local.ts"
+    "ops:local": "bun scripts/ops-local.ts",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -28,6 +29,7 @@
     "@typescript-eslint/parser": "^8.57.1",
     "@vitest/coverage-v8": "^4.1.0",
     "eslint": "^10.1.0",
+    "husky": "^9.1.7",
     "prettier": "^3.8.1",
     "typescript-eslint": "^8.57.2",
     "vitest": "^4.1.0"

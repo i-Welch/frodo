@@ -36,7 +36,7 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
 
       // Wrap the HTTP client to capture raw responses for debugging
       const source = this.source;
-      const self = this;
+      const getCurrentUserId = () => this._currentUserId;
       this.http = new Proxy(this._rawHttp, {
         get(target, prop) {
           if (prop === 'request') {
@@ -44,8 +44,9 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
               const response = await target.request<R>(path, options);
 
               // Store raw response (fire and forget — never blocks enrichment)
-              if (self._currentUserId) {
-                storeRawResponse(self._currentUserId, {
+              const userId = getCurrentUserId();
+              if (userId) {
+                storeRawResponse(userId, {
                   provider: source,
                   endpoint: path,
                   method: options?.method ?? 'GET',
