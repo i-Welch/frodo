@@ -9,6 +9,7 @@ import type { Tenant, StoredApiKey } from '../../tenancy/types.js';
 // ---------------------------------------------------------------------------
 
 export interface CombinedAuthContext {
+  [key: string]: unknown;
   tenant: Tenant;
   /** Which auth method was used */
   authMethod: 'api_key' | 'clerk';

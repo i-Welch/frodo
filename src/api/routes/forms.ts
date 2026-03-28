@@ -67,7 +67,7 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
   .post('/', async ({ body, tenant, set }) => {
     const { formDefinition, userId, callbackUrl } = body as {

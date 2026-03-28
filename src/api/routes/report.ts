@@ -29,7 +29,7 @@ interface ModuleReport {
   fields: Record<string, FieldMetadata>;
 }
 
-interface BorrowerReport {
+export interface BorrowerReport {
   userId: string;
   generatedAt: string;
   modules: Record<string, ModuleReport>;
@@ -62,7 +62,7 @@ export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
 
   // -----------------------------------------------------------------------

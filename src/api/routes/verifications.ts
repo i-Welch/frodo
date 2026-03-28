@@ -20,7 +20,7 @@ export const verificationRoutes = new Elysia({ prefix: '/api/v1/verifications' }
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
 
   // -----------------------------------------------------------------------

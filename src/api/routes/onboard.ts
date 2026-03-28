@@ -183,7 +183,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
 
   /**

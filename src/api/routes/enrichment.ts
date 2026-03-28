@@ -19,7 +19,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
   // -----------------------------------------------------------------------
   // POST /api/v1/users/:id/enrich -- Enrich all modules
@@ -45,7 +45,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
       const report = await enrichModule(
         params.id,
         moduleName,
-        apiKey.keyId,
+        apiKey!.keyId,
         tenant.tenantId,
         sandbox,
       );
@@ -87,7 +87,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
     const report = await enrichModule(
       params.id,
       params.module,
-      apiKey.keyId,
+      apiKey!.keyId,
       tenant.tenantId,
       sandbox,
     );

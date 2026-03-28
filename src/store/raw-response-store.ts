@@ -47,7 +47,7 @@ function rawResponseKey(userId: string, provider: string, timestamp: string, res
  */
 export async function storeRawResponse(
   userId: string,
-  response: Omit<RawProviderResponse, 'responseId' | 'timestamp'>,
+  response: Omit<RawProviderResponse, 'responseId' | 'timestamp' | 'userId'>,
 ): Promise<void> {
   try {
     const responseId = crypto.randomUUID();

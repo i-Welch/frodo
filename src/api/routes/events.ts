@@ -23,7 +23,7 @@ export const eventRoutes = new Elysia({ prefix: '/api/v1/users' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
   // -----------------------------------------------------------------------
   // GET /api/v1/users/:id/events — Get all events for a user

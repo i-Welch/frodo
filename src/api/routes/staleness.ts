@@ -17,7 +17,7 @@ export const stalenessRoutes = new Elysia({ prefix: '/api/v1' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
+    return resolveCombinedAuth(headers);
   })
   // -----------------------------------------------------------------------
   // GET /api/v1/users/:id/staleness — full staleness report
