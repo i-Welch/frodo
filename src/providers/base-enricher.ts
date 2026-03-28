@@ -1,6 +1,7 @@
-import { ProviderHttpClient } from './http-client.js';
+import { ProviderHttpClient, type ProviderRequestOptions, type ProviderResponse } from './http-client.js';
 import { getProviderCredentials, type ProviderCredentials } from './credentials.js';
 import { ProviderError } from './errors.js';
+import { storeRawResponse } from '../store/raw-response-store.js';
 import { createChildLogger } from '../logger.js';
 import type { Enricher, EnrichmentResult } from '../enrichment/types.js';
 
@@ -16,6 +17,8 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
 
   protected http!: ProviderHttpClient;
   protected credentials!: ProviderCredentials;
+  private _currentUserId?: string;
+  private _rawHttp!: ProviderHttpClient;
 
   constructor() {
     // Defer initialization to allow abstract getBaseUrl() to be defined by subclass
@@ -23,13 +26,42 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
   }
 
   private ensureInitialized(): void {
-    if (!this.http) {
+    // Skip if already initialized (either via normal init or createFixtureEnricher)
+    if (this._rawHttp || this.http) return;
       this.credentials = getProviderCredentials(this.source);
-      this.http = new ProviderHttpClient({
+      this._rawHttp = new ProviderHttpClient({
         baseUrl: this.getBaseUrl(),
         defaultHeaders: this.getDefaultHeaders(),
       });
-    }
+
+      // Wrap the HTTP client to capture raw responses for debugging
+      const source = this.source;
+      const self = this;
+      this.http = new Proxy(this._rawHttp, {
+        get(target, prop) {
+          if (prop === 'request') {
+            return async <R>(path: string, options?: ProviderRequestOptions): Promise<ProviderResponse<R>> => {
+              const response = await target.request<R>(path, options);
+
+              // Store raw response (fire and forget — never blocks enrichment)
+              if (self._currentUserId) {
+                storeRawResponse(self._currentUserId, {
+                  provider: source,
+                  endpoint: path,
+                  method: options?.method ?? 'GET',
+                  statusCode: response.status,
+                  requestBody: options?.body,
+                  responseBody: response.data,
+                  durationMs: response.durationMs,
+                });
+              }
+
+              return response;
+            };
+          }
+          return Reflect.get(target, prop);
+        },
+      });
   }
 
   protected abstract getBaseUrl(): string;
@@ -42,6 +74,7 @@ export abstract class BaseEnricher<T = Record<string, unknown>> implements Enric
 
   async enrich(userId: string, current: Partial<T>): Promise<EnrichmentResult<T>> {
     this.ensureInitialized();
+    this._currentUserId = userId;
 
     const log = createChildLogger({
       module: this.module,
