@@ -65,7 +65,7 @@ export const plaidLinkRoutes = new Elysia({ prefix: '/plaid' })
         products: ['transactions'],
         country_codes: ['US'],
         language: 'en',
-        webhook: 'https://reportraven.tech/webhooks/plaid',
+        webhook: 'https://app.reportraven.tech/webhooks/plaid',
       },
     );
 

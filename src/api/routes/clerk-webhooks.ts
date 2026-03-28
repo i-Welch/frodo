@@ -12,7 +12,7 @@ const log = createChildLogger({ module: 'clerk-webhooks' });
  * When a new organization is created in Clerk, this webhook
  * auto-provisions a RAVEN tenant with the Clerk org ID.
  *
- * Webhook URL: https://reportraven.tech/clerk/webhooks
+ * Webhook URL: https://app.reportraven.tech/clerk/webhooks
  * Events: organization.created
  */
 export const clerkWebhookRoutes = new Elysia({ prefix: '/clerk' })

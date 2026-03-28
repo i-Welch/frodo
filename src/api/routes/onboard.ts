@@ -331,7 +331,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       onboardWebhookUrl: webhookUrl,
     } as Record<string, unknown>);
 
-    const baseUrl = process.env.BASE_URL ?? 'https://reportraven.tech';
+    const baseUrl = process.env.BASE_URL ?? 'https://app.reportraven.tech';
     const formUrl = `${baseUrl}/forms/${formTokenStr}`;
 
     // Send the link if requested

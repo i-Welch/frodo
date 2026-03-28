@@ -13,4 +13,6 @@ export const config = {
   clerkSecretKey: process.env.CLERK_SECRET_KEY ?? '',
   // Dashboard CORS
   dashboardUrl: process.env.DASHBOARD_URL ?? 'http://localhost:3001',
+  // Public API base URL (used for form links, webhooks)
+  baseUrl: process.env.BASE_URL ?? 'http://localhost:3000',
 };

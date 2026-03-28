@@ -5,7 +5,6 @@ import { config } from './config/app-config.js';
 import { logger } from './logger.js';
 import { requestIdMiddleware } from './api/middleware/request-id.js';
 import { errorHandler } from './api/middleware/error-handler.js';
-import { landingRoute } from './api/routes/landing.js';
 import { tenantRoutes } from './api/routes/tenants.js';
 import { userRoutes } from './api/routes/users.js';
 import { moduleRoutes } from './api/routes/modules.js';
@@ -103,12 +102,15 @@ async function checkKms(): Promise<HealthCheckResult> {
 
 const app = new Elysia()
   .use(cors({
-    origin: [config.dashboardUrl, 'http://localhost:3001'],
+    origin: [config.dashboardUrl, 'http://localhost:3001', 'https://reportraven.tech'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-Id'],
   }))
   .use(requestIdMiddleware)
   .use(errorHandler)
+  .get('/', ({ set }) => {
+    set.redirect = 'https://reportraven.tech';
+  })
   .get('/health', () => ({
     status: 'ok',
     uptime: Math.floor((Date.now() - startTime) / 1000),
@@ -133,7 +135,6 @@ const app = new Elysia()
       checks,
     };
   })
-  .use(landingRoute)
   .use(tenantRoutes)
   .use(userRoutes)
   .use(moduleRoutes)

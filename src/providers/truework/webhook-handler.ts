@@ -13,7 +13,7 @@ const log = createChildLogger({ module: 'truework-webhook' });
  * The payload includes the verification ID and the completed reports
  * with employer, title, salary, and employment history.
  *
- * Webhook URL: https://reportraven.tech/webhooks/truework
+ * Webhook URL: https://app.reportraven.tech/webhooks/truework
  */
 
 interface TrueworkWebhookPayload {
