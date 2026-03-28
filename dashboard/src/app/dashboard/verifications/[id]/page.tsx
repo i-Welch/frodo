@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server';
 import { api } from '@/lib/api';
 import { CopyLinkButton } from './copy-link-button';
+import { DownloadPDFButton } from './download-pdf-button';
 
 export default async function VerificationDetailPage({
   params,
@@ -36,13 +37,23 @@ export default async function VerificationDetailPage({
 
   return (
     <div>
-      <div className="mb-6">
-        <h1 className="text-2xl font-semibold tracking-tight">
-          {(verification.borrowerName as string) ?? 'Borrower Verification'}
-        </h1>
-        <p className="text-sm text-gray-500 mt-1">
-          ID: {id} &middot; Status: <StatusText status={status} /> &middot; Created: {new Date(verification.createdAt as string).toLocaleString()}
-        </p>
+      <div className="flex items-start justify-between mb-6">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">
+            {(verification.borrowerName as string) ?? 'Borrower Verification'}
+          </h1>
+          <p className="text-sm text-gray-500 mt-1">
+            ID: {id} &middot; Status: <StatusText status={status} /> &middot; Created: {new Date(verification.createdAt as string).toLocaleString()}
+          </p>
+        </div>
+        {report && (
+          <DownloadPDFButton
+            report={report}
+            borrowerName={(verification.borrowerName as string) ?? 'Borrower'}
+            bankName="RAVEN"
+            verificationId={id}
+          />
+        )}
       </div>
 
       {/* Form link info — show when not complete */}

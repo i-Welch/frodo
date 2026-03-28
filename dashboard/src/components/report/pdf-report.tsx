@@ -1,0 +1,482 @@
+'use client';
+
+import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
+
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
+
+interface FieldMeta {
+  value: unknown;
+  confidence?: number;
+  source?: string;
+  lastUpdated?: string;
+  isStale?: boolean;
+  goodBy?: string;
+}
+
+interface ModuleReport {
+  data: Record<string, unknown>;
+  fields: Record<string, FieldMeta>;
+}
+
+interface AuditEvent {
+  module: string;
+  source: { source: string; actor: string };
+  timestamp: string;
+  changes: { field: string; newValue: unknown }[];
+}
+
+interface ReportData {
+  userId: string;
+  generatedAt: string;
+  modules: Record<string, ModuleReport>;
+  auditTrail: AuditEvent[];
+  riskScores: Record<string, unknown>;
+  linkedProviders: string[];
+  staleness: {
+    staleModules: { module: string; staleCount: number; freshCount: number; totalCount: number }[];
+  };
+}
+
+interface PDFReportProps {
+  report: ReportData;
+  borrowerName: string;
+  bankName: string;
+  verificationId: string;
+}
+
+// ---------------------------------------------------------------------------
+// Styles
+// ---------------------------------------------------------------------------
+
+const colors = {
+  black: '#0A0A0A',
+  gray900: '#171717',
+  gray700: '#3F3F3F',
+  gray500: '#737373',
+  gray400: '#A3A3A3',
+  gray300: '#D4D4D4',
+  gray200: '#E5E5E5',
+  gray100: '#F5F5F5',
+  gray50: '#FAFAFA',
+  white: '#FFFFFF',
+  green: '#22C55E',
+  red: '#EF4444',
+  yellow: '#EAB308',
+};
+
+const s = StyleSheet.create({
+  page: {
+    padding: 48,
+    fontSize: 10,
+    fontFamily: 'Helvetica',
+    color: colors.gray900,
+  },
+  // Header
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray200,
+    paddingBottom: 12,
+    marginBottom: 24,
+  },
+  headerTitle: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    letterSpacing: 2,
+    color: colors.gray500,
+  },
+  headerPage: {
+    fontSize: 8,
+    color: colors.gray400,
+  },
+  // Footer
+  footer: {
+    position: 'absolute',
+    bottom: 30,
+    left: 48,
+    right: 48,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderTopWidth: 1,
+    borderTopColor: colors.gray200,
+    paddingTop: 8,
+  },
+  footerText: {
+    fontSize: 7,
+    color: colors.gray400,
+  },
+  // Cover page
+  coverCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  coverTitle: {
+    fontSize: 28,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.black,
+    marginBottom: 8,
+  },
+  coverSubtitle: {
+    fontSize: 14,
+    color: colors.gray500,
+    marginBottom: 40,
+  },
+  coverMeta: {
+    fontSize: 10,
+    color: colors.gray500,
+    marginBottom: 4,
+  },
+  coverConfidential: {
+    position: 'absolute',
+    bottom: 80,
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontSize: 9,
+    fontFamily: 'Helvetica-Bold',
+    letterSpacing: 3,
+    color: colors.gray300,
+  },
+  // Section
+  sectionTitle: {
+    fontSize: 16,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.black,
+    marginBottom: 16,
+  },
+  sectionSubtitle: {
+    fontSize: 9,
+    color: colors.gray500,
+    marginBottom: 20,
+  },
+  // Field rows
+  fieldRow: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray100,
+    paddingVertical: 6,
+  },
+  fieldLabel: {
+    width: 140,
+    fontSize: 9,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray500,
+    textTransform: 'uppercase',
+  },
+  fieldValue: {
+    flex: 1,
+    fontSize: 10,
+    color: colors.gray900,
+  },
+  fieldSource: {
+    width: 80,
+    fontSize: 8,
+    color: colors.gray400,
+    textAlign: 'right',
+  },
+  // Tables
+  tableHeader: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray300,
+    paddingBottom: 4,
+    marginBottom: 4,
+  },
+  tableHeaderCell: {
+    fontSize: 8,
+    fontFamily: 'Helvetica-Bold',
+    color: colors.gray500,
+    textTransform: 'uppercase',
+  },
+  tableRow: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray100,
+    paddingVertical: 4,
+  },
+  tableCell: {
+    fontSize: 9,
+    color: colors.gray900,
+  },
+  // Risk scores
+  riskRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: 4,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray100,
+  },
+  riskLabel: {
+    fontSize: 9,
+    color: colors.gray700,
+  },
+  riskValue: {
+    fontSize: 9,
+    fontFamily: 'Helvetica-Bold',
+  },
+  // Audit trail
+  auditRow: {
+    flexDirection: 'row',
+    paddingVertical: 3,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.gray50,
+  },
+  auditTime: {
+    width: 120,
+    fontSize: 8,
+    color: colors.gray400,
+  },
+  auditDetail: {
+    flex: 1,
+    fontSize: 8,
+    color: colors.gray700,
+  },
+});
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function formatFieldName(field: string): string {
+  return field.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase()).trim();
+}
+
+function formatCurrency(n: number): string {
+  return '$' + n.toLocaleString('en-US', { maximumFractionDigits: 0 });
+}
+
+function formatValue(value: unknown, field: string): string {
+  if (value === null || value === undefined) return '—';
+  if (typeof value === 'string') {
+    if (field === 'ssn' && value.length >= 4) return `***-**-${value.slice(-4)}`;
+    return value;
+  }
+  if (typeof value === 'number') {
+    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount'].some((k) => field.toLowerCase().includes(k))) {
+      return formatCurrency(value);
+    }
+    if (field === 'utilization') return `${value}%`;
+    return value.toLocaleString();
+  }
+  if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+  if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+    const obj = value as Record<string, unknown>;
+    if ('street' in obj || 'city' in obj) {
+      return [obj.street, obj.city, obj.state, obj.zip].filter(Boolean).join(', ');
+    }
+    return Object.entries(obj).map(([k, v]) => `${formatFieldName(k)}: ${typeof v === 'number' ? formatCurrency(v) : v}`).join(' · ');
+  }
+  if (Array.isArray(value)) return `${value.length} items`;
+  return String(value);
+}
+
+// ---------------------------------------------------------------------------
+// Page components
+// ---------------------------------------------------------------------------
+
+function PageHeader({ title }: { title: string }) {
+  return (
+    <View style={s.header}>
+      <Text style={s.headerTitle}>RAVEN</Text>
+      <Text style={s.headerPage}>{title}</Text>
+    </View>
+  );
+}
+
+function PageFooter({ generatedAt }: { generatedAt: string }) {
+  return (
+    <View style={s.footer}>
+      <Text style={s.footerText}>Generated by RAVEN — reportraven.tech</Text>
+      <Text style={s.footerText}>{new Date(generatedAt).toLocaleString()}</Text>
+    </View>
+  );
+}
+
+function FieldRow({ label, value, source, confidence }: { label: string; value: string; source?: string; confidence?: number }) {
+  const sourceText = [source, confidence != null ? `${Math.round(confidence * 100)}%` : ''].filter(Boolean).join(' · ');
+  return (
+    <View style={s.fieldRow}>
+      <Text style={s.fieldLabel}>{label}</Text>
+      <Text style={s.fieldValue}>{value}</Text>
+      <Text style={s.fieldSource}>{sourceText}</Text>
+    </View>
+  );
+}
+
+function ModuleSection({ title, subtitle, moduleData, generatedAt }: { title: string; subtitle?: string; moduleData: ModuleReport; generatedAt: string }) {
+  const simpleFields: [string, unknown][] = [];
+  const arrayFields: [string, unknown[]][] = [];
+
+  for (const [field, value] of Object.entries(moduleData.data)) {
+    if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object') {
+      arrayFields.push([field, value as unknown[]]);
+    } else {
+      simpleFields.push([field, value]);
+    }
+  }
+
+  return (
+    <Page size="A4" style={s.page}>
+      <PageHeader title={title} />
+      <Text style={s.sectionTitle}>{title}</Text>
+      {subtitle && <Text style={s.sectionSubtitle}>{subtitle}</Text>}
+
+      {/* Simple fields */}
+      {simpleFields.map(([field, value]) => {
+        const meta = moduleData.fields[field] as FieldMeta | undefined;
+        return (
+          <FieldRow
+            key={field}
+            label={formatFieldName(field)}
+            value={formatValue(value, field)}
+            source={meta?.source}
+            confidence={meta?.confidence}
+          />
+        );
+      })}
+
+      {/* Array fields as tables */}
+      {arrayFields.map(([field, items]) => {
+        const meta = moduleData.fields[field] as FieldMeta | undefined;
+        const keys = Object.keys(items[0] as Record<string, unknown>);
+        return (
+          <View key={field} style={{ marginTop: 16 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 6 }}>
+              <Text style={{ fontSize: 10, fontFamily: 'Helvetica-Bold', color: colors.gray700 }}>{formatFieldName(field)}</Text>
+              {meta?.source && <Text style={{ fontSize: 8, color: colors.gray400 }}>Source: {meta.source}</Text>}
+            </View>
+            <View style={s.tableHeader}>
+              {keys.map((k) => (
+                <Text key={k} style={[s.tableHeaderCell, { flex: 1 }]}>{formatFieldName(k)}</Text>
+              ))}
+            </View>
+            {(items as Record<string, unknown>[]).map((item, i) => (
+              <View key={i} style={s.tableRow}>
+                {keys.map((k) => (
+                  <Text key={k} style={[s.tableCell, { flex: 1 }]}>
+                    {formatValue(item[k], k)}
+                  </Text>
+                ))}
+              </View>
+            ))}
+          </View>
+        );
+      })}
+
+      <PageFooter generatedAt={generatedAt} />
+    </Page>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Main PDF Document
+// ---------------------------------------------------------------------------
+
+const MODULE_TITLES: Record<string, string> = {
+  identity: 'Identity Verification',
+  contact: 'Contact Information',
+  financial: 'Financial Overview',
+  credit: 'Credit Profile',
+  employment: 'Employment Verification',
+  residence: 'Residence Information',
+  'buying-patterns': 'Spending Patterns',
+  education: 'Education',
+};
+
+const MODULE_ORDER = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence', 'buying-patterns', 'education'];
+
+export function PDFReport({ report, borrowerName, bankName, verificationId }: PDFReportProps) {
+  const orderedModules = MODULE_ORDER.filter((m) => report.modules[m] && Object.keys(report.modules[m].data).length > 0);
+
+  return (
+    <Document>
+      {/* Cover Page */}
+      <Page size="A4" style={s.page}>
+        <View style={s.coverCenter}>
+          <Text style={s.coverTitle}>Borrower Verification Report</Text>
+          <Text style={s.coverSubtitle}>{borrowerName}</Text>
+
+          <Text style={s.coverMeta}>Prepared for: {bankName}</Text>
+          <Text style={s.coverMeta}>Report ID: {verificationId}</Text>
+          <Text style={s.coverMeta}>Generated: {new Date(report.generatedAt).toLocaleString()}</Text>
+          <Text style={s.coverMeta}>Data Sources: {report.linkedProviders.join(', ') || 'Multiple providers'}</Text>
+          <Text style={s.coverMeta}>Modules: {orderedModules.map((m) => MODULE_TITLES[m] ?? m).join(', ')}</Text>
+        </View>
+        <Text style={s.coverConfidential}>CONFIDENTIAL</Text>
+        <PageFooter generatedAt={report.generatedAt} />
+      </Page>
+
+      {/* Risk Scores Page (if we have Socure data) */}
+      {Object.keys(report.riskScores).length > 0 && (
+        <Page size="A4" style={s.page}>
+          <PageHeader title="Risk Assessment" />
+          <Text style={s.sectionTitle}>Risk Assessment</Text>
+          <Text style={s.sectionSubtitle}>Fraud, watchlist, and identity risk scores from verification providers.</Text>
+
+          {Object.entries(report.riskScores)
+            .filter(([, v]) => typeof v === 'number' || typeof v === 'string')
+            .map(([key, value]) => (
+              <View key={key} style={s.riskRow}>
+                <Text style={s.riskLabel}>{formatFieldName(key)}</Text>
+                <Text style={[s.riskValue, { color: typeof value === 'number' && (value as number) > 0.7 ? colors.red : typeof value === 'number' && (value as number) < 0.3 ? colors.green : colors.gray900 }]}>
+                  {typeof value === 'number' ? (value as number).toFixed(3) : String(value)}
+                </Text>
+              </View>
+            ))}
+
+          {/* Tags */}
+          {Array.isArray(report.riskScores.socureTags) && (
+            <View style={{ marginTop: 16 }}>
+              <Text style={{ fontSize: 10, fontFamily: 'Helvetica-Bold', color: colors.gray700, marginBottom: 6 }}>Socure Tags</Text>
+              {(report.riskScores.socureTags as string[]).map((tag, i) => (
+                <Text key={i} style={{ fontSize: 9, color: colors.gray500, paddingVertical: 2 }}>• {tag}</Text>
+              ))}
+            </View>
+          )}
+
+          <PageFooter generatedAt={report.generatedAt} />
+        </Page>
+      )}
+
+      {/* Module Pages */}
+      {orderedModules.map((moduleName) => (
+        <ModuleSection
+          key={moduleName}
+          title={MODULE_TITLES[moduleName] ?? formatFieldName(moduleName)}
+          moduleData={report.modules[moduleName]}
+          generatedAt={report.generatedAt}
+        />
+      ))}
+
+      {/* Audit Trail Page */}
+      <Page size="A4" style={s.page}>
+        <PageHeader title="Audit Trail" />
+        <Text style={s.sectionTitle}>Audit Trail</Text>
+        <Text style={s.sectionSubtitle}>Complete record of all data changes, sources, and timestamps.</Text>
+
+        <View style={s.tableHeader}>
+          <Text style={[s.tableHeaderCell, { width: 120 }]}>Timestamp</Text>
+          <Text style={[s.tableHeaderCell, { width: 80 }]}>Module</Text>
+          <Text style={[s.tableHeaderCell, { width: 70 }]}>Source</Text>
+          <Text style={[s.tableHeaderCell, { flex: 1 }]}>Fields Changed</Text>
+        </View>
+
+        {report.auditTrail.slice(0, 40).map((event, i) => (
+          <View key={i} style={s.auditRow}>
+            <Text style={[s.auditTime, { width: 120 }]}>{new Date(event.timestamp).toLocaleString()}</Text>
+            <Text style={[s.auditDetail, { width: 80 }]}>{event.module}</Text>
+            <Text style={[s.auditDetail, { width: 70 }]}>{event.source.source}</Text>
+            <Text style={[s.auditDetail, { flex: 1 }]}>{event.changes.map((c) => c.field).join(', ')}</Text>
+          </View>
+        ))}
+
+        <PageFooter generatedAt={report.generatedAt} />
+      </Page>
+    </Document>
+  );
+}
