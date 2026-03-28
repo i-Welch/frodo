@@ -63,8 +63,13 @@ export async function resolveClerkAuth(
     const { payload } = await jwtVerify(token, getJwks());
 
     const clerkUserId = payload.sub as string;
-    const clerkOrgId = payload.org_id as string | undefined;
-    const clerkOrgRole = payload.org_role as string | undefined;
+
+    // Clerk v2 JWT uses compact claims: org data under "o" field
+    const orgClaim = payload.o as { id?: string; rol?: string } | undefined;
+    const clerkOrgId = (orgClaim?.id ?? payload.org_id) as string | undefined;
+    const clerkOrgRole = (orgClaim?.rol ?? payload.org_role) as string | undefined;
+    // Normalize role: Clerk v2 uses "admin", v1 uses "org:admin"
+    const normalizedRole = clerkOrgRole?.startsWith('org:') ? clerkOrgRole : clerkOrgRole ? `org:${clerkOrgRole}` : undefined;
 
     if (!clerkUserId) {
       log.warn('Clerk JWT missing sub claim');
@@ -73,7 +78,7 @@ export async function resolveClerkAuth(
 
     if (!clerkOrgId) {
       // User is signed in but not in an org context — can't map to a tenant
-      log.debug({ clerkUserId }, 'Clerk JWT has no org_id — user not in org context');
+      log.debug({ clerkUserId, payload: JSON.stringify(payload) }, 'Clerk JWT has no org_id — dumping full payload');
       throw new Error('No organization selected. Please select an organization.');
     }
 
@@ -88,7 +93,7 @@ export async function resolveClerkAuth(
       tenant,
       clerkUserId,
       clerkOrgId,
-      clerkOrgRole: clerkOrgRole ?? 'org:viewer',
+      clerkOrgRole: normalizedRole ?? 'org:viewer',
       environment: 'production',
     };
   } catch (err) {
