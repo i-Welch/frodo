@@ -99,4 +99,4 @@ jobs:
         run: aws ecs wait services-stable --cluster frodo-production --services frodo-api
       - name: Smoke test
         run: |
-          curl -sf "${{ vars.PRODUCTION_URL }}/health" | jq -e '.status == "ok"'
+          curl -sf "https://app.reportraven.tech/health" | jq -e '.status == "ok"'
