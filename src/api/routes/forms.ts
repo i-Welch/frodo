@@ -16,6 +16,8 @@ import { getModule } from '../../store/user-store.js';
 import { appendEvent } from '../../store/event-store.js';
 import { getTenant } from '../../store/tenant-store.js';
 import { createSession } from '../../sessions/manager.js';
+import { getVerificationByFormToken, updateVerificationStatus } from '../../store/verification-store.js';
+import type { VerificationStatus } from '../../store/verification-store.js';
 import { createChildLogger } from '../../logger.js';
 import type { FormDefinition, FormToken as FormTokenType, OtpState } from '../../forms/types.js';
 import type { DataEvent, FieldChange } from '../../events/types.js';
@@ -26,6 +28,18 @@ const log = createChildLogger({ module: 'form-routes' });
 
 /** OTP validity: 10 minutes. */
 const OTP_EXPIRY_MS = 10 * 60 * 1000;
+
+/**
+ * Update verification status by looking up the form token.
+ * Fire and forget — doesn't block the request.
+ */
+function updateVerificationFromFormToken(tenantId: string, formToken: string, status: VerificationStatus): void {
+  getVerificationByFormToken(tenantId, formToken)
+    .then((v) => {
+      if (v) return updateVerificationStatus(v.tenantId, v.requestId, status);
+    })
+    .catch((err) => log.warn({ formToken, status, error: String(err) }, 'Failed to update verification status'));
+}
 
 /** Maximum OTP attempts before lockout. */
 const MAX_OTP_ATTEMPTS = 3;
@@ -143,6 +157,9 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     if (!formToken) {
       return html(renderError('This form link has expired or is invalid.'), 404);
     }
+
+    // Update verification status to form_started (fire and forget)
+    updateVerificationFromFormToken(formToken.tenantId, params.token, 'form_started');
 
     const { type } = formToken.formDefinition;
 
@@ -485,9 +502,15 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
       eventsCreated++;
     }
 
+    // Update verification status to form_completed
+    updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'form_completed');
+
     // Auto-enrichment: if this form was created by /onboard, run enrichers
     const onboardModules = (formToken as unknown as Record<string, unknown>).onboardModules as string[] | undefined;
     if (onboardModules && onboardModules.length > 0) {
+      // Update status to enriching
+      updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'enriching');
+
       log.info({ userId: formToken.userId, modules: onboardModules }, 'Auto-enriching after form completion');
       // Run enrichment in the background — don't block the user's response
       const enrichmentPromises = onboardModules.map((mod) =>
@@ -498,6 +521,8 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
       Promise.allSettled(enrichmentPromises).then((results) => {
         const succeeded = results.filter((r) => r.status === 'fulfilled').length;
         log.info({ userId: formToken.userId, succeeded, total: results.length }, 'Auto-enrichment complete');
+        // Update status to complete
+        updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'complete');
       });
     }
 
