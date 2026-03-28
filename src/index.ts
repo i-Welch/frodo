@@ -22,6 +22,8 @@ import { plaidLinkRoutes } from './api/routes/plaid-link.js';
 import { onboardRoutes } from './api/routes/onboard.js';
 import { socureVerifyRoutes } from './api/routes/socure-verify.js';
 import { clerkWebhookRoutes } from './api/routes/clerk-webhooks.js';
+import { verificationRoutes } from './api/routes/verifications.js';
+import { reportRoutes } from './api/routes/report.js';
 import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
@@ -148,6 +150,8 @@ const app = new Elysia()
   .use(onboardRoutes)
   .use(socureVerifyRoutes)
   .use(clerkWebhookRoutes)
+  .use(verificationRoutes)
+  .use(reportRoutes)
   .listen(config.port);
 
 logger.info(

@@ -298,14 +298,31 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       linkSent = false; // Will be true once email sending is implemented
     }
 
+    // Create verification tracking record
+    const { createVerification } = await import('../../store/verification-store.js');
+    const borrowerName = [person?.firstName, person?.lastName].filter(Boolean).join(' ') || undefined;
+    const verification = await createVerification({
+      tenantId: tenant.tenantId,
+      userId,
+      status: linkSent ? 'form_sent' : 'created',
+      modules,
+      borrowerName,
+      borrowerEmail: person?.email,
+      borrowerPhone: person?.phone,
+      formToken: formTokenStr,
+      formUrl,
+      createdBy: apiKey.keyId,
+    });
+
     log.info(
-      { userId, tenantId: tenant.tenantId, modules, steps: steps.length },
+      { userId, tenantId: tenant.tenantId, modules, steps: steps.length, verificationId: verification.requestId },
       'Onboarding initiated',
     );
 
     set.status = 201;
     return {
       userId,
+      verificationId: verification.requestId,
       formUrl,
       formToken: formTokenStr,
       modules,
