@@ -64,24 +64,31 @@ export default async function VerificationDetailPage({
                 <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">{moduleName}</h2>
               </div>
               <div className="p-4">
-                <dl className="grid grid-cols-2 gap-x-4 gap-y-2">
+                <dl className="space-y-3">
                   {Object.entries(moduleData.data).map(([field, value]) => {
                     const meta = moduleData.fields[field] as { confidence?: number; source?: string; isStale?: boolean } | undefined;
                     return (
-                      <div key={field} className="py-1">
-                        <dt className="text-xs font-medium text-gray-500 uppercase tracking-wider">{field}</dt>
-                        <dd className="text-sm text-gray-900 mt-0.5">
-                          {typeof value === 'object' ? JSON.stringify(value) : String(value ?? '—')}
+                      <div key={field}>
+                        <dt className="flex items-center gap-2 text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
+                          {formatFieldName(field)}
                           {meta?.source && (
-                            <span className="ml-2 inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-600">
+                            <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 normal-case tracking-normal">
                               {meta.source}
                             </span>
                           )}
                           {meta?.isStale && (
-                            <span className="ml-1 inline-flex items-center rounded-full bg-yellow-100 px-1.5 py-0.5 text-[10px] font-medium text-yellow-800">
+                            <span className="inline-flex items-center rounded-full bg-yellow-100 px-1.5 py-0.5 text-[10px] font-medium text-yellow-800 normal-case tracking-normal">
                               stale
                             </span>
                           )}
+                          {meta?.confidence != null && (
+                            <span className="text-[10px] text-gray-400 normal-case tracking-normal">
+                              {Math.round(meta.confidence * 100)}%
+                            </span>
+                          )}
+                        </dt>
+                        <dd className="text-sm text-gray-900">
+                          <FieldValue value={value} field={field} />
                         </dd>
                       </div>
                     );
@@ -128,4 +135,135 @@ function StatusText({ status }: { status: string }) {
     complete: 'Complete',
   };
   return <span className="font-medium">{labels[status] ?? status}</span>;
+}
+
+/** Convert camelCase field names to readable labels */
+function formatFieldName(field: string): string {
+  return field
+    .replace(/([A-Z])/g, ' $1')
+    .replace(/^./, (s) => s.toUpperCase())
+    .trim();
+}
+
+/** Format currency values */
+function formatCurrency(n: number): string {
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+}
+
+/** Smart field value renderer */
+function FieldValue({ value, field }: { value: unknown; field: string }) {
+  if (value === null || value === undefined) return <span className="text-gray-400">—</span>;
+
+  // String values
+  if (typeof value === 'string') {
+    // Mask SSN
+    if (field === 'ssn' && value.length >= 4) {
+      return <span className="font-mono">***-**-{value.slice(-4)}</span>;
+    }
+    return <span>{value}</span>;
+  }
+
+  // Number values
+  if (typeof value === 'number') {
+    // Currency fields
+    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount'].some((k) => field.toLowerCase().includes(k))) {
+      return <span>{formatCurrency(value)}</span>;
+    }
+    // Percentage fields
+    if (field === 'utilization' || field.includes('percentage') || field.includes('Rate')) {
+      return <span>{value}%</span>;
+    }
+    return <span>{value.toLocaleString()}</span>;
+  }
+
+  // Boolean values
+  if (typeof value === 'boolean') {
+    return <span>{value ? 'Yes' : 'No'}</span>;
+  }
+
+  // Address objects
+  if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+    const obj = value as Record<string, unknown>;
+
+    // Address-shaped object
+    if ('street' in obj || 'city' in obj || 'line1' in obj) {
+      const street = (obj.street ?? obj.line1 ?? '') as string;
+      const city = (obj.city ?? obj.locality ?? '') as string;
+      const state = (obj.state ?? obj.region ?? '') as string;
+      const zip = (obj.zip ?? obj.postalCode ?? obj.postal_code ?? '') as string;
+      return <span>{[street, city, state, zip].filter(Boolean).join(', ')}</span>;
+    }
+
+    // Balances object
+    if ('checking' in obj || 'savings' in obj || 'total' in obj) {
+      return (
+        <div className="flex flex-wrap gap-x-6 gap-y-1">
+          {Object.entries(obj).map(([k, v]) => (
+            <span key={k} className="text-sm">
+              <span className="text-gray-500 capitalize">{k}:</span>{' '}
+              <span className="font-medium">{typeof v === 'number' ? formatCurrency(v) : String(v)}</span>
+            </span>
+          ))}
+        </div>
+      );
+    }
+
+    // Generic object — render as key-value pairs
+    return (
+      <div className="flex flex-wrap gap-x-6 gap-y-1">
+        {Object.entries(obj).map(([k, v]) => (
+          <span key={k} className="text-sm">
+            <span className="text-gray-500 capitalize">{formatFieldName(k)}:</span>{' '}
+            <span>{typeof v === 'object' ? JSON.stringify(v) : String(v ?? '—')}</span>
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  // Arrays — render as tables
+  if (Array.isArray(value) && value.length > 0) {
+    const items = value as Record<string, unknown>[];
+
+    // Check if all items are objects
+    if (typeof items[0] === 'object' && items[0] !== null) {
+      const keys = Object.keys(items[0]);
+      return (
+        <div className="overflow-x-auto mt-1">
+          <table className="text-sm w-full">
+            <thead>
+              <tr className="border-b border-gray-100">
+                {keys.map((k) => (
+                  <th key={k} className="text-left pr-4 py-1 text-xs font-medium text-gray-400 uppercase">
+                    {formatFieldName(k)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {items.map((item, i) => (
+                <tr key={i} className="border-b border-gray-50">
+                  {keys.map((k) => (
+                    <td key={k} className="pr-4 py-1.5 text-gray-900">
+                      {typeof item[k] === 'number' && ['amount', 'balance', 'limit', 'salary', 'value', 'totalSpend'].includes(k)
+                        ? formatCurrency(item[k] as number)
+                        : typeof item[k] === 'object'
+                          ? JSON.stringify(item[k])
+                          : String(item[k] ?? '—')}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
+
+    // Simple array of strings/numbers
+    return <span>{value.join(', ')}</span>;
+  }
+
+  // Fallback
+  return <span>{JSON.stringify(value)}</span>;
 }
