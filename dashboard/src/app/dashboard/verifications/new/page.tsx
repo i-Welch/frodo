@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth, useOrganization } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
 const ALL_MODULES = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence'];
 
 export default function NewVerificationPage() {
-  const { getToken } = useAuth();
+  const { getToken, orgId } = useAuth();
+  const { organization } = useOrganization();
   const router = useRouter();
   const [contactInfo, setContactInfo] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -22,12 +23,25 @@ export default function NewVerificationPage() {
   const isEmail = contactInfo.includes('@');
   const isPhone = !isEmail && contactInfo.length > 0;
 
+  if (!orgId) {
+    return (
+      <div className="max-w-lg">
+        <h1 className="text-2xl font-semibold tracking-tight mb-6">New Verification</h1>
+        <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-6">
+          <p className="text-sm text-yellow-800">
+            Please select an organization using the switcher in the sidebar before creating a verification.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   async function handleSubmit(sendLink: boolean) {
     setLoading(true);
     setError('');
 
     try {
-      const token = await getToken();
+      const token = await getToken({ organizationId: orgId ?? undefined });
       const person: Record<string, string> = {};
       if (isEmail) person.email = contactInfo;
       if (isPhone) person.phone = contactInfo.startsWith('+') ? contactInfo : `+1${contactInfo.replace(/\D/g, '')}`;
