@@ -8,4 +8,9 @@ export const config = {
   kmsEndpoint: process.env.KMS_ENDPOINT,
   cookieSecret: process.env.COOKIE_SECRET ?? 'local-dev-secret',
   logLevel: process.env.LOG_LEVEL ?? 'info',
+  // Clerk auth
+  clerkPublishableKey: process.env.CLERK_PUBLISHABLE_KEY ?? '',
+  clerkSecretKey: process.env.CLERK_SECRET_KEY ?? '',
+  // Dashboard CORS
+  dashboardUrl: process.env.DASHBOARD_URL ?? 'http://localhost:3001',
 };

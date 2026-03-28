@@ -1,4 +1,5 @@
 import { Elysia } from 'elysia';
+import { cors } from '@elysiajs/cors';
 import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
 import { config } from './config/app-config.js';
 import { logger } from './logger.js';
@@ -20,6 +21,7 @@ import { legalRoutes } from './api/routes/legal.js';
 import { plaidLinkRoutes } from './api/routes/plaid-link.js';
 import { onboardRoutes } from './api/routes/onboard.js';
 import { socureVerifyRoutes } from './api/routes/socure-verify.js';
+import { clerkWebhookRoutes } from './api/routes/clerk-webhooks.js';
 import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
@@ -96,6 +98,11 @@ async function checkKms(): Promise<HealthCheckResult> {
 // ---------------------------------------------------------------------------
 
 const app = new Elysia()
+  .use(cors({
+    origin: [config.dashboardUrl, 'http://localhost:3001'],
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-Id'],
+  }))
   .use(requestIdMiddleware)
   .use(errorHandler)
   .get('/health', () => ({
@@ -140,6 +147,7 @@ const app = new Elysia()
   .use(plaidLinkRoutes)
   .use(onboardRoutes)
   .use(socureVerifyRoutes)
+  .use(clerkWebhookRoutes)
   .listen(config.port);
 
 logger.info(
