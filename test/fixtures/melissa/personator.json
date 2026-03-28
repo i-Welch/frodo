@@ -1,7 +1,7 @@
 [
   {
     "provider": "melissa",
-    "endpoint": "/WEB/ContactVerify/doContactVerify?id=test-api-key&act=Check%2CVerify%2CAppend&cols=GrpPropertyData%2CGrpAddressDetails%2CGrpNameDetails%2CGrpDemographicDetails&a1=1+Bag+End&city=Hobbiton&state=SH&postal=00001&ctry=US&format=json",
+    "endpoint": "/WEB/ContactVerify/doContactVerify?id=test-api-key&act=Check%2CVerify%2CAppend&cols=GrpDemographicBasic%2CGrpNameDetails%2CGrpAddressDetails%2CGrpParsedPhone%2CGrpParsedEmail%2CGrpCensus%2CGrpGeocode&format=json&a1=1+Bag+End&city=Hobbiton&state=SH&postal=00001&ctry=US",
     "method": "GET",
     "status": 200,
     "responseBody": {
@@ -18,18 +18,51 @@
           "State": "SH",
           "PostalCode": "00001",
           "Country": "US",
-          "AddressDeliveryInstallation": "",
           "AddressKey": "addr-key-001",
+          "AddressTypeCode": "S",
+          "DeliveryIndicator": "R",
+          "CountyName": "Shire County",
+          "NameFirst": "Bilbo",
+          "NameLast": "Baggins",
+          "NameMiddle": "",
+          "NamePrefix": "",
+          "NameSuffix": "",
+          "Gender": "M",
+          "PhoneNumber": "+15551234567",
+          "AreaCode": "555",
+          "EmailAddress": "bilbo@shire.co",
+          "MailboxName": "bilbo",
+          "DomainName": "shire.co",
+          "TopLevelDomain": "co",
+          "DateOfBirth": "1968-09-22",
+          "DateOfDeath": "",
+          "DemographicsGender": "M",
+          "HouseholdIncome": "75000-100000",
+          "MedianHouseholdIncome": "85000",
+          "HouseholdSize": "1",
+          "MaritalStatus": "S",
+          "PresenceOfChildren": "N",
+          "ChildrenAgeRange": "",
+          "Education": "Bachelors",
+          "EthnicCode": "",
+          "EthnicGroup": "",
+          "LengthOfResidence": "60",
+          "OwnRent": "Own",
+          "CreditCardUser": "Y",
+          "Occupation": "Gentleman of Leisure",
+          "CompanyName": "Bag End Estate",
           "PropertyOwnerType": "O",
           "PropertyUseType": "SFR",
-          "DateOfBirth": "1968-09-22",
           "MoveDate": "2001-12-19",
-          "NameFirst": "Bilbo",
-          "NameLast": "Baggins"
+          "Latitude": "37.8721",
+          "Longitude": "-122.2578",
+          "CensusTract": "1234.56",
+          "CensusBlock": "001",
+          "CountyFIPS": "06001"
         }
       ]
     },
     "headers": { "content-type": "application/json" },
-    "recordedAt": "2026-03-22T12:00:00.000Z"
+    "recordedAt": "2026-03-27T12:00:00.000Z"
   }
 ]

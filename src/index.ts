@@ -34,9 +34,11 @@ import { registerMockEnrichers } from './enrichment/mock/mock-enricher.js';
 import { registerBuiltinComponents } from './forms/components/index.js';
 import { initOtpProvider } from './forms/otp-provider.js';
 import { registerFullContactProvider } from './providers/fullcontact/index.js';
+import { registerMelissaProvider } from './providers/melissa/index.js';
 
 registerMockEnrichers();
 registerFullContactProvider();
+registerMelissaProvider();
 registerBuiltinComponents();
 initOtpProvider();
 
