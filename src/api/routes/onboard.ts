@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia';
-import { resolveAuth, AuthError, type AuthContext } from '../middleware/api-key-auth.js';
+import { AuthError } from '../middleware/api-key-auth.js';
+import { resolveCombinedAuth } from '../middleware/combined-auth.js';
 import { createFormToken } from '../../forms/tokens.js';
 import { getLink } from '../../store/tenant-user-store.js';
 import { enrichModule } from '../../enrichment/engine.js';
@@ -135,7 +136,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveAuth(headers) as Promise<AuthContext & Record<string, unknown>>;
+    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
   })
 
   /**
@@ -170,7 +171,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
    *   "linkSent": true
    * }
    */
-  .post('/onboard', async ({ body, tenant, apiKey, set }) => {
+  .post('/onboard', async ({ body, tenant, apiKey, clerkUserId, set }) => {
     const {
       modules,
       person,
@@ -311,7 +312,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       borrowerPhone: person?.phone,
       formToken: formTokenStr,
       formUrl,
-      createdBy: apiKey.keyId,
+      createdBy: (apiKey as { keyId?: string } | undefined)?.keyId ?? (clerkUserId as string | undefined) ?? 'unknown',
     });
 
     log.info(

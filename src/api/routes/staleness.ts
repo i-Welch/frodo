@@ -1,5 +1,6 @@
 import { Elysia } from 'elysia';
-import { resolveAuth, AuthError, type AuthContext } from '../middleware/api-key-auth.js';
+import { AuthError } from '../middleware/api-key-auth.js';
+import { resolveCombinedAuth } from '../middleware/combined-auth.js';
 import { getLink } from '../../store/tenant-user-store.js';
 import { checkStaleness, getStaleFields, runRefreshJob } from '../../enrichment/staleness.js';
 import type { ApiError } from '../../types.js';
@@ -16,7 +17,7 @@ export const stalenessRoutes = new Elysia({ prefix: '/api/v1' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveAuth(headers) as Promise<AuthContext & Record<string, unknown>>;
+    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
   })
   // -----------------------------------------------------------------------
   // GET /api/v1/users/:id/staleness — full staleness report

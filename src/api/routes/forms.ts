@@ -1,6 +1,7 @@
 import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
-import { resolveAuth, AuthError, type AuthContext } from '../middleware/api-key-auth.js';
+import { AuthError } from '../middleware/api-key-auth.js';
+import { resolveCombinedAuth } from '../middleware/combined-auth.js';
 import { createFormToken, getFormToken, updateFormToken, deleteFormToken } from '../../forms/tokens.js';
 import { renderForm, renderStep, renderConsent, renderSuccess, renderError, renderOtpEntry, renderOtpSend } from '../../forms/renderer.js';
 import { generateOtp, verifyOtp, isOtpExpired } from '../../forms/otp.js';
@@ -52,7 +53,7 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveAuth(headers) as Promise<AuthContext & Record<string, unknown>>;
+    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
   })
   .post('/', async ({ body, tenant, set }) => {
     const { formDefinition, userId, callbackUrl } = body as {

@@ -1,5 +1,6 @@
 import { Elysia, t } from 'elysia';
-import { resolveAuth, AuthError, type AuthContext } from '../middleware/api-key-auth.js';
+import { AuthError } from '../middleware/api-key-auth.js';
+import { resolveCombinedAuth } from '../middleware/combined-auth.js';
 import { resolveIdentity } from '../../identity/resolver.js';
 import { addIdentifier, removeIdentifiers } from '../../store/identity-lookup-store.js';
 import { createLink, getLink, deleteLink, getTenantsForUser } from '../../store/tenant-user-store.js';
@@ -17,7 +18,7 @@ export const userRoutes = new Elysia({ prefix: '/api/v1/users' })
     }
   })
   .derive(async ({ headers }) => {
-    return resolveAuth(headers) as Promise<AuthContext & Record<string, unknown>>;
+    return resolveCombinedAuth(headers) as Promise<ReturnType<typeof resolveCombinedAuth> & Record<string, unknown>>;
   })
   // -----------------------------------------------------------------------
   // POST /api/v1/users — Create or link a user
