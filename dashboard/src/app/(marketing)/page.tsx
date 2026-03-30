@@ -575,12 +575,12 @@ export default function LandingPage() {
               income, credit, employment, and property data.
             </p>
             <div className="hero-actions">
-              <a href="mailto:contact@reportraven.tech" className="btn btn-white">
+              <a href="#get-started" className="btn btn-white">
                 Request Access
               </a>
-              <Link href="/legal/security" className="btn btn-ghost">
+              <a href="/legal/security" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 Security &amp; Compliance
-              </Link>
+              </a>
             </div>
           </div>
         </section>
