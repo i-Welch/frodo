@@ -2,14 +2,51 @@
  * List early access interest signups.
  *
  * Usage:
- *   bun scripts/list-interest-signups.ts [limit]
+ *   bun scripts/list-interest-signups.ts [--env production|staging] [limit]
  *
  * Examples:
- *   bun scripts/list-interest-signups.ts
- *   bun scripts/list-interest-signups.ts 100
+ *   bun scripts/list-interest-signups.ts                    # local
+ *   bun scripts/list-interest-signups.ts --env production   # production
+ *   bun scripts/list-interest-signups.ts --env staging 100  # staging, 100 results
  */
 
-import { queryItems } from '../src/store/base-store.js';
+// ---------------------------------------------------------------------------
+// Parse --env flag and override .env values BEFORE any SDK imports
+// ---------------------------------------------------------------------------
+
+const ENV_CONFIG = {
+  production: {
+    table: 'frodo-production-main',
+    region: 'us-east-2',
+    profile: 'raven',
+  },
+  staging: {
+    table: 'frodo-staging-main',
+    region: 'us-east-2',
+    profile: 'raven',
+  },
+} as const;
+
+const envIdx = process.argv.indexOf('--env');
+if (envIdx !== -1) {
+  const envName = process.argv[envIdx + 1] as keyof typeof ENV_CONFIG;
+  const envCfg = ENV_CONFIG[envName];
+  if (!envCfg) {
+    console.error(`Invalid env "${envName}". Use --env staging or --env production.`);
+    process.exit(1);
+  }
+  process.env.DYNAMODB_TABLE = envCfg.table;
+  process.env.AWS_REGION = envCfg.region;
+  process.env.AWS_PROFILE = envCfg.profile;
+  delete process.env.DYNAMODB_ENDPOINT;
+  process.argv.splice(envIdx, 2);
+}
+
+// ---------------------------------------------------------------------------
+// Dynamic import so env overrides take effect before the SDK initializes
+// ---------------------------------------------------------------------------
+
+const { queryItems } = await import('../src/store/base-store.js');
 
 const limit = process.argv[2] ? parseInt(process.argv[2], 10) : 50;
 

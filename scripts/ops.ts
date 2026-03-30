@@ -62,7 +62,7 @@ function logGroup(env: Env): string {
 }
 
 function awsRegion(): string {
-  return process.env.AWS_REGION ?? process.env.AWS_DEFAULT_REGION ?? 'us-east-1';
+  return process.env.AWS_REGION ?? process.env.AWS_DEFAULT_REGION ?? 'us-east-2';
 }
 
 function awsArgs(): string[] {

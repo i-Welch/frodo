@@ -46,6 +46,7 @@ export default function LandingPage() {
           --white: #FFFFFF;
         }
 
+        html { scroll-behavior: smooth; }
         .landing *, .landing *::before, .landing *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .landing {
@@ -308,6 +309,89 @@ export default function LandingPage() {
           line-height: 1.65;
         }
 
+        /* --- Integrations --- */
+        .integrations {
+          padding: 7rem 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .integrations-header {
+          max-width: 540px;
+          margin-bottom: 4rem;
+        }
+        .integrations-header h2 {
+          font-size: 2rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+          margin-bottom: 1rem;
+        }
+        .integrations-header p {
+          font-size: 1rem;
+          color: var(--gray-400);
+          line-height: 1.7;
+        }
+        .integrations-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: rgba(255,255,255,0.06);
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.06);
+          margin-bottom: 2.5rem;
+        }
+        .integration-card {
+          padding: 2.5rem;
+          background: var(--black);
+          display: flex;
+          flex-direction: column;
+        }
+        .integration-name {
+          font-size: 1.15rem;
+          font-weight: 600;
+          margin-bottom: 0.35rem;
+          letter-spacing: -0.01em;
+        }
+        .integration-type {
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--gray-500);
+          margin-bottom: 1rem;
+        }
+        .integration-desc {
+          font-size: 0.85rem;
+          color: var(--gray-500);
+          line-height: 1.65;
+          flex: 1;
+        }
+        .integration-platforms {
+          margin-top: 1.25rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+        }
+        .integration-platforms span {
+          font-size: 0.7rem;
+          color: var(--gray-400);
+          padding: 0.25rem 0.6rem;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 100px;
+          white-space: nowrap;
+        }
+        .integrations-also {
+          text-align: center;
+          color: var(--gray-500);
+          font-size: 0.9rem;
+          line-height: 1.7;
+        }
+        .integrations-also strong {
+          color: var(--gray-300);
+          font-weight: 500;
+        }
+
         /* --- CTA --- */
         .cta {
           padding: 7rem 3rem;
@@ -443,6 +527,8 @@ export default function LandingPage() {
           .stats { grid-template-columns: repeat(2, 1fr); }
           .features { padding: 4rem 1.5rem; }
           .features-grid { grid-template-columns: 1fr; }
+          .integrations { padding: 4rem 1.5rem; }
+          .integrations-grid { grid-template-columns: 1fr; }
           .cta { padding: 4rem 1.5rem; }
           .landing footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
           .divider { margin: 0 1.5rem; }
@@ -458,7 +544,7 @@ export default function LandingPage() {
           <div className="nav-links">
             <Link href="/legal/security">Security</Link>
             <Link href="/legal/privacy-policy">Privacy</Link>
-            <a href="mailto:contact@reportraven.tech" className="nav-cta">
+            <a href="#get-started" className="nav-cta">
               Request Access
             </a>
           </div>
@@ -665,7 +751,66 @@ export default function LandingPage() {
 
         <div className="divider" />
 
-        <section className="cta">
+        {/* --- Integrations --- */}
+        <section className="integrations">
+          <div className="integrations-header">
+            <div className="section-tag">Integrations</div>
+            <h2>Works with your core.</h2>
+            <p>
+              Enriched borrower data flows directly into the core banking and loan origination
+              systems your team already uses. No manual re-entry.
+            </p>
+          </div>
+          <div className="integrations-grid">
+            <div className="integration-card">
+              <div className="integration-name">Jack Henry</div>
+              <div className="integration-type">Core Banking</div>
+              <p className="integration-desc">
+                Push verified borrower profiles and loan application data directly into your
+                core through the jXchange API layer.
+              </p>
+              <div className="integration-platforms">
+                <span>SilverLake</span>
+                <span>CIF 20/20</span>
+                <span>Symitar</span>
+              </div>
+            </div>
+            <div className="integration-card">
+              <div className="integration-name">Fiserv</div>
+              <div className="integration-type">Core Banking</div>
+              <p className="integration-desc">
+                Export enriched customer records and credit applications via the Banking Hub
+                API across all Fiserv platforms.
+              </p>
+              <div className="integration-platforms">
+                <span>DNA</span>
+                <span>Premier</span>
+                <span>Precision</span>
+              </div>
+            </div>
+            <div className="integration-card">
+              <div className="integration-name">FIS</div>
+              <div className="integration-type">Core Banking</div>
+              <p className="integration-desc">
+                Real-time event-driven sync for Modern Banking Platform, plus batch and API
+                export for legacy cores.
+              </p>
+              <div className="integration-platforms">
+                <span>MBP</span>
+                <span>IBS</span>
+                <span>Horizon</span>
+              </div>
+            </div>
+          </div>
+          <p className="integrations-also">
+            Also works with leading loan origination systems including{' '}
+            <strong>nCino</strong>, <strong>Abrigo</strong>, and <strong>Baker Hill</strong>.
+          </p>
+        </section>
+
+        <div className="divider" />
+
+        <section id="get-started" className="cta">
           <div className="cta-inner">
             <div className="section-tag">Get started</div>
             <h2>Ready to move faster?</h2>

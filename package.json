@@ -20,6 +20,8 @@
     "db:reset": "bun scripts/create-tables.ts && bun scripts/seed.ts",
     "ops": "bun scripts/ops.ts",
     "ops:local": "bun scripts/ops-local.ts",
+    "pull-signups-staging": "bun scripts/list-interest-signups.ts --env staging",
+    "pull-signups-prod": "bun scripts/list-interest-signups.ts --env production",
     "prepare": "husky"
   },
   "devDependencies": {
