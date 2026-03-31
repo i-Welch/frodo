@@ -12,6 +12,8 @@ interface EmploymentData {
   title: string;
   startDate: string;
   salary: number;
+  employeeStatus: string;
+  payFrequency: string;
   history: { employer: string; title?: string; startDate?: string; endDate?: string }[];
 }
 
@@ -159,12 +161,16 @@ export class TrueworkEmploymentEnricher extends BaseEnricher<EmploymentData> {
       }));
     }
 
+    data.employeeStatus = primary.employee.status;
+    if (primary.salary.pay_frequency) {
+      data.payFrequency = primary.salary.pay_frequency;
+    }
+
     return {
       data,
       metadata: {
         verificationId: createRes.data.id,
         reportCount: reports.length,
-        employeeStatus: primary.employee.status,
       },
     };
   }

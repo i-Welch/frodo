@@ -8,7 +8,15 @@ import type { EnrichmentResult } from '../../enrichment/types.js';
 // ---------------------------------------------------------------------------
 
 interface FinancialData {
-  incomeStreams: { source: string; amount?: number; frequency?: string }[];
+  incomeStreams: {
+    source: string;
+    amount?: number;
+    frequency?: string;
+    incomeCategory?: string;
+    startDate?: string;
+    endDate?: string;
+    transactionCount?: number;
+  }[];
 }
 
 // ---------------------------------------------------------------------------
@@ -106,6 +114,10 @@ export class PlaidIncomeEnricher extends BaseEnricher<FinancialData> {
         source: src.employer?.name ?? src.income_description,
         amount: Math.round(src.historical_average_monthly_gross_income.amount * 12),
         frequency: normalizeFrequency(src.pay_frequency),
+        incomeCategory: src.income_category,
+        startDate: src.start_date,
+        endDate: src.end_date ?? undefined,
+        transactionCount: src.transaction_count,
       })),
     );
 

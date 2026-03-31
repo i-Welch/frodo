@@ -251,17 +251,32 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
     }
 
     return {
-      data,
+      data: {
+        ...data,
+        kycDecision: res.data.decision,
+        fraudScore: riskScores.fraudScore as number | undefined,
+        syntheticIdentityScore: riskScores.syntheticIdentityScore as number | undefined,
+        kycScore: riskScores.kycScore as number | undefined,
+        watchlistScreening: {
+          watchlistScore: riskScores.watchlistScore as number | undefined,
+          watchlistHits: riskScores.watchlistHits as unknown | undefined,
+          globalWatchlistScore: riskScores.globalWatchlistScore as number | undefined,
+          globalWatchlistHits: riskScores.globalWatchlistHits as unknown | undefined,
+        },
+        riskScores: {
+          phoneRiskScore: riskScores.phoneRiskScore as number | undefined,
+          emailRiskScore: riskScores.emailRiskScore as number | undefined,
+          addressRiskScore: riskScores.addressRiskScore as number | undefined,
+          namePhoneCorrelation: riskScores.namePhoneCorrelationScore as number | undefined,
+          nameAddressCorrelation: riskScores.nameAddressCorrelationScore as number | undefined,
+          sigmaScore: riskScores.sigmaScore as number | undefined,
+        },
+      } as Partial<IdentityData>,
       metadata: {
-        // Socure evaluation
         evalId: res.data.eval_id,
-        decision: res.data.decision,
         status: res.data.status,
         subStatus: res.data.sub_status,
         tags: res.data.tags,
-
-        // All risk scores from every module
-        ...riskScores,
 
         // Enrichment details
         enrichmentsRun: res.data.data_enrichments?.map((e) => ({
@@ -270,6 +285,22 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
           statusCode: e.status_code,
           cached: e.is_source_cache,
         })),
+
+        // Reason codes
+        ...(riskScores.phoneRiskReasonCodes ? { phoneRiskReasonCodes: riskScores.phoneRiskReasonCodes } : {}),
+        ...(riskScores.namePhoneCorrelationReasonCodes ? { namePhoneCorrelationReasonCodes: riskScores.namePhoneCorrelationReasonCodes } : {}),
+        ...(riskScores.emailRiskReasonCodes ? { emailRiskReasonCodes: riskScores.emailRiskReasonCodes } : {}),
+        ...(riskScores.addressRiskReasonCodes ? { addressRiskReasonCodes: riskScores.addressRiskReasonCodes } : {}),
+        ...(riskScores.fraudReasonCodes ? { fraudReasonCodes: riskScores.fraudReasonCodes } : {}),
+        ...(riskScores.syntheticReasonCodes ? { syntheticReasonCodes: riskScores.syntheticReasonCodes } : {}),
+        ...(riskScores.sigmaReasonCodes ? { sigmaReasonCodes: riskScores.sigmaReasonCodes } : {}),
+        ...(riskScores.kycReasonCodes ? { kycReasonCodes: riskScores.kycReasonCodes } : {}),
+        ...(riskScores.kycFieldValidations ? { kycFieldValidations: riskScores.kycFieldValidations } : {}),
+        ...(riskScores.watchlistReasonCodes ? { watchlistReasonCodes: riskScores.watchlistReasonCodes } : {}),
+        ...(riskScores.globalWatchlistReasonCodes ? { globalWatchlistReasonCodes: riskScores.globalWatchlistReasonCodes } : {}),
+        ...(riskScores.nameAddressCorrelationReasonCodes ? { nameAddressCorrelationReasonCodes: riskScores.nameAddressCorrelationReasonCodes } : {}),
+        ...(riskScores.digitalIntelligenceScore ? { digitalIntelligenceScore: riskScores.digitalIntelligenceScore } : {}),
+        ...(riskScores.digitalIntelligenceReasonCodes ? { digitalIntelligenceReasonCodes: riskScores.digitalIntelligenceReasonCodes } : {}),
       },
     };
   }

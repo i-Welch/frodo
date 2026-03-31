@@ -73,15 +73,24 @@ export default async function VerificationDetailPage({
         ) : null
       ) : (
         <div className="space-y-6">
+          {/* Risk & Compliance Summary */}
+          <RiskSummary report={report} />
+
           {/* Report sections */}
-          {Object.entries((report.modules ?? {}) as Record<string, { data: Record<string, unknown>; fields: Record<string, unknown> }>).map(([moduleName, moduleData]) => (
+          {MODULE_ORDER
+            .filter((m) => (report.modules as Record<string, { data: Record<string, unknown>; fields: Record<string, unknown> }>)[m] && Object.keys((report.modules as Record<string, { data: Record<string, unknown> }>)[m].data).length > 0)
+            .map((moduleName) => {
+              const moduleData = (report.modules as Record<string, { data: Record<string, unknown>; fields: Record<string, unknown> }>)[moduleName];
+              return (
             <div key={moduleName} className="rounded-lg border border-gray-200 bg-white">
               <div className="border-b border-gray-200 px-4 py-3">
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">{moduleName}</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">{MODULE_TITLES[moduleName] ?? moduleName}</h2>
               </div>
               <div className="p-4">
                 <dl className="space-y-3">
-                  {Object.entries(moduleData.data).map(([field, value]) => {
+                  {Object.entries(moduleData.data)
+                    .filter(([field]) => !RISK_FIELDS.includes(field))
+                    .map(([field, value]) => {
                     const meta = moduleData.fields[field] as { confidence?: number; source?: string; isStale?: boolean } | undefined;
                     return (
                       <div key={field}>
@@ -112,7 +121,8 @@ export default async function VerificationDetailPage({
                 </dl>
               </div>
             </div>
-          ))}
+              );
+            })}
 
           {/* Audit trail */}
           <div className="rounded-lg border border-gray-200 bg-white">
@@ -195,6 +205,147 @@ function FormLinkCard({ formUrl, createdAt, status }: { formUrl: string; created
   );
 }
 
+const MODULE_ORDER = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence', 'buying-patterns', 'education'];
+
+const MODULE_TITLES: Record<string, string> = {
+  identity: 'Identity Verification',
+  contact: 'Contact Information',
+  financial: 'Financial Overview',
+  credit: 'Credit Profile',
+  employment: 'Employment Verification',
+  residence: 'Residence & Property',
+  'buying-patterns': 'Spending Patterns',
+  education: 'Education',
+};
+
+/** Fields that belong in the Risk Summary card, not in the module section */
+const RISK_FIELDS = ['kycDecision', 'fraudScore', 'syntheticIdentityScore', 'kycScore', 'watchlistScreening', 'riskScores', 'bankVerified'];
+
+function RiskSummary({ report }: { report: Record<string, unknown> }) {
+  const modules = report.modules as Record<string, { data: Record<string, unknown> }> | undefined;
+  const identity = modules?.identity?.data;
+  if (!identity) return null;
+
+  const kycDecision = identity.kycDecision as string | undefined;
+  const fraudScore = typeof identity.fraudScore === 'number' ? identity.fraudScore : undefined;
+  const syntheticScore = typeof identity.syntheticIdentityScore === 'number' ? identity.syntheticIdentityScore : undefined;
+  const kycScore = typeof identity.kycScore === 'number' ? identity.kycScore : undefined;
+  const watchlist = identity.watchlistScreening as Record<string, unknown> | undefined;
+  const risks = identity.riskScores as Record<string, unknown> | undefined;
+  const bankVerified = identity.bankVerified as Record<string, unknown> | undefined;
+
+  // Don't show if no risk data
+  if (!kycDecision && fraudScore == null && !watchlist && !risks) return null;
+
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white">
+      <div className="border-b border-gray-200 px-4 py-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">Risk & Compliance</h2>
+      </div>
+      <div className="p-4">
+        {/* KYC Decision Banner */}
+        {kycDecision && (
+          <div className={`rounded-lg px-4 py-3 mb-4 ${
+            kycDecision === 'ACCEPT' ? 'bg-green-50 border border-green-200' :
+            kycDecision === 'REJECT' ? 'bg-red-50 border border-red-200' :
+            'bg-yellow-50 border border-yellow-200'
+          }`}>
+            <div className="flex items-center justify-between">
+              <div>
+                <span className="text-xs font-medium text-gray-500 uppercase tracking-wider">KYC Decision</span>
+                <p className={`text-lg font-semibold ${
+                  kycDecision === 'ACCEPT' ? 'text-green-700' :
+                  kycDecision === 'REJECT' ? 'text-red-700' :
+                  'text-yellow-700'
+                }`}>{kycDecision}</p>
+              </div>
+              {kycScore != null && (
+                <div className="text-right">
+                  <span className="text-xs text-gray-500">KYC Score</span>
+                  <p className="text-lg font-mono font-semibold text-gray-900">{kycScore != null ? kycScore.toFixed(3) : '—'}</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Score Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+          {fraudScore != null && (
+            <ScoreCard label="Fraud Score" value={fraudScore} />
+          )}
+          {syntheticScore != null && (
+            <ScoreCard label="Synthetic Identity" value={syntheticScore} />
+          )}
+          {typeof watchlist?.watchlistScore === 'number' ? (
+            <ScoreCard label="Watchlist" value={watchlist.watchlistScore} />
+          ) : null}
+          {typeof watchlist?.globalWatchlistScore === 'number' ? (
+            <ScoreCard label="Global Watchlist" value={watchlist.globalWatchlistScore} />
+          ) : null}
+          {typeof risks?.phoneRiskScore === 'number' ? (
+            <ScoreCard label="Phone Risk" value={risks.phoneRiskScore} />
+          ) : null}
+          {typeof risks?.emailRiskScore === 'number' ? (
+            <ScoreCard label="Email Risk" value={risks.emailRiskScore} />
+          ) : null}
+          {typeof risks?.addressRiskScore === 'number' ? (
+            <ScoreCard label="Address Risk" value={risks.addressRiskScore} />
+          ) : null}
+          {typeof risks?.sigmaScore === 'number' ? (
+            <ScoreCard label="Sigma Score" value={risks.sigmaScore} />
+          ) : null}
+        </div>
+
+        {/* Watchlist Hits */}
+        {Array.isArray(watchlist?.watchlistHits) && (watchlist.watchlistHits as unknown[]).length > 0 ? (
+          <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 mb-4">
+            <span className="text-xs font-medium text-red-700 uppercase tracking-wider">Watchlist Hits</span>
+            <p className="text-sm text-red-800 mt-1">{(watchlist.watchlistHits as unknown[]).length} hit(s) found</p>
+          </div>
+        ) : null}
+
+        {/* Bank Verified */}
+        {bankVerified && (bankVerified.email || bankVerified.phone || bankVerified.address) ? (
+          <div className="rounded-lg bg-blue-50 border border-blue-200 px-4 py-3">
+            <span className="text-xs font-medium text-blue-700 uppercase tracking-wider">Bank Verified</span>
+            <div className="flex flex-wrap gap-3 mt-2">
+              {bankVerified.email ? (
+                <span className="inline-flex items-center gap-1 text-sm text-blue-800">
+                  <span className="text-blue-500">&#10003;</span> Email: {String(bankVerified.email)}
+                </span>
+              ) : null}
+              {bankVerified.phone ? (
+                <span className="inline-flex items-center gap-1 text-sm text-blue-800">
+                  <span className="text-blue-500">&#10003;</span> Phone: {String(bankVerified.phone)}
+                </span>
+              ) : null}
+              {bankVerified.address ? (
+                <span className="inline-flex items-center gap-1 text-sm text-blue-800">
+                  <span className="text-blue-500">&#10003;</span> Address verified
+                </span>
+              ) : null}
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function ScoreCard({ label, value }: { label: string; value: number }) {
+  const displayValue = typeof value === 'number' ? value.toFixed(3) : String(value);
+  const numValue = typeof value === 'number' ? value : parseFloat(String(value));
+  return (
+    <div className="rounded-lg border border-gray-200 px-3 py-2">
+      <span className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">{label}</span>
+      <p className={`text-lg font-mono font-semibold ${
+        numValue > 0.7 ? 'text-red-600' : numValue < 0.3 ? 'text-green-600' : 'text-gray-900'
+      }`}>{displayValue}</p>
+    </div>
+  );
+}
+
 /** Convert camelCase field names to readable labels */
 function formatFieldName(field: string): string {
   return field
@@ -224,7 +375,7 @@ function FieldValue({ value, field }: { value: unknown; field: string }) {
   // Number values
   if (typeof value === 'number') {
     // Currency fields
-    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount'].some((k) => field.toLowerCase().includes(k))) {
+    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount', 'value', 'price', 'payment', 'escrow'].some((k) => field.toLowerCase().includes(k))) {
       return <span>{formatCurrency(value)}</span>;
     }
     // Percentage fields

@@ -21,6 +21,9 @@ export const employmentSchema = z.object({
       }),
     )
     .optional(),
+  employeeStatus: z.string().optional(),
+  terminationDate: z.string().optional(),
+  payFrequency: z.string().optional(),
 });
 
 // ---------------------------------------------------------------------------
@@ -33,6 +36,9 @@ const fields: Record<string, FieldDefinition> = {
   startDate: { tier: VerificationTier.EnhancedOTP, type: 'date' },
   salary: { tier: VerificationTier.EnhancedOTP, type: 'currency' },
   history: { tier: VerificationTier.EnhancedOTP, type: 'array' },
+  employeeStatus: { tier: VerificationTier.EnhancedOTP, type: 'string' },
+  terminationDate: { tier: VerificationTier.EnhancedOTP, type: 'date' },
+  payFrequency: { tier: VerificationTier.EnhancedOTP, type: 'string' },
 };
 
 // ---------------------------------------------------------------------------

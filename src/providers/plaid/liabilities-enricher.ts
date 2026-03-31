@@ -8,7 +8,21 @@ import type { EnrichmentResult } from '../../enrichment/types.js';
 // ---------------------------------------------------------------------------
 
 interface CreditData {
-  openAccounts: { creditor: string; accountType?: string; balance?: number; limit?: number }[];
+  openAccounts: {
+    creditor: string;
+    accountType?: string;
+    balance?: number;
+    limit?: number;
+    interestRate?: number;
+    isOverdue?: boolean;
+    lastPaymentAmount?: number;
+    lastPaymentDate?: string;
+    minimumPayment?: number;
+    nextPaymentDueDate?: string;
+    maturityDate?: string;
+    originationDate?: string;
+    pastDueAmount?: number;
+  }[];
 }
 
 // ---------------------------------------------------------------------------
@@ -136,11 +150,18 @@ export class PlaidLiabilitiesEnricher extends BaseEnricher<CreditData> {
     if (liabilities.credit) {
       for (const cc of liabilities.credit) {
         const acct = accountMap.get(cc.account_id);
+        const purchaseApr = cc.aprs.find((a) => a.apr_type === 'purchase_apr');
         openAccounts.push({
           creditor: acct?.official_name ?? acct?.name ?? 'Credit Card',
           accountType: 'credit_card',
           balance: acct?.balances.current ?? cc.last_statement_balance,
           limit: acct?.balances.limit ?? undefined,
+          interestRate: purchaseApr?.apr_percentage,
+          isOverdue: cc.is_overdue,
+          lastPaymentAmount: cc.last_payment_amount,
+          lastPaymentDate: cc.last_payment_date,
+          minimumPayment: cc.minimum_payment_amount,
+          nextPaymentDueDate: cc.next_payment_due_date,
         });
       }
     }
@@ -154,6 +175,14 @@ export class PlaidLiabilitiesEnricher extends BaseEnricher<CreditData> {
           accountType: 'mortgage',
           balance: acct?.balances.current ?? undefined,
           limit: mort.origination_principal_amount,
+          interestRate: mort.interest_rate.percentage,
+          lastPaymentAmount: mort.last_payment_amount,
+          lastPaymentDate: mort.last_payment_date,
+          minimumPayment: mort.next_monthly_payment,
+          nextPaymentDueDate: mort.next_payment_due_date,
+          maturityDate: mort.maturity_date,
+          originationDate: mort.origination_date,
+          pastDueAmount: mort.past_due_amount ?? undefined,
         });
       }
     }
@@ -167,6 +196,13 @@ export class PlaidLiabilitiesEnricher extends BaseEnricher<CreditData> {
           accountType: 'student_loan',
           balance: acct?.balances.current ?? undefined,
           limit: loan.origination_principal_amount ?? undefined,
+          interestRate: loan.interest_rate_percentage,
+          isOverdue: loan.is_overdue,
+          lastPaymentAmount: loan.last_payment_amount,
+          lastPaymentDate: loan.last_payment_date,
+          minimumPayment: loan.minimum_payment_amount,
+          nextPaymentDueDate: loan.next_payment_due_date,
+          originationDate: loan.origination_date ?? undefined,
         });
       }
     }

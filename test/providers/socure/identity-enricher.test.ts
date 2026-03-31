@@ -31,13 +31,32 @@ describe('SocureIdentityEnricher', () => {
     expect(result.data.lastName).toBe('Gamgee');
     expect(result.data.dateOfBirth).toBe('1983-04-06');
 
-    // KYC decision
-    expect(result.metadata?.evalId).toBe('socure-eval-001');
-    expect(result.metadata?.decision).toBe('ACCEPT');
+    // KYC decision (now in data)
+    expect(result.data.kycDecision).toBe('ACCEPT');
+    expect(result.data.fraudScore).toBeUndefined();
+    expect(result.data.syntheticIdentityScore).toBeUndefined();
+    expect(result.data.kycScore).toBeUndefined();
 
-    // Risk scores
-    expect(result.metadata?.phoneRiskScore).toBe(0.12);
-    expect(result.metadata?.namePhoneCorrelationScore).toBe(0.95);
+    // Watchlist screening (now in data)
+    expect(result.data.watchlistScreening).toEqual({
+      watchlistScore: undefined,
+      watchlistHits: undefined,
+      globalWatchlistScore: undefined,
+      globalWatchlistHits: undefined,
+    });
+
+    // Risk scores (now in data)
+    expect(result.data.riskScores).toEqual({
+      phoneRiskScore: 0.12,
+      emailRiskScore: undefined,
+      addressRiskScore: undefined,
+      namePhoneCorrelation: 0.95,
+      nameAddressCorrelation: undefined,
+      sigmaScore: undefined,
+    });
+
+    // Metadata
+    expect(result.metadata?.evalId).toBe('socure-eval-001');
 
     // Enrichment details
     expect(result.metadata?.enrichmentsRun).toHaveLength(1);

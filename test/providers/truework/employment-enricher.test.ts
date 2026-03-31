@@ -86,7 +86,10 @@ describe('TrueworkEmploymentEnricher', () => {
     expect(result.data.history![1].employer).toBe('The Green Dragon');
     expect(result.data.history![1].endDate).toBe('2021-05-30');
 
+    // Employee status and pay frequency (now in data)
+    expect(result.data.employeeStatus).toBe('active');
+    expect(result.data.payFrequency).toBe('annual');
+
     expect(result.metadata?.verificationId).toBe('tw-ver-001');
-    expect(result.metadata?.employeeStatus).toBe('active');
   });
 });

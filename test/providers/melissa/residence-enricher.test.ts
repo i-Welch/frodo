@@ -84,10 +84,29 @@ describe('MelissaResidenceEnricher', () => {
     expect(result.data.propertyType).toBe('single-family');
     expect(result.data.moveInDate).toBe('2001-12-19');
 
-    // Metadata includes demographics and geo
+    // Demographics (now in data)
+    expect(result.data.demographics).toEqual({
+      householdIncome: '75000-100000',
+      medianHouseholdIncome: '85000',
+      householdSize: '1',
+      maritalStatus: 'S',
+      presenceOfChildren: 'N',
+      education: 'Bachelors',
+      occupation: 'Gentleman of Leisure',
+      companyName: 'Bag End Estate',
+      lengthOfResidence: '60',
+    });
+
+    // Geo (now in data)
+    expect(result.data.geo).toEqual({
+      latitude: '37.8721',
+      longitude: '-122.2578',
+      countyName: 'Shire County',
+      censusTract: '1234.56',
+      countyFIPS: '06001',
+    });
+
+    // Metadata
     expect(result.metadata?.addressKey).toBe('addr-key-001');
-    expect(result.metadata?.householdIncome).toBe('75000-100000');
-    expect(result.metadata?.occupation).toBe('Gentleman of Leisure');
-    expect(result.metadata?.lengthOfResidence).toBe('60');
   });
 });

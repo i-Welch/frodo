@@ -35,10 +35,12 @@ describe('FullContactContactEnricher', () => {
       url: 'https://linkedin.com/in/samwise-gamgee',
     });
 
-    // Metadata carries the person summary fields
-    expect(result.metadata?.fullName).toBe('Samwise Gamgee');
-    expect(result.metadata?.ageRange).toBe('30-39');
-    expect(result.metadata?.title).toBe('Head Gardener');
-    expect(result.metadata?.organization).toBe('Bag End Estate');
+    // Person summary fields (now in data)
+    expect(result.data.fullName).toBe('Samwise Gamgee');
+    expect(result.data.ageRange).toBe('30-39');
+    expect(result.data.gender).toBe('Male');
+    expect(result.data.location).toBe('Hobbiton, The Shire');
+    expect(result.data.jobTitle).toBe('Head Gardener');
+    expect(result.data.organization).toBe('Bag End Estate');
   });
 });

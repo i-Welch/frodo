@@ -30,6 +30,10 @@ export const financialSchema = z.object({
         source: z.string(),
         amount: z.number().optional(),
         frequency: z.string().optional(),
+        incomeCategory: z.string().optional(),
+        startDate: z.string().optional(),
+        endDate: z.string().optional(),
+        transactionCount: z.number().optional(),
       }),
     )
     .optional(),

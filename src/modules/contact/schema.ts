@@ -25,6 +25,12 @@ export const contactSchema = z.object({
       push: z.boolean().optional(),
     })
     .optional(),
+  fullName: z.string().optional(),
+  ageRange: z.string().optional(),
+  gender: z.string().optional(),
+  location: z.string().optional(),
+  jobTitle: z.string().optional(),
+  organization: z.string().optional(),
 });
 
 // ---------------------------------------------------------------------------
@@ -39,6 +45,12 @@ const fields: Record<string, FieldDefinition> = {
     tier: VerificationTier.BasicOTP,
     type: 'object',
   },
+  fullName: { tier: VerificationTier.BasicOTP, type: 'string' },
+  ageRange: { tier: VerificationTier.BasicOTP, type: 'string' },
+  gender: { tier: VerificationTier.BasicOTP, type: 'string' },
+  location: { tier: VerificationTier.BasicOTP, type: 'string' },
+  jobTitle: { tier: VerificationTier.BasicOTP, type: 'string' },
+  organization: { tier: VerificationTier.BasicOTP, type: 'string' },
 };
 
 // ---------------------------------------------------------------------------

@@ -257,7 +257,7 @@ function formatValue(value: unknown, field: string): string {
     return value;
   }
   if (typeof value === 'number') {
-    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount'].some((k) => field.toLowerCase().includes(k))) {
+    if (['salary', 'total', 'checking', 'savings', 'investment', 'balance', 'limit', 'amount', 'value', 'price', 'payment', 'escrow'].some((k) => field.toLowerCase().includes(k))) {
       return formatCurrency(value);
     }
     if (field === 'utilization') return `${value}%`;
@@ -308,11 +308,13 @@ function FieldRow({ label, value, source, confidence }: { label: string; value: 
   );
 }
 
-function ModuleSection({ title, subtitle, moduleData, generatedAt }: { title: string; subtitle?: string; moduleData: ModuleReport; generatedAt: string }) {
+function ModuleSection({ title, subtitle, moduleData, generatedAt, moduleName }: { title: string; subtitle?: string; moduleData: ModuleReport; generatedAt: string; moduleName?: string }) {
   const simpleFields: [string, unknown][] = [];
   const arrayFields: [string, unknown[]][] = [];
 
   for (const [field, value] of Object.entries(moduleData.data)) {
+    // Skip risk fields in identity module — they're on the Risk page
+    if (moduleName === 'identity' && RISK_FIELDS.includes(field)) continue;
     if (Array.isArray(value) && value.length > 0 && typeof value[0] === 'object') {
       arrayFields.push([field, value as unknown[]]);
     } else {
@@ -377,13 +379,101 @@ function ModuleSection({ title, subtitle, moduleData, generatedAt }: { title: st
 // Main PDF Document
 // ---------------------------------------------------------------------------
 
+/** Fields shown on the Risk page, not repeated in the Identity module section */
+const RISK_FIELDS = ['kycDecision', 'fraudScore', 'syntheticIdentityScore', 'kycScore', 'watchlistScreening', 'riskScores', 'bankVerified'];
+
+function RiskPage({ report }: { report: ReportData }) {
+  const identity = report.modules.identity?.data;
+  const hasModuleRisk = identity && (identity.kycDecision || identity.fraudScore != null || identity.watchlistScreening || identity.riskScores);
+  const hasLegacyRisk = Object.keys(report.riskScores).length > 0;
+
+  if (!hasModuleRisk && !hasLegacyRisk) return null;
+
+  const riskEntries: [string, unknown][] = [];
+
+  // Pull from module data (new approach)
+  if (identity) {
+    if (identity.kycDecision) riskEntries.push(['KYC Decision', identity.kycDecision]);
+    if (identity.kycScore != null) riskEntries.push(['KYC Score', identity.kycScore]);
+    if (identity.fraudScore != null) riskEntries.push(['Fraud Score', identity.fraudScore]);
+    if (identity.syntheticIdentityScore != null) riskEntries.push(['Synthetic Identity Score', identity.syntheticIdentityScore]);
+
+    const watchlist = identity.watchlistScreening as Record<string, unknown> | undefined;
+    if (watchlist) {
+      if (watchlist.watchlistScore != null) riskEntries.push(['Watchlist Score', watchlist.watchlistScore]);
+      if (watchlist.globalWatchlistScore != null) riskEntries.push(['Global Watchlist Score', watchlist.globalWatchlistScore]);
+      if (watchlist.watchlistHits) riskEntries.push(['Watchlist Hits', Array.isArray(watchlist.watchlistHits) ? `${(watchlist.watchlistHits as unknown[]).length} hit(s)` : watchlist.watchlistHits]);
+    }
+
+    const risks = identity.riskScores as Record<string, unknown> | undefined;
+    if (risks) {
+      if (risks.phoneRiskScore != null) riskEntries.push(['Phone Risk Score', risks.phoneRiskScore]);
+      if (risks.emailRiskScore != null) riskEntries.push(['Email Risk Score', risks.emailRiskScore]);
+      if (risks.addressRiskScore != null) riskEntries.push(['Address Risk Score', risks.addressRiskScore]);
+      if (risks.namePhoneCorrelation != null) riskEntries.push(['Name-Phone Correlation', risks.namePhoneCorrelation]);
+      if (risks.nameAddressCorrelation != null) riskEntries.push(['Name-Address Correlation', risks.nameAddressCorrelation]);
+      if (risks.sigmaScore != null) riskEntries.push(['Sigma Score', risks.sigmaScore]);
+    }
+
+    const bankVerified = identity.bankVerified as Record<string, unknown> | undefined;
+    if (bankVerified) {
+      if (bankVerified.email) riskEntries.push(['Bank Verified Email', bankVerified.email]);
+      if (bankVerified.phone) riskEntries.push(['Bank Verified Phone', bankVerified.phone]);
+      if (bankVerified.address) riskEntries.push(['Bank Verified Address', 'Yes']);
+    }
+  }
+
+  // Fallback to legacy riskScores (from event metadata)
+  if (riskEntries.length === 0) {
+    for (const [key, value] of Object.entries(report.riskScores)) {
+      if (typeof value === 'number' || typeof value === 'string') {
+        riskEntries.push([formatFieldName(key), value]);
+      }
+    }
+  }
+
+  return (
+    <Page size="A4" style={s.page}>
+      <PageHeader title="Risk & Compliance" />
+      <Text style={s.sectionTitle}>Risk & Compliance</Text>
+      <Text style={s.sectionSubtitle}>KYC, fraud, watchlist, and identity risk scores from verification providers.</Text>
+
+      {riskEntries.map(([label, value], i) => (
+        <View key={i} style={s.riskRow}>
+          <Text style={s.riskLabel}>{String(label)}</Text>
+          <Text style={[s.riskValue, {
+            color: typeof value === 'number' && (value as number) > 0.7 ? colors.red
+              : typeof value === 'number' && (value as number) < 0.3 ? colors.green
+              : String(value) === 'ACCEPT' ? colors.green
+              : String(value) === 'REJECT' ? colors.red
+              : colors.gray900
+          }]}>
+            {typeof value === 'number' ? (value as number).toFixed(3) : String(value)}
+          </Text>
+        </View>
+      ))}
+
+      {Array.isArray(report.riskScores.socureTags) && (
+        <View style={{ marginTop: 16 }}>
+          <Text style={{ fontSize: 10, fontFamily: 'Helvetica-Bold', color: colors.gray700, marginBottom: 6 }}>Socure Tags</Text>
+          {(report.riskScores.socureTags as string[]).map((tag, i) => (
+            <Text key={i} style={{ fontSize: 9, color: colors.gray500, paddingVertical: 2 }}>• {tag}</Text>
+          ))}
+        </View>
+      )}
+
+      <PageFooter generatedAt={report.generatedAt} />
+    </Page>
+  );
+}
+
 const MODULE_TITLES: Record<string, string> = {
   identity: 'Identity Verification',
   contact: 'Contact Information',
   financial: 'Financial Overview',
   credit: 'Credit Profile',
   employment: 'Employment Verification',
-  residence: 'Residence Information',
+  residence: 'Residence & Property',
   'buying-patterns': 'Spending Patterns',
   education: 'Education',
 };
@@ -411,43 +501,15 @@ export function PDFReport({ report, borrowerName, bankName, verificationId }: PD
         <PageFooter generatedAt={report.generatedAt} />
       </Page>
 
-      {/* Risk Scores Page (if we have Socure data) */}
-      {Object.keys(report.riskScores).length > 0 && (
-        <Page size="A4" style={s.page}>
-          <PageHeader title="Risk Assessment" />
-          <Text style={s.sectionTitle}>Risk Assessment</Text>
-          <Text style={s.sectionSubtitle}>Fraud, watchlist, and identity risk scores from verification providers.</Text>
-
-          {Object.entries(report.riskScores)
-            .filter(([, v]) => typeof v === 'number' || typeof v === 'string')
-            .map(([key, value]) => (
-              <View key={key} style={s.riskRow}>
-                <Text style={s.riskLabel}>{formatFieldName(key)}</Text>
-                <Text style={[s.riskValue, { color: typeof value === 'number' && (value as number) > 0.7 ? colors.red : typeof value === 'number' && (value as number) < 0.3 ? colors.green : colors.gray900 }]}>
-                  {typeof value === 'number' ? (value as number).toFixed(3) : String(value)}
-                </Text>
-              </View>
-            ))}
-
-          {/* Tags */}
-          {Array.isArray(report.riskScores.socureTags) && (
-            <View style={{ marginTop: 16 }}>
-              <Text style={{ fontSize: 10, fontFamily: 'Helvetica-Bold', color: colors.gray700, marginBottom: 6 }}>Socure Tags</Text>
-              {(report.riskScores.socureTags as string[]).map((tag, i) => (
-                <Text key={i} style={{ fontSize: 9, color: colors.gray500, paddingVertical: 2 }}>• {tag}</Text>
-              ))}
-            </View>
-          )}
-
-          <PageFooter generatedAt={report.generatedAt} />
-        </Page>
-      )}
+      {/* Risk & Compliance Page */}
+      <RiskPage report={report} />
 
       {/* Module Pages */}
       {orderedModules.map((moduleName) => (
         <ModuleSection
           key={moduleName}
           title={MODULE_TITLES[moduleName] ?? formatFieldName(moduleName)}
+          moduleName={moduleName}
           moduleData={report.modules[moduleName]}
           generatedAt={report.generatedAt}
         />

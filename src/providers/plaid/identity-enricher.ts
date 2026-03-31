@@ -145,12 +145,22 @@ export class PlaidIdentityEnricher extends BaseEnricher<IdentityData> {
     }
 
     return {
-      data,
+      data: {
+        ...data,
+        bankVerified: {
+          email: primaryEmail,
+          phone: primaryPhone,
+          address: primaryAddress ? {
+            street: primaryAddress.street,
+            city: primaryAddress.city,
+            state: primaryAddress.region,
+            zip: primaryAddress.postal_code,
+            country: primaryAddress.country || 'US',
+          } : undefined,
+        },
+      } as Partial<IdentityData>,
       metadata: {
         plaidRequestId: res.data.request_id,
-        bankVerifiedEmail: primaryEmail,
-        bankVerifiedPhone: primaryPhone,
-        bankVerifiedAddress: primaryAddress,
         ownerCount: owners.length,
         nameCount: primaryOwner.names.length,
       },

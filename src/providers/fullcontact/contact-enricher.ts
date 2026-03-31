@@ -104,15 +104,16 @@ export class FullContactContactEnricher extends BaseEnricher<ContactData> {
     }
 
     return {
-      data,
-      metadata: {
-        fullName: person.fullName,
-        ageRange: person.ageRange,
-        gender: person.gender,
-        location: person.location,
-        title: person.title,
-        organization: person.organization,
-      },
+      data: {
+        ...data,
+        fullName: person.fullName || undefined,
+        ageRange: person.ageRange || undefined,
+        gender: person.gender || undefined,
+        location: person.location || undefined,
+        jobTitle: person.title || undefined,
+        organization: person.organization || undefined,
+      } as Partial<ContactData>,
+      metadata: {},
     };
   }
 }

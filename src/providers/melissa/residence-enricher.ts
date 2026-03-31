@@ -17,6 +17,24 @@ interface ResidenceData {
   ownershipStatus: string;
   propertyType: string;
   moveInDate: string;
+  demographics: {
+    householdIncome?: string;
+    medianHouseholdIncome?: string;
+    householdSize?: string;
+    maritalStatus?: string;
+    presenceOfChildren?: string;
+    education?: string;
+    occupation?: string;
+    companyName?: string;
+    lengthOfResidence?: string;
+  };
+  geo: {
+    latitude?: string;
+    longitude?: string;
+    countyName?: string;
+    censusTract?: string;
+    countyFIPS?: string;
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -193,6 +211,28 @@ export class MelissaResidenceEnricher extends BaseEnricher<ResidenceData> {
       await putModule(userId, 'contact', { ...(existing ?? {}), ...contactUpdates });
     }
 
+    // Demographics
+    data.demographics = {
+      householdIncome: record.HouseholdIncome?.trim() || undefined,
+      medianHouseholdIncome: record.MedianHouseholdIncome?.trim() || undefined,
+      householdSize: record.HouseholdSize?.trim() || undefined,
+      maritalStatus: record.MaritalStatus?.trim() || undefined,
+      presenceOfChildren: record.PresenceOfChildren?.trim() || undefined,
+      education: record.Education?.trim() || undefined,
+      occupation: record.Occupation?.trim() || undefined,
+      companyName: record.CompanyName?.trim() || undefined,
+      lengthOfResidence: record.LengthOfResidence?.trim() || undefined,
+    };
+
+    // Geo
+    data.geo = {
+      latitude: record.Latitude?.trim() || undefined,
+      longitude: record.Longitude?.trim() || undefined,
+      countyName: record.CountyName?.trim() || undefined,
+      censusTract: record.CensusTract?.trim() || undefined,
+      countyFIPS: record.CountyFIPS?.trim() || undefined,
+    };
+
     return {
       data,
       metadata: {
@@ -200,24 +240,6 @@ export class MelissaResidenceEnricher extends BaseEnricher<ResidenceData> {
         addressKey: record.AddressKey,
         addressType: record.AddressTypeCode,
         deliveryIndicator: record.DeliveryIndicator,
-        // Demographics
-        gender: record.DemographicsGender?.trim() || record.Gender?.trim() || undefined,
-        householdIncome: record.HouseholdIncome?.trim() || undefined,
-        medianHouseholdIncome: record.MedianHouseholdIncome?.trim() || undefined,
-        householdSize: record.HouseholdSize?.trim() || undefined,
-        maritalStatus: record.MaritalStatus?.trim() || undefined,
-        presenceOfChildren: record.PresenceOfChildren?.trim() || undefined,
-        education: record.Education?.trim() || undefined,
-        occupation: record.Occupation?.trim() || undefined,
-        companyName: record.CompanyName?.trim() || undefined,
-        lengthOfResidence: record.LengthOfResidence?.trim() || undefined,
-        ethnicGroup: record.EthnicGroup?.trim() || undefined,
-        // Geo
-        latitude: record.Latitude?.trim() || undefined,
-        longitude: record.Longitude?.trim() || undefined,
-        countyName: record.CountyName?.trim() || undefined,
-        censusTract: record.CensusTract?.trim() || undefined,
-        countyFIPS: record.CountyFIPS?.trim() || undefined,
       },
     };
   }
