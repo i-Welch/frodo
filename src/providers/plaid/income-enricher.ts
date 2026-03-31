@@ -112,6 +112,7 @@ export class PlaidIncomeEnricher extends BaseEnricher<FinancialData> {
     const incomeStreams = income.items.flatMap((item) =>
       item.bank_income_sources.map((src) => ({
         source: src.employer?.name ?? src.income_description,
+        employerName: src.employer?.name ?? undefined,
         amount: Math.round(src.historical_average_monthly_gross_income.amount * 12),
         frequency: normalizeFrequency(src.pay_frequency),
         incomeCategory: src.income_category,

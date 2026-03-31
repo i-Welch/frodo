@@ -333,18 +333,26 @@ function compareCrossModule(
     if (isNaN(numB) || numB === 0) return null;
 
     if (Array.isArray(valueA)) {
-      const streams = valueA as { amount?: number; frequency?: string; source?: string }[];
+      const streams = valueA as { amount?: number; frequency?: string; source?: string; employerName?: string; incomeCategory?: string }[];
       if (streams.length === 0) return null;
 
-      // Try to find the stream matching the employer (from employment module)
-      // Fall back to the largest stream if no employer match
+      // Filter to SALARY streams for comparison against employer-reported salary
+      const salaryStreams = streams.filter((s) =>
+        !s.incomeCategory || s.incomeCategory === 'SALARY',
+      );
+      const candidates = salaryStreams.length > 0 ? salaryStreams : streams;
+
+      // Try to find the stream matching the Truework employer by name
       const employer = getNestedValue(modules, 'employment', 'employer');
-      let bestStream = streams[0];
+      let bestStream = candidates[0];
       if (employer && typeof employer === 'string') {
-        const match = streams.find((s) => s.source && fuzzyNameMatch(s.source, employer));
+        const match = candidates.find((s) => {
+          const name = s.employerName ?? s.source;
+          return name && fuzzyNameMatch(name, employer);
+        });
         if (match) bestStream = match;
       }
-      if (!bestStream) bestStream = streams.reduce((a, b) => ((a.amount ?? 0) > (b.amount ?? 0) ? a : b));
+      if (!bestStream) bestStream = candidates.reduce((a, b) => ((a.amount ?? 0) > (b.amount ?? 0) ? a : b));
 
       // Annualize based on frequency (safety net — enrichers should already annualize)
       numA = annualizeIncome(bestStream.amount ?? 0, bestStream.frequency);
@@ -366,8 +374,12 @@ function compareCrossModule(
   } else if (overlap.compareType === 'name') {
     let strA: string;
     if (Array.isArray(valueA)) {
-      // Extract employer/source name from first income stream
-      strA = (valueA as { source?: string }[])[0]?.source ?? '';
+      // Extract employer name from the SALARY income stream that best matches
+      const streams = valueA as { source?: string; employerName?: string; incomeCategory?: string }[];
+      const salaryStreams = streams.filter((s) => !s.incomeCategory || s.incomeCategory === 'SALARY');
+      const candidates = salaryStreams.length > 0 ? salaryStreams : streams;
+      // Prefer employerName (actual employer) over source (may be ACH description)
+      strA = candidates[0]?.employerName ?? candidates[0]?.source ?? '';
     } else {
       strA = String(valueA ?? '');
     }
