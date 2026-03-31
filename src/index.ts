@@ -35,10 +35,18 @@ import { registerBuiltinComponents } from './forms/components/index.js';
 import { initOtpProvider } from './forms/otp-provider.js';
 import { registerFullContactProvider } from './providers/fullcontact/index.js';
 import { registerMelissaProvider } from './providers/melissa/index.js';
+import { registerSocureProvider } from './providers/socure/index.js';
+import { registerPlaidProvider } from './providers/plaid/index.js';
+import { registerTrueworkProvider } from './providers/truework/index.js';
 
-registerMockEnrichers();
+if (config.nodeEnv !== 'production') {
+  registerMockEnrichers();
+}
 registerFullContactProvider();
 registerMelissaProvider();
+registerSocureProvider();
+registerPlaidProvider();
+registerTrueworkProvider();
 registerBuiltinComponents();
 initOtpProvider();
 

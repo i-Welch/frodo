@@ -304,8 +304,9 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
 
     // Build the form
     const steps = buildFormSteps(modules, person);
-    const allFields = steps.flatMap((s) => s.fields);
-    const requestedModules = [...new Set(allFields.map((f) => f.module))];
+
+    // Use ALL requested modules for consent, not just those with form steps
+    const requestedModules = [...new Set(modules)];
 
     const formDef: FormDefinition = {
       formId: `onboard-${tenant.tenantId.slice(0, 8)}-${Date.now()}`,

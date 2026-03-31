@@ -391,9 +391,14 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     }
 
     // ------- Data Collection -------
+    // For multi-step forms, formDefinition.fields is empty — use the current step's fields
+    const activeFields = formToken.formDefinition.steps && formToken.formDefinition.steps.length > 0
+      ? formToken.formDefinition.steps[formToken.currentStep ?? formToken.formDefinition.steps.length - 1].fields
+      : formToken.formDefinition.fields;
+
     // Validate fields (including custom component validation)
     const errors: string[] = [];
-    for (const field of formToken.formDefinition.fields) {
+    for (const field of activeFields) {
       const key = `${field.module}.${field.field}`;
       let value = submitted[key];
 
@@ -440,7 +445,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     // Write data as module updates + events
     // Group fields by module
     const moduleData = new Map<string, Record<string, unknown>>();
-    for (const field of formToken.formDefinition.fields) {
+    for (const field of activeFields) {
       const key = `${field.module}.${field.field}`;
       let value = submitted[key];
 
@@ -507,27 +512,58 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
 
     // Auto-enrichment: if this form was created by /onboard, run enrichers
     const onboardModules = (formToken as unknown as Record<string, unknown>).onboardModules as string[] | undefined;
+    const onboardWebhookUrl = (formToken as unknown as Record<string, unknown>).onboardWebhookUrl as string | undefined;
+    const tokenStr = formToken.token;
+    const tokenTenantId = formToken.tenantId;
+    const tokenUserId = formToken.userId;
+    const tokenFormId = formToken.formDefinition.formId;
+
     if (onboardModules && onboardModules.length > 0) {
       // Update status to enriching
-      updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'enriching');
+      updateVerificationFromFormToken(tokenTenantId, tokenStr, 'enriching');
 
-      log.info({ userId: formToken.userId, modules: onboardModules }, 'Auto-enriching after form completion');
+      log.info({ userId: tokenUserId, modules: onboardModules }, 'Auto-enriching after form completion');
       // Run enrichment in the background — don't block the user's response
       const enrichmentPromises = onboardModules.map((mod) =>
-        enrichModule(formToken.userId, mod, `form:${formToken.formDefinition.formId}`, formToken.tenantId)
+        enrichModule(tokenUserId, mod, `form:${tokenFormId}`, tokenTenantId)
           .catch((err) => log.warn({ module: mod, error: String(err) }, 'Auto-enrichment failed for module')),
       );
       // Fire and forget — enrichment runs after the response is sent
-      Promise.allSettled(enrichmentPromises).then((results) => {
+      // Delete form token AFTER enrichment completes so status updates work
+      Promise.allSettled(enrichmentPromises).then(async (results) => {
         const succeeded = results.filter((r) => r.status === 'fulfilled').length;
-        log.info({ userId: formToken.userId, succeeded, total: results.length }, 'Auto-enrichment complete');
+        log.info({ userId: tokenUserId, succeeded, total: results.length }, 'Auto-enrichment complete');
         // Update status to complete
-        updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'complete');
-      });
-    }
+        updateVerificationFromFormToken(tokenTenantId, tokenStr, 'complete');
 
-    // Clean up the form token
-    await deleteFormToken(formToken.token);
+        // Notify webhook if configured
+        if (onboardWebhookUrl) {
+          try {
+            await fetch(onboardWebhookUrl, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                event: 'enrichment.complete',
+                userId: tokenUserId,
+                modules: onboardModules,
+                succeeded,
+                total: results.length,
+                timestamp: new Date().toISOString(),
+              }),
+            });
+            log.info({ userId: tokenUserId, webhookUrl: onboardWebhookUrl }, 'Webhook notification sent');
+          } catch (err) {
+            log.warn({ userId: tokenUserId, webhookUrl: onboardWebhookUrl, error: String(err) }, 'Webhook notification failed');
+          }
+        }
+
+        // Clean up form token after enrichment and webhook are done
+        await deleteFormToken(tokenStr).catch(() => {});
+      });
+    } else {
+      // No enrichment — clean up immediately
+      await deleteFormToken(tokenStr);
+    }
 
     // JSON response for Frodo Collect clients
     if (isJsonClient) {

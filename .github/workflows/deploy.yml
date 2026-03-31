@@ -39,13 +39,41 @@ jobs:
           ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
           COOKIE_SECRET: ${{ secrets.COOKIE_SECRET_STAGING }}
+          PROVIDER_PLAID_CLIENT_ID: ${{ secrets.PROVIDER_PLAID_CLIENT_ID }}
+          PROVIDER_PLAID_SECRET: ${{ secrets.PROVIDER_PLAID_SECRET }}
+          PROVIDER_SOCURE_API_KEY: ${{ secrets.PROVIDER_SOCURE_API_KEY }}
+          PROVIDER_SOCURE_SDK_KEY: ${{ secrets.PROVIDER_SOCURE_SDK_KEY }}
+          PROVIDER_FULLCONTACT_API_KEY: ${{ secrets.PROVIDER_FULLCONTACT_API_KEY }}
+          PROVIDER_MELISSA_API_KEY: ${{ secrets.PROVIDER_MELISSA_API_KEY }}
+          PROVIDER_TRUEWORK_API_KEY: ${{ secrets.PROVIDER_TRUEWORK_API_KEY }}
+          PROVIDER_TRUEWORK_WEBHOOK_SECRET: ${{ secrets.PROVIDER_TRUEWORK_WEBHOOK_SECRET }}
+          CLERK_PUBLISHABLE_KEY: ${{ vars.CLERK_PUBLISHABLE_KEY }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+          BASE_URL: ${{ vars.STAGING_URL }}
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL_STAGING }}
         run: |
           TASK_DEF=$(aws ecs describe-task-definition --task-definition frodo-api-staging --query 'taskDefinition' --output json)
+
+          # Build env var overrides — only inject vars that are set
+          ENV_OVERRIDES="[]"
+          for VAR_NAME in COOKIE_SECRET PROVIDER_PLAID_CLIENT_ID PROVIDER_PLAID_SECRET \
+            PROVIDER_SOCURE_API_KEY PROVIDER_SOCURE_SDK_KEY PROVIDER_FULLCONTACT_API_KEY \
+            PROVIDER_MELISSA_API_KEY PROVIDER_TRUEWORK_API_KEY PROVIDER_TRUEWORK_WEBHOOK_SECRET \
+            CLERK_PUBLISHABLE_KEY CLERK_SECRET_KEY BASE_URL DASHBOARD_URL \
+            SOCURE_ENV TRUEWORK_ENV PROVIDER_SOCURE_WORKFLOW_NAME; do
+            VAL="${!VAR_NAME}"
+            if [ -n "$VAL" ]; then
+              ENV_OVERRIDES=$(echo "$ENV_OVERRIDES" | jq --arg name "$VAR_NAME" --arg val "$VAL" '. + [{"name":$name,"value":$val}]')
+            fi
+          done
+
+          # Merge: remove any existing keys we're overriding, then append new values
+          OVERRIDE_NAMES=$(echo "$ENV_OVERRIDES" | jq -r '.[].name')
           NEW_TASK_DEF=$(echo "$TASK_DEF" | jq \
             --arg IMAGE "$ECR_REGISTRY/frodo:$IMAGE_TAG" \
-            --arg COOKIE_SECRET "$COOKIE_SECRET" \
+            --argjson OVERRIDES "$ENV_OVERRIDES" \
             '.containerDefinitions[0].image = $IMAGE |
-             .containerDefinitions[0].environment = [.containerDefinitions[0].environment[] | select(.name != "COOKIE_SECRET")] + [{"name":"COOKIE_SECRET","value":$COOKIE_SECRET}] |
+             .containerDefinitions[0].environment = ([.containerDefinitions[0].environment[] | select(.name as $n | $OVERRIDES | map(.name) | index($n) | not)] + $OVERRIDES) |
              del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)')
           NEW_ARN=$(aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF" --query 'taskDefinition.taskDefinitionArn' --output text)
           echo "task_def_arn=$NEW_ARN" >> "$GITHUB_OUTPUT"
@@ -82,13 +110,40 @@ jobs:
           ECR_REGISTRY: ${{ steps.ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
           COOKIE_SECRET: ${{ secrets.COOKIE_SECRET_PRODUCTION }}
+          PROVIDER_PLAID_CLIENT_ID: ${{ secrets.PROVIDER_PLAID_CLIENT_ID }}
+          PROVIDER_PLAID_SECRET: ${{ secrets.PROVIDER_PLAID_SECRET }}
+          PROVIDER_SOCURE_API_KEY: ${{ secrets.PROVIDER_SOCURE_API_KEY }}
+          PROVIDER_SOCURE_SDK_KEY: ${{ secrets.PROVIDER_SOCURE_SDK_KEY }}
+          PROVIDER_FULLCONTACT_API_KEY: ${{ secrets.PROVIDER_FULLCONTACT_API_KEY }}
+          PROVIDER_MELISSA_API_KEY: ${{ secrets.PROVIDER_MELISSA_API_KEY }}
+          PROVIDER_TRUEWORK_API_KEY: ${{ secrets.PROVIDER_TRUEWORK_API_KEY }}
+          PROVIDER_TRUEWORK_WEBHOOK_SECRET: ${{ secrets.PROVIDER_TRUEWORK_WEBHOOK_SECRET }}
+          CLERK_PUBLISHABLE_KEY: ${{ vars.CLERK_PUBLISHABLE_KEY }}
+          CLERK_SECRET_KEY: ${{ secrets.CLERK_SECRET_KEY }}
+          BASE_URL: https://app.reportraven.tech
+          DASHBOARD_URL: ${{ vars.DASHBOARD_URL_PRODUCTION }}
         run: |
           TASK_DEF=$(aws ecs describe-task-definition --task-definition frodo-api-production --query 'taskDefinition' --output json)
+
+          # Build env var overrides — only inject vars that are set
+          ENV_OVERRIDES="[]"
+          for VAR_NAME in COOKIE_SECRET PROVIDER_PLAID_CLIENT_ID PROVIDER_PLAID_SECRET \
+            PROVIDER_SOCURE_API_KEY PROVIDER_SOCURE_SDK_KEY PROVIDER_FULLCONTACT_API_KEY \
+            PROVIDER_MELISSA_API_KEY PROVIDER_TRUEWORK_API_KEY PROVIDER_TRUEWORK_WEBHOOK_SECRET \
+            CLERK_PUBLISHABLE_KEY CLERK_SECRET_KEY BASE_URL DASHBOARD_URL \
+            SOCURE_ENV TRUEWORK_ENV PROVIDER_SOCURE_WORKFLOW_NAME; do
+            VAL="${!VAR_NAME}"
+            if [ -n "$VAL" ]; then
+              ENV_OVERRIDES=$(echo "$ENV_OVERRIDES" | jq --arg name "$VAR_NAME" --arg val "$VAL" '. + [{"name":$name,"value":$val}]')
+            fi
+          done
+
+          # Merge: remove any existing keys we're overriding, then append new values
           NEW_TASK_DEF=$(echo "$TASK_DEF" | jq \
             --arg IMAGE "$ECR_REGISTRY/frodo:$IMAGE_TAG" \
-            --arg COOKIE_SECRET "$COOKIE_SECRET" \
+            --argjson OVERRIDES "$ENV_OVERRIDES" \
             '.containerDefinitions[0].image = $IMAGE |
-             .containerDefinitions[0].environment = [.containerDefinitions[0].environment[] | select(.name != "COOKIE_SECRET")] + [{"name":"COOKIE_SECRET","value":$COOKIE_SECRET}] |
+             .containerDefinitions[0].environment = ([.containerDefinitions[0].environment[] | select(.name as $n | $OVERRIDES | map(.name) | index($n) | not)] + $OVERRIDES) |
              del(.taskDefinitionArn, .revision, .status, .requiresAttributes, .compatibilities, .registeredAt, .registeredBy)')
           NEW_ARN=$(aws ecs register-task-definition --cli-input-json "$NEW_TASK_DEF" --query 'taskDefinition.taskDefinitionArn' --output text)
           echo "task_def_arn=$NEW_ARN" >> "$GITHUB_OUTPUT"

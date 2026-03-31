@@ -62,10 +62,10 @@ export const plaidLinkRoutes = new Elysia({ prefix: '/plaid' })
       {
         user: { client_user_id: formToken.userId },
         client_name: 'RAVEN',
-        products: ['transactions'],
+        products: ['transactions', 'identity', 'liabilities'],
         country_codes: ['US'],
         language: 'en',
-        webhook: 'https://app.reportraven.tech/webhooks/plaid',
+        webhook: `${process.env.BASE_URL ?? 'https://app.reportraven.tech'}/webhooks/plaid`,
       },
     );
 
