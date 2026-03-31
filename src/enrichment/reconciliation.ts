@@ -204,7 +204,7 @@ export function reconcile(
     const sourceA = findSourceForField(events, overlap.fieldA.module, overlap.fieldA.field);
     const sourceB = findSourceForField(events, overlap.fieldB.module, overlap.fieldB.field);
 
-    const comparison = compareCrossModule(overlap, valueA, valueB, sourceA, sourceB);
+    const comparison = compareCrossModule(overlap, valueA, valueB, sourceA, sourceB, modules);
     if (comparison) {
       crossModuleComparisons.push(comparison);
     }
@@ -314,6 +314,7 @@ function compareCrossModule(
   valueB: unknown,
   sourceA: string,
   sourceB: string,
+  modules: Record<string, Record<string, unknown>>,
 ): CrossModuleComparison | null {
   const result: CrossModuleComparison = {
     label: overlap.label,
@@ -324,25 +325,42 @@ function compareCrossModule(
   };
 
   if (overlap.compareType === 'numeric') {
-    // Compare income: sum of incomeStreams amounts vs salary
+    // Compare income: find the best matching income stream vs employer salary
+    // Both Plaid and Truework enrichers normalize to annual amounts, but we
+    // also handle raw frequency-based amounts as a safety net.
     let numA: number;
+    const numB = typeof valueB === 'number' ? valueB : parseFloat(String(valueB));
+    if (isNaN(numB) || numB === 0) return null;
+
     if (Array.isArray(valueA)) {
-      // Sum income streams (annualized amounts)
-      numA = (valueA as { amount?: number }[]).reduce((sum, s) => sum + (s.amount ?? 0), 0);
+      const streams = valueA as { amount?: number; frequency?: string; source?: string }[];
+      if (streams.length === 0) return null;
+
+      // Try to find the stream matching the employer (from employment module)
+      // Fall back to the largest stream if no employer match
+      const employer = getNestedValue(modules, 'employment', 'employer');
+      let bestStream = streams[0];
+      if (employer && typeof employer === 'string') {
+        const match = streams.find((s) => s.source && fuzzyNameMatch(s.source, employer));
+        if (match) bestStream = match;
+      }
+      if (!bestStream) bestStream = streams.reduce((a, b) => ((a.amount ?? 0) > (b.amount ?? 0) ? a : b));
+
+      // Annualize based on frequency (safety net — enrichers should already annualize)
+      numA = annualizeIncome(bestStream.amount ?? 0, bestStream.frequency);
     } else {
       numA = typeof valueA === 'number' ? valueA : parseFloat(String(valueA));
     }
-    const numB = typeof valueB === 'number' ? valueB : parseFloat(String(valueB));
 
-    if (isNaN(numA) || isNaN(numB) || numA === 0 || numB === 0) return null;
+    if (isNaN(numA) || numA === 0) return null;
 
     const diff = Math.abs(numA - numB);
     const avg = (numA + numB) / 2;
     result.percentDifference = Math.round((diff / avg) * 100);
     result.match = result.percentDifference <= 15; // Within 15% is a match
     result.note = result.match
-      ? `Bank income ($${numA.toLocaleString()}) and employer salary ($${numB.toLocaleString()}) are within ${result.percentDifference}% — consistent.`
-      : `Bank income ($${numA.toLocaleString()}) differs from employer salary ($${numB.toLocaleString()}) by ${result.percentDifference}% — review recommended.`;
+      ? `Bank income ($${Math.round(numA).toLocaleString()}/yr) and employer salary ($${Math.round(numB).toLocaleString()}/yr) are within ${result.percentDifference}% — consistent.`
+      : `Bank income ($${Math.round(numA).toLocaleString()}/yr) differs from employer salary ($${Math.round(numB).toLocaleString()}/yr) by ${result.percentDifference}% — review recommended.`;
     result.fieldA.value = numA;
     result.fieldB.value = numB;
   } else if (overlap.compareType === 'name') {
@@ -373,6 +391,37 @@ function compareCrossModule(
   }
 
   return result;
+}
+
+/**
+ * Normalize income to annual amount based on frequency.
+ * Plaid frequencies: MONTHLY, BI_WEEKLY, WEEKLY, SEMI_MONTHLY, DAILY, ANNUALLY
+ * Truework frequencies: annual, monthly, bi-weekly, weekly, semi-monthly
+ * If frequency is missing or amount already looks annual (>10x typical monthly), assume annual.
+ */
+function annualizeIncome(amount: number, frequency?: string): number {
+  if (!frequency) {
+    // Heuristic: if amount > 20000, it's probably already annual
+    return amount;
+  }
+  const freq = frequency.toLowerCase().replace(/[_-]/g, '');
+  switch (freq) {
+    case 'annual':
+    case 'annually':
+      return amount;
+    case 'monthly':
+      return amount * 12;
+    case 'biweekly':
+      return amount * 26;
+    case 'weekly':
+      return amount * 52;
+    case 'semimonthly':
+      return amount * 24;
+    case 'daily':
+      return amount * 260; // ~working days
+    default:
+      return amount;
+  }
 }
 
 function fuzzyNameMatch(a: string, b: string): boolean {
