@@ -1,0 +1,114 @@
+[
+  {
+    "provider": "melissa",
+    "endpoint": "/WEB/LookupProperty/?id=test-api-key&format=JSON&cols=grpParcel%2CgrpLegal%2CgrpPrimaryOwner%2CgrpOwnerAddress%2CgrpTax%2CgrpPropertyUseInfo%2CgrpPropertySize%2CgrpIntStructInfo%2CgrpIntRoomInfo%2CgrpEstimatedValue%2CgrpSaleInfo&ff=1+Bag+End+Hobbiton+SH+00001",
+    "method": "GET",
+    "status": 200,
+    "responseBody": {
+      "Version": "9.4.2.1108",
+      "TransmissionResults": "",
+      "TotalRecords": 1,
+      "Records": [
+        {
+          "Results": "YS02,YS07,YS05,YC02",
+          "Parcel": {
+            "FIPSCode": "06001",
+            "County": "Shire County",
+            "UnformattedAPN": "0001-0001",
+            "FormattedAPN": "00010001",
+            "CensusTract": "1234.56",
+            "CensusBlock": "001",
+            "CBSAName": "Shire Metro Area"
+          },
+          "Legal": {
+            "LegalDescription": "LOT:1 SUBD:BAG END CITY/MUNI/TWP:HOBBITON",
+            "Subdivision": "BAG END",
+            "Block1": "1",
+            "LotNumber1": "1"
+          },
+          "PropertyAddress": {
+            "Address": "1 Bag End",
+            "City": "Hobbiton",
+            "State": "SH",
+            "Zip": "00001",
+            "AddressKey": "00001000100",
+            "MAK": "1234567890",
+            "Latitude": "37.8721",
+            "Longitude": "-122.2578"
+          },
+          "PrimaryOwner": {
+            "Name1Full": "Baggins Bilbo",
+            "Name1First": "Bilbo",
+            "Name1Last": "Baggins",
+            "CompanyFlag": "",
+            "Type": "Individual"
+          },
+          "OwnerAddress": {
+            "OwnerOccupied": "Y"
+          },
+          "Tax": {
+            "YearAssessed": "2025",
+            "AssessedValueTotal": "450000",
+            "AssessedValueImprovements": "320000",
+            "AssessedValueLand": "130000",
+            "MarketValueYear": "2025",
+            "MarketValueTotal": "525000",
+            "MarketValueImprovements": "375000",
+            "MarketValueLand": "150000",
+            "TaxFiscalYear": "2025",
+            "TaxBilledAmount": "5625.00",
+            "TaxDelinquentYear": "",
+            "LastTaxRollUpdate": "20260127",
+            "AssrLastUpdated": "20260127"
+          },
+          "PropertyUseInfo": {
+            "YearBuilt": "1840",
+            "YearBuiltEffective": "1840",
+            "ZonedCodeLocal": "R1",
+            "PropertyUseGroup": "Single Family Residential",
+            "PropertyUseStandardized": "100"
+          },
+          "SaleInfo": {
+            "AssessorLastSaleDate": "20011219",
+            "AssessorLastSaleAmount": "300000",
+            "AssessorPriorSaleDate": "19680922",
+            "AssessorPriorSaleAmount": "25000",
+            "DeedLastSaleDate": "20011219",
+            "DeedLastSalePrice": "300000"
+          },
+          "PropertySize": {
+            "AreaBuilding": "2400",
+            "AreaBuildingDefinitionCode": "L",
+            "AreaGross": "2400",
+            "Area1stFloor": "1200",
+            "Area2ndFloor": "1200",
+            "AreaLotSF": "10890.00",
+            "AreaLotAcres": "0.2500",
+            "LotDepth": "165.0",
+            "LotWidth": "66.0"
+          },
+          "IntStructInfo": {
+            "Construction": "Wood Frame"
+          },
+          "IntRoomInfo": {
+            "BathCount": "2",
+            "BathPartialCount": "1",
+            "BedroomsCount": "4",
+            "RoomsCount": "8",
+            "StoriesCount": "2",
+            "UnitsCount": "1"
+          },
+          "EstimatedValue": {
+            "EstimatedValue": "510000",
+            "EstimatedMinValue": "460000",
+            "EstimatedMaxValue": "560000",
+            "ConfidenceScore": "85",
+            "ValuationDate": "20260301"
+          }
+        }
+      ]
+    },
+    "headers": { "content-type": "application/json" },
+    "recordedAt": "2026-03-31T12:00:00.000Z"
+  }
+]
