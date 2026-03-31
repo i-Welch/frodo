@@ -1,6 +1,7 @@
 import { auth } from '@clerk/nextjs/server';
 import Link from 'next/link';
 import { api } from '@/lib/api';
+import { NewVerificationButton } from './new-verification-button';
 
 interface Verification {
   requestId: string;
@@ -29,12 +30,7 @@ export default async function VerificationsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-semibold tracking-tight">Verifications</h1>
-        <Link
-          href="/dashboard/verifications/new"
-          className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800 transition-colors"
-        >
-          New Verification
-        </Link>
+        <NewVerificationButton />
       </div>
 
       <div className="rounded-lg border border-gray-200 bg-white overflow-hidden">
@@ -51,7 +47,7 @@ export default async function VerificationsPage() {
             {verifications.length === 0 ? (
               <tr>
                 <td colSpan={4} className="px-4 py-8 text-center text-gray-400">
-                  No verifications yet. <Link href="/dashboard/verifications/new" className="text-gray-900 underline">Create one</Link>
+                  No verifications yet. Use the button above to create one.
                 </td>
               </tr>
             ) : (

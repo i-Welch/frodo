@@ -21,7 +21,6 @@ export default function DashboardLayout({
         <nav className="flex-1 px-3 py-4 space-y-1">
           <NavLink href="/dashboard">Dashboard</NavLink>
           <NavLink href="/dashboard/verifications">Verifications</NavLink>
-          <NavLink href="/dashboard/verifications/new">New Verification</NavLink>
         </nav>
 
         <div className="border-t border-gray-200 px-4 py-3 space-y-3">
