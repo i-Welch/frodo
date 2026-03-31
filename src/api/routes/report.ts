@@ -7,6 +7,7 @@ import { getEventsForUser } from '../../store/event-store.js';
 import { resolveFields } from '../../events/resolver.js';
 import { checkStaleness } from '../../enrichment/staleness.js';
 import { listProviderTokens } from '../../providers/token-store.js';
+import { reconcile, type ReconciliationReport } from '../../enrichment/reconciliation.js';
 import type { DataEvent } from '../../events/types.js';
 import type { ResolvedField } from '../../events/resolver.js';
 import type { ApiError } from '../../types.js';
@@ -19,9 +20,15 @@ interface FieldMetadata {
   value: unknown;
   confidence: number;
   source: string;
+  /** All sources that contributed to this field */
+  allSources: string[];
   lastUpdated: string;
   isStale: boolean;
   goodBy: string;
+  /** Reconciled confidence (boosted if multiple sources agree) */
+  reconciledConfidence?: number;
+  /** Reconciliation status for this field */
+  reconciliationStatus?: 'confirmed' | 'majority' | 'disputed';
 }
 
 interface ModuleReport {
@@ -44,6 +51,7 @@ export interface BorrowerReport {
   };
   riskScores: Record<string, unknown>;
   linkedProviders: string[];
+  reconciliation: ReconciliationReport;
 }
 
 // ---------------------------------------------------------------------------
@@ -101,6 +109,15 @@ export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
       const moduleEvents = allEvents.filter((e) => e.module === moduleName);
       const resolved = resolveFields(moduleEvents, now);
 
+      // Collect ALL sources that wrote each field
+      const fieldSources = new Map<string, Set<string>>();
+      for (const event of moduleEvents) {
+        for (const change of event.changes) {
+          if (!fieldSources.has(change.field)) fieldSources.set(change.field, new Set());
+          fieldSources.get(change.field)!.add(event.source.source);
+        }
+      }
+
       // Build per-field metadata
       const fields: Record<string, FieldMetadata> = {};
       for (const [fieldName, fieldData] of Object.entries(resolved)) {
@@ -111,6 +128,7 @@ export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
           value: fieldData.value,
           confidence: fieldData.confidence,
           source: fieldData.source,
+          allSources: [...(fieldSources.get(fieldName) ?? [])],
           lastUpdated: fieldData.timestamp,
           isStale,
           goodBy: fieldData.goodBy,
@@ -118,6 +136,18 @@ export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
       }
 
       moduleReports[moduleName] = { data, fields };
+    }
+
+    // Reconciliation — compare overlapping data across providers
+    const reconciliationReport = reconcile(allEvents, modules);
+
+    // Apply reconciled confidence to field metadata
+    for (const agreement of reconciliationReport.fieldAgreements) {
+      const moduleReport = moduleReports[agreement.module];
+      if (moduleReport?.fields[agreement.field]) {
+        moduleReport.fields[agreement.field].reconciledConfidence = agreement.reconciledConfidence;
+        moduleReport.fields[agreement.field].reconciliationStatus = agreement.status;
+      }
     }
 
     // Extract risk scores from enrichment events metadata
@@ -146,6 +176,7 @@ export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
       staleness,
       riskScores,
       linkedProviders,
+      reconciliation: reconciliationReport,
     };
 
     return report;

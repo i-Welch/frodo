@@ -91,26 +91,37 @@ export default async function VerificationDetailPage({
                   {Object.entries(moduleData.data)
                     .filter(([field]) => !RISK_FIELDS.includes(field))
                     .map(([field, value]) => {
-                    const meta = moduleData.fields[field] as { confidence?: number; source?: string; isStale?: boolean } | undefined;
+                    const meta = moduleData.fields[field] as { confidence?: number; reconciledConfidence?: number; reconciliationStatus?: string; source?: string; allSources?: string[]; isStale?: boolean } | undefined;
+                    const allSources = meta?.allSources ?? (meta?.source ? [meta.source] : []);
+                    const displayConfidence = meta?.reconciledConfidence ?? meta?.confidence;
                     return (
                       <div key={field}>
                         <dt className="flex items-center gap-2 text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">
                           {formatFieldName(field)}
-                          {meta?.source && (
-                            <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 normal-case tracking-normal">
-                              {meta.source}
+                          {allSources.map((src) => (
+                            <span key={src} className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 normal-case tracking-normal">
+                              {src}
                             </span>
-                          )}
-                          {meta?.isStale && (
+                          ))}
+                          {meta?.reconciliationStatus === 'confirmed' && allSources.length > 1 ? (
+                            <span className="inline-flex items-center rounded-full bg-green-100 px-1.5 py-0.5 text-[10px] font-medium text-green-700 normal-case tracking-normal">
+                              verified
+                            </span>
+                          ) : meta?.reconciliationStatus === 'disputed' ? (
+                            <span className="inline-flex items-center rounded-full bg-red-100 px-1.5 py-0.5 text-[10px] font-medium text-red-700 normal-case tracking-normal">
+                              disputed
+                            </span>
+                          ) : null}
+                          {meta?.isStale ? (
                             <span className="inline-flex items-center rounded-full bg-yellow-100 px-1.5 py-0.5 text-[10px] font-medium text-yellow-800 normal-case tracking-normal">
                               stale
                             </span>
-                          )}
-                          {meta?.confidence != null && (
+                          ) : null}
+                          {displayConfidence != null ? (
                             <span className="text-[10px] text-gray-400 normal-case tracking-normal">
-                              {Math.round(meta.confidence * 100)}%
+                              {Math.round(displayConfidence * 100)}%
                             </span>
-                          )}
+                          ) : null}
                         </dt>
                         <dd className="text-sm text-gray-900">
                           <FieldValue value={value} field={field} />
@@ -123,6 +134,9 @@ export default async function VerificationDetailPage({
             </div>
               );
             })}
+
+          {/* Cross-source reconciliation */}
+          <ReconciliationSection report={report} />
 
           {/* Audit trail */}
           <div className="rounded-lg border border-gray-200 bg-white">
@@ -342,6 +356,84 @@ function ScoreCard({ label, value }: { label: string; value: number }) {
       <p className={`text-lg font-mono font-semibold ${
         numValue > 0.7 ? 'text-red-600' : numValue < 0.3 ? 'text-green-600' : 'text-gray-900'
       }`}>{displayValue}</p>
+    </div>
+  );
+}
+
+function ReconciliationSection({ report }: { report: Record<string, unknown> }) {
+  const reconciliation = report.reconciliation as {
+    crossModuleComparisons?: { label: string; match: boolean; note: string; percentDifference?: number; fieldA: { source: string }; fieldB: { source: string } }[];
+    fieldAgreements?: { field: string; module: string; status: string; agreeing: { source: string }[]; disagreeing: { source: string; value: unknown }[] }[];
+    summary?: { confirmed: number; disputed: number; crossModuleMatches: number; crossModuleConflicts: number };
+  } | undefined;
+
+  if (!reconciliation) return null;
+  const comparisons = reconciliation.crossModuleComparisons ?? [];
+  const agreements = reconciliation.fieldAgreements ?? [];
+  const disputed = agreements.filter((a) => a.status === 'disputed');
+
+  if (comparisons.length === 0 && disputed.length === 0) return null;
+
+  return (
+    <div className="rounded-lg border border-gray-200 bg-white">
+      <div className="border-b border-gray-200 px-4 py-3">
+        <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-500">Cross-Source Verification</h2>
+      </div>
+      <div className="p-4 space-y-4">
+        {/* Summary */}
+        {reconciliation.summary && (
+          <div className="flex gap-4 text-sm">
+            {reconciliation.summary.confirmed > 0 && (
+              <span className="text-green-700">{reconciliation.summary.confirmed} field(s) confirmed by multiple sources</span>
+            )}
+            {reconciliation.summary.disputed > 0 && (
+              <span className="text-red-700">{reconciliation.summary.disputed} field(s) disputed</span>
+            )}
+          </div>
+        )}
+
+        {/* Disputed fields */}
+        {disputed.length > 0 && (
+          <div className="space-y-2">
+            <h3 className="text-xs font-semibold text-red-700 uppercase tracking-wider">Discrepancies</h3>
+            {disputed.map((a, i) => (
+              <div key={i} className="rounded-md bg-red-50 border border-red-200 px-3 py-2 text-sm">
+                <span className="font-medium text-red-800">{formatFieldName(a.field)}</span>
+                <span className="text-red-600"> ({a.module})</span>
+                <div className="mt-1 text-xs text-red-700">
+                  Agreeing: {a.agreeing.map((s) => s.source).join(', ')} | Disagreeing: {a.disagreeing.map((s) => `${s.source} (${typeof s.value === 'object' ? JSON.stringify(s.value) : String(s.value)})`).join(', ')}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Cross-module comparisons */}
+        {comparisons.length > 0 && (
+          <div className="space-y-2">
+            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Cross-Module Comparisons</h3>
+            {comparisons.map((c, i) => (
+              <div key={i} className={`rounded-md border px-3 py-2 text-sm ${c.match ? 'bg-green-50 border-green-200' : 'bg-yellow-50 border-yellow-200'}`}>
+                <div className="flex items-center gap-2">
+                  <span className={`text-xs font-medium ${c.match ? 'text-green-700' : 'text-yellow-700'}`}>
+                    {c.match ? 'MATCH' : 'REVIEW'}
+                  </span>
+                  <span className="font-medium text-gray-900">{c.label}</span>
+                  {c.percentDifference != null && (
+                    <span className="text-xs text-gray-500">({c.percentDifference}% difference)</span>
+                  )}
+                </div>
+                <p className="text-xs text-gray-600 mt-1">{c.note}</p>
+                <div className="flex gap-3 mt-1 text-[10px] text-gray-400">
+                  <span>{c.fieldA.source}</span>
+                  <span>vs</span>
+                  <span>{c.fieldB.source}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -10,9 +10,12 @@ interface FieldMeta {
   value: unknown;
   confidence?: number;
   source?: string;
+  allSources?: string[];
   lastUpdated?: string;
   isStale?: boolean;
   goodBy?: string;
+  reconciledConfidence?: number;
+  reconciliationStatus?: string;
 }
 
 interface ModuleReport {
@@ -27,6 +30,20 @@ interface AuditEvent {
   changes: { field: string; newValue: unknown }[];
 }
 
+interface CrossModuleComparison {
+  label: string;
+  match: boolean;
+  note: string;
+  percentDifference?: number;
+  fieldA: { source: string };
+  fieldB: { source: string };
+}
+
+interface ReconciliationData {
+  crossModuleComparisons?: CrossModuleComparison[];
+  summary?: { confirmed: number; disputed: number; crossModuleMatches: number; crossModuleConflicts: number };
+}
+
 interface ReportData {
   userId: string;
   generatedAt: string;
@@ -34,6 +51,7 @@ interface ReportData {
   auditTrail: AuditEvent[];
   riskScores: Record<string, unknown>;
   linkedProviders: string[];
+  reconciliation?: ReconciliationData;
   staleness: {
     staleModules: { module: string; staleCount: number; freshCount: number; totalCount: number }[];
   };
@@ -297,13 +315,16 @@ function PageFooter({ generatedAt }: { generatedAt: string }) {
   );
 }
 
-function FieldRow({ label, value, source, confidence }: { label: string; value: string; source?: string; confidence?: number }) {
-  const sourceText = [source, confidence != null ? `${Math.round(confidence * 100)}%` : ''].filter(Boolean).join(' · ');
+function FieldRow({ label, value, sources, confidence, reconciliationStatus }: { label: string; value: string; sources?: string[]; confidence?: number; reconciliationStatus?: string }) {
+  const sourceText = (sources ?? []).join(', ');
+  const confText = confidence != null ? `${Math.round(confidence * 100)}%` : '';
+  const statusText = reconciliationStatus === 'confirmed' && (sources?.length ?? 0) > 1 ? ' [verified]' : reconciliationStatus === 'disputed' ? ' [disputed]' : '';
+  const metaText = [sourceText, confText].filter(Boolean).join(' · ') + statusText;
   return (
     <View style={s.fieldRow}>
       <Text style={s.fieldLabel}>{label}</Text>
       <Text style={s.fieldValue}>{value}</Text>
-      <Text style={s.fieldSource}>{sourceText}</Text>
+      <Text style={[s.fieldSource, { width: 120, color: reconciliationStatus === 'disputed' ? colors.red : colors.gray400 }]}>{metaText}</Text>
     </View>
   );
 }
@@ -336,8 +357,9 @@ function ModuleSection({ title, subtitle, moduleData, generatedAt, moduleName }:
             key={field}
             label={formatFieldName(field)}
             value={formatValue(value, field)}
-            source={meta?.source}
-            confidence={meta?.confidence}
+            sources={meta?.allSources ?? (meta?.source ? [meta.source] : undefined)}
+            confidence={meta?.reconciledConfidence ?? meta?.confidence}
+            reconciliationStatus={meta?.reconciliationStatus}
           />
         );
       })}
@@ -467,6 +489,55 @@ function RiskPage({ report }: { report: ReportData }) {
   );
 }
 
+function ReconciliationPage({ report }: { report: ReportData }) {
+  const recon = report.reconciliation;
+  if (!recon) return null;
+  const comparisons = recon.crossModuleComparisons ?? [];
+  if (comparisons.length === 0 && !recon.summary?.disputed) return null;
+
+  return (
+    <Page size="A4" style={s.page}>
+      <PageHeader title="Cross-Source Verification" />
+      <Text style={s.sectionTitle}>Cross-Source Verification</Text>
+      <Text style={s.sectionSubtitle}>Comparison of data from multiple providers to verify consistency.</Text>
+
+      {recon.summary && (
+        <View style={{ flexDirection: 'row', gap: 24, marginBottom: 16 }}>
+          <Text style={{ fontSize: 9, color: colors.green }}>
+            {recon.summary.confirmed} confirmed
+          </Text>
+          {recon.summary.disputed > 0 && (
+            <Text style={{ fontSize: 9, color: colors.red }}>
+              {recon.summary.disputed} disputed
+            </Text>
+          )}
+          <Text style={{ fontSize: 9, color: colors.green }}>
+            {recon.summary.crossModuleMatches} cross-module match(es)
+          </Text>
+          {recon.summary.crossModuleConflicts > 0 && (
+            <Text style={{ fontSize: 9, color: colors.yellow }}>
+              {recon.summary.crossModuleConflicts} cross-module conflict(s)
+            </Text>
+          )}
+        </View>
+      )}
+
+      {comparisons.map((c, i) => (
+        <View key={i} style={[s.riskRow, { borderBottomColor: c.match ? colors.gray100 : colors.yellow }]}>
+          <View style={{ flex: 1 }}>
+            <Text style={{ fontSize: 9, fontFamily: 'Helvetica-Bold', color: c.match ? colors.green : colors.yellow }}>{c.match ? 'MATCH' : 'REVIEW'}</Text>
+            <Text style={{ fontSize: 9, color: colors.gray700, marginTop: 2 }}>{c.label}</Text>
+            <Text style={{ fontSize: 8, color: colors.gray400, marginTop: 1 }}>{c.note}</Text>
+            <Text style={{ fontSize: 7, color: colors.gray400, marginTop: 1 }}>{c.fieldA.source} vs {c.fieldB.source}{c.percentDifference != null ? ` (${c.percentDifference}% diff)` : ''}</Text>
+          </View>
+        </View>
+      ))}
+
+      <PageFooter generatedAt={report.generatedAt} />
+    </Page>
+  );
+}
+
 const MODULE_TITLES: Record<string, string> = {
   identity: 'Identity Verification',
   contact: 'Contact Information',
@@ -514,6 +585,9 @@ export function PDFReport({ report, borrowerName, bankName, verificationId }: PD
           generatedAt={report.generatedAt}
         />
       ))}
+
+      {/* Reconciliation Page */}
+      <ReconciliationPage report={report} />
 
       {/* Audit Trail Page */}
       <Page size="A4" style={s.page}>
