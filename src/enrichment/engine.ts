@@ -97,6 +97,33 @@ export async function enrichModule(
       const fields = Object.keys(result.data);
       report.successes.push({ source: enricher.source, fields });
 
+      // Process cross-module writes through the event system
+      if (result.crossModuleWrites) {
+        for (const write of result.crossModuleWrites) {
+          const crossModuleData = await getModule(userId, write.module);
+          const crossSourceConfig = getSourceConfig(enricher.source);
+          if (crossSourceConfig) {
+            const crossEvent = buildDataEvent(
+              userId,
+              write.module,
+              enricher.source,
+              actor,
+              tenantId,
+              { data: write.data },
+              crossSourceConfig,
+              crossModuleData,
+            );
+            await appendEvent(crossEvent);
+            // Persist the cross-module data
+            await materializeModule(userId, write.module, { persist: true });
+            log.debug(
+              { source: enricher.source, crossModule: write.module, fields: Object.keys(write.data) },
+              'Cross-module write persisted via event system',
+            );
+          }
+        }
+      }
+
       log.debug(
         { source: enricher.source, fields },
         'Enricher succeeded',

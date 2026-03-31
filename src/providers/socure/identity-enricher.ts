@@ -1,8 +1,8 @@
 import crypto from 'node:crypto';
 import { BaseEnricher } from '../base-enricher.js';
 import { getSocureBaseUrl, getSocureWorkflowName } from './config.js';
-import { getModule, putModule } from '../../store/user-store.js';
-import type { EnrichmentResult } from '../../enrichment/types.js';
+import { getModule } from '../../store/user-store.js';
+import type { EnrichmentResult, CrossModuleWrite } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
 // Module shape
@@ -152,12 +152,12 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
       }
     }
 
-    // Write Socure-verified address to the residence module
+    // Cross-module write for verified address (processed by engine through event system)
+    const crossModuleWrites: CrossModuleWrite[] = [];
     if (verifiedAddress) {
-      const existingResidence = await getModule(userId, 'residence');
-      await putModule(userId, 'residence', {
-        ...(existingResidence ?? {}),
-        currentAddress: verifiedAddress,
+      crossModuleWrites.push({
+        module: 'residence',
+        data: { currentAddress: verifiedAddress },
       });
     }
 
@@ -272,6 +272,7 @@ export class SocureIdentityEnricher extends BaseEnricher<IdentityData> {
           sigmaScore: riskScores.sigmaScore as number | undefined,
         },
       } as Partial<IdentityData>,
+      crossModuleWrites,
       metadata: {
         evalId: res.data.eval_id,
         status: res.data.status,

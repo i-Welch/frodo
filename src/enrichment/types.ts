@@ -9,9 +9,16 @@ export interface Enricher<T = Record<string, unknown>> {
   enrich(userId: string, current: Partial<T>): Promise<EnrichmentResult<T>>;
 }
 
+export interface CrossModuleWrite {
+  module: string;
+  data: Record<string, unknown>;
+}
+
 export interface EnrichmentResult<T = Record<string, unknown>> {
   data: Partial<T>;
   metadata?: Record<string, unknown>;
+  /** Write data to other modules through the event system (not direct putModule). */
+  crossModuleWrites?: CrossModuleWrite[];
 }
 
 export interface EnrichmentReport {

@@ -1,6 +1,6 @@
 import { BaseEnricher } from '../base-enricher.js';
-import { getModule, putModule } from '../../store/user-store.js';
-import type { EnrichmentResult } from '../../enrichment/types.js';
+import { getModule } from '../../store/user-store.js';
+import type { EnrichmentResult, CrossModuleWrite } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
 // Module shape
@@ -190,25 +190,24 @@ export class MelissaResidenceEnricher extends BaseEnricher<ResidenceData> {
       data.moveInDate = record.MoveDate.trim();
     }
 
-    // Cross-module writes: identity
+    // Cross-module writes (processed by engine through event system)
+    const crossModuleWrites: CrossModuleWrite[] = [];
+
     const identityUpdates: Record<string, unknown> = {};
     if (record.NameFirst?.trim() && !identity?.firstName) identityUpdates.firstName = record.NameFirst.trim();
     if (record.NameLast?.trim() && !identity?.lastName) identityUpdates.lastName = record.NameLast.trim();
     if (record.DateOfBirth?.trim() && !identity?.dateOfBirth) identityUpdates.dateOfBirth = record.DateOfBirth.trim();
 
     if (Object.keys(identityUpdates).length > 0) {
-      const existing = await getModule(userId, 'identity');
-      await putModule(userId, 'identity', { ...(existing ?? {}), ...identityUpdates });
+      crossModuleWrites.push({ module: 'identity', data: identityUpdates });
     }
 
-    // Cross-module writes: contact
     const contactUpdates: Record<string, unknown> = {};
     if (record.PhoneNumber?.trim() && !contact?.phone) contactUpdates.phone = record.PhoneNumber.trim();
     if (record.EmailAddress?.trim() && !contact?.email) contactUpdates.email = record.EmailAddress.trim();
 
     if (Object.keys(contactUpdates).length > 0) {
-      const existing = await getModule(userId, 'contact');
-      await putModule(userId, 'contact', { ...(existing ?? {}), ...contactUpdates });
+      crossModuleWrites.push({ module: 'contact', data: contactUpdates });
     }
 
     // Demographics
@@ -235,6 +234,7 @@ export class MelissaResidenceEnricher extends BaseEnricher<ResidenceData> {
 
     return {
       data,
+      crossModuleWrites,
       metadata: {
         melissaResults: record.Results,
         addressKey: record.AddressKey,

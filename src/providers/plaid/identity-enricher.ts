@@ -1,8 +1,7 @@
 import { BaseEnricher } from '../base-enricher.js';
 import { getProviderToken } from '../token-store.js';
 import { getPlaidBaseUrl } from './config.js';
-import { putModule, getModule } from '../../store/user-store.js';
-import type { EnrichmentResult } from '../../enrichment/types.js';
+import type { EnrichmentResult, CrossModuleWrite } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
 // Module shape — targets identity + contact
@@ -119,28 +118,31 @@ export class PlaidIdentityEnricher extends BaseEnricher<IdentityData> {
     const primaryAddress = primaryOwner.addresses.find((a) => a.primary)?.data
       ?? primaryOwner.addresses[0]?.data;
 
-    // Write bank-verified address to the residence module
+    // Build cross-module writes (processed by the engine through the event system)
+    const crossModuleWrites: CrossModuleWrite[] = [];
+
     if (primaryAddress?.street) {
-      const existingResidence = await getModule(userId, 'residence');
-      await putModule(userId, 'residence', {
-        ...(existingResidence ?? {}),
-        currentAddress: {
-          street: primaryAddress.street,
-          city: primaryAddress.city,
-          state: primaryAddress.region,
-          zip: primaryAddress.postal_code,
-          country: primaryAddress.country || 'US',
+      crossModuleWrites.push({
+        module: 'residence',
+        data: {
+          currentAddress: {
+            street: primaryAddress.street,
+            city: primaryAddress.city,
+            state: primaryAddress.region,
+            zip: primaryAddress.postal_code,
+            country: primaryAddress.country || 'US',
+          },
         },
       });
     }
 
-    // Write bank-verified contact info to the contact module
     if (primaryEmail || primaryPhone) {
-      const existingContact = await getModule(userId, 'contact');
-      await putModule(userId, 'contact', {
-        ...(existingContact ?? {}),
-        ...(primaryEmail ? { email: primaryEmail } : {}),
-        ...(primaryPhone ? { phone: primaryPhone } : {}),
+      crossModuleWrites.push({
+        module: 'contact',
+        data: {
+          ...(primaryEmail ? { email: primaryEmail } : {}),
+          ...(primaryPhone ? { phone: primaryPhone } : {}),
+        },
       });
     }
 
@@ -159,6 +161,7 @@ export class PlaidIdentityEnricher extends BaseEnricher<IdentityData> {
           } : undefined,
         },
       } as Partial<IdentityData>,
+      crossModuleWrites,
       metadata: {
         plaidRequestId: res.data.request_id,
         ownerCount: owners.length,
