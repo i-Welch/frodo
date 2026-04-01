@@ -144,13 +144,16 @@ export const userRoutes = new Elysia({ prefix: '/api/v1/users' })
       return err;
     }
 
-    // Delete all tenant-user links
-    for (const link of tenantLinks) {
-      await deleteLink(link.tenantId, link.userId);
-    }
+    // Only delete the requesting tenant's own link
+    await deleteLink(tenant.tenantId, userId);
 
-    // Remove all identity lookup entries
-    await removeIdentifiers(userId);
+    // Check if other tenant links remain
+    const remainingLinks = tenantLinks.filter((l) => l.tenantId !== tenant.tenantId);
+
+    // Only delete user data and identity lookups if no other tenants are linked
+    if (remainingLinks.length === 0) {
+      await removeIdentifiers(userId);
+    }
 
     return new Response(null, { status: 204 });
   });

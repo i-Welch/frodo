@@ -1,5 +1,6 @@
 import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
+import { Webhook } from 'svix';
 import { createTenant } from '../../store/tenant-store.js';
 import { createChildLogger } from '../../logger.js';
 import type { Tenant } from '../../tenancy/types.js';
@@ -16,7 +17,39 @@ const log = createChildLogger({ module: 'clerk-webhooks' });
  * Events: organization.created
  */
 export const clerkWebhookRoutes = new Elysia({ prefix: '/clerk' })
-  .post('/webhooks', async ({ body, set }) => {
+  .post('/webhooks', async ({ body, headers, set, request }) => {
+    // --- Svix webhook signature verification ---
+    const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
+    if (!webhookSecret) {
+      if (process.env.NODE_ENV === 'production') {
+        set.status = 503;
+        return { error: 'CLERK_WEBHOOK_SECRET is not configured' };
+      }
+      // Allow unverified in non-production
+    } else {
+      const svixId = (headers as Record<string, string | undefined>)['svix-id'];
+      const svixTimestamp = (headers as Record<string, string | undefined>)['svix-timestamp'];
+      const svixSignature = (headers as Record<string, string | undefined>)['svix-signature'];
+
+      if (!svixId || !svixTimestamp || !svixSignature) {
+        set.status = 401;
+        return { error: 'Missing Svix verification headers' };
+      }
+
+      try {
+        const wh = new Webhook(webhookSecret);
+        const rawBody = typeof body === 'string' ? body : JSON.stringify(body);
+        wh.verify(rawBody, {
+          'svix-id': svixId,
+          'svix-timestamp': svixTimestamp,
+          'svix-signature': svixSignature,
+        });
+      } catch (err) {
+        log.warn({ err }, 'Clerk webhook signature verification failed');
+        set.status = 401;
+        return { error: 'Webhook signature verification failed' };
+      }
+    }
     const payload = body as {
       type?: string;
       data?: Record<string, unknown>;

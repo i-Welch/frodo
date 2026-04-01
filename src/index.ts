@@ -39,7 +39,7 @@ import { registerSocureProvider } from './providers/socure/index.js';
 import { registerPlaidProvider } from './providers/plaid/index.js';
 import { registerTrueworkProvider } from './providers/truework/index.js';
 
-if (config.nodeEnv !== 'production') {
+if (config.nodeEnv === 'development' || config.nodeEnv === 'test') {
   registerMockEnrichers();
 }
 registerFullContactProvider();
@@ -111,7 +111,11 @@ async function checkKms(): Promise<HealthCheckResult> {
 
 const app = new Elysia()
   .use(cors({
-    origin: [config.dashboardUrl, 'http://localhost:3001', 'https://reportraven.tech'],
+    origin: [
+      config.dashboardUrl,
+      'https://reportraven.tech',
+      ...(config.nodeEnv !== 'production' ? ['http://localhost:3001'] : []),
+    ],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-Id'],
   }))

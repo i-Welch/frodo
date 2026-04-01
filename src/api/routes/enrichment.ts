@@ -24,7 +24,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
   // -----------------------------------------------------------------------
   // POST /api/v1/users/:id/enrich -- Enrich all modules
   // -----------------------------------------------------------------------
-  .post('/:id/enrich', async ({ params, tenant, apiKey, environment, set }) => {
+  .post('/:id/enrich', async ({ params, tenant, apiKey, clerkUserId, environment, set }) => {
     // Verify tenant-user link
     const link = await getLink(tenant.tenantId, params.id);
     if (!link) {
@@ -45,7 +45,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
       const report = await enrichModule(
         params.id,
         moduleName,
-        apiKey!.keyId,
+        apiKey?.keyId ?? clerkUserId ?? 'unknown',
         tenant.tenantId,
         sandbox,
       );
@@ -57,7 +57,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
   // -----------------------------------------------------------------------
   // POST /api/v1/users/:id/enrich/:module -- Enrich specific module
   // -----------------------------------------------------------------------
-  .post('/:id/enrich/:module', async ({ params, tenant, apiKey, environment, set }) => {
+  .post('/:id/enrich/:module', async ({ params, tenant, apiKey, clerkUserId, environment, set }) => {
     // Verify tenant-user link
     const link = await getLink(tenant.tenantId, params.id);
     if (!link) {

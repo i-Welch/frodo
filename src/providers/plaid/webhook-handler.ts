@@ -33,7 +33,11 @@ export const plaidWebhookHandler: WebhookHandler = {
     const creds = getProviderCredentials('plaid');
     const secret = creds.getOptional('WEBHOOK_SECRET');
     if (!secret) {
-      // No webhook secret configured — accept (for sandbox/dev)
+      // In production, require the webhook secret
+      if (process.env.NODE_ENV === 'production') {
+        return false;
+      }
+      // Accept without secret in sandbox/dev
       return true;
     }
 
