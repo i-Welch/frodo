@@ -1,9 +1,6 @@
-import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
 import { Webhook } from 'svix';
-import { createTenant } from '../../store/tenant-store.js';
 import { createChildLogger } from '../../logger.js';
-import type { Tenant } from '../../tenancy/types.js';
 
 const log = createChildLogger({ module: 'clerk-webhooks' });
 
@@ -62,41 +59,13 @@ export const clerkWebhookRoutes = new Elysia({ prefix: '/clerk' })
 
     switch (payload.type) {
       case 'organization.created': {
+        // Tenant provisioning is handled via the admin API (POST /api/v1/tenants),
+        // which creates both the Clerk org and the RAVEN tenant in one call.
+        // This webhook is kept as a no-op for Clerk orgs created outside that flow.
         const orgId = payload.data.id as string;
         const orgName = payload.data.name as string;
-
-        if (!orgId || !orgName) {
-          set.status = 400;
-          return { error: 'Missing org id or name' };
-        }
-
-        // Create a RAVEN tenant for this Clerk org
-        const tenant: Tenant = {
-          tenantId: crypto.randomUUID(),
-          name: orgName,
-          permissions: [
-            { module: 'identity', requiredTier: 0 },
-            { module: 'contact', requiredTier: 0 },
-            { module: 'financial', requiredTier: 0 },
-            { module: 'credit', requiredTier: 0 },
-            { module: 'employment', requiredTier: 0 },
-            { module: 'residence', requiredTier: 0 },
-            { module: 'buying-patterns', requiredTier: 0 },
-            { module: 'education', requiredTier: 0 },
-          ],
-          callbackUrls: [],
-          clerkOrgId: orgId,
-          createdAt: new Date().toISOString(),
-        };
-
-        await createTenant(tenant);
-
-        log.info(
-          { tenantId: tenant.tenantId, clerkOrgId: orgId, orgName },
-          'Provisioned RAVEN tenant for new Clerk organization',
-        );
-
-        return { tenantId: tenant.tenantId, clerkOrgId: orgId };
+        log.info({ clerkOrgId: orgId, orgName }, 'Clerk org created (tenant provisioning handled via admin API)');
+        return { ok: true };
       }
 
       case 'organization.updated': {

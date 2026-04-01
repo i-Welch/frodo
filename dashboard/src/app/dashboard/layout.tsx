@@ -25,10 +25,13 @@ export default function DashboardLayout({
 
         <div className="border-t border-gray-200 px-4 py-3 space-y-3">
           <OrganizationSwitcher
+            hidePersonal
+            hideSlug
             appearance={{
               elements: {
                 rootBox: 'w-full',
                 organizationSwitcherTrigger: 'w-full justify-between',
+                organizationSwitcherPopoverActionButton__createOrganization: 'hidden',
               },
             }}
           />

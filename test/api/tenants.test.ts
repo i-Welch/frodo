@@ -137,9 +137,10 @@ describe('tenant API routes', () => {
       const tenant = await res.json();
       expect(tenant.tenantId).toBeDefined();
       expect(tenant.name).toBe('Route Test Tenant');
-      expect(tenant.permissions).toEqual([]);
+      expect(tenant.permissions.length).toBeGreaterThan(0);
       expect(tenant.callbackUrls).toEqual([]);
       expect(tenant.createdAt).toBeDefined();
+      expect(tenant.apiKey).toBeDefined();
     });
 
     it('creates a tenant with optional fields', async () => {
