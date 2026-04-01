@@ -34,7 +34,7 @@ export async function processWebhook(
   }
 
   // 1. Validate
-  if (!handler.validate(headers, body)) {
+  if (!await handler.validate(headers, body)) {
     throw new Error(`Webhook validation failed for provider '${provider}'`);
   }
 

@@ -2,7 +2,7 @@ export interface WebhookHandler {
   /** Provider name (e.g., "plaid", "finicity") */
   provider: string;
   /** Validate the incoming request (signature verification, etc.) */
-  validate(headers: Record<string, string>, body: unknown): boolean;
+  validate(headers: Record<string, string>, body: unknown): boolean | Promise<boolean>;
   /** Parse the webhook payload into field changes for one or more users */
   parse(body: unknown): WebhookEvent[];
 }
