@@ -76,11 +76,21 @@ async function checkDynamoTable(tableName: string): Promise<HealthCheckResult> {
   }
 }
 
+// Cache KMS health check result for 30 seconds to avoid generating
+// real KMS data keys on every health check call.
+let kmsHealthCache: { result: HealthCheckResult; expiresAt: number } | null = null;
+const KMS_HEALTH_CACHE_TTL = 30_000;
+
 async function checkKms(): Promise<HealthCheckResult> {
   const start = Date.now();
   // In local mode, KMS uses a static key — no real service to check
   if (config.kmsEndpoint === 'local') {
     return { status: 'ok', latencyMs: Date.now() - start };
+  }
+
+  // Return cached result if fresh
+  if (kmsHealthCache && kmsHealthCache.expiresAt > Date.now()) {
+    return { ...kmsHealthCache.result, latencyMs: 0 };
   }
 
   try {
@@ -89,19 +99,25 @@ async function checkKms(): Promise<HealthCheckResult> {
     const decrypted = await kmsService.decryptDataKey(encryptedDek, 'health-check');
     // Verify round-trip integrity
     if (!plaintextDek.equals(decrypted)) {
-      return {
+      const result: HealthCheckResult = {
         status: 'error',
         latencyMs: Date.now() - start,
         error: 'KMS round-trip verification failed',
       };
+      kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
+      return result;
     }
-    return { status: 'ok', latencyMs: Date.now() - start };
+    const result: HealthCheckResult = { status: 'ok', latencyMs: Date.now() - start };
+    kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
+    return result;
   } catch (err) {
-    return {
+    const result: HealthCheckResult = {
       status: 'error',
       latencyMs: Date.now() - start,
       error: err instanceof Error ? err.message : String(err),
     };
+    kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
+    return result;
   }
 }
 
