@@ -87,7 +87,7 @@ export const enrichmentRoutes = new Elysia({ prefix: '/api/v1/users' })
     const report = await enrichModule(
       params.id,
       params.module,
-      apiKey!.keyId,
+      apiKey?.keyId ?? clerkUserId ?? 'unknown',
       tenant.tenantId,
       sandbox,
     );

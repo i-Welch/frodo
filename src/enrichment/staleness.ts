@@ -1,7 +1,8 @@
+import { ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { getEventsForModule } from '../store/event-store.js';
 import { resolveFields } from '../events/resolver.js';
 import { getEnrichedModuleNames } from './registry.js';
-import { queryItems } from '../store/base-store.js';
+import { docClient, TABLE_NAME } from '../store/dynamo-client.js';
 import { createChildLogger } from '../logger.js';
 import type { DataEvent } from '../events/types.js';
 import type { ResolvedField } from '../events/resolver.js';
@@ -218,34 +219,41 @@ function resolveFieldsIncludingExpired(
 
 /**
  * Scan for distinct user IDs that have module data.
- * Uses a simple scan of USER# PKs (in production you'd use a secondary index or user table).
+ * Uses a DynamoDB Scan with a FilterExpression to find USER# items with MODULE#identity SK.
  */
 async function scanUserIds(limit?: number): Promise<string[]> {
   const userIds = new Set<string>();
-  let cursor: string | undefined;
+  let exclusiveStartKey: Record<string, unknown> | undefined;
 
-  // Query for MODULE# items grouped by user
-  // We scan for USER# PKs with MODULE# sort keys
   do {
-    const result = await queryItems({
-      pk: 'USER#',
-      // We can't query with just a PK prefix on the main table,
-      // so we use a different approach: query events by each known module
-      cursor,
-    });
+    const result = await docClient.send(
+      new ScanCommand({
+        TableName: TABLE_NAME,
+        FilterExpression: 'begins_with(#pk, :pkPrefix) AND #sk = :sk',
+        ExpressionAttributeNames: {
+          '#pk': 'PK',
+          '#sk': 'SK',
+        },
+        ExpressionAttributeValues: {
+          ':pkPrefix': 'USER#',
+          ':sk': 'MODULE#identity',
+        },
+        ProjectionExpression: 'PK',
+        ExclusiveStartKey: exclusiveStartKey,
+      }),
+    );
 
-    for (const item of result.items) {
+    for (const item of (result.Items ?? [])) {
       const pk = item.PK as string;
-      if (pk.startsWith('USER#')) {
-        const userId = pk.slice(5);
-        userIds.add(userId);
-        if (limit && userIds.size >= limit) {
-          return Array.from(userIds);
-        }
+      const userId = pk.slice(5);
+      userIds.add(userId);
+      if (limit && userIds.size >= limit) {
+        return Array.from(userIds);
       }
     }
-    cursor = result.cursor;
-  } while (cursor);
+
+    exclusiveStartKey = result.LastEvaluatedKey as Record<string, unknown> | undefined;
+  } while (exclusiveStartKey);
 
   return Array.from(userIds);
 }

@@ -1,4 +1,4 @@
-import { createHash, randomInt } from 'node:crypto';
+import { createHash, randomInt, timingSafeEqual } from 'node:crypto';
 
 // ---------------------------------------------------------------------------
 // OTP generation + verification
@@ -21,7 +21,11 @@ export function generateOtp(): { code: string; hash: string } {
  * Verify a submitted OTP against a stored hash.
  */
 export function verifyOtp(submitted: string, hash: string): boolean {
-  return hashOtp(submitted) === hash;
+  const submittedHash = hashOtp(submitted);
+  const a = Buffer.from(submittedHash, 'hex');
+  const b = Buffer.from(hash, 'hex');
+  if (a.length !== b.length) return false;
+  return timingSafeEqual(a, b);
 }
 
 /**

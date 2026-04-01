@@ -26,6 +26,23 @@ import { VerificationTier } from '../../types.js';
 
 const log = createChildLogger({ module: 'form-routes' });
 
+/** Maximum allowed length for regex patterns in form field definitions. */
+const MAX_PATTERN_LENGTH = 200;
+
+/**
+ * Safely test a value against a regex pattern.
+ * Returns false for invalid or excessively long patterns instead of crashing.
+ */
+function safeRegexTest(pattern: string, value: string): boolean {
+  if (pattern.length > MAX_PATTERN_LENGTH) return false;
+  try {
+    const re = new RegExp(`^${pattern}$`);
+    return re.test(value);
+  } catch {
+    return false;
+  }
+}
+
 /** OTP validity: 10 minutes. */
 const OTP_EXPIRY_MS = 10 * 60 * 1000;
 
@@ -101,7 +118,7 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
       ? formDefinition.steps.flatMap((s) => s.fields)
       : formDefinition.fields;
 
-    // Validate all field inputTypes
+    // Validate all field inputTypes and patterns
     for (const field of allFields) {
       if (!isValidInputType(field.inputType)) {
         set.status = 400;
@@ -111,6 +128,30 @@ export const formCreateRoute = new Elysia({ prefix: '/forms' })
           message: `Unknown inputType '${field.inputType}' on field '${field.field}'`,
         };
         return err;
+      }
+
+      // Validate regex patterns at creation time
+      if (field.pattern) {
+        if (field.pattern.length > MAX_PATTERN_LENGTH) {
+          set.status = 400;
+          const err: ApiError = {
+            status: 400,
+            code: 'BAD_REQUEST',
+            message: `Pattern on field '${field.field}' exceeds maximum length of ${MAX_PATTERN_LENGTH} characters`,
+          };
+          return err;
+        }
+        try {
+          new RegExp(`^${field.pattern}$`);
+        } catch {
+          set.status = 400;
+          const err: ApiError = {
+            status: 400,
+            code: 'BAD_REQUEST',
+            message: `Invalid regex pattern on field '${field.field}'`,
+          };
+          return err;
+        }
       }
     }
 
@@ -255,8 +296,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
           errors.push(`${field.label} is required`);
         }
         if (field.pattern && typeof value === 'string' && value) {
-          const re = new RegExp(`^${field.pattern}$`);
-          if (!re.test(value)) errors.push(`${field.label} has an invalid format`);
+          if (!safeRegexTest(field.pattern, value)) errors.push(`${field.label} has an invalid format`);
         }
       }
     }
@@ -416,8 +456,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
           errors.push(`${field.label} is required`);
         }
         if (field.pattern && typeof value === 'string' && value) {
-          const re = new RegExp(`^${field.pattern}$`);
-          if (!re.test(value)) {
+          if (!safeRegexTest(field.pattern, value)) {
             errors.push(`${field.label} has an invalid format`);
           }
         }

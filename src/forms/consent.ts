@@ -32,6 +32,7 @@ export async function recordConsent(params: {
     tenantId: params.tenantId,
     modules: params.modules,
     tier: params.tier,
+    consentText: params.consentText,
     consentTextHash: textHash,
     consentAddendum: params.consentAddendum,
     accepted: params.accepted,

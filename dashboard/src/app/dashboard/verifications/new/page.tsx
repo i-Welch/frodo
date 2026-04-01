@@ -48,7 +48,8 @@ export default function NewVerificationPage() {
       if (firstName) person.firstName = firstName;
       if (lastName) person.lastName = lastName;
 
-      const res = await fetch('/api/v1/onboard', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
+      const res = await fetch(`${apiUrl}/api/v1/onboard`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

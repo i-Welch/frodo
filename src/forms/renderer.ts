@@ -175,7 +175,7 @@ export function renderConsent(formToken: FormToken, consentText: string): string
 export function renderSuccess(message: string, callbackUrl?: string): string {
   const redirect = callbackUrl
     ? `<a href="${escapeHtml(callbackUrl)}" class="btn-primary" style="display:inline-block;text-decoration:none;margin-top:1rem;">Continue</a>
-       <script>setTimeout(function(){ window.location.href="${escapeHtml(callbackUrl)}"; }, 2000);</script>`
+       <script>setTimeout(function(){ window.location.href="${escapeJs(callbackUrl)}"; }, 2000);</script>`
     : '';
 
   const body = `
@@ -1067,6 +1067,10 @@ function escapeJs(str: string): string {
     .replace(/\\/g, '\\\\')
     .replace(/'/g, "\\'")
     .replace(/"/g, '\\"')
+    .replace(/`/g, '\\`')
+    .replace(/\$/g, '\\$')
+    .replace(/</g, '\\x3c')
+    .replace(/>/g, '\\x3e')
     .replace(/\n/g, '\\n')
     .replace(/\r/g, '\\r');
 }

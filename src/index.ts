@@ -179,4 +179,22 @@ logger.info(
   `Frodo server started on port ${config.port}`,
 );
 
+// ---------------------------------------------------------------------------
+// Graceful shutdown
+// ---------------------------------------------------------------------------
+
+function shutdown(signal: string) {
+  logger.info({ signal }, 'Shutting down...');
+  // Stop accepting new connections
+  app.stop();
+  // Allow in-flight requests to complete
+  setTimeout(() => {
+    logger.info('Shutdown complete');
+    process.exit(0);
+  }, 3000);
+}
+
+process.on('SIGTERM', () => shutdown('SIGTERM'));
+process.on('SIGINT', () => shutdown('SIGINT'));
+
 export { app };

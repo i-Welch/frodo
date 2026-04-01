@@ -97,6 +97,38 @@ function createKmsClient(): KMSClient | null {
 const kmsClient = createKmsClient();
 
 // ---------------------------------------------------------------------------
+// DEK cache — in-memory LRU with TTL
+// ---------------------------------------------------------------------------
+
+const dekCache = new Map<string, { key: Buffer; expiresAt: number }>();
+const DEK_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const DEK_CACHE_MAX = 1000;
+
+function getCachedDek(encryptedDek: Buffer): Buffer | null {
+  const cacheKey = encryptedDek.toString('base64');
+  const entry = dekCache.get(cacheKey);
+  if (!entry) return null;
+  if (Date.now() > entry.expiresAt) {
+    dekCache.delete(cacheKey);
+    return null;
+  }
+  // Move to end for LRU behavior (Map preserves insertion order)
+  dekCache.delete(cacheKey);
+  dekCache.set(cacheKey, entry);
+  return entry.key;
+}
+
+function setCachedDek(encryptedDek: Buffer, plaintextDek: Buffer): void {
+  const cacheKey = encryptedDek.toString('base64');
+  // Evict oldest entries if at capacity
+  if (dekCache.size >= DEK_CACHE_MAX) {
+    const firstKey = dekCache.keys().next().value!;
+    dekCache.delete(firstKey);
+  }
+  dekCache.set(cacheKey, { key: plaintextDek, expiresAt: Date.now() + DEK_CACHE_TTL });
+}
+
+// ---------------------------------------------------------------------------
 // Service API
 // ---------------------------------------------------------------------------
 
@@ -141,29 +173,41 @@ async function decryptDataKey(
   encryptedDek: Buffer,
   userId: string,
 ): Promise<Buffer> {
+  // Check cache first
+  const cached = getCachedDek(encryptedDek);
+  if (cached) {
+    log.debug({ userId }, 'DEK cache hit');
+    return cached;
+  }
+
+  let plaintext: Buffer;
+
   if (!kmsClient) {
     // Local fallback
     log.debug('Using local KMS fallback for decryptDataKey');
     const unpacked = unpackLocalEncrypted(encryptedDek);
-    return localDecrypt(unpacked.ciphertext, unpacked.iv, unpacked.authTag);
+    plaintext = localDecrypt(unpacked.ciphertext, unpacked.iv, unpacked.authTag);
+  } else {
+    log.debug({ userId }, 'Decrypting data key via KMS');
+    const response = await kmsClient.send(
+      new DecryptCommand({
+        CiphertextBlob: encryptedDek,
+        EncryptionContext: {
+          userId,
+          environment: config.nodeEnv,
+        },
+      }),
+    );
+
+    if (!response.Plaintext) {
+      throw new Error('KMS Decrypt returned empty response');
+    }
+
+    plaintext = Buffer.from(response.Plaintext);
   }
 
-  log.debug({ userId }, 'Decrypting data key via KMS');
-  const response = await kmsClient.send(
-    new DecryptCommand({
-      CiphertextBlob: encryptedDek,
-      EncryptionContext: {
-        userId,
-        environment: config.nodeEnv,
-      },
-    }),
-  );
-
-  if (!response.Plaintext) {
-    throw new Error('KMS Decrypt returned empty response');
-  }
-
-  return Buffer.from(response.Plaintext);
+  setCachedDek(encryptedDek, plaintext);
+  return plaintext;
 }
 
 export const kmsService = {

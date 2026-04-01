@@ -56,10 +56,43 @@ export const stalenessRoutes = new Elysia({ prefix: '/api/v1' })
   });
 
 /**
+ * Admin auth middleware — verifies Authorization: Bearer <RAVEN_ADMIN_SECRET>.
+ */
+function adminAuth(headers: Record<string, string | undefined>, set: { status?: number | string }) {
+  const secret = process.env.RAVEN_ADMIN_SECRET;
+  if (!secret) {
+    if (process.env.NODE_ENV === 'production') {
+      set.status = 503;
+      return { error: 'RAVEN_ADMIN_SECRET is not configured' } as const;
+    }
+    // Allow in non-production without secret
+    return null;
+  }
+
+  const authHeader = headers['authorization'];
+  if (!authHeader?.startsWith('Bearer ')) {
+    set.status = 401;
+    return { error: 'Missing or invalid Authorization header' } as const;
+  }
+
+  const token = authHeader.slice(7);
+  if (token !== secret) {
+    set.status = 401;
+    return { error: 'Invalid admin secret' } as const;
+  }
+
+  return null;
+}
+
+/**
  * Admin refresh endpoint — intended to be called by an external scheduler (cron).
- * Separate from the auth-protected routes since admin endpoints may use different auth.
+ * Protected by admin secret auth.
  */
 export const adminRefreshRoute = new Elysia()
+  .onBeforeHandle(({ headers, set }) => {
+    const result = adminAuth(headers as Record<string, string | undefined>, set);
+    if (result) return result;
+  })
   .post('/api/v1/admin/refresh-stale', async ({ body }) => {
     const options = body as { limit?: number } | null;
     const result = await runRefreshJob(options ?? undefined);

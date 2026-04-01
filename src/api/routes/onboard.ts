@@ -8,6 +8,7 @@ import { getEnrichedModuleNames } from '../../enrichment/registry.js';
 import { createChildLogger } from '../../logger.js';
 import type { FormDefinition, FormStep, FormField } from '../../forms/types.js';
 import type { ApiError } from '../../types.js';
+import type { FieldChange } from '../../events/types.js';
 
 const log = createChildLogger({ module: 'onboard' });
 
@@ -279,22 +280,58 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       const { putModule } = await import('../../store/user-store.js');
       const { getModule } = await import('../../store/user-store.js');
       const { addIdentifier } = await import('../../store/identity-lookup-store.js');
+      const { appendEvent } = await import('../../store/event-store.js');
+      const crypto = await import('node:crypto');
 
       if (person.firstName || person.lastName) {
         const existing = await getModule(userId, 'identity');
-        await putModule(userId, 'identity', {
+        const newData = {
           ...(existing ?? {}),
           ...(person.firstName ? { firstName: person.firstName } : {}),
           ...(person.lastName ? { lastName: person.lastName } : {}),
+        };
+        await putModule(userId, 'identity', newData);
+
+        const changes: FieldChange[] = [];
+        if (person.firstName) {
+          changes.push({ field: 'firstName', previousValue: existing?.firstName ?? null, newValue: person.firstName, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+        }
+        if (person.lastName) {
+          changes.push({ field: 'lastName', previousValue: existing?.lastName ?? null, newValue: person.lastName, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+        }
+        await appendEvent({
+          eventId: crypto.randomUUID(),
+          userId,
+          module: 'identity',
+          source: { source: 'onboard', actor: 'onboard', tenantId: tenant.tenantId },
+          changes,
+          timestamp: new Date().toISOString(),
         });
       }
 
       if (person.email || person.phone) {
         const existing = await getModule(userId, 'contact');
-        await putModule(userId, 'contact', {
+        const newData = {
           ...(existing ?? {}),
           ...(person.email ? { email: person.email } : {}),
           ...(person.phone ? { phone: person.phone } : {}),
+        };
+        await putModule(userId, 'contact', newData);
+
+        const changes: FieldChange[] = [];
+        if (person.email) {
+          changes.push({ field: 'email', previousValue: existing?.email ?? null, newValue: person.email, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+        }
+        if (person.phone) {
+          changes.push({ field: 'phone', previousValue: existing?.phone ?? null, newValue: person.phone, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+        }
+        await appendEvent({
+          eventId: crypto.randomUUID(),
+          userId,
+          module: 'contact',
+          source: { source: 'onboard', actor: 'onboard', tenantId: tenant.tenantId },
+          changes,
+          timestamp: new Date().toISOString(),
         });
 
         if (person.email) await addIdentifier('EMAIL', person.email, userId);
