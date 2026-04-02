@@ -38,6 +38,7 @@ import { registerMelissaProvider } from './providers/melissa/index.js';
 import { registerSocureProvider } from './providers/socure/index.js';
 import { registerPlaidProvider } from './providers/plaid/index.js';
 import { registerTrueworkProvider } from './providers/truework/index.js';
+import { registerAttomProvider } from './providers/attom/index.js';
 
 if (config.nodeEnv === 'development' || config.nodeEnv === 'test') {
   registerMockEnrichers();
@@ -47,6 +48,7 @@ registerMelissaProvider();
 registerSocureProvider();
 registerPlaidProvider();
 registerTrueworkProvider();
+registerAttomProvider();
 registerBuiltinComponents();
 initOtpProvider();
 

@@ -1,8 +1,9 @@
 import { BaseEnricher } from '../base-enricher.js';
+import { getModule } from '../../store/user-store.js';
 import type { EnrichmentResult } from '../../enrichment/types.js';
 
 // ---------------------------------------------------------------------------
-// Module shape
+// Module shape — matches the residence schema
 // ---------------------------------------------------------------------------
 
 interface ResidenceData {
@@ -16,6 +17,12 @@ interface ResidenceData {
   ownershipStatus: string;
   propertyType: string;
   moveInDate: string;
+  propertyDetails: Record<string, unknown>;
+  valuation: Record<string, unknown>;
+  geo: Record<string, unknown>;
+  legalDescription: string;
+  parcelNumber: string;
+  fipsCode: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -154,9 +161,14 @@ export class AttomResidenceEnricher extends BaseEnricher<ResidenceData> {
     userId: string,
     current: Partial<ResidenceData>,
   ): Promise<EnrichmentResult<ResidenceData>> {
-    const addr = current.currentAddress;
+    // Use current address from enrichment input, or pull from residence module
+    let addr = current.currentAddress as { street?: string; city?: string; state?: string; zip?: string } | undefined;
     if (!addr?.street) {
-      throw new Error('ATTOM enrichment requires a street address');
+      const residence = await getModule(userId, 'residence');
+      addr = residence?.currentAddress as typeof addr;
+    }
+    if (!addr?.street) {
+      throw new Error('ATTOM enrichment requires a verified address (run Personator or Plaid first)');
     }
 
     // ATTOM uses address1 (street) and address2 (city, state or city, state zip)
@@ -206,27 +218,50 @@ export class AttomResidenceEnricher extends BaseEnricher<ResidenceData> {
       );
     }
 
+    // Property details
+    const building = prop.building;
+    if (building) {
+      data.propertyDetails = {
+        yearBuilt: String(building.summary?.yearbuilt || prop.summary?.yearbuilt || ''),
+        stories: building.summary?.levels ? String(building.summary.levels) : undefined,
+        bedrooms: building.rooms?.beds ? String(building.rooms.beds) : undefined,
+        bathrooms: building.rooms?.bathstotal ? String(building.rooms.bathstotal) : undefined,
+        buildingSqFt: String(building.size?.universalsize || building.size?.livingsize || ''),
+        lotSqFt: prop.lot?.lotsize1 ? String(prop.lot.lotsize1) : undefined,
+        construction: building.construction?.constructiontype || undefined,
+        propertyUseGroup: prop.summary?.proptype || undefined,
+      };
+    }
+
+    // AVM / valuation
+    const avm = avmRes?.data?.property?.[0]?.avm;
+    if (avm) {
+      data.valuation = {
+        estimatedValue: String(avm.amount.value),
+        estimatedMinValue: String(avm.amount.low),
+        estimatedMaxValue: String(avm.amount.high),
+        confidenceScore: String(avm.amount.scr),
+        valuationDate: avm.eventDate,
+      };
+    }
+
+    // Geo
+    if (prop.location?.latitude) {
+      data.geo = {
+        latitude: prop.location.latitude,
+        longitude: prop.location.longitude,
+      };
+    }
+
+    // Legal / parcel
+    if (prop.summary?.legal1) data.legalDescription = prop.summary.legal1;
+    if (prop.identifier?.apn) data.parcelNumber = prop.identifier.apn;
+    if (prop.identifier?.fips) data.fipsCode = prop.identifier.fips;
+
     return {
       data,
       metadata: {
         attomId: prop.identifier?.attomId,
-        valuation: avmRes?.data?.property?.[0]?.avm ? {
-          estimatedValue: avmRes.data.property[0].avm.amount.value,
-          valueLow: avmRes.data.property[0].avm.amount.low,
-          valueHigh: avmRes.data.property[0].avm.amount.high,
-          confidenceScore: avmRes.data.property[0].avm.amount.scr,
-          valuePerSqFt: avmRes.data.property[0].avm.calculations.perSizeUnit,
-          valuationDate: avmRes.data.property[0].avm.eventDate,
-        } : null,
-        propertyDetails: {
-          bedrooms: prop.building?.rooms?.beds,
-          bathrooms: prop.building?.rooms?.bathstotal,
-          sqft: prop.building?.size?.universalsize || prop.building?.size?.livingsize,
-          yearBuilt: prop.building?.summary?.yearbuilt || prop.summary?.yearbuilt,
-          lotSizeSqFt: prop.lot?.lotsize1,
-          stories: prop.building?.summary?.levels,
-          construction: prop.building?.construction?.constructiontype,
-        },
         lastModified: prop.vintage?.lastModified,
       },
     };

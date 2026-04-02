@@ -37,24 +37,34 @@ describe('AttomResidenceEnricher', () => {
     // Property type normalized from ATTOM's "SFR" classification
     expect(result.data.propertyType).toBe('single-family');
 
+    // Property details in data
+    expect(result.data.propertyDetails).toEqual({
+      yearBuilt: '1320',
+      stories: '1',
+      bedrooms: '2',
+      bathrooms: '1',
+      buildingSqFt: '980',
+      lotSqFt: '6000',
+      construction: 'Earth Sheltered',
+      propertyUseGroup: 'SFR',
+    });
+
+    // AVM valuation in data
+    expect(result.data.valuation).toEqual({
+      estimatedValue: '195000',
+      estimatedMinValue: '175500',
+      estimatedMaxValue: '214500',
+      confidenceScore: '82',
+      valuationDate: '2026-03-15',
+    });
+
+    // Geo in data
+    expect(result.data.geo).toEqual({
+      latitude: '37.8715',
+      longitude: '-122.2580',
+    });
+
     // ATTOM ID in metadata
     expect(result.metadata?.attomId).toBe(55501234);
-
-    // AVM valuation in metadata
-    const valuation = result.metadata?.valuation as Record<string, number>;
-    expect(valuation.estimatedValue).toBe(195000);
-    expect(valuation.valueLow).toBe(175500);
-    expect(valuation.valueHigh).toBe(214500);
-    expect(valuation.confidenceScore).toBe(82);
-    expect(valuation.valuePerSqFt).toBe(198.98);
-
-    // Property details in metadata
-    const details = result.metadata?.propertyDetails as Record<string, unknown>;
-    expect(details.bedrooms).toBe(2);
-    expect(details.bathrooms).toBe(1);
-    expect(details.sqft).toBe(980);
-    expect(details.yearBuilt).toBe(1320);
-    expect(details.stories).toBe(1);
-    expect(details.construction).toBe('Earth Sheltered');
   });
 });
