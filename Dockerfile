@@ -14,7 +14,6 @@ COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/package.json ./
 COPY legal/ ./legal/
-RUN addgroup --system --gid 1001 app && adduser --system --uid 1001 --ingroup app app
-USER app
+USER bun
 EXPOSE 3000
 CMD ["bun", "dist/index.js"]
