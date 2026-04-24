@@ -3,9 +3,47 @@ import Link from 'next/link';
 import { InterestForm } from './interest-form';
 
 export const metadata: Metadata = {
-  title: 'RAVEN — Borrower Verification for Regional Banks',
+  title: 'RAVEN — Borrower Verification Software for Community Banks | South Carolina',
   description:
-    'RAVEN is a borrower verification platform for regional banks. Send a link, get a complete borrower report — identity, income, credit, employment, and property — in minutes.',
+    'RAVEN automates borrower verification for community and regional banks. KYC, identity, income, credit, employment, and property data from one verification link. Serving banks in South Carolina and the Southeast. Replace manual data collection with a 5-minute digital experience.',
+  keywords: [
+    'borrower verification software',
+    'community bank verification',
+    'KYC for community banks',
+    'bank onboarding automation',
+    'borrower verification platform',
+    'South Carolina banking technology',
+    'regional bank software',
+    'BSA compliance automation',
+    'loan officer verification tools',
+    'community bank fintech',
+    'identity verification banking',
+    'borrower report software',
+  ],
+  openGraph: {
+    title: 'RAVEN — Borrower Verification for Community Banks',
+    description: 'One verification link. Complete borrower report in minutes. Identity, income, credit, employment, and property data — all cross-referenced automatically.',
+    url: 'https://reportraven.tech',
+    siteName: 'RAVEN',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'RAVEN — Borrower Verification for Community Banks',
+    description: 'One verification link. Complete borrower report in minutes. Built for community and regional banks.',
+  },
+  alternates: {
+    canonical: 'https://reportraven.tech',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    'geo.region': 'US-SC',
+    'geo.placename': 'South Carolina',
+  },
 };
 
 const RAVEN_PATH =
@@ -26,9 +64,47 @@ function RavenLogo({ size = 22, className }: { size?: number; className?: string
   );
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'RAVEN',
+  applicationCategory: 'FinanceApplication',
+  operatingSystem: 'Web',
+  description: 'Borrower verification platform for community and regional banks. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
+  url: 'https://reportraven.tech',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+    description: 'Contact for pricing. Early access available for community banks.',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'RAVEN',
+    url: 'https://reportraven.tech',
+    areaServed: [
+      { '@type': 'State', name: 'South Carolina' },
+      { '@type': 'Country', name: 'United States' },
+    ],
+    serviceType: [
+      'Borrower Verification',
+      'KYC Automation',
+      'BSA Compliance',
+      'Identity Verification',
+      'Income Verification',
+      'Employment Verification',
+      'Property Valuation',
+    ],
+  },
+};
+
 export default function LandingPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
@@ -563,7 +639,7 @@ export default function LandingPage() {
             />
           </svg>
           <div className="hero-content">
-            <span className="hero-tag">Borrower verification platform</span>
+            <span className="hero-tag">Borrower verification software for community banks</span>
             <h1>
               Complete borrower reports,
               <br />
@@ -572,7 +648,8 @@ export default function LandingPage() {
             <p className="hero-sub">
               RAVEN replaces weeks of manual data gathering with a single verification link. Your borrower
               clicks, connects, and consents — you get a complete, print-ready report with identity,
-              income, credit, employment, and property data.
+              income, credit, employment, and property data. Built for community and regional banks
+              in South Carolina and the Southeast.
             </p>
             <div className="hero-actions">
               <a href="#get-started" className="btn btn-white">
@@ -827,7 +904,10 @@ export default function LandingPage() {
         </section>
 
         <footer>
-          <span>&copy; 2026 RAVEN. All rights reserved.</span>
+          <div>
+            <span>&copy; 2026 RAVEN. All rights reserved.</span>
+            <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.65rem', color: 'var(--gray-600)', letterSpacing: '0.05em' }}>A South Carolina company</span>
+          </div>
           <div className="footer-links">
             <Link href="/legal/privacy-policy">Privacy Policy</Link>
             <Link href="/legal/terms-of-service">Terms of Service</Link>
