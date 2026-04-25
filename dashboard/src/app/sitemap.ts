@@ -9,19 +9,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: 'https://reportraven.tech/legal/security',
+      url: 'https://app.reportraven.tech/legal/security',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.5,
     },
     {
-      url: 'https://reportraven.tech/legal/privacy-policy',
+      url: 'https://app.reportraven.tech/legal/privacy-policy',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,
     },
     {
-      url: 'https://reportraven.tech/legal/terms-of-service',
+      url: 'https://app.reportraven.tech/legal/terms-of-service',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.3,

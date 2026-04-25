@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { InterestForm } from './interest-form';
 
 export const metadata: Metadata = {
@@ -618,8 +617,8 @@ export default function LandingPage() {
             <span className="nav-wordmark">RAVEN</span>
           </div>
           <div className="nav-links">
-            <Link href="/legal/security">Security</Link>
-            <Link href="/legal/privacy-policy">Privacy</Link>
+            <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
+            <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
             <a href="#get-started" className="nav-cta">
               Request Access
             </a>
@@ -909,9 +908,9 @@ export default function LandingPage() {
             <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.65rem', color: 'var(--gray-600)', letterSpacing: '0.05em' }}>A South Carolina company</span>
           </div>
           <div className="footer-links">
-            <Link href="/legal/privacy-policy">Privacy Policy</Link>
-            <Link href="/legal/terms-of-service">Terms of Service</Link>
-            <Link href="/legal/security">Security</Link>
+            <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            <a href="https://app.reportraven.tech/legal/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+            <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
           </div>
         </footer>
       </div>

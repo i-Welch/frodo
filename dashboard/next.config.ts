@@ -9,11 +9,6 @@ const nextConfig: NextConfig = {
         source: '/api/:path*',
         destination: `${apiUrl}/api/:path*`,
       },
-      // Legal pages are served by the API
-      {
-        source: '/legal/:path*',
-        destination: `${apiUrl}/legal/:path*`,
-      },
       // Borrower forms are served by the API
       {
         source: '/forms/:path*',
