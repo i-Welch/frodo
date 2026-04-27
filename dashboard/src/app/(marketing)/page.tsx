@@ -617,6 +617,7 @@ export default function LandingPage() {
             <span className="nav-wordmark">RAVEN</span>
           </div>
           <div className="nav-links">
+            <a href="/blog">Blog</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
             <a href="#get-started" className="nav-cta">
