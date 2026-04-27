@@ -759,8 +759,9 @@ export function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const article = articles[params.slug];
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles[slug];
   if (!article) {
     return { title: 'Article Not Found' };
   }
@@ -770,7 +771,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     openGraph: {
       title: article.title,
       description: article.description,
-      url: `https://reportraven.tech/blog/${params.slug}`,
+      url: `https://reportraven.tech/blog/${slug}`,
       siteName: 'RAVEN',
       type: 'article',
       publishedTime: article.publishedDate,
@@ -785,8 +786,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
 /* ---------- Page component ---------- */
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles[params.slug];
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const article = articles[slug];
 
   if (!article) {
     notFound();
