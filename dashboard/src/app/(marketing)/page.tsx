@@ -65,36 +65,122 @@ function RavenLogo({ size = 22, className }: { size?: number; className?: string
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
-  name: 'RAVEN',
-  applicationCategory: 'FinanceApplication',
-  operatingSystem: 'Web',
-  description: 'Borrower verification platform for community and regional banks. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
-  url: 'https://reportraven.tech',
-  offers: {
-    '@type': 'Offer',
-    price: '0',
-    priceCurrency: 'USD',
-    description: 'Contact for pricing. Early access available for community banks.',
-  },
-  provider: {
-    '@type': 'Organization',
-    name: 'RAVEN',
-    url: 'https://reportraven.tech',
-    areaServed: [
-      { '@type': 'State', name: 'South Carolina' },
-      { '@type': 'Country', name: 'United States' },
-    ],
-    serviceType: [
-      'Borrower Verification',
-      'KYC Automation',
-      'BSA Compliance',
-      'Identity Verification',
-      'Income Verification',
-      'Employment Verification',
-      'Property Valuation',
-    ],
-  },
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://reportraven.tech/#organization',
+      name: 'RAVEN',
+      legalName: 'RAVEN (Real-time Aggregation and Verification Engine)',
+      url: 'https://reportraven.tech',
+      logo: 'https://reportraven.tech/raven-icon.svg',
+      description:
+        'RAVEN provides automated borrower verification software for community and regional banks. One link delivers identity, income, employment, and property data in minutes.',
+      areaServed: [
+        { '@type': 'State', name: 'South Carolina' },
+        { '@type': 'Country', name: 'United States' },
+      ],
+      knowsAbout: [
+        'Borrower verification',
+        'KYC automation',
+        'BSA/AML compliance',
+        'Identity verification',
+        'Income verification',
+        'Employment verification',
+        'Property valuation',
+        'Community banking',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'sales',
+        email: 'isaac@reportraven.tech',
+        url: 'https://reportraven.tech',
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://reportraven.tech/#website',
+      url: 'https://reportraven.tech',
+      name: 'RAVEN',
+      publisher: { '@id': 'https://reportraven.tech/#organization' },
+      inLanguage: 'en-US',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://reportraven.tech/#software',
+      name: 'RAVEN',
+      applicationCategory: 'FinanceApplication',
+      applicationSubCategory: 'Borrower Verification',
+      operatingSystem: 'Web',
+      description:
+        'Borrower verification platform for community and regional banks. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
+      url: 'https://reportraven.tech',
+      provider: { '@id': 'https://reportraven.tech/#organization' },
+      offers: {
+        '@type': 'Offer',
+        priceCurrency: 'USD',
+        description: 'Contact for pricing. Early access available for community banks.',
+      },
+      featureList: [
+        'KYC and identity verification',
+        'OFAC/PEP watchlist screening',
+        'Income and asset verification via bank connection',
+        'Employer-verified employment',
+        'Property valuation (AVM) and tax data',
+        'Cross-referenced confidence scoring',
+        'Examiner-ready audit trail',
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'What does RAVEN do?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'RAVEN automates borrower verification for community and regional banks. A loan officer sends one link; the borrower connects their bank in about 5 minutes; RAVEN returns identity, income, employment, and property data cross-referenced from seven providers with a full audit trail.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who is RAVEN built for?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'Community banks, regional banks, and federal savings associations that originate mortgages, HELOCs, commercial real estate, and small business loans and want to compete with fintech speed without replacing their LOS.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Which data sources does RAVEN use?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'Socure for KYC, fraud, and OFAC/PEP screening; Plaid for income, assets, and liabilities; Truework for employer-verified employment; Melissa and ATTOM for property AVM and tax data; FullContact for contact cross-reference.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How long does a verification take?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'The borrower interaction takes about 5 minutes. Most verification data returns in minutes; employer-verified employment is asynchronous and typically completes in 1 to 3 days.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Does RAVEN replace our loan origination system?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text:
+              'No. RAVEN is a verification layer that runs alongside your existing LOS. It works as a standalone dashboard from day one and integrates via API with Jack Henry, Fiserv, and FIS environments.',
+          },
+        },
+      ],
+    },
+  ],
 };
 
 export default function LandingPage() {

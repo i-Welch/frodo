@@ -796,8 +796,53 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const html = convertMarkdown(article.content);
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: article.title,
+        description: article.description,
+        url: `https://reportraven.tech/blog/${slug}`,
+        datePublished: article.publishedDate,
+        dateModified: article.publishedDate,
+        author: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+        publisher: {
+          '@type': 'Organization',
+          name: 'RAVEN',
+          url: 'https://reportraven.tech',
+          logo: {
+            '@type': 'ImageObject',
+            url: 'https://reportraven.tech/raven-icon.svg',
+          },
+        },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `https://reportraven.tech/blog/${slug}`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://reportraven.tech' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://reportraven.tech/blog' },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: article.title,
+            item: `https://reportraven.tech/blog/${slug}`,
+          },
+        ],
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <style>{`
         .article-wrap {
           max-width: 720px;

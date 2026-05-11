@@ -65,9 +65,32 @@ const articles = [
   },
 ];
 
+const blogJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  '@id': 'https://reportraven.tech/blog#blog',
+  url: 'https://reportraven.tech/blog',
+  name: 'RAVEN Blog',
+  description:
+    'Research-backed articles on lending speed, compliance costs, and verification automation for community banks.',
+  publisher: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+  blogPost: articles.map((a) => ({
+    '@type': 'BlogPosting',
+    headline: a.title,
+    description: a.description,
+    url: `https://reportraven.tech/blog/${a.slug}`,
+    datePublished: '2026-03-24',
+    author: { '@type': 'Organization', name: 'RAVEN' },
+  })),
+};
+
 export default function BlogIndex() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <style>{`
         .blog-index {
           max-width: 1100px;
