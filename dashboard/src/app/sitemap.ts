@@ -63,6 +63,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.4,
     },
     {
+      url: 'https://app.reportraven.tech/legal/wisp',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://app.reportraven.tech/legal/incident-response',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://app.reportraven.tech/legal/business-continuity',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://app.reportraven.tech/legal/vendor-risk-management',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
       url: 'https://app.reportraven.tech/legal/privacy-policy',
       lastModified: new Date(),
       changeFrequency: 'monthly',

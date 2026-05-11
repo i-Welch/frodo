@@ -1,0 +1,61 @@
+<h1>Vendor Risk Management Program</h1>
+<p class="last-updated">Last updated: May 11, 2026</p>
+
+<h2>1. Purpose</h2>
+<p>This Vendor Risk Management Program ("VRM") governs how RAVEN selects, contracts with, and oversees third-party service providers that receive or process customer information. It is designed to satisfy the service-provider oversight requirements of the GLBA Safeguards Rule (16 CFR §314.4(f)), the FFIEC Outsourcing Technology Services booklet, and the data-aggregator and downstream-party obligations of 12 CFR Part 1033.</p>
+
+<h2>2. Scope</h2>
+<p>This program applies to all third-party providers that (a) receive or process consumer information on RAVEN's behalf, (b) provide infrastructure that handles consumer information in transit or at rest, or (c) provide identity, authentication, or operational services that materially affect platform security. The current list of subprocessors is published at <a href="/legal/subprocessors">/legal/subprocessors</a>.</p>
+
+<h2>3. Subprocessor Selection</h2>
+<p>Before engaging a new subprocessor, RAVEN evaluates:</p>
+<ul>
+  <li>Fitness for purpose, including the scope of consumer data the provider would receive and whether less-sensitive alternatives exist</li>
+  <li>Security posture, including SOC 2 Type II attestation (or equivalent), encryption practices, access controls, and breach history</li>
+  <li>Privacy posture, including data-use restrictions, retention practices, and sub-subprocessor disclosures</li>
+  <li>Regulatory standing, including OFAC and adverse-media checks of the provider's entity and principals</li>
+  <li>Financial and operational viability sufficient to support a long-term dependency</li>
+  <li>Contractual willingness to accept the obligations described in section 4 below</li>
+</ul>
+
+<h2>4. Required Contractual Terms</h2>
+<p>Every subprocessor contract must include:</p>
+<ul>
+  <li>Limits on use of consumer data to the purposes for which it is provided</li>
+  <li>Prohibition on sale, license, or use of consumer data for cross-marketing</li>
+  <li>Administrative, technical, and physical safeguards consistent with the GLBA Safeguards Rule and the FFIEC Information Security Handbook</li>
+  <li>Incident notification commitment within commercially reasonable timeframes, sufficient for RAVEN to meet its own customer-notification obligations</li>
+  <li>Sub-subprocessor disclosure and material-change notice</li>
+  <li>Cooperation with RAVEN's diligence, including annual production of SOC 2 Type II (or equivalent) and security questionnaires</li>
+  <li>Audit rights or equivalent assurance mechanisms</li>
+  <li>Data return and destruction obligations at contract end</li>
+</ul>
+
+<h2>5. Ongoing Oversight</h2>
+<ul>
+  <li>SOC 2 Type II (or equivalent) reports are collected from each subprocessor on at least an annual cadence and reviewed for control exceptions, scope, and bridge-letter coverage</li>
+  <li>Adverse media and OFAC re-screening on at least an annual cadence</li>
+  <li>Material-change notices from the subprocessor are reviewed for impact on RAVEN's risk posture and, where appropriate, communicated to RAVEN customers</li>
+  <li>Provider performance and availability are monitored continuously through the platform's enrichment engine, which tracks per-provider health, response latency, and error classification</li>
+  <li>Subprocessor incidents affecting RAVEN customer information are handled under RAVEN's Incident Response Plan</li>
+</ul>
+
+<h2>6. Customer Notification of Subprocessor Changes</h2>
+<p>RAVEN maintains the public list of subprocessors at <a href="/legal/subprocessors">/legal/subprocessors</a>. RAVEN will provide notice to active customers of material additions to or replacements of subprocessors that receive consumer data, in accordance with the Customer Agreement and applicable law. Customers may object to a new subprocessor under the terms of their Customer Agreement.</p>
+
+<h2>7. Termination and Offboarding</h2>
+<p>When a subprocessor relationship ends, RAVEN ensures that:</p>
+<ul>
+  <li>Consumer data held by the subprocessor is returned or destroyed in accordance with the contract</li>
+  <li>Credentials and integration endpoints are deactivated</li>
+  <li>The subprocessor list is updated and customers are notified of the change</li>
+</ul>
+
+<h2>8. Program Maintenance</h2>
+<p>The Qualified Individual under the WISP owns this program. It is reviewed at least annually and after any material change to the subprocessor population, the regulatory environment, or RAVEN's product scope.</p>
+
+<h2>9. Contact</h2>
+<ul>
+  <li>Vendor risk inquiries: security@reportraven.tech</li>
+  <li>Subprocessor change notifications: through the customer's primary point of contact</li>
+</ul>

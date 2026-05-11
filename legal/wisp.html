@@ -1,0 +1,107 @@
+<h1>Written Information Security Program</h1>
+<p class="last-updated">Last updated: May 11, 2026</p>
+
+<h2>1. Purpose and Scope</h2>
+<p>This Written Information Security Program ("WISP") documents the administrative, technical, and physical safeguards RAVEN maintains to protect the confidentiality, integrity, and availability of customer information processed through the platform. It is designed to satisfy the Gramm-Leach-Bliley Act Safeguards Rule (16 CFR Part 314), the FFIEC Information Security Handbook, and the data-protection elements of the CFPB Personal Financial Data Rights Rule (12 CFR Part 1033).</p>
+<p>This WISP applies to all RAVEN employees, contractors, infrastructure, third-party service providers, and to all consumer data processed on behalf of RAVEN's customers (U.S.-chartered, federally insured depository institutions).</p>
+
+<h2>2. Qualified Individual</h2>
+<p>The Qualified Individual responsible for overseeing, implementing, and enforcing this WISP is the RAVEN Security Lead. The Qualified Individual reports to the governing body at least annually on the status of the program, material risks, results of testing, and any security incidents.</p>
+<ul>
+  <li>Qualified Individual: Isaac Welch, Security Lead</li>
+  <li>Contact: security@reportraven.tech</li>
+</ul>
+
+<h2>3. Risk Assessment (16 CFR §314.4(b))</h2>
+<p>RAVEN conducts a documented risk assessment at least annually and whenever there is a material change to the platform, the threat landscape, or the regulatory environment. The risk assessment:</p>
+<ul>
+  <li>Identifies foreseeable internal and external threats that could result in unauthorized disclosure, misuse, alteration, destruction, or other compromise of customer information</li>
+  <li>Evaluates the likelihood and potential damage of each threat, taking into account the sensitivity of the information</li>
+  <li>Assesses the sufficiency of existing policies, procedures, customer-information systems, and other safeguards in place to control these risks</li>
+  <li>Drives the selection and prioritization of the controls described in this WISP</li>
+</ul>
+
+<h2>4. Safeguards (16 CFR §314.4(c))</h2>
+
+<h3>4.1 Access Controls</h3>
+<ul>
+  <li>Role-based access to production systems; least-privilege administration</li>
+  <li>Multi-factor authentication required for all administrative access to AWS, source control, identity provider (Clerk), and any system that can read decrypted customer information</li>
+  <li>Production API keys are stored as SHA-256 hashes; raw keys are shown once at creation and never persisted (`src/tenancy/api-key.ts`)</li>
+  <li>Multi-tenant isolation enforced at the data layer; module-level permission gating per tenant; sandbox and production environments separated at the key level</li>
+  <li>Consumer access is gated by verification tiers (OTP, enhanced OTP, identity-match) with lockout after repeated failures</li>
+</ul>
+
+<h3>4.2 Asset and Data Inventory</h3>
+<ul>
+  <li>Inventory of systems that store, process, or transmit customer information is maintained and reviewed at each material change</li>
+  <li>Data classification distinguishes customer information (regulated), tenant operational data, and non-sensitive marketing data</li>
+</ul>
+
+<h3>4.3 Encryption</h3>
+<ul>
+  <li>Encryption at rest: AES-256-GCM with per-user Data Encryption Keys (DEKs); DEKs are themselves encrypted under AWS KMS master keys (envelope encryption); field-level encryption such that compromise of one field does not expose others; key rotation managed by AWS KMS</li>
+  <li>Encryption in transit: TLS 1.2 or higher on all API endpoints and outbound provider calls</li>
+  <li>Crypto-shredding: deleting a consumer's DEK renders that consumer's data permanently unrecoverable, including from backups — supporting consumer revocation and deletion obligations under §1033 and state privacy laws</li>
+</ul>
+
+<h3>4.4 Secure Software Development</h3>
+<ul>
+  <li>Source control with mandatory code review; protected main branch</li>
+  <li>Static analysis (TypeScript strict-mode typecheck, ESLint) gated in pre-commit hooks</li>
+  <li>Automated test suite (Vitest) covering store, tenancy, identity, providers, and webhooks</li>
+  <li>Dependency review and vulnerability scanning</li>
+  <li>Secrets stored in environment variables and managed services; never in source or logs</li>
+</ul>
+
+<h3>4.5 Multi-Factor Authentication</h3>
+<p>MFA is required for all access to administrative consoles, source control, the identity provider, and any system that can decrypt customer information. The requirement applies to RAVEN staff and to any third-party support engineer granted temporary access.</p>
+
+<h3>4.6 Monitoring and Logging</h3>
+<ul>
+  <li>Structured JSON logs via Pino, with no PII written to logs</li>
+  <li>Per-request tenant ID and request ID captured for traceability</li>
+  <li>Every data change is recorded as an immutable event with actor, field-level before/after values, timestamp, and confidence score</li>
+  <li>Consent records store SHA-256 hashes of the exact consent text shown to the consumer</li>
+  <li>API access logs retained for the period required to support customer and regulator inquiries</li>
+</ul>
+
+<h3>4.7 Secure Disposal</h3>
+<p>Customer information is retained only as long as necessary for the consumer-requested product and applicable legal retention. Disposal is performed by crypto-shredding (DEK deletion), which renders the underlying data permanently unrecoverable. Disposal events are logged.</p>
+
+<h3>4.8 Change Management</h3>
+<p>All changes to production systems flow through source control with peer review. Schema changes, key-management changes, and changes affecting the audit trail receive additional review by the Qualified Individual.</p>
+
+<h3>4.9 Incident Response</h3>
+<p>RAVEN maintains a written Incident Response Plan (published at <a href="/legal/incident-response">/legal/incident-response</a>) that defines roles, severity tiers, escalation paths, evidence preservation, and notification commitments.</p>
+
+<h2>5. Service Provider Oversight (16 CFR §314.4(f))</h2>
+<p>RAVEN's Vendor Risk Management Program (<a href="/legal/vendor-risk-management">/legal/vendor-risk-management</a>) governs the selection, contracting, and ongoing oversight of all third-party service providers that receive or process customer information. The current list of subprocessors is published at <a href="/legal/subprocessors">/legal/subprocessors</a> and updated with notice to customers on material change.</p>
+
+<h2>6. Testing and Monitoring (16 CFR §314.4(d))</h2>
+<ul>
+  <li>Continuous monitoring through application logs, infrastructure alerts, and provider-health tracking</li>
+  <li>Annual penetration testing by an independent third party, with findings tracked to remediation</li>
+  <li>Annual tabletop exercise of the Incident Response Plan and Business Continuity / Disaster Recovery Plan</li>
+  <li>Annual SOC 2 attestation (Type I completed; Type II on an annual cycle)</li>
+</ul>
+
+<h2>7. Training (16 CFR §314.4(e))</h2>
+<p>All RAVEN staff complete security awareness training at hire and annually thereafter. Engineering staff complete additional secure-coding training. The Qualified Individual maintains training and credentials sufficient to the role and tracks the program's training compliance.</p>
+
+<h2>8. Customer and Consumer Information</h2>
+<p>RAVEN classifies customer information broadly to include nonpublic personal information received from financial institution customers and from consumers (including SSN, date of birth, account information, transaction history, and any other data processed through the platform).</p>
+
+<h2>9. Annual Review and Reporting (16 CFR §314.4(i))</h2>
+<p>The Qualified Individual reports to the governing body in writing at least annually. The report covers:</p>
+<ul>
+  <li>The overall status of the WISP and compliance with this policy</li>
+  <li>Material matters relating to risk assessment, risk management, control decisions, service provider arrangements, results of testing, security events, and management's response to them</li>
+  <li>Recommendations for changes to the WISP</li>
+</ul>
+
+<h2>10. Contact</h2>
+<ul>
+  <li>Security: security@reportraven.tech</li>
+  <li>Privacy: privacy@reportraven.tech</li>
+</ul>

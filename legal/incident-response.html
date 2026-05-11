@@ -1,0 +1,86 @@
+<h1>Incident Response Plan</h1>
+<p class="last-updated">Last updated: May 11, 2026</p>
+
+<h2>1. Purpose</h2>
+<p>This Incident Response Plan ("IRP") establishes RAVEN's procedures for identifying, containing, eradicating, and recovering from security incidents affecting the platform or customer information. It is designed to satisfy RAVEN's obligations under the GLBA Safeguards Rule (16 CFR §314.4(h)), state breach-notification laws, the FFIEC Information Security Handbook, and the notification commitments in our Customer Agreement.</p>
+
+<h2>2. Scope</h2>
+<p>This IRP applies to any actual or reasonably suspected event that may compromise the confidentiality, integrity, or availability of:</p>
+<ul>
+  <li>Consumer data processed through the platform</li>
+  <li>Customer (bank) operational data or credentials</li>
+  <li>RAVEN production systems, source code, or key material</li>
+  <li>Third-party subprocessor systems that handle data on RAVEN's behalf</li>
+</ul>
+
+<h2>3. Roles and Responsibilities</h2>
+<ul>
+  <li><strong>Incident Commander:</strong> RAVEN Security Lead. Owns response coordination, decisions on containment and escalation, and external communications. Default: Isaac Welch.</li>
+  <li><strong>Engineering Lead on Call:</strong> Owns technical investigation, containment, eradication, and recovery.</li>
+  <li><strong>Privacy Officer:</strong> Owns consumer-facing communications and rights-request implications. Default: Isaac Welch.</li>
+  <li><strong>Legal / External Counsel:</strong> Engaged for any incident at severity SEV-2 or higher, or whenever notification obligations are likely to be triggered.</li>
+  <li><strong>Customer Liaison:</strong> Owns customer (bank) notification and ongoing coordination with affected institutions.</li>
+</ul>
+
+<h2>4. Severity Tiers</h2>
+<ul>
+  <li><strong>SEV-1:</strong> Confirmed unauthorized access to or exfiltration of consumer data; production-wide outage; key-material compromise. Page Incident Commander immediately; engage external counsel; prepare customer and regulator notifications.</li>
+  <li><strong>SEV-2:</strong> Probable but unconfirmed compromise; partial production outage; subprocessor incident affecting RAVEN data; credential or access-control failure. Page Incident Commander within 1 hour; begin investigation; prepare for customer notification.</li>
+  <li><strong>SEV-3:</strong> Vulnerability discovered without evidence of exploitation; degraded performance; failed control without data exposure. Triaged within one business day; remediated under change management.</li>
+  <li><strong>SEV-4:</strong> Informational. Logged for the annual report.</li>
+</ul>
+
+<h2>5. Response Phases</h2>
+
+<h3>5.1 Detection and Triage</h3>
+<p>Incidents are detected through application monitoring, infrastructure alerts, provider notifications, internal reports, and security@reportraven.tech intake. Every report is triaged within one business hour during business hours and within four hours outside business hours. Triage assigns a severity tier and an Incident Commander.</p>
+
+<h3>5.2 Containment</h3>
+<ul>
+  <li>Revoke compromised credentials, API keys, and OAuth tokens</li>
+  <li>Isolate affected services or tenants</li>
+  <li>Block source IPs or actors where applicable</li>
+  <li>Suspend production access for any tenant whose credentials are implicated, pending re-attestation</li>
+</ul>
+
+<h3>5.3 Evidence Preservation</h3>
+<ul>
+  <li>Capture and preserve logs, snapshots, configuration, and forensic artifacts before remediation actions that would alter them</li>
+  <li>Maintain a written incident timeline with timestamps for every decision and action</li>
+  <li>Restrict evidence handling to the Incident Commander and named investigators</li>
+</ul>
+
+<h3>5.4 Eradication and Recovery</h3>
+<ul>
+  <li>Remove the root cause (patched vulnerability, rotated key, removed malicious actor)</li>
+  <li>Validate that the threat has been eliminated through targeted testing</li>
+  <li>Restore affected services from known-good state</li>
+  <li>Monitor for recurrence for an explicit post-incident window</li>
+</ul>
+
+<h3>5.5 Notification</h3>
+<ul>
+  <li><strong>Customer notification:</strong> Affected customers are notified within the time windows required by the Customer Agreement (and in any event no later than the time needed for the customer to satisfy its own GLBA Safeguards Rule and state breach-notification obligations).</li>
+  <li><strong>Consumer notification:</strong> Where direct consumer notification is required, RAVEN supports its customers in meeting their notice obligations, or notifies directly if RAVEN is the notifying party under applicable law.</li>
+  <li><strong>Regulator notification:</strong> Where RAVEN has a direct notification obligation (including NYDFS 23 NYCRR Part 500 §500.17 if applicable), RAVEN notifies within the regulatory window. Notification through customers to their primary regulator is coordinated through the Customer Liaison.</li>
+  <li><strong>Subprocessor incidents:</strong> RAVEN treats subprocessor incidents affecting customer information as RAVEN incidents for notification purposes.</li>
+</ul>
+
+<h3>5.6 Post-Incident Review</h3>
+<p>Within ten business days of incident closure, the Incident Commander conducts a written post-incident review covering root cause, response effectiveness, control gaps, and remediation actions. SEV-1 and SEV-2 reviews are presented to the governing body in the next scheduled WISP review cycle.</p>
+
+<h2>6. Testing</h2>
+<p>This IRP is exercised at least annually through a tabletop exercise covering a realistic scenario (for example, a stolen API key, a subprocessor breach, or a ransomware event). Findings drive updates to this plan.</p>
+
+<h2>7. Communications</h2>
+<ul>
+  <li>Internal: incident-response Slack channel; pager for the Engineering Lead on Call</li>
+  <li>Customer: primary technical and compliance contacts on file for each tenant</li>
+  <li>Public: status.reportraven.tech (where used) and security@reportraven.tech</li>
+</ul>
+
+<h2>8. Contact</h2>
+<ul>
+  <li>Report a security incident: security@reportraven.tech</li>
+  <li>Privacy concerns: privacy@reportraven.tech</li>
+</ul>

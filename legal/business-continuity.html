@@ -1,0 +1,61 @@
+<h1>Business Continuity and Disaster Recovery Plan</h1>
+<p class="last-updated">Last updated: May 11, 2026</p>
+
+<h2>1. Purpose</h2>
+<p>This Business Continuity and Disaster Recovery Plan ("BCP/DR") describes how RAVEN maintains availability of the platform, protects against data loss, and recovers from disruptive events affecting the platform's infrastructure, personnel, or third-party dependencies. It is designed to align with the FFIEC Business Continuity Management booklet and the resilience expectations of our chartered depository-institution customers.</p>
+
+<h2>2. Scope</h2>
+<p>This plan covers RAVEN's production platform (API, dashboard, database, key management), critical third-party subprocessors (listed at <a href="/legal/subprocessors">/legal/subprocessors</a>), and the personnel necessary to operate the platform.</p>
+
+<h2>3. Business Impact and Recovery Objectives</h2>
+<ul>
+  <li><strong>Recovery Time Objective (RTO):</strong> 4 hours for the core verification API and dashboard. 24 hours for ancillary functions (PDF report generation, analytics).</li>
+  <li><strong>Recovery Point Objective (RPO):</strong> 15 minutes for consumer and tenant data; 1 hour for audit logs.</li>
+  <li><strong>Maximum Tolerable Downtime:</strong> 24 hours before customer notification and remediation commitments under the Customer Agreement are triggered.</li>
+</ul>
+
+<h2>4. Architecture and Resilience Posture</h2>
+<ul>
+  <li><strong>Hosting:</strong> Amazon Web Services, U.S. region. Compute is containerized and stateless; service can be redeployed in any AWS region from infrastructure-as-code.</li>
+  <li><strong>Data store:</strong> Amazon DynamoDB with encryption at rest and continuous point-in-time recovery enabled. DynamoDB's managed replication provides regional durability; cross-region restore is supported through point-in-time recovery exports.</li>
+  <li><strong>Key management:</strong> AWS KMS with automatic key rotation. KMS is regionally available and managed by AWS.</li>
+  <li><strong>Source of truth:</strong> Infrastructure-as-code and application source are stored in version control with offsite backups. A full production environment can be rebuilt from source.</li>
+  <li><strong>Statelessness:</strong> The application tier holds no state — recovery is a redeploy plus data restore.</li>
+</ul>
+
+<h2>5. Backup and Restoration</h2>
+<ul>
+  <li>DynamoDB continuous backups (point-in-time recovery) cover a 35-day window</li>
+  <li>Application source and infrastructure code are mirrored across version control providers</li>
+  <li>Encrypted off-region exports of DynamoDB tables on a documented cadence for disaster scenarios</li>
+  <li>Restore drills exercised at least annually; restore drill results are recorded and reviewed by the Qualified Individual under the WISP</li>
+</ul>
+
+<h2>6. Failover Scenarios</h2>
+<ul>
+  <li><strong>Single-AZ failure:</strong> AWS managed services handle this transparently. No RAVEN action required.</li>
+  <li><strong>Regional impairment:</strong> Application tier is redeployed from infrastructure-as-code to an alternate AWS region. DynamoDB tables are restored from point-in-time recovery to the alternate region. RTO target: 4 hours.</li>
+  <li><strong>Subprocessor outage:</strong> The platform's enrichment engine tracks per-provider health and routes around degraded providers where alternatives exist. Verification reports are delivered with provider-attribution and confidence indicators that reflect partial completion when a provider is unavailable.</li>
+  <li><strong>Loss of key personnel:</strong> Documented runbooks and shared on-call rotation ensure no single individual is required to operate the platform. Incident Commander role is delegated under the Incident Response Plan.</li>
+  <li><strong>Source-control provider outage:</strong> Off-provider mirrors enable continued development and deployment.</li>
+</ul>
+
+<h2>7. Testing</h2>
+<ul>
+  <li>Tabletop exercise of a major-disruption scenario at least annually</li>
+  <li>Restore drill of DynamoDB point-in-time recovery into a non-production environment at least annually, with documented validation that the restored state matches expectations</li>
+  <li>Failover deploys exercised through routine deployment automation, which doubles as a region-rebuild capability</li>
+  <li>Test results are reviewed by the Qualified Individual and reported to the governing body in the annual WISP report</li>
+</ul>
+
+<h2>8. Notification</h2>
+<p>If an event causes (or is likely to cause) a customer-facing disruption exceeding RTO, the Incident Commander notifies affected customers under the Incident Response Plan and the Customer Agreement, with status updates at least every four hours until resolution.</p>
+
+<h2>9. Plan Maintenance</h2>
+<p>This BCP/DR is reviewed at least annually and after any material change to the platform architecture, subprocessor list, or threat landscape. The Qualified Individual owns plan maintenance.</p>
+
+<h2>10. Contact</h2>
+<ul>
+  <li>Operational continuity inquiries: security@reportraven.tech</li>
+  <li>Customer impact notifications: through the customer's primary point of contact</li>
+</ul>

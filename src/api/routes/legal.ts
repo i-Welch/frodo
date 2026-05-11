@@ -103,6 +103,10 @@ function renderLayout(title: string, bodyContent: string): string {
     <a href="/legal/terms-of-service">Terms of Service</a>
     <a href="/legal/subprocessors">Subprocessors</a>
     <a href="/legal/security">Security</a>
+    <a href="/legal/wisp">WISP</a>
+    <a href="/legal/incident-response">Incident Response</a>
+    <a href="/legal/business-continuity">Business Continuity</a>
+    <a href="/legal/vendor-risk-management">Vendor Risk</a>
   </nav>
   ${bodyContent}
 </body>
