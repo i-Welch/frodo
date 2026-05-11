@@ -74,7 +74,46 @@ The invited users can then:
 
 ---
 
-## Step 3: Generate a Production API Key (When Ready)
+## Step 3: Record §1033 / FFIEC TPRM Diligence
+
+Production API keys are gated on completed onboarding diligence. Record the diligence artifacts on the tenant record:
+
+```bash
+curl -X PATCH https://app.reportraven.tech/api/v1/tenants/<tenantId> \
+  -H "Authorization: Bearer <RAVEN_ADMIN_SECRET>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fdicCertNumber": "12345",
+    "ein": "12-3456789",
+    "primaryRegulator": "FDIC",
+    "beneficialOwners": [{ "name": "Jane Smith", "title": "CEO", "ownershipPercent": 12, "sanctionsScreenResult": "clear" }],
+    "agreementVersionId": "v1.0",
+    "agreementSignedAt": "2026-05-11T00:00:00Z",
+    "agreementSignerName": "Jane Smith",
+    "agreementSignerTitle": "CEO",
+    "permissiblePurposes": ["loan-origination", "account-opening"],
+    "permissiblePurposeAttestedAt": "2026-05-11T00:00:00Z",
+    "sanctionsScreenedAt": "2026-05-11T00:00:00Z",
+    "sanctionsScreenResult": "clear",
+    "chartersVerifiedAt": "2026-05-11T00:00:00Z",
+    "securityReviewCompletedAt": "2026-05-11T00:00:00Z",
+    "insuranceVerifiedAt": "2026-05-11T00:00:00Z",
+    "nextRecertificationDue": "2027-05-11T00:00:00Z"
+  }'
+```
+
+Check eligibility:
+
+```bash
+curl https://app.reportraven.tech/api/v1/tenants/<tenantId>/eligibility \
+  -H "Authorization: Bearer <RAVEN_ADMIN_SECRET>"
+```
+
+Once `eligible: true`, proceed.
+
+---
+
+## Step 4: Generate a Production API Key
 
 The sandbox key from Step 1 hits sandbox provider APIs (Plaid sandbox, Socure sandbox, etc.). When the bank is ready for live borrower data, generate a production key:
 

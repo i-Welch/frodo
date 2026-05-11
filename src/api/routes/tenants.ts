@@ -1,7 +1,8 @@
 import crypto from 'node:crypto';
 import { Elysia, t } from 'elysia';
-import { createTenant, getTenant, storeApiKey, revokeApiKey } from '../../store/tenant-store.js';
+import { createTenant, getTenant, storeApiKey, revokeApiKey, updateTenant } from '../../store/tenant-store.js';
 import { generateApiKey, hashApiKey, parseApiKey } from '../../tenancy/api-key.js';
+import { isProductionEligible } from '../../tenancy/permissions.js';
 import { createChildLogger } from '../../logger.js';
 import type { Tenant, StoredApiKey } from '../../tenancy/types.js';
 import type { ApiError } from '../../types.js';
@@ -168,6 +169,28 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
         return err;
       }
 
+      // §1033 / FFIEC TPRM diligence gate — block production key issuance
+      // until KYB, agreement, attestation, sanctions, security review,
+      // and insurance evidence are all on file and not stale.
+      if (body.environment === 'production') {
+        const eligibility = isProductionEligible(tenant);
+        if (!eligibility.eligible) {
+          log.warn(
+            { tenantId: params.id, missing: eligibility.missing, stale: eligibility.stale },
+            'Blocked production API key issuance — diligence incomplete',
+          );
+          set.status = 412;
+          return {
+            status: 412,
+            code: 'DILIGENCE_INCOMPLETE',
+            message:
+              'Production access requires completed onboarding diligence (charter verification, signed Customer Agreement, permissible-purpose attestation, OFAC screen, security review, insurance evidence). Use PATCH /api/v1/tenants/:id to record them.',
+            missing: eligibility.missing,
+            stale: eligibility.stale,
+          };
+        }
+      }
+
       const generated = generateApiKey(body.environment);
       const parsed = parseApiKey(generated.rawKey)!;
 
@@ -191,6 +214,98 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
       }),
     },
   )
+  // -----------------------------------------------------------------------
+  // PATCH /api/v1/tenants/:id — record §1033 / FFIEC TPRM diligence fields
+  //
+  // Used by RAVEN ops staff after running KYB, executing the Customer
+  // Agreement, screening OFAC, completing the security review, and
+  // collecting insurance evidence. Once these are populated and not
+  // stale, the tenant becomes eligible for a production API key.
+  // -----------------------------------------------------------------------
+  .patch(
+    '/:id',
+    async ({ params, body, set }) => {
+      const tenant = await getTenant(params.id);
+      if (!tenant) {
+        set.status = 404;
+        const err: ApiError = {
+          status: 404,
+          code: 'NOT_FOUND',
+          message: `Tenant ${params.id} not found`,
+        };
+        return err;
+      }
+
+      await updateTenant(params.id, body);
+      const updated = await getTenant(params.id);
+      log.info({ tenantId: params.id, fields: Object.keys(body) }, 'Tenant diligence patched');
+      return {
+        ...updated,
+        eligibility: updated ? isProductionEligible(updated) : null,
+      };
+    },
+    {
+      body: t.Partial(
+        t.Object({
+          fdicCertNumber: t.String(),
+          occCharterNumber: t.String(),
+          ncuaCharterNumber: t.String(),
+          stateCharter: t.String(),
+          ein: t.String(),
+          lei: t.String(),
+          primaryRegulator: t.Union([
+            t.Literal('FDIC'),
+            t.Literal('OCC'),
+            t.Literal('NCUA'),
+            t.Literal('FRB'),
+            t.Literal('STATE'),
+          ]),
+          beneficialOwners: t.Array(
+            t.Object({
+              name: t.String(),
+              title: t.Optional(t.String()),
+              ownershipPercent: t.Optional(t.Number()),
+              sanctionsScreenResult: t.Optional(
+                t.Union([t.Literal('clear'), t.Literal('hit'), t.Literal('review')]),
+              ),
+            }),
+          ),
+          agreementVersionId: t.String(),
+          agreementSignedAt: t.String(),
+          agreementSignerName: t.String(),
+          agreementSignerTitle: t.String(),
+          permissiblePurposes: t.Array(t.String()),
+          permissiblePurposeAttestedAt: t.String(),
+          sanctionsScreenedAt: t.String(),
+          sanctionsScreenResult: t.Union([
+            t.Literal('clear'),
+            t.Literal('hit'),
+            t.Literal('review'),
+          ]),
+          chartersVerifiedAt: t.String(),
+          securityReviewCompletedAt: t.String(),
+          insuranceVerifiedAt: t.String(),
+          nextRecertificationDue: t.String(),
+        }),
+      ),
+    },
+  )
+  // -----------------------------------------------------------------------
+  // GET /api/v1/tenants/:id/eligibility — production-eligibility report
+  // -----------------------------------------------------------------------
+  .get('/:id/eligibility', async ({ params, set }) => {
+    const tenant = await getTenant(params.id);
+    if (!tenant) {
+      set.status = 404;
+      const err: ApiError = {
+        status: 404,
+        code: 'NOT_FOUND',
+        message: `Tenant ${params.id} not found`,
+      };
+      return err;
+    }
+    return isProductionEligible(tenant);
+  })
   // -----------------------------------------------------------------------
   // DELETE /api/v1/tenants/:id/api-keys/:keyId — revoke an API key
   // -----------------------------------------------------------------------

@@ -101,6 +101,8 @@ function renderLayout(title: string, bodyContent: string): string {
     <a href="/legal/privacy-policy">Privacy Policy</a>
     <a href="/legal/data-retention">Data Retention</a>
     <a href="/legal/terms-of-service">Terms of Service</a>
+    <a href="/legal/subprocessors">Subprocessors</a>
+    <a href="/legal/security">Security</a>
   </nav>
   ${bodyContent}
 </body>

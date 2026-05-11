@@ -1,6 +1,90 @@
 import { VerificationTier } from '../types.js';
 import { getModule } from '../modules/registry.js';
-import type { TenantPermission } from './types.js';
+import type { Tenant, TenantPermission } from './types.js';
+
+// ---------------------------------------------------------------------------
+// Production-eligibility gate
+// ---------------------------------------------------------------------------
+
+/**
+ * Required diligence artifacts before a tenant may receive a production API key.
+ * Maps to the answers given to Plaid in
+ * docs/compliance/plaid-1033-customer-onboarding.md.
+ */
+export interface ProductionEligibilityResult {
+  eligible: boolean;
+  missing: string[];
+  stale: string[];
+}
+
+const STALE_DAYS = 365; // annual recertification cadence
+
+function olderThan(iso: string | undefined, days: number): boolean {
+  if (!iso) return true;
+  const then = Date.parse(iso);
+  if (Number.isNaN(then)) return true;
+  return Date.now() - then > days * 24 * 60 * 60 * 1000;
+}
+
+/**
+ * Check whether a tenant satisfies the §1033 / FFIEC TPRM diligence
+ * requirements needed to issue a production API key.
+ */
+export function isProductionEligible(tenant: Tenant): ProductionEligibilityResult {
+  const missing: string[] = [];
+  const stale: string[] = [];
+
+  const hasCharter =
+    Boolean(tenant.fdicCertNumber) ||
+    Boolean(tenant.occCharterNumber) ||
+    Boolean(tenant.ncuaCharterNumber) ||
+    Boolean(tenant.stateCharter);
+  if (!hasCharter) missing.push('charter (FDIC, OCC, NCUA, or state)');
+
+  if (!tenant.ein) missing.push('ein');
+  if (!tenant.primaryRegulator) missing.push('primaryRegulator');
+  if (!tenant.beneficialOwners || tenant.beneficialOwners.length === 0) {
+    missing.push('beneficialOwners');
+  }
+
+  if (!tenant.agreementSignedAt) missing.push('agreementSignedAt');
+  if (!tenant.agreementVersionId) missing.push('agreementVersionId');
+  if (!tenant.agreementSignerName) missing.push('agreementSignerName');
+  if (!tenant.agreementSignerTitle) missing.push('agreementSignerTitle');
+
+  if (!tenant.permissiblePurposes || tenant.permissiblePurposes.length === 0) {
+    missing.push('permissiblePurposes');
+  }
+  if (!tenant.permissiblePurposeAttestedAt) missing.push('permissiblePurposeAttestedAt');
+
+  if (!tenant.sanctionsScreenedAt) {
+    missing.push('sanctionsScreenedAt');
+  } else if (olderThan(tenant.sanctionsScreenedAt, STALE_DAYS)) {
+    stale.push('sanctionsScreenedAt');
+  }
+  if (tenant.sanctionsScreenResult && tenant.sanctionsScreenResult !== 'clear') {
+    missing.push(`sanctionsScreenResult (current=${tenant.sanctionsScreenResult})`);
+  }
+
+  if (!tenant.chartersVerifiedAt) {
+    missing.push('chartersVerifiedAt');
+  } else if (olderThan(tenant.chartersVerifiedAt, STALE_DAYS)) {
+    stale.push('chartersVerifiedAt');
+  }
+
+  if (!tenant.securityReviewCompletedAt) missing.push('securityReviewCompletedAt');
+  if (!tenant.insuranceVerifiedAt) missing.push('insuranceVerifiedAt');
+
+  if (tenant.nextRecertificationDue && Date.parse(tenant.nextRecertificationDue) < Date.now()) {
+    stale.push('nextRecertificationDue');
+  }
+
+  return {
+    eligible: missing.length === 0 && stale.length === 0,
+    missing,
+    stale,
+  };
+}
 
 /**
  * Filter module data based on the user's verified tier.

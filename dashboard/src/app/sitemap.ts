@@ -57,6 +57,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
+      url: 'https://app.reportraven.tech/legal/subprocessors',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
       url: 'https://app.reportraven.tech/legal/privacy-policy',
       lastModified: new Date(),
       changeFrequency: 'monthly',
