@@ -14,9 +14,14 @@
  *   bun scripts/recertification-check.ts --warn-days=30
  */
 
+import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { listTenants } from '../src/store/tenant-store.js';
 import { isProductionEligible } from '../src/tenancy/permissions.js';
 import type { Tenant } from '../src/tenancy/types.js';
+
+const AWS_REGION = process.env.AWS_REGION ?? 'us-east-2';
+const SES_FROM_EMAIL = process.env.SES_FROM_EMAIL ?? 'noreply@reportraven.tech';
+const ALERT_TO_EMAIL = process.env.RECERT_ALERT_TO ?? 'isaac@reportraven.tech';
 
 const args = process.argv.slice(2);
 const warnDaysArg = args.find((a) => a.startsWith('--warn-days='));
@@ -63,6 +68,66 @@ function classify(tenant: Tenant): TenantStatus {
   };
 }
 
+function renderEmailBody(
+  overdue: TenantStatus[],
+  expiring: TenantStatus[],
+  total: number,
+): { text: string; html: string } {
+  const lines: string[] = [];
+  lines.push(`RAVEN recertification check — ${new Date().toISOString()}`);
+  lines.push('');
+  lines.push(`Total tenants: ${total}`);
+  lines.push(`Overdue: ${overdue.length}`);
+  lines.push(`Expiring within ${WARN_DAYS} days: ${expiring.length}`);
+  lines.push('');
+
+  if (overdue.length > 0) {
+    lines.push('--- OVERDUE ---');
+    for (const t of overdue) {
+      lines.push(`${t.name} (${t.tenantId})`);
+      if (t.missing.length > 0) lines.push(`  missing: ${t.missing.join(', ')}`);
+      if (t.stale.length > 0) lines.push(`  stale:   ${t.stale.join(', ')}`);
+      if (t.daysUntilDue !== undefined) lines.push(`  due:     ${t.daysUntilDue} days`);
+      lines.push('');
+    }
+  }
+
+  if (expiring.length > 0) {
+    lines.push('--- EXPIRING SOON ---');
+    for (const t of expiring) {
+      lines.push(`${t.name} (${t.tenantId}) — due in ${t.daysUntilDue} days`);
+    }
+    lines.push('');
+  }
+
+  const text = lines.join('\n');
+  const html = `<pre style="font-family:ui-monospace,Menlo,monospace;font-size:13px">${text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')}</pre>`;
+  return { text, html };
+}
+
+async function sendAlertEmail(
+  subject: string,
+  body: { text: string; html: string },
+): Promise<void> {
+  const ses = new SESClient({ region: AWS_REGION });
+  await ses.send(
+    new SendEmailCommand({
+      Source: SES_FROM_EMAIL,
+      Destination: { ToAddresses: [ALERT_TO_EMAIL] },
+      Message: {
+        Subject: { Data: subject, Charset: 'UTF-8' },
+        Body: {
+          Text: { Data: body.text, Charset: 'UTF-8' },
+          Html: { Data: body.html, Charset: 'UTF-8' },
+        },
+      },
+    }),
+  );
+}
+
 async function main() {
   const tenants = await listTenants();
   const statuses = tenants.map(classify);
@@ -80,6 +145,21 @@ async function main() {
   };
 
   console.log(JSON.stringify(summary, null, 2));
+
+  // Email an alert if anything needs attention.
+  if (overdue.length > 0 || expiring.length > 0) {
+    const subject =
+      overdue.length > 0
+        ? `[RAVEN] ${overdue.length} tenant(s) OVERDUE for recertification`
+        : `[RAVEN] ${expiring.length} tenant(s) expiring within ${WARN_DAYS} days`;
+    try {
+      await sendAlertEmail(subject, renderEmailBody(overdue, expiring, statuses.length));
+      console.error(`alert email sent to ${ALERT_TO_EMAIL}`);
+    } catch (err) {
+      console.error('failed to send alert email', err);
+      // Don't swallow the failure — still exit non-zero below if overdue.
+    }
+  }
 
   // Exit non-zero if any tenant is overdue — surface a failure to whatever
   // scheduler is running this script so on-call gets paged.

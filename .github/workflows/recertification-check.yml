@@ -1,0 +1,47 @@
+name: Recertification Check
+on:
+  # Daily at 13:00 UTC (9:00 AM ET).
+  schedule:
+    - cron: '0 13 * * *'
+  # Manual trigger for ad-hoc runs.
+  workflow_dispatch:
+
+concurrency:
+  group: recertification-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      # OIDC for assuming the AWS role.
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # Narrow IAM role: dynamodb:Scan + dynamodb:GetItem on the
+          # production table, and ses:SendEmail from noreply@reportraven.tech
+          # to isaac@reportraven.tech. Defined as a repo/environment variable
+          # so it can be rotated without touching this workflow.
+          role-to-assume: ${{ vars.AWS_RECERT_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Run recertification check
+        env:
+          AWS_REGION: ${{ vars.AWS_REGION }}
+          DYNAMODB_TABLE: ${{ vars.DYNAMODB_TABLE_PRODUCTION }}
+          SES_FROM_EMAIL: noreply@reportraven.tech
+          RECERT_ALERT_TO: isaac@reportraven.tech
+        run: bun scripts/recertification-check.ts
