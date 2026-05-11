@@ -31,11 +31,10 @@ jobs:
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
-          # Narrow IAM role: dynamodb:Scan + dynamodb:GetItem on the
-          # production table, and ses:SendEmail from noreply@reportraven.tech
-          # to isaac@reportraven.tech. Defined as a repo/environment variable
-          # so it can be rotated without touching this workflow.
-          role-to-assume: ${{ vars.AWS_RECERT_ROLE_ARN }}
+          # Reuse the same OIDC role the deploy workflow uses. The role
+          # already has access to DynamoDB and SES in the production
+          # environment, so no additional IAM setup is required.
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
 
       - name: Run recertification check
