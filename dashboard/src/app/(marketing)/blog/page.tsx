@@ -16,6 +16,38 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'anderson-brothers-bank-myrtle-beach-bet',
+    title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
+    description:
+      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.19B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
+    readTime: '7 min read',
+    date: 'May 2026',
+  },
+  {
+    slug: 'income-verification-fintech-vs-bank',
+    title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax',
+    description:
+      'Community banks pay $55–$280 per file to verify borrower income through The Work Number and IRS transcripts. Plaid does it in seconds for $1–$3. The gap is not regulatory necessity — it\'s infrastructure debt.',
+    readTime: '6 min read',
+    date: 'May 2026',
+  },
+  {
+    slug: 'southern-first-bank-upstate-sc-bet',
+    title: 'The Bank That Bet on Upstate South Carolina (And Won)',
+    description:
+      'Southern First Bancshares just reported Q4 EPS up 73% year-over-year. The story behind that number is 30 people a day moving to Greenville-Spartanburg, a $1.7 billion BMW investment, and a 26-year relationship banking bet that\'s finally paying off.',
+    readTime: '8 min read',
+    date: 'May 2026',
+  },
+  {
+    slug: 'foreclosure-wave-hiding-in-plain-sight',
+    title: 'The Foreclosure Wave Is Already Here. Your Bank Just Can\'t See It Yet.',
+    description:
+      '118,727 households entered foreclosure in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
+    readTime: '7 min read',
+    date: 'May 2026',
+  },
+  {
     slug: 'why-it-takes-42-days-to-close-a-mortgage',
     title: 'Why It Takes 42 Days to Close a Mortgage (And What That\'s Costing Your Bank)',
     description:

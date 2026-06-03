@@ -72,6 +72,318 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'anderson-brothers-bank-myrtle-beach-bet': {
+    title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
+    description:
+      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.19B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
+    publishedDate: 'May 31, 2026',
+    readTime: '7 min read',
+    content: `
+In 1933, two brothers started a bank in Mullins, South Carolina by financing tobacco farmers from the back of a warehouse. Ninety-two years later, that same bank is posting a 16.7% return on equity, a net interest margin more than double the industry average, and a stock price that has gone from $23 to $1,000 a share.
+
+Anderson Brothers Bank is not a bank most people outside the Pee Dee region have heard of. It probably should be.
+
+## The Numbers That Don't Make Sense at First
+
+A 6.1% net interest margin. That's the figure that stops you when you pull the call report data for Anderson Brothers Bank.
+
+The industry average NIM for community banks is around 3.3%. Most banks would consider 4% a very good year. Anderson Brothers is running at nearly twice that, and it's not a fluke of one quarter. ROA came in at roughly 1.46% for 2025. ROE at 16.7%. The efficiency ratio sits at about 59%, meaning for every dollar the bank brings in, it spends 59 cents running the place. Not spectacular on its own, but strong for a bank growing assets at 12% a year.
+
+Full-year 2025 net income: $29 million. Record.
+
+To put that in context, the bank had $500 million in total assets in 2015. Today it has $2.19 billion. That's 16% compounded annual growth over a decade, and not a single acquisition since buying Anderson State Bank in Hemingway in 2000. Every dollar of growth has come the hard way.
+
+How does a community bank in rural South Carolina generate margins that would make most regional bank CFOs do a double-take? Two things: what they lend, and who they fund it with.
+
+## The Tobacco Town Funding Machine
+
+Anderson Brothers' home market is Marion County, South Carolina. This is not a glamour market.
+
+Population: approximately 28,215 people, declining at about 0.5% per year. Median household income: $24,304. Every county in the Pee Dee region recorded more deaths than births from 2020 to 2023. The economic base is agricultural and light industrial: Sopakco Packaging, DMA Sales, tobacco farming legacy.
+
+What that market lacks in growth it more than compensates for in deposit loyalty. Anderson Brothers holds roughly 60% of Marion County deposits. That's not a market share number, that's a lock. When you fund your loan book with low-cost deposits from a market where you've been the dominant bank for 90 years, your cost of funds stays structurally below what banks in competitive urban markets can achieve. That deposit advantage flows directly into NIM.
+
+The bank explicitly tracks this. Management describes its retained earnings model as generating 16%+ return on reinvested capital, compounding equity without dilution. That framing is unusual for a community bank. It reflects a discipline about how deposit advantage translates into compounding shareholder value over time.
+
+## The Non-Prime Auto Bet
+
+The other half of the margin story is what Anderson Brothers lends.
+
+Consumer loans represent 28.5% of the loan book, a notably high share for a bank this size. The product driving that number is non-prime indirect auto lending, a specialty the bank has deliberately built and maintained. Non-prime borrowers pay higher rates. They also default more. The bank's management is not naive about this: the shareholder letter acknowledges that auto delinquencies peaked in mid-2024 and spent most of 2025 recovering. As of early 2026, past-due accounts in that portfolio had returned to their lowest level since September 2022.
+
+The math works because the yield on non-prime auto more than compensates for the higher loss rate, especially when you're funding it with 60%-market-share rural deposits. Anderson Brothers is essentially running a carry trade that most community banks either can't execute or won't touch. They've been doing it long enough to manage the cycle.
+
+Credit quality across the full book is clean. Non-current loans sit at 0.52% of the portfolio. The Texas Ratio (a measure of problem assets relative to capital and reserves) is 4.16%. Any figure below 10% is considered healthy. The loan loss reserve covers non-current loans at 338%. These are not the numbers of a bank taking reckless risk.
+
+## Six Years, Eleven Spots
+
+The story that explains where Anderson Brothers is going is Horry County.
+
+Myrtle Beach is a different world from Mullins. Horry County has unemployment around 3-4%, median home prices around $327,000-$360,000, over $100 million in active hotel investment, and a tourism-driven economy that has grown consistently for two decades. LinkedIn named Myrtle Beach one of its Top Cities on the Rise in July 2025.
+
+Six years ago, Anderson Brothers Bank ranked 11th in Horry County deposit market share among 20 competing banks. Today they rank 2nd.
+
+That's eleven spots in six years. In a market where they started as an outsider, against banks that had been there for decades.
+
+The mechanism was a dedicated Deposit Task Force launched in 2025 that secured over $100 million from sophisticated depositors in the corridor. That capital funded loan growth in the county. Seven facility expansion projects are currently underway along the Myrtle Beach and Conway stretch. In February 2026, the board approved nine additional leadership appointments to staff the expansion.
+
+The bank also closed a large commercial real estate loan in 21 days in 2025. The industry standard for comparable transactions is 45-90 days. Speed is not incidental to the strategy. It's the pitch.
+
+## The Real Estate Question
+
+There is one thing worth watching closely, and it's the Horry County housing market.
+
+After years of pandemic-driven appreciation, the Grand Strand has cooled. Median home prices are essentially flat to slightly negative year-over-year. Inventory has expanded to roughly four months of supply. The median days on market is 116 days, up from 110 a year ago. Seventy-five percent of homes in Horry County are now closing below asking price.
+
+None of these numbers signal a crash. They signal normalization after an unusual run. But Anderson Brothers' loan book is 66% real estate, and a meaningful share of that is in Horry County collateral. The bank's credit quality track record is strong, but it's been built partly in a rising-price environment where problem borrowers could sell their way out of trouble. That cushion is thinner now.
+
+Management knows the Horry County market as well as anyone: they've been watching it long enough to know the difference between a correction and a cycle. The bank's 12% annual growth target explicitly accounts for market conditions. But it's the number to watch in the 2026 call reports.
+
+## What 2025 Said About Direction
+
+Beyond the financial results, 2025 was the year Anderson Brothers signaled it intends to be a different kind of bank going forward.
+
+The bank simultaneously deployed three new technology platforms: FedNow for real-time payments, LoanVantage for loan origination, and RingCentral for communications. AI integration is underway across loan collections, fraud detection, compliance, and underwriting. Four new C-suite roles were created in a single restructuring, adding a COO, a Chief Credit Officer, a Chief Banking Officer, and a Chief Risk Officer.
+
+Forbes named them 3rd best bank in South Carolina on their inaugural America's Best in State Banks list, based on customer surveys covering trust, digital services, branch services, and financial advice.
+
+For a 92-year-old bank headquartered in a town of 4,500 people, this is a lot of momentum. The tobacco warehouse is long gone. What replaced it is a bank running margins its competitors can't quite explain, from a deposit base that took 90 years to build, pointed directly at one of the fastest-growing coastal markets in the South.
+
+The Anderson family has been patient before. Thirty dollars turned into a thousand. The next move is into Myrtle Beach.
+    `,
+  },
+  'income-verification-fintech-vs-bank': {
+    title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax',
+    description:
+      'Community banks pay $55–$280 per file to verify borrower income through The Work Number and IRS transcripts. Plaid does it in seconds for $1–$3. The gap is not regulatory necessity — it\'s infrastructure debt.',
+    publishedDate: 'May 30, 2026',
+    readTime: '6 min read',
+    content: `
+Here's a number worth sitting with: a community bank can pay more to verify a borrower's income than it costs to buy a tank of gas, a nice dinner, or a month of streaming services. Sometimes all three.
+
+The Work Number, Equifax's employment verification database, charges lenders $55 to $70 per standard verification order. For a two-borrower mortgage file requiring verification at underwriting and again before closing, that's $140 to $280 per loan, before accounting for the cases where verification fails and someone has to pick up the phone. The Community Home Lenders of America (CHLA) formally asked regulators to scrutinize the pricing. An antitrust class action filed in 2024 documented a 272% price increase since 2012, when the same verification cost $17.85. Equifax has a near-monopoly on automated employment data for GSE lending. They know it.
+
+Meanwhile, Plaid returns income verification results in seconds. For somewhere between $1 and $3 per pull.
+
+That gap is not a feature of borrower complexity or regulatory necessity. It's the cost of doing business on aging infrastructure, and it's one reason why fintechs serving personal loan and auto markets are lapping community banks on speed and economics, even when the underlying borrower population is identical.
+
+## What Plaid Actually Does
+
+Plaid Income is not one product. It's three verification paths that route automatically based on what data is available.
+
+The first path is payroll connectivity. The borrower authenticates directly into their payroll account (ADP, Gusto, Workday, and roughly 250,000 other employers covering an estimated 80% of the US workforce). Plaid pulls structured data from the same source as the pay stub: gross income, pay frequency, employer name, job title, employment start date. The result is instantaneous once the user logs in.
+
+The second path is bank income analysis. The borrower connects a checking account. Plaid's machine learning pipeline runs against up to 24 months of transaction history, extracts recurring income streams, classifies them into 13 categories (salary, gig economy, pension, long-term disability, and more), and returns a structured income report. For straightforward W-2 earners with direct deposit, this takes about 11 seconds. That's the actual measured response time from a published case study with Purpose Financial, a high-volume consumer lender.
+
+The third path is document upload: pay stubs, W-2s, 1099s. Plaid's OCR and fraud detection layer checks more than 30 signals including photoshopped paystubs and name alterations, assigns a fraud risk score, and extracts the relevant figures.
+
+In April 2026, Plaid announced it rebuilt its income classification layer using a transformer-based large language model trained on financial transaction data, claiming a 48% improvement in accuracy and 86% precision on earned income classification. The self-employed income category, historically the hardest to classify correctly because of irregular payment patterns, is now a named category for the first time.
+
+The product also operates as a consumer reporting agency under Plaid Check, meaning income reports are FCRA-compliant and can be used in credit decisioning with adverse action notice requirements.
+
+## What a Community Bank Actually Does
+
+The traditional income verification chain for a mortgage involves several sequential steps, most of which cannot be parallelized and several of which involve waiting on parties the lender cannot control.
+
+The borrower submits two recent pay stubs, two years of W-2s, and one to two years of federal tax returns. The lender orders tax transcripts from the IRS using Form 4506-C through the Income Verification Express Service (IVES). The IRS targets 10 business days for processing. That's two calendar weeks, minimum, assuming nothing goes wrong.
+
+Here's what goes wrong: the IRS rejects 30–40% of all 4506-C requests. When a form is rejected, the IRS returns it without an error code. The lender has to diagnose the problem, correct the form, and resubmit from scratch, restarting the 10-business-day clock. A single rejection cycle can consume the entire back half of a 30-day purchase closing window.
+
+Meanwhile, the lender also needs to verify employment. If the employer is in The Work Number's database, an automated report comes back instantly. But The Work Number's coverage is inconsistent for small businesses, nonprofits, newer companies, and gig platforms. When an employer isn't in the database, a human initiates outbound verification: independently validate the employer's phone number and physical location, call HR, verbally confirm employment status and job title, and obtain income details in a separate written format. Fannie Mae requires a verbal VOE completed within 10 business days of the loan note date regardless, which means lenders cannot do this step early. It becomes a closing-week bottleneck on every single file.
+
+For self-employed borrowers, add a year-to-date profit and loss statement to the stack. Underwriting complexity scales up from there.
+
+**Total income verification cost per mortgage file:** IRS transcript ($40+ per order, plus resubmission costs), Work Number ($55–280 depending on borrower count and timing), staff time for manual calls and document chasing. The average cost to originate a mortgage was approximately $11,800 in Q2 2025. Income verification is not a trivial line item.
+
+## The Step-by-Step Comparison
+
+Here's the same borrower moving through both systems.
+
+**Salaried W-2 employee, direct deposit, major employer:**
+
+| Step | Plaid | Traditional |
+|---|---|---|
+| Income data pull | Borrower logs into payroll portal: ~90 seconds | Borrower uploads pay stubs: minutes to days |
+| Verification result | 11 seconds (bank income) or immediate (payroll) | Work Number: instant if employer is listed |
+| Tax transcript | Not required for bank/payroll path | 4506-C: 10 business days minimum, 30–40% rejection rate |
+| Verbal VOE | Not required | Required within 10 days of note date |
+| Cost per file | $1–3 | $55–280+ |
+
+**Gig worker or self-employed borrower:**
+
+This is where the gap gets uncomfortable. Plaid's bank income ML now specifically handles irregular income streams and launched a dedicated self-employed classification category in April 2026. A borrower who drives for Uber, delivers for DoorDash, or runs a freelance design practice can connect their bank account and Plaid identifies, clusters, and categorizes the income streams automatically.
+
+The traditional process for that same borrower requires two years of tax returns, a year-to-date P&L, possible additional scrutiny from the underwriter, and all of the IRS transcript delays described above. Self-employed borrowers are one of the most underserved segments in mortgage lending. The documentation burden alone disqualifies people who would otherwise qualify on the merits.
+
+## The GSE Wrinkle
+
+The obvious question: if Plaid is faster and cheaper, why isn't every lender using it for mortgages?
+
+The honest answer is that GSE lending has specific requirements that bank transaction data alone cannot fully satisfy. Fannie Mae and Freddie Mac have their own approved vendor lists for income and employment validation. Plaid is a certified Fannie Mae Day 1 Certainty provider, which is meaningful progress. Fannie Mae updated its Desktop Underwriter in March 2024 to allow a single 12-month bank asset report to simultaneously validate income, employment, and assets, a structural change that directly benefits open banking providers.
+
+But the full mortgage stack still requires tax transcripts for most self-employed borrowers, the verbal VOE requirement doesn't disappear, and The Work Number remains the default for large employers because it produces a report that maps directly to Fannie Mae Form 1005. Plaid supplements the traditional chain more than it replaces it, at least in the mortgage context.
+
+For consumer installment loans, auto lending, and rental applications, the substitution is more complete. Purpose Financial, which has originated over 134 million loans, reported a 71% lift in customers able to instantly verify income after switching to Plaid, with a 99.8% approval rate for applicants who verified via the platform versus 78% for those going through the manual process.
+
+## What This Means for Community Banks
+
+The verification stack is a cost center that community banks have largely inherited rather than chosen. The Work Number's pricing power is a known problem: CHLA formally asked regulators to investigate in 2024, and antitrust litigation is now in the courts. The IRS transcript process has a rejection rate that would be unacceptable in almost any other operational context. Both constraints are structural, not borrower-driven.
+
+Fintechs serving non-GSE loan categories have walked away from that infrastructure entirely. They've built on open banking APIs where the data is faster, cheaper, and more current than anything in The Work Number or an IRS file. Community banks originating consumer loans, personal lines of credit, or auto products have the same option.
+
+The mortgage market is more constrained by GSE requirements, but even there, Plaid's Fannie DU certification means a bank could offer a genuinely faster pre-qualification experience by pulling bank income data upfront, before the full application stack starts, reducing borrower churn during the wait.
+
+The verification delay is not an immutable fact of lending. It's a product of infrastructure built on top of institutions (a credit bureau, the IRS) that did not design their systems around lender speed. The data already exists in the borrower's bank account. How long lenders pay a premium to access it the slow way is increasingly a choice.
+    `,
+  },
+  'southern-first-bank-upstate-sc-bet': {
+    title: 'The Bank That Bet on Upstate South Carolina (And Won)',
+    description:
+      'Southern First Bancshares just reported Q4 EPS up 73% year-over-year. The story behind that number is 30 people a day moving to Greenville-Spartanburg, a $1.7 billion BMW investment, and a 26-year-old relationship banking bet that\'s finally paying off.',
+    publishedDate: 'May 24, 2026',
+    readTime: '8 min read',
+    content: `
+Art Seaver has been running Southern First Bank for 26 years. He's watched Greenville go from a post-textile mill town to a metro that just crossed one million residents. That context matters when you look at what his bank just reported.
+
+Q4 2025 earnings per share: $1.21. Up 73% from a year ago.
+
+## The Numbers First
+
+Southern First Bancshares finished 2025 with $30.4 million in net income, a net interest margin of 2.72% (up 47 basis points year-over-year), and a loan book that grew 6% to $3.85 billion. CEO Seaver, President Justin Strickland, and CFO Andy Borrmann have spent the last two years fighting margin compression like every other community bank in America. They've come out the other side in genuinely strong shape.
+
+The credit quality numbers are almost hard to believe.
+
+Net charge-offs for the entire year: $69,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills. Nonperforming assets sit at 0.32% of total assets. Past due loans are 0.13%.
+
+That kind of performance doesn't happen by accident. It happens when you're lending into a market that keeps growing.
+
+## 30 People a Day
+
+Here's the thing about Upstate South Carolina that most people outside the region don't fully appreciate.
+
+Thirty people relocate to the Greenville-Spartanburg area every single day. South Carolina netted over 68,000 domestic migrants in 2023-2024 alone, and the Upstate captured the overwhelming share of that growth. They're coming from Florida, New York, Ohio, Michigan, Pennsylvania, Connecticut, California. People leaving high-cost metros and landing in a place where the cost of living runs as much as 88% lower than Manhattan.
+
+Greenville County added 11,049 new residents in a single year. Spartanburg is the third-fastest growing metro in the country. The Greenville metro just crossed one million people for the first time, adding nearly 86,000 residents since the 2020 Census.
+
+Every one of those households needs a checking account. A mortgage. A car loan. A small business line of credit when the new restaurant opens on Main Street. Southern First has been standing in that town for over two decades, with the relationships and the brand recognition to capture a meaningful slice of that demand.
+
+That's not luck. That's geography compounding over time.
+
+## The BMW Effect
+
+Migration doesn't happen in a vacuum. People follow jobs, and the Upstate has been manufacturing jobs at a remarkable clip.
+
+BMW's plant in Spartanburg is already the largest BMW Group facility in the world by production volume. Now they're doubling down. A $1.7 billion investment in EV production, plus a new battery plant in Woodruff set to open in 2026, will bring hundreds more jobs online in Southern First's backyard. The annual economic impact of the BMW operation alone totals approximately $26.7 billion across South Carolina, per a University of South Carolina study.
+
+Spartanburg County landed $3.5 billion in total new investment last year across 20 projects. Greenville's development arm secured $725 million in new capital and 1,293 jobs. The region now hosts 508 foreign companies from 38 countries, drawn by the BMW supplier ecosystem, Michelin, Boeing, GE, Lockheed Martin, and a manufacturing base that keeps expanding.
+
+When a bank's loan book is 44% commercial real estate and 30% consumer real estate, this is the environment you want to be operating in. Rising incomes, population inflows, new commercial construction, and homebuyers who came from markets where $312,000 felt like a deal.
+
+## What the Margin Recovery Actually Means
+
+Southern First's NIM story is worth unpacking because it tells you something about how they're positioned going forward.
+
+Two years ago, like most community banks, they were caught in a painful squeeze. Deposit costs rose fast. Loan yields repriced slowly. Margins compressed. The 2.72% they're reporting now isn't just a recovery, it's the result of a deliberate push into relationship-based deposit gathering that took time to show up in the numbers.
+
+Core deposits grew 8% year-over-year to $2.9 billion. That's the stat that matters most. It means the funding base is stable and relatively low-cost. It means the margin expansion isn't just a rate environment gift, it's structural.
+
+Efficiency ratio came in at 57.85% in Q4. Not best-in-class, but moving in the right direction for a bank that's been investing in growth markets.
+
+## The Question Worth Asking
+
+Southern First is, by almost any measure, performing well. The region they serve is genuinely one of the best economic stories in the country right now.
+
+But 74% of their loan book is in real estate, commercial and consumer combined. And the Greenville housing market is shifting.
+
+Inventory is up 28.2% year-over-year. Days on market climbed to 71, up from 62 a year ago. The median sales price dipped 0.8%. None of these numbers signal a crash. They signal a market normalizing after years of frenzied appreciation, which is healthy. But normalization looks different on a bank balance sheet than it does in a real estate brochure.
+
+The honest read is that Southern First's credit quality has benefited from a rising-tide market. Borrowers who got in trouble could sell. Collateral values held. That cushion is thinner now. Not gone, just thinner.
+
+The BMW battery plant opens next year. Migration is still running at 30 people a day. The industrial investment pipeline is full. Those are real tailwinds and Art Seaver has been navigating this market long enough to know the difference between a headwind and a speed bump.
+
+For now, the numbers say this is a bank that has earned the right to be optimistic.
+    `,
+  },
+  'foreclosure-wave-hiding-in-plain-sight': {
+    title: 'The Foreclosure Wave Is Already Here. Your Bank Just Can\'t See It Yet.',
+    description:
+      '118,727 households entered foreclosure in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
+    publishedDate: 'May 24, 2026',
+    readTime: '7 min read',
+    content: `
+118,727 households. That's how many American families entered foreclosure in the first three months of 2026.
+
+Up 26% from a year ago. The worst quarterly number in six years. And in March alone, filings jumped 28% year-over-year.
+
+Your bank's residential mortgage portfolio is probably showing sound credit quality right now. Both things are true at the same time. That gap is exactly what should keep you up at night.
+
+## The Stress Has an Address
+
+This isn't a broad-based mortgage collapse. It's surgical. Almost all of it is concentrated in one loan type: FHA.
+
+As of March 2026, **11.6% of FHA borrowers were delinquent.** FHA loans now account for **55% of all seriously delinquent mortgages** in the country, despite being a fraction of total outstanding balances.
+
+Community banks mostly originate conventional conforming loans. Stronger borrower profiles. Better coverage ratios. So your call report looks fine. The Fed's May 2026 Financial Stability Report says residential mortgage delinquencies at commercial banks "remained historically low." The FDIC's 2026 Risk Review agrees: credit quality in residential portfolios is "relatively sound."
+
+All of that is accurate.
+
+It's also a lagging indicator.
+
+## Who Actually Takes Out an FHA Loan
+
+First-time buyers. Lower-income households. Borrowers with credit scores that don't quite clear the conventional bar. Minimum 3.5% down. Higher debt-to-income ratios. Little margin for error.
+
+These aren't reckless borrowers. In many cases they're the first homeowners in their families. But the math has turned on them in ways the original underwriting never captured.
+
+- **Homeowners insurance is up 12%,** now averaging $2,948 per year
+- **Property taxes rose 3%,** averaging $4,427
+- Both costs hit after closing, after the DTI calculation, after the loan is on the books
+
+The FDIC flagged insurance and taxes explicitly in its 2026 Risk Review as costs "further hampering affordability." These aren't rate-sensitive. They don't improve when the Fed cuts. They just keep going up.
+
+Picture a borrower who closed on an FHA loan in Florida in 2022. Fixed mortgage payment. But insurance? Not fixed. Taxes? Not fixed. And the equity cushion they were counting on is compressing as prices in their market soften. There's no room left.
+
+## The Net Just Got Pulled Away
+
+Here's the part that turns a stress situation into a crisis.
+
+The federal programs that historically caught falling borrowers are disappearing, right now, as the stress peaks.
+
+**FHA partial claims** (the program that let servicers defer missed payments to a subordinate lien so borrowers could get current without a lump sum) just had its rules tightened. Borrowers can access it once every two years, with a 30% lifetime cap. It used to be more flexible. It isn't anymore.
+
+**The VA loan rescue program** ended entirely.
+
+**The Homeowner Assistance Fund** ($9.9 billion in pandemic-era grants for struggling homeowners) depletes in September 2026.
+
+These programs were imperfect. They also worked. They're why the 2020-2022 forbearance wave didn't turn into a foreclosure wave. That buffer is gone now, and analysts are projecting roughly **250,000 distressed property sales** over the next 12 to 18 months.
+
+## Why This Should Matter to Your Loan Committee
+
+The direct exposure to FHA delinquencies probably isn't your problem. The indirect exposure is.
+
+Distressed sales don't spread evenly across 50 states. They cluster in the markets with the highest FHA concentration and the sharpest insurance increases: Florida, Nevada, and **South Carolina**, where **1 in every 2,351 housing units** is already in some stage of foreclosure, before the safety net programs expire.
+
+For a community bank with a residential portfolio concentrated in those markets, a few things are worth watching:
+
+- **Appraisals on new originations** are starting to absorb distressed comps
+- **Borrowers who look fine at application** may be quietly draining reserves to cover insurance and tax increases
+- **Portfolios originated in 2021-2023** were underwritten against a different market than the one forming now
+
+The FDIC doesn't predict a crisis. "Relatively sound underwriting standards and generally higher equity levels will likely offset potential credit quality risks," the report says. That's probably right at the national portfolio level.
+
+It may not be right in Myrtle Beach.
+
+## The Number to Watch Is Q3
+
+The foreclosure tightening took effect this spring. The Homeowner Assistance Fund runs out in the fall. Servicers who've been working through loss mitigation options will hit the end of the waterfall for a meaningful group of borrowers around the same time.
+
+No recession required. Just the current conditions, flat or softening home prices, insurance costs that don't stop climbing, a federal safety net with fewer rungs, continuing exactly as they are.
+
+**118,727 foreclosures in 90 days.** That's not a blip.
+
+The wave isn't coming. It's already in the water. Most community bank balance sheets just haven't felt the pull yet.
+    `,
+  },
   'why-it-takes-42-days-to-close-a-mortgage': {
     title: 'Why It Takes 42 Days to Close a Mortgage (And What That\'s Costing Your Bank)',
     description:
