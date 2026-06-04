@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'trillion-dollar-ipo-wave-2026',
+    title: 'The $3.6 Trillion Question',
+    description:
+      'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'anderson-brothers-bank-myrtle-beach-bet',
     title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
     description:

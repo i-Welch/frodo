@@ -72,6 +72,87 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'trillion-dollar-ipo-wave-2026': {
+    title: 'The $3.6 Trillion Question',
+    description: 'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
+    publishedDate: 'June 4, 2026',
+    readTime: '7 min read',
+    content: `
+The three biggest IPOs in history are coming at once. Banks are licking their chops. They should also be nervous.
+
+SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1 and is aiming for October. Combined, these three companies are targeting public market valuations north of $3.6 trillion. For context, that's larger than the entire GDP of Germany.
+
+Nothing like this has ever happened before. Not even close.
+
+## The Fee Bonanza (With a Catch)
+
+Goldman Sachs, JPMorgan, Morgan Stanley, Bank of America, and Citi are all in the SpaceX syndicate. Goldman is leading. CEO David Solomon said publicly this week that there's enough "greed" in the market to absorb all three deals. That's the most honest sentence a Wall Street CEO has uttered in years.
+
+The fee math is staggering on paper. SpaceX alone is raising ~$75 billion. At a standard 2% underwriting fee, that's $1.5 billion split across a 21-bank syndicate. Except SpaceX isn't paying 2%. They're pushing for sub-0.75%, a historic low. At that rate, the fee pool drops below $560 million.
+
+That's the catch. When you're SpaceX, you have leverage. Every bank on the street wants their name on this deal, and Elon Musk knows it. If the sub-0.75% rate sticks, it sets a precedent that OpenAI and Anthropic will absolutely cite in their own negotiations.
+
+The banks will still make money. They'll make a lot of money. But the per-dollar economics of underwriting are about to compress significantly, just as the deal sizes balloon to historic levels.
+
+## What's Actually Being Priced
+
+Let's be direct about what investors are buying.
+
+SpaceX is the most straightforward of the three. Revenue of $18.7 billion in 2025, up 33% year-over-year. Starlink generates $11.4 billion of that, with $4.4 billion in operating profit. The company lost $4.94 billion net last year, a swing from a $791 million profit in 2024, largely due to Starship development costs. There's a real business here, with a real moat, in a sector (aerospace and satellite internet) that is genuinely hard to replicate.
+
+OpenAI and Anthropic are a different animal. OpenAI is targeting a $60 billion raise at an $852 billion valuation, with 2025 revenues of roughly $20 billion and a projected $14 billion net loss in 2026. Anthropic's annualized revenue run rate is about $47 billion (up from $10 billion a year ago), but the company has never disclosed a path to profitability.
+
+These are not valuations grounded in discounted cash flows. They are bets on category dominance in a technology that may be the most consequential since the internet. That's not irrational. It is, however, a different kind of risk than buying into a company that makes rockets and sells broadband.
+
+## The Bank Lending Problem Nobody Is Talking About Loudly Enough
+
+The underwriting fees are the visible part. The scarier number is on the loan book.
+
+US banks have committed $450 billion in AI-related lending, representing roughly 25% of aggregate Tier 1 capital for participating banks. That's an 80% surge over the past year. The commitments are largely undrawn, meaning actual drawn AI loans represent only about 0.8% of total bank assets today. But committed facilities convert fast when a borrower needs liquidity.
+
+The Chicago Fed has flagged this explicitly: prolonged high interest rates could trigger massive losses if committed facilities get drawn during adverse conditions. The St. Louis Fed noted that AI investment contributed 39% of US GDP growth in 2025, a higher share than tech contributed at the peak of the dot-com bubble in 2000 (28%).
+
+That last comparison deserves to sit with you for a moment.
+
+Nobody is saying this is the dot-com bubble. The companies are bigger, the revenues are real, and the infrastructure buildout is serving genuine demand. But the concentration of bank exposure to a single sector, at a moment when that sector is going through simultaneous mega-IPOs and valuation resets, creates a specific kind of fragility that doesn't show up clearly in any single institution's 10-K.
+
+## A Tale of Two Markets
+
+The 2026 IPO wave isn't rising all boats. It's bifurcating them.
+
+Q1 2026 was the strongest IPO quarter in five years, with 22 traditional deals raising $9.4 billion. Projections for the full year range from $40-60 billion in the base case to over $142 billion if the mega-deals execute on schedule. That's a potential all-time US record.
+
+But capital is concentrating. Mega deals ($100 million+ VC financings) represented 70% of all US venture deal value in 2025, up from 56% in 2024. The companies at the top of the food chain are getting bigger, better-funded, and more dominant faster than ever before.
+
+For institutional investors, this creates a clear two-tier risk/return picture:
+
+**The mega-cap tier** (SpaceX, OpenAI, Anthropic): High absolute risk, high potential return, but the real money was made in private markets years ago. Public investors are buying into the story at prices that assume continued dominance. First-day trading on SpaceX is already projected to push the valuation toward $2.2 trillion, a 24% premium over IPO pricing before the stock trades for a full week.
+
+**The mid-tier** (profitable SaaS, B2B software, fintech without clear AI integration): These companies are getting crowded out. Investor attention is finite. Capital is flowing up-market. A solid enterprise software company with $200 million in ARR and 30% growth is a much harder sell in a market where Anthropic is compounding revenue at 130% year-over-year.
+
+The window for mid-tier IPOs isn't closed, but it's narrower than it looks. Companies that can credibly claim AI infrastructure relevance will price well. Companies that can't are going to spend 2026 watching from the sidelines.
+
+## What This Means for Community Banks
+
+The capital markets story is mostly a Wall Street story, but it has downstream effects that matter for community and regional banks.
+
+The Fed's rate path is softening. Current projections put the federal funds rate at 3.125% by end of 2026, down meaningfully from recent highs. Lower rates compress net interest margins but also loosen credit conditions, which supports loan demand and refinancing activity.
+
+The bigger issue is balance sheet positioning. Banks sitting on large unrealized securities losses from the 2022-2023 rate cycle are watching those losses slowly recover as rates fall. A successful IPO wave that sustains equity market enthusiasm extends that recovery window.
+
+But community banks don't have meaningful direct exposure to SpaceX loans or OpenAI debt. Their exposure is indirect: consumer wealth effects, local business confidence, and the general availability of capital in the broader economy. If the mega-IPOs land cleanly and don't trigger a tech sector correction, that's net positive for loan demand and asset quality across the board. If one of them stumbles badly, the contagion risk depends heavily on how much the institutional money that buys these deals is also funding the community bank deposit base or local commercial real estate.
+
+The open banking angle matters here too. As these AI companies go public and start generating real-time financial data at scale, the demand for verified, portable financial data infrastructure accelerates. Lenders that aren't ready to work with that data programmatically will find themselves at an underwriting disadvantage faster than they expect.
+
+## The Bottom Line
+
+Goldman's David Solomon said the market has enough greed to absorb these deals. He's probably right. The investor demand is real, the companies are genuinely important, and the macro conditions are reasonably supportive.
+
+But "enough greed to absorb" and "rationally priced" are not the same sentence. The banks will collect their fees, the VCs will get their liquidity, and public markets will get to decide what a world-historical AI company is actually worth.
+
+We're about to find out if that's a question the market is ready to answer.
+    `,
+  },
   'anderson-brothers-bank-myrtle-beach-bet': {
     title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
     description:
