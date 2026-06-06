@@ -51,6 +51,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/foreclosure-wave-hiding-in-plain-sight',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/blog/southern-first-bank-upstate-sc-bet',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/blog/income-verification-fintech-vs-bank',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/blog/anderson-brothers-bank-myrtle-beach-bet',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/blog/trillion-dollar-ipo-wave-2026',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/blog/affirm-vs-community-bank-personal-loans',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: 'https://app.reportraven.tech/legal/security',
       lastModified: new Date(),
       changeFrequency: 'monthly',
