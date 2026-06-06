@@ -72,6 +72,75 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'affirm-vs-community-bank-personal-loans': {
+    title: 'The Two-Second Loan',
+    description: 'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
+    publishedDate: 'June 6, 2026',
+    readTime: '7 min read',
+    content: `
+Affirm approved 24 million Americans for credit last year. Your community bank probably took a week to approve one.
+
+That's not a knock on community banks. It's a description of what happens when one side of a lending market rebuilds itself around real-time data and the other side still faxes pay stubs.
+
+The personal loan market is at a record $277 billion in outstanding balances as of Q1 2026, up 21.7% year-over-year. Affirm alone processed $10.8 billion in loan volume in a single quarter, growing 42% from the prior year. They just turned profitable. Their average customer takes out 6.1 loans per year across the platform.
+
+Community banks are watching this happen from the sidelines.
+
+## How Affirm Actually Works
+
+The mythology around BNPL is that it's just installment credit with a better app. The reality is more interesting.
+
+When a consumer checks out at Walmart, Amazon, or one of Affirm's 330,000+ merchant partners, Affirm runs a real-time underwriting decision in seconds. Not minutes. Not hours. The model pulls from three data sources simultaneously: a traditional bureau inquiry, the consumer's Affirm repayment history if they've borrowed before, and live bank account data through Plaid, which shows cash flow, recurring deposits, and spending patterns.
+
+The bank account data is the key differentiator. A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month. Affirm's models weight the latter heavily, which is how they achieve a 79% approval rate while keeping charge-offs at 1.83% of loans. For context, that's lower than most community bank credit card portfolios.
+
+The whole process: two seconds at checkout.
+
+## The Community Bank Version
+
+A community bank personal loan works like this.
+
+You come in (or apply online, if the bank has gotten that far). You provide proof of income, a few months of bank statements, and your Social Security number. A loan officer pulls your credit, reviews the file, and either approves it, escalates it for a second review, or declines it. The industry average from application to funding is 3-7 business days. Origination costs run $200-300 per loan before you factor in overhead.
+
+The community bank version is not inherently worse. Local decision-making, relationship context, and the ability to consider factors that a model would miss are real advantages. A farmer with lumpy seasonal income who has banked at the same institution for 20 years is a good credit risk in ways that don't show up cleanly in a bureau pull.
+
+But the community bank version is slower, more expensive to originate, and invisible at the moment of purchase. Affirm is embedded in the checkout flow. Your community bank is not.
+
+## Who Is Actually Borrowing
+
+Here's where it gets complicated.
+
+Affirm's borrower profile skews toward FICO 600-699, the subprime and near-prime range. These are consumers who often can't get a credit card with a reasonable rate, or who don't want one. BNPL gives them point-of-sale credit with clear repayment terms and no revolving balance trap. From a consumer welfare standpoint, that's genuinely useful.
+
+The problem is what happens at the margin. CFPB complaints against BNPL companies jumped 45% in 2026. The primary issues: hidden fees, inconsistent credit reporting (Affirm reports to Experian on some products but not others), and consumers stacking multiple simultaneous BNPL loans across providers without any single lender seeing the full picture.
+
+The Trump administration signaled in 2025 that it would not enforce the CFPB's 2024 rule placing BNPL under Regulation Z, which would have required the same consumer protections as credit cards. So the regulatory arbitrage that made BNPL attractive to build on continues, at least for now.
+
+Community banks don't have this problem, exactly. But they have a related one: the consumer loan quality at community banks worsened in 2024, more than at large banks. The most creditworthy, tech-comfortable borrowers went to Affirm. The community bank consumer loan book is left with a harder-to-underwrite pool.
+
+## The Widening Gap
+
+The data that should concern community bank executives most isn't Affirm's GMV growth. It's the transaction frequency.
+
+Affirm's active consumers averaged 6.1 transactions per year in Q1 2026, up from 5.1 a year earlier. This is not a product people use once for a big purchase. It's becoming a primary financial tool for how tens of millions of Americans manage spending. The Affirm Card, a physical debit card tied to the platform, grew its active base 121% year-over-year to 3.7 million cardholders.
+
+That's the real competitive threat. Not a faster personal loan. A parallel financial infrastructure that intercepts the customer relationship before a community bank even gets a chance to offer one.
+
+The cost math matters too. Affirm's scale allows it to originate at a fraction of a community bank's per-loan cost. Banks that have digitized their consumer lending can get origination costs down to $60-80 per loan from $200-300, but most community banks haven't made that investment.
+
+## What Community Banks Can Actually Do
+
+The answer is not to out-Affirm Affirm. Community banks cannot build real-time ML underwriting at checkout in a reasonable timeframe or budget.
+
+The answer is to close the data gap on the borrowers they do see.
+
+Affirm's edge is speed of information: they know a borrower's cash flow position in real time before making a credit decision. Community banks have access to that same data on their existing customers, depositors who have been running checking accounts at the institution for years. The problem is that most community banks don't use it. Income verification still means paper pay stubs. Employment verification still means a phone call to HR.
+
+The banks that will compete are the ones that can turn their existing customer data into fast underwriting decisions, not two-second checkout approvals, but same-day personal loan decisions for known customers with verified income and clear cash flow. That's achievable. It requires connecting the right data sources in the right sequence, automatically, instead of asking a loan officer to chase documents.
+
+Affirm built a data infrastructure to serve customers banks weren't reaching. The next move for community banks is to use data infrastructure to serve customers they already have, faster than anyone else can.
+    `,
+  },
   'trillion-dollar-ipo-wave-2026': {
     title: 'The $3.6 Trillion Question',
     description: 'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',

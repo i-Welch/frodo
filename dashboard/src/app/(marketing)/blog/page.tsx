@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'affirm-vs-community-bank-personal-loans',
+    title: 'The Two-Second Loan',
+    description:
+      'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'trillion-dollar-ipo-wave-2026',
     title: 'The $3.6 Trillion Question',
     description:
