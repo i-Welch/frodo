@@ -44,6 +44,11 @@ function convertMarkdown(md: string): string {
     return `<ol>\n${items}\n</ol>`;
   });
 
+  // Pull quotes: :::pullquote ... ::: (must be on its own paragraph)
+  html = html.replace(/^:::pullquote\n([\s\S]+?)\n:::/gm, (_match, inner) => {
+    return `<blockquote class="pullquote">${inner.trim()}</blockquote>`;
+  });
+
   // Paragraphs: wrap remaining non-tag lines separated by blank lines
   const blocks = html.split(/\n\n+/);
   html = blocks
@@ -96,6 +101,10 @@ Harry Arthur, 33 years old, owned department stores, hosiery mills, and cattle h
 
 That founding context is not incidental. Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it. Arthur State Bank's Texas Ratio of 5.9% and non-current loan ratio under 0.6% are not accidents. They are the institutional expression of a family that watched the alternative play out in real time.
 
+:::pullquote
+Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it.
+:::
+
 ## The Numbers That Don't Fit the Zip Code
 
 Union County is not a growth market. Population is declining at roughly 0.93% annually. Unemployment sits at 6.4%, well above the state average. Median household income is $41,200, nearly 45% below the national median. The town where Arthur State Bank was founded is, by most economic metrics, struggling.
@@ -127,6 +136,10 @@ January 2024 was a quiet inflection point.
 CFO Danny Cook retired after a long tenure, and the bank responded with a simultaneous restructuring: five internal promotions to the C-suite and two new loan officer hires. JB Garrett came in as the new CFO, bringing 25 years of banking experience and a prior stint at GrandSouth Bank. John Gregory, a 19-year Arthur State veteran, was elevated to COO and Chief Lending Officer. Shannon Rector, with 33 years at the bank, became CTO.
 
 What's notable about this is what didn't happen. No outside management consultants. No outside CEO. No private equity interest. The family promoted from within, brought in one experienced outside CFO, and signaled continuity. In an era when community banks of this size are routinely acquired by regionals, Arthur State responded to a leadership transition by doubling down on independence.
+
+:::pullquote
+They're not moving fast. They don't need to. The market is coming to them.
+:::
 
 The Q1 2026 numbers suggest it's working. ROA of 1.07%. Net income of $2.19 million for the quarter. Earning assets at 93.6% of total assets. These are not the metrics of a bank drifting.
 
@@ -175,6 +188,10 @@ When a consumer checks out at Walmart, Amazon, or one of Affirm's 330,000+ merch
 
 The bank account data is the key differentiator. A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month. Affirm's models weight the latter heavily, which is how they achieve a 79% approval rate while keeping charge-offs at 1.83% of loans. For context, that's lower than most community bank credit card portfolios.
 
+:::pullquote
+A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month.
+:::
+
 The whole process: two seconds at checkout.
 
 ## The Community Bank Version
@@ -206,6 +223,10 @@ The data that should concern community bank executives most isn't Affirm's GMV g
 Affirm's active consumers averaged 6.1 transactions per year in Q1 2026, up from 5.1 a year earlier. This is not a product people use once for a big purchase. It's becoming a primary financial tool for how tens of millions of Americans manage spending. The Affirm Card, a physical debit card tied to the platform, grew its active base 121% year-over-year to 3.7 million cardholders.
 
 That's the real competitive threat. Not a faster personal loan. A parallel financial infrastructure that intercepts the customer relationship before a community bank even gets a chance to offer one.
+
+:::pullquote
+Affirm has 24 million active borrowers averaging 6 loans a year because they show up at the exact second the decision gets made.
+:::
 
 The cost math matters too. Affirm's scale allows it to originate at a fraction of a community bank's per-loan cost. Banks that have digitized their consumer lending can get origination costs down to $60-80 per loan from $200-300, but most community banks haven't made that investment.
 
@@ -264,6 +285,10 @@ The Chicago Fed has flagged this explicitly: prolonged high interest rates could
 
 That last comparison deserves to sit with you for a moment.
 
+:::pullquote
+US banks have committed $450 billion in AI-related lending — 25% of Tier 1 capital — and 80% of that exposure was added in the last year alone.
+:::
+
 Nobody is saying this is the dot-com bubble. The companies are bigger, the revenues are real, and the infrastructure buildout is serving genuine demand. But the concentration of bank exposure to a single sector, at a moment when that sector is going through simultaneous mega-IPOs and valuation resets, creates a specific kind of fragility that doesn't show up clearly in any single institution's 10-K.
 
 ## A Tale of Two Markets
@@ -300,6 +325,10 @@ Goldman's David Solomon said the market has enough greed to absorb these deals. 
 
 But "enough greed to absorb" and "rationally priced" are not the same sentence. The banks will collect their fees, the VCs will get their liquidity, and public markets will get to decide what a world-historical AI company is actually worth.
 
+:::pullquote
+AI investment contributed 39% of US GDP growth in 2025. At the dot-com peak in 2000, tech contributed 28%. That comparison doesn't disappear just because the companies are bigger this time.
+:::
+
 We're about to find out if that's a question the market is ready to answer.
     `,
   },
@@ -334,6 +363,10 @@ Population: approximately 28,215 people, declining at about 0.5% per year. Media
 
 What that market lacks in growth it more than compensates for in deposit loyalty. Anderson Brothers holds roughly 60% of Marion County deposits. That's not a market share number, that's a lock. When you fund your loan book with low-cost deposits from a market where you've been the dominant bank for 90 years, your cost of funds stays structurally below what banks in competitive urban markets can achieve. That deposit advantage flows directly into NIM.
 
+:::pullquote
+60% of Marion County deposits. That's not a market share number, that's a lock.
+:::
+
 The bank explicitly tracks this. Management describes its retained earnings model as generating 16%+ return on reinvested capital, compounding equity without dilution. That framing is unusual for a community bank. It reflects a discipline about how deposit advantage translates into compounding shareholder value over time.
 
 ## The Non-Prime Auto Bet
@@ -353,6 +386,10 @@ The story that explains where Anderson Brothers is going is Horry County.
 Myrtle Beach is a different world from Mullins. Horry County has unemployment around 3-4%, median home prices around $327,000-$360,000, over $100 million in active hotel investment, and a tourism-driven economy that has grown consistently for two decades. LinkedIn named Myrtle Beach one of its Top Cities on the Rise in July 2025.
 
 Six years ago, Anderson Brothers Bank ranked 11th in Horry County deposit market share among 20 competing banks. Today they rank 2nd.
+
+:::pullquote
+Eleven spots in six years. In a market where they started as an outsider, against banks that had been there for decades.
+:::
 
 That's eleven spots in six years. In a market where they started as an outsider, against banks that had been there for decades.
 
@@ -395,6 +432,10 @@ Here's a number worth sitting with: a community bank can pay more to verify a bo
 The Work Number, Equifax's employment verification database, charges lenders $55 to $70 per standard verification order. For a two-borrower mortgage file requiring verification at underwriting and again before closing, that's $140 to $280 per loan, before accounting for the cases where verification fails and someone has to pick up the phone. The Community Home Lenders of America (CHLA) formally asked regulators to scrutinize the pricing. An antitrust class action filed in 2024 documented a 272% price increase since 2012, when the same verification cost $17.85. Equifax has a near-monopoly on automated employment data for GSE lending. They know it.
 
 Meanwhile, Plaid returns income verification results in seconds. For somewhere between $1 and $3 per pull.
+
+:::pullquote
+The Work Number charges $55–$70 per verification. Plaid does the same job in seconds for $1–$3. That gap is not regulatory necessity. It's infrastructure debt.
+:::
 
 That gap is not a feature of borrower complexity or regulatory necessity. It's the cost of doing business on aging infrastructure, and it's one reason why fintechs serving personal loan and auto markets are lapping community banks on speed and economics, even when the underlying borrower population is identical.
 
@@ -488,6 +529,10 @@ Net charge-offs for the entire year: $69,000. On a $3.85 billion portfolio. That
 
 That kind of performance doesn't happen by accident. It happens when you're lending into a market that keeps growing.
 
+:::pullquote
+Net charge-offs for the entire year: $69,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills.
+:::
+
 ## 30 People a Day
 
 Here's the thing about Upstate South Carolina that most people outside the region don't fully appreciate.
@@ -547,6 +592,10 @@ For now, the numbers say this is a bank that has earned the right to be optimist
 Up 26% from a year ago. The worst quarterly number in six years. And in March alone, filings jumped 28% year-over-year.
 
 Your bank's residential mortgage portfolio is probably showing sound credit quality right now. Both things are true at the same time. That gap is exactly what should keep you up at night.
+
+:::pullquote
+118,727 households entered foreclosure in Q1 2026. Up 26% from a year ago. The worst quarterly number in six years.
+:::
 
 ## The Stress Has an Address
 
@@ -613,6 +662,10 @@ No recession required. Just the current conditions, flat or softening home price
 **118,727 foreclosures in 90 days.** That's not a blip.
 
 The wave isn't coming. It's already in the water. Most community bank balance sheets just haven't felt the pull yet.
+
+:::pullquote
+The Homeowner Assistance Fund runs out in September 2026. The safety net programs that kept the 2020 forbearance wave from becoming a foreclosure wave are gone now.
+:::
     `,
   },
   'why-it-takes-42-days-to-close-a-mortgage': {
@@ -635,6 +688,10 @@ Underwriting alone consumes 30 to 50 of those 42 days. Not because underwriters 
 
 The MBA's 2025 data puts the average cost to originate a mortgage at $11,094. That includes personnel, technology, occupancy, and overhead — everything it takes to move a loan from application to closing.
 
+:::pullquote
+The average cost to originate a mortgage: $11,094. The average profit per loan: $785. That's a 7% margin on a process that takes six weeks.
+:::
+
 The average profit per loan? $785.
 
 That's a 7% margin on a process that takes six weeks and involves dozens of manual steps. Origination costs have risen 35% over the past three years, according to Plaid's lending research. Revenue per loan has not kept pace.
@@ -650,6 +707,10 @@ Sixty-eight percent of mortgage applications are abandoned before closing, accor
 The reasons are predictable. The process is too slow. The document requests are too frequent. The communication is too opaque. Forty-eight percent of consumers who experience digital friction in financial services take their business to a competitor, according to J.D. Power.
 
 Only 55% of mortgage applications at banks result in closings. That means for every two loans your team works, nearly one produces zero revenue — but consumed staff time, technology resources, and pipeline capacity.
+
+:::pullquote
+68% of mortgage applications are abandoned before closing. Those borrowers aren't disappearing from the market. They're closing with someone else.
+:::
 
 Those borrowers aren't disappearing from the market. They're closing with someone else.
 
@@ -713,6 +774,10 @@ The 42-day mortgage isn't inevitable. It's a symptom of manual verification in a
 This isn't a blip. It's a structural shift that has been accelerating for six years, and it's not limited to mortgages. Community banks' share of small business lending has been cut in half over two decades, falling from 24% to 12%, according to the Kansas City Fed. Fintech small business loan applications grew from 17% to 29% between 2020 and 2025.
 
 Community banks aren't losing because of bad service. They're losing because the speed of their lending process no longer matches the speed their borrowers expect.
+
+:::pullquote
+Banks originated 42.5% of mortgages in 2018. By 2024, that fell to 30.1%. Non-bank lenders now close more than half of all home loans. This is a structural shift, not a cycle.
+:::
 
 ## The Scale of the Problem
 
@@ -827,6 +892,10 @@ And they are not sticking around to be won back. 61% of Gen Z consumers switched
 
 This is not a preference. It is a migration.
 
+:::pullquote
+61% of Gen Z switched their primary bank in the past two years. Only 14% trust traditional banks "a lot." Your future borrowers aren't coming back — they were never there.
+:::
+
 For community banks, where the median customer age skews older and relationship tenure is measured in decades, these numbers represent a slow-moving but existential problem. The generation entering its prime borrowing years — first homes, auto loans, small business starts — is building financial relationships with Square, Chime, SoFi, and Robinhood. Not with your branches.
 
 ## The Experience Gap
@@ -913,7 +982,13 @@ The next generation of borrowers has already decided what lending should feel li
 
 ## The Scale of the Problem
 
-Banking compliance in the United States costs an estimated $270 billion per year, consuming more than 10% of operating costs across the industry (American Bankers Association, 2024). Of that total, $59 billion goes specifically to BSA/AML — Bank Secrecy Act and anti-money laundering programs (LexisNexis Risk Solutions).
+Banking compliance in the United States costs an estimated $270 billion per year, consuming more than 10% of operating costs across the industry (American Bankers Association, 2024).
+
+:::pullquote
+For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at large banks. The smallest banks pay the most for the same regulations.
+:::
+
+Of that total, $59 billion goes specifically to BSA/AML — Bank Secrecy Act and anti-money laundering programs (LexisNexis Risk Solutions).
 
 These are not optional line items. They are the cost of holding a bank charter. Every institution, from JPMorgan Chase to a $75 million community bank in rural South Carolina, must run the same categories of compliance programs: Know Your Customer (KYC), Customer Due Diligence (CDD), suspicious activity monitoring, watchlist screening, and ongoing transaction surveillance.
 
@@ -1036,6 +1111,10 @@ Figure Technologies originated roughly $6 billion in home equity products in 202
 
 Their HELOC product approves borrowers in as little as 5 minutes and funds in 5 days. The industry median for a home equity line of credit is 39 days.
 
+:::pullquote
+Figure's cost per loan: $730. The industry average: $11,230. That's a 15:1 cost advantage — and it doesn't come from blockchain. It comes from automated data.
+:::
+
 When Figure filed for its IPO at a $5.29 billion valuation, the S-1 laid out the thesis in plain language: they are a technology company that happens to make loans. The filing describes "layers of intermediaries that have long slowed things down" and positions Figure as the company that strips them out.
 
 This is not posturing. The numbers support it.
@@ -1065,6 +1144,10 @@ Figure built its early brand identity around blockchain. The Provenance blockcha
 Then they filed the S-1.
 
 Buried in the filing is a disclosure that should reframe how the industry thinks about Figure's advantage. Their loan origination system, the core technology that actually produces the 5-day close, **"does not rely on the use of blockchain technology."**
+
+:::pullquote
+Figure's loan origination system "does not rely on the use of blockchain technology." The 5-minute approval comes from automated data aggregation. The same category of tech available to any lender willing to integrate it.
+:::
 
 Read that again. The system that originates $6 billion in home equity loans — the system responsible for the 5-minute approvals and 5-day closings — does not use blockchain.
 
@@ -1148,6 +1231,10 @@ Community banks do not need to become fintechs. They need to verify like fintech
 The average mortgage origination requires 16 separate documents, runs through a 55-item checklist, generates a 500-page file, and takes 42 days to close (ICE Mortgage Technology, MBA, 2025). The average cost: $11,094 per loan originated, with only $785 in profit at the end (MBA, 2025). Most of that time and cost is not spent making lending decisions. It is spent collecting and verifying data.
 
 RAVEN replaces the collection phase. One link. One borrower interaction. Complete verification data back to the bank in minutes — identity, income, employment, property, and fraud screening — cross-referenced from seven providers with a full audit trail.
+
+:::pullquote
+The average mortgage file: 16 documents, a 55-item checklist, 500 pages, and 42 days. Most of that time is not spent making lending decisions. It's spent chasing data.
+:::
 
 Here is exactly how it works.
 

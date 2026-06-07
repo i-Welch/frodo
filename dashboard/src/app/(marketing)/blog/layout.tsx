@@ -157,6 +157,18 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           font-style: italic;
           color: var(--gray-400);
         }
+        .article-body blockquote.pullquote {
+          margin: 2.5rem -1.5rem;
+          padding: 2rem 2.5rem;
+          border-left: 3px solid rgba(255,255,255,0.5);
+          background: rgba(255,255,255,0.04);
+          font-size: 1.25rem;
+          font-weight: 500;
+          line-height: 1.5;
+          color: var(--white);
+          letter-spacing: -0.015em;
+          font-style: italic;
+        }
 
         /* --- Article meta --- */
         .article-meta {
