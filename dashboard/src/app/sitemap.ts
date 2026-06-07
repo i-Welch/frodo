@@ -81,6 +81,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/arthur-state-bank-upstate-bet',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: 'https://reportraven.tech/blog/affirm-vs-community-bank-personal-loans',
       lastModified: new Date(),
       changeFrequency: 'monthly',

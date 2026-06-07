@@ -72,6 +72,87 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'arthur-state-bank-upstate-bet': {
+    title: 'The Bank That Depression Built',
+    description: 'Arthur State Bank has run a 4.44% net interest margin and 16% ROE out of a declining South Carolina county for 93 years. The secret is portfolio lending, a booming Upstate geography, and a family that has never needed to sell.',
+    publishedDate: 'June 6, 2026',
+    readTime: '7 min read',
+    content: `
+In 1933, Harry Arthur watched every bank in Union County fail. So he built one. Ninety-three years later, it's still in the family, and it's posting numbers that would make most regional bank CFOs uncomfortable.
+
+Arthur State Bank is not a name that shows up in earnings coverage or fintech conference panels. It has 18 branches, 152 employees, and $825 million in assets. It is, by almost any measure, a small community bank in a part of South Carolina that has seen better decades.
+
+And yet: a 4.44% net interest margin. A 16% return on equity. A Texas Ratio of 5.9%. A Tier 1 capital ratio of 12.17%.
+
+Those are not small bank numbers. Those are the numbers of an institution that has figured something out.
+
+## Born in a Crisis, Built to Last
+
+The origin story matters here.
+
+It's April 1933. Franklin Roosevelt has just ordered every bank in America closed for a four-day "bank holiday." When the dust settles in Union County, South Carolina, only one bank is deemed sound enough to reopen, and it's in Jonesville, not Union itself. The county seat has no functioning bank.
+
+Harry Arthur, 33 years old, owned department stores, hosiery mills, and cattle herds. He had deposits to protect and a town to keep liquid. So he and his father and two brothers started the Arthur Depository. It became a full bank two years later. The family has run it ever since.
+
+That founding context is not incidental. Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it. Arthur State Bank's Texas Ratio of 5.9% and non-current loan ratio under 0.6% are not accidents. They are the institutional expression of a family that watched the alternative play out in real time.
+
+## The Numbers That Don't Fit the Zip Code
+
+Union County is not a growth market. Population is declining at roughly 0.93% annually. Unemployment sits at 6.4%, well above the state average. Median household income is $41,200, nearly 45% below the national median. The town where Arthur State Bank was founded is, by most economic metrics, struggling.
+
+Banks headquartered in markets like this are supposed to struggle too. Deposit pressure, thin loan demand, margin compression. That's the playbook.
+
+Arthur State Bank is running a 4.44% net interest margin. The industry average for community banks right now is around 3.36%. The gap between those two numbers, sustained over $825 million in assets, is the difference between a bank that's grinding and one that's compounding.
+
+How do you run a 4.44% NIM out of Union, South Carolina? Two reasons.
+
+First, they portfolio-lend. Half the loan book (50.4%) is residential mortgage, and rather than selling those loans into the secondary market, Arthur State keeps them. That means the yield stays on their balance sheet instead of being passed through to Fannie Mae. It also means they're making relationship-based credit decisions rather than conforming to GSE guidelines on every file. A borrower with a complex income history who has kept a checking account at Arthur State for fifteen years gets a fair look. A big bank's algorithm says no.
+
+Second, their geography is more interesting than their headquarters suggests.
+
+## The Upstate Bet
+
+Arthur State Bank's 18 branches don't cluster around Union. They spread across Spartanburg, Greenville, Lexington, Rock Hill, and Columbia. That geographic footprint tells the real story.
+
+Greenville-Spartanburg is one of the ten fastest-growing metro areas in the country for the second consecutive year. The region added more than 10,500 residents between July 2023 and July 2024 alone. BMW's Spartanburg plant employs 11,000 people and is opening a $1.7 billion EV battery facility in 2026. Woodward just committed $200 million to a new aerospace components plant in Spartanburg. Michelin, Boeing, GE, and Lockheed Martin all have significant operations in the corridor.
+
+South Carolina's GDP grew at 3.5% year-over-year in Q3 2025, the fastest rate in the nation. The Upstate is driving most of that.
+
+A bank with roots in declining Union County but branches throughout that growth corridor is quietly positioned in one of the best lending environments in the Southeast. The residential mortgage concentration starts to make more sense when you realize the collateral is increasingly located in a market where median home prices are $397,600 and rising 4.1% year-over-year.
+
+## A Leadership Moment
+
+January 2024 was a quiet inflection point.
+
+CFO Danny Cook retired after a long tenure, and the bank responded with a simultaneous restructuring: five internal promotions to the C-suite and two new loan officer hires. JB Garrett came in as the new CFO, bringing 25 years of banking experience and a prior stint at GrandSouth Bank. John Gregory, a 19-year Arthur State veteran, was elevated to COO and Chief Lending Officer. Shannon Rector, with 33 years at the bank, became CTO.
+
+What's notable about this is what didn't happen. No outside management consultants. No outside CEO. No private equity interest. The family promoted from within, brought in one experienced outside CFO, and signaled continuity. In an era when community banks of this size are routinely acquired by regionals, Arthur State responded to a leadership transition by doubling down on independence.
+
+The Q1 2026 numbers suggest it's working. ROA of 1.07%. Net income of $2.19 million for the quarter. Earning assets at 93.6% of total assets. These are not the metrics of a bank drifting.
+
+## The Quiet Risk
+
+There are things worth watching.
+
+The efficiency ratio of 71.09% is acceptable but not exceptional. For a bank generating a 4.44% NIM, there's an argument that expenses should be tighter. A more digitally efficient operation might get that number into the mid-60s without sacrificing the relationship model that drives the margin.
+
+The Union County exposure is real. The bank's headquarters market is economically stressed, and community banks are often the lender of last resort in markets like this. That's not inherently bad, but it creates concentration risk in a geography that may face continued headwinds as manufacturing employment continues to shift away from legacy textile towns.
+
+And the interest rate environment is changing. A 4.44% NIM is partly a function of a higher-rate world. As the Fed's projected path brings rates to 3.125% by end of 2026, the funding cost relief will help borrowers but compress asset yields. Banks that built their margin on rate positioning will need the volume to compensate.
+
+Arthur State has the capital to absorb that transition. Tier 1 at 12.17%, loan loss reserves covering non-current loans at 183%, essentially no owned real estate on the books. The balance sheet is clean.
+
+## What 93 Years Buys You
+
+The thing about a bank that has been family-owned for 93 years is that it doesn't optimize for next quarter. The Arthur family has survived the Great Depression, the savings and loan crisis, the 2008 financial crisis, and the rate shock of 2022-2023. They didn't sell after any of those.
+
+That institutional patience shows up in the portfolio lending strategy, in the long-tenured executives, in the decision to promote from within rather than sell out when the CFO retired. It shows up in a Texas Ratio that would be the envy of banks twice their size.
+
+The Upstate South Carolina economy is in the middle of a genuine industrial renaissance. BMW's battery plant opens this year. The population keeps coming. The loan demand follows. Arthur State Bank has 18 branches sitting in the path of that growth, a clean balance sheet, and a management team that has been preparing for this moment for a long time.
+
+They're not moving fast. They don't need to. The market is coming to them.
+    `,
+  },
   'affirm-vs-community-bank-personal-loans': {
     title: 'The Two-Second Loan',
     description: 'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',

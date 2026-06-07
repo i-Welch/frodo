@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'arthur-state-bank-upstate-bet',
+    title: 'The Bank That Depression Built',
+    description:
+      'Arthur State Bank has run a 4.44% net interest margin and 16% ROE out of a declining South Carolina county for 93 years. The secret is portfolio lending, a booming Upstate geography, and a family that has never needed to sell.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'affirm-vs-community-bank-personal-loans',
     title: 'The Two-Second Loan',
     description:
