@@ -77,6 +77,67 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'oconee-federal-quiet-comeback': {
+    title: 'The Quiet Comeback at Oconee Federal',
+    description: 'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
+    publishedDate: 'June 10, 2026',
+    readTime: '6 min read',
+    content: `
+Three years ago, Oconee Federal looked like a cautionary tale. The 102-year-old Seneca thrift earned a 0.30% return on assets in 2023, spent 83 cents to make every dollar of revenue, and watched its long-duration mortgage book get steamrolled by the fastest rate-hiking cycle in four decades.
+
+Today it's quietly putting up some of the best core numbers in its modern history. Almost nobody noticed, partly because the bank made itself harder to watch on purpose.
+
+## The headline number is lying to you
+
+Start with the figure that probably scared off anyone skimming the annual release: net income fell from $6.3 million in fiscal 2024 to $4.2 million in fiscal 2025. A 33% earnings decline. Sounds bad.
+
+It isn't. Fiscal 2024 included a $4.9 million bargain purchase gain from the January 2024 acquisition of Mutual Savings Bank in Hartsville, a one-time accounting entry that shows up when you buy a bank for less than the fair value of its net assets. Strip it out and the real story inverts: core earnings went from roughly $1.4 million to $4.2 million.
+
+:::pullquote
+That's a tripling, dressed up as a decline.
+:::
+
+The quarterly cadence since then confirms it. $1.3 million in the September 2025 quarter (up from $790K a year earlier). $1.1 million in December. $1.13 million in March 2026. Net interest margin, the cleanest read on a thrift's health, has marched from 2.19% in early 2024 to 2.36%, then 2.71%, then 2.75%, and now 2.94%.
+
+Nothing clever happened here. Oconee Federal holds a loan book that is 81% one-to-four family residential mortgages, $397 million of its $488 million in net loans. When rates spiked in 2022, those long fixed-rate loans were stuck yielding yesterday's coupons while funding costs jumped. The fix was time. Loans mature, new ones get written at today's rates, and the margin grinds back. Two years of grinding got them 75 basis points.
+
+## The thrift that beats Wells Fargo at home
+
+Here's the stat that should make larger competitors uncomfortable. In Oconee County, Oconee Federal holds $368.9 million in deposits across four branches, about 22.3% of the county's $1.66 billion total. That's the #1 position.
+
+Wells Fargo is second at $261.6 million. Truist holds $161.9 million. Bank of America, with all its national advertising muscle, manages $106.2 million.
+
+A century-old savings and loan, with a product menu you could fit on an index card, out-gathers three of the four largest banks in America on its home turf. Deposit franchises like this are why community banking still works. They're also nearly impossible to build from scratch, which is why the bank's $560.6 million in total deposits (up from $486.5 million at the end of 2023) is the asset that matters most on its balance sheet.
+
+And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 58 consecutive quarters, every quarter since December 2011.
+
+## Getting smaller in public, bigger in private
+
+In August 2023, Oconee Federal voluntarily delisted from NASDAQ and deregistered from the SEC. The shares now trade on OTCQX. The stated reason was cost, and for a bank that was then earning $1.4 million a year in core income, the price of being a public reporting company was real money.
+
+That move fits a pattern worth watching among sub-$1 billion banks: shed the compliance overhead that exists for institutional investors who were never going to show up anyway, and redeploy the savings.
+
+What the bank did with its newfound quiet is the interesting part. It didn't hunker down. It bought Mutual Savings Bank, its second whole-bank acquisition since 2018 (Stephens Federal in Georgia was the first), extending its footprint to nine branches across Upstate South Carolina, two Georgia counties, and now Hartsville. It launched a 50,000-share buyback in April 2025. The supposedly sleepy thrift has been the most acquisitive bank in its weight class in the region.
+
+## The Lake Keowee question
+
+Oconee Federal's geography has been a gift. South Carolina led the nation in net migration of residents 65 and older, adding 5,427 in 2025 alone, and Oconee County, home to Lake Keowee and Lake Hartwell, is precisely where a lot of them land. The county's population grew 1.44% last year. Waterfront homes on Keowee carry a median sale price around $1.8 million and have appreciated 7% or more annually for a decade.
+
+For a residential mortgage lender, that's about as good as local conditions get. And the bank has been leaning in: total loans grew from $478.7 million last June to $491.8 million by March, brisk movement for an institution this conservative.
+
+But the tide may be turning just as the bank speeds up. Lake Keowee inventory has climbed to 7.8 months of supply, the highest in years and firmly buyer's-market territory. Countywide median sale prices went slightly negative year over year this spring even as price per square foot kept rising. Seneca's typical home value sits at a modest $273,146, up 3.7%, so the core market is fine. The froth, though, is coming off the waterfront.
+
+None of this threatens a bank with 12.4% capital. It does mean the next leg of growth gets harder. Margin recovery from repricing is a finite resource; once the back book catches up to market rates, growth has to come from volume. And volume in a cooling, migration-dependent housing market is exactly where speed and borrower experience start to decide who wins the loan.
+
+## What the comeback doesn't fix
+
+Oconee Federal's recovery is a balance sheet story with a happy ending. The franchise, the deposits, the capital, the patience: all of it is real, and most banks would trade for it.
+
+What time alone can't fix is the front of the house. The retirees relocating to Keowee are selling homes through digital-first lenders, wiring proceeds through apps, and arriving with expectations set by whoever closed their last mortgage in three weeks. A bank can dominate county deposits for a century and still lose the next loan to a lender that verifies income in an afternoon instead of a week.
+
+The banks that hold positions like Oconee Federal's have already won the hard part. The remaining gap, the one between a great balance sheet and a great borrower experience, is the most closable problem in community banking. The ones that close it get to keep compounding for another hundred years.
+    `,
+  },
   'arthur-state-bank-upstate-bet': {
     title: 'The Bank That Depression Built',
     description: 'Arthur State Bank has run a 4.44% net interest margin and 16% ROE out of a declining South Carolina county for 93 years. The secret is portfolio lending, a booming Upstate geography, and a family that has never needed to sell.',

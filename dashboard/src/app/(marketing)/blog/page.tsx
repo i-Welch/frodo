@@ -16,6 +16,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'oconee-federal-quiet-comeback',
+    title: 'The Quiet Comeback at Oconee Federal',
+    description:
+      'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'arthur-state-bank-upstate-bet',
     title: 'The Bank That Depression Built',
     description:
