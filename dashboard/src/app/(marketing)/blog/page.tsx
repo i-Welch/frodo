@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DemoModal } from '../demo-modal';
 
 export const metadata: Metadata = {
   title: 'RAVEN Blog — Insights for Community Banks',
@@ -249,6 +250,10 @@ export default function BlogIndex() {
           color: var(--white);
         }
 
+        .blog-index-demo {
+          margin-top: 1.75rem;
+        }
+
         @media (max-width: 768px) {
           .blog-index { padding: 3rem 1.5rem 1.5rem; }
           .blog-grid { grid-template-columns: 1fr; }
@@ -264,6 +269,9 @@ export default function BlogIndex() {
             expectations, and how community banks can compete with fintechs on
             verification speed.
           </p>
+          <div className="blog-index-demo">
+            <DemoModal source="blog-index" />
+          </div>
         </div>
 
         <div className="blog-grid">

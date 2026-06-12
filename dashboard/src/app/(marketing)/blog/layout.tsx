@@ -211,6 +211,35 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           margin-bottom: 2rem;
         }
 
+        /* --- Mid-article CTA --- */
+        .article-mid-cta {
+          margin: 3rem -1.5rem;
+          padding: 2.5rem 2rem;
+          border: 1px solid rgba(255,255,255,0.1);
+          border-radius: 12px;
+          background: rgba(255,255,255,0.03);
+          text-align: center;
+        }
+        .article-mid-cta h2 {
+          font-size: 1.35rem;
+          font-weight: 600;
+          letter-spacing: -0.015em;
+          color: var(--white);
+          margin: 0 0 0.6rem;
+        }
+        .article-mid-cta p {
+          font-size: 0.92rem;
+          color: var(--gray-400);
+          line-height: 1.65;
+          margin-bottom: 1.5rem;
+          max-width: 460px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        @media (max-width: 768px) {
+          .article-mid-cta { margin: 2.5rem 0; padding: 2rem 1.25rem; }
+        }
+
         /* --- Interest form styles --- */
         .interest-form {
           max-width: 520px;

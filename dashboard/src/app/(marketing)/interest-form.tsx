@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { track } from '@vercel/analytics';
 
-export function InterestForm() {
+export function InterestForm({ source = 'landing' }: { source?: string }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -27,6 +28,7 @@ export function InterestForm() {
       }
 
       setStatus('success');
+      track('interest_submitted', { source });
     } catch (err) {
       setStatus('error');
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong');

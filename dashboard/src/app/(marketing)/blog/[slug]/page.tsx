@@ -1487,6 +1487,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const html = convertMarkdown(article.content);
 
+  // Split the article at its middle <h2> so a CTA can sit mid-read.
+  // Articles with fewer than 3 sections render in one piece (no mid CTA).
+  const sections = html.split(/(?=<h2>)/);
+  const splitAt = sections.length >= 3 ? Math.ceil(sections.length / 2) : sections.length;
+  const firstHalf = sections.slice(0, splitAt).join('');
+  const secondHalf = sections.slice(splitAt).join('');
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -1566,7 +1573,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span className="article-meta-dot" />
             <span>{article.readTime}</span>
           </div>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
+          {secondHalf && (
+            <>
+              <aside className="article-mid-cta">
+                <h2>Verification shouldn&apos;t take weeks</h2>
+                <p>
+                  RAVEN gives community banks a complete borrower report from one link.
+                  Leave your name and email and we&apos;ll show you how.
+                </p>
+                <InterestForm source="mid-article" />
+              </aside>
+              <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
+            </>
+          )}
         </div>
       </article>
     </>
