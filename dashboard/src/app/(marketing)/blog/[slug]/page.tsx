@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { InterestForm } from '../../interest-form';
+import { ROI_BANKS } from '../../roi/roi-data';
 
 /* ---------- Markdown-to-HTML helper ---------- */
 
@@ -136,6 +137,7 @@ Oconee Federal's recovery is a balance sheet story with a happy ending. The fran
 What time alone can't fix is the front of the house. The retirees relocating to Keowee are selling homes through digital-first lenders, wiring proceeds through apps, and arriving with expectations set by whoever closed their last mortgage in three weeks. A bank can dominate county deposits for a century and still lose the next loan to a lender that verifies income in an afternoon instead of a week.
 
 The banks that hold positions like Oconee Federal's have already won the hard part. The remaining gap, the one between a great balance sheet and a great borrower experience, is the most closable problem in community banking. The ones that close it get to keep compounding for another hundred years.
+
     `,
   },
   'arthur-state-bank-upstate-bet': {
@@ -225,6 +227,7 @@ That institutional patience shows up in the portfolio lending strategy, in the l
 The Upstate South Carolina economy is in the middle of a genuine industrial renaissance. BMW's battery plant opens this year. The population keeps coming. The loan demand follows. Arthur State Bank has 18 branches sitting in the path of that growth, a clean balance sheet, and a management team that has been preparing for this moment for a long time.
 
 They're not moving fast. They don't need to. The market is coming to them.
+
     `,
   },
   'affirm-vs-community-bank-personal-loans': {
@@ -479,6 +482,7 @@ Forbes named them 3rd best bank in South Carolina on their inaugural America's B
 For a 92-year-old bank headquartered in a town of 4,500 people, this is a lot of momentum. The tobacco warehouse is long gone. What replaced it is a bank running margins its competitors can't quite explain, from a deposit base that took 90 years to build, pointed directly at one of the fastest-growing coastal markets in the South.
 
 The Anderson family has been patient before. Thirty dollars turned into a thousand. The next move is into Myrtle Beach.
+
     `,
   },
   'income-verification-fintech-vs-bank': {
@@ -639,6 +643,7 @@ The honest read is that Southern First's credit quality has benefited from a ris
 The BMW battery plant opens next year. Migration is still running at 30 people a day. The industrial investment pipeline is full. Those are real tailwinds and Art Seaver has been navigating this market long enough to know the difference between a headwind and a speed bump.
 
 For now, the numbers say this is a bank that has earned the right to be optimistic.
+
     `,
   },
   'foreclosure-wave-hiding-in-plain-sight': {
@@ -1486,6 +1491,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   }
 
   const html = convertMarkdown(article.content);
+  const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
   // Articles with fewer than 3 sections render in one piece (no mid CTA).
@@ -1558,6 +1564,75 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           transition: color 200ms;
         }
         .article-back:hover { color: var(--white); }
+        .article-body .article-meta-audit { color: var(--gray-300); text-decoration: none; }
+        .article-body .article-meta-audit:hover { color: var(--white); }
+        .article-meta-audit {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          color: var(--gray-300);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 200ms;
+        }
+        .article-meta-audit:hover { color: var(--white); }
+        .article-audit-callout {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 2rem;
+          margin: 3.5rem 0 1rem;
+          padding: 2rem 2.25rem;
+          border: 1px solid rgba(255,255,255,0.18);
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+          box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+        }
+        .article-audit-tag {
+          display: inline-block;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--gray-400);
+          margin-bottom: 0.6rem;
+        }
+        .article-audit-callout h2 {
+          font-size: 1.3rem;
+          font-weight: 600;
+          letter-spacing: -0.015em;
+          color: var(--white);
+          margin: 0 0 0.5rem;
+        }
+        .article-audit-callout p {
+          font-size: 0.88rem;
+          color: var(--gray-400);
+          line-height: 1.6;
+          margin: 0;
+        }
+        .article-body .article-audit-btn, .article-body .article-audit-btn:hover {
+          color: var(--black);
+          text-decoration: none;
+        }
+        .article-audit-btn {
+          flex-shrink: 0;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.9rem;
+          font-weight: 500;
+          padding: 0.8rem 1.5rem;
+          border-radius: 8px;
+          background: var(--white);
+          color: var(--black);
+          text-decoration: none;
+          white-space: nowrap;
+          transition: opacity 200ms, transform 200ms;
+        }
+        .article-audit-btn:hover { opacity: 0.85; transform: translateX(2px); }
+        @media (max-width: 768px) {
+          .article-audit-callout { flex-direction: column; align-items: flex-start; padding: 1.75rem 1.5rem; }
+        }
       `}</style>
 
       <article className="article-wrap">
@@ -1572,6 +1647,15 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             <span>{article.publishedDate}</span>
             <span className="article-meta-dot" />
             <span>{article.readTime}</span>
+            {roiBank && (
+              <>
+                <span className="article-meta-dot" />
+                <a href={`/roi/${roiBank.slug}`} className="article-meta-audit">
+                  What RAVEN would save {roiBank.shortName}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+              </>
+            )}
           </div>
           <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
           {secondHalf && (
@@ -1583,9 +1667,32 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   Leave your name and email and we&apos;ll show you how.
                 </p>
                 <InterestForm source="mid-article" />
+                {roiBank && (
+                  <p className="article-mid-cta-alt">
+                    Not ready to talk? We calculated what automation would save{' '}
+                    {roiBank.shortName} every year:{' '}
+                    <a href={`/roi/${roiBank.slug}`}>see the numbers</a>
+                  </p>
+                )}
               </aside>
               <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
             </>
+          )}
+          {roiBank && (
+            <aside className="article-audit-callout">
+              <div className="article-audit-text">
+                <span className="article-audit-tag">RAVEN Analysis</span>
+                <h2>What would automated verification save {roiBank.shortName}?</h2>
+                <p>
+                  We ran the numbers using public FDIC and HMDA data: staff hours recovered,
+                  dollar value by lending line, and the full methodology behind every figure.
+                </p>
+              </div>
+              <a href={`/roi/${roiBank.slug}`} className="article-audit-btn">
+                See the numbers
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </aside>
           )}
         </div>
       </article>

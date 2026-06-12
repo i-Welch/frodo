@@ -53,6 +53,14 @@ export function DemoModal({
           white-space: nowrap;
         }
         .demo-btn:hover { opacity: 0.85; }
+        @keyframes demoOverlayIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes demoModalIn {
+          from { opacity: 0; transform: translateY(18px) scale(0.96); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
         .demo-modal-overlay {
           position: fixed;
           inset: 0;
@@ -64,6 +72,11 @@ export function DemoModal({
           align-items: center;
           justify-content: center;
           padding: 1.5rem;
+          animation: demoOverlayIn 250ms ease-out both;
+        }
+        .demo-modal { animation: demoModalIn 380ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both; }
+        @media (prefers-reduced-motion: reduce) {
+          .demo-modal-overlay, .demo-modal { animation: none; }
         }
         @media (max-width: 768px) {
           .demo-modal-overlay {

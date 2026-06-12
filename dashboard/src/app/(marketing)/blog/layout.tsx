@@ -243,6 +243,19 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           margin-left: auto;
           margin-right: auto;
         }
+        .article-mid-cta-alt {
+          margin-top: 1.25rem;
+          font-size: 0.8rem !important;
+          color: var(--gray-500) !important;
+          margin-bottom: 0 !important;
+        }
+        .article-mid-cta-alt a {
+          color: var(--gray-300);
+          text-decoration: underline;
+          text-underline-offset: 2px;
+          transition: color 200ms;
+        }
+        .article-mid-cta-alt a:hover { color: var(--white); }
         @media (max-width: 768px) {
           .article-mid-cta { margin: 2.5rem 0; padding: 2rem 1.25rem; }
         }
