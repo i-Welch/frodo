@@ -270,6 +270,16 @@ export default function LandingPage() {
           transition: opacity 200ms !important;
         }
         .nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
+        .nav-blog-mobile {
+          display: none;
+          color: var(--gray-300);
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 500;
+          padding: 0.5rem 0.9rem;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 6px;
+        }
         button.nav-cta {
           font-family: 'DM Sans', sans-serif;
           font-size: 0.85rem;
@@ -689,6 +699,7 @@ export default function LandingPage() {
         @media (max-width: 768px) {
           .landing nav { padding: 1rem 1.5rem; }
           .nav-links { display: none; }
+          .nav-blog-mobile { display: inline-block; }
           .hero { padding: 7rem 1.5rem 4rem; }
           .hero h1 { font-size: 2.2rem; }
           .hero-watermark { width: 80vw; right: -20%; opacity: 0.03; }
@@ -709,6 +720,7 @@ export default function LandingPage() {
             <RavenLogo />
             <span className="nav-wordmark">RAVEN</span>
           </div>
+          <a href="/blog" className="nav-blog-mobile">Blog</a>
           <div className="nav-links">
             <a href="/blog">Blog</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>

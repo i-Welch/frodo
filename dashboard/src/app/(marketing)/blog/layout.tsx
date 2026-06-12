@@ -88,6 +88,16 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           transition: opacity 200ms !important;
         }
         .blog-nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
+        .blog-nav-blog-mobile {
+          display: none;
+          color: var(--gray-300);
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 500;
+          padding: 0.5rem 0.9rem;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 6px;
+        }
         button.blog-nav-cta {
           font-family: 'DM Sans', sans-serif;
           font-size: 0.85rem;
@@ -369,6 +379,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         @media (max-width: 768px) {
           .blog-shell nav { padding: 1rem 1.5rem; }
           .blog-nav-links { display: none; }
+          .blog-nav-blog-mobile { display: inline-block; }
           .blog-main { padding-top: 4rem; }
           .blog-cta { padding: 3rem 1.5rem; }
           .blog-shell footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
@@ -389,6 +400,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             </svg>
             <span className="blog-nav-wordmark">RAVEN</span>
           </a>
+          <a href="/blog" className="blog-nav-blog-mobile">Blog</a>
           <div className="blog-nav-links">
             <a href="/blog">Blog</a>
             <a href="/">Home</a>

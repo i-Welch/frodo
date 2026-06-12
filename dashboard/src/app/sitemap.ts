@@ -81,6 +81,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/coastal-states-bank-boat-bank',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/roi/coastal-states-bank',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: 'https://reportraven.tech/roi/oconee-federal',
       lastModified: new Date(),
       changeFrequency: 'monthly',

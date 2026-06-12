@@ -36,6 +36,33 @@ const PULL_THROUGH_PTS: Record<Scenario, number> = {
 // MBA-reported average profit per closed mortgage. [footnote 4]
 const PROFIT_PER_LOAN = 785;
 
+/**
+ * White-label digital intake (new-resident lead generation). [footnote 6]
+ * Share of new-to-market households captured as leads by a fintech-grade
+ * digital pre-qualification flow, anchored to TD Bank research showing ~30%
+ * of movers open an account with a new bank, and purchased-lead conversion
+ * floors of 1-2%.
+ */
+const LEAD_CAPTURE_RATE: Record<Scenario, number> = {
+  conservative: 0.015,
+  expected: 0.04,
+  optimistic: 0.09,
+};
+// Lead (started application in the bank's own flow) -> funded loan.
+// Expected case: ~55% completion x ~55% depository pull-through.
+const LEAD_TO_FUNDED: Record<Scenario, number> = {
+  conservative: 0.12,
+  expected: 0.3,
+  optimistic: 0.5,
+};
+// Avoided acquisition cost per funded loan vs. purchased leads ($500-$3,000
+// per funded loan via shared/exclusive lead channels).
+const AVOIDED_ACQUISITION: Record<Scenario, number> = {
+  conservative: 500,
+  expected: 1000,
+  optimistic: 1500,
+};
+
 export interface BankRoiInput {
   slug: string;
   name: string;
@@ -51,6 +78,8 @@ export interface BankRoiInput {
     commercial: { count: number; source: string; estimated: boolean };
     consumer: { count: number; source: string; estimated: boolean };
   };
+  // New households moving into the bank's footprint each year. [footnote 6]
+  market: { newHouseholdsPerYear: number; source: string };
   // One-paragraph framing for the page intro
   intro: string;
   // Bank-specific strategic notes (beyond the dollar math)
@@ -68,10 +97,17 @@ export interface RoiScenarioResult {
   hoursRecovered: number;
 }
 
+export interface DigitalIntakeResult {
+  leads: number;
+  fundedLoans: number;
+  value: number;
+}
+
 export interface RoiResult {
   conservative: RoiScenarioResult;
   expected: RoiScenarioResult;
   optimistic: RoiScenarioResult;
+  digitalIntake: Record<Scenario, DigitalIntakeResult>;
   totalVerifications: number;
   laborByCategory: {
     category: string;
@@ -120,8 +156,19 @@ export function computeRoi(input: BankRoiInput): RoiResult {
     };
   }
 
+  const digitalIntake = {} as Record<Scenario, DigitalIntakeResult>;
+  for (const s of scenarios) {
+    const leads = Math.round(input.market.newHouseholdsPerYear * LEAD_CAPTURE_RATE[s]);
+    const fundedLoans = Math.round(leads * LEAD_TO_FUNDED[s]);
+    // Value = profit on funded loans plus the acquisition spend the bank
+    // avoids by owning the lead instead of buying it. [footnote 6]
+    const value = fundedLoans * (PROFIT_PER_LOAN + AVOIDED_ACQUISITION[s]);
+    digitalIntake[s] = { leads, fundedLoans, value };
+  }
+
   return {
     ...result,
+    digitalIntake,
     totalVerifications: categories.reduce((sum, c) => sum + c.count, 0),
     laborByCategory,
   };
@@ -153,9 +200,56 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
     title: 'What this is not',
     body: 'These figures are directional estimates built from public data and industry benchmarks. They are not a quote, a guarantee, or an analysis of the bank’s internal workflows, and recovered hours are modeled as redeployed origination capacity rather than headcount reduction. Banks already running highly automated verification will see less; banks running fully manual document collection will see more.',
   },
+  {
+    id: 6,
+    title: 'New-resident lead generation',
+    body: 'TD Bank research reports roughly 30% of consumers open an account with a new bank after moving (and movers 55+ switch at a higher rate than millennials), while 91% of consumers say digital capability matters in choosing where to bank (MX, 2025) and more than half of online banking applications are abandoned mid-flow (The Financial Brand; Innovatrics). We model a bank with a white-label, fintech-grade intake flow capturing 1.5-9% of new-to-market households as started applications, converting 12-50% of those to funded loans (expected case: ~55% completion times the MBA-reported ~55% depository pull-through). Value per funded loan combines the $785 MBA average profit with $500-1,500 of avoided lead-acquisition spend, the going rate per funded loan from purchased shared and exclusive lead channels. New-household counts are derived from Census county population estimates and are not bank-reported figures. This line is shown separately and is not included in the headline savings number.',
+  },
 ];
 
 export const ROI_BANKS: BankRoiInput[] = [
+  {
+    slug: 'coastal-states-bank',
+    name: 'Coastal States Bank',
+    shortName: 'Coastal States',
+    articleSlug: 'coastal-states-bank-boat-bank',
+    articleTitle: 'The Boat Bank of Beaufort County',
+    fdicCert: 57756,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '$2.35B' },
+      { label: 'Beaufort County deposit share', value: '#1 (17.9%)' },
+      { label: 'Loan book in marine vessels', value: '18.9%' },
+      { label: '2024 HMDA originations', value: '42' },
+    ],
+    volumes: {
+      mortgage: { count: 42, source: '2024 HMDA data (CFPB browser, LEI 549300EPUJMYHHCZPS30)', estimated: false },
+      commercial: { count: 400, source: 'CRE/C&I/SBA/senior housing mix from call report, estimated', estimated: true },
+      consumer: { count: 500, source: 'Marine lending channel (~19% of loans), estimated', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 2500,
+      source: 'Beaufort County in-migration plus Jasper County (fastest-growing US county, 2025), Census estimates',
+    },
+    intro:
+      'Coastal States runs two businesses: the #1 deposit franchise in Beaufort County, and a national specialty lender in marine, senior housing, and SBA. The specialty side lives on verification: vessel ownership, business financials, guarantor identity. The local side sits in one of the fastest-growing retiree markets in America. Both sides have a verification number attached.',
+    strategic: [
+      {
+        title: 'Specialty files are the slowest files',
+        body: 'Marine, senior housing, and SBA lending carry the heaviest verification loads in banking: collateral ownership, business financials, beneficial ownership, guarantors. These are the highest hours-per-file categories in this model.',
+      },
+      {
+        title: 'The migration wave is unbanked on arrival',
+        body: 'Roughly 2,500 households move into the Beaufort-Jasper footprint each year, and about 30% of movers pick a new bank. With 42 HMDA originations in 2024, nearly all of that lending relationship flow currently lands elsewhere.',
+      },
+      {
+        title: 'Growth mode raises the cost of slow',
+        body: 'A new Charleston team, a fresh NYSE listing, and an efficiency ratio eight points off its best mean every recovered verification hour lands directly on the metric public investors watch.',
+      },
+    ],
+    sources:
+      'FDIC BankFind and call reports (Cert #57756); FDIC Summary of Deposits (June 2025); CoastalSouth Bancshares Q1 2026 earnings release and SEC filings; 2024 HMDA data via CFPB; Zillow; Census county estimates; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
   {
     slug: 'oconee-federal',
     name: 'Oconee Federal Savings & Loan',
@@ -174,6 +268,10 @@ export const ROI_BANKS: BankRoiInput[] = [
       mortgage: { count: 150, source: 'OCC CRA Performance Evaluation, post-rate-shock run-rate', estimated: false },
       commercial: { count: 10, source: 'FDIC call report loan mix', estimated: true },
       consumer: { count: 40, source: 'HELOC estimate from footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 550,
+      source: 'Oconee County population +1.44%/yr (~1,200 people), Census estimates',
     },
     intro:
       'A 102-year-old thrift with 81% of its loan book in residential mortgages is, structurally, a verification business. Every file Oconee Federal originates runs the same document chase: identity, income, employment, assets, property. This is what that chase costs today, and what a single verification link changes.',
@@ -213,6 +311,10 @@ export const ROI_BANKS: BankRoiInput[] = [
       commercial: { count: 150, source: 'FDIC call report loan mix, 5 assessment areas', estimated: true },
       consumer: { count: 100, source: 'Estimated from 18-branch footprint', estimated: true },
     },
+    market: {
+      newHouseholdsPerYear: 1500,
+      source: 'Upstate SC in-migration across 5 assessment areas, Census county estimates',
+    },
     intro:
       'Eighteen branches across five CRA assessment areas means five loan-officer pools, each verifying borrowers with whatever workflow accumulated locally. One verification stack changes the math on every file, in every market, at once.',
     strategic: [
@@ -251,6 +353,10 @@ export const ROI_BANKS: BankRoiInput[] = [
       commercial: { count: 300, source: 'FDIC call report loan mix', estimated: true },
       consumer: { count: 350, source: 'High-volume personal loan channel, estimated', estimated: true },
     },
+    market: {
+      newHouseholdsPerYear: 4000,
+      source: 'Horry County among fastest-growing US metros (~3%/yr on ~390K), Census estimates',
+    },
     intro:
       'Anderson Brothers runs one of the highest-velocity lending operations among SC community banks: a 1.46% ROA, a 25-branch coastal footprint, and a consumer loan channel that processes serious volume. Velocity is exactly where per-file verification time compounds fastest.',
     strategic: [
@@ -288,6 +394,10 @@ export const ROI_BANKS: BankRoiInput[] = [
       mortgage: { count: 1119, source: '2024 HMDA data', estimated: false },
       commercial: { count: 350, source: 'FDIC call report: 45.7% CRE, 10% C&I', estimated: true },
       consumer: { count: 150, source: 'HELOC / consumer estimate', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 5000,
+      source: 'Greenville, Columbia, Charleston, and Triangle-adjacent metro in-migration, Census estimates (conservative footprint slice)',
     },
     intro:
       'Southern First originates more than 1,100 mortgages a year on top of a deep CRE and C&I book, with a growth plan that just expanded into Cary, NC. At this volume, verification is a capacity question: the labor in the expected scenario is roughly 3.5 full-time employees, recovered without hiring.',

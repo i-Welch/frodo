@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'coastal-states-bank-boat-bank',
+    title: 'The Boat Bank of Beaufort County',
+    description:
+      'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',
+    readTime: '5 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'oconee-federal-quiet-comeback',
     title: 'The Quiet Comeback at Oconee Federal',
     description:

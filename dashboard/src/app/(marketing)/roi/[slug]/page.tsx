@@ -183,7 +183,8 @@ export default async function RoiPage({ params }: { params: Promise<{ slug: stri
         .roi-range-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-500); }
 
         /* Tables */
-        .roi-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0 1rem; font-size: 0.92rem; }
+        .roi-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0 1rem; }
+        .roi-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
         .roi-table th {
           text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
           color: var(--gray-500); font-weight: 500;
@@ -274,9 +275,22 @@ export default async function RoiPage({ params }: { params: Promise<{ slug: stri
         }
         .roi-shell footer span { font-size: 0.75rem; color: var(--gray-600); }
 
+        .roi-nav-blog-mobile {
+          display: none;
+          color: var(--gray-300);
+          text-decoration: none;
+          font-size: 0.85rem;
+          font-weight: 500;
+          padding: 0.5rem 0.9rem;
+          border: 1px solid rgba(255,255,255,0.2);
+          border-radius: 6px;
+        }
         @media (max-width: 768px) {
           .roi-shell nav { padding: 1rem 1.5rem; }
           .roi-nav-links { display: none; }
+          .roi-nav-blog-mobile { display: inline-block; }
+          .roi-table { font-size: 0.8rem; }
+          .roi-table th, .roi-table td { padding: 0.6rem 0.6rem; }
           .roi-main { padding: 7rem 1.25rem 3rem; }
           .roi-stats { grid-template-columns: repeat(2, 1fr); }
           .roi-strategic { grid-template-columns: 1fr; }
@@ -300,6 +314,7 @@ export default async function RoiPage({ params }: { params: Promise<{ slug: stri
             <a href="/">Home</a>
             <DemoModal source={`roi-nav:${bank.slug}`} label="Request a Demo" buttonClassName="form-btn" />
           </div>
+          <a href="/blog" className="roi-nav-blog-mobile">Blog</a>
         </nav>
 
         <main className="roi-main">
@@ -364,6 +379,7 @@ export default async function RoiPage({ params }: { params: Promise<{ slug: stri
           <AnimatedBars ariaLabel={`Expected annual labor value by lending line at ${bank.name}`} data={laborBars} />
 
           <h2>The full math</h2>
+          <div className="roi-table-wrap">
           <table className="roi-table">
             <thead>
               <tr>
@@ -400,6 +416,54 @@ export default async function RoiPage({ params }: { params: Promise<{ slug: stri
               </tr>
             </tbody>
           </table>
+          </div>
+
+          <h2>The growth side: new residents, captured digitally</h2>
+          <p className="roi-section-sub">
+            Roughly {bank.market.newHouseholdsPerYear.toLocaleString('en-US')} new households move
+            into {bank.shortName}&apos;s footprint every year, and about 30% of movers open an
+            account with a new bank. They shop with their phones. A white-label, fintech-grade
+            intake flow (the same 5-minute experience RAVEN runs for verification) turns that
+            migration into a lead channel the bank owns instead of renting.
+            <a href="#methodology" className="roi-fn-mark">[6]</a>
+          </p>
+          <div className="roi-table-wrap">
+          <table className="roi-table">
+            <thead>
+              <tr>
+                <th>Annual</th>
+                <th className="roi-td-num">Conservative</th>
+                <th className="roi-td-num">Expected</th>
+                <th className="roi-td-num">Optimistic</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Digital leads captured</td>
+                <td className="roi-td-num">{roi.digitalIntake.conservative.leads.toLocaleString('en-US')}</td>
+                <td className="roi-td-num">{roi.digitalIntake.expected.leads.toLocaleString('en-US')}</td>
+                <td className="roi-td-num">{roi.digitalIntake.optimistic.leads.toLocaleString('en-US')}</td>
+              </tr>
+              <tr>
+                <td>Funded loans from those leads</td>
+                <td className="roi-td-num">{roi.digitalIntake.conservative.fundedLoans.toLocaleString('en-US')}</td>
+                <td className="roi-td-num">{roi.digitalIntake.expected.fundedLoans.toLocaleString('en-US')}</td>
+                <td className="roi-td-num">{roi.digitalIntake.optimistic.fundedLoans.toLocaleString('en-US')}</td>
+              </tr>
+              <tr className="roi-row-total">
+                <td>Value (loan profit + avoided lead spend)</td>
+                <td className="roi-td-num">{fmtK(roi.digitalIntake.conservative.value)}</td>
+                <td className="roi-td-num">{fmtK(roi.digitalIntake.expected.value)}</td>
+                <td className="roi-td-num">{fmtK(roi.digitalIntake.optimistic.value)}</td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <p className="roi-section-sub" style={{ marginTop: '0.75rem' }}>
+            This is new revenue, not savings, so it is shown separately and excluded from the
+            headline number above. The younger and newly arrived households a digital flow captures
+            are exactly the relationships a branch network alone does not reach.
+          </p>
 
           <div className="roi-cta">
             <h2>See these numbers against your actual workflow</h2>

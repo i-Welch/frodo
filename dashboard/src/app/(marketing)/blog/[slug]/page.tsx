@@ -78,6 +78,57 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'coastal-states-bank-boat-bank': {
+    title: 'The Boat Bank of Beaufort County',
+    description: 'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',
+    publishedDate: 'June 12, 2026',
+    readTime: '5 min read',
+    content: `
+Coastal States Bank holds more deposits in Beaufort County than Wells Fargo. More than Bank of America. More than SouthState, Truist, or TD. And the loan book behind that #1 hometown franchise is, to a degree that surprises almost everyone who looks, made of boats.
+
+Marine vessels are 18.9% of total loans. Senior housing is another 15.6%. The "island bank" on Hilton Head is actually a national specialty lender that happens to dominate one of the wealthiest retirement markets in America.
+
+## From recapitalization to the NYSE in eight years
+
+Coastal States was founded in 2004 as southern Beaufort County's only locally owned bank, and for its first decade it behaved like one. The inflection came in 2017, when Stephen Stone arrived with a recapitalization and a different idea: keep the Lowcountry deposit franchise, but lend nationally in niches where a $2B bank can actually win.
+
+It worked. Total assets reached $2.35 billion this March. The holding company, CoastalSouth Bancshares, listed on the NYSE last July at $21.50 a share; it trades around $25.50 today, up 28.5% in twelve months. The first dividend in company history, a nickel a share, went out in April.
+
+:::pullquote
+In a county with $6.55 billion in total deposits, Coastal States holds $1.17 billion, a 17.9% share that beats every megabank on the island.
+:::
+
+The deposit side is the quiet star. In a county with $6.55 billion in total deposits, Coastal States holds $1.17 billion, a 17.9% share that beats every megabank on the island. Its flagship Hilton Head branch alone gathered $735 million, up from $559 million a year earlier. Core deposits grew $117.9 million in the first quarter of 2026 alone.
+
+That's the foundation national lenders dream about: cheap, sticky, locally gathered funding, deployed into specialty assets most community banks can't underwrite.
+
+## What the niches actually look like
+
+Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, 18.9%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the bank's eleven branches sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
+
+The model prints respectable numbers: 1.11% ROA, 3.61% NIM, a 59% efficiency ratio, and charge-offs of one basis point.
+
+But the growth-mode costs are visible too. ROE has come down from 15.9% in 2023 to 10.0% now, diluted by the IPO raise and compressed by deposit competition. The efficiency ratio has drifted up eight points from its 52% best. Nonperforming assets, 0.21% of assets in 2023, now sit at 0.78%. None of it alarming. All of it the price of building Charleston, where the bank announced a new commercial team under Market President Edward Vaughan in January.
+
+## The 42-mortgage footnote
+
+One number stands out in the HMDA data: 42.
+
+That's how many reportable mortgages Coastal States originated in 2024, roughly $51 million, in a market where the typical Hilton Head home is worth $704,740 (up 4.6% in a year) and Bluffton is up 6.8%. Next door, Jasper County was the single fastest-growing county in the United States last year. Beaufort County's growth is carried entirely by in-migration; the largest age cohort is 70 to 74.
+
+The 12.4% residential share isn't an oversight. It's the strategy. Residential mortgage is a low-margin, high-friction product, and the bank's capital earns more in marine vessels and senior housing. Most of its mortgage-adjacent exposure runs through warehouse lines to mortgage bankers instead: lending to the lenders rather than the borrowers.
+
+The trade-off is concentration of a different kind. The bank that wins the county's deposits participates only marginally in the county's defining economic event, the housing migration, leaving that volume to national digital lenders and the megabanks it out-deposits.
+
+## A franchise running in two gears
+
+Where this leaves Coastal States is unusual. By Beaufort County standards it's the entrenched incumbent: twenty-two years local, #1 deposit share, the only bank headquartered on the island. By balance-sheet standards it's a growth-stage specialty lender: newly public, expanding into Charleston, running national lending lines from Atlanta.
+
+The two gears mostly complement each other. Local deposits fund national assets at spreads that produce a 3.61% NIM. The risk shows up at the seams: deposit costs in a competitive coastal market, the efficiency ratio of an expansion footprint, and credit migration in specialty books that haven't been through a full cycle at this scale.
+
+Q1 gave a cleanly positive read: $6.3 million in net income, core deposit growth that outran loan growth, and an allowance covering 103.5% of nonperformers. For a bank eight months into life as a public company, the numbers say the model is holding. The next few quarters of Charleston buildout will say whether it scales.
+    `,
+  },
   'oconee-federal-quiet-comeback': {
     title: 'The Quiet Comeback at Oconee Federal',
     description: 'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
