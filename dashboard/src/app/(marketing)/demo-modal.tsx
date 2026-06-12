@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { track } from '@vercel/analytics';
 import { InterestForm } from './interest-form';
 
@@ -55,24 +56,40 @@ export function DemoModal({
         .demo-modal-overlay {
           position: fixed;
           inset: 0;
-          z-index: 200;
-          background: rgba(0,0,0,0.7);
-          backdrop-filter: blur(6px);
-          -webkit-backdrop-filter: blur(6px);
+          z-index: 1000;
+          background: rgba(10,10,10,0.45);
+          backdrop-filter: blur(16px) saturate(160%);
+          -webkit-backdrop-filter: blur(16px) saturate(160%);
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 1.5rem;
         }
+        @media (max-width: 768px) {
+          .demo-modal-overlay {
+            backdrop-filter: blur(8px) saturate(160%);
+            -webkit-backdrop-filter: blur(8px) saturate(160%);
+          }
+        }
+        .demo-modal .form-row { gap: 0.75rem; }
+        .demo-modal .form-btn {
+          flex-basis: 100%;
+          margin-top: 0.5rem;
+        }
+        .demo-modal-overlay, .demo-modal-overlay *, .demo-modal-overlay *::before, .demo-modal-overlay *::after {
+          box-sizing: border-box;
+        }
         .demo-modal {
+          font-family: 'DM Sans', sans-serif;
           position: relative;
           width: 100%;
           max-width: 560px;
-          background: var(--gray-900);
-          border: 1px solid rgba(255,255,255,0.1);
+          background: rgba(23,23,23,0.85);
+          border: 1px solid rgba(255,255,255,0.12);
           border-radius: 16px;
           padding: 3rem 2.5rem 2.5rem;
           text-align: center;
+          box-shadow: 0 24px 80px rgba(0,0,0,0.5);
         }
         .demo-modal h2 {
           font-size: 1.6rem;
@@ -109,7 +126,7 @@ export function DemoModal({
         {label}
       </button>
 
-      {open && (
+      {open && createPortal(
         <div className="demo-modal-overlay" onClick={(e) => e.target === e.currentTarget && close()}>
           <div className="demo-modal" role="dialog" aria-modal="true" aria-label="Get a demo">
             <button type="button" className="demo-modal-close" onClick={close} aria-label="Close">
@@ -122,7 +139,8 @@ export function DemoModal({
             </p>
             <InterestForm source={`demo-modal:${source}`} />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
