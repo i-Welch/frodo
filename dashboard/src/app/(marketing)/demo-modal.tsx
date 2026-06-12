@@ -4,7 +4,15 @@ import { useCallback, useEffect, useState } from 'react';
 import { track } from '@vercel/analytics';
 import { InterestForm } from './interest-form';
 
-export function DemoModal({ source }: { source: string }) {
+export function DemoModal({
+  source,
+  label = 'Get a Demo',
+  buttonClassName = 'demo-btn',
+}: {
+  source: string;
+  label?: string;
+  buttonClassName?: string;
+}) {
   const [open, setOpen] = useState(false);
 
   const close = useCallback(() => setOpen(false), []);
@@ -97,8 +105,8 @@ export function DemoModal({ source }: { source: string }) {
         }
       `}</style>
 
-      <button type="button" className="demo-btn" onClick={handleOpen}>
-        Get a Demo
+      <button type="button" className={buttonClassName} onClick={handleOpen}>
+        {label}
       </button>
 
       {open && (

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { InterestForm } from './interest-form';
+import { DemoModal } from './demo-modal';
 
 export const metadata: Metadata = {
   title: 'RAVEN — Borrower Verification Software for Community Banks | South Carolina',
@@ -269,6 +270,12 @@ export default function LandingPage() {
           transition: opacity 200ms !important;
         }
         .nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
+        button.nav-cta {
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.85rem;
+          border: none;
+          cursor: pointer;
+        }
 
         /* --- Hero --- */
         .hero {
@@ -706,9 +713,7 @@ export default function LandingPage() {
             <a href="/blog">Blog</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
-            <a href="#get-started" className="nav-cta">
-              Request Access
-            </a>
+            <DemoModal source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
           </div>
         </nav>
 
@@ -738,9 +743,7 @@ export default function LandingPage() {
               in South Carolina and the Southeast.
             </p>
             <div className="hero-actions">
-              <a href="#get-started" className="btn btn-white">
-                Request Access
-              </a>
+              <DemoModal source="landing-hero" label="Request a Demo" buttonClassName="btn btn-white" />
               <a href="/legal/security" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 Security &amp; Compliance
               </a>
