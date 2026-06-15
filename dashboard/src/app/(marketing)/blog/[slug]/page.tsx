@@ -78,6 +78,57 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'rocket-mortgage-22-days-how': {
+    title: 'How Rocket Mortgage Closes in 22 Days',
+    description: 'Independent mortgage banks now originate 84% of U.S. mortgages. Banks gave that market away one slow VOE call at a time. A step-by-step breakdown of what Rocket does differently, and what community banks can actually copy.',
+    publishedDate: 'June 15, 2026',
+    readTime: '7 min read',
+    content: `
+Independent mortgage banks now originate 84.1% of all U.S. single-family mortgages. Banks held that market. They gave it away, one slow VOE call at a time.
+
+The number that explains the shift isn't the interest rate or the loan limit. It's 22. That's how many days Rocket Mortgage takes to close, on average, against an industry average of 42 (ICE Mortgage Technology, June 2025). The gap isn't marketing. It's process. And the process difference is specific enough to walk through step by step.
+
+## What Rocket actually does
+
+The core of Rocket's speed advantage is front-loading. Where a traditional mortgage lender collects documents after an offer is accepted, Rocket's Verified Approval product runs full underwriting before the borrower ever makes an offer. A human underwriter, not just an algorithm, reviews credit, income, employment, and assets. The whole thing takes 1-2 hours.
+
+The approval letter is valid for 90 days and functions as close to a conditional commitment as the market offers. Sellers know it. Buyer's agents know it. It changes the negotiation entirely.
+
+On income and employment, Rocket pulls from The Work Number (Equifax's payroll database) and similar automated sources that cover roughly 60-70% of employed U.S. workers. Verification that would take a loan processor a phone call and potentially several days of waiting for HR to call back happens in seconds. For IRS transcript requests, Rocket uses automated tax data services that eliminate the manual form-filing process that still costs some lenders a week.
+
+The appraisal piece is where the structural gap gets harder to close. Fannie Mae expanded its Value Acceptance program in Q1 2025, lifting the LTV cap from 80% to 90% for primary residences. That means borrowers with as little as 10% down can now potentially skip the appraisal entirely. Waiver usage in the 80-90% LTV band jumped from roughly 2% to 17% within seven months of the policy change. Rocket, with its volume and extensive data on prior appraisals from repeat and refinance customers, is structurally positioned to capture a disproportionate share of those waivers. On no-cash-out refinances, roughly half of GSE loans now skip the appraisal.
+
+## What the community bank does instead
+
+The standard community bank mortgage checklist runs to about a dozen document categories: two years of W-2s, 30 days of pay stubs, two months of bank statements (all pages), two years of personal and business tax returns if self-employed, credit explanation letters for any negative items, and more. The list exists because the bank has to gather manually what automated systems produce instantly.
+
+Employment verification is the single most consistent friction point. A loan processor calls the borrower's employer HR department to verbally confirm job title, status, and income. The call has to use a phone number independently verified, not just the number the borrower provided. If HR doesn't answer, the processor calls back. If HR is slow, or the employer uses a third-party HR vendor, or the borrower was recently promoted and the file doesn't match the old records, the whole file sits.
+
+This has to happen twice: once at origination, and again within 10 days of closing.
+
+Initial underwriting under normal conditions takes roughly 72 hours. A full review with a complete file runs 7-10 business days. Add an appraisal (6-20 days depending on the market, with appraiser supply declining roughly 3% annually), and the math gets to 42 days before any complications arrive. A single HR department that takes four days to return a call and the loan slides to 46.
+
+:::pullquote
+The cost structure reflects the labor. The MBA puts average origination costs at $11,094 per loan in 2025, with a profit of $785.
+:::
+
+The cost structure reflects the labor. The MBA puts average origination costs at $11,094 per loan in 2025, with a profit of $785. That $785 margin is what the process has to earn after paying everyone who touched the file.
+
+## Why banks gave up 70 points of market share
+
+The bank retreat from mortgage isn't a mystery. It's a rational response to unfavorable economics made worse by technology inaction.
+
+IMBs have structural advantages on the cost side: no capital requirements on mortgage loans held-for-sale, no deposit franchise to protect, no regulators asking why origination margins compressed this quarter. They built their entire operation around moving loans fast and selling them to the GSEs. Banks built their mortgage operations as an add-on to a branch relationship model, which made sense when the borrower walked in the door already a customer.
+
+That borrower now shops on their phone. Ninety percent of 2024 homebuyers wanted a fully or mostly digital mortgage process. Rocket now services one in every six U.S. mortgages, has an 83% refinance recapture rate against an industry average of 25-28%, and just added Mr. Cooper's 6.7 million customers and Redfin's buyer network in the same year. The flywheel turns faster every cycle.
+
+Freddie Mac's 2024 Cost to Originate study found that lenders fully adopting its digital tools originate loans $1,500 cheaper and close five days faster, with 10% higher net margin. That data is available to every community bank in the country. Most haven't moved on it.
+
+The piece that doesn't require a technology overhaul is verification. VOE by phone call is a policy choice, not a technical constraint. The Work Number covers the majority of employed borrowers. Automated income verification through bank data connectivity is Fannie DU-certified. The community bank that wires these into its existing process captures most of the time savings without replacing its LOS, its underwriting team, or its relationships.
+
+Twenty days isn't magic. It's the sum of several verifications that take seconds instead of days, an appraisal that doesn't happen at all on half of refinances, and a document collection process that runs in parallel instead of serially. The gap closes from the bottom up, one step at a time, and the first step is the easiest one to take.
+    `,
+  },
   'coastal-states-bank-boat-bank': {
     title: 'The Boat Bank of Beaufort County',
     description: 'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',

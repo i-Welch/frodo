@@ -81,6 +81,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/rocket-mortgage-22-days-how',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: 'https://reportraven.tech/blog/coastal-states-bank-boat-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
@@ -166,6 +172,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: 'https://app.reportraven.tech/legal/vendor-risk-management',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: 'https://app.reportraven.tech/legal/data-retention',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.4,

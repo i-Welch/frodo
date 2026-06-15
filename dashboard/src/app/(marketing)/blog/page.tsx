@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'rocket-mortgage-22-days-how',
+    title: 'How Rocket Mortgage Closes in 22 Days',
+    description:
+      'Independent mortgage banks now originate 84% of U.S. mortgages. Banks gave that market away one slow VOE call at a time. A step-by-step breakdown of what Rocket does differently, and what community banks can actually copy.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'coastal-states-bank-boat-bank',
     title: 'The Boat Bank of Beaufort County',
     description:
