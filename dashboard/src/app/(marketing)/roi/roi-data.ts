@@ -209,6 +209,48 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'carolina-bank-trust',
+    name: 'Carolina Bank & Trust Co.',
+    shortName: 'Carolina Bank',
+    articleSlug: 'carolina-bank-between-two-economies',
+    articleTitle: 'The Bank Between Two Economies',
+    fdicCert: 355120,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '$830M' },
+      { label: 'ROA', value: '1.68%' },
+      { label: 'Efficiency ratio', value: '44.86%' },
+      { label: 'Tier 1 capital ratio', value: '20.23%' },
+    ],
+    volumes: {
+      mortgage: { count: 160, source: 'FDIC call report loan mix, estimated from $588M net loan book and 6-county footprint', estimated: true },
+      commercial: { count: 80, source: 'FDIC call report loan mix, estimated', estimated: true },
+      consumer: { count: 120, source: 'Estimated from 14-branch footprint and rural SC consumer mix', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 1200,
+      source: 'Darlington, Florence, and 4 adjacent Pee Dee counties; anchored by AESC EV plant (1,620 jobs) and Census county in-migration estimates',
+    },
+    intro:
+      'Carolina Bank & Trust sits at the intersection of two economic stories: Darlington County shedding old-economy manufacturing jobs and Florence County absorbing a $1.62 billion EV battery plant. A 20.23% Tier 1 capital ratio means the capital to chase that Florence growth is already on the balance sheet. The constraint is throughput.',
+    strategic: [
+      {
+        title: 'The EV economy brings complex borrowers first',
+        body: 'AESC construction workers, relocating contractors, and skilled tradespeople arriving for the Florence plant carry the verification profiles that slow manual processing most: recent job starts, multiple W-2s, high hourly wages without long employment history. Automated income and employment verification handles exactly these borrowers faster than document collection.',
+      },
+      {
+        title: 'A fortress capital ratio is optionality, not a trophy',
+        body: 'At 20.23% Tier 1, Carolina Bank can move fast when Florence loan demand accelerates without asking regulators for permission. The binding constraint on capturing that demand is not capital: it is how many files the team can process in a week.',
+      },
+      {
+        title: 'The Darlington stress test is still running',
+        body: 'A Canfor-level shock creates more complex files in the pipeline alongside growth: modification requests, recast applications, refinance inquiries from households managing tighter cash flow. Faster, more complete verification at that moment protects the bank's $0 OREO record and the borrower at the same time.',
+      },
+    ],
+    sources:
+      'FDIC BankFind (Cert #355120); Visbanking call report data; Florence County Economic Development (AESC announcement); Canfor 2024 Annual Report; Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
     slug: 'coastal-states-bank',
     name: 'Coastal States Bank',
     shortName: 'Coastal States',

@@ -78,6 +78,73 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'carolina-bank-between-two-economies': {
+    title: 'The Bank Between Two Economies',
+    description: 'Carolina Bank & Trust runs a 1.68% ROA, a 44.86% efficiency ratio, and zero foreclosed real estate out of Lamar, SC — right between a county shedding timber jobs and a county landing a $1.62 billion EV battery plant. Here is how a 90-year-old family bank navigates the gap.',
+    publishedDate: 'June 17, 2026',
+    readTime: '5 min read',
+    content: `
+In August 2025, Canfor shut its Darlington, South Carolina sawmill permanently. One county over, workers were breaking ground on a $1.62 billion electric vehicle battery plant. Carolina Bank & Trust, headquartered in Lamar since 1936, had a front-row seat to both.
+
+The bank didn't flinch.
+
+ROA of 1.68%. Efficiency ratio of 44.86%. Net interest margin of 4.07%. Zero foreclosed real estate on the books. These are the numbers of a bank that has been quietly, methodically doing something right for three generations, while the economy around it lurched from tobacco to textiles to timber and now to lithium-ion batteries.
+
+## A Balance Sheet Built for Turbulence
+
+Carolina Bank & Trust runs $830 million in assets from 14 branches across 6 Pee Dee counties. Ninety-three employees. The Beasley family has run it since founding in 1936, and still does.
+
+The numbers stand out immediately. A 1.68% ROA clears the community bank average of roughly 1.32% by a comfortable margin. The efficiency ratio, at 44.86%, means less than 45 cents of every revenue dollar goes to overhead, in a year when many community banks were watching expenses creep past 60 cents. Net interest margin sits at 4.07%, healthy even as the rate environment has whipsawed smaller institutions.
+
+Then there's the capital ratio: 20.23% Tier 1 risk-based. Nearly double the regulatory minimums. Some banks call that overcapitalized. At Carolina Bank, it looks more like institutional philosophy.
+
+The OREO line (other real estate owned, the catch-all for properties a bank has had to take back from borrowers) is zero. No foreclosures. No watch flags. For a community bank whose footprint includes counties with unemployment above 5%, that's not luck. That's underwriting.
+
+## Darlington's Hard Year
+
+Darlington County has had a rough stretch. Unemployment hit 5.5% in mid-2025, ticking up as Canfor, the Canadian timber giant, announced it was closing its local sawmill for good. The company had posted a $942 million operating loss in 2024. About 120 jobs disappeared.
+
+This kind of event ripples. A sawmill doesn't just employ sawyers. It employs the truckers who haul the logs, the mechanics who maintain the equipment, the lunch spots near the plant. In a county of roughly 60,000 people, 120 direct job losses carry a multiplier.
+
+Carolina Bank operates right in the middle of this. Lamar is in Darlington County. Their customers include the kind of small businesses and households that feel a mill closure in their cash flow months before it shows up in any economic data.
+
+The fact that their loan book looks pristine anyway says something.
+
+## Florence and the Battery Bet
+
+Drive 20 minutes northeast and you're in Florence County. Different story entirely.
+
+Florence has attracted $917 million in announced capital investment in recent years, anchored by AESC's $1.62 billion electric vehicle battery facility. Total job creation from the AESC plant alone: 1,620 positions. Advanced manufacturing, not sawmill work. Higher wages, different skill profiles, longer ramp-up timelines.
+
+The housing market is already pricing it in. Median home prices in Florence hit $264,000, up 12.4% year-over-year. Days on market are creeping up (80 days versus 68 the prior year), which usually means supply is starting to catch up with demand. But the underlying demand is real and the price appreciation suggests buyers are still showing up.
+
+Carolina Bank has branches in Florence County. They're sitting on exactly the side of this story where money flows first: construction lending, small business formation, household deposit growth as new workers arrive and new paychecks clear.
+
+## What Three Generations Gets You
+
+There's a version of this story where a 90-year-old family bank in rural South Carolina is a cautionary tale. Sleepy. Slow to modernize. Running on relationship inertia until rates squeeze the margin out.
+
+Carolina Bank is not that story.
+
+The 44.86% efficiency ratio is not achieved by accident. It requires discipline in staffing, in technology decisions, in not chasing products the bank doesn't understand. Ninety-three people running $830 million in assets is a lean operation. The 4.07% NIM means the bank is pricing loans and deposits with precision, not desperation.
+
+The 20.23% capital ratio is the most interesting number, though. That much capital on the balance sheet is expensive in good times. But it's also optionality. When the EV economy in Florence starts generating serious loan demand, when the new-resident wave from AESC creates a mortgage market that didn't exist two years ago, a bank with that capital position can move fast without asking permission from regulators.
+
+It also means they can absorb a Canfor-level shock without blinking.
+
+## What Comes Next
+
+The Pee Dee region is at an inflection point most rural economies don't get twice. The old manufacturing base is contracting. The new one is arriving. The gap between those two economic arcs, played out at the county level, is exactly the kind of transition that tests a bank's underwriting judgment, its local knowledge, and its capital reserves.
+
+Carolina Bank & Trust has spent 90 years learning this landscape. The Beasley family knows which Darlington businesses have the cash flow to survive a mill closure and which don't. They know which Florence contractors are positioned to benefit from AESC construction and which are overextended on equipment loans.
+
+That kind of knowledge doesn't show up on a call report. But the results do.
+
+Banks that navigate economic transitions well aren't always the ones with the slickest technology or the largest balance sheets. They're the ones that can distinguish between a borrower who's temporarily stressed and one who's structurally impaired. In a region where both types exist in the same zip code, that's the whole game.
+
+The $0 OREO line is the evidence. Carolina Bank is playing it right.
+    `,
+  },
   'rocket-mortgage-22-days-how': {
     title: 'How Rocket Mortgage Closes in 22 Days',
     description: 'Independent mortgage banks now originate 84% of U.S. mortgages. Banks gave that market away one slow VOE call at a time. A step-by-step breakdown of what Rocket does differently, and what community banks can actually copy.',

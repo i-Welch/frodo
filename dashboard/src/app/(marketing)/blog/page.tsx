@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'carolina-bank-between-two-economies',
+    title: 'The Bank Between Two Economies',
+    description:
+      'Carolina Bank & Trust runs a 1.68% ROA, a 44.86% efficiency ratio, and zero foreclosed real estate out of Lamar, SC — right between a county shedding timber jobs and a county landing a $1.62 billion EV battery plant. Here is how a 90-year-old family bank navigates the gap.',
+    readTime: '5 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'rocket-mortgage-22-days-how',
     title: 'How Rocket Mortgage Closes in 22 Days',
     description:
