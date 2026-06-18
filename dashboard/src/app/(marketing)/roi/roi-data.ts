@@ -244,7 +244,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'The Darlington stress test is still running',
-        body: 'A Canfor-level shock creates more complex files in the pipeline alongside growth: modification requests, recast applications, refinance inquiries from households managing tighter cash flow. Faster, more complete verification at that moment protects the bank's $0 OREO record and the borrower at the same time.',
+        body: "A Canfor-level shock creates more complex files in the pipeline alongside growth: modification requests, recast applications, refinance inquiries from households managing tighter cash flow. Faster, more complete verification at that moment protects the bank's $0 OREO record and the borrower at the same time.",
       },
     ],
     sources:
