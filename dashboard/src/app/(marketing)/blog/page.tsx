@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'colony-bankcorp-farm-to-fees',
+    title: 'Built on Peanuts, Betting on Fees',
+    description:
+      'Colony Bankcorp grew from a 1975 agricultural lender in Fitzgerald, GA to a $3.7 billion serial acquirer. Now it faces a two-front stress test: a multi-year peanut cost-price squeeze and a post-acquisition loan growth miss. The plot twist is a fee income pivot that tripled AUM in a year.',
+    readTime: '5 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'carolina-bank-between-two-economies',
     title: 'The Bank Between Two Economies',
     description:

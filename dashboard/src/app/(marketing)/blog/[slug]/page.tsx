@@ -78,6 +78,67 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'colony-bankcorp-farm-to-fees': {
+    title: 'Built on Peanuts, Betting on Fees',
+    description: 'Colony Bankcorp grew from a 1975 agricultural lender in Fitzgerald, GA to a $3.7 billion serial acquirer. Now it faces a two-front stress test: a multi-year peanut cost-price squeeze and a post-acquisition loan growth miss. The plot twist is a fee income pivot that tripled AUM in a year.',
+    publishedDate: 'June 17, 2026',
+    readTime: '5 min read',
+    content: `
+Fitzgerald, Georgia has about 8,500 people, a peanut festival, and the headquarters of a $3 billion bank. That last part surprises most people.
+
+Colony Bankcorp started in 1975 as a small agricultural lender in Ben Hill County, where peanuts, cotton, and poultry still define the local economy. Fifty years later, it has 37 branches across Georgia, Alabama, and north Florida, a wealth management division that tripled its AUM in a single year, and a loan book approaching $2.5 billion. The question now is whether the reinvention can outrun the stress building in the fields where the bank got its start.
+
+## The Farm Problem
+
+South Georgia agriculture is having a hard stretch. Peanut growers are losing money. Literally: net returns on peanuts turned negative as input costs (fertilizer, fuel, equipment) outpaced commodity prices. Cotton farmers responded by shifting acreage into peanuts for the first time in decades, betting the crop would recover. It hasn't yet.
+
+The irony is that peanuts used to be the safe bet. Georgia produces roughly half of the U.S. peanut crop. Fitzgerald sits in the middle of it. Colony built its first decades on agricultural lending to exactly these farmers, so a multi-year cost-price squeeze in the sector isn't a distant macro story. It's a balance sheet question.
+
+The bright spot is poultry. Georgia's broiler industry generated $6.09 billion in cash receipts, and that part of the ag economy is running fine. Colony's agricultural credit quality has so far stayed clean: net charge-offs in Q1 2026 came in at $315,000, or 5 basis points annualized. NPL coverage sits at 122%. Nonaccruals are declining quarter over quarter.
+
+Clean numbers. But the farm squeeze is ongoing, and cost-price pressure that runs for multiple years eventually shows up somewhere.
+
+## The Acquisition Machine
+
+While the home base has been dealing with farm economics, Colony has been shopping.
+
+The bank has completed numerous acquisitions over the past decade, pushing the footprint further from Fitzgerald each time. The most recent closed in December 2025: TC Bancshares, a $571 million deal that added Thomasville, Georgia and Tallahassee, Florida to the branch map. Colony paid $86 million.
+
+Tallahassee is a state capital with a university, a stable government employment base, and a housing market that has held up better than coastal Florida markets hammered by insurance costs. It is a deliberate move away from pure agricultural exposure. Thomasville, a small city on the Georgia-Florida border, adds a commercial and retail banking market that complements the rural ag footprint without duplicating it.
+
+The TC acquisition is still digesting. Loan growth in Q1 2026 came in at 5.4% annualized, well below Colony's internal 8-12% target. Management blamed rate and tariff uncertainty cooling borrower demand. That's a reasonable explanation. It's also the kind of explanation that sounds better when loan growth eventually picks back up.
+
+## The Fee Pivot
+
+Here is where the story gets interesting.
+
+Colony's wealth management division hit $555 million in assets under management, triple where it was a year ago. Their insurance business had a record quarter. Mortgage pretax income was up 7x year-over-year, off a low base but still a real move.
+
+Non-interest income is the metric that separates banks with a plan from banks running on rate tailwinds. At 3.48%, Colony's NIM is healthy but not exceptional for a bank its size. The fee income growth is the signal that management is deliberately reshaping the revenue mix.
+
+Tripling AUM in a year doesn't happen by accident. It requires hiring advisors, building a platform, and convincing existing deposit customers to bring their investment relationships to the bank. That Colony has done it while simultaneously integrating an acquisition and managing agricultural stress suggests real execution capacity.
+
+## What Q1 Actually Said
+
+Net income hit $8.2 million in Q1 2026, up from $6.6 million a year earlier. Management is targeting a 1.20% ROA in Q2, which implies Q1 came in just below that threshold. For context, the community bank average hovers around 1.10-1.15%. Colony is performing above peer.
+
+Deposits are $3.05 billion against $2.41 billion in loans, a loan-to-deposit ratio of about 79%. Conservative. It means Colony has room to grow the loan book without raising expensive deposits, which matters in an environment where funding costs are still elevated.
+
+The UGA economists are forecasting 4.1% unemployment in Georgia for 2026, up from 3.6%, with roughly 50-50 recession odds. That's not a crisis forecast, but it's not a green light either. For a bank simultaneously digesting an acquisition, managing farm stress, and building out fee income, the macro backdrop adds complexity to every number.
+
+## What Comes Next
+
+Colony Bankcorp has built something unusual: a $3 billion regional bank with agricultural roots, a multi-state footprint, and a serious bet on fee income as a second engine.
+
+The bet is not without risk. Agricultural lending in south Georgia is not going to get easier before it gets better. Loan growth missing internal targets in the quarter after a major acquisition is a thing to watch. And Georgia's macro picture, while not alarming, is moving in the wrong direction heading into the back half of 2026.
+
+But the credit quality numbers are clean, the wealth division is growing fast, and management has demonstrated they can execute deals without blowing up the balance sheet. A bank that triples its AUM, runs a record insurance quarter, posts mortgage income up 7x, and closes a $571 million acquisition in the same year is not sleepwalking.
+
+Fitzgerald probably still has the peanut festival. Colony Bankcorp is becoming something its founders likely didn't picture: a diversified financial services company that just happens to be headquartered in a peanut town. Whether that transition sticks depends on whether the fee businesses keep compounding and whether the farm book stays as clean as the charge-off numbers say it is right now.
+
+Both of those things are easier to manage with better data on your borrowers. That's the next frontier for banks at Colony's stage of growth.
+    `,
+  },
   'carolina-bank-between-two-economies': {
     title: 'The Bank Between Two Economies',
     description: 'Carolina Bank & Trust runs a 1.68% ROA, a 44.86% efficiency ratio, and zero foreclosed real estate out of Lamar, SC — right between a county shedding timber jobs and a county landing a $1.62 billion EV battery plant. Here is how a 90-year-old family bank navigates the gap.',

@@ -81,6 +81,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/colony-bankcorp-farm-to-fees',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: 'https://reportraven.tech/roi/colony-bankcorp',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
       url: 'https://reportraven.tech/blog/carolina-bank-between-two-economies',
       lastModified: new Date(),
       changeFrequency: 'monthly',

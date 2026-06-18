@@ -209,6 +209,48 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'colony-bankcorp',
+    name: 'Colony Bankcorp',
+    shortName: 'Colony',
+    articleSlug: 'colony-bankcorp-farm-to-fees',
+    articleTitle: 'Built on Peanuts, Betting on Fees',
+    fdicCert: 22257,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.7B' },
+      { label: 'Q1 2026 net income', value: '$8.2M' },
+      { label: 'Wealth AUM', value: '$555M' },
+      { label: 'Loan-to-deposit ratio', value: '79%' },
+    ],
+    volumes: {
+      mortgage: { count: 350, source: 'Estimated from 37-branch footprint and Q1 2026 mortgage income growth; HMDA data pending', estimated: true },
+      commercial: { count: 250, source: 'FDIC call report loan mix: agricultural, CRE, and C&I across Georgia, Alabama, and north Florida', estimated: true },
+      consumer: { count: 400, source: 'Estimated from 37-branch retail footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 2000,
+      source: 'Georgia, Alabama, and north Florida 37-location footprint; Tallahassee and Thomasville in-migration from Census county estimates',
+    },
+    intro:
+      "Colony Bankcorp is in an active growth phase: digesting a $571 million acquisition, tripling wealth AUM, and expanding into Tallahassee's government and university market. Growth at that pace means more files, more complex borrower profiles, and more pressure on the verification layer that sits between application and close.",
+    strategic: [
+      {
+        title: "Mortgage volume growing 7x needs infrastructure to match",
+        body: "Mortgage pretax income was up 7x year-over-year in Q1 2026, off a low base. The verification bottleneck that was invisible at low volume becomes the binding constraint fast as originations scale. Every manual VOE call and IRS transcript request that took a week when the team was small takes the same week when volume doubles.",
+      },
+      {
+        title: 'Agricultural borrowers are the hardest files to verify',
+        body: 'Farm operators carry complex income pictures: FSA payments, crop insurance proceeds, equipment loans across multiple entities, and seasonal cash flow that looks nothing like a W-2. Manual verification of these borrowers is slow and error-prone. Automated income aggregation handles the complexity faster and with a cleaner audit trail.',
+      },
+      {
+        title: 'Post-acquisition workflow standardization is a closing window',
+        body: 'TC Bancshares brought 37 locations across two new markets. The months after close are when workflow standardization either happens or gets deferred for years. A single verification stack across all branches eliminates the acquired-bank-has-a-different-process problem before it becomes the new normal.',
+      },
+    ],
+    sources:
+      'FDIC BankFind (Cert #22257); Colony Bankcorp Q1 2026 earnings release; UGA Center for Agribusiness and Economic Development 2026 Georgia Economic Outlook; USDA peanut and cotton market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
     slug: 'carolina-bank-trust',
     name: 'Carolina Bank & Trust Co.',
     shortName: 'Carolina Bank',
