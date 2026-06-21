@@ -8,6 +8,8 @@ const isPublicRoute = createRouteMatcher([
   '/forms(.*)',
   '/blog(.*)',
   '/roi(.*)',
+  '/wl(.*)',
+  '/audit(.*)',
   '/sitemap.xml',
   '/robots.txt',
 ]);
