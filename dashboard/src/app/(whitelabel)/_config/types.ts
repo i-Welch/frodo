@@ -17,6 +17,8 @@
  * authoring one of these.
  */
 
+import type { FlowKind } from './flows';
+
 /* ------------------------------------------------------------------ */
 /* Branding                                                            */
 /* ------------------------------------------------------------------ */
@@ -86,6 +88,14 @@ export interface WLProduct {
   rateTeaser?: string;
   /** Compliance/footnote copy specific to this product. */
   disclosure?: string;
+  /**
+   * Flows permitted for this product (capability gate). If unset, the config's
+   * `defaultFlows` applies. The actual flow a borrower gets is resolved from the
+   * entry path against this list (see flows.ts `resolveFlow`).
+   */
+  allowedFlows?: FlowKind[];
+  /** Flow a public web entry initiates for this product (defaults to first allowed). */
+  webDefaultFlow?: FlowKind;
 }
 
 /* ------------------------------------------------------------------ */
@@ -180,6 +190,8 @@ export interface WhiteLabelConfig {
   slug: string;
   branding: WLBranding;
   products: WLProduct[];
+  /** Flows offered when a product does not declare its own `allowedFlows`. */
+  defaultFlows?: FlowKind[];
   /** Front-door "what are you looking to do?" options. */
   purposes: { value: string; label: string }[];
   /** Which providers/data steps we pull, keyed by product id. */
