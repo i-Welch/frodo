@@ -3,45 +3,77 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { WhiteLabelConfig, WLProduct } from '../../_config/types';
 import { matchProducts } from '../../_config/types';
-import { buildApplicationSummary, withChosenTerm, type ApplicationSummary } from '../../_config/summary';
+import { intakeToSummary, type ApplicationSummary } from '../../_config/summary';
+import {
+  FLOWS,
+  getFlow,
+  type FlowKind,
+} from '../../_config/flows';
+import { mockClient } from '../../_client/mock-client';
+import type { Intake, PullStep, SubmitResult } from '../../_client/client';
 import { usd, pct, indefiniteArticle } from '../../_config/format';
 import { LoPreview } from '../../_components/lo-preview';
 import { OfficerView } from '../../_components/officer-view';
 import { MockAction } from '../../_components/mock-action';
 
-type Step = 'front-door' | 'products' | 'applicant' | 'pulling' | 'estimate' | 'confirmation';
 type Perspective = 'borrower' | 'officer';
 
-const STEP_ORDER: Step[] = ['front-door', 'products', 'applicant', 'pulling', 'estimate', 'confirmation'];
-
 // Handoff pacing (tune these for live-demo cadence).
-const BRIDGE_DELAY_MS = 2600; // how long the confirmation sits before the bridge appears
-const HANDOFF_AUTO_ADVANCE_MS = 14000; // how long the bridge waits before auto-switching to the queue
+const BRIDGE_DELAY_MS = 2600;
+const HANDOFF_AUTO_ADVANCE_MS = 14000;
 
-export function Journey({ config, showChrome = true }: { config: WhiteLabelConfig; showChrome?: boolean }) {
+const MODULE_LABELS: Record<string, string> = {
+  identity: 'Identity',
+  contact: 'Contact info',
+  employment: 'Income & employment',
+  residence: 'Property / residence',
+  financial: 'Bank accounts & assets',
+  credit: 'Credit',
+};
+const ALL_MODULES = ['identity', 'contact', 'employment', 'residence', 'financial', 'credit'];
+const DEFAULT_DATA_ONLY_MODULES = ['identity', 'employment', 'financial'];
+
+const fmtTerm = (m: number) => (m % 12 === 0 ? `${m / 12} yr` : `${m} mo`);
+
+export function Journey({
+  config,
+  initialFlow,
+  showChrome = true,
+}: {
+  config: WhiteLabelConfig;
+  initialFlow: FlowKind;
+  showChrome?: boolean;
+}) {
   const b = config.branding;
-  const [step, setStep] = useState<Step>('front-door');
+  const allowedFlows = config.defaultFlows ?? (['rate_range'] as FlowKind[]);
+
+  const [flow, setFlow] = useState<FlowKind>(initialFlow);
+  const [stageIndex, setStageIndex] = useState(0);
   const [perspective, setPerspective] = useState<Perspective>('borrower');
 
-  // Front-door state
+  // Collected inputs
   const [purpose, setPurpose] = useState(config.purposes[0].value);
   const [amount, setAmount] = useState(50000);
-
-  // Selection + applicant
   const [product, setProduct] = useState<WLProduct | null>(null);
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [modules, setModules] = useState<string[]>(DEFAULT_DATA_ONLY_MODULES);
+  const [applicant, setApplicant] = useState({ fullName: '', email: '', phone: '' });
 
-  const [summary, setSummary] = useState<ApplicationSummary | null>(null);
+  // Server-side (client seam) results
+  const [intake, setIntake] = useState<Intake | null>(null);
+  const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  // Demo officer view
   const [showLo, setShowLo] = useState(false);
-
-  // Narrated handoff from the borrower flow to the loan-officer queue.
   const [handoff, setHandoff] = useState<'idle' | 'bridging' | 'done'>('idle');
   const [highlightLive, setHighlightLive] = useState(false);
   const bridgedRef = useRef(false);
 
-  // Amount slider range adapts to the products available for the chosen purpose.
+  const flowDef = getFlow(flow);
+  const stages = flowDef.stages;
+  const stage = stages[stageIndex];
+  const liveSummary: ApplicationSummary | null = intake ? intakeToSummary(config, intake) : null;
+
   const { sliderMin, sliderMax } = useMemo(() => {
     const ps = config.products.filter((p) => p.purposes.includes(purpose));
     if (ps.length === 0) return { sliderMin: 5000, sliderMax: 500000 };
@@ -52,36 +84,72 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
   }, [config.products, purpose]);
 
   useEffect(() => {
-    // Keep the amount inside the current purpose's range.
     setAmount((a) => Math.min(Math.max(a, sliderMin), sliderMax));
   }, [sliderMin, sliderMax]);
 
-  const matched = useMemo(
-    () => matchProducts(config, amount, purpose),
-    [config, amount, purpose],
-  );
+  const matched = useMemo(() => matchProducts(config, amount, purpose), [config, amount, purpose]);
 
-  function selectProduct(p: WLProduct) {
-    setProduct(p);
-    setAmount((a) => Math.min(Math.max(a, p.minAmount), p.maxAmount));
-    setStep('applicant');
+  function resetTo(nextFlow: FlowKind) {
+    setFlow(nextFlow);
+    setStageIndex(0);
+    setProduct(null);
+    setIntake(null);
+    setSubmitResult(null);
+    setShowLo(false);
+    setHandoff('idle');
+    setHighlightLive(false);
+    bridgedRef.current = false;
+    setPerspective('borrower');
   }
 
-  function startPull() {
-    if (!product) return;
-    const s = buildApplicationSummary(config, product, amount, purpose, {
-      fullName: fullName.trim(),
-      email: email.trim(),
-      phone: phone.trim(),
-      amount,
+  async function startIntakeNow(): Promise<Intake> {
+    return mockClient.startIntake({
+      slug: config.slug,
+      flow,
+      applicant: {
+        fullName: applicant.fullName.trim(),
+        email: applicant.email.trim(),
+        phone: applicant.phone.trim(),
+      },
+      product: product ?? undefined,
+      amount: product ? amount : undefined,
+      purpose: product ? purpose : undefined,
+      modules: flow === 'data_only' ? modules : undefined,
     });
-    setSummary(s);
-    setStep('pulling');
   }
 
-  function afterPull() {
-    if (summary?.estimate) setStep('estimate');
-    else setStep('confirmation');
+  // Generic stage advance. Side effects are keyed off the stage we're entering:
+  // entering dataPull starts the intake; entering confirmation submits it.
+  const advance = useCallback(async () => {
+    const next = stages[stageIndex + 1];
+    if (!next || busy) return;
+    setBusy(true);
+    try {
+      let current = intake;
+      if (next === 'dataPull' && !current) {
+        current = await startIntakeNow();
+        setIntake(current);
+      }
+      if (next === 'confirmation' && !submitResult) {
+        if (!current) {
+          current = await startIntakeNow();
+          setIntake(current);
+        }
+        setSubmitResult(await mockClient.submit(current.intakeId));
+      }
+      setStageIndex((i) => i + 1);
+    } finally {
+      setBusy(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stages, stageIndex, busy, intake, submitResult, flow, product, amount, purpose, applicant, modules]);
+
+  const back = useCallback(() => setStageIndex((i) => Math.max(0, i - 1)), []);
+
+  async function chooseTerm(termMonths: number) {
+    if (!intake) return;
+    const updated = await mockClient.selectTerm(intake.intakeId, termMonths);
+    setIntake({ ...updated });
   }
 
   const goToQueue = useCallback(() => {
@@ -90,27 +158,21 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
     setPerspective('officer');
   }, []);
 
-  // Once the borrower lands on the confirmation, let it breathe for a beat,
-  // then raise the narrated bridge to the loan-officer queue.
   useEffect(() => {
-    if (step !== 'confirmation' || perspective !== 'borrower' || bridgedRef.current) return;
+    if (stage !== 'confirmation' || perspective !== 'borrower' || bridgedRef.current) return;
     bridgedRef.current = true;
     const t = setTimeout(() => setHandoff('bridging'), BRIDGE_DELAY_MS);
     return () => clearTimeout(t);
-  }, [step, perspective]);
+  }, [stage, perspective]);
 
-  // Manual toggle from the demo banner. Highlights the just-submitted app when
-  // jumping to the officer side, and dismisses the bridge if it's open.
   const switchPerspective = useCallback(
     (p: Perspective) => {
-      if (p === 'officer' && summary) setHighlightLive(true);
+      if (p === 'officer' && intake) setHighlightLive(true);
       setHandoff('done');
       setPerspective(p);
     },
-    [summary],
+    [intake],
   );
-
-  const stepIndex = STEP_ORDER.indexOf(step);
 
   const cssVars = {
     '--wl-primary': b.primary,
@@ -124,6 +186,99 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
     '--wl-radius': b.radius,
     '--wl-font': b.font,
   } as React.CSSProperties;
+
+  const onBack = stageIndex > 0 ? back : undefined;
+
+  function renderStage() {
+    switch (stage) {
+      case 'frontDoor':
+        return (
+          <FrontDoor
+            config={config}
+            purpose={purpose}
+            setPurpose={setPurpose}
+            amount={amount}
+            setAmount={setAmount}
+            sliderMin={sliderMin}
+            sliderMax={sliderMax}
+            onContinue={advance}
+            matchedCount={matched.length}
+          />
+        );
+      case 'product':
+        return (
+          <Products
+            products={matched}
+            amount={amount}
+            onBack={onBack}
+            onSelect={(p) => {
+              setProduct(p);
+              setAmount((a) => Math.min(Math.max(a, p.minAmount), p.maxAmount));
+              advance();
+            }}
+          />
+        );
+      case 'modulePicker':
+        return (
+          <ModulePicker
+            config={config}
+            modules={modules}
+            setModules={setModules}
+            onBack={onBack}
+            onContinue={advance}
+          />
+        );
+      case 'applicant':
+        return (
+          <Applicant
+            product={product}
+            amount={amount}
+            applicant={applicant}
+            setApplicant={setApplicant}
+            onBack={onBack}
+            onContinue={advance}
+          />
+        );
+      case 'consent':
+        return <Consent config={config} flow={flow} onBack={onBack} onContinue={advance} busy={busy} />;
+      case 'dataPull':
+        return intake ? (
+          <DataPull
+            shortName={b.shortName}
+            firstName={applicant.fullName.split(' ')[0]}
+            steps={intake.steps}
+            onDone={advance}
+          />
+        ) : (
+          <Loading />
+        );
+      case 'rate':
+        return intake?.estimate ? (
+          <RateStage
+            config={config}
+            intake={intake}
+            onSelectTerm={chooseTerm}
+            onContinue={advance}
+          />
+        ) : (
+          <Loading />
+        );
+      case 'confirmation':
+        return submitResult && liveSummary ? (
+          <Confirmation
+            config={config}
+            summary={liveSummary}
+            terminal={submitResult.terminal}
+            showLo={showLo}
+            setShowLo={setShowLo}
+          />
+        ) : (
+          <Loading />
+        );
+      default:
+        return null;
+    }
+  }
 
   const bankHeader = (
     <>
@@ -147,11 +302,12 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
           )}
         </MockAction>
       </header>
-
-      {/* Progress bar (hidden on front door) */}
-      {stepIndex > 0 && (
+      {stageIndex > 0 && (
         <div className="wl-progress">
-          <div className="wl-progress-fill" style={{ width: `${(stepIndex / (STEP_ORDER.length - 1)) * 100}%` }} />
+          <div
+            className="wl-progress-fill"
+            style={{ width: `${(stageIndex / (stages.length - 1)) * 100}%` }}
+          />
         </div>
       )}
     </>
@@ -159,71 +315,7 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
 
   const borrowerShell = (
     <div className="wl-shell">
-      <main className="wl-main">
-        {step === 'front-door' && (
-          <FrontDoor
-            config={config}
-            purpose={purpose}
-            setPurpose={setPurpose}
-            amount={amount}
-            setAmount={setAmount}
-            sliderMin={sliderMin}
-            sliderMax={sliderMax}
-            onContinue={() => setStep('products')}
-            matchedCount={matched.length}
-          />
-        )}
-
-        {step === 'products' && (
-          <Products
-            products={matched}
-            amount={amount}
-            onBack={() => setStep('front-door')}
-            onSelect={selectProduct}
-          />
-        )}
-
-        {step === 'applicant' && product && (
-          <Applicant
-            product={product}
-            amount={amount}
-            fullName={fullName}
-            email={email}
-            phone={phone}
-            setFullName={setFullName}
-            setEmail={setEmail}
-            setPhone={setPhone}
-            onBack={() => setStep('products')}
-            onContinue={startPull}
-          />
-        )}
-
-        {step === 'pulling' && product && summary && (
-          <Pulling config={config} product={product} fullName={fullName} onDone={afterPull} />
-        )}
-
-        {step === 'estimate' && summary && product && (
-          <Estimate
-            config={config}
-            summary={summary}
-            product={product}
-            onContinue={(termMonths) => {
-              setSummary((s) => (s ? withChosenTerm(s, termMonths) : s));
-              setStep('confirmation');
-            }}
-          />
-        )}
-
-        {step === 'confirmation' && summary && (
-          <Confirmation
-            config={config}
-            summary={summary}
-            showLo={showLo}
-            setShowLo={setShowLo}
-          />
-        )}
-      </main>
-
+      <main className="wl-main">{renderStage()}</main>
       <footer className="wl-footer">
         <span>{b.name} · Member FDIC · Equal Housing Lender</span>
         <span className="wl-powered">Powered by RAVEN</span>
@@ -234,31 +326,101 @@ export function Journey({ config, showChrome = true }: { config: WhiteLabelConfi
   return (
     <div className="wl-demo-root" style={cssVars}>
       <style>{styles}</style>
-      {/* Banner + bank header stick together as one block — no offset math. */}
       <div className="wl-sticky-top">
         {showChrome && (
-          <DemoBanner bankName={b.name} perspective={perspective} onSwitch={switchPerspective} />
+          <DemoBanner
+            bankName={b.name}
+            perspective={perspective}
+            onSwitch={switchPerspective}
+            flow={flow}
+            allowedFlows={allowedFlows}
+            onSwitchFlow={resetTo}
+          />
         )}
         {perspective === 'borrower' && bankHeader}
       </div>
       {perspective === 'officer' ? (
         <OfficerView
           config={config}
-          liveSummary={summary}
-          highlightId={highlightLive && summary ? summary.applicationId : undefined}
+          liveSummary={liveSummary}
+          highlightId={highlightLive && liveSummary ? liveSummary.applicationId : undefined}
         />
       ) : (
         borrowerShell
       )}
-      {handoff === 'bridging' && perspective === 'borrower' && summary && (
-        <HandoffOverlay config={config} summary={summary} onProceed={goToQueue} />
+      {handoff === 'bridging' && perspective === 'borrower' && liveSummary && (
+        <HandoffOverlay config={config} summary={liveSummary} onProceed={goToQueue} />
       )}
     </div>
   );
 }
 
 /* ------------------------------------------------------------------ */
-/* Narrated handoff: borrower flow -> loan-officer queue               */
+/* Demo banner (perspective toggle + flow switcher)                    */
+/* ------------------------------------------------------------------ */
+
+function DemoBanner({
+  bankName,
+  perspective,
+  onSwitch,
+  flow,
+  allowedFlows,
+  onSwitchFlow,
+}: {
+  bankName: string;
+  perspective: Perspective;
+  onSwitch: (p: Perspective) => void;
+  flow: FlowKind;
+  allowedFlows: FlowKind[];
+  onSwitchFlow: (f: FlowKind) => void;
+}) {
+  return (
+    <div className="wl-banner">
+      <div className="wl-banner-left">
+        <span className="wl-banner-badge">DEMO</span>
+        <span className="wl-banner-text">
+          RAVEN white-label for <strong>{bankName}</strong> · sample data
+        </span>
+      </div>
+      <div className="wl-banner-controls">
+        <div className="wl-banner-toggle" role="tablist" aria-label="Flow">
+          {allowedFlows.map((f) => (
+            <button
+              key={f}
+              role="tab"
+              aria-selected={flow === f}
+              className={flow === f ? 'wl-tab wl-tab-on' : 'wl-tab'}
+              onClick={() => onSwitchFlow(f)}
+            >
+              {FLOWS[f].label}
+            </button>
+          ))}
+        </div>
+        <div className="wl-banner-toggle" role="tablist" aria-label="Perspective">
+          <button
+            role="tab"
+            aria-selected={perspective === 'borrower'}
+            className={perspective === 'borrower' ? 'wl-tab wl-tab-on' : 'wl-tab'}
+            onClick={() => onSwitch('borrower')}
+          >
+            Borrower
+          </button>
+          <button
+            role="tab"
+            aria-selected={perspective === 'officer'}
+            className={perspective === 'officer' ? 'wl-tab wl-tab-on' : 'wl-tab'}
+            onClick={() => onSwitch('officer')}
+          >
+            Loan officer
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Narrated handoff                                                    */
 /* ------------------------------------------------------------------ */
 
 function HandoffOverlay({
@@ -270,8 +432,6 @@ function HandoffOverlay({
   summary: ApplicationSummary;
   onProceed: () => void;
 }) {
-  // Auto-advance so a live walkthrough flows on its own, but slowly, and the
-  // presenter can jump immediately with the button (or by clicking the backdrop).
   useEffect(() => {
     const t = setTimeout(onProceed, HANDOFF_AUTO_ADVANCE_MS);
     return () => clearTimeout(t);
@@ -294,9 +454,9 @@ function HandoffOverlay({
         </div>
         <h3>That&rsquo;s all {firstName} had to do.</h3>
         <p>
-          The moment they hit submit, a fully verified application, identity, income, property,
-          and credit, landed in {config.branding.shortName}&rsquo;s team queue and synced to{' '}
-          {config.coreSync.displayName}. Here&rsquo;s what just hit your team.
+          The moment they finished, a fully verified submission landed in{' '}
+          {config.branding.shortName}&rsquo;s team queue and synced to {config.coreSync.displayName}.
+          Here&rsquo;s what just hit your team.
         </p>
         <button className="wl-handoff-btn" onClick={onProceed}>
           See what hit your team&rsquo;s queue
@@ -310,51 +470,16 @@ function HandoffOverlay({
 }
 
 /* ------------------------------------------------------------------ */
-/* Demo banner                                                         */
+/* Stages                                                              */
 /* ------------------------------------------------------------------ */
 
-function DemoBanner({
-  bankName,
-  perspective,
-  onSwitch,
-}: {
-  bankName: string;
-  perspective: Perspective;
-  onSwitch: (p: Perspective) => void;
-}) {
+function Loading() {
   return (
-    <div className="wl-banner">
-      <div className="wl-banner-left">
-        <span className="wl-banner-badge">DEMO</span>
-        <span className="wl-banner-text">
-          Interactive RAVEN white-label demo for <strong>{bankName}</strong> · sample data
-        </span>
-      </div>
-      <div className="wl-banner-toggle" role="tablist" aria-label="Switch perspective">
-        <button
-          role="tab"
-          aria-selected={perspective === 'borrower'}
-          className={perspective === 'borrower' ? 'wl-tab wl-tab-on' : 'wl-tab'}
-          onClick={() => onSwitch('borrower')}
-        >
-          Borrower view
-        </button>
-        <button
-          role="tab"
-          aria-selected={perspective === 'officer'}
-          className={perspective === 'officer' ? 'wl-tab wl-tab-on' : 'wl-tab'}
-          onClick={() => onSwitch('officer')}
-        >
-          Loan officer view
-        </button>
-      </div>
+    <div className="wl-card wl-step" style={{ textAlign: 'center' }}>
+      <span className="wl-spinner" style={{ margin: '1rem auto' }} />
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/* Step: Front door                                                    */
-/* ------------------------------------------------------------------ */
 
 function FrontDoor({
   config, purpose, setPurpose, amount, setAmount, sliderMin, sliderMax, onContinue, matchedCount,
@@ -371,14 +496,13 @@ function FrontDoor({
 }) {
   const step = sliderMax > 200000 ? 5000 : 1000;
   return (
-    <div className="wl-card wl-frontdoor">
+    <div className="wl-card wl-frontdoor wl-step">
       <span className="wl-eyebrow">Personalized lending</span>
       <h1>Let&rsquo;s find the right way to fund it.</h1>
       <p className="wl-lede">
         Tell us what you need. We&rsquo;ll match you to the right {config.branding.shortName} product
         and verify the details for you in minutes, no paperwork.
       </p>
-
       <label className="wl-field">
         <span className="wl-label">What are you looking to do?</span>
         <select className="wl-select" value={purpose} onChange={(e) => setPurpose(e.target.value)}>
@@ -387,7 +511,6 @@ function FrontDoor({
           ))}
         </select>
       </label>
-
       <div className="wl-field">
         <div className="wl-amount-head">
           <span className="wl-label">How much do you need?</span>
@@ -407,33 +530,27 @@ function FrontDoor({
           <span>{usd(sliderMax)}</span>
         </div>
       </div>
-
       <button className="wl-btn wl-btn-primary wl-btn-block" onClick={onContinue}>
         See my options{matchedCount > 0 ? ` (${matchedCount})` : ''}
       </button>
       <p className="wl-fineprint">
-        Checking your options won&rsquo;t affect your credit score. This is an interactive demo
-        using sample data.
+        Checking your options won&rsquo;t affect your credit score. Interactive demo using sample data.
       </p>
     </div>
   );
 }
-
-/* ------------------------------------------------------------------ */
-/* Step: Products                                                      */
-/* ------------------------------------------------------------------ */
 
 function Products({
   products, amount, onBack, onSelect,
 }: {
   products: WLProduct[];
   amount: number;
-  onBack: () => void;
+  onBack?: () => void;
   onSelect: (p: WLProduct) => void;
 }) {
   return (
     <div className="wl-step">
-      <button className="wl-back" onClick={onBack}>← Back</button>
+      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
       <h2>Here&rsquo;s what fits {usd(amount)}.</h2>
       <p className="wl-lede">Choose a product to continue. You can change the amount anytime.</p>
       <div className="wl-products">
@@ -461,80 +578,138 @@ function Products({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Step: Applicant basics                                              */
-/* ------------------------------------------------------------------ */
-
-function Applicant({
-  product, amount, fullName, email, phone, setFullName, setEmail, setPhone, onBack, onContinue,
+function ModulePicker({
+  config, modules, setModules, onBack, onContinue,
 }: {
-  product: WLProduct;
-  amount: number;
-  fullName: string;
-  email: string;
-  phone: string;
-  setFullName: (v: string) => void;
-  setEmail: (v: string) => void;
-  setPhone: (v: string) => void;
-  onBack: () => void;
+  config: WhiteLabelConfig;
+  modules: string[];
+  setModules: (m: string[]) => void;
+  onBack?: () => void;
   onContinue: () => void;
 }) {
-  const valid = fullName.trim().length > 1 && /.+@.+\..+/.test(email);
+  function toggle(m: string) {
+    setModules(modules.includes(m) ? modules.filter((x) => x !== m) : [...modules, m]);
+  }
   return (
     <div className="wl-card wl-step">
-      <button className="wl-back" onClick={onBack}>← Back</button>
-      <span className="wl-eyebrow">{product.label} · {usd(amount)}</span>
-      <h2>Let&rsquo;s start with the basics.</h2>
+      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
+      <span className="wl-eyebrow">Data verification</span>
+      <h2>What should we verify?</h2>
       <p className="wl-lede">
-        This is all we need from you. We&rsquo;ll securely verify your identity, income, and
-        the rest, no documents to upload.
+        Select the information {config.branding.shortName} needs. We&rsquo;ll gather and verify it
+        securely, no documents to upload.
       </p>
-
-      <label className="wl-field">
-        <span className="wl-label">Full name</span>
-        <input className="wl-input" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Jordan Carter" autoComplete="name" />
-      </label>
-      <label className="wl-field">
-        <span className="wl-label">Email</span>
-        <input className="wl-input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@email.com" autoComplete="email" />
-      </label>
-      <label className="wl-field">
-        <span className="wl-label">Mobile phone</span>
-        <input className="wl-input" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="(864) 555-0142" autoComplete="tel" />
-      </label>
-
-      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={!valid} onClick={onContinue}>
-        Continue securely
+      <div className="wl-modules">
+        {ALL_MODULES.map((m) => {
+          const on = modules.includes(m);
+          return (
+            <button key={m} className={`wl-module ${on ? 'wl-module-on' : ''}`} onClick={() => toggle(m)}>
+              <span className="wl-module-check" aria-hidden="true">
+                {on && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
+              </span>
+              <span className="wl-module-label">{MODULE_LABELS[m]}</span>
+            </button>
+          );
+        })}
+      </div>
+      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={modules.length === 0} onClick={onContinue}>
+        Continue
       </button>
-      <p className="wl-fineprint">
-        By continuing you agree to let {''}RAVEN verify your information with our trusted data
-        partners. Sample data only in this demo.
-      </p>
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Step: Data pull animation                                           */
-/* ------------------------------------------------------------------ */
+function Applicant({
+  product, amount, applicant, setApplicant, onBack, onContinue,
+}: {
+  product: WLProduct | null;
+  amount: number;
+  applicant: { fullName: string; email: string; phone: string };
+  setApplicant: (a: { fullName: string; email: string; phone: string }) => void;
+  onBack?: () => void;
+  onContinue: () => void;
+}) {
+  const valid = applicant.fullName.trim().length > 1 && /.+@.+\..+/.test(applicant.email);
+  return (
+    <div className="wl-card wl-step">
+      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
+      {product && <span className="wl-eyebrow">{product.label} · {usd(amount)}</span>}
+      <h2>Let&rsquo;s start with the basics.</h2>
+      <p className="wl-lede">
+        This is all we need from you. We&rsquo;ll securely verify your identity, income, and the
+        rest, no documents to upload.
+      </p>
+      <label className="wl-field">
+        <span className="wl-label">Full name</span>
+        <input className="wl-input" value={applicant.fullName} onChange={(e) => setApplicant({ ...applicant, fullName: e.target.value })} placeholder="Jordan Carter" autoComplete="name" />
+      </label>
+      <label className="wl-field">
+        <span className="wl-label">Email</span>
+        <input className="wl-input" type="email" value={applicant.email} onChange={(e) => setApplicant({ ...applicant, email: e.target.value })} placeholder="you@email.com" autoComplete="email" />
+      </label>
+      <label className="wl-field">
+        <span className="wl-label">Mobile phone</span>
+        <input className="wl-input" type="tel" value={applicant.phone} onChange={(e) => setApplicant({ ...applicant, phone: e.target.value })} placeholder="(864) 555-0142" autoComplete="tel" />
+      </label>
+      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={!valid} onClick={onContinue}>
+        Continue securely
+      </button>
+    </div>
+  );
+}
 
-function Pulling({
-  config, product, fullName, onDone,
+function Consent({
+  config, flow, onBack, onContinue, busy,
 }: {
   config: WhiteLabelConfig;
-  product: WLProduct;
-  fullName: string;
+  flow: FlowKind;
+  onBack?: () => void;
+  onContinue: () => void;
+  busy: boolean;
+}) {
+  const [agreed, setAgreed] = useState(false);
+  const isApplication = getFlow(flow).isLegalApplication;
+  const body = isApplication
+    ? `I authorize ${config.branding.shortName} to obtain my credit report and verify my information to evaluate my application. I understand this is an application for credit.`
+    : `I authorize ${config.branding.shortName} and RAVEN to verify my identity, income, and the information needed for this request with trusted data partners.`;
+  return (
+    <div className="wl-card wl-step">
+      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
+      <span className="wl-eyebrow">Your authorization</span>
+      <h2>{isApplication ? 'Authorize your application' : 'Authorize verification'}</h2>
+      <p className="wl-lede">{body}</p>
+      <label className="wl-consent">
+        <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
+        <span>
+          I agree.{' '}
+          {isApplication
+            ? 'Demo only: sample data, no real credit is pulled.'
+            : 'Demo only: sample data, no credit check.'}
+        </span>
+      </label>
+      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={!agreed || busy} onClick={onContinue}>
+        {busy ? 'Working…' : isApplication ? 'Agree & submit application' : 'Agree & continue'}
+      </button>
+    </div>
+  );
+}
+
+function DataPull({
+  shortName, firstName, steps, onDone,
+}: {
+  shortName: string;
+  firstName: string;
+  steps: PullStep[];
   onDone: () => void;
 }) {
-  const routing = config.providerRouting[product.id] ?? [];
-  const [active, setActive] = useState(0); // index currently running
-  const [done, setDone] = useState<number>(-1); // last completed index
+  const [active, setActive] = useState(0);
+  const [done, setDone] = useState(-1);
   const [awaitingConnect, setAwaitingConnect] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function advanceFrom(i: number) {
     const next = i + 1;
-    if (next >= routing.length) {
+    if (next >= steps.length) {
       timer.current = setTimeout(onDone, 700);
       return;
     }
@@ -542,11 +717,10 @@ function Pulling({
   }
 
   useEffect(() => {
-    if (active >= routing.length) return;
-    const stepDef = routing[active];
-    if (stepDef.interactive) {
+    if (active >= steps.length) return;
+    if (steps[active].interactive) {
       setAwaitingConnect(true);
-      return; // wait for the borrower to click connect
+      return;
     }
     timer.current = setTimeout(() => {
       setDone(active);
@@ -568,15 +742,14 @@ function Pulling({
 
   return (
     <div className="wl-card wl-step">
-      <span className="wl-eyebrow">{product.label}</span>
-      <h2>Verifying your information{fullName ? `, ${fullName.split(' ')[0]}` : ''}.</h2>
+      <span className="wl-eyebrow">Verifying</span>
+      <h2>Verifying your information{firstName ? `, ${firstName}` : ''}.</h2>
       <p className="wl-lede">
         We&rsquo;re securely gathering what we need so you don&rsquo;t have to. This usually takes
         under two minutes.
       </p>
-
       <ul className="wl-pull-list">
-        {routing.map((s, i) => {
+        {steps.map((s, i) => {
           const state = done >= i ? 'done' : active === i ? 'active' : 'pending';
           return (
             <li key={`${s.module}-${i}`} className={`wl-pull wl-pull-${state}`}>
@@ -595,12 +768,11 @@ function Pulling({
           );
         })}
       </ul>
-
       {awaitingConnect && (
         <div className="wl-connect">
           <p className="wl-connect-copy">
             Securely connect your bank to verify income and balances. Your credentials are never
-            shared with {config.branding.shortName}.
+            shared with {shortName}.
           </p>
           <button className="wl-btn wl-btn-primary wl-btn-block" onClick={handleConnect}>
             <span className="wl-connect-lock" aria-hidden="true">
@@ -614,32 +786,31 @@ function Pulling({
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Step: Rate estimate                                                 */
-/* ------------------------------------------------------------------ */
-
-function Estimate({
-  config, summary, product, onContinue,
+function RateStage({
+  config, intake, onSelectTerm, onContinue,
 }: {
   config: WhiteLabelConfig;
-  summary: ApplicationSummary;
-  product: WLProduct;
-  onContinue: (termMonths: number) => void;
+  intake: Intake;
+  onSelectTerm: (termMonths: number) => void;
+  onContinue: () => void;
 }) {
-  const est = summary.estimate!;
+  const est = intake.estimate!;
   const [term, setTerm] = useState(est.selectedTermMonths);
   const current = est.options.find((o) => o.termMonths === term) ?? est.options[0];
-  const fmtTerm = (m: number) => (m % 12 === 0 ? `${m / 12} yr` : `${m} mo`);
+
+  function pick(t: number) {
+    setTerm(t);
+    onSelectTerm(t);
+  }
 
   return (
     <div className="wl-card wl-step wl-estimate">
-      <span className="wl-eyebrow">Estimated offer · {product.label}</span>
-      <h2>Here&rsquo;s your estimate, {summary.profile.identity.fullName.split(' ')[0]}.</h2>
+      <span className="wl-eyebrow">Estimated offer · {intake.product?.label}</span>
+      <h2>Here&rsquo;s your estimate, {intake.profile.identity.fullName.split(' ')[0]}.</h2>
       <p className="wl-lede">
-        Based on the information we verified, here&rsquo;s what {config.branding.shortName} could
-        offer for {usd(summary.amount)}. Pick a term to see how the rate and payment change.
+        Based on what we verified, here&rsquo;s what {config.branding.shortName} could offer for{' '}
+        {usd(intake.amount ?? 0)}. Pick a term to see how the rate and payment change.
       </p>
-
       <div className="wl-est-grid">
         <div className="wl-est-hero">
           <div className="wl-est-apr">{pct(current.apr)}</div>
@@ -656,24 +827,19 @@ function Estimate({
           </div>
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Amount</div>
-            <div className="wl-est-cell-val">{usd(summary.amount)}</div>
+            <div className="wl-est-cell-val">{usd(intake.amount ?? 0)}</div>
           </div>
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Verified credit</div>
-            <div className="wl-est-cell-val">{summary.profile.credit.score}</div>
+            <div className="wl-est-cell-val">{intake.profile.credit.score}</div>
           </div>
         </div>
       </div>
-
       <div className="wl-term-picker">
         <span className="wl-label">Choose your term</span>
         <div className="wl-term-options">
           {est.options.map((o) => (
-            <button
-              key={o.termMonths}
-              className={`wl-term ${o.termMonths === term ? 'wl-term-on' : ''}`}
-              onClick={() => setTerm(o.termMonths)}
-            >
+            <button key={o.termMonths} className={`wl-term ${o.termMonths === term ? 'wl-term-on' : ''}`} onClick={() => pick(o.termMonths)}>
               <span className="wl-term-len">{fmtTerm(o.termMonths)}</span>
               <span className="wl-term-pay">{usd(o.monthlyPayment)}/mo</span>
               <span className="wl-term-apr">{pct(o.apr)} APR</span>
@@ -681,62 +847,69 @@ function Estimate({
           ))}
         </div>
       </div>
-
-      <button className="wl-btn wl-btn-primary wl-btn-block" onClick={() => onContinue(term)}>
+      <button className="wl-btn wl-btn-primary wl-btn-block" onClick={onContinue}>
         Continue with {fmtTerm(current.termMonths)} term
       </button>
-      <p className="wl-fineprint">{product.disclosure}</p>
+      <p className="wl-fineprint">{intake.product?.disclosure}</p>
     </div>
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Step: Confirmation                                                  */
-/* ------------------------------------------------------------------ */
-
 function Confirmation({
-  config, summary, showLo, setShowLo,
+  config, summary, terminal, showLo, setShowLo,
 }: {
   config: WhiteLabelConfig;
   summary: ApplicationSummary;
+  terminal: SubmitResult['terminal'];
   showLo: boolean;
   setShowLo: (v: boolean) => void;
 }) {
+  const firstName = summary.profile.identity.fullName.split(' ')[0];
+  const article = indefiniteArticle(config.branding.shortName, true);
+  const isDecision = terminal === 'decision';
+  const isVerify = terminal === 'routeToLo' && summary.amount === 0;
+
   return (
     <div className="wl-step">
       <div className="wl-card wl-confirm">
         <span className="wl-confirm-check" aria-hidden="true">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
         </span>
-        <h2>You&rsquo;re all set, {summary.profile.identity.fullName.split(' ')[0]}.</h2>
+        <h2>
+          {isDecision ? 'Application received' : 'You’re all set'}, {firstName}.
+        </h2>
         <p className="wl-lede">
-          Your {summary.product.label.toLowerCase()} request for {usd(summary.amount)} is in.
-          {indefiniteArticle(config.branding.shortName, true)} {config.branding.shortName} loan
-          officer will reach out shortly to finish up.
+          {isDecision
+            ? `${config.branding.shortName} is reviewing your application and will reach out with a decision shortly.`
+            : isVerify
+              ? `Your information is verified and on its way to ${config.branding.shortName}. ${article} ${config.branding.shortName} representative will follow up.`
+              : `Your ${summary.product.label.toLowerCase()} request for ${usd(summary.amount)} is in. ${article} ${config.branding.shortName} loan officer will reach out shortly to finalize your rate.`}
         </p>
 
         <div className="wl-confirm-receipt">
           <div className="wl-receipt-row">
-            <span>Application</span><strong>{summary.applicationId}</strong>
+            <span>{isVerify ? 'Verification' : 'Application'}</span><strong>{summary.applicationId}</strong>
           </div>
-          <div className="wl-receipt-row">
-            <span>Product</span><strong>{summary.product.label}</strong>
-          </div>
+          {!isVerify && (
+            <div className="wl-receipt-row">
+              <span>Product</span><strong>{summary.product.label}</strong>
+            </div>
+          )}
           {summary.estimate && (
             <>
               <div className="wl-receipt-row">
                 <span>Estimated rate &amp; term</span>
-                <strong>
-                  {pct(summary.estimate.apr)} APR ·{' '}
-                  {summary.estimate.termMonths % 12 === 0
-                    ? `${summary.estimate.termMonths / 12} yr`
-                    : `${summary.estimate.termMonths} mo`}
-                </strong>
+                <strong>{pct(summary.estimate.apr)} APR · {fmtTerm(summary.estimate.termMonths)}</strong>
               </div>
               <div className="wl-receipt-row">
                 <span>Estimated payment</span><strong>{usd(summary.estimate.monthlyPayment)}/mo</strong>
               </div>
             </>
+          )}
+          {isDecision && (
+            <div className="wl-receipt-row">
+              <span>Status</span><strong>Under review</strong>
+            </div>
           )}
           <div className="wl-receipt-row">
             <span>Synced to core</span>
@@ -755,8 +928,7 @@ function Confirmation({
         <div className="wl-lo-wrap">
           <p className="wl-lo-caption">
             The moment you finished, this appeared in {config.branding.shortName}&rsquo;s RAVEN
-            dashboard, fully verified and synced to {config.coreSync.displayName}. No rekeying, no
-            document chase.
+            dashboard, fully verified and synced to {config.coreSync.displayName}.
           </p>
           <LoPreview config={config} summary={summary} />
         </div>
@@ -771,11 +943,8 @@ function Confirmation({
 
 const styles = `
   .wl-demo-root { display: flex; flex-direction: column; min-height: 100vh; font-family: var(--wl-font); }
-  /* Banner + bank header share one sticky container, so they pin as a single
-     block with no pixel offset to keep in sync. */
   .wl-sticky-top, .wl-sticky-top * { box-sizing: border-box; }
   .wl-sticky-top { position: sticky; top: 0; z-index: 200; }
-  /* Demo chrome — deliberately RAVEN-dark so it reads as a meta layer, not part of the bank's site. */
   .wl-banner {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
     padding: 0.5rem 1rem; min-height: 44px;
@@ -787,17 +956,17 @@ const styles = `
   .wl-banner-badge { flex-shrink: 0; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; background: #fff; color: #0A0A0A; border-radius: 4px; padding: 0.2rem 0.45rem; }
   .wl-banner-text { font-size: 0.78rem; color: #A3A3A3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .wl-banner-text strong { color: #fff; font-weight: 600; }
-  .wl-banner-toggle { flex-shrink: 0; display: flex; gap: 2px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 3px; }
-  .wl-tab { font-family: inherit; font-size: 0.76rem; font-weight: 600; color: #A3A3A3; background: transparent; border: none; border-radius: 6px; padding: 0.35rem 0.75rem; cursor: pointer; white-space: nowrap; transition: background 150ms, color 150ms; }
+  .wl-banner-controls { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
+  .wl-banner-toggle { display: flex; gap: 2px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 3px; }
+  .wl-tab { font-family: inherit; font-size: 0.74rem; font-weight: 600; color: #A3A3A3; background: transparent; border: none; border-radius: 6px; padding: 0.32rem 0.6rem; cursor: pointer; white-space: nowrap; transition: background 150ms, color 150ms; }
   .wl-tab:hover { color: #fff; }
   .wl-tab-on { background: #fff; color: #0A0A0A; }
   .wl-tab-on:hover { color: #0A0A0A; }
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     .wl-banner { flex-wrap: wrap; }
     .wl-banner-text { white-space: normal; }
   }
 
-  /* Narrated handoff overlay */
   .wl-handoff, .wl-handoff * { box-sizing: border-box; }
   .wl-handoff {
     position: fixed; inset: 0; z-index: 300;
@@ -827,34 +996,17 @@ const styles = `
   .wl-handoff-card p { font-size: 0.9rem; line-height: 1.65; color: #A3A3A3; margin-bottom: 1.5rem; }
   .wl-handoff-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: inherit; font-size: 0.92rem; font-weight: 600; background: #fff; color: #0A0A0A; border: none; border-radius: 10px; padding: 0.8rem 1.4rem; cursor: pointer; transition: opacity 150ms; }
   .wl-handoff-btn:hover { opacity: 0.88; }
+  .wl-handoff-hint { font-size: 0.72rem; color: #737373; margin-top: 0.9rem; }
   .wl-handoff-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,0.08); }
-  .wl-handoff-progress span { display: block; height: 100%; width: 0%; background: #22c55e; animation: wlProg 4200ms linear both; }
+  .wl-handoff-progress span { display: block; height: 100%; width: 0%; background: #22c55e; animation: wlProg linear both; }
   @keyframes wlProg { from { width: 0%; } to { width: 100%; } }
-  @media (prefers-reduced-motion: reduce) {
-    .wl-handoff, .wl-handoff-card { animation: none; }
-    .wl-handoff-progress span { animation-duration: 4200ms; }
-  }
+  @media (prefers-reduced-motion: reduce) { .wl-handoff, .wl-handoff-card { animation: none; } }
 
   .wl-shell, .wl-shell *, .wl-shell *::before, .wl-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  .wl-shell {
-    font-family: var(--wl-font);
-    background: var(--wl-bg);
-    color: var(--wl-text);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-  }
-  .wl-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 1.5rem; background: var(--wl-surface);
-    border-bottom: 1px solid var(--wl-border);
-  }
+  .wl-shell { font-family: var(--wl-font); background: var(--wl-bg); color: var(--wl-text); flex: 1; display: flex; flex-direction: column; -webkit-font-smoothing: antialiased; }
+  .wl-header { display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 1.5rem; background: var(--wl-surface); border-bottom: 1px solid var(--wl-border); }
   .wl-wordmark { display: flex; align-items: center; gap: 0.7rem; }
-  .wl-mark {
-    width: 38px; height: 38px; border-radius: 9px; color: #fff;
-    background: var(--wl-primary); display: flex; align-items: center; justify-content: center;
-  }
+  .wl-mark { width: 38px; height: 38px; border-radius: 9px; color: #fff; background: var(--wl-primary); display: flex; align-items: center; justify-content: center; }
   .wl-bankname { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; color: var(--wl-primary); }
   .wl-tagline { font-size: 0.72rem; color: var(--wl-muted); margin-top: 1px; }
   .wl-login { font-size: 0.85rem; font-weight: 600; color: var(--wl-primary); text-decoration: none; }
@@ -863,11 +1015,7 @@ const styles = `
   .wl-progress-fill { height: 100%; background: var(--wl-primary); transition: width 500ms cubic-bezier(0.22,1,0.36,1); }
 
   .wl-main { flex: 1; width: 100%; max-width: 560px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem; }
-  .wl-card {
-    background: var(--wl-surface); border: 1px solid var(--wl-border);
-    border-radius: calc(var(--wl-radius) + 4px); padding: 2rem 1.75rem;
-    box-shadow: 0 1px 2px rgba(16,24,40,0.04);
-  }
+  .wl-card { background: var(--wl-surface); border: 1px solid var(--wl-border); border-radius: calc(var(--wl-radius) + 4px); padding: 2rem 1.75rem; box-shadow: 0 1px 2px rgba(16,24,40,0.04); }
   .wl-step { animation: wlIn 380ms cubic-bezier(0.22,1,0.36,1) both; }
   @keyframes wlIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
@@ -878,11 +1026,7 @@ const styles = `
 
   .wl-field { display: block; margin-bottom: 1.25rem; }
   .wl-label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.45rem; }
-  .wl-select, .wl-input {
-    width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--wl-text);
-    padding: 0.8rem 0.9rem; border: 1px solid var(--wl-border); border-radius: var(--wl-radius);
-    background: var(--wl-surface); outline: none; transition: border-color 150ms, box-shadow 150ms;
-  }
+  .wl-select, .wl-input { width: 100%; font-family: inherit; font-size: 0.95rem; color: var(--wl-text); padding: 0.8rem 0.9rem; border: 1px solid var(--wl-border); border-radius: var(--wl-radius); background: var(--wl-surface); outline: none; transition: border-color 150ms, box-shadow 150ms; }
   .wl-select:focus, .wl-input:focus { border-color: var(--wl-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--wl-primary) 18%, transparent); }
 
   .wl-amount-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.5rem; }
@@ -904,14 +1048,8 @@ const styles = `
   .wl-back { display: block; width: fit-content; background: none; border: none; color: var(--wl-muted); font-family: inherit; font-size: 0.85rem; cursor: pointer; margin-bottom: 1rem; padding: 0; }
   .wl-back:hover { color: var(--wl-text); }
 
-  /* Products */
   .wl-products { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 1.25rem; }
-  .wl-product {
-    display: flex; align-items: center; gap: 1rem; text-align: left; width: 100%;
-    background: var(--wl-surface); border: 1px solid var(--wl-border); border-radius: calc(var(--wl-radius) + 2px);
-    padding: 1.1rem 1.2rem; cursor: pointer; font-family: inherit; color: var(--wl-text);
-    transition: border-color 150ms, box-shadow 150ms, transform 120ms;
-  }
+  .wl-product { display: flex; align-items: center; gap: 1rem; text-align: left; width: 100%; background: var(--wl-surface); border: 1px solid var(--wl-border); border-radius: calc(var(--wl-radius) + 2px); padding: 1.1rem 1.2rem; cursor: pointer; font-family: inherit; color: var(--wl-text); transition: border-color 150ms, box-shadow 150ms, transform 120ms; }
   .wl-product:hover { border-color: var(--wl-primary); box-shadow: 0 4px 16px rgba(16,24,40,0.08); transform: translateY(-1px); }
   .wl-product-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: var(--wl-primary); background: color-mix(in srgb, var(--wl-primary) 10%, transparent); }
   .wl-product-body { flex: 1; display: flex; flex-direction: column; gap: 0.2rem; }
@@ -921,7 +1059,19 @@ const styles = `
   .wl-product-arrow { flex-shrink: 0; color: var(--wl-muted); }
   .wl-product:hover .wl-product-arrow { color: var(--wl-primary); }
 
-  /* Data pull */
+  /* Module picker (data_only) */
+  .wl-modules { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.5rem 0 1.5rem; }
+  .wl-module { display: flex; align-items: center; gap: 0.6rem; text-align: left; font-family: inherit; font-size: 0.9rem; font-weight: 600; color: var(--wl-text); background: var(--wl-surface); border: 1px solid var(--wl-border); border-radius: var(--wl-radius); padding: 0.75rem 0.85rem; cursor: pointer; transition: border-color 150ms, background 150ms; }
+  .wl-module:hover { border-color: var(--wl-primary); }
+  .wl-module-on { border-color: var(--wl-primary); background: color-mix(in srgb, var(--wl-primary) 7%, transparent); }
+  .wl-module-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; border: 1px solid var(--wl-border); display: flex; align-items: center; justify-content: center; color: #fff; }
+  .wl-module-on .wl-module-check { background: var(--wl-primary); border-color: var(--wl-primary); }
+  @media (max-width: 480px) { .wl-modules { grid-template-columns: 1fr; } }
+
+  /* Consent */
+  .wl-consent { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--wl-text); line-height: 1.5; margin: 0.5rem 0 1.5rem; cursor: pointer; }
+  .wl-consent input { margin-top: 0.15rem; width: 18px; height: 18px; accent-color: var(--wl-primary); flex-shrink: 0; }
+
   .wl-pull-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin: 1.5rem 0 0.5rem; }
   .wl-pull { display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 0.95rem; border-radius: var(--wl-radius); border: 1px solid transparent; transition: background 200ms, border-color 200ms, opacity 200ms; }
   .wl-pull-pending { opacity: 0.5; }
@@ -938,7 +1088,6 @@ const styles = `
   .wl-connect-copy { font-size: 0.85rem; color: var(--wl-muted); line-height: 1.55; margin-bottom: 1rem; }
   .wl-connect-lock { display: inline-flex; }
 
-  /* Estimate */
   .wl-est-grid { margin: 0.5rem 0 1.5rem; }
   .wl-est-hero { text-align: center; padding: 1.75rem 1rem; border-radius: calc(var(--wl-radius) + 4px); background: var(--wl-primary); color: #fff; margin-bottom: 0.85rem; }
   .wl-est-apr { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
@@ -949,7 +1098,6 @@ const styles = `
   .wl-est-cell-val { font-size: 1.15rem; font-weight: 700; margin-top: 0.2rem; }
   .wl-est-cell-sub { font-size: 0.8rem; font-weight: 500; color: var(--wl-muted); margin-left: 1px; }
 
-  /* Term picker */
   .wl-term-picker { margin: 0 0 1.5rem; }
   .wl-term-picker .wl-label { margin-bottom: 0.6rem; }
   .wl-term-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 0.5rem; }
@@ -960,13 +1108,13 @@ const styles = `
   .wl-term-pay { font-size: 0.8rem; font-weight: 600; color: var(--wl-primary); }
   .wl-term-apr { font-size: 0.72rem; color: var(--wl-muted); }
 
-  /* Confirmation */
   .wl-confirm { text-align: center; }
   .wl-confirm-check { width: 64px; height: 64px; border-radius: 50%; background: color-mix(in srgb, var(--wl-primary) 12%, transparent); color: var(--wl-primary); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.1rem; }
   .wl-confirm-receipt { text-align: left; border: 1px solid var(--wl-border); border-radius: calc(var(--wl-radius) + 2px); padding: 0.4rem 1.1rem; margin: 1.5rem 0; }
-  .wl-receipt-row { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid var(--wl-border); font-size: 0.88rem; }
+  .wl-receipt-row { display: flex; align-items: center; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid var(--wl-border); font-size: 0.88rem; gap: 1rem; }
   .wl-receipt-row:last-child { border-bottom: none; }
   .wl-receipt-row span { color: var(--wl-muted); }
+  .wl-receipt-row strong { text-align: right; }
   .wl-synced { display: inline-flex; align-items: center; gap: 0.4rem; }
   .wl-sync-dot { width: 7px; height: 7px; border-radius: 50%; background: #12b76a; box-shadow: 0 0 0 3px rgba(18,183,106,0.18); }
   .wl-lo-wrap { margin-top: 1.5rem; animation: wlIn 380ms cubic-bezier(0.22,1,0.36,1) both; }

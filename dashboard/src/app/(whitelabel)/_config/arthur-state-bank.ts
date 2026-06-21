@@ -16,6 +16,10 @@ import type { WhiteLabelConfig } from './types';
 export const arthurStateBank: WhiteLabelConfig = {
   slug: 'arthur-state-bank',
 
+  // Flows offered for this bank (demo shows all three; the entry path selects
+  // which one a borrower gets, gated by this list).
+  defaultFlows: ['rate_range', 'full_application', 'data_only'],
+
   branding: {
     name: 'Arthur State Bank',
     shortName: 'Arthur State',

@@ -20,6 +20,7 @@ export function LoPreview({
   summary: ApplicationSummary;
 }) {
   const { profile } = summary;
+  const verificationOnly = summary.amount === 0 && !summary.estimate;
   const modules = [
     { name: 'Identity', value: `${profile.identity.fullName} · SSN •••• ${profile.identity.ssnLast4}`, source: 'Socure', pass: true },
     { name: 'Contact', value: `${profile.contact.email} · ${profile.contact.phone}`, source: 'Socure', pass: true },
@@ -94,8 +95,8 @@ export function LoPreview({
             <div className="lo-meta-val">{summary.product.label}</div>
           </div>
           <div className="lo-meta-cell">
-            <div className="lo-meta-label">Requested</div>
-            <div className="lo-meta-val">{usd(summary.amount)}</div>
+            <div className="lo-meta-label">{verificationOnly ? 'Scope' : 'Requested'}</div>
+            <div className="lo-meta-val">{verificationOnly ? 'Identity + data' : usd(summary.amount)}</div>
           </div>
           <div className="lo-meta-cell">
             <div className="lo-meta-label">{summary.ltv !== null ? 'Combined LTV' : 'Est. DTI'}</div>
@@ -106,7 +107,7 @@ export function LoPreview({
           <div className="lo-meta-cell">
             <div className="lo-meta-label">{summary.estimate ? 'Est. rate' : 'Status'}</div>
             <div className="lo-meta-val">
-              {summary.estimate ? pct(summary.estimate.apr) + ' APR' : 'Needs officer'}
+              {summary.estimate ? pct(summary.estimate.apr) + ' APR' : verificationOnly ? 'Verified' : 'Needs officer'}
             </div>
           </div>
         </div>

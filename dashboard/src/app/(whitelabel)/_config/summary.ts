@@ -7,6 +7,7 @@ import {
   type MockSeedInput,
 } from './mock-engine';
 import { evaluateRate, selectTerm } from './types';
+import type { Intake } from '../_client/client';
 
 /**
  * The end-of-journey application record. This is exactly the payload that, in
@@ -99,4 +100,43 @@ export function withChosenTerm(summary: ApplicationSummary, termMonths: number):
   if (!summary.estimate) return summary;
   const estimate = selectTerm(summary.estimate, termMonths);
   return { ...summary, estimate, dti: computeDti(summary.profile, estimate.monthlyPayment) };
+}
+
+/** Pseudo-product used to render a data_only intake (no loan) in the LO view. */
+const VERIFICATION_PRODUCT: WLProduct = {
+  id: 'verification',
+  type: 'deposit',
+  label: 'Identity & data verification',
+  blurb: 'Borrower data verification (no loan product).',
+  iconPath: 'M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z M9 12l2 2 4-4',
+  minAmount: 0,
+  maxAmount: 0,
+  defaultAmount: 0,
+  purposes: [],
+};
+
+/**
+ * Adapt an Intake (any flow) into an ApplicationSummary for the LO view and the
+ * narrated handoff. data_only intakes carry no product/amount, so a
+ * verification pseudo-product is used and loan fields are left empty.
+ */
+export function intakeToSummary(config: WhiteLabelConfig, intake: Intake): ApplicationSummary {
+  const product = intake.product ?? VERIFICATION_PRODUCT;
+  const id = intake.applicationId ?? `VER-${intake.intakeId}`;
+  return {
+    applicationId: id,
+    product,
+    amount: intake.amount ?? 0,
+    purpose: intake.purpose ?? '',
+    purposeLabel: intake.purpose
+      ? config.purposes.find((p) => p.value === intake.purpose)?.label ?? intake.purpose
+      : 'Verification',
+    profile: intake.profile,
+    ltv: intake.ltv ?? null,
+    dti: intake.dti ?? null,
+    estimate: intake.estimate ?? null,
+    verified: intake.steps.map((s) => ({ module: s.module, provider: s.provider, label: s.label })),
+    coreRef: `${config.coreSync.system.toUpperCase()}-${id.replace(/^[A-Z]+-/, '')}`,
+    age: 'Just now',
+  };
 }
