@@ -1,0 +1,86 @@
+/**
+ * The single data seam for the white-label borrower journey.
+ *
+ * The journey talks ONLY to a WhiteLabelClient. Today that is the MockClient
+ * (deterministic fixtures, demo mode). In production it becomes an ApiClient
+ * that calls the Elysia /api/v1/wl/* endpoints; the journey does not change.
+ * Demo vs live is entirely behind this interface (see
+ * docs/whitelabel-platform-design.md, Section 4.6).
+ */
+
+import type { WhiteLabelConfig, WLProduct, RateEstimate } from '../_config/types';
+import type { FlowDefinition, FlowKind } from '../_config/flows';
+import type { MockProfile } from '../_config/mock-engine';
+
+export type IntakeStatus =
+  | 'started'
+  | 'verifying'
+  | 'data_ready'
+  | 'rate_ready'
+  | 'submitted'
+  | 'under_review'
+  | 'routed';
+
+/** One step in the data-pull animation. */
+export interface PullStep {
+  module: string;
+  provider: string;
+  label: string;
+  interactive?: boolean;
+}
+
+/** The single intake record (mirrors the backend Intake entity, decision B). */
+export interface Intake {
+  intakeId: string;
+  slug: string;
+  flow: FlowKind;
+  status: IntakeStatus;
+  steps: PullStep[];
+  profile: MockProfile;
+  // Loan-intent fields (rate_range / full_application only):
+  product?: WLProduct;
+  amount?: number;
+  purpose?: string;
+  estimate?: RateEstimate | null;
+  ltv?: number | null;
+  dti?: number | null;
+  applicationId?: string;
+}
+
+export interface StartIntakeInput {
+  slug: string;
+  flow: FlowKind;
+  applicant: { fullName: string; email: string; phone?: string };
+  /** Loan flows: */
+  product?: WLProduct;
+  amount?: number;
+  purpose?: string;
+  /** data_only: modules the requester chose to pull. */
+  modules?: string[];
+}
+
+export type SubmitResult =
+  | { terminal: 'routeToLo' }
+  | { terminal: 'rateRange'; estimate: RateEstimate }
+  | { terminal: 'decision'; status: 'under_review' };
+
+export interface WhiteLabelClient {
+  /** Resolve the public config + the active flow for an entry. */
+  getContext(slug: string, flow: FlowKind): Promise<{ config: WhiteLabelConfig; flow: FlowDefinition }>;
+  /** Create the intake and run enrichment (mock returns it ready). */
+  startIntake(input: StartIntakeInput): Promise<Intake>;
+  /** Rate flows: choose a term, recompute the offered rate. */
+  selectTerm(intakeId: string, termMonths: number): Promise<Intake>;
+  /** Reach the flow's terminal (route to LO, show range, or submit for decision). */
+  submit(intakeId: string): Promise<SubmitResult>;
+}
+
+/** Default module -> provider/label mapping for product-agnostic data_only pulls. */
+export const MODULE_PROVIDERS: Record<string, Omit<PullStep, 'module'>> = {
+  identity: { provider: 'Socure', label: 'Verifying your identity' },
+  contact: { provider: 'Socure', label: 'Confirming contact details' },
+  employment: { provider: 'Truework', label: 'Verifying income & employment' },
+  residence: { provider: 'Melissa', label: 'Verifying your property' },
+  financial: { provider: 'Plaid', label: 'Connecting your bank account', interactive: true },
+  credit: { provider: 'Experian', label: 'Checking your credit profile' },
+};
