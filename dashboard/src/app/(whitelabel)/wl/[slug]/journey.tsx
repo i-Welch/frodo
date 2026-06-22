@@ -803,6 +803,10 @@ function RateStage({
   const range = intake.range!;
   const [term, setTerm] = useState(range.selectedTermMonths);
   const current = range.options.find((o) => o.termMonths === term) ?? range.options[0];
+  const credit = Boolean(intake.creditPulled); // full_application = individualized point; rate_range = band
+  const firstName = intake.profile.identity.fullName.split(' ')[0];
+  const apr = (o: typeof current) => (o.lowApr === o.highApr ? pct(o.lowApr) : `${pct(o.lowApr)}–${pct(o.highApr)}`);
+  const pay = (o: typeof current) => (o.lowPayment === o.highPayment ? `${usd(o.lowPayment)}/mo` : `${usd(o.lowPayment)}–${usd(o.highPayment)}/mo`);
 
   function pick(t: number) {
     setTerm(t);
@@ -811,22 +815,28 @@ function RateStage({
 
   return (
     <div className="wl-card wl-step wl-estimate">
-      <span className="wl-eyebrow">Estimated range · {intake.product?.label}</span>
-      <h2>Here&rsquo;s your estimated range, {intake.profile.identity.fullName.split(' ')[0]}.</h2>
+      <span className="wl-eyebrow">{credit ? 'Estimated rate' : 'Estimated range'} · {intake.product?.label}</span>
+      <h2>Here&rsquo;s your estimated {credit ? 'rate' : 'range'}, {firstName}.</h2>
       <p className="wl-lede">
-        Based on the details we verified (no credit check), here&rsquo;s the rate range{' '}
-        {config.branding.shortName} offers for {usd(intake.amount ?? 0)}. Your actual rate depends on
-        your credit and final terms.
+        {credit
+          ? `Based on your verified information and credit, here’s ${config.branding.shortName}’s estimated rate for ${usd(intake.amount ?? 0)}. Final terms are subject to approval.`
+          : `Based on the details we verified (no credit check), here’s the rate range ${config.branding.shortName} offers for ${usd(intake.amount ?? 0)}. Your actual rate depends on your credit and final terms.`}
       </p>
       <div className="wl-est-grid">
         <div className="wl-est-hero">
-          <div className="wl-est-apr">{pct(current.lowApr)} <span className="wl-est-apr-dash">–</span> {pct(current.highApr)}</div>
-          <div className="wl-est-apr-label">estimated APR range · lowest with {range.tierLow.toLowerCase()}</div>
+          <div className="wl-est-apr">
+            {current.lowApr === current.highApr
+              ? pct(current.lowApr)
+              : <>{pct(current.lowApr)} <span className="wl-est-apr-dash">–</span> {pct(current.highApr)}</>}
+          </div>
+          <div className="wl-est-apr-label">
+            {credit ? 'estimated APR · subject to final approval' : `estimated APR range · lowest with ${range.tierLow.toLowerCase()}`}
+          </div>
         </div>
         <div className="wl-est-cells">
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Est. monthly payment</div>
-            <div className="wl-est-cell-val">{usd(current.lowPayment)}–{usd(current.highPayment)}<span className="wl-est-cell-sub">/mo</span></div>
+            <div className="wl-est-cell-val">{pay(current)}</div>
           </div>
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Term</div>
@@ -838,7 +848,7 @@ function RateStage({
           </div>
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Credit check</div>
-            <div className="wl-est-cell-val">Not run</div>
+            <div className="wl-est-cell-val">{credit ? 'Completed' : 'Not run'}</div>
           </div>
         </div>
       </div>
@@ -848,17 +858,19 @@ function RateStage({
           {range.options.map((o) => (
             <button key={o.termMonths} className={`wl-term ${o.termMonths === term ? 'wl-term-on' : ''}`} onClick={() => pick(o.termMonths)}>
               <span className="wl-term-len">{fmtTerm(o.termMonths)}</span>
-              <span className="wl-term-pay">{usd(o.lowPayment)}–{usd(o.highPayment)}/mo</span>
-              <span className="wl-term-apr">{pct(o.lowApr)}–{pct(o.highApr)}</span>
+              <span className="wl-term-pay">{pay(o)}</span>
+              <span className="wl-term-apr">{apr(o)}</span>
             </button>
           ))}
         </div>
       </div>
       <button className="wl-btn wl-btn-primary wl-btn-block" onClick={onContinue}>
-        Continue with {fmtTerm(current.termMonths)} term
+        {credit ? `Submit application (${fmtTerm(current.termMonths)})` : `Continue with ${fmtTerm(current.termMonths)} term`}
       </button>
       <p className="wl-fineprint">
-        Estimate only, not an offer of credit. The lowest rates require excellent credit.{' '}
+        {credit
+          ? 'Estimated rate, not a final offer. Subject to verification and final approval.'
+          : 'Estimate only, not an offer of credit. The lowest rates require excellent credit.'}{' '}
         {intake.product?.disclosure}
       </p>
     </div>
@@ -905,17 +917,24 @@ function Confirmation({
               <span>Product</span><strong>{summary.product.label}</strong>
             </div>
           )}
-          {summary.range && (
-            <>
-              <div className="wl-receipt-row">
-                <span>Estimated rate range</span>
-                <strong>{pct(summary.range.lowApr)}–{pct(summary.range.highApr)} APR · {fmtTerm(summary.range.termMonths)}</strong>
-              </div>
-              <div className="wl-receipt-row">
-                <span>Estimated payment</span><strong>{usd(summary.range.lowPayment)}–{usd(summary.range.highPayment)}/mo</strong>
-              </div>
-            </>
-          )}
+          {summary.range && (() => {
+            const r = summary.range;
+            const single = r.lowApr === r.highApr;
+            return (
+              <>
+                <div className="wl-receipt-row">
+                  <span>{single ? 'Estimated rate' : 'Estimated rate range'}</span>
+                  <strong>
+                    {single ? pct(r.lowApr) : `${pct(r.lowApr)}–${pct(r.highApr)}`} APR · {fmtTerm(r.termMonths)}
+                  </strong>
+                </div>
+                <div className="wl-receipt-row">
+                  <span>Estimated payment</span>
+                  <strong>{single ? `${usd(r.lowPayment)}/mo` : `${usd(r.lowPayment)}–${usd(r.highPayment)}/mo`}</strong>
+                </div>
+              </>
+            );
+          })()}
           {isDecision && (
             <div className="wl-receipt-row">
               <span>Status</span><strong>Under review</strong>

@@ -26,7 +26,7 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     kind: 'full_application',
     label: 'Apply',
     path: 'apply',
-    stages: ['frontDoor', 'product', 'applicant', 'consent', 'dataPull', 'confirmation'],
+    stages: ['frontDoor', 'product', 'applicant', 'consent', 'dataPull', 'rate', 'confirmation'],
     creditPull: 'hard',
     terminal: 'decision',
     isLegalApplication: true,

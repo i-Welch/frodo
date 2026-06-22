@@ -302,6 +302,31 @@ export function selectRangeTerm(range: RateRange, termMonths: number): RateRange
   return { ...range, ...rangeSelected(opt) };
 }
 
+/** Individualized POINT rate (low === high) from a credit score. Used by
+ * full_application (credit pulled). Same RateRange shape so displays share one
+ * code path (single value rendered when lowApr === highApr). */
+export function evaluatePoint(
+  card: RateCard | undefined,
+  opts: { amount: number; score: number; ltv?: number },
+): RateRange | null {
+  if (!card) return null;
+  const tier = card.tiers.find(
+    (t) => opts.score >= t.minScore && (t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv),
+  );
+  const terms = tier ? tier.terms : card.fallbackTerms;
+  if (terms.length === 0) return null;
+  const options: RateRangeOption[] = terms.map((t) => ({
+    termMonths: t.termMonths,
+    lowApr: t.apr,
+    highApr: t.apr,
+    lowPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
+    highPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
+  }));
+  const longest = options.reduce((a, b) => (b.termMonths > a.termMonths ? b : a));
+  const preferred = options.find((o) => o.termMonths === card.defaultTermMonths) ?? longest;
+  return { tierLow: tier ? tier.label : 'Standard pricing', options, ...rangeSelected(preferred) };
+}
+
 /** Standard fixed-payment amortization. */
 export function amortizedPayment(
   principal: number,

@@ -70,9 +70,9 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     kind: 'full_application',
     label: 'Apply',
     path: 'apply',
-    // No `rate` stage: full_application submits to async bank decisioning rather
-    // than quoting a self-serve rate. The decision + any AAN arrive later.
-    stages: ['frontDoor', 'product', 'applicant', 'consent', 'dataPull', 'confirmation'],
+    // Credit is pulled, so we show an individualized estimated rate from the
+    // rate sheet, then submit to async bank decisioning (terminal: decision).
+    stages: ['frontDoor', 'product', 'applicant', 'consent', 'dataPull', 'rate', 'confirmation'],
     creditPull: 'hard',
     terminal: 'decision',
     isLegalApplication: true,

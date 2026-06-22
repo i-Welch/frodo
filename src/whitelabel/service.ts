@@ -3,7 +3,7 @@ import type { FlowKind, Intake, IntakeStatus, ModuleName, PullStep, SubmitResult
 import { resolveSlug, getConfigByTenant } from './config-store.js';
 import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
-import { evaluateRange, selectRangeTerm, computeLtv, computeDti } from './rate-engine.js';
+import { evaluateRange, evaluatePoint, selectRangeTerm, computeLtv, computeDti } from './rate-engine.js';
 import { putIntake, getStoredIntake, listIntakesByTenant } from './intake-store.js';
 
 /**
@@ -70,15 +70,20 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
   // Only the rate_range flow shows a borrower-facing rate, and it does so as a
   // no-credit BAND. full_application goes to async bank decisioning (no quote);
   // data_only has no rate.
+  // rate_range (no credit) shows a BAND; full_application (credit pulled) shows
+  // an individualized POINT from the rate sheet; data_only shows no rate.
   let range = null;
   let ltv: number | null = null;
   let dti: number | null = null;
   if (product && amount !== undefined) {
     if (EQUITY_TYPES.has(product.type)) ltv = computeLtv(profile, amount);
+    const card = config.rateCard[product.id];
     if (flowDef.terminal === 'rateRange') {
-      range = evaluateRange(config.rateCard[product.id], { amount, ltv: ltv ?? undefined });
-      if (range) dti = computeDti(profile, range.highPayment);
+      range = evaluateRange(card, { amount, ltv: ltv ?? undefined });
+    } else if (creditPulled) {
+      range = evaluatePoint(card, { amount, score: profile.credit.score, ltv: ltv ?? undefined });
     }
+    if (range) dti = computeDti(profile, range.highPayment);
   }
 
   const intake: Intake = {

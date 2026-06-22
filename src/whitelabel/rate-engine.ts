@@ -70,6 +70,36 @@ export function selectRangeTerm(range: RateRange, termMonths: number): RateRange
   return { ...range, ...selectedFields(opt) };
 }
 
+/**
+ * Evaluate a rate card WITH a credit score: an individualized point rate (low ===
+ * high) from the matched tier. Used by the full_application flow, where credit
+ * is pulled. Returns the same RateRange shape as evaluateRange so displays share
+ * one code path (they render a single value when lowApr === highApr).
+ */
+export function evaluatePoint(
+  card: RateCard | undefined,
+  opts: { amount: number; score: number; ltv?: number },
+): RateRange | null {
+  if (!card) return null;
+  const tier = card.tiers.find(
+    (t) => opts.score >= t.minScore && (t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv),
+  );
+  const terms = tier ? tier.terms : card.fallbackTerms;
+  if (terms.length === 0) return null;
+
+  const options: RateRangeOption[] = terms.map((t) => ({
+    termMonths: t.termMonths,
+    lowApr: t.apr,
+    highApr: t.apr,
+    lowPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
+    highPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
+  }));
+  const longest = options.reduce((a, b) => (b.termMonths > a.termMonths ? b : a));
+  const preferred = options.find((o) => o.termMonths === card.defaultTermMonths) ?? longest;
+
+  return { tierLow: tier ? tier.label : 'Standard pricing', options, ...selectedFields(preferred) };
+}
+
 export function computeLtv(profile: MockProfile, requestedAmount: number): number {
   if (profile.residence.estimatedValue <= 0) return 1;
   return (profile.residence.mortgageBalance + requestedAmount) / profile.residence.estimatedValue;

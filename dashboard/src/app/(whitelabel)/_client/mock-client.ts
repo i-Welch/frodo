@@ -13,7 +13,7 @@ import { MODULE_PROVIDERS } from './client';
 import { getWlConfig } from '../_config/registry';
 import { getFlow } from '../_config/flows';
 import { generateMockProfile, computeLtv, computeDti } from '../_config/mock-engine';
-import { evaluateRange, selectRangeTerm } from '../_config/types';
+import { evaluateRange, evaluatePoint, selectRangeTerm } from '../_config/types';
 
 const EQUITY = new Set(['heloc', 'home-equity', 'mortgage']);
 const DEFAULT_MODULES = ['identity', 'employment', 'financial'];
@@ -66,10 +66,13 @@ export class MockClient implements WhiteLabelClient {
     let dti: number | null = null;
     if (product && amount !== undefined) {
       if (EQUITY.has(product.type)) ltv = computeLtv(profile, amount);
+      const card = config.rateCard[product.id];
       if (flowDef.terminal === 'rateRange') {
-        range = evaluateRange(config.rateCard[product.id], { amount, ltv: ltv ?? undefined });
-        if (range) dti = computeDti(profile, range.highPayment);
+        range = evaluateRange(card, { amount, ltv: ltv ?? undefined });
+      } else if (creditPulled) {
+        range = evaluatePoint(card, { amount, score: profile.credit.score, ltv: ltv ?? undefined });
       }
+      if (range) dti = computeDti(profile, range.highPayment);
     }
 
     const intake: Intake = {
