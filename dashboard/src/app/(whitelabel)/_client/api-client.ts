@@ -9,7 +9,11 @@
 
 import type { Intake, StartIntakeInput, SubmitResult, WhiteLabelClient } from './client';
 
-const BASE = `${process.env.NEXT_PUBLIC_API_URL ?? ''}/api/v1/wl`;
+// Always relative: the browser hits the same origin (e.g. <bank>.submit.loans)
+// and Next's rewrite proxies /api/* to the backend server-side, so there is no
+// cross-origin request and no CORS to manage. The proxy target is configured by
+// NEXT_PUBLIC_API_URL in next.config (used server-side, not here).
+const BASE = '/api/v1/wl';
 
 async function req<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
