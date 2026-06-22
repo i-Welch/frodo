@@ -224,70 +224,82 @@ export function matchProducts(
   return config.products.filter((p) => p.purposes.includes(purpose));
 }
 
-/** One selectable term on the estimate screen, with its priced payment. */
-export interface RateEstimateOption {
+/**
+ * No-credit rate band (rate_range flow). Low = best tier the borrower's LTV
+ * qualifies for (excellent credit); high = standard/fallback pricing. Credit is
+ * the unknown the band spans. Mirrors the backend rate engine.
+ */
+export interface RateRangeOption {
   termMonths: number;
-  apr: number;
-  monthlyPayment: number;
+  lowApr: number;
+  highApr: number;
+  lowPayment: number;
+  highPayment: number;
 }
 
-export interface RateEstimate {
-  tierLabel: string;
-  /** True when no configured tier matched and fallback pricing was used. */
-  fallback: boolean;
-  /** Every term the borrower can choose, each priced for the requested amount. */
-  options: RateEstimateOption[];
-  /** Currently selected term (drives the convenience fields below). */
+export interface RateRange {
+  tierLow: string;
+  options: RateRangeOption[];
   selectedTermMonths: number;
-  // Convenience accessors that mirror the selected option, so existing
-  // consumers (LO view, confirmation) can read a single rate/payment.
-  apr: number;
+  lowApr: number;
+  highApr: number;
+  lowPayment: number;
+  highPayment: number;
   termMonths: number;
-  monthlyPayment: number;
 }
 
-export function evaluateRate(
-  card: RateCard | undefined,
-  opts: { amount: number; score: number; ltv?: number },
-): RateEstimate | null {
-  if (!card) return null;
-
-  const tier = card.tiers.find(
-    (t) => opts.score >= t.minScore && (t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv),
-  );
-
-  const terms = tier ? tier.terms : card.fallbackTerms;
-  if (terms.length === 0) return null;
-
-  const options: RateEstimateOption[] = terms.map((t) => ({
-    termMonths: t.termMonths,
-    apr: t.apr,
-    monthlyPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
-  }));
-
-  // Default selection: the configured default if it's offered, else the
-  // longest term (lowest, most approachable monthly payment).
-  const longest = options.reduce((a, b) => (b.termMonths > a.termMonths ? b : a));
-  const preferred =
-    options.find((o) => o.termMonths === card.defaultTermMonths) ?? longest;
-
+function rangeSelected(o: RateRangeOption) {
   return {
-    tierLabel: tier ? tier.label : 'Standard pricing',
-    fallback: !tier,
-    options,
-    ...selectedFields(preferred),
+    selectedTermMonths: o.termMonths,
+    lowApr: o.lowApr,
+    highApr: o.highApr,
+    lowPayment: o.lowPayment,
+    highPayment: o.highPayment,
+    termMonths: o.termMonths,
   };
 }
 
-function selectedFields(o: RateEstimateOption) {
-  return { selectedTermMonths: o.termMonths, apr: o.apr, termMonths: o.termMonths, monthlyPayment: o.monthlyPayment };
+export function evaluateRange(
+  card: RateCard | undefined,
+  opts: { amount: number; ltv?: number },
+): RateRange | null {
+  if (!card) return null;
+  const applicable = card.tiers.filter(
+    (t) => t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv,
+  );
+  const terms = card.fallbackTerms.map((t) => t.termMonths);
+  if (terms.length === 0) return null;
+
+  const options: RateRangeOption[] = terms.map((term) => {
+    const tierAprs = applicable
+      .map((t) => t.terms.find((x) => x.termMonths === term)?.apr)
+      .filter((a): a is number => a !== undefined);
+    const fallbackApr = card.fallbackTerms.find((x) => x.termMonths === term)?.apr ?? 0;
+    const lowApr = tierAprs.length ? Math.min(...tierAprs) : fallbackApr;
+    const highApr = fallbackApr;
+    return {
+      termMonths: term,
+      lowApr,
+      highApr,
+      lowPayment: amortizedPayment(opts.amount, lowApr, term),
+      highPayment: amortizedPayment(opts.amount, highApr, term),
+    };
+  });
+
+  const longest = options.reduce((a, b) => (b.termMonths > a.termMonths ? b : a));
+  const preferred = options.find((o) => o.termMonths === card.defaultTermMonths) ?? longest;
+
+  return {
+    tierLow: applicable[0]?.label ?? 'Standard pricing',
+    options,
+    ...rangeSelected(preferred),
+  };
 }
 
-/** Return a copy of the estimate with a different term selected. */
-export function selectTerm(estimate: RateEstimate, termMonths: number): RateEstimate {
-  const opt = estimate.options.find((o) => o.termMonths === termMonths);
-  if (!opt) return estimate;
-  return { ...estimate, ...selectedFields(opt) };
+export function selectRangeTerm(range: RateRange, termMonths: number): RateRange {
+  const opt = range.options.find((o) => o.termMonths === termMonths);
+  if (!opt) return range;
+  return { ...range, ...rangeSelected(opt) };
 }
 
 /** Standard fixed-payment amortization. */

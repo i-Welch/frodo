@@ -3,7 +3,7 @@ import type { FlowKind, Intake, IntakeStatus, ModuleName, PullStep, SubmitResult
 import { resolveSlug, getConfigByTenant } from './config-store.js';
 import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
-import { evaluateRate, selectTerm as selectTermOnEstimate, computeLtv, computeDti } from './rate-engine.js';
+import { evaluateRange, selectRangeTerm, computeLtv, computeDti } from './rate-engine.js';
 import { putIntake, getStoredIntake, listIntakesByTenant } from './intake-store.js';
 
 /**
@@ -21,13 +21,12 @@ function applicationId(seed: string): string {
   return `APP-${100000 + (h % 900000)}`;
 }
 
-function stepsForLoan(config: WhiteLabelConfig, productId: string): PullStep[] {
-  return (config.providerRouting[productId] ?? []).map((s) => ({
-    module: s.module,
-    provider: s.provider,
-    label: s.label,
-    interactive: s.interactive,
-  }));
+function stepsForLoan(config: WhiteLabelConfig, productId: string, pullCredit: boolean): PullStep[] {
+  return (config.providerRouting[productId] ?? [])
+    // Honor the flow's credit-pull setting: rate_range (no credit) drops the
+    // credit step so we never pull a bureau report for a prequalification.
+    .filter((s) => pullCredit || s.module !== 'credit')
+    .map((s) => ({ module: s.module, provider: s.provider, label: s.label, interactive: s.interactive }));
 }
 
 function stepsForModules(modules: ModuleName[]): PullStep[] {
@@ -55,19 +54,31 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
   const product = input.productId ? config.products.find((p) => p.id === input.productId) : undefined;
   const amount = product ? input.amount ?? product.defaultAmount : undefined;
 
+  // Credit is pulled when the flow asks for it (full_application), or — for the
+  // product-agnostic data_only flow — when the requester explicitly selects it.
+  const pullCredit =
+    flowDef.creditPull !== 'none' ||
+    (input.flow === 'data_only' && (input.modules ?? DEFAULT_DATA_ONLY_MODULES).includes('credit'));
+
   const steps = product
-    ? stepsForLoan(config, product.id)
+    ? stepsForLoan(config, product.id, pullCredit)
     : stepsForModules(input.modules ?? DEFAULT_DATA_ONLY_MODULES);
+  const creditPulled = steps.some((s) => s.module === 'credit');
 
   const profile = await providers.enrich({ applicant: input.applicant, amount: amount ?? 0, steps });
 
-  let estimate = null;
+  // Only the rate_range flow shows a borrower-facing rate, and it does so as a
+  // no-credit BAND. full_application goes to async bank decisioning (no quote);
+  // data_only has no rate.
+  let range = null;
   let ltv: number | null = null;
   let dti: number | null = null;
   if (product && amount !== undefined) {
     if (EQUITY_TYPES.has(product.type)) ltv = computeLtv(profile, amount);
-    estimate = evaluateRate(config.rateCard[product.id], { amount, score: profile.credit.score, ltv: ltv ?? undefined });
-    if (estimate) dti = computeDti(profile, estimate.monthlyPayment);
+    if (flowDef.terminal === 'rateRange') {
+      range = evaluateRange(config.rateCard[product.id], { amount, ltv: ltv ?? undefined });
+      if (range) dti = computeDti(profile, range.highPayment);
+    }
   }
 
   const intake: Intake = {
@@ -76,14 +87,15 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
     slug: input.slug,
     flow: input.flow,
     mode: tenant.mode,
-    status: estimate ? 'rate_ready' : 'data_ready',
+    status: range ? 'rate_ready' : 'data_ready',
     steps,
     profile,
     applicant: input.applicant,
     product,
     amount,
     purpose: input.purpose,
-    estimate,
+    creditPulled,
+    range,
     ltv,
     dti,
     isLegalApplication: flowDef.isLegalApplication,
@@ -101,12 +113,12 @@ export async function getIntake(intakeId: string): Promise<Intake | undefined> {
 export async function chooseTerm(intakeId: string, termMonths: number): Promise<Intake | undefined> {
   const intake = await getStoredIntake(intakeId);
   if (!intake) return undefined;
-  if (!intake.estimate) return intake;
+  if (!intake.range) return intake;
   const tenant = await resolveSlug(intake.slug);
   if (!tenant) return intake;
-  const estimate = selectTermOnEstimate(intake.estimate, termMonths);
-  const dti = computeDti(intake.profile, estimate.monthlyPayment);
-  const updated: Intake = { ...intake, estimate, dti, status: 'rate_ready' };
+  const range = selectRangeTerm(intake.range, termMonths);
+  const dti = computeDti(intake.profile, range.highPayment);
+  const updated: Intake = { ...intake, range, dti, status: 'rate_ready' };
   await putIntake({ ...updated, tenantId: tenant.tenantId });
   return updated;
 }
@@ -127,10 +139,10 @@ export async function submitIntake(intakeId: string): Promise<SubmitResult | und
       break;
     case 'rateRange':
       status = 'routed';
-      // A rate_range product without a configured rate card has no estimate;
+      // A rate_range product without a configured rate card has no range;
       // fall through to a loan-officer handoff rather than asserting one.
-      result = intake.estimate
-        ? { terminal: 'rateRange', estimate: intake.estimate }
+      result = intake.range
+        ? { terminal: 'rateRange', range: intake.range }
         : { terminal: 'routeToLo' };
       break;
     case 'routeToLo':

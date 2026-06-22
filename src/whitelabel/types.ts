@@ -131,23 +131,28 @@ export interface PublicWhiteLabelConfig {
 }
 
 /* ------------------------------------------------------------------ */
-/* Rate estimate                                                       */
+/* Rate range (no credit pull: a low-to-high band, not a point quote)  */
 /* ------------------------------------------------------------------ */
 
-export interface RateEstimateOption {
+export interface RateRangeOption {
   termMonths: number;
-  apr: number;
-  monthlyPayment: number;
+  lowApr: number; // best applicable tier (e.g. excellent credit)
+  highApr: number; // standard / fallback pricing
+  lowPayment: number;
+  highPayment: number;
 }
 
-export interface RateEstimate {
-  tierLabel: string;
-  fallback: boolean;
-  options: RateEstimateOption[];
+export interface RateRange {
+  /** Label of the best applicable tier, e.g. "Excellent credit, low LTV". */
+  tierLow: string;
+  options: RateRangeOption[];
   selectedTermMonths: number;
-  apr: number;
+  // Convenience accessors mirroring the selected term:
+  lowApr: number;
+  highApr: number;
+  lowPayment: number;
+  highPayment: number;
   termMonths: number;
-  monthlyPayment: number;
 }
 
 /* ------------------------------------------------------------------ */
@@ -225,7 +230,10 @@ export interface Intake {
   product?: WLProduct;
   amount?: number;
   purpose?: string;
-  estimate?: RateEstimate | null;
+  /** Whether credit was actually pulled (drives the LO view + flow semantics). */
+  creditPulled: boolean;
+  /** Rate band for the rate_range flow only; null for data_only / full_application. */
+  range?: RateRange | null;
   ltv?: number | null;
   dti?: number | null;
   isLegalApplication: boolean;
@@ -234,5 +242,5 @@ export interface Intake {
 
 export type SubmitResult =
   | { terminal: 'routeToLo' }
-  | { terminal: 'rateRange'; estimate: RateEstimate }
+  | { terminal: 'rateRange'; range: RateRange }
   | { terminal: 'decision'; status: 'under_review' };

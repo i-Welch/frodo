@@ -8,7 +8,7 @@
  * docs/whitelabel-platform-design.md, Section 4.6).
  */
 
-import type { WLProduct, RateEstimate } from '../_config/types';
+import type { WLProduct, RateRange } from '../_config/types';
 import type { FlowKind } from '../_config/flows';
 import type { MockProfile } from '../_config/mock-engine';
 
@@ -41,7 +41,10 @@ export interface Intake {
   product?: WLProduct;
   amount?: number;
   purpose?: string;
-  estimate?: RateEstimate | null;
+  /** Whether credit was actually pulled (drives the LO view + display). */
+  creditPulled?: boolean;
+  /** No-credit rate band; present for rate_range only. */
+  range?: RateRange | null;
   ltv?: number | null;
   dti?: number | null;
   applicationId?: string;
@@ -61,7 +64,7 @@ export interface StartIntakeInput {
 
 export type SubmitResult =
   | { terminal: 'routeToLo' }
-  | { terminal: 'rateRange'; estimate: RateEstimate }
+  | { terminal: 'rateRange'; range: RateRange }
   | { terminal: 'decision'; status: 'under_review' };
 
 export interface WhiteLabelClient {

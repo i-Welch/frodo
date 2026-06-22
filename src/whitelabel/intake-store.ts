@@ -3,7 +3,7 @@ import { encryptField, decryptField } from '../crypto/encryption.js';
 import { kmsService } from '../crypto/kms.js';
 import type { EncryptedField } from '../crypto/types.js';
 import { createChildLogger } from '../logger.js';
-import type { Intake, IntakeStatus, RateEstimate } from './types.js';
+import type { Intake, IntakeStatus, RateRange } from './types.js';
 
 const log = createChildLogger({ module: 'wl-intake-store' });
 
@@ -53,7 +53,8 @@ export async function putIntake(intake: StoredIntakeInput): Promise<void> {
     product: intake.product,
     amount: intake.amount,
     purpose: intake.purpose,
-    estimate: intake.estimate,
+    creditPulled: intake.creditPulled,
+    range: intake.range,
     ltv: intake.ltv,
     dti: intake.dti,
     createdAt: intake.createdAt,
@@ -89,7 +90,8 @@ async function hydrate(item: Record<string, unknown>): Promise<Intake> {
     product: item.product as Intake['product'],
     amount: item.amount as number | undefined,
     purpose: item.purpose as string | undefined,
-    estimate: (item.estimate as RateEstimate | null) ?? null,
+    creditPulled: Boolean(item.creditPulled),
+    range: (item.range as RateRange | null) ?? null,
     ltv: (item.ltv as number | null) ?? null,
     dti: (item.dti as number | null) ?? null,
     isLegalApplication: Boolean(item.isLegalApplication),

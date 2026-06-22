@@ -259,7 +259,7 @@ export function Journey({
           <Loading />
         );
       case 'rate':
-        return intake?.estimate ? (
+        return intake?.range ? (
           <RateStage
             config={config}
             intake={intake}
@@ -800,9 +800,9 @@ function RateStage({
   onSelectTerm: (termMonths: number) => void;
   onContinue: () => void;
 }) {
-  const est = intake.estimate!;
-  const [term, setTerm] = useState(est.selectedTermMonths);
-  const current = est.options.find((o) => o.termMonths === term) ?? est.options[0];
+  const range = intake.range!;
+  const [term, setTerm] = useState(range.selectedTermMonths);
+  const current = range.options.find((o) => o.termMonths === term) ?? range.options[0];
 
   function pick(t: number) {
     setTerm(t);
@@ -811,21 +811,22 @@ function RateStage({
 
   return (
     <div className="wl-card wl-step wl-estimate">
-      <span className="wl-eyebrow">Estimated offer · {intake.product?.label}</span>
-      <h2>Here&rsquo;s your estimate, {intake.profile.identity.fullName.split(' ')[0]}.</h2>
+      <span className="wl-eyebrow">Estimated range · {intake.product?.label}</span>
+      <h2>Here&rsquo;s your estimated range, {intake.profile.identity.fullName.split(' ')[0]}.</h2>
       <p className="wl-lede">
-        Based on what we verified, here&rsquo;s what {config.branding.shortName} could offer for{' '}
-        {usd(intake.amount ?? 0)}. Pick a term to see how the rate and payment change.
+        Based on the details we verified (no credit check), here&rsquo;s the rate range{' '}
+        {config.branding.shortName} offers for {usd(intake.amount ?? 0)}. Your actual rate depends on
+        your credit and final terms.
       </p>
       <div className="wl-est-grid">
         <div className="wl-est-hero">
-          <div className="wl-est-apr">{pct(current.apr)}</div>
-          <div className="wl-est-apr-label">estimated APR · {est.tierLabel}</div>
+          <div className="wl-est-apr">{pct(current.lowApr)} <span className="wl-est-apr-dash">–</span> {pct(current.highApr)}</div>
+          <div className="wl-est-apr-label">estimated APR range · lowest with {range.tierLow.toLowerCase()}</div>
         </div>
         <div className="wl-est-cells">
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Est. monthly payment</div>
-            <div className="wl-est-cell-val">{usd(current.monthlyPayment)}<span className="wl-est-cell-sub">/mo</span></div>
+            <div className="wl-est-cell-val">{usd(current.lowPayment)}–{usd(current.highPayment)}<span className="wl-est-cell-sub">/mo</span></div>
           </div>
           <div className="wl-est-cell">
             <div className="wl-est-cell-label">Term</div>
@@ -836,19 +837,19 @@ function RateStage({
             <div className="wl-est-cell-val">{usd(intake.amount ?? 0)}</div>
           </div>
           <div className="wl-est-cell">
-            <div className="wl-est-cell-label">Verified credit</div>
-            <div className="wl-est-cell-val">{intake.profile.credit.score}</div>
+            <div className="wl-est-cell-label">Credit check</div>
+            <div className="wl-est-cell-val">Not run</div>
           </div>
         </div>
       </div>
       <div className="wl-term-picker">
         <span className="wl-label">Choose your term</span>
         <div className="wl-term-options">
-          {est.options.map((o) => (
+          {range.options.map((o) => (
             <button key={o.termMonths} className={`wl-term ${o.termMonths === term ? 'wl-term-on' : ''}`} onClick={() => pick(o.termMonths)}>
               <span className="wl-term-len">{fmtTerm(o.termMonths)}</span>
-              <span className="wl-term-pay">{usd(o.monthlyPayment)}/mo</span>
-              <span className="wl-term-apr">{pct(o.apr)} APR</span>
+              <span className="wl-term-pay">{usd(o.lowPayment)}–{usd(o.highPayment)}/mo</span>
+              <span className="wl-term-apr">{pct(o.lowApr)}–{pct(o.highApr)}</span>
             </button>
           ))}
         </div>
@@ -856,7 +857,10 @@ function RateStage({
       <button className="wl-btn wl-btn-primary wl-btn-block" onClick={onContinue}>
         Continue with {fmtTerm(current.termMonths)} term
       </button>
-      <p className="wl-fineprint">{intake.product?.disclosure}</p>
+      <p className="wl-fineprint">
+        Estimate only, not an offer of credit. The lowest rates require excellent credit.{' '}
+        {intake.product?.disclosure}
+      </p>
     </div>
   );
 }
@@ -901,14 +905,14 @@ function Confirmation({
               <span>Product</span><strong>{summary.product.label}</strong>
             </div>
           )}
-          {summary.estimate && (
+          {summary.range && (
             <>
               <div className="wl-receipt-row">
-                <span>Estimated rate &amp; term</span>
-                <strong>{pct(summary.estimate.apr)} APR · {fmtTerm(summary.estimate.termMonths)}</strong>
+                <span>Estimated rate range</span>
+                <strong>{pct(summary.range.lowApr)}–{pct(summary.range.highApr)} APR · {fmtTerm(summary.range.termMonths)}</strong>
               </div>
               <div className="wl-receipt-row">
-                <span>Estimated payment</span><strong>{usd(summary.estimate.monthlyPayment)}/mo</strong>
+                <span>Estimated payment</span><strong>{usd(summary.range.lowPayment)}–{usd(summary.range.highPayment)}/mo</strong>
               </div>
             </>
           )}
@@ -1098,7 +1102,8 @@ const styles = `
 
   .wl-est-grid { margin: 0.5rem 0 1.5rem; }
   .wl-est-hero { text-align: center; padding: 1.75rem 1rem; border-radius: calc(var(--wl-radius) + 4px); background: var(--wl-primary); color: #fff; margin-bottom: 0.85rem; }
-  .wl-est-apr { font-size: 3rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .wl-est-apr { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+  .wl-est-apr-dash { font-weight: 500; opacity: 0.7; }
   .wl-est-apr-label { font-size: 0.8rem; opacity: 0.9; margin-top: 0.5rem; }
   .wl-est-cells { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--wl-border); border: 1px solid var(--wl-border); border-radius: calc(var(--wl-radius) + 2px); overflow: hidden; }
   .wl-est-cell { background: var(--wl-surface); padding: 0.95rem 1rem; }

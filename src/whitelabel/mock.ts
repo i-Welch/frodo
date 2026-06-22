@@ -52,7 +52,7 @@ export function generateMockProfile(input: { fullName: string; email: string; ph
   const monthlyIncome = Math.round(annualIncome / 12);
   const monthlyDebt = Math.round(monthlyIncome * (0.12 + rng() * 0.22));
   const propertyValue = between(rng, 215000, 540000, 1000);
-  const mortgageBalance = Math.round(propertyValue * (0.25 + rng() * 0.45));
+  const mortgageBalance = Math.round(propertyValue * (0.18 + rng() * 0.32));
   const emp = pick(rng, EMPLOYERS);
 
   return {

@@ -20,7 +20,7 @@ export function LoPreview({
   summary: ApplicationSummary;
 }) {
   const { profile } = summary;
-  const verificationOnly = summary.amount === 0 && !summary.estimate;
+  const verificationOnly = summary.amount === 0 && !summary.range;
   const modules = [
     { name: 'Identity', value: `${profile.identity.fullName} · SSN •••• ${profile.identity.ssnLast4}`, source: 'Socure', pass: true },
     { name: 'Contact', value: `${profile.contact.email} · ${profile.contact.phone}`, source: 'Socure', pass: true },
@@ -105,22 +105,26 @@ export function LoPreview({
             </div>
           </div>
           <div className="lo-meta-cell">
-            <div className="lo-meta-label">{summary.estimate ? 'Est. rate' : 'Status'}</div>
+            <div className="lo-meta-label">{summary.range ? 'Est. rate range' : 'Status'}</div>
             <div className="lo-meta-val">
-              {summary.estimate ? pct(summary.estimate.apr) + ' APR' : verificationOnly ? 'Verified' : 'Needs officer'}
+              {summary.range
+                ? `${pct(summary.range.lowApr)}–${pct(summary.range.highApr)}`
+                : verificationOnly
+                  ? 'Verified'
+                  : 'Pending decision'}
             </div>
           </div>
         </div>
 
-        {summary.estimate && (
+        {summary.range && (
           <div className="lo-offer">
-            <span className="lo-offer-label">Estimated offer</span>
+            <span className="lo-offer-label">Estimated range (no credit pull)</span>
             <span className="lo-offer-val">
-              {pct(summary.estimate.apr)} APR ·{' '}
-              {summary.estimate.termMonths % 12 === 0
-                ? `${summary.estimate.termMonths / 12} yr`
-                : `${summary.estimate.termMonths} mo`}{' '}
-              · {usd(summary.estimate.monthlyPayment)}/mo
+              {pct(summary.range.lowApr)}–{pct(summary.range.highApr)} APR ·{' '}
+              {summary.range.termMonths % 12 === 0
+                ? `${summary.range.termMonths / 12} yr`
+                : `${summary.range.termMonths} mo`}{' '}
+              · {usd(summary.range.lowPayment)}–{usd(summary.range.highPayment)}/mo
             </span>
           </div>
         )}

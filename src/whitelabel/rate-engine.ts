@@ -1,4 +1,4 @@
-import type { MockProfile, RateCard, RateEstimate, RateEstimateOption } from './types.js';
+import type { MockProfile, RateCard, RateRange, RateRangeOption } from './types.js';
 
 /** Standard fixed-payment amortization. */
 export function amortizedPayment(principal: number, annualRate: number, termMonths: number): number {
@@ -8,46 +8,66 @@ export function amortizedPayment(principal: number, annualRate: number, termMont
   return (principal * r * factor) / (factor - 1);
 }
 
-function selectedFields(o: RateEstimateOption) {
-  return { selectedTermMonths: o.termMonths, apr: o.apr, termMonths: o.termMonths, monthlyPayment: o.monthlyPayment };
+function selectedFields(o: RateRangeOption) {
+  return {
+    selectedTermMonths: o.termMonths,
+    lowApr: o.lowApr,
+    highApr: o.highApr,
+    lowPayment: o.lowPayment,
+    highPayment: o.highPayment,
+    termMonths: o.termMonths,
+  };
 }
 
 /**
- * Evaluate a rate card. Tier is chosen by credit score (+ combined LTV for
- * equity); each tier prices several terms. Returns every term priced for the
- * amount so the borrower can trade term against payment.
+ * Evaluate a rate card WITHOUT a credit score: produce a low-to-high band per
+ * term. The low end is the best tier the borrower's LTV qualifies for (e.g.
+ * excellent credit); the high end is standard/fallback pricing. Credit is the
+ * unknown the band spans; LTV (which we do know) narrows which tiers apply.
+ * This is the prequalification-safe model for the rate_range flow.
  */
-export function evaluateRate(
+export function evaluateRange(
   card: RateCard | undefined,
-  opts: { amount: number; score: number; ltv?: number },
-): RateEstimate | null {
+  opts: { amount: number; ltv?: number },
+): RateRange | null {
   if (!card) return null;
-  const tier = card.tiers.find(
-    (t) => opts.score >= t.minScore && (t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv),
+  const applicable = card.tiers.filter(
+    (t) => t.maxLtv === undefined || (opts.ltv ?? 0) <= t.maxLtv,
   );
-  const terms = tier ? tier.terms : card.fallbackTerms;
+  const terms = card.fallbackTerms.map((t) => t.termMonths);
   if (terms.length === 0) return null;
 
-  const options: RateEstimateOption[] = terms.map((t) => ({
-    termMonths: t.termMonths,
-    apr: t.apr,
-    monthlyPayment: amortizedPayment(opts.amount, t.apr, t.termMonths),
-  }));
+  const options: RateRangeOption[] = terms.map((term) => {
+    const tierAprs = applicable
+      .map((t) => t.terms.find((x) => x.termMonths === term)?.apr)
+      .filter((a): a is number => a !== undefined);
+    const fallbackApr = card.fallbackTerms.find((x) => x.termMonths === term)?.apr ?? 0;
+    const lowApr = tierAprs.length ? Math.min(...tierAprs) : fallbackApr;
+    const highApr = fallbackApr;
+    return {
+      termMonths: term,
+      lowApr,
+      highApr,
+      lowPayment: amortizedPayment(opts.amount, lowApr, term),
+      highPayment: amortizedPayment(opts.amount, highApr, term),
+    };
+  });
+
   const longest = options.reduce((a, b) => (b.termMonths > a.termMonths ? b : a));
   const preferred = options.find((o) => o.termMonths === card.defaultTermMonths) ?? longest;
 
   return {
-    tierLabel: tier ? tier.label : 'Standard pricing',
-    fallback: !tier,
+    // Tiers are ordered best-first in config, so applicable[0] is the best.
+    tierLow: applicable[0]?.label ?? 'Standard pricing',
     options,
     ...selectedFields(preferred),
   };
 }
 
-export function selectTerm(estimate: RateEstimate, termMonths: number): RateEstimate {
-  const opt = estimate.options.find((o) => o.termMonths === termMonths);
-  if (!opt) return estimate;
-  return { ...estimate, ...selectedFields(opt) };
+export function selectRangeTerm(range: RateRange, termMonths: number): RateRange {
+  const opt = range.options.find((o) => o.termMonths === termMonths);
+  if (!opt) return range;
+  return { ...range, ...selectedFields(opt) };
 }
 
 export function computeLtv(profile: MockProfile, requestedAmount: number): number {

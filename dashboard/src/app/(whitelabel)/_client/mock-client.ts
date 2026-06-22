@@ -1,30 +1,33 @@
 /**
  * MockClient — the demo/sandbox implementation of WhiteLabelClient.
  *
- * Deterministic (seeded by name+email) so live demos, screenshots, and videos
- * are reproducible. Holds intakes in memory for the session. In production this
- * is replaced by an ApiClient hitting /api/v1/wl/*; the journey is unchanged.
+ * Deterministic (seeded by name+email). Mirrors the backend service's
+ * flow-aware logic: rate_range pulls no credit and shows a no-credit BAND,
+ * full_application pulls credit and shows no rate (async decision), data_only
+ * pulls only the chosen modules. Used only when NEXT_PUBLIC_WL_BACKEND is unset;
+ * production goes through the ApiClient to the real backend.
  */
 
-import type {
-  WhiteLabelClient,
-  Intake,
-  StartIntakeInput,
-  SubmitResult,
-  PullStep,
-} from './client';
+import type { WhiteLabelClient, Intake, StartIntakeInput, SubmitResult, PullStep } from './client';
 import { MODULE_PROVIDERS } from './client';
 import { getWlConfig } from '../_config/registry';
 import { getFlow } from '../_config/flows';
-import { generateMockProfile } from '../_config/mock-engine';
-import { buildApplicationSummary, withChosenTerm } from '../_config/summary';
+import { generateMockProfile, computeLtv, computeDti } from '../_config/mock-engine';
+import { evaluateRange, selectRangeTerm } from '../_config/types';
+
+const EQUITY = new Set(['heloc', 'home-equity', 'mortgage']);
+const DEFAULT_MODULES = ['identity', 'employment', 'financial'];
 
 let counter = 0;
 function nextId(prefix: string): string {
   counter += 1;
   return `${prefix}-${counter.toString().padStart(4, '0')}`;
 }
-
+function appId(seed: string): string {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return `APP-${100000 + (h % 900000)}`;
+}
 function requireConfig(slug: string) {
   const config = getWlConfig(slug);
   if (!config) throw new Error(`Unknown white-label slug: ${slug}`);
@@ -36,85 +39,69 @@ export class MockClient implements WhiteLabelClient {
 
   async startIntake(input: StartIntakeInput): Promise<Intake> {
     const config = requireConfig(input.slug);
-    const intakeId = nextId('INTAKE');
+    const flowDef = getFlow(input.flow);
+    const product = input.product;
+    const amount = product ? input.amount ?? product.defaultAmount : undefined;
 
-    // Loan flows (rate_range / full_application): reuse the application summary
-    // builder for profile + provider routing + rate + LTV/DTI.
-    if (input.product) {
-      const summary = buildApplicationSummary(
-        config,
-        input.product,
-        input.amount ?? input.product.defaultAmount,
-        input.purpose ?? input.product.purposes[0],
-        { ...input.applicant, amount: input.amount ?? input.product.defaultAmount },
-      );
-      const routing = config.providerRouting[input.product.id] ?? [];
-      const steps: PullStep[] = routing.map((s) => ({
-        module: s.module,
-        provider: s.provider,
-        label: s.label,
-        interactive: s.interactive,
-      }));
-      const intake: Intake = {
-        intakeId,
-        slug: input.slug,
-        flow: input.flow,
-        status: 'data_ready',
-        steps,
-        profile: summary.profile,
-        product: input.product,
-        amount: summary.amount,
-        purpose: input.purpose,
-        estimate: summary.estimate,
-        ltv: summary.ltv,
-        dti: summary.dti,
-        applicationId: summary.applicationId,
-      };
-      this.intakes.set(intakeId, intake);
-      return intake;
+    const pullCredit =
+      flowDef.creditPull !== 'none' ||
+      (input.flow === 'data_only' && (input.modules ?? DEFAULT_MODULES).includes('credit'));
+
+    let steps: PullStep[];
+    if (product) {
+      steps = (config.providerRouting[product.id] ?? [])
+        .filter((s) => pullCredit || s.module !== 'credit')
+        .map((s) => ({ module: s.module, provider: s.provider, label: s.label, interactive: s.interactive }));
+    } else {
+      steps = (input.modules ?? DEFAULT_MODULES)
+        .filter((m) => MODULE_PROVIDERS[m])
+        .map((m) => ({ module: m, ...MODULE_PROVIDERS[m] }));
+    }
+    const creditPulled = steps.some((s) => s.module === 'credit');
+
+    const profile = generateMockProfile({ ...input.applicant, amount: amount ?? 0 });
+
+    let range = null;
+    let ltv: number | null = null;
+    let dti: number | null = null;
+    if (product && amount !== undefined) {
+      if (EQUITY.has(product.type)) ltv = computeLtv(profile, amount);
+      if (flowDef.terminal === 'rateRange') {
+        range = evaluateRange(config.rateCard[product.id], { amount, ltv: ltv ?? undefined });
+        if (range) dti = computeDti(profile, range.highPayment);
+      }
     }
 
-    // data_only: product-agnostic; steps come from the chosen modules.
-    const modules = input.modules ?? ['identity', 'employment', 'financial'];
-    const steps: PullStep[] = modules
-      .filter((m) => MODULE_PROVIDERS[m])
-      .map((m) => ({ module: m, ...MODULE_PROVIDERS[m] }));
     const intake: Intake = {
-      intakeId,
+      intakeId: nextId('INTAKE'),
       slug: input.slug,
       flow: input.flow,
-      status: 'data_ready',
+      status: range ? 'rate_ready' : 'data_ready',
       steps,
-      profile: generateMockProfile({ ...input.applicant, amount: 0 }),
+      profile,
+      product,
+      amount,
+      purpose: input.purpose,
+      creditPulled,
+      range,
+      ltv,
+      dti,
+      applicationId: product ? appId(`${input.applicant.fullName}|${input.applicant.email}|${product.id}`) : undefined,
     };
-    this.intakes.set(intakeId, intake);
+    this.intakes.set(intake.intakeId, intake);
     return intake;
   }
 
   async selectTerm(intakeId: string, termMonths: number): Promise<Intake> {
     const intake = this.intakes.get(intakeId);
     if (!intake) throw new Error(`Unknown intake: ${intakeId}`);
-    if (intake.estimate) {
-      const config = requireConfig(intake.slug);
-      // Rebuild the summary so DTI is recomputed for the chosen term.
-      const summary = buildApplicationSummary(
-        config,
-        intake.product!,
-        intake.amount ?? intake.product!.defaultAmount,
-        intake.purpose ?? intake.product!.purposes[0],
-        {
-          fullName: intake.profile.identity.fullName,
-          email: intake.profile.contact.email,
-          phone: intake.profile.contact.phone,
-          amount: intake.amount ?? intake.product!.defaultAmount,
-        },
-      );
-      const chosen = withChosenTerm(summary, termMonths);
-      intake.estimate = chosen.estimate;
-      intake.dti = chosen.dti;
+    if (intake.range) {
+      const range = selectRangeTerm(intake.range, termMonths);
+      intake.range = range;
+      intake.dti = computeDti(intake.profile, range.highPayment);
       intake.status = 'rate_ready';
+      this.intakes.set(intakeId, intake);
     }
-    this.intakes.set(intakeId, intake);
     return intake;
   }
 
@@ -122,14 +109,12 @@ export class MockClient implements WhiteLabelClient {
     const intake = this.intakes.get(intakeId);
     if (!intake) throw new Error(`Unknown intake: ${intakeId}`);
     const flow = getFlow(intake.flow);
-
     switch (flow.terminal) {
       case 'rateRange':
         intake.status = 'routed';
         this.intakes.set(intakeId, intake);
-        return { terminal: 'rateRange', estimate: intake.estimate! };
+        return intake.range ? { terminal: 'rateRange', range: intake.range } : { terminal: 'routeToLo' };
       case 'decision':
-        // Async, bank-owned: we only ever reach "under review" in-session.
         intake.status = 'under_review';
         this.intakes.set(intakeId, intake);
         return { terminal: 'decision', status: 'under_review' };
@@ -142,5 +127,5 @@ export class MockClient implements WhiteLabelClient {
   }
 }
 
-/** Singleton used by the demo journey. */
+/** Singleton used by the demo journey when the backend is not enabled. */
 export const mockClient = new MockClient();

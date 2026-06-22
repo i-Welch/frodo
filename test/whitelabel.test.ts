@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { randomBytes } from 'node:crypto';
 import { encryptField, decryptField } from '../src/crypto/encryption.js';
-import { evaluateRate, selectTerm, amortizedPayment } from '../src/whitelabel/rate-engine.js';
+import { evaluateRange, selectRangeTerm, amortizedPayment } from '../src/whitelabel/rate-engine.js';
 import { generateMockProfile } from '../src/whitelabel/mock.js';
 import type { RateCard } from '../src/whitelabel/types.js';
 
@@ -29,35 +29,41 @@ describe('white-label intake encryption', () => {
   });
 });
 
-describe('white-label rate engine', () => {
+describe('white-label rate engine (no-credit range)', () => {
   const card: RateCard = {
     defaultTermMonths: 180,
     tiers: [
+      { label: 'Excellent', minScore: 760, maxLtv: 0.7, terms: [
+        { termMonths: 120, apr: 0.0749 }, { termMonths: 180, apr: 0.0774 }, { termMonths: 240, apr: 0.0799 },
+      ] },
       { label: 'Strong', minScore: 720, maxLtv: 0.8, terms: [
         { termMonths: 120, apr: 0.0824 }, { termMonths: 180, apr: 0.0849 }, { termMonths: 240, apr: 0.0874 },
       ] },
     ],
-    fallbackTerms: [{ termMonths: 120, apr: 0.1099 }, { termMonths: 180, apr: 0.1124 }],
+    fallbackTerms: [{ termMonths: 120, apr: 0.1099 }, { termMonths: 180, apr: 0.1124 }, { termMonths: 240, apr: 0.1149 }],
   };
 
-  it('picks the tier by score + LTV and defaults to the configured term', () => {
-    const est = evaluateRate(card, { amount: 50000, score: 740, ltv: 0.68 })!;
-    expect(est.tierLabel).toBe('Strong');
-    expect(est.selectedTermMonths).toBe(180);
-    expect(est.options).toHaveLength(3);
-    expect(est.fallback).toBe(false);
+  it('low = best applicable tier, high = fallback (no score used)', () => {
+    const r = evaluateRange(card, { amount: 50000, ltv: 0.68 })!;
+    expect(r.tierLow).toBe('Excellent'); // 0.68 <= 0.7, ordered best-first
+    expect(r.selectedTermMonths).toBe(180);
+    const o = r.options.find((x) => x.termMonths === 180)!;
+    expect(o.lowApr).toBe(0.0774); // min(Excellent, Strong) for 180
+    expect(o.highApr).toBe(0.1124); // fallback 180
+    expect(o.lowPayment).toBeLessThan(o.highPayment);
   });
 
-  it('falls back when no tier matches (low score)', () => {
-    const est = evaluateRate(card, { amount: 50000, score: 600 })!;
-    expect(est.fallback).toBe(true);
+  it('higher LTV drops the excellent tier from the band', () => {
+    const r = evaluateRange(card, { amount: 50000, ltv: 0.78 })!; // excludes Excellent (>0.7)
+    expect(r.tierLow).toBe('Strong');
+    expect(r.options.find((x) => x.termMonths === 180)!.lowApr).toBe(0.0849);
   });
 
-  it('selectTerm switches the offered option', () => {
-    const est = evaluateRate(card, { amount: 50000, score: 740, ltv: 0.68 })!;
-    const updated = selectTerm(est, 240);
-    expect(updated.termMonths).toBe(240);
-    expect(updated.apr).toBe(0.0874);
+  it('selectRangeTerm switches the selected term', () => {
+    const r = evaluateRange(card, { amount: 50000, ltv: 0.5 })!;
+    const u = selectRangeTerm(r, 240);
+    expect(u.termMonths).toBe(240);
+    expect(u.lowApr).toBe(0.0799); // Excellent 240
   });
 
   it('amortized payment is positive and below principal', () => {
