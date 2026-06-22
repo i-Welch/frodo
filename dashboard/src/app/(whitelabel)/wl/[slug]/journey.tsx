@@ -962,8 +962,8 @@ const styles = `
   .wl-banner-badge { flex-shrink: 0; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; background: #fff; color: #0A0A0A; border-radius: 4px; padding: 0.2rem 0.45rem; }
   .wl-banner-text { font-size: 0.78rem; color: #A3A3A3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .wl-banner-text strong { color: #fff; font-weight: 600; }
-  .wl-banner-controls { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; flex-wrap: wrap; justify-content: flex-end; }
-  .wl-banner-toggle { display: flex; gap: 2px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 3px; }
+  .wl-banner-controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; justify-content: flex-end; min-width: 0; }
+  .wl-banner-toggle { display: flex; flex-wrap: wrap; gap: 2px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; padding: 3px; min-width: 0; }
   .wl-tab { font-family: inherit; font-size: 0.74rem; font-weight: 600; color: #A3A3A3; background: transparent; border: none; border-radius: 6px; padding: 0.32rem 0.6rem; cursor: pointer; white-space: nowrap; transition: background 150ms, color 150ms; }
   .wl-tab:hover { color: #fff; }
   .wl-tab-on { background: #fff; color: #0A0A0A; }
@@ -971,6 +971,8 @@ const styles = `
   @media (max-width: 720px) {
     .wl-banner { flex-wrap: wrap; }
     .wl-banner-text { white-space: normal; }
+    .wl-banner-controls { width: 100%; justify-content: flex-start; }
+    .wl-tab { font-size: 0.72rem; padding: 0.3rem 0.5rem; }
   }
 
   .wl-handoff, .wl-handoff * { box-sizing: border-box; }

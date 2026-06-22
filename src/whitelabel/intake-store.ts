@@ -1,6 +1,4 @@
-import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import { putItem, getItem, queryItems } from '../store/base-store.js';
-import { docClient, TABLE_NAME } from '../store/dynamo-client.js';
 import { encryptField, decryptField } from '../crypto/encryption.js';
 import { kmsService } from '../crypto/kms.js';
 import type { EncryptedField } from '../crypto/types.js';
@@ -121,37 +119,7 @@ export async function listIntakesByTenant(
   return { intakes, cursor: result.cursor };
 }
 
-/** Rate flows: persist a re-priced estimate + DTI (plaintext metadata only). */
-export async function updateIntakeEstimate(
-  intakeId: string,
-  estimate: RateEstimate,
-  dti: number | null,
-): Promise<void> {
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: intakeKey(intakeId),
-      UpdateExpression: 'SET #estimate = :estimate, #dti = :dti, #status = :status',
-      ExpressionAttributeNames: { '#estimate': 'estimate', '#dti': 'dti', '#status': 'status' },
-      ExpressionAttributeValues: { ':estimate': estimate, ':dti': dti, ':status': 'rate_ready' },
-    }),
-  );
-}
-
-/** Terminal transition: set status and drop the abandonment TTL so it persists. */
-export async function updateIntakeStatus(intakeId: string, status: IntakeStatus): Promise<void> {
-  const terminal = TERMINAL.includes(status);
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: intakeKey(intakeId),
-      UpdateExpression: terminal
-        ? 'SET #status = :status REMOVE #ttl'
-        : 'SET #status = :status',
-      ExpressionAttributeNames: terminal
-        ? { '#status': 'status', '#ttl': 'ttl' }
-        : { '#status': 'status' },
-      ExpressionAttributeValues: { ':status': status },
-    }),
-  );
-}
+// Updates go through putIntake (PutItem), not UpdateItem: re-putting the whole
+// record keeps writes to a single authorized action and re-stamps the TTL
+// correctly (dropped once terminal). Re-encryption per update is cheap at this
+// volume. See the service layer (chooseTerm / submitIntake).

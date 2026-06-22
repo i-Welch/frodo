@@ -1,16 +1,10 @@
 import { randomUUID } from 'node:crypto';
-import type { FlowKind, Intake, ModuleName, PullStep, SubmitResult, WhiteLabelConfig } from './types.js';
+import type { FlowKind, Intake, IntakeStatus, ModuleName, PullStep, SubmitResult, WhiteLabelConfig } from './types.js';
 import { resolveSlug, getConfigByTenant } from './config-store.js';
 import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
 import { evaluateRate, selectTerm as selectTermOnEstimate, computeLtv, computeDti } from './rate-engine.js';
-import {
-  putIntake,
-  getStoredIntake,
-  updateIntakeEstimate,
-  updateIntakeStatus,
-  listIntakesByTenant,
-} from './intake-store.js';
+import { putIntake, getStoredIntake, listIntakesByTenant } from './intake-store.js';
 
 /**
  * Intake orchestration. The single Intake entity is persisted to DynamoDB
@@ -108,31 +102,45 @@ export async function chooseTerm(intakeId: string, termMonths: number): Promise<
   const intake = await getStoredIntake(intakeId);
   if (!intake) return undefined;
   if (!intake.estimate) return intake;
+  const tenant = await resolveSlug(intake.slug);
+  if (!tenant) return intake;
   const estimate = selectTermOnEstimate(intake.estimate, termMonths);
   const dti = computeDti(intake.profile, estimate.monthlyPayment);
-  await updateIntakeEstimate(intakeId, estimate, dti);
-  return { ...intake, estimate, dti, status: 'rate_ready' };
+  const updated: Intake = { ...intake, estimate, dti, status: 'rate_ready' };
+  await putIntake({ ...updated, tenantId: tenant.tenantId });
+  return updated;
 }
 
 export async function submitIntake(intakeId: string): Promise<SubmitResult | undefined> {
   const intake = await getStoredIntake(intakeId);
   if (!intake) return undefined;
+  const tenant = await resolveSlug(intake.slug);
+  if (!tenant) return undefined;
   const flowDef = getFlow(intake.flow);
+
+  let status: IntakeStatus;
+  let result: SubmitResult;
   switch (flowDef.terminal) {
+    case 'decision':
+      status = 'under_review';
+      result = { terminal: 'decision', status: 'under_review' };
+      break;
     case 'rateRange':
-      await updateIntakeStatus(intakeId, 'routed');
+      status = 'routed';
       // A rate_range product without a configured rate card has no estimate;
       // fall through to a loan-officer handoff rather than asserting one.
-      if (intake.estimate) return { terminal: 'rateRange', estimate: intake.estimate };
-      return { terminal: 'routeToLo' };
-    case 'decision':
-      await updateIntakeStatus(intakeId, 'under_review');
-      return { terminal: 'decision', status: 'under_review' };
+      result = intake.estimate
+        ? { terminal: 'rateRange', estimate: intake.estimate }
+        : { terminal: 'routeToLo' };
+      break;
     case 'routeToLo':
     default:
-      await updateIntakeStatus(intakeId, 'routed');
-      return { terminal: 'routeToLo' };
+      status = 'routed';
+      result = { terminal: 'routeToLo' };
   }
+
+  await putIntake({ ...intake, status, tenantId: tenant.tenantId });
+  return result;
 }
 
 /** LO queue listing (used by the dashboard). */
