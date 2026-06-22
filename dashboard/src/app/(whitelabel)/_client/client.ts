@@ -67,6 +67,20 @@ export type SubmitResult =
   | { terminal: 'rateRange'; range: RateRange }
   | { terminal: 'decision'; status: 'under_review' };
 
+/** Borrower contact info captured by the LO when requesting verification. */
+export interface VerifyApplicant {
+  fullName: string;
+  email: string;
+  phone?: string;
+}
+
+/** Data a verification link resolves to (drives the data_only journey). */
+export interface VerifyRequestData {
+  slug: string;
+  modules: string[];
+  applicant: VerifyApplicant;
+}
+
 export interface WhiteLabelClient {
   /** Create the intake and run enrichment (mock returns it ready). */
   startIntake(input: StartIntakeInput): Promise<Intake>;
@@ -74,6 +88,10 @@ export interface WhiteLabelClient {
   selectTerm(intakeId: string, termMonths: number): Promise<Intake>;
   /** Reach the flow's terminal (route to LO, show range, or submit for decision). */
   submit(intakeId: string): Promise<SubmitResult>;
+  /** LO "send a link": store a verification request, return an opaque token. */
+  createVerifyRequest(input: { slug: string; modules: string[]; applicant: VerifyApplicant }): Promise<{ token: string }>;
+  /** Resolve a verification token to the journey prefill, or null if invalid/expired. */
+  getVerifyRequest(token: string): Promise<VerifyRequestData | null>;
 }
 
 /** Default module -> provider/label mapping for product-agnostic data_only pulls. */

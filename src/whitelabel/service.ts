@@ -5,6 +5,7 @@ import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
 import { evaluateRange, evaluatePoint, selectRangeTerm, computeLtv, computeDti } from './rate-engine.js';
 import { putIntake, getStoredIntake, listIntakesByTenant } from './intake-store.js';
+import { createVerifyRequest, getVerifyRequest } from './verify-request-store.js';
 
 /**
  * Intake orchestration. The single Intake entity is persisted to DynamoDB
@@ -163,4 +164,43 @@ export async function submitIntake(intakeId: string): Promise<SubmitResult | und
 /** LO queue listing (used by the dashboard). */
 export async function listIntakes(tenantId: string, opts?: { limit?: number; cursor?: string }) {
   return listIntakesByTenant(tenantId, opts);
+}
+
+const KNOWN_MODULES: ReadonlySet<ModuleName> = new Set<ModuleName>([
+  'identity', 'contact', 'residence', 'employment', 'financial', 'credit',
+]);
+
+/**
+ * Create a verification link: a loan officer's request for a borrower to verify
+ * a predetermined set of modules. Returns an opaque token; the borrower's
+ * contact info is stored encrypted and never travels in the URL.
+ */
+export async function createVerifyLink(input: {
+  slug: string;
+  modules?: string[];
+  applicant: { fullName: string; email: string; phone?: string };
+}): Promise<{ token: string }> {
+  const tenant = await resolveSlug(input.slug);
+  if (!tenant) throw new Error(`Unknown white-label slug: ${input.slug}`);
+
+  const requested = (input.modules ?? DEFAULT_DATA_ONLY_MODULES) as ModuleName[];
+  const modules = requested.filter((m) => KNOWN_MODULES.has(m));
+  const finalModules = modules.length > 0 ? modules : DEFAULT_DATA_ONLY_MODULES;
+
+  const rec = await createVerifyRequest({
+    tenantId: tenant.tenantId,
+    slug: input.slug,
+    modules: finalModules,
+    applicant: input.applicant,
+  });
+  return { token: rec.token };
+}
+
+/** Resolve a verification link token to the data the borrower journey needs. */
+export async function resolveVerifyLink(
+  token: string,
+): Promise<{ slug: string; modules: ModuleName[]; applicant: { fullName: string; email: string; phone?: string } } | undefined> {
+  const rec = await getVerifyRequest(token);
+  if (!rec) return undefined;
+  return { slug: rec.slug, modules: rec.modules, applicant: rec.applicant };
 }

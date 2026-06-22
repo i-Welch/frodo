@@ -7,7 +7,14 @@
  * backend (no CORS); set NEXT_PUBLIC_API_URL to call a backend origin directly.
  */
 
-import type { Intake, StartIntakeInput, SubmitResult, WhiteLabelClient } from './client';
+import type {
+  Intake,
+  StartIntakeInput,
+  SubmitResult,
+  WhiteLabelClient,
+  VerifyApplicant,
+  VerifyRequestData,
+} from './client';
 
 // Always relative: the browser hits the same origin (e.g. <bank>.submit.loans)
 // and Next's rewrite proxies /api/* to the backend server-side, so there is no
@@ -69,5 +76,18 @@ export class ApiClient implements WhiteLabelClient {
 
   async submit(intakeId: string): Promise<SubmitResult> {
     return req<SubmitResult>(`/intake/${intakeId}/submit`, { method: 'POST' });
+  }
+
+  async createVerifyRequest(input: { slug: string; modules: string[]; applicant: VerifyApplicant }): Promise<{ token: string }> {
+    return req<{ token: string }>('/verify-request', { method: 'POST', body: JSON.stringify(input) });
+  }
+
+  async getVerifyRequest(token: string): Promise<VerifyRequestData | null> {
+    try {
+      return await req<VerifyRequestData>(`/verify-request/${encodeURIComponent(token)}`);
+    } catch {
+      // 404 (unknown/expired) or any transient error -> treat as unresolvable.
+      return null;
+    }
   }
 }

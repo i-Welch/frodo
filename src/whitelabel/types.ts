@@ -72,6 +72,21 @@ export type ModuleName =
   | 'financial'
   | 'credit';
 
+/**
+ * A loan-officer-issued verification request. The opaque `token` is the only
+ * thing that travels in the link the borrower receives; their contact info is
+ * stored encrypted at rest and resolved server-side, so no PII ever appears in
+ * the URL. Short-lived (TTL), like a password-reset link.
+ */
+export interface VerifyRequest {
+  token: string;
+  tenantId: string;
+  slug: string;
+  modules: ModuleName[];
+  applicant: { fullName: string; email: string; phone?: string };
+  createdAt: string;
+}
+
 export type ProviderName =
   | 'Plaid'
   | 'Socure'

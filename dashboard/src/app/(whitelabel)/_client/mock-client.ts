@@ -8,7 +8,15 @@
  * production goes through the ApiClient to the real backend.
  */
 
-import type { WhiteLabelClient, Intake, StartIntakeInput, SubmitResult, PullStep } from './client';
+import type {
+  WhiteLabelClient,
+  Intake,
+  StartIntakeInput,
+  SubmitResult,
+  PullStep,
+  VerifyApplicant,
+  VerifyRequestData,
+} from './client';
 import { MODULE_PROVIDERS } from './client';
 import { getWlConfig } from '../_config/registry';
 import { getFlow } from '../_config/flows';
@@ -128,7 +136,27 @@ export class MockClient implements WhiteLabelClient {
         return { terminal: 'routeToLo' };
     }
   }
+
+  // Verification links. The demo has no backend, so requests are kept in
+  // localStorage keyed by token — same-origin, so the link resolves even when
+  // opened in a new tab. (Production uses the ApiClient + encrypted DynamoDB.)
+  async createVerifyRequest(input: { slug: string; modules: string[]; applicant: VerifyApplicant }): Promise<{ token: string }> {
+    const rand = Math.random().toString(36).slice(2, 12);
+    const token = `vr_${Date.now().toString(36)}${rand}`;
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(VERIFY_KEY(token), JSON.stringify(input));
+    }
+    return { token };
+  }
+
+  async getVerifyRequest(token: string): Promise<VerifyRequestData | null> {
+    if (typeof window === 'undefined') return null;
+    const raw = window.localStorage.getItem(VERIFY_KEY(token));
+    return raw ? (JSON.parse(raw) as VerifyRequestData) : null;
+  }
 }
+
+const VERIFY_KEY = (token: string) => `raven_vr_${token}`;
 
 /** Singleton used by the demo journey when the backend is not enabled. */
 export const mockClient = new MockClient();

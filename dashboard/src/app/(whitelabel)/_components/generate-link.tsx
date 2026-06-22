@@ -1,7 +1,8 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import type { WhiteLabelConfig } from '../_config/types';
+import { client } from '../_client';
 
 /**
  * Loan-officer tool: compose a verification request for a borrower.
@@ -49,6 +50,8 @@ function GenerateLinkModal({ config, onClose }: { config: WhiteLabelConfig; onCl
   const [phone, setPhone] = useState('');
   const [selected, setSelected] = useState<string[]>(DEFAULT_SELECTED);
   const [link, setLink] = useState<string | null>(null);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   const channel = email && phone ? 'email and text' : email ? 'email' : phone ? 'text message' : '';
@@ -58,16 +61,29 @@ function GenerateLinkModal({ config, onClose }: { config: WhiteLabelConfig; onCl
     setSelected((s) => (s.includes(m) ? s.filter((x) => x !== m) : [...s, m]));
   }
 
-  function generate() {
-    if (!canSend) return;
-    const params = new URLSearchParams();
-    params.set('m', selected.join(','));
-    if (name.trim()) params.set('name', name.trim());
-    if (email.trim()) params.set('email', email.trim());
-    if (phone.trim()) params.set('phone', phone.trim());
-    const origin = typeof window !== 'undefined' ? window.location.origin : '';
-    setLink(`${origin}/wl/${config.slug}/verify?${params.toString()}`);
-    setCopied(false);
+  async function generate() {
+    if (!canSend || sending) return;
+    setSending(true);
+    setError(null);
+    try {
+      // Store the request server-side; only the opaque token travels in the link.
+      const { token } = await client.createVerifyRequest({
+        slug: config.slug,
+        modules: selected,
+        applicant: {
+          fullName: name.trim(),
+          email: email.trim(),
+          phone: phone.trim() || undefined,
+        },
+      });
+      const origin = typeof window !== 'undefined' ? window.location.origin : '';
+      setLink(`${origin}/wl/${config.slug}/verify/${token}`);
+      setCopied(false);
+    } catch {
+      setError('Could not create the verification request. Please try again.');
+    } finally {
+      setSending(false);
+    }
   }
 
   async function copy() {
@@ -125,12 +141,16 @@ function GenerateLinkModal({ config, onClose }: { config: WhiteLabelConfig; onCl
               })}
             </div>
 
-            <button type="button" className="gl-send" disabled={!canSend} onClick={generate}>
-              Send verification request
+            <button type="button" className="gl-send" disabled={!canSend || sending} onClick={generate}>
+              {sending ? 'Sending…' : 'Send verification request'}
             </button>
-            <p className="gl-hint">
-              You&rsquo;ll be notified the moment {name.trim() || 'they'} finishes.
-            </p>
+            {error ? (
+              <p className="gl-error">{error}</p>
+            ) : (
+              <p className="gl-hint">
+                You&rsquo;ll be notified the moment {name.trim() || 'they'} finishes.
+              </p>
+            )}
           </>
         ) : (
           <>
@@ -193,6 +213,7 @@ const modalStyles = `
   .gl-send:hover:not(:disabled) { background: #004d34; }
   .gl-send:disabled { opacity: 0.45; cursor: not-allowed; }
   .gl-hint { font-size: 0.74rem; color: #98a2b3; text-align: center; margin: 0.7rem 0 0; }
+  .gl-error { font-size: 0.78rem; color: #d92d20; text-align: center; margin: 0.7rem 0 0; }
 
   .gl-demo-badge { display: inline-block; font-size: 0.62rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #6941c6; background: #f4ebff; border: 1px solid #e9d7fe; border-radius: 999px; padding: 0.25rem 0.6rem; margin-bottom: 0.7rem; }
   .gl-link-box { display: flex; gap: 0.5rem; margin-bottom: 0.85rem; }

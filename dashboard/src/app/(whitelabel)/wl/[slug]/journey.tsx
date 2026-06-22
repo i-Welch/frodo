@@ -38,17 +38,15 @@ export function Journey({
   config,
   initialFlow,
   showChrome = true,
-  prefill,
+  verifyToken,
 }: {
   config: WhiteLabelConfig;
   initialFlow: FlowKind;
   showChrome?: boolean;
-  /** Seeded from a generated verification link (LO view): predetermined modules
-   * + the borrower's contact info. */
-  prefill?: {
-    modules?: string[];
-    applicant?: { fullName: string; email: string; phone: string };
-  };
+  /** Opaque token from a verification link (/wl/<slug>/verify/<token>). Resolved
+   * server-side to the predetermined modules + the borrower's contact info; no
+   * PII travels in the URL. */
+  verifyToken?: string;
 }) {
   const b = config.branding;
   const allowedFlows = config.defaultFlows ?? (['rate_range'] as FlowKind[]);
@@ -62,15 +60,42 @@ export function Journey({
   const [amount, setAmount] = useState(50000);
   const [product, setProduct] = useState<WLProduct | null>(null);
   // data_only: the modules are predetermined by the link the requester generates
-  // (the customer doesn't choose). A verification link supplies them; otherwise
-  // the demo uses a fixed default set. Only known module ids are honored.
-  const [modules] = useState<string[]>(() => {
-    const fromLink = prefill?.modules?.filter((m) => m in MODULE_LABELS);
-    return fromLink && fromLink.length > 0 ? fromLink : DEFAULT_DATA_ONLY_MODULES;
-  });
-  const [applicant, setApplicant] = useState(
-    prefill?.applicant ?? { fullName: '', email: '', phone: '' },
+  // (the customer doesn't choose). A verification link supplies them via the
+  // token; otherwise the demo uses a fixed default set.
+  const [modules, setModules] = useState<string[]>(DEFAULT_DATA_ONLY_MODULES);
+  const [applicant, setApplicant] = useState({ fullName: '', email: '', phone: '' });
+
+  // Resolve a verification token to its prefill (modules + applicant). Until it
+  // resolves we hold the journey on a loading card; an unknown/expired token
+  // shows a friendly dead end rather than a generic flow.
+  const [verifyState, setVerifyState] = useState<'loading' | 'ready' | 'expired'>(
+    verifyToken ? 'loading' : 'ready',
   );
+  useEffect(() => {
+    if (!verifyToken) return;
+    let active = true;
+    client
+      .getVerifyRequest(verifyToken)
+      .then((data) => {
+        if (!active) return;
+        if (!data) {
+          setVerifyState('expired');
+          return;
+        }
+        const known = data.modules.filter((m) => m in MODULE_LABELS);
+        if (known.length > 0) setModules(known);
+        setApplicant({
+          fullName: data.applicant.fullName ?? '',
+          email: data.applicant.email ?? '',
+          phone: data.applicant.phone ?? '',
+        });
+        setVerifyState('ready');
+      })
+      .catch(() => active && setVerifyState('expired'));
+    return () => {
+      active = false;
+    };
+  }, [verifyToken]);
 
   // Server-side (client seam) results
   const [intake, setIntake] = useState<Intake | null>(null);
@@ -210,6 +235,27 @@ export function Journey({
   const onBack = stageIndex > 0 ? back : undefined;
 
   function renderStage() {
+    // A verification link must resolve before the journey can run: it supplies
+    // the predetermined modules and the borrower's prefilled info.
+    if (verifyState === 'loading') {
+      return (
+        <div className="wl-card wl-step wl-verify-state">
+          <span className="wl-spinner" aria-hidden="true" />
+          <p>Opening your secure verification request…</p>
+        </div>
+      );
+    }
+    if (verifyState === 'expired') {
+      return (
+        <div className="wl-card wl-step wl-verify-state">
+          <h2>This link has expired</h2>
+          <p className="wl-lede">
+            Verification links are valid for a limited time. Please contact {b.shortName} to request a
+            new one.
+          </p>
+        </div>
+      );
+    }
     switch (stage) {
       case 'frontDoor':
         return (
@@ -1078,6 +1124,12 @@ const styles = `
   .wl-data-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
   .wl-data-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 600; color: var(--wl-text); }
   .wl-data-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; background: var(--wl-primary); color: #fff; display: flex; align-items: center; justify-content: center; }
+
+  /* Verification-link resolution (loading / expired) */
+  .wl-verify-state { text-align: center; }
+  .wl-verify-state p { color: var(--wl-muted); font-size: 0.92rem; line-height: 1.55; }
+  .wl-spinner { display: inline-block; width: 30px; height: 30px; margin-bottom: 1rem; border: 3px solid color-mix(in srgb, var(--wl-primary) 22%, transparent); border-top-color: var(--wl-primary); border-radius: 50%; animation: wlSpin 720ms linear infinite; }
+  @keyframes wlSpin { to { transform: rotate(360deg); } }
 
   /* Consent */
   .wl-consent { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--wl-text); line-height: 1.5; margin: 0.5rem 0 1.5rem; cursor: pointer; }

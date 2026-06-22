@@ -15,4 +15,4 @@ export const client: WhiteLabelClient =
   process.env.NEXT_PUBLIC_WL_BACKEND === '1' ? new ApiClient() : mockClient;
 
 export type { WhiteLabelClient } from './client';
-export type { Intake, StartIntakeInput, SubmitResult, PullStep } from './client';
+export type { Intake, StartIntakeInput, SubmitResult, PullStep, VerifyApplicant, VerifyRequestData } from './client';

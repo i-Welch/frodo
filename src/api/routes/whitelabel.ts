@@ -2,7 +2,14 @@ import { Elysia, t } from 'elysia';
 import type { FlowKind, ModuleName } from '../../whitelabel/types.js';
 import { getConfig, toPublicConfig } from '../../whitelabel/config-store.js';
 import { getFlow, resolveFlow } from '../../whitelabel/flows.js';
-import { startIntake, getIntake, chooseTerm, submitIntake } from '../../whitelabel/service.js';
+import {
+  startIntake,
+  getIntake,
+  chooseTerm,
+  submitIntake,
+  createVerifyLink,
+  resolveVerifyLink,
+} from '../../whitelabel/service.js';
 
 /**
  * White-label borrower experience API.
@@ -117,4 +124,47 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
       return result;
     },
     { params: t.Object({ id: t.String() }) },
+  )
+  // Create a verification request (LO "send a link"). Returns an opaque token;
+  // the borrower's contact info is stored encrypted, never in the URL.
+  .post(
+    '/verify-request',
+    async ({ body, set }) => {
+      const config = await getConfig(body.slug);
+      if (!config) {
+        set.status = 404;
+        return { error: 'unknown_tenant' };
+      }
+      const { token } = await createVerifyLink({
+        slug: body.slug,
+        modules: body.modules,
+        applicant: body.applicant,
+      });
+      set.status = 201;
+      return { token };
+    },
+    {
+      body: t.Object({
+        slug: t.String(),
+        modules: t.Optional(t.Array(t.String())),
+        applicant: t.Object({
+          fullName: t.String({ minLength: 2 }),
+          email: t.String({ format: 'email' }),
+          phone: t.Optional(t.String()),
+        }),
+      }),
+    },
+  )
+  // Resolve a verification token to the journey's prefill (modules + applicant).
+  .get(
+    '/verify-request/:token',
+    async ({ params, set }) => {
+      const resolved = await resolveVerifyLink(params.token);
+      if (!resolved) {
+        set.status = 404;
+        return { error: 'unknown_or_expired' };
+      }
+      return resolved;
+    },
+    { params: t.Object({ token: t.String() }) },
   );
