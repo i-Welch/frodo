@@ -508,6 +508,10 @@ const styles = `
   .aud-cta p { font-size:0.95rem; color:var(--g400); margin-bottom:2rem; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7; }
   .aud-sources { font-size:0.75rem; color:var(--g600); line-height:1.7; margin-top:1.25rem; font-style:italic; }
 
+  /* The WhiteLabelPrompt modal portals to document.body, outside .aud-shell, so
+     it can't see the shell-scoped color vars. Provide them on the portal root. */
+  .demo-modal-overlay { --black:#0A0A0A; --white:#fff; --g500:#737373; --gray-400:#A3A3A3; --gray-500:#737373; }
+
   .interest-form { max-width:520px; margin:0 auto; }
   .form-row { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; }
   .form-input { font-family:'DM Sans',sans-serif; font-size:0.9rem; padding:0.8rem 1rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:var(--white); outline:none; transition:border-color 200ms; flex:1; min-width:160px; }
