@@ -118,7 +118,7 @@ Here is the thing: First Reliance does not look like a bank waiting on a battery
 
 They have branches in Greenville, Mount Pleasant, Myrtle Beach, Columbia, Lexington, Simpsonville, and West Columbia. Florence is home base, with two branches there. But the loan production across those other markets is what is driving the 10.9% annualized growth. Greenville and the Charleston suburbs are among the strongest commercial real estate markets in the Southeast. Myrtle Beach is a deposit machine.
 
-A bank founded in Florence in 1999 quietly built a statewide footprint over 25 years. That decision looks smart right now.
+A bank founded in Florence in 1999 quietly built a statewide footprint over 25 years. Rick Saunders, who started First Reliance and still runs it as CEO, has a line for why: "Every time we grow, the money comes back to Florence County." That decision looks smart right now.
 
 The CRE concentration (59% of the loan book) is worth watching in any environment, but the quality numbers are clean. $2.1 million in nonperforming assets on a $1.12 billion balance sheet is effectively nothing. An allowance coverage ratio of 1.14% against that NPA level means the reserve is conservatively set relative to actual stress.
 
