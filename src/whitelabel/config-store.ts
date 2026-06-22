@@ -1,50 +1,84 @@
+import { putItem, getItem } from '../store/base-store.js';
 import type { PublicWhiteLabelConfig, WhiteLabelConfig } from './types.js';
-import { arthurStateBank } from './arthur-state-bank.js';
 
 /**
- * White-label config + tenant resolution.
+ * White-label config + tenant resolution, persisted in DynamoDB (main table).
  *
- * Config and the slug/host -> tenant resolution are seeded in-memory here
- * (config is bank branding/rates, not PII). Persisting WhiteLabelConfig per
- * tenant (PK=TENANT#<id>, SK=WLCONFIG) and the WLSLUG#/HOST# lookup records to
- * DynamoDB is the documented next step; the intake store (the PII-bearing
- * entity) is already DynamoDB-backed and encrypted. Resolution returns the
- * tenantId + mode used to key and partition intakes.
+ *   PK=TENANT#<tenantId>  SK=WLCONFIG          -> the config (not PII, plaintext)
+ *   PK=WLSLUG#<slug>      SK=METADATA          -> { tenantId, mode }  (path entry)
+ *   PK=HOST#<hostname>    SK=METADATA          -> { tenantId, slug, mode }  (subdomain/custom domain)
+ *
+ * Resolution: slug/host -> tenantId(+mode) -> WLCONFIG. Seed with
+ * scripts/seed-whitelabel.ts. (Intake PII lives in its own encrypted store.)
  */
 
-interface TenantResolution {
+export interface TenantRef {
   tenantId: string;
-  slug: string;
   mode: 'demo' | 'live';
-  hosts: string[];
 }
 
-const TENANTS: TenantResolution[] = [
-  {
-    tenantId: 'tnt_arthur_state',
-    slug: 'arthur-state-bank',
-    mode: 'demo',
-    hosts: ['arthur-state-bank.submit.loans'],
-  },
-];
-
-const CONFIGS: WhiteLabelConfig[] = [arthurStateBank];
-
-export function getConfig(slug: string): WhiteLabelConfig | undefined {
-  return CONFIGS.find((c) => c.slug === slug);
+function configKey(tenantId: string) {
+  return { PK: `TENANT#${tenantId}`, SK: 'WLCONFIG' };
+}
+function slugKey(slug: string) {
+  return { PK: `WLSLUG#${slug}`, SK: 'METADATA' };
+}
+function hostKey(host: string) {
+  return { PK: `HOST#${host.toLowerCase()}`, SK: 'METADATA' };
 }
 
-/** Resolve a path slug to its tenant + mode. */
-export function resolveSlug(slug: string): { tenantId: string; mode: 'demo' | 'live' } | undefined {
-  const t = TENANTS.find((x) => x.slug === slug);
-  return t ? { tenantId: t.tenantId, mode: t.mode } : undefined;
+// --- reads -----------------------------------------------------------------
+
+export async function resolveSlug(slug: string): Promise<TenantRef | undefined> {
+  const item = await getItem(slugKey(slug));
+  if (!item) return undefined;
+  return { tenantId: item.tenantId as string, mode: item.mode as 'demo' | 'live' };
 }
 
-/** Resolve a hostname (submit.loans subdomain or custom domain) to its tenant. */
-export function resolveHost(host: string): { tenantId: string; slug: string; mode: 'demo' | 'live' } | undefined {
-  const t = TENANTS.find((x) => x.hosts.includes(host.toLowerCase()));
-  return t ? { tenantId: t.tenantId, slug: t.slug, mode: t.mode } : undefined;
+export async function resolveHost(
+  host: string,
+): Promise<{ tenantId: string; slug: string; mode: 'demo' | 'live' } | undefined> {
+  const item = await getItem(hostKey(host));
+  if (!item) return undefined;
+  return {
+    tenantId: item.tenantId as string,
+    slug: item.slug as string,
+    mode: item.mode as 'demo' | 'live',
+  };
 }
+
+export async function getConfigByTenant(tenantId: string): Promise<WhiteLabelConfig | undefined> {
+  const item = await getItem(configKey(tenantId));
+  return item ? (item.config as WhiteLabelConfig) : undefined;
+}
+
+/** Convenience: resolve a slug and load its config in one call. */
+export async function getConfig(slug: string): Promise<WhiteLabelConfig | undefined> {
+  const ref = await resolveSlug(slug);
+  if (!ref) return undefined;
+  return getConfigByTenant(ref.tenantId);
+}
+
+// --- writes (seed / admin) -------------------------------------------------
+
+export async function putWhiteLabelConfig(tenantId: string, config: WhiteLabelConfig): Promise<void> {
+  await putItem({ ...configKey(tenantId), config, version: 1, updatedAt: new Date().toISOString() });
+}
+
+export async function putSlugRecord(slug: string, tenantId: string, mode: 'demo' | 'live'): Promise<void> {
+  await putItem({ ...slugKey(slug), tenantId, mode });
+}
+
+export async function putHostRecord(
+  host: string,
+  tenantId: string,
+  slug: string,
+  mode: 'demo' | 'live',
+): Promise<void> {
+  await putItem({ ...hostKey(host), tenantId, slug, mode });
+}
+
+// --- projection ------------------------------------------------------------
 
 /** Strip server-only internals (rate grid, provider routing, core internals). */
 export function toPublicConfig(config: WhiteLabelConfig): PublicWhiteLabelConfig {

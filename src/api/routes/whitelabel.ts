@@ -16,8 +16,8 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
   // Resolve the public config + the active flow for an entry.
   .get(
     '/context',
-    ({ query, set }) => {
-      const config = getConfig(query.slug);
+    async ({ query, set }) => {
+      const config = await getConfig(query.slug);
       if (!config) {
         set.status = 404;
         return { error: 'unknown_tenant' };
@@ -37,7 +37,7 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
   .post(
     '/intake',
     async ({ body, set }) => {
-      const config = getConfig(body.slug);
+      const config = await getConfig(body.slug);
       if (!config) {
         set.status = 404;
         return { error: 'unknown_tenant' };

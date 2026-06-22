@@ -1,6 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import type { FlowKind, Intake, ModuleName, PullStep, SubmitResult, WhiteLabelConfig } from './types.js';
-import { getConfig, resolveSlug } from './config-store.js';
+import { resolveSlug, getConfigByTenant } from './config-store.js';
 import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
 import { evaluateRate, selectTerm as selectTermOnEstimate, computeLtv, computeDti } from './rate-engine.js';
@@ -51,9 +51,10 @@ export interface StartIntakeInput {
 }
 
 export async function startIntake(input: StartIntakeInput): Promise<Intake> {
-  const config = getConfig(input.slug);
-  const tenant = resolveSlug(input.slug);
-  if (!config || !tenant) throw new Error(`Unknown white-label slug: ${input.slug}`);
+  const tenant = await resolveSlug(input.slug);
+  if (!tenant) throw new Error(`Unknown white-label slug: ${input.slug}`);
+  const config = await getConfigByTenant(tenant.tenantId);
+  if (!config) throw new Error(`No white-label config for tenant: ${tenant.tenantId}`);
   const flowDef = getFlow(input.flow);
   const providers = providerSetForMode(tenant.mode);
 
