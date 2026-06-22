@@ -62,6 +62,7 @@ export function Journey({
   const [intake, setIntake] = useState<Intake | null>(null);
   const [submitResult, setSubmitResult] = useState<SubmitResult | null>(null);
   const [busy, setBusy] = useState(false);
+  const advancingRef = useRef(false);
 
   // Demo officer view
   const [showLo, setShowLo] = useState(false);
@@ -122,7 +123,11 @@ export function Journey({
   // entering dataPull starts the intake; entering confirmation submits it.
   const advance = useCallback(async () => {
     const next = stages[stageIndex + 1];
-    if (!next || busy) return;
+    // Ref guard blocks same-tick re-entry (a fast double-click would otherwise
+    // advance twice, skipping a stage and double-firing the intake). The `busy`
+    // state is only for disabling UI.
+    if (!next || advancingRef.current) return;
+    advancingRef.current = true;
     setBusy(true);
     try {
       let current = intake;
@@ -140,9 +145,10 @@ export function Journey({
       setStageIndex((i) => i + 1);
     } finally {
       setBusy(false);
+      advancingRef.current = false;
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stages, stageIndex, busy, intake, submitResult, flow, product, amount, purpose, applicant, modules]);
+  }, [stages, stageIndex, intake, submitResult, flow, product, amount, purpose, applicant, modules]);
 
   const back = useCallback(() => setStageIndex((i) => Math.max(0, i - 1)), []);
 

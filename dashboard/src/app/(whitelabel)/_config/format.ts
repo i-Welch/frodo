@@ -1,9 +1,6 @@
 export const usd = (n: number) =>
   n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
 
-export const usd2 = (n: number) =>
-  n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
-
 export const pct = (n: number) => `${(n * 100).toFixed(2)}%`;
 
 /** Pick "a"/"an" for the given word (vowel-sound heuristic on the first letter,

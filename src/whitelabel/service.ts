@@ -121,7 +121,10 @@ export async function submitIntake(intakeId: string): Promise<SubmitResult | und
   switch (flowDef.terminal) {
     case 'rateRange':
       await updateIntakeStatus(intakeId, 'routed');
-      return { terminal: 'rateRange', estimate: intake.estimate! };
+      // A rate_range product without a configured rate card has no estimate;
+      // fall through to a loan-officer handoff rather than asserting one.
+      if (intake.estimate) return { terminal: 'rateRange', estimate: intake.estimate };
+      return { terminal: 'routeToLo' };
     case 'decision':
       await updateIntakeStatus(intakeId, 'under_review');
       return { terminal: 'decision', status: 'under_review' };

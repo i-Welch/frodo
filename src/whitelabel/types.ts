@@ -123,7 +123,7 @@ export interface WhiteLabelConfig {
 export interface PublicWhiteLabelConfig {
   slug: string;
   branding: WLBranding;
-  products: Omit<WLProduct, never>[];
+  products: WLProduct[];
   defaultFlows: FlowKind[];
   purposes: { value: string; label: string }[];
   coreSyncDisplayName: string;
