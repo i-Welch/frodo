@@ -25,6 +25,7 @@ import { verificationRoutes } from './api/routes/verifications.js';
 import { reportRoutes } from './api/routes/report.js';
 import { interestRoutes } from './api/routes/interest.js';
 import { whitelabelRoutes } from './api/routes/whitelabel.js';
+import { whitelabelAdminRoutes } from './api/routes/whitelabel-admin.js';
 import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
@@ -189,6 +190,7 @@ const app = new Elysia()
   .use(reportRoutes)
   .use(interestRoutes)
   .use(whitelabelRoutes)
+  .use(whitelabelAdminRoutes)
   .listen(config.port);
 
 logger.info(
