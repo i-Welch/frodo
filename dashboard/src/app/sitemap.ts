@@ -87,7 +87,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://reportraven.tech/roi/first-reliance-bank',
+      url: 'https://reportraven.tech/audit/first-reliance-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -99,7 +99,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://reportraven.tech/roi/colony-bankcorp',
+      url: 'https://reportraven.tech/audit/colony-bankcorp',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -111,7 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://reportraven.tech/roi/carolina-bank-trust',
+      url: 'https://reportraven.tech/audit/carolina-bank-trust',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
@@ -129,31 +129,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: 'https://reportraven.tech/roi/coastal-states-bank',
+      url: 'https://reportraven.tech/audit/coastal-states-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://reportraven.tech/roi/oconee-federal',
+      url: 'https://reportraven.tech/audit/oconee-federal',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://reportraven.tech/roi/arthur-state-bank',
+      url: 'https://reportraven.tech/audit/arthur-state-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://reportraven.tech/roi/anderson-brothers-bank',
+      url: 'https://reportraven.tech/audit/anderson-brothers-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,
     },
     {
-      url: 'https://reportraven.tech/roi/southern-first-bank',
+      url: 'https://reportraven.tech/audit/southern-first-bank',
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.6,

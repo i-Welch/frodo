@@ -1,0 +1,271 @@
+[
+  {
+    "slug": "first-reliance-bank",
+    "bankName": "First Reliance Bank",
+    "shortName": "First Reliance",
+    "auditDate": "June 2026",
+    "demoSlug": "first-reliance-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$1.12B" },
+      { "label": "Branches", "value": "~13 across SC" },
+      { "label": "Online application portals", "value": "3 separate vendors" },
+      { "label": "Digital banking", "value": "Jack Henry (likely)" }
+    ],
+    "summary": "First Reliance Bank has done more than most community banks its size to put lending online, but the result is three disconnected front doors: deposit account opening on apply.firstreliance.com, a consumer loan application on a vendor portal (digitallending.online), and a separate mortgage application path. Each leaves the First Reliance brand for a generic vendor screen, and HELOC, auto/RV, and all commercial lending still end at 'apply in person or call.' Underneath, every portal collects identity, income, employment, and property the slow, manual way. The bank already runs a modern stack (a branded mobile app, Jack Henry Lending participation); what's missing is one branded, verify-as-you-go intake that spans every product.",
+    "currentJourney": [
+      { "channel": "Personal loans", "detail": "Online application exists, but on a third-party vendor portal (app.prod.digitallending.online) under a different brand and domain", "status": "weak" },
+      { "channel": "Mortgage", "detail": "Dedicated online application path, separate again from the consumer-loan portal; brand and login differ", "status": "weak" },
+      { "channel": "Deposit account opening", "detail": "Online via a third portal (apply.firstreliance.com); a third distinct experience for a new customer", "status": "weak" },
+      { "channel": "HELOC / Home equity", "detail": "Marketing page only; no apply button, routes to a branch visit or phone call", "status": "missing" },
+      { "channel": "Auto / RV / Watercraft", "detail": "Listed as a product but no online application surfaced; contact a lender", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "Lines of credit, CRE, and treasury all route to a relationship manager; no digital intake", "status": "missing" },
+      { "channel": "Existing-customer banking", "detail": "Bank-branded mobile + online banking app, modern feature set (P2P, card controls, mobile deposit)", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "Three front doors, three brands, three logins", "severity": "friction", "body": "A borrower opening a deposit account, applying for a personal loan, and applying for a mortgage hits three different third-party portals on three different domains, none of which fully look like First Reliance. Every handoff is a place to lose someone, and a new customer who wants to do two of those things has to start over each time." },
+      { "title": "The highest-equity products have no apply button", "severity": "gap", "body": "HELOC, home equity, auto/RV, and all commercial lending are marketed but not applyable online. These are exactly the products where a fast, verified intake wins against the credit union or fintech down the street. After-hours demand on a phone has nowhere to go but a 'call us' message." },
+      { "title": "You likely already own the platform to consolidate this", "severity": "note", "body": "First Reliance ships a bank-branded mobile app and participates in Jack Henry Lending, consistent with a Jack Henry core. A white-label intake that syncs straight into the core is an incremental addition to a stack you already run, not a rip-and-replace. The gap is unified intake and verification, not infrastructure." },
+      { "title": "Verification is still manual behind every portal", "severity": "friction", "body": "The vendor portals capture an application, but identity, income, employment, and property get verified the slow way afterward: document requests, VOE calls, and follow-ups. With loans growing ~10.9% annualized and CRE at 59% of the book, that manual collection load is exactly where staff hours and days of delay accumulate." }
+    ],
+    "comparison": [
+      { "dimension": "Front doors", "today": "3 separate vendor portals", "withRaven": "One branded front door for every product" },
+      { "dimension": "Products you can start online", "today": "Personal, mortgage, deposits", "withRaven": "Add HELOC, auto, and commercial too" },
+      { "dimension": "Brand experience", "today": "Hands off to third-party domains", "withRaven": "First Reliance branding end to end" },
+      { "dimension": "Identity / income / property", "today": "Collected manually after the fact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Rate visibility", "today": "None until a lender follows up", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Into the core system", "today": "Re-keyed by staff across portals", "withRaven": "Synced to Jack Henry automatically" }
+    ],
+    "sources": "firstreliance.com (/, /personal/personal-borrowing, /personal/personal-borrowing/home-equity-line-of-credit-heloc, /mortgages, /login), apply.firstreliance.com and app.prod.digitallending.online application portals, First Reliance App on the Apple App Store, research.jackhenry.com Jack Henry Lending bank scorecard, FDIC BankFind cert #76181, First Reliance Bancshares Q1 2026 disclosures. Brand colors (#0e2a59 navy, #001a91 royal blue, #ffdd00 gold) extracted from the live homepage CSS; tagline 'There's More to Banking Than Money' from the site. Reviewed June 2026."
+  },
+  {
+    "slug": "colony-bankcorp",
+    "bankName": "Colony Bank",
+    "shortName": "Colony",
+    "auditDate": "June 2026",
+    "demoSlug": "colony-bankcorp",
+    "stats": [
+      { "label": "Total assets", "value": "~$3.7B" },
+      { "label": "Locations", "value": "~37" },
+      { "label": "Online loan applications", "value": "2 of 6" },
+      { "label": "Digital banking", "value": "Fiserv" }
+    ],
+    "summary": "Colony Bank runs a modern Fiserv digital-banking stack for existing customers, but its self-serve front door for new lending is partial and fragmented. Mortgage and personal loans can be started online, yet each hands the borrower off to a different third-party domain with a different look. Auto, boat/RV/ATV, and home equity are marketing pages that end at 'see loan details' or a call to a lender, and business/SBA lending routes to a specialty team with no digital intake. Across a 37-location footprint spanning Georgia, Alabama, and north Florida, that means high-intent demand scatters across vendor portals or stalls at a phone call. The platform to do better is already in place; what is missing is one branded, verify-as-you-go intake.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Online 'Apply Now' that hands off to mortgage.colonybank.com, a separate third-party POS domain with a different look", "status": "weak" },
+      { "channel": "Personal loans", "detail": "Online application, but on yet another vendor domain (colonybank.loanwebcenter.com), breaking brand continuity", "status": "weak" },
+      { "channel": "Auto / Boat / RV / ATV", "detail": "Marketing detail pages only ('See loan details'); no application, no after-hours capture", "status": "missing" },
+      { "channel": "Home equity / HELOC", "detail": "Product page exists but has no online application; routes to contacting a lender", "status": "missing" },
+      { "channel": "Business / SBA / USDA", "detail": "Routed to the Small Business Specialty Lending team; no digital intake", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "No clear self-serve online account opening surfaced; branch-oriented", "status": "missing" },
+      { "channel": "Existing-customer banking", "detail": "Fiserv digital banking at digitalbanking.colony.bank, modern web + mobile apps", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "Lending intake is split across three different domains", "severity": "friction", "body": "A borrower who wants a mortgage lands on mortgage.colonybank.com; one who wants a personal loan lands on colonybank.loanwebcenter.com; everything else routes to a phone call. At the highest-intent moment, the customer leaves Colony's brand for a generic vendor screen, and there is no single place that knows the borrower across products." },
+      { "title": "The fastest, highest-volume consumer products have no apply button", "severity": "gap", "body": "Auto, boat/RV/ATV, and home equity are the quick-decision products a community bank wins on, yet each is a marketing page that ends at 'see loan details' or contact a lender. Demand that arrives at 9pm on a phone has nowhere to go, which is exactly where abandonment happens." },
+      { "title": "You already own the platform to fix this", "severity": "note", "body": "Colony runs Fiserv for digital banking (online banking is served from the secureinternetbank.com root domain, Fiserv's platform). A white-label intake that syncs verified applications straight into the Fiserv core is an incremental addition to a stack you already run, not a rip-and-replace. The gap is intake and verification, not infrastructure." },
+      { "title": "Complex Southeast borrowers get verified the slow way", "severity": "friction", "body": "With intake split across vendor portals and phone calls, identity, income, employment, and property are collected after the fact. For Colony's agricultural and small-business borrowers (FSA payments, crop insurance, multi-entity income, SBA/USDA files) that means manual document chase and VOE calls per file, which scales linearly with the growth Colony is pursuing." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "Mortgage + personal only (2 of 6), on separate domains", "withRaven": "Every product, one front door" },
+      { "dimension": "Brand experience", "today": "Hands off to multiple third-party domains", "withRaven": "Colony branding end to end" },
+      { "dimension": "Borrower effort", "today": "Long forms + document uploads per vendor", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Identity / income / property", "today": "Collected manually after the fact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Rate visibility", "today": "None until a lender follows up", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Into the core system", "today": "Re-keyed by staff", "withRaven": "Synced to Fiserv automatically" }
+    ],
+    "sources": "colony.bank (/personal/lending, /about-us, /digital-banking/online-banking); mortgage.colonybank.com and colonybank.loanwebcenter.com application hand-offs; digitalbanking.colony.bank on the secureinternetbank.com root domain (Fiserv online banking platform); 2026 Colony Bank logo and theme CSS for brand colors (#840029 crimson, #e9bc55 gold, #25333e slate-navy); FDIC BankFind cert #22257; Colony Bankcorp (NYSE: CBAN) investor relations. Reviewed June 2026."
+  },
+  {
+    "slug": "carolina-bank-trust",
+    "bankName": "Carolina Bank & Trust Co.",
+    "shortName": "Carolina Bank",
+    "auditDate": "June 2026",
+    "demoSlug": "carolina-bank-trust",
+    "stats": [
+      { "label": "Total assets", "value": "~$830M" },
+      { "label": "Branches", "value": "14 across 6 counties" },
+      { "label": "Online loan products", "value": "1 of 6" },
+      { "label": "Digital banking", "value": "Jack Henry (Banno)" }
+    ],
+    "summary": "Carolina Bank & Trust modernized its existing-customer digital banking in February 2025, moving retail and business online banking onto Jack Henry's Banno platform. New-borrower intake did not keep pace. Only mortgages have an online application, and it lives on a separate third-party domain (carolinabanktrust.mymortgage-online.com). Home equity, HELOC, personal, auto and recreation, and all business and agricultural lending route to a branch or a loan officer, with no rates published anywhere. The bank's own copy says it best: 'applying is easy and can be done at any Carolina Bank branch location.' That is a 1936 promise on a 2026 channel. The platform to fix it is already in place; what is missing is a single branded, verify-as-you-go front door.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Online application via a third-party portal (carolinabanktrust.mymortgage-online.com) on a separate domain, breaking brand continuity at the conversion moment", "status": "weak" },
+      { "channel": "Home equity loan", "detail": "'Your local Carolina Bank branch can assist you.' No apply button, no rates, calculator only", "status": "missing" },
+      { "channel": "HELOC / personal line of credit", "detail": "Listed under personal lending but no online application; branch or loan officer only", "status": "missing" },
+      { "channel": "Personal loan", "detail": "'Applying is easy and can be done at any Carolina Bank branch location.' No digital intake", "status": "missing" },
+      { "channel": "Auto & recreation (boat, motor, RV)", "detail": "'Loan officers can help you'; no application or after-hours capture", "status": "missing" },
+      { "channel": "Business, commercial & agricultural", "detail": "Relationship-manager driven; no online intake for any commercial or ag line", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Branch-based; no fully online new-account flow surfaced", "status": "missing" },
+      { "channel": "Existing-customer banking", "detail": "Jack Henry Banno (my.carolinabank.net), launched Feb 2025, modern and responsive", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "Modern digital banking, but no digital front door for new loans", "severity": "gap", "body": "The Feb 2025 Banno launch gave existing customers a clean, responsive experience. New borrowers got none of it. Mortgage is the only line you can begin online; the faster, higher-volume consumer products (auto and recreation, personal, home equity, HELOC) and every commercial and agricultural line end at 'contact a loan officer' or 'apply at a branch.' Demand that arrives after 5pm or from out of market has nowhere to go." },
+      { "title": "The one online application leaves the brand", "severity": "friction", "body": "The mortgage 'Apply Now' path hands the borrower to carolinabanktrust.mymortgage-online.com, a third-party portal on a different domain with a different look. At the single most important conversion moment, a 90-year-old local brand becomes a generic vendor screen, on the bank's most complex and highest-stakes product." },
+      { "title": "You already run the platform to fix this", "severity": "note", "body": "Carolina Bank is on Jack Henry for core and digital banking (Banno). A white-label intake that verifies the borrower and syncs the application straight into the Jack Henry core is an incremental addition to a stack you already operate, not a rip-and-replace. The gap is intake and verification, not infrastructure." },
+      { "title": "Branch-first intake means manual verification on every file", "severity": "friction", "body": "Because intake is a branch visit or a phone call, identity, income, employment, and property get collected the slow way afterward: document requests, VOE calls, and appraisals chased one at a time. For the relocating EV-plant and contractor borrowers arriving in Florence, that is exactly the complex, time-consuming file the current process handles worst." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "Mortgage only (1 of 6)", "withRaven": "Every product, one front door" },
+      { "dimension": "Brand experience", "today": "Hands off to a third-party mortgage domain", "withRaven": "Carolina Bank branding end to end" },
+      { "dimension": "Borrower effort", "today": "Visit a branch or call a loan officer", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Identity / income / property", "today": "Collected manually after the fact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Rate visibility", "today": "No rates published anywhere online", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Into the core system", "today": "Re-keyed by branch staff", "withRaven": "Synced to Jack Henry automatically" }
+    ],
+    "sources": "carolinabank.net (/, /about/about-us, /lending/home-loans/home-equity-loans, /lending/home-loans/mortgages, /lending/personal-lending/auto-loans, /lending/personal-lending/personal-loans, /new-online-banking); my.carolinabank.net (Banno); carolinabanktrust.mymortgage-online.com; FDIC BankFind cert #355120. Brand colors #1c4493 / #0b2545 / #c41137 and the Lato typeface were extracted from the site stylesheet. Reviewed June 2026."
+  },
+  {
+    "slug": "coastal-states-bank",
+    "bankName": "Coastal States Bank",
+    "shortName": "Coastal States",
+    "auditDate": "June 2026",
+    "demoSlug": "coastal-states-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$2.35B" },
+      { "label": "Beaufort County deposit share", "value": "#1 (17.9%)" },
+      { "label": "Online loan products", "value": "0 of 6" },
+      { "label": "Digital banking", "value": "Fiserv" }
+    ],
+    "summary": "Coastal States Bank runs two businesses on one balance sheet: the #1 deposit franchise in Beaufort County (plus Savannah and Atlanta) and a set of national specialty lending lines (Marine & RV, SBA / Government Guaranteed, Senior Housing, Mortgage Banker Finance). It just listed its holding company, CoastalSouth Bancshares, on the NYSE (COSO). Yet not one loan product has a self-serve digital front door. Account opening is online (openlocal.coastalstatesbank.com), but marine borrowers are told to call a support line, and mortgage, home equity, and commercial all end at 'contact a banker.' The Fiserv digital-banking stack for existing customers is already in place; what is missing is a single, branded, verify-as-you-go intake for the lending side.",
+    "currentJourney": [
+      { "channel": "Marine & RV (national specialty)", "detail": "No application. The site routes prospects to a Recreational Loan Support team by phone ((678) 396-4620) and email, mostly servicing existing borrowers", "status": "missing" },
+      { "channel": "Residential mortgage", "detail": "Product page describes the loan but offers no online application, only a path to a local mortgage banker", "status": "missing" },
+      { "channel": "Home equity / HELOC", "detail": "Listed with a 12-month intro-rate teaser, but no apply button, no form, no after-hours capture", "status": "missing" },
+      { "channel": "SBA / Government Guaranteed", "detail": "National line marketed to businesses; intake is 'contact a specialist,' no digital pre-qualification", "status": "missing" },
+      { "channel": "Commercial / 48-Hour Small Business", "detail": "Markets a fast decision, yet the front end is still a banker conversation with no online intake", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online account opening at openlocal.coastalstatesbank.com, a separate vendor subdomain off the main brand", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "Fiserv online/mobile banking, with Zelle and mobile deposit", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "A national specialty lender with no online apply", "severity": "gap", "body": "Marine, RV, SBA, and senior-housing lending are pitched to customers across the country, but a prospect who finds the site at 9pm has nowhere to apply. The marine page routes to a phone line and email built for servicing existing loans. For a national channel, that is the single biggest leak: out-of-market demand arrives digital-first and leaves the same way." },
+      { "title": "Account opening is online; lending is not", "severity": "gap", "body": "Coastal States already proved it can open a deposit account online (openlocal.coastalstatesbank.com). The harder-dollar products, where verification actually matters, have no equivalent. The capability gap is not technical willingness; it is that lending intake never got the same digital front door deposits did." },
+      { "title": "You already run the platform to fix this", "severity": "note", "body": "Coastal States is on Fiserv for digital banking (the login portal resolves to Fiserv's shared platform). A white-label intake that verifies the borrower and syncs the application into the Fiserv core is an incremental addition to a stack the bank already runs, not a rip-and-replace. The gap is intake and verification, not infrastructure." },
+      { "title": "Specialty files are the slowest, and they are all manual", "severity": "friction", "body": "Marine, SBA, and senior-housing files carry the heaviest verification loads in banking: collateral and vessel ownership, business financials, guarantor and beneficial-owner identity. Today all of that is collected after a phone call, the slow way, through document requests and follow-ups. With a fresh NYSE listing, every recovered verification hour lands on the efficiency ratio public investors now watch." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "None (0 of 6)", "withRaven": "Every product, one front door" },
+      { "dimension": "National specialty demand", "today": "'Call our support team'", "withRaven": "Captured, verified, and queued 24/7" },
+      { "dimension": "Borrower effort", "today": "Phone call + document chase", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Identity / income / collateral", "today": "Collected manually after the fact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Rate visibility", "today": "None until a banker follows up", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Into the core system", "today": "Re-keyed by staff", "withRaven": "Synced to Fiserv automatically" }
+    ],
+    "sources": "coastalstatesbank.com (home, /personal, /marine-and-rv-lending-support, /personal/digital-banking/online-mobile-banking, openlocal.coastalstatesbank.com); CoastalSouth Bancshares (NYSE: COSO) investor materials; FDIC BankFind cert #57756; FDIC Summary of Deposits (June 2025). Core inferred as Fiserv from the online-banking login domain. Brand navy #0a3b5c and teal accent #2bb3c0 approximated from the site palette. Reviewed June 2026."
+  },
+  {
+    "slug": "oconee-federal",
+    "bankName": "Oconee Federal Savings and Loan Association",
+    "shortName": "Oconee Federal",
+    "auditDate": "June 2026",
+    "demoSlug": "oconee-federal",
+    "stats": [
+      { "label": "Total assets", "value": "~$663M" },
+      { "label": "Branches", "value": "9 (SC & GA)" },
+      { "label": "Online loan products", "value": "Mortgage only" },
+      { "label": "Digital banking", "value": "FIS" }
+    ],
+    "summary": "Oconee Federal is a 100-year-old thrift built almost entirely around home lending: conventional fixed and ARM mortgages, construction-to-permanent, and lot/land loans. Its conforming mortgage products already have an online 'Apply Now' path, which is ahead of many peers. But the rest of the catalog falls off a cliff: HELOC, home equity, FHA/VA/USDA, and all commercial/SBA lending end at 'Contact Our Team' with a phone number. There is no verification layer behind any of it, so even the products you can start online still trigger a manual document chase. The opportunity is one branded, verify-as-you-go front door that covers every line and feeds clean, verified data into the core, rather than a mortgage app on one product and phone calls for everything else.",
+    "currentJourney": [
+      { "channel": "Conforming mortgage (fixed/ARM)", "detail": "Online 'Apply Now' portal from the mortgage page, ahead of peers, but no verification, so documents are chased manually after submission", "status": "weak" },
+      { "channel": "Construction-to-permanent", "detail": "Online application available, but builder, lot, and income details are gathered the slow way after intake", "status": "weak" },
+      { "channel": "Lot & land loans", "detail": "Listed with special rates; application path is light and unverified", "status": "weak" },
+      { "channel": "HELOC / Home equity", "detail": "'Contact Our Team' only. No application, no after-hours capture", "status": "missing" },
+      { "channel": "Government programs (FHA / VA / USDA)", "detail": "Directed to call and speak with a lending professional", "status": "missing" },
+      { "channel": "Commercial & SBA lending", "detail": "Relationship-only. No digital intake at all", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online banking enrollment exists, but new-account opening is effectively branch-driven", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "FIS online + mobile banking, functional for current customers", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "You started digital on the hardest product, then stopped", "severity": "gap", "body": "Conforming mortgages can be started online, which is genuinely ahead of many community thrifts. But that progress dead-ends there. HELOC, home equity, government programs, and all commercial/SBA lending route to a phone number. The higher-velocity equity products that drive repeat relationships are exactly the ones with no apply button, so demand that arrives after hours has nowhere to go." },
+      { "title": "Online intake without verification is still a manual file", "severity": "friction", "body": "Even on the products you can apply for online, there is no identity, income, employment, or property verification at intake. Everything is collected afterward via document requests and VOE calls. The borrower fills out a form, then waits days while staff chase paper. The online form moved the lead online; it did not remove the work." },
+      { "title": "A mortgage-first balance sheet with a one-product front door", "severity": "gap", "body": "Oconee Federal's whole identity is home lending, yet borrowers can only self-serve the single most commoditized line. Construction, lot/land, and equity products, where local expertise actually differentiates you, are the ones hidden behind 'Contact Our Team.' That is leaving the differentiated, higher-margin demand to a phone tag loop." },
+      { "title": "The digital banking platform is already there to build on", "severity": "note", "body": "Existing customers bank through FIS. A white-label intake that verifies the borrower and syncs the application into the core is an incremental addition on top of infrastructure you already run and pay for, not a core conversion. The gap is intake and verification, not the platform." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "Conforming mortgage / construction / lot only", "withRaven": "Every product, one front door" },
+      { "dimension": "HELOC & home equity", "today": "'Contact Our Team' phone path", "withRaven": "Start, verify, and price online" },
+      { "dimension": "Borrower effort", "today": "Long form, then document uploads", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Identity / income / property", "today": "Collected manually after the fact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Rate visibility", "today": "None until a loan officer follows up", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Into the core system", "today": "Re-keyed by staff", "withRaven": "Synced to FIS automatically" }
+    ],
+    "sources": "oconeefederal.com (/, /mortgage-lending, /locations, /online-banking, /who-we-are), FIS online-banking host. Oconee Federal Financial Corp (Nasdaq: OFED) earnings releases (~$663.1M total assets at 3/31/2026) and SEC EDGAR filings. FDIC BankFind cert #30111. NMLS #810392. Founded 1924, federal charter since 1991. Navy/white brand from the bank's logo and site. Reviewed June 2026."
+  },
+  {
+    "slug": "anderson-brothers-bank",
+    "bankName": "Anderson Brothers Bank",
+    "shortName": "Anderson Brothers",
+    "auditDate": "June 2026",
+    "demoSlug": "anderson-brothers-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$1.78B" },
+      { "label": "Branches", "value": "26+ across coastal & Pee Dee SC" },
+      { "label": "Online intake vendors", "value": "3 separate domains" },
+      { "label": "Digital banking", "value": "Jack Henry (NetTeller)" }
+    ],
+    "summary": "Anderson Brothers Bank is a consumer-lending workhorse: a 1933-vintage Mullins, SC bank that has built more online loan intake than most community-bank peers, but stitched it together from three different vendors on three different domains. Auto and personal applications hand off to a defi SOLUTIONS portal (abbank.defidirect.com), mortgages route to a separate third-party POS (abbankconsumerconnect.mymortgage-online.com), and existing-customer banking lives on Jack Henry's NetTeller (go.abbank.com). Every borrower who clicks 'apply' leaves the Anderson Brothers brand for a generic vendor screen, no rates are published anywhere, and nothing is verified at intake. The volume and the appetite for digital are already there; what's missing is a single, branded, verify-as-you-go front door.",
+    "currentJourney": [
+      { "channel": "Auto loans", "detail": "'Start your Hassle-Free Application' hands the borrower to abbank.defidirect.com, a separate defi SOLUTIONS portal with a different look. $225 doc-prep fee, no rates shown", "status": "weak" },
+      { "channel": "Personal loans", "detail": "Apply online or in branch via the same defi flow; $1K-$10K, 'low credit options,' but no published rate and no verification at intake", "status": "weak" },
+      { "channel": "Home mortgage", "detail": "Routes to abbankconsumerconnect.mymortgage-online.com, a third-party mortgage POS on its own domain and brand", "status": "weak" },
+      { "channel": "Home equity", "detail": "Not clearly surfaced as a self-serve online application; effectively branch / loan-officer driven", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "'Contact us' / branch only. No digital intake for commercial requests", "status": "missing" },
+      { "channel": "Published rates", "detail": "No APR or rate teaser shown on any consumer loan page; borrower must apply or call to learn pricing", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online deposit application exists but is form-only with no identity/funding verification built in", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "Jack Henry NetTeller at go.abbank.com plus a mobile app and ProfitStars remote deposit; functional but a legacy NetTeller UI", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "Three apply buttons, three different vendors, three brands", "severity": "gap", "body": "Anderson Brothers actually lets borrowers start online, which puts it ahead of most peers. But auto/personal go to defi SOLUTIONS, mortgage goes to mymortgage-online.com, and banking sits on NetTeller. A borrower who wants an auto loan and a mortgage touches two unrelated portals, neither of which looks like Anderson Brothers. The brand equity built over 90 years evaporates at the exact moment of conversion." },
+      { "title": "A high-velocity consumer book with no verification at intake", "severity": "friction", "body": "This is a serious consumer and auto lender, and the application is explicitly 'hassle-free,' which means identity, income, employment, and collateral all get collected the slow way afterward. At this volume, every file that requires a follow-up document request or a VOE call multiplies into real staff hours and days of delay before a borrower hears back." },
+      { "title": "No rates anywhere means the borrower has to apply to find out", "severity": "friction", "body": "Not one consumer loan page shows an APR or even a 'rates from' teaser. Rate-shopping borrowers, the most valuable auto and personal-loan customers, comparison-shop on price; with nothing to see, many bounce to a credit union or a marketplace lender that quotes instantly. An optional instant estimate from the bank's own rate card keeps that shopper inside the funnel." },
+      { "title": "You already own the platform to unify this", "severity": "note", "body": "Anderson Brothers runs Jack Henry (NetTeller online banking and ProfitStars remote deposit are both Jack Henry products, and NetTeller ships on the SilverLake / CIF 20/20 cores). A white-label intake that verifies the borrower and syncs straight into the Jack Henry core is an incremental addition to a stack the bank already runs, not a rip-and-replace, and it retires two third-party portals at once." }
+    ],
+    "comparison": [
+      { "dimension": "Apply experience", "today": "3 vendor portals on 3 domains", "withRaven": "One Anderson Brothers front door for every product" },
+      { "dimension": "Brand experience", "today": "Hands off to defi SOLUTIONS / a mortgage POS", "withRaven": "Anderson Brothers branding end to end" },
+      { "dimension": "Rate visibility", "today": "No rates shown; apply or call to find out", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Identity / income / collateral", "today": "Collected manually after the application", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Borrower effort", "today": "Full forms + document uploads per vendor", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Into the core system", "today": "Re-keyed from vendor portals by staff", "withRaven": "Synced to Jack Henry automatically" }
+    ],
+    "sources": "abbank.com (/, /personal/lending/auto-loans, /personal/lending/personal-loans, /personal/services-resources/online-banking); auto/personal application portal abbank.defidirect.com (defi SOLUTIONS); mortgage portal abbankconsumerconnect.mymortgage-online.com; online banking go.abbank.com (Jack Henry NetTeller) and ProfitStars remote deposit; FDIC BankFind cert #9923; NMLS #410840. Brand green #2f7851 and orange accent #d04b00 extracted from the bank's CSS. Reviewed June 2026."
+  },
+  {
+    "slug": "southern-first-bank",
+    "bankName": "Southern First Bank",
+    "shortName": "Southern First",
+    "auditDate": "June 2026",
+    "demoSlug": "southern-first-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$4.4B" },
+      { "label": "Offices", "value": "12 across SC, NC, GA" },
+      { "label": "Online loan products", "value": "1 of 5" },
+      { "label": "2024 HMDA originations", "value": "1,119" }
+    ],
+    "summary": "Southern First is a $4.4B relationship-first bank (NASDAQ: SFST) built on a high-touch ClientFIRST model, with a deep mortgage book (1,119 HMDA originations in 2024) and heavy CRE/C&I lending. It is further along than most peers on one product: mortgages have a real online application at mortgageapp.southernfirst.com, complete with a pick-your-mortgage-executive step. But that is the only line a borrower can start online, no rates are published anywhere, and every other product (home equity, HELOC, personal loans, and all business/commercial lending) ends at 'contact your Southern First banker.' At this origination volume, the missing piece is a single branded, verify-as-you-go front door that captures and qualifies demand across the whole lineup, not just mortgage.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Real online application at mortgageapp.southernfirst.com with a 'select your mortgage executive' step; the strongest digital path the bank has", "status": "weak" },
+      { "channel": "Mortgage rates", "detail": "No rates published anywhere; site directs borrowers to call for pricing", "status": "weak" },
+      { "channel": "Home equity / HELOC", "detail": "Not surfaced as a self-serve product; equity lending is handled relationship-side", "status": "missing" },
+      { "channel": "Personal loans", "detail": "'Contact your Southern First banker or call customer support.' No application or form", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "Expansion, CRE, equipment, and lines of credit all route to 'talk to a business banker.' No digital intake", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Relationship-led: name a banker or call; no streamlined online open surfaced", "status": "missing" },
+      { "channel": "Existing-customer banking", "detail": "Online/mobile banking at southernfirstpersonal.com, modern and capable", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "Mortgage proves you can do digital intake, the rest of the lineup doesn't", "severity": "gap", "body": "Southern First already runs a branded online mortgage application, so the organizational will and the borrower appetite are both proven. Yet home equity, personal, and the entire commercial book have no apply button. Demand that lands on those pages at 9pm has nowhere to go but a 'call us' line, which is exactly where high-intent borrowers leak to a competitor." },
+      { "title": "No published rates means no top-of-funnel capture", "severity": "friction", "body": "Every lending page routes pricing questions to a phone number. A rate-curious borrower comparing options can't get even a ballpark estimate without a call, so the bank never learns who they are. An optional instant estimate off the bank's own rate card converts that anonymous traffic into a verified, contactable lead." },
+      { "title": "Relationship-first and self-serve aren't opposites", "severity": "note", "body": "The ClientFIRST model is the bank's franchise, and it doesn't have to be traded away. A white-label intake still hands every borrower to the right banker by name; it just does the identity, income, employment, and property verification up front so that first human conversation starts from a qualified, complete file instead of a blank one." },
+      { "title": "Commercial intake is fully manual at the bank's most complex tier", "severity": "friction", "body": "With a heavy CRE/C&I book, the slowest files to verify (beneficial ownership, guarantor identity, business financials) all begin as a phone call or email. That means document chase, VOE calls, and re-keying before anything reaches a credit decision. A verify-as-you-go front door collects business and owner data plus financial verification at the point of interest." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "Mortgage only (1 of 5)", "withRaven": "Every product, one front door" },
+      { "dimension": "Rate visibility", "today": "None; call for pricing", "withRaven": "Optional instant estimate from your rate card" },
+      { "dimension": "Borrower effort", "today": "Long forms or a phone call + document uploads", "withRaven": "Name, email, and a secure connect" },
+      { "dimension": "Identity / income / property", "today": "Collected manually after first contact", "withRaven": "Verified automatically in ~90 seconds" },
+      { "dimension": "Commercial intake", "today": "Phone/email, then manual document chase", "withRaven": "Owner + business data and financials captured up front" },
+      { "dimension": "Relationship handoff", "today": "Borrower picks a banker, file starts empty", "withRaven": "Banker gets a verified, complete file by name" }
+    ],
+    "sources": "southernfirst.com (/, /personal/mortgages, /personal/loans, /business/loans, /about), mortgageapp.southernfirst.com (online mortgage application), southernfirstpersonal.com (online banking), FDIC BankFind cert #35179, Southern First Bancshares (NASDAQ: SFST) filings. Brand colors approximated from the live site's navy/accent-blue palette. Core system not publicly disclosed; Fiserv inferred at low confidence. Reviewed June 2026."
+  }
+]

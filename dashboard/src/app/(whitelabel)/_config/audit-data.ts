@@ -42,6 +42,10 @@ export interface AuditContent {
   sources: string;
 }
 
+// The remaining banks' audits are research-grounded and authored as data; they
+// live in bank-audits.json (one record per bank) and are appended below.
+import bankAudits from './bank-audits.json';
+
 export const AUDITS: AuditContent[] = [
   {
     slug: 'arthur-state-bank',
@@ -100,6 +104,7 @@ export const AUDITS: AuditContent[] = [
     sources:
       'arthurstatebank.com (/loans, /mortgage, /faq), my.arthurstatebank.com (Banno), FDIC BankFind cert #15085. Brand color #006242 and tagline extracted from the bank’s site. Reviewed June 2026.',
   },
+  ...(bankAudits as AuditContent[]),
 ];
 
 export function getAudit(slug: string): AuditContent | undefined {

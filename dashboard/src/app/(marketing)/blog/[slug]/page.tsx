@@ -1945,7 +1945,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             {roiBank && (
               <>
                 <span className="article-meta-dot" />
-                <a href={`/roi/${roiBank.slug}`} className="article-meta-audit">
+                <a href={`/audit/${roiBank.slug}`} className="article-meta-audit">
                   What RAVEN would save {roiBank.shortName}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -1966,7 +1966,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   <p className="article-mid-cta-alt">
                     Not ready to talk? We calculated what automation would save{' '}
                     {roiBank.shortName} every year:{' '}
-                    <a href={`/roi/${roiBank.slug}`}>see the numbers</a>
+                    <a href={`/audit/${roiBank.slug}`}>see the numbers</a>
                   </p>
                 )}
               </aside>
@@ -1983,7 +1983,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   dollar value by lending line, and the full methodology behind every figure.
                 </p>
               </div>
-              <a href={`/roi/${roiBank.slug}`} className="article-audit-btn">
+              <a href={`/audit/${roiBank.slug}`} className="article-audit-btn">
                 See the numbers
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
