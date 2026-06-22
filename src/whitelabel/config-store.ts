@@ -2,30 +2,48 @@ import type { PublicWhiteLabelConfig, WhiteLabelConfig } from './types.js';
 import { arthurStateBank } from './arthur-state-bank.js';
 
 /**
- * White-label config store. Seeded in-memory for now (mirrors the front-end
- * demo); the production implementation reads WhiteLabelConfig per tenant from
- * DynamoDB (PK=TENANT#<id>, SK=WLCONFIG) and resolves host -> tenant via the
- * lookup table. Swapping this out does not touch the service or routes.
+ * White-label config + tenant resolution.
+ *
+ * Config and the slug/host -> tenant resolution are seeded in-memory here
+ * (config is bank branding/rates, not PII). Persisting WhiteLabelConfig per
+ * tenant (PK=TENANT#<id>, SK=WLCONFIG) and the WLSLUG#/HOST# lookup records to
+ * DynamoDB is the documented next step; the intake store (the PII-bearing
+ * entity) is already DynamoDB-backed and encrypted. Resolution returns the
+ * tenantId + mode used to key and partition intakes.
  */
-const CONFIGS: WhiteLabelConfig[] = [arthurStateBank];
 
-/** host -> { slug, mode }. In production this is a DynamoDB lookup record. */
-const HOST_MAP: Record<string, { slug: string; mode: 'demo' | 'live' }> = {
-  'arthur-state-bank.submit.loans': { slug: 'arthur-state-bank', mode: 'demo' },
-};
+interface TenantResolution {
+  tenantId: string;
+  slug: string;
+  mode: 'demo' | 'live';
+  hosts: string[];
+}
+
+const TENANTS: TenantResolution[] = [
+  {
+    tenantId: 'tnt_arthur_state',
+    slug: 'arthur-state-bank',
+    mode: 'demo',
+    hosts: ['arthur-state-bank.submit.loans'],
+  },
+];
+
+const CONFIGS: WhiteLabelConfig[] = [arthurStateBank];
 
 export function getConfig(slug: string): WhiteLabelConfig | undefined {
   return CONFIGS.find((c) => c.slug === slug);
 }
 
-export function resolveHost(host: string): { slug: string; mode: 'demo' | 'live' } | undefined {
-  return HOST_MAP[host.toLowerCase()];
+/** Resolve a path slug to its tenant + mode. */
+export function resolveSlug(slug: string): { tenantId: string; mode: 'demo' | 'live' } | undefined {
+  const t = TENANTS.find((x) => x.slug === slug);
+  return t ? { tenantId: t.tenantId, mode: t.mode } : undefined;
 }
 
-/** Mode for a slug. For now everything seeded is demo; real tenants set this on the host record. */
-export function modeForSlug(slug: string): 'demo' | 'live' {
-  const hostEntry = Object.values(HOST_MAP).find((h) => h.slug === slug);
-  return hostEntry?.mode ?? 'demo';
+/** Resolve a hostname (submit.loans subdomain or custom domain) to its tenant. */
+export function resolveHost(host: string): { tenantId: string; slug: string; mode: 'demo' | 'live' } | undefined {
+  const t = TENANTS.find((x) => x.hosts.includes(host.toLowerCase()));
+  return t ? { tenantId: t.tenantId, slug: t.slug, mode: t.mode } : undefined;
 }
 
 /** Strip server-only internals (rate grid, provider routing, core internals). */

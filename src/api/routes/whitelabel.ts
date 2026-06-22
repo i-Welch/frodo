@@ -79,8 +79,8 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
   // Poll an intake (enrichment + computed rate).
   .get(
     '/intake/:id',
-    ({ params, set }) => {
-      const intake = getIntake(params.id);
+    async ({ params, set }) => {
+      const intake = await getIntake(params.id);
       if (!intake) {
         set.status = 404;
         return { error: 'unknown_intake' };
@@ -92,8 +92,8 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
   // Rate flows: choose a term, recompute the offered rate + DTI.
   .post(
     '/intake/:id/term',
-    ({ params, body, set }) => {
-      const intake = chooseTerm(params.id, body.termMonths);
+    async ({ params, body, set }) => {
+      const intake = await chooseTerm(params.id, body.termMonths);
       if (!intake) {
         set.status = 404;
         return { error: 'unknown_intake' };
@@ -108,8 +108,8 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
   // Reach the flow terminal (route to LO, lock the range, or submit for decision).
   .post(
     '/intake/:id/submit',
-    ({ params, set }) => {
-      const result = submitIntake(params.id);
+    async ({ params, set }) => {
+      const result = await submitIntake(params.id);
       if (!result) {
         set.status = 404;
         return { error: 'unknown_intake' };
