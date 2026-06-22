@@ -38,10 +38,17 @@ export function Journey({
   config,
   initialFlow,
   showChrome = true,
+  prefill,
 }: {
   config: WhiteLabelConfig;
   initialFlow: FlowKind;
   showChrome?: boolean;
+  /** Seeded from a generated verification link (LO view): predetermined modules
+   * + the borrower's contact info. */
+  prefill?: {
+    modules?: string[];
+    applicant?: { fullName: string; email: string; phone: string };
+  };
 }) {
   const b = config.branding;
   const allowedFlows = config.defaultFlows ?? (['rate_range'] as FlowKind[]);
@@ -55,9 +62,15 @@ export function Journey({
   const [amount, setAmount] = useState(50000);
   const [product, setProduct] = useState<WLProduct | null>(null);
   // data_only: the modules are predetermined by the link the requester generates
-  // (the customer doesn't choose). For the demo this is a fixed default set.
-  const [modules] = useState<string[]>(DEFAULT_DATA_ONLY_MODULES);
-  const [applicant, setApplicant] = useState({ fullName: '', email: '', phone: '' });
+  // (the customer doesn't choose). A verification link supplies them; otherwise
+  // the demo uses a fixed default set. Only known module ids are honored.
+  const [modules] = useState<string[]>(() => {
+    const fromLink = prefill?.modules?.filter((m) => m in MODULE_LABELS);
+    return fromLink && fromLink.length > 0 ? fromLink : DEFAULT_DATA_ONLY_MODULES;
+  });
+  const [applicant, setApplicant] = useState(
+    prefill?.applicant ?? { fullName: '', email: '', phone: '' },
+  );
 
   // Server-side (client seam) results
   const [intake, setIntake] = useState<Intake | null>(null);

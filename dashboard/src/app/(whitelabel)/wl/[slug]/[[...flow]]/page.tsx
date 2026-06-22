@@ -44,13 +44,26 @@ export default async function WhiteLabelPage({
   searchParams,
 }: {
   params: Promise<{ slug: string; flow?: string[] }>;
-  searchParams: Promise<{ chrome?: string }>;
+  searchParams: Promise<{ chrome?: string; m?: string; name?: string; email?: string; phone?: string }>;
 }) {
   const { slug, flow } = await params;
-  const { chrome } = await searchParams;
+  const { chrome, m, name, email, phone } = await searchParams;
   const resolved = resolve(slug, flow?.[0]);
   if (!resolved) notFound();
   const { config, flow: flowKind } = resolved;
+
+  // A verification link (generated in the LO view) carries the predetermined
+  // modules + the borrower's contact info, so the journey opens pre-seeded.
+  const hasApplicant = Boolean(name || email || phone);
+  const prefill =
+    m || hasApplicant
+      ? {
+          modules: m ? m.split(',').map((s) => s.trim()).filter(Boolean) : undefined,
+          applicant: hasApplicant
+            ? { fullName: name ?? '', email: email ?? '', phone: phone ?? '' }
+            : undefined,
+        }
+      : undefined;
 
   return (
     <>
@@ -60,7 +73,7 @@ export default async function WhiteLabelPage({
           href={`https://fonts.googleapis.com/css2?family=${config.branding.googleFont.replace(/ /g, '+')}:wght@400;600;700;800&display=swap`}
         />
       )}
-      <Journey config={config} initialFlow={flowKind} showChrome={chrome !== '0'} />
+      <Journey config={config} initialFlow={flowKind} showChrome={chrome !== '0'} prefill={prefill} />
     </>
   );
 }

@@ -5,6 +5,7 @@ import type { WhiteLabelConfig } from '../_config/types';
 import { sampleApplications, type ApplicationSummary } from '../_config/summary';
 import { usd } from '../_config/format';
 import { LoPreview } from './lo-preview';
+import { GenerateLinkButton } from './generate-link';
 
 /**
  * The loan-officer / dashboard perspective of the demo. A lightweight preview
@@ -46,7 +47,10 @@ export function OfficerView({
           </div>
           <div className="ov-org">{config.branding.name} workspace</div>
         </div>
-        <span className="ov-phase">Phase 2 preview</span>
+        <div className="ov-head-actions">
+          <GenerateLinkButton config={config} />
+          <span className="ov-phase">Phase 2 preview</span>
+        </div>
       </div>
 
       <div className="ov-stats">
@@ -109,6 +113,7 @@ const styles = `
   .ov-title { font-size: 1rem; font-weight: 700; letter-spacing: 0.06em; }
   .ov-sub { font-weight: 500; letter-spacing: 0; color: #737373; font-size: 0.85rem; }
   .ov-org { font-size: 0.78rem; color: #737373; margin-top: 0.15rem; }
+  .ov-head-actions { display: flex; align-items: center; gap: 0.85rem; }
   .ov-phase { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6941c6; background: #f4ebff; border: 1px solid #e9d7fe; border-radius: 999px; padding: 0.3rem 0.7rem; }
 
   .ov-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; max-width: 1080px; margin: 0 auto 1.25rem; }
