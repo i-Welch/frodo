@@ -18,7 +18,6 @@ export type FlowKind = 'data_only' | 'rate_range' | 'full_application';
 export type Stage =
   | 'frontDoor' // amount + purpose
   | 'product' // product selection
-  | 'modulePicker' // data_only: requester/borrower picks which modules to pull
   | 'applicant' // name / email / phone
   | 'consent' // flow-specific consent + permissible purpose
   | 'dataPull' // provider enrichment (the animation)
@@ -50,7 +49,9 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     kind: 'data_only',
     label: 'Data verification',
     path: 'verify',
-    stages: ['applicant', 'modulePicker', 'consent', 'dataPull', 'confirmation'],
+    // The data set is predetermined by the link the requester generates, not
+    // chosen by the customer. The consent screen shows them what will be verified.
+    stages: ['applicant', 'consent', 'dataPull', 'confirmation'],
     creditPull: 'none',
     terminal: 'routeToLo',
     isLegalApplication: false,

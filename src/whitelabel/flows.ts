@@ -6,7 +6,7 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     kind: 'data_only',
     label: 'Data verification',
     path: 'verify',
-    stages: ['applicant', 'modulePicker', 'consent', 'dataPull', 'confirmation'],
+    stages: ['applicant', 'consent', 'dataPull', 'confirmation'],
     creditPull: 'none',
     terminal: 'routeToLo',
     isLegalApplication: false,

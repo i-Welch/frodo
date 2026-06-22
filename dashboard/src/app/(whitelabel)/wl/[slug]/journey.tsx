@@ -30,7 +30,6 @@ const MODULE_LABELS: Record<string, string> = {
   financial: 'Bank accounts & assets',
   credit: 'Credit',
 };
-const ALL_MODULES = ['identity', 'contact', 'employment', 'residence', 'financial', 'credit'];
 const DEFAULT_DATA_ONLY_MODULES = ['identity', 'employment', 'financial'];
 
 const fmtTerm = (m: number) => (m % 12 === 0 ? `${m / 12} yr` : `${m} mo`);
@@ -55,7 +54,9 @@ export function Journey({
   const [purpose, setPurpose] = useState(config.purposes[0].value);
   const [amount, setAmount] = useState(50000);
   const [product, setProduct] = useState<WLProduct | null>(null);
-  const [modules, setModules] = useState<string[]>(DEFAULT_DATA_ONLY_MODULES);
+  // data_only: the modules are predetermined by the link the requester generates
+  // (the customer doesn't choose). For the demo this is a fixed default set.
+  const [modules] = useState<string[]>(DEFAULT_DATA_ONLY_MODULES);
   const [applicant, setApplicant] = useState({ fullName: '', email: '', phone: '' });
 
   // Server-side (client seam) results
@@ -224,16 +225,6 @@ export function Journey({
             }}
           />
         );
-      case 'modulePicker':
-        return (
-          <ModulePicker
-            config={config}
-            modules={modules}
-            setModules={setModules}
-            onBack={onBack}
-            onContinue={advance}
-          />
-        );
       case 'applicant':
         return (
           <Applicant
@@ -246,7 +237,7 @@ export function Journey({
           />
         );
       case 'consent':
-        return <Consent config={config} flow={flow} onBack={onBack} onContinue={advance} busy={busy} />;
+        return <Consent config={config} flow={flow} modules={modules} onBack={onBack} onContinue={advance} busy={busy} />;
       case 'dataPull':
         return intake ? (
           <DataPull
@@ -584,47 +575,6 @@ function Products({
   );
 }
 
-function ModulePicker({
-  config, modules, setModules, onBack, onContinue,
-}: {
-  config: WhiteLabelConfig;
-  modules: string[];
-  setModules: (m: string[]) => void;
-  onBack?: () => void;
-  onContinue: () => void;
-}) {
-  function toggle(m: string) {
-    setModules(modules.includes(m) ? modules.filter((x) => x !== m) : [...modules, m]);
-  }
-  return (
-    <div className="wl-card wl-step">
-      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
-      <span className="wl-eyebrow">Data verification</span>
-      <h2>What should we verify?</h2>
-      <p className="wl-lede">
-        Select the information {config.branding.shortName} needs. We&rsquo;ll gather and verify it
-        securely, no documents to upload.
-      </p>
-      <div className="wl-modules">
-        {ALL_MODULES.map((m) => {
-          const on = modules.includes(m);
-          return (
-            <button key={m} className={`wl-module ${on ? 'wl-module-on' : ''}`} onClick={() => toggle(m)}>
-              <span className="wl-module-check" aria-hidden="true">
-                {on && <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
-              </span>
-              <span className="wl-module-label">{MODULE_LABELS[m]}</span>
-            </button>
-          );
-        })}
-      </div>
-      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={modules.length === 0} onClick={onContinue}>
-        Continue
-      </button>
-    </div>
-  );
-}
-
 function Applicant({
   product, amount, applicant, setApplicant, onBack, onContinue,
 }: {
@@ -665,16 +615,20 @@ function Applicant({
 }
 
 function Consent({
-  config, flow, onBack, onContinue, busy,
+  config, flow, modules, onBack, onContinue, busy,
 }: {
   config: WhiteLabelConfig;
   flow: FlowKind;
+  modules: string[];
   onBack?: () => void;
   onContinue: () => void;
   busy: boolean;
 }) {
   const [agreed, setAgreed] = useState(false);
   const isApplication = getFlow(flow).isLegalApplication;
+  // For data_only, show the customer the predetermined data set (chosen when the
+  // link was generated) so they can see exactly what they're authorizing.
+  const showDataList = flow === 'data_only' && modules.length > 0;
   const body = isApplication
     ? `I authorize ${config.branding.shortName} to obtain my credit report and verify my information to evaluate my application. I understand this is an application for credit.`
     : `I authorize ${config.branding.shortName} and RAVEN to verify my identity, income, and the information needed for this request with trusted data partners.`;
@@ -684,6 +638,21 @@ function Consent({
       <span className="wl-eyebrow">Your authorization</span>
       <h2>{isApplication ? 'Authorize your application' : 'Authorize verification'}</h2>
       <p className="wl-lede">{body}</p>
+      {showDataList && (
+        <div className="wl-data-list">
+          <span className="wl-data-list-label">{config.branding.shortName} will verify</span>
+          <ul>
+            {modules.map((m) => (
+              <li key={m}>
+                <span className="wl-data-check" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+                </span>
+                {MODULE_LABELS[m]}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
       <label className="wl-consent">
         <input type="checkbox" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
         <span>
@@ -1090,14 +1059,12 @@ const styles = `
   .wl-product-arrow { flex-shrink: 0; color: var(--wl-muted); }
   .wl-product:hover .wl-product-arrow { color: var(--wl-primary); }
 
-  /* Module picker (data_only) */
-  .wl-modules { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 0.5rem 0 1.5rem; }
-  .wl-module { display: flex; align-items: center; gap: 0.6rem; text-align: left; font-family: inherit; font-size: 0.9rem; font-weight: 600; color: var(--wl-text); background: var(--wl-surface); border: 1px solid var(--wl-border); border-radius: var(--wl-radius); padding: 0.75rem 0.85rem; cursor: pointer; transition: border-color 150ms, background 150ms; }
-  .wl-module:hover { border-color: var(--wl-primary); }
-  .wl-module-on { border-color: var(--wl-primary); background: color-mix(in srgb, var(--wl-primary) 7%, transparent); }
-  .wl-module-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; border: 1px solid var(--wl-border); display: flex; align-items: center; justify-content: center; color: #fff; }
-  .wl-module-on .wl-module-check { background: var(--wl-primary); border-color: var(--wl-primary); }
-  @media (max-width: 480px) { .wl-modules { grid-template-columns: 1fr; } }
+  /* Read-only "what we'll verify" list (data_only consent) */
+  .wl-data-list { margin: 0.25rem 0 1.25rem; padding: 0.9rem 1rem; background: color-mix(in srgb, var(--wl-primary) 4%, transparent); border: 1px solid var(--wl-border); border-radius: var(--wl-radius); }
+  .wl-data-list-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wl-muted); margin-bottom: 0.55rem; }
+  .wl-data-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+  .wl-data-list li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 600; color: var(--wl-text); }
+  .wl-data-check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; background: var(--wl-primary); color: #fff; display: flex; align-items: center; justify-content: center; }
 
   /* Consent */
   .wl-consent { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--wl-text); line-height: 1.5; margin: 0.5rem 0 1.5rem; cursor: pointer; }

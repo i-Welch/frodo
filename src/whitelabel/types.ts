@@ -162,7 +162,6 @@ export interface RateRange {
 export type Stage =
   | 'frontDoor'
   | 'product'
-  | 'modulePicker'
   | 'applicant'
   | 'consent'
   | 'dataPull'
