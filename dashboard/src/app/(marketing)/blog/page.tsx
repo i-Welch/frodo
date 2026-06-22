@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'first-reliance-outgrew-florence',
+    title: "The Bank That Didn't Wait for the Battery Plant",
+    description:
+      "First Reliance Bancshares posted net income up 113% year-over-year while the AESC battery plant in its home market sat half-built and on hold. Nine branches, eight cities, $1.12 billion in assets, and a balance sheet that outgrew Florence, SC.",
+    readTime: '5 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'colony-bankcorp-farm-to-fees',
     title: 'Built on Peanuts, Betting on Fees',
     description:

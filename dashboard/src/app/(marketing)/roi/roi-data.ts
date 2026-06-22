@@ -209,6 +209,48 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'first-reliance-bank',
+    name: 'First Reliance Bancshares',
+    shortName: 'First Reliance',
+    articleSlug: 'first-reliance-outgrew-florence',
+    articleTitle: "The Bank That Didn't Wait for the Battery Plant",
+    fdicCert: 76181,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.12B' },
+      { label: 'ROA', value: '1.25%' },
+      { label: 'NIM', value: '3.77%' },
+      { label: 'Loan growth (Q1 annualized)', value: '10.9%' },
+    ],
+    volumes: {
+      mortgage: { count: 250, source: 'Estimated from consumer real estate book (30% of $801M) and 9-branch statewide SC footprint; HMDA data pending', estimated: true },
+      commercial: { count: 200, source: 'FDIC call report: CRE 59%, C&I 9% of $801M loan book across 8 SC markets', estimated: true },
+      consumer: { count: 80, source: 'Consumer segment is 2% of loan book; estimated from footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 3000,
+      source: 'Multi-market SC footprint: Greenville, Charleston/Mount Pleasant, Myrtle Beach, Columbia, Florence; Census county in-migration estimates',
+    },
+    intro:
+      "First Reliance built a 9-branch statewide footprint from a Florence base, with heavy CRE exposure in some of the fastest-growing SC markets. Loan growth running at 10.9% annualized means more files, more complex commercial borrower profiles, and more pressure on the verification layer that sits between application and close.",
+    strategic: [
+      {
+        title: 'Nine branches, eight cities, one verification standard',
+        body: "Each market carries different employer types: government in Columbia, healthcare and tech in Greenville, hospitality in Myrtle Beach, manufacturing in Florence. A single borrower verification stack replaces eight locally-accumulated workflows with one audit trail and one borrower experience, regardless of which branch originates the file.",
+      },
+      {
+        title: 'CRE at 59% means the heaviest files dominate the pipeline',
+        body: 'Commercial real estate verification carries the highest hours-per-file load in banking: beneficial ownership, guarantor identity, business financials, and entity structure. At 59% of an $801M book growing at 10.9% annualized, that is roughly $87M in new CRE originations per year running through the same manual collection process.',
+      },
+      {
+        title: 'Deposit pressure makes efficiency the whole game',
+        body: 'Deposits fell 8.1% annualized in Q1 while loans grew 10.9%. Every basis point of NIM compression from funding costs has to be offset somewhere. Recovering verification labor on the CRE and mortgage pipeline is capacity that does not show up on the expense line and does not require paying up for deposits.',
+      },
+    ],
+    sources:
+      'FDIC BankFind (Cert #76181); First Reliance Bancshares Q1 2026 earnings release; Visbanking call report data; Florence County Economic Development (AESC project status); Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
     slug: 'colony-bankcorp',
     name: 'Colony Bankcorp',
     shortName: 'Colony',

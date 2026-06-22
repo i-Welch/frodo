@@ -78,6 +78,71 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'first-reliance-outgrew-florence': {
+    title: "The Bank That Didn't Wait for the Battery Plant",
+    description: "First Reliance Bancshares posted net income up 113% year-over-year while the AESC battery plant in its home market sat half-built and on hold. Nine branches, eight cities, $1.12 billion in assets, and a balance sheet that outgrew Florence, SC.",
+    publishedDate: 'June 22, 2026',
+    readTime: '5 min read',
+    content: `
+In a city whose biggest economic promise spent most of 2025 on hold, First Reliance Bancshares quietly posted net income up 113% year-over-year. That's the kind of number that makes you look twice at Florence, South Carolina.
+
+The $1.62 billion AESC electric vehicle battery plant was supposed to be the story. 1,620 jobs, a transformed local labor market, median home prices up 12% in anticipation. Then came the federal EV policy shifts, the tariff uncertainty, the financing disruption, and the pause. South Carolina pulled $111 million in bond incentives. Construction stopped. Florence unemployment climbed to 6.0% in January 2026.
+
+First Reliance's Q1 2026 numbers didn't get that memo.
+
+## A Balance Sheet That Earns the Headline
+
+ROA of 1.25%. ROE of 14.53%. NIM of 3.77%, up 28 basis points year-over-year. Net charge-offs for the quarter: negative, meaning they recovered more than they charged off. Nonperforming assets at 0.19% of total assets.
+
+These are not the numbers of a bank hunkering down in a challenging market. They are the numbers of a bank performing near the top of the South Carolina community bank peer group.
+
+First Reliance was founded in 1999, making it 27 years old, a relative newcomer compared to the 90-year-old institutions that dominate these profiles. $1.12 billion in total assets. Nine South Carolina branches. Loan book of $801 million, growing at 10.9% annualized in Q1. The loan mix skews heavily commercial: CRE is 59% of the book, consumer real estate another 30%, C&I 9%.
+
+The NIM expansion is the number worth sitting with. Going from 3.49% to 3.77% in a year, in a rate environment where most community banks are fighting to hold margin flat, says something about how the bank is pricing its book.
+
+## What Happened to the Battery Plant
+
+To understand First Reliance's position, you need to understand what the AESC story has become.
+
+AESC announced a $1.62 billion facility in Florence County in 2023. The projection: 1,620 jobs and the kind of investment that reorders a regional economy. Florence home prices jumped 12.4% year-over-year in anticipation. The Pee Dee had its headline.
+
+Then 2025 arrived. Federal EV policy shifted. Tariffs complicated the supply chain math. Financing got harder. Construction on the facility, already 75% complete with $1.2 billion invested, paused in mid-2025. South Carolina pulled $111 million in bond incentives for the planned expansion. Florence unemployment hit 6.0% in January 2026, well above the 3.6% state average.
+
+Only about 200 of the promised 1,620 jobs have been hired. The full expansion, a separate $1.5 billion second facility, is completely paused.
+
+Construction has technically restarted, and officials say major hiring could resume within 8-12 months. But "could resume within 8-12 months" is a sentence that requires a certain amount of faith to bank on.
+
+## How First Reliance Stopped Depending on Florence
+
+Here is the thing: First Reliance does not look like a bank waiting on a battery plant.
+
+They have branches in Greenville, Mount Pleasant, Myrtle Beach, Columbia, Lexington, Simpsonville, and West Columbia. Florence is home base, with two branches there. But the loan production across those other markets is what is driving the 10.9% annualized growth. Greenville and the Charleston suburbs are among the strongest commercial real estate markets in the Southeast. Myrtle Beach is a deposit machine.
+
+A bank founded in Florence in 1999 quietly built a statewide footprint over 25 years. That decision looks smart right now.
+
+The CRE concentration (59% of the loan book) is worth watching in any environment, but the quality numbers are clean. $2.1 million in nonperforming assets on a $1.12 billion balance sheet is effectively nothing. An allowance coverage ratio of 1.14% against that NPA level means the reserve is conservatively set relative to actual stress.
+
+## The Number to Watch
+
+Not everything is clean.
+
+Deposits fell 8.1% annualized in Q1 2026. Loans grew 10.9%. The loan-to-deposit ratio is now 86.24%, moving in the direction that requires attention.
+
+For context, 86% LTD is not alarming. Many well-run community banks operate comfortably above that. But it is a trend, and trends in funding have a way of becoming constraints faster than trends in loans. If deposit outflows continue while loan demand holds, First Reliance will need to pay up for deposits, which compresses the NIM that is currently its strongest story.
+
+The 64.84% efficiency ratio is decent but not the headline. For a bank posting 1.25% ROA and 28 basis points of NIM expansion, there is room to drive that number lower as scale builds.
+
+## What the Next Twelve Months Look Like
+
+Florence is not done waiting on its battery plant. The AESC facility will likely get finished. The question is whether the 1,620-job promise materializes on the original timeline or something longer. For a bank with two Florence branches and a diversified statewide book, the answer matters less than it would have for a pure Florence lender.
+
+First Reliance's job is to keep the deposit base stable, hold the credit quality that has defined this quarter, and let the Greenville and Charleston-area commercial pipeline keep growing. If the Florence economy delivers, those two local branches benefit. If it takes another two years, the Myrtle Beach and Upstate books carry the weight.
+
+Net income up 113% in the middle of a local economic disruption is a specific kind of evidence. It says this bank built something more resilient than its zip code. Whether Florence catches up to the balance sheet, or the balance sheet has simply outgrown Florence, is the story of the next few years.
+
+The numbers, for now, say the latter.
+    `,
+  },
   'colony-bankcorp-farm-to-fees': {
     title: 'Built on Peanuts, Betting on Fees',
     description: 'Colony Bankcorp grew from a 1975 agricultural lender in Fitzgerald, GA to a $3.7 billion serial acquirer. Now it faces a two-front stress test: a multi-year peanut cost-price squeeze and a post-acquisition loan growth miss. The plot twist is a fee income pivot that tripled AUM in a year.',
