@@ -15,7 +15,7 @@ import type {
 } from './client';
 import { MODULE_PROVIDERS } from './client';
 import { getWlConfig } from '../_config/registry';
-import { getFlow, type FlowKind } from '../_config/flows';
+import { getFlow } from '../_config/flows';
 import { generateMockProfile } from '../_config/mock-engine';
 import { buildApplicationSummary, withChosenTerm } from '../_config/summary';
 
@@ -33,10 +33,6 @@ function requireConfig(slug: string) {
 
 export class MockClient implements WhiteLabelClient {
   private intakes = new Map<string, Intake>();
-
-  async getContext(slug: string, flow: FlowKind) {
-    return { config: requireConfig(slug), flow: getFlow(flow) };
-  }
 
   async startIntake(input: StartIntakeInput): Promise<Intake> {
     const config = requireConfig(input.slug);

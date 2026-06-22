@@ -16,6 +16,13 @@ const INTAKES = new Map<string, Intake>();
 const EQUITY_TYPES = new Set(['heloc', 'home-equity', 'mortgage']);
 const DEFAULT_DATA_ONLY_MODULES: ModuleName[] = ['identity', 'employment', 'financial'];
 
+/** Deterministic friendly application id for loan flows. */
+function applicationId(seed: string): string {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  return `APP-${100000 + (h % 900000)}`;
+}
+
 export interface StartIntakeInput {
   slug: string;
   flow: FlowKind;
@@ -72,6 +79,7 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
 
   const intake: Intake = {
     intakeId: randomUUID(),
+    applicationId: product ? applicationId(`${input.applicant.fullName}|${input.applicant.email}|${product.id}`) : undefined,
     slug: input.slug,
     flow: input.flow,
     mode,

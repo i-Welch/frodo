@@ -8,8 +8,8 @@
  * docs/whitelabel-platform-design.md, Section 4.6).
  */
 
-import type { WhiteLabelConfig, WLProduct, RateEstimate } from '../_config/types';
-import type { FlowDefinition, FlowKind } from '../_config/flows';
+import type { WLProduct, RateEstimate } from '../_config/types';
+import type { FlowKind } from '../_config/flows';
 import type { MockProfile } from '../_config/mock-engine';
 
 export type IntakeStatus =
@@ -65,8 +65,6 @@ export type SubmitResult =
   | { terminal: 'decision'; status: 'under_review' };
 
 export interface WhiteLabelClient {
-  /** Resolve the public config + the active flow for an entry. */
-  getContext(slug: string, flow: FlowKind): Promise<{ config: WhiteLabelConfig; flow: FlowDefinition }>;
   /** Create the intake and run enrichment (mock returns it ready). */
   startIntake(input: StartIntakeInput): Promise<Intake>;
   /** Rate flows: choose a term, recompute the offered rate. */

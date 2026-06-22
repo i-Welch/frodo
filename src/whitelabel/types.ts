@@ -213,6 +213,8 @@ export interface PullStep {
 
 export interface Intake {
   intakeId: string;
+  /** Friendly application id for loan flows (e.g. APP-482193); absent for data_only. */
+  applicationId?: string;
   slug: string;
   flow: FlowKind;
   mode: 'demo' | 'live';

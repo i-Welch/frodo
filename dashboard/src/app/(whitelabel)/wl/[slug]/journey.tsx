@@ -9,7 +9,7 @@ import {
   getFlow,
   type FlowKind,
 } from '../../_config/flows';
-import { mockClient } from '../../_client/mock-client';
+import { client } from '../../_client';
 import type { Intake, PullStep, SubmitResult } from '../../_client/client';
 import { usd, pct, indefiniteArticle } from '../../_config/format';
 import { LoPreview } from '../../_components/lo-preview';
@@ -103,7 +103,7 @@ export function Journey({
   }
 
   async function startIntakeNow(): Promise<Intake> {
-    return mockClient.startIntake({
+    return client.startIntake({
       slug: config.slug,
       flow,
       applicant: {
@@ -135,7 +135,7 @@ export function Journey({
           current = await startIntakeNow();
           setIntake(current);
         }
-        setSubmitResult(await mockClient.submit(current.intakeId));
+        setSubmitResult(await client.submit(current.intakeId));
       }
       setStageIndex((i) => i + 1);
     } finally {
@@ -148,7 +148,7 @@ export function Journey({
 
   async function chooseTerm(termMonths: number) {
     if (!intake) return;
-    const updated = await mockClient.selectTerm(intake.intakeId, termMonths);
+    const updated = await client.selectTerm(intake.intakeId, termMonths);
     setIntake({ ...updated });
   }
 

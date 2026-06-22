@@ -10,6 +10,7 @@ const isPublicRoute = createRouteMatcher([
   '/roi(.*)',
   '/wl(.*)',
   '/audit(.*)',
+  '/api/v1/wl(.*)',
   '/sitemap.xml',
   '/robots.txt',
 ]);
