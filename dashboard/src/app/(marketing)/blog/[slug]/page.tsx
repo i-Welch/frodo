@@ -78,6 +78,71 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'chime-account-opening-deposit-war': {
+    title: 'The 92% Problem',
+    description: 'Community banks built digital account opening. Then 92% of customers abandoned it on mobile. Chime does it in two minutes, added 700,000 members last quarter, and went public on NASDAQ. A step-by-step look at what each side actually does.',
+    publishedDate: 'June 24, 2026',
+    readTime: '5 min read',
+    content: `
+Community banks built digital account opening. Then 92% of customers abandoned it on mobile before finishing. Chime built the same thing and made it take two minutes.
+
+That gap is where deposits go to die.
+
+Chime now has 10.2 million active members, up 19% year-over-year, adding roughly 700,000 net new members in a single quarter. $2.2 billion in 2025 revenue. Just went public on NASDAQ. The entire operation runs without a single branch, without a signature card, and without a ChexSystems pull. For an increasing share of American consumers, that's not a compromise. It's the point.
+
+## What Chime Actually Does
+
+The Chime account opening flow takes under two minutes. Name, address, date of birth, Social Security number, photo ID upload. Done.
+
+The account activates within minutes. A debit card shows up in the mail in 7-10 days. No initial deposit required. No branch visit. No utility bill. No waiting for a banker to finish with the person ahead of you.
+
+The ChexSystems piece is deliberate. Chime doesn't use it, and they advertise that fact. ChexSystems is the consumer reporting agency most banks pull during account opening to flag applicants with prior overdraft history, bounced checks, or account misuse. An estimated 25 million Americans have ChexSystems records that limit their banking options. Chime's position: those people are customers too, and their money spends the same.
+
+The verification that does happen runs in the background. Identity screening, fraud detection, OFAC checks. The customer never sees it. The account either opens or it doesn't.
+
+## What a Community Bank Does Instead
+
+Walk into a community bank to open a checking account and the process runs 20-45 minutes, depending on the branch, the banker, and whether the printer is cooperating.
+
+You need a government-issued photo ID, your Social Security number, an initial deposit, and sometimes a utility bill for address verification. The banker runs a ChexSystems pull. They fill out a signature card. They walk you through account disclosures. They explain the overdraft protection options. They hand you a temporary debit card or tell you the permanent one arrives in 10 business days.
+
+It is thorough. It is relationship-oriented. It is also 45 minutes when your competitor does it in two.
+
+The digital version is theoretically faster. In practice, 67% of community bank digital account applications are abandoned before completion. On mobile, that number is 92%. Customers hit a friction point (document upload, video verification, initial deposit transfer) and leave. Most never come back.
+
+Only 20% of community bank checking accounts originate online, despite 31% year-over-year growth in digital openings. The growth is real. The base is still small.
+
+## The CFPB File
+
+Chime's model is not without its problems. The speed that makes account opening frictionless also makes account closing painful.
+
+In May 2024, the CFPB fined Chime $3.25 million and ordered $1.3 million in consumer redress for illegally delaying refunds after account closures. In thousands of cases, customers waited more than 90 days to get their money back. A separate California DFPI consent order added a $2.5 million penalty for complaint handling failures.
+
+The CFPB complaint database is full of variations on the same story: Chime freezes an account for suspected fraud, the customer can't reach anyone, bills go unpaid, and the dispute process disappears into a customer service queue with no end.
+
+This is the tradeoff Chime made. No ChexSystems means more accounts opened. No branches means lower costs. But it also means no banker to call when something goes wrong and a dispute process that runs on email and chatbots.
+
+A community bank's 45-minute account opening includes a human who knows the account number, can look at the screen, and can fix a problem on the spot. That's not nothing. The question is whether the people who value that are still the people opening new accounts.
+
+## Where the Deposits Are Going
+
+Fifty-two percent of consumers say they are open to switching banks in the next 12 months, according to J.D. Power's 2025 U.S. Retail Banking Satisfaction Study. Twenty percent moved money away from their primary bank in the prior three months, up from 17% the year before.
+
+The average checking customer now holds accounts at three different institutions. Primary bank, high-yield savings somewhere else, maybe a fintech account for a specific purpose. The concept of a single banking relationship is eroding faster than most community bankers want to believe.
+
+The top driver of switching? Mobile banking capability, cited by 36% of switchers. Not rate. Not fees. The phone.
+
+## What Can Actually Be Fixed
+
+The gap between Chime and a community bank is not entirely closable. Chime has a decade of mobile-first product investment, a $2.2 billion revenue base, and no physical infrastructure to maintain. No community bank is going to out-engineer that.
+
+But the 92% mobile abandonment rate is not a technology gap. It is a process gap. Most community bank digital account opening flows ask for too much information in the wrong order, time out before the customer finishes, require a branch visit to complete verification, or break on the document upload step.
+
+Fixing those specific failure points does not require rebuilding the entire stack. It requires knowing where customers are leaving and eliminating the friction at those moments. The banks that have done it are already taking share from the ones that haven't.
+
+Chime adds 700,000 members in a quarter. Most of them came from somewhere. The question is whether any of them came from yours.
+    `,
+  },
   'first-reliance-outgrew-florence': {
     title: "The Bank That Didn't Wait for the Battery Plant",
     description: "First Reliance Bancshares posted net income up 113% year-over-year while the AESC battery plant in its home market sat half-built and on hold. Nine branches, eight cities, $1.12 billion in assets, and a balance sheet that outgrew Florence, SC.",

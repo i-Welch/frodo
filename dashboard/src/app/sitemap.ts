@@ -81,6 +81,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: 'https://reportraven.tech/blog/chime-account-opening-deposit-war',
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: 'https://reportraven.tech/blog/first-reliance-outgrew-florence',
       lastModified: new Date(),
       changeFrequency: 'monthly',

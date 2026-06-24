@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'chime-account-opening-deposit-war',
+    title: 'The 92% Problem',
+    description:
+      'Community banks built digital account opening. Then 92% of customers abandoned it on mobile. Chime does it in two minutes, added 700,000 members last quarter, and went public on NASDAQ. A step-by-step look at what each side actually does.',
+    readTime: '5 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'first-reliance-outgrew-florence',
     title: "The Bank That Didn't Wait for the Battery Plant",
     description:
