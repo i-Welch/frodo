@@ -127,7 +127,16 @@ export async function chooseTerm(intakeId: string, termMonths: number): Promise<
   const range = selectRangeTerm(intake.range, termMonths);
   const dti = computeDti(intake.profile, range.highPayment);
   const updated: Intake = { ...intake, range, dti, status: 'rate_ready' };
-  await putIntake({ ...updated, tenantId: tenant.tenantId });
+  try {
+    await putIntake({ ...updated, tenantId: tenant.tenantId });
+  } catch (err) {
+    // The intake was finalized (submitted) concurrently; the term selection is
+    // moot. Return the current persisted record rather than clobbering it.
+    if (err instanceof Error && err.name === 'ConditionalCheckFailedException') {
+      return (await getStoredIntake(intakeId)) ?? intake;
+    }
+    throw err;
+  }
   return updated;
 }
 

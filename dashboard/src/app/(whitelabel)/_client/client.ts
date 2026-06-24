@@ -13,11 +13,8 @@ import type { FlowKind } from '../_config/flows';
 import type { MockProfile } from '../_config/mock-engine';
 
 export type IntakeStatus =
-  | 'started'
-  | 'verifying'
   | 'data_ready'
   | 'rate_ready'
-  | 'submitted'
   | 'under_review'
   | 'routed';
 

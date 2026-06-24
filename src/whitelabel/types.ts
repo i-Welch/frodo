@@ -216,10 +216,8 @@ export interface MockProfile {
 /* ------------------------------------------------------------------ */
 
 export type IntakeStatus =
-  | 'started'
   | 'data_ready'
   | 'rate_ready'
-  | 'submitted'
   | 'under_review'
   | 'routed';
 

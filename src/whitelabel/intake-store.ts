@@ -21,7 +21,7 @@ const log = createChildLogger({ module: 'wl-intake-store' });
  */
 
 const ABANDON_TTL_SECONDS = 72 * 60 * 60; // 72h for never-submitted intakes
-const TERMINAL: IntakeStatus[] = ['submitted', 'under_review', 'routed'];
+const TERMINAL: IntakeStatus[] = ['under_review', 'routed'];
 
 function intakeKey(intakeId: string) {
   return { PK: `INTAKE#${intakeId}`, SK: 'METADATA' };
@@ -64,11 +64,25 @@ export async function putIntake(intake: StoredIntakeInput): Promise<void> {
     encApplicant,
   };
   // Abandoned intakes expire; terminal ones persist.
-  if (!TERMINAL.includes(intake.status)) {
+  const isTerminal = TERMINAL.includes(intake.status);
+  if (!isTerminal) {
     item.ttl = Math.floor(Date.now() / 1000) + ABANDON_TTL_SECONDS;
   }
 
-  await putItem(item);
+  // Optimistic guard: a non-terminal write (e.g. a stale chooseTerm) must not
+  // overwrite a record that has already reached a terminal status, which would
+  // both lose the terminal transition and resurrect a TTL on it. Terminal
+  // writes (submit) always win. See the service layer for conflict handling.
+  const opts =
+    isTerminal
+      ? undefined
+      : {
+          conditionExpression: `attribute_not_exists(PK) OR (${TERMINAL.map((_, i) => `#st <> :t${i}`).join(' AND ')})`,
+          expressionAttributeNames: { '#st': 'status' },
+          expressionAttributeValues: Object.fromEntries(TERMINAL.map((s, i) => [`:t${i}`, s])),
+        };
+
+  await putItem(item, opts);
   log.debug({ intakeId: intake.intakeId, tenantId: intake.tenantId, flow: intake.flow }, 'Intake stored');
 }
 

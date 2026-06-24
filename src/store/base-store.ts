@@ -81,13 +81,23 @@ export const gsiKeys = {
 // Generic helpers
 // ---------------------------------------------------------------------------
 
+export interface PutOptions {
+  conditionExpression?: string;
+  expressionAttributeNames?: Record<string, string>;
+  expressionAttributeValues?: Record<string, unknown>;
+}
+
 export async function putItem(
   item: Record<string, unknown>,
+  opts?: PutOptions,
 ): Promise<void> {
   await docClient.send(
     new PutCommand({
       TableName: TABLE_NAME,
       Item: item,
+      ConditionExpression: opts?.conditionExpression,
+      ExpressionAttributeNames: opts?.expressionAttributeNames,
+      ExpressionAttributeValues: opts?.expressionAttributeValues,
     }),
   );
 }

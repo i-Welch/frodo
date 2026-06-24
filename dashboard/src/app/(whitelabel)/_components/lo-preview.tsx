@@ -23,12 +23,12 @@ export function LoPreview({
   const verificationOnly = summary.amount === 0 && !summary.range;
   const rangeSingle = summary.range ? summary.range.lowApr === summary.range.highApr : false;
   const modules = [
-    { name: 'Identity', value: `${profile.identity.fullName} · SSN •••• ${profile.identity.ssnLast4}`, source: 'Socure', pass: true },
-    { name: 'Contact', value: `${profile.contact.email} · ${profile.contact.phone}`, source: 'Socure', pass: true },
-    { name: 'Income & Employment', value: `${profile.employment.employer} · ${usd(profile.employment.annualIncome)}/yr`, source: 'Truework', pass: true },
-    { name: 'Bank & Assets', value: `${profile.financial.institution} · ${usd(profile.financial.checkingBalance + profile.financial.savingsBalance)} on deposit`, source: 'Plaid', pass: true },
-    { name: 'Property', value: `${usd(profile.residence.estimatedValue)} est. value · ${usd(profile.residence.mortgageBalance)} lien`, source: 'Melissa', pass: summary.ltv !== null },
-    { name: 'Credit', value: `${profile.credit.score} · ${profile.credit.openTradelines} tradelines · ${profile.credit.derogatories} derog.`, source: 'Experian', pass: true },
+    { name: 'Identity', value: `${profile.identity.fullName} · SSN •••• ${profile.identity.ssnLast4}`, source: 'Socure' },
+    { name: 'Contact', value: `${profile.contact.email} · ${profile.contact.phone}`, source: 'Socure' },
+    { name: 'Income & Employment', value: `${profile.employment.employer} · ${usd(profile.employment.annualIncome)}/yr`, source: 'Truework' },
+    { name: 'Bank & Assets', value: `${profile.financial.institution} · ${usd(profile.financial.checkingBalance + profile.financial.savingsBalance)} on deposit`, source: 'Plaid' },
+    { name: 'Property', value: `${usd(profile.residence.estimatedValue)} est. value · ${usd(profile.residence.mortgageBalance)} lien`, source: 'Melissa' },
+    { name: 'Credit', value: `${profile.credit.score} · ${profile.credit.openTradelines} tradelines · ${profile.credit.derogatories} derog.`, source: 'Experian' },
   ].filter((m) => {
     // Only show modules this product actually pulled.
     const pulled = new Set(summary.verified.map((v) => v.module));
