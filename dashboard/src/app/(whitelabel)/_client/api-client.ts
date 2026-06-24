@@ -16,6 +16,7 @@ import type {
   VerifyApplicant,
   VerifyRequestData,
 } from './client';
+import { getDeviceId } from './device';
 
 // Always relative: the browser hits the same origin (e.g. <bank>.submit.loans)
 // and Next's rewrite proxies /api/* to the backend server-side, so there is no
@@ -92,9 +93,13 @@ export class ApiClient implements WhiteLabelClient {
 
   async getVerifyRequest(token: string): Promise<VerifyRequestData | null> {
     try {
-      return await req<VerifyRequestData>(`/verify-request/${encodeURIComponent(token)}`);
+      return await req<VerifyRequestData>(`/verify-request/${encodeURIComponent(token)}/resolve`, {
+        method: 'POST',
+        body: JSON.stringify({ deviceId: getDeviceId() }),
+      });
     } catch {
-      // 404 (unknown/expired) or any transient error -> treat as unresolvable.
+      // 404 (expired), 409 (bound to another device), or any transient error
+      // all mean "can't resume here".
       return null;
     }
   }

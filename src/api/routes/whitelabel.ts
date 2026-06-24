@@ -144,15 +144,25 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
     },
   )
   // Resolve a verification token to the journey's prefill (modules + applicant).
-  .get(
-    '/verify-request/:token',
-    async ({ params, set }) => {
-      const resolved = await resolveVerifyLink(params.token);
-      if (!resolved) {
+  // Binds the link to the first device that opens it (single-use across devices);
+  // the same device resumes within the TTL. The device id is a client-persisted,
+  // non-secret identifier, not the borrower's PII.
+  .post(
+    '/verify-request/:token/resolve',
+    async ({ params, body, set }) => {
+      const result = await resolveVerifyLink(params.token, body.deviceId);
+      if (result.status === 'expired') {
         set.status = 404;
         return { error: 'unknown_or_expired' };
       }
-      return resolved;
+      if (result.status === 'used_elsewhere') {
+        set.status = 409;
+        return { error: 'used_on_another_device' };
+      }
+      return { slug: result.slug, modules: result.modules, applicant: result.applicant };
     },
-    { params: t.Object({ token: t.String() }) },
+    {
+      params: t.Object({ token: t.String() }),
+      body: t.Object({ deviceId: t.String({ minLength: 8 }) }),
+    },
   );

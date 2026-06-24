@@ -23,6 +23,7 @@ import { getWlConfig } from '../_config/registry';
 import { getFlow } from '../_config/flows';
 import { generateMockProfile, computeLtv, computeDti } from '../_config/mock-engine';
 import { evaluateRange, evaluatePoint, selectRangeTerm } from '../_config/types';
+import { getDeviceId } from './device';
 
 const EQUITY = new Set(['heloc', 'home-equity', 'mortgage']);
 const DEFAULT_MODULES = ['identity', 'employment', 'financial'];
@@ -156,7 +157,18 @@ export class MockClient implements WhiteLabelClient {
   async getVerifyRequest(token: string): Promise<VerifyRequestData | null> {
     if (typeof window === 'undefined') return null;
     const raw = window.localStorage.getItem(VERIFY_KEY(token));
-    return raw ? (JSON.parse(raw) as VerifyRequestData) : null;
+    if (!raw) return null;
+    // Mirror the backend: bind the link to the first device, allow the same
+    // device to resume. (In the demo this is all one browser, so it always
+    // resumes; the binding matters in production via the ApiClient.)
+    const rec = JSON.parse(raw) as VerifyRequestData & { boundDeviceId?: string };
+    const deviceId = getDeviceId();
+    if (!rec.boundDeviceId) {
+      rec.boundDeviceId = deviceId;
+      window.localStorage.setItem(VERIFY_KEY(token), JSON.stringify(rec));
+    }
+    if (rec.boundDeviceId !== deviceId) return null;
+    return { slug: rec.slug, modules: rec.modules, applicant: rec.applicant };
   }
 }
 

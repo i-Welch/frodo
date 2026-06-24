@@ -5,7 +5,7 @@ import { getFlow } from './flows.js';
 import { providerSetForMode, MODULE_PROVIDERS } from './mock.js';
 import { evaluateRange, evaluatePoint, selectRangeTerm, computeLtv, computeDti } from './rate-engine.js';
 import { putIntake, getStoredIntake, listIntakesByTenant } from './intake-store.js';
-import { createVerifyRequest, getVerifyRequest } from './verify-request-store.js';
+import { createVerifyRequest, resolveVerifyRequest, type ResolveResult } from './verify-request-store.js';
 
 /**
  * Intake orchestration. The single Intake entity is persisted to DynamoDB
@@ -203,11 +203,12 @@ export async function createVerifyLink(input: {
   return { token: rec.token };
 }
 
-/** Resolve a verification link token to the data the borrower journey needs. */
-export async function resolveVerifyLink(
-  token: string,
-): Promise<{ slug: string; modules: ModuleName[]; applicant: { fullName: string; email: string; phone?: string } } | undefined> {
-  const rec = await getVerifyRequest(token);
-  if (!rec) return undefined;
-  return { slug: rec.slug, modules: rec.modules, applicant: rec.applicant };
+/**
+ * Resolve a verification link for a given device. The link binds to the first
+ * device that opens it (single-use across devices); the same device can resume
+ * within the token's TTL. Returns a tagged result so the route can map it to the
+ * right HTTP status.
+ */
+export async function resolveVerifyLink(token: string, deviceId: string): Promise<ResolveResult> {
+  return resolveVerifyRequest(token, deviceId);
 }
