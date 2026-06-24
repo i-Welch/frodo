@@ -309,7 +309,11 @@ export function Journey({
           <Loading />
         );
       case 'rate':
-        return intake?.range ? (
+        if (!intake) return <Loading />;
+        // Products priced by a loan officer have no rate card, so no range is
+        // computed. Route them to an LO-follow-up panel instead of hanging on a
+        // spinner that never resolves.
+        return intake.range ? (
           <RateStage
             config={config}
             intake={intake}
@@ -317,7 +321,13 @@ export function Journey({
             onContinue={advance}
           />
         ) : (
-          <Loading />
+          <NoRateRoute
+            config={config}
+            productLabel={intake.product?.label}
+            busy={busy}
+            onBack={onBack}
+            onContinue={advance}
+          />
         );
       case 'confirmation':
         return submitResult && liveSummary ? (
@@ -766,6 +776,14 @@ function DataPull({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active]);
 
+  // Clear any pending timer on unmount. The per-step effect only registers a
+  // cleanup on its non-interactive branch, so the handleConnect timer (and the
+  // final onDone timer) would otherwise fire after unmount (e.g. switching flow
+  // or perspective mid-connect) and setState on an unmounted tree.
+  useEffect(() => () => {
+    if (timer.current) clearTimeout(timer.current);
+  }, []);
+
   function handleConnect() {
     setAwaitingConnect(false);
     timer.current = setTimeout(() => {
@@ -816,6 +834,35 @@ function DataPull({
           </button>
         </div>
       )}
+    </div>
+  );
+}
+
+// Shown in place of RateStage for products a loan officer prices (no rate card,
+// so no instant range). The analog of the rate screen for LO-routed products.
+function NoRateRoute({
+  config, productLabel, busy, onBack, onContinue,
+}: {
+  config: WhiteLabelConfig;
+  productLabel?: string;
+  busy: boolean;
+  onBack?: () => void;
+  onContinue: () => void;
+}) {
+  const what = productLabel ? productLabel.toLowerCase() : 'this product';
+  return (
+    <div className="wl-card wl-step">
+      {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
+      <span className="wl-eyebrow">Almost done</span>
+      <h2>A loan officer will finalize your rate</h2>
+      <p className="wl-lede">
+        Your information is verified. {config.branding.shortName} prices {what} individually, so a
+        lending specialist will review your details and follow up with your personalized rate and
+        next steps.
+      </p>
+      <button className="wl-btn wl-btn-primary wl-btn-block" disabled={busy} onClick={onContinue}>
+        {busy ? 'Working…' : 'Continue'}
+      </button>
     </div>
   );
 }

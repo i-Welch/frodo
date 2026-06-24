@@ -31,10 +31,12 @@ function nextId(prefix: string): string {
   counter += 1;
   return `${prefix}-${counter.toString().padStart(4, '0')}`;
 }
-function appId(seed: string): string {
+// Derived from the unique per-intake id so application ids don't collide
+// (mirrors the backend's intake-id-based scheme).
+function appId(intakeId: string): string {
   let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  return `APP-${100000 + (h % 900000)}`;
+  for (let i = 0; i < intakeId.length; i++) h = (h * 31 + intakeId.charCodeAt(i)) >>> 0;
+  return `APP-${(h >>> 0).toString(16).padStart(8, '0').toUpperCase()}`;
 }
 function requireConfig(slug: string) {
   const config = getWlConfig(slug);
@@ -83,8 +85,9 @@ export class MockClient implements WhiteLabelClient {
       if (range) dti = computeDti(profile, range.highPayment);
     }
 
+    const intakeId = nextId('INTAKE');
     const intake: Intake = {
-      intakeId: nextId('INTAKE'),
+      intakeId,
       slug: input.slug,
       flow: input.flow,
       status: range ? 'rate_ready' : 'data_ready',
@@ -97,7 +100,7 @@ export class MockClient implements WhiteLabelClient {
       range,
       ltv,
       dti,
-      applicationId: product ? appId(`${input.applicant.fullName}|${input.applicant.email}|${product.id}`) : undefined,
+      applicationId: product ? appId(intakeId) : undefined,
     };
     this.intakes.set(intake.intakeId, intake);
     return intake;

@@ -16,10 +16,11 @@ import { createVerifyRequest, getVerifyRequest } from './verify-request-store.js
 const EQUITY_TYPES = new Set(['heloc', 'home-equity', 'mortgage']);
 const DEFAULT_DATA_ONLY_MODULES: ModuleName[] = ['identity', 'employment', 'financial'];
 
-function applicationId(seed: string): string {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  return `APP-${100000 + (h % 900000)}`;
+// Friendly application id derived from the unique intake id (a UUID), so it is
+// collision-free. (The earlier name|email|product hash mod 900k collided by the
+// birthday bound after ~1k applicants and is used as a queue key.)
+function applicationId(intakeId: string): string {
+  return `APP-${intakeId.replace(/-/g, '').slice(0, 8).toUpperCase()}`;
 }
 
 function stepsForLoan(config: WhiteLabelConfig, productId: string, pullCredit: boolean): PullStep[] {
@@ -87,9 +88,10 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
     if (range) dti = computeDti(profile, range.highPayment);
   }
 
+  const intakeId = randomUUID();
   const intake: Intake = {
-    intakeId: randomUUID(),
-    applicationId: product ? applicationId(`${input.applicant.fullName}|${input.applicant.email}|${product.id}`) : undefined,
+    intakeId,
+    applicationId: product ? applicationId(intakeId) : undefined,
     slug: input.slug,
     flow: input.flow,
     mode: tenant.mode,
