@@ -14,6 +14,7 @@ import type {
   StartIntakeInput,
   SubmitResult,
   PullStep,
+  TermUpdate,
   VerifyApplicant,
   VerifyRequestData,
 } from './client';
@@ -106,7 +107,7 @@ export class MockClient implements WhiteLabelClient {
     return intake;
   }
 
-  async selectTerm(intakeId: string, termMonths: number): Promise<Intake> {
+  async selectTerm(intakeId: string, termMonths: number): Promise<TermUpdate> {
     const intake = this.intakes.get(intakeId);
     if (!intake) throw new Error(`Unknown intake: ${intakeId}`);
     if (intake.range) {
@@ -116,7 +117,7 @@ export class MockClient implements WhiteLabelClient {
       intake.status = 'rate_ready';
       this.intakes.set(intakeId, intake);
     }
-    return intake;
+    return { intakeId: intake.intakeId, status: intake.status, range: intake.range, dti: intake.dti };
   }
 
   async submit(intakeId: string): Promise<SubmitResult> {

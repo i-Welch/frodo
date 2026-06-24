@@ -114,10 +114,6 @@ export async function startIntake(input: StartIntakeInput): Promise<Intake> {
   return intake;
 }
 
-export async function getIntake(intakeId: string): Promise<Intake | undefined> {
-  return getStoredIntake(intakeId);
-}
-
 export async function chooseTerm(intakeId: string, termMonths: number): Promise<Intake | undefined> {
   const intake = await getStoredIntake(intakeId);
   if (!intake) return undefined;

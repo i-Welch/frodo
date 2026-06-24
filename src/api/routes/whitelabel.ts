@@ -4,7 +4,6 @@ import { getConfig, toPublicConfig } from '../../whitelabel/config-store.js';
 import { getFlow, resolveFlow } from '../../whitelabel/flows.js';
 import {
   startIntake,
-  getIntake,
   chooseTerm,
   submitIntake,
   createVerifyLink,
@@ -83,20 +82,9 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
       }),
     },
   )
-  // Poll an intake (enrichment + computed rate).
-  .get(
-    '/intake/:id',
-    async ({ params, set }) => {
-      const intake = await getIntake(params.id);
-      if (!intake) {
-        set.status = 404;
-        return { error: 'unknown_intake' };
-      }
-      return intake;
-    },
-    { params: t.Object({ id: t.String() }) },
-  )
-  // Rate flows: choose a term, recompute the offered rate + DTI.
+  // Rate flows: choose a term, recompute the offered rate + DTI. Returns only
+  // the rate fields (no profile/applicant): the caller already holds the rest,
+  // and an intake id alone should never read back the borrower's PII.
   .post(
     '/intake/:id/term',
     async ({ params, body, set }) => {
@@ -105,7 +93,7 @@ export const whitelabelRoutes = new Elysia({ prefix: '/api/v1/wl' })
         set.status = 404;
         return { error: 'unknown_intake' };
       }
-      return intake;
+      return { intakeId: intake.intakeId, status: intake.status, range: intake.range, dti: intake.dti };
     },
     {
       params: t.Object({ id: t.String() }),

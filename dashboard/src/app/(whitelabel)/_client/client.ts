@@ -78,11 +78,15 @@ export interface VerifyRequestData {
   applicant: VerifyApplicant;
 }
 
+/** What selecting a term returns: only the rate fields change, and the server
+ * deliberately does not echo back PII (the caller already holds the profile). */
+export type TermUpdate = Pick<Intake, 'intakeId' | 'status' | 'range' | 'dti'>;
+
 export interface WhiteLabelClient {
   /** Create the intake and run enrichment (mock returns it ready). */
   startIntake(input: StartIntakeInput): Promise<Intake>;
-  /** Rate flows: choose a term, recompute the offered rate. */
-  selectTerm(intakeId: string, termMonths: number): Promise<Intake>;
+  /** Rate flows: choose a term, recompute the offered rate. Returns rate fields only. */
+  selectTerm(intakeId: string, termMonths: number): Promise<TermUpdate>;
   /** Reach the flow's terminal (route to LO, show range, or submit for decision). */
   submit(intakeId: string): Promise<SubmitResult>;
   /** LO "send a link": store a verification request, return an opaque token. */

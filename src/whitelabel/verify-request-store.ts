@@ -18,7 +18,7 @@ const log = createChildLogger({ module: 'wl-verify-request-store' });
  *   PK = VERIFYREQ#<token>   SK = METADATA
  */
 
-const TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days
+const TTL_SECONDS = 48 * 60 * 60; // 48h: a sent verification link is short-lived
 
 function verifyKey(token: string) {
   return { PK: `VERIFYREQ#${token}`, SK: 'METADATA' };

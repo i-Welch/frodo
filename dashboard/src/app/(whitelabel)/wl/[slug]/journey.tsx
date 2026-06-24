@@ -193,8 +193,10 @@ export function Journey({
 
   async function chooseTerm(termMonths: number) {
     if (!intake) return;
-    const updated = await client.selectTerm(intake.intakeId, termMonths);
-    setIntake({ ...updated });
+    // selectTerm returns only the rate fields (no PII echoed back); merge them
+    // into the intake we already hold rather than replacing it.
+    const update = await client.selectTerm(intake.intakeId, termMonths);
+    setIntake((prev) => (prev ? { ...prev, ...update } : prev));
   }
 
   const goToQueue = useCallback(() => {

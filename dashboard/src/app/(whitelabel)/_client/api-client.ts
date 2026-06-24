@@ -12,6 +12,7 @@ import type {
   StartIntakeInput,
   SubmitResult,
   WhiteLabelClient,
+  TermUpdate,
   VerifyApplicant,
   VerifyRequestData,
 } from './client';
@@ -68,10 +69,17 @@ export class ApiClient implements WhiteLabelClient {
     return toIntake(await req('/intake', { method: 'POST', body: JSON.stringify(body) }));
   }
 
-  async selectTerm(intakeId: string, termMonths: number): Promise<Intake> {
-    return toIntake(
-      await req(`/intake/${intakeId}/term`, { method: 'POST', body: JSON.stringify({ termMonths }) }),
-    );
+  async selectTerm(intakeId: string, termMonths: number): Promise<TermUpdate> {
+    const d = await req<Record<string, unknown>>(`/intake/${intakeId}/term`, {
+      method: 'POST',
+      body: JSON.stringify({ termMonths }),
+    });
+    return {
+      intakeId: d.intakeId as string,
+      status: d.status as Intake['status'],
+      range: (d.range as Intake['range']) ?? null,
+      dti: (d.dti as number | null) ?? null,
+    };
   }
 
   async submit(intakeId: string): Promise<SubmitResult> {
