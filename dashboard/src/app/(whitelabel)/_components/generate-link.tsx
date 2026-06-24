@@ -183,7 +183,7 @@ function GenerateLinkModal({ config, onClose }: { config: WhiteLabelConfig; onCl
 }
 
 const triggerStyles = `
-  .gl-trigger { display: inline-flex; align-items: center; gap: 0.45rem; font-family: inherit; font-size: 0.8rem; font-weight: 600; color: #fff; background: #006242; border: none; border-radius: 8px; padding: 0.5rem 0.85rem; cursor: pointer; transition: background 150ms; }
+  .gl-trigger { display: inline-flex; align-items: center; gap: 0.45rem; font-family: inherit; font-size: 0.8rem; font-weight: 600; white-space: nowrap; color: #fff; background: #006242; border: none; border-radius: 8px; padding: 0.5rem 0.85rem; cursor: pointer; transition: background 150ms; }
   .gl-trigger:hover { background: #004d34; }
 `;
 

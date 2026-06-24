@@ -109,12 +109,12 @@ export function OfficerView({
 const styles = `
   .ov-shell { font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f5f6f7; color: #171717; flex: 1; min-height: 70vh; padding: 1.5rem; }
   .ov-shell * { box-sizing: border-box; }
-  .ov-head { display: flex; align-items: center; justify-content: space-between; max-width: 1080px; margin: 0 auto 1.25rem; }
+  .ov-head { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; max-width: 1080px; margin: 0 auto 1.25rem; }
   .ov-title { font-size: 1rem; font-weight: 700; letter-spacing: 0.06em; }
   .ov-sub { font-weight: 500; letter-spacing: 0; color: #737373; font-size: 0.85rem; }
   .ov-org { font-size: 0.78rem; color: #737373; margin-top: 0.15rem; }
-  .ov-head-actions { display: flex; align-items: center; gap: 0.85rem; }
-  .ov-phase { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6941c6; background: #f4ebff; border: 1px solid #e9d7fe; border-radius: 999px; padding: 0.3rem 0.7rem; }
+  .ov-head-actions { display: flex; align-items: center; gap: 0.85rem; flex-wrap: wrap; }
+  .ov-phase { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6941c6; background: #f4ebff; border: 1px solid #e9d7fe; border-radius: 999px; padding: 0.3rem 0.7rem; white-space: nowrap; }
 
   .ov-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.85rem; max-width: 1080px; margin: 0 auto 1.25rem; }
   .ov-stat { background: #fff; border: 1px solid #e5e7e5; border-radius: 12px; padding: 1rem 1.1rem; }
