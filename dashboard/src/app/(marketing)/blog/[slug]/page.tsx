@@ -78,6 +78,75 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'southern-bank-nc-digital-bet': {
+    title: 'The Century Bank That Hired a Chief Digital Officer',
+    description: "Southern Bank and Trust has run $5 billion across 57 eastern North Carolina branches for over a century. In 2024, they hired a Chief Digital Officer from First Citizens Bank. What that hire means for borrowers from the tobacco belt to the Outer Banks.",
+    publishedDate: 'June 25, 2026',
+    readTime: '6 min read',
+    content: `
+Southern Bank and Trust has been in Mount Olive, North Carolina since 1901. That is twenty-two years before the Federal Reserve opened, twelve years before the income tax, and one year after Mount Olive itself was incorporated. The Wright Brothers flew at Kitty Hawk two years later.
+
+In late 2024, the bank that survived the Depression, the farm credit collapse of the 1980s, and every interest rate cycle since hired a Chief Digital Officer.
+
+That is the story worth following.
+
+## The Balance Sheet
+
+Southern Bank and Trust Company is the banking subsidiary of Southern BancShares (N.C.), Inc., traded OTC as SBNC. Total assets as of Q1 2026: $5.25 billion. Fifty-seven branches across eastern North Carolina and southeastern Virginia. Headquartered in Mount Olive, Wayne County.
+
+The Q1 2026 numbers: ROA of 0.89% on $11.7 million in quarterly net income. Efficiency ratio of 53.23%. Net loans of $3.44 billion. Those are solid numbers for a bank operating in one of the less economically dynamic corners of the American Southeast.
+
+Full year 2025 was stronger: ROA of approximately 1.17%, full-year net income approaching $60 million, and an efficiency ratio trending from the mid-50s toward the low 50s. The fourth quarter of 2025 showed ROA of 1.19%, consistent with a well-run institution operating near the top of its performance range. For a bank this size, in this geography, those numbers represent genuine execution.
+
+## Eastern Carolina
+
+Wayne County, North Carolina, where Southern Bank is headquartered, is one of the state's more complicated economic stories.
+
+Seymour Johnson Air Force Base sits in Goldsboro, the county seat. It employs thousands of active-duty personnel, defense contractors, and civilian workers and has anchored the regional economy for decades. In 2024, the Air Force announced plans to divest 26 aircraft from the base, eliminating an estimated 520 Wayne County jobs. Congressman Don Davis has been pushing back publicly. The situation remains unresolved as of mid-2026.
+
+Wayne County is also classified as one of North Carolina's most economically distressed counties. Tobacco country, historically. The decades-long shift away from tobacco farming reshaped the county's agricultural economy, and the replacement industries (poultry, food processing, distribution) pay materially less. Unemployment runs above the state average.
+
+But Southern Bank's footprint is not just Wayne County. Their branches run from the tobacco-and-hog-farming interior (Duplin County, Lenoir County, Wilson County) to the coast. The Kill Devil Hills branch sits in Dare County, home of the Outer Banks. These are markets with entirely different borrower profiles: agricultural businesses with seasonal income cycles in the west, military families rotating through Goldsboro in the center, vacation property investors and hospitality workers on the coast.
+
+That geographic complexity is not a liability if you can price and verify it correctly. It becomes a liability when your verification stack treats a crop-year-end payment from a Duplin County pork farmer the same as a Dare County beach house mortgage.
+
+## What 57 Branches Means in Practice
+
+Southern Bank operates across three distinct economies connected geographically but not economically.
+
+An agricultural borrower in Lenoir County has income that does not look like a W-2. A sergeant at Seymour Johnson AFB has base pay plus housing allowance (BAH) plus subsistence allowance (BAS) plus possible special duty pay. An Outer Banks vacation rental property owner has short-term rental income from Airbnb that does not appear on a standard pay stub.
+
+Each borrower type requires a different verification approach if you want to close the loan at speed. Most community banks operating across footprints this diverse end up with a patchwork: different processors handling different income types with different document requests, different turnaround times, and no consistent audit trail across the portfolio.
+
+A bank that closes a tobacco country commercial loan in 45 days and a Kill Devil Hills vacation property in 21 days is not operating consistently. It is accumulating risk in the form of process variance that does not show up on the efficiency ratio until it suddenly does.
+
+The C&I book runs at $246 million. Agricultural loans are $39.6 million, less than 1% of total assets. The residential real estate and consumer book makes up the bulk of the $3.44 billion loan portfolio. That mix, across 57 branches and three borrower economies, is the operational challenge that a 53.23% efficiency ratio is hiding or solving depending on which direction it is moving.
+
+## The Digital Officer
+
+Sondra McCorquodale joined Southern Bank as Executive Vice President and Chief Digital Officer. She came from First Citizens Bank, where she built digital experience as that institution grew into a $220 billion bank after its Silicon Valley Bank acquisition. Before First Citizens, she was at RBC Bank. She completed the LSU Graduate School of Banking program in 2016.
+
+The CDO title at a $5 billion eastern North Carolina bank is not a vanity appointment. Southern Bank is not a startup looking for a press release. The hire signals a specific thesis: that the next phase of growth at a 125-year-old institution requires a systematic upgrade to how borrowers move through the lending process, not just a better mobile app.
+
+The question McCorquodale is working through is how to modernize the intake layer across 57 branches serving three distinct borrower economies without dismantling what has worked for 125 years. That is a harder problem than the hire makes it sound.
+
+## The Verification Layer
+
+At 65% loan-to-asset ratio, Southern Bank has room to grow loans. The question is whether they can grow them efficiently without adding proportional verification overhead.
+
+With a 57-branch footprint spanning agricultural, military, and coastal markets, the income verification complexity per file runs above the community bank average. Farm income, military compensation structures, and vacation rental cash flow all require different data sources and produce different document types. Manual collection processes that work adequately at low volume become the binding constraint as the pipeline scales.
+
+The efficiency ratio trending from the mid-50s toward 53% suggests management is already working the problem from the expense side. The other side of that ratio is fee income and origination throughput, both of which respond directly to how fast files move from application to close.
+
+Banks at $5 billion in assets with a named Chief Digital Officer and a century-long franchise are typically at the moment where the next operational investment either compounds the advantage or gets absorbed by the complexity of the existing footprint. The verification layer is usually where that decision becomes visible first.
+
+Eastern North Carolina is not the highest-growth market in the Southeast. Wayne County is working through a military base employment uncertainty. The tobacco economy finished its long decline years ago. But a bank running 1.17% ROA with 57 branches and a CDO making deliberate choices about digital infrastructure is building something that outlasts the current rate environment.
+
+The Outer Banks will still need mortgages. The pork farmers in Duplin County will still need working capital lines. The sergeants cycling through Seymour Johnson will still need to close on a house in 30 days.
+
+The question is who closes it for them.
+    `,
+  },
   'chime-account-opening-deposit-war': {
     title: 'The 92% Problem',
     description: 'Community banks built digital account opening. Then 92% of customers abandoned it on mobile. Chime does it in two minutes, added 700,000 members last quarter, and went public on NASDAQ. A step-by-step look at what each side actually does.',

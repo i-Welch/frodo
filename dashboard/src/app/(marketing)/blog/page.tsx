@@ -17,6 +17,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'southern-bank-nc-digital-bet',
+    title: 'The Century Bank That Hired a Chief Digital Officer',
+    description:
+      "Southern Bank and Trust has run $5 billion across 57 eastern North Carolina branches for over a century. In 2024, they hired a Chief Digital Officer from First Citizens Bank. What that hire means for borrowers from the tobacco belt to the Outer Banks.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'chime-account-opening-deposit-war',
     title: 'The 92% Problem',
     description:
