@@ -7,9 +7,11 @@ import { coastalStatesBank } from './coastal-states-bank';
 import { oconeeFederal } from './oconee-federal';
 import { andersonBrothersBank } from './anderson-brothers-bank';
 import { southernFirstBank } from './southern-first-bank';
+import { southernBankTrust } from './southern-bank-trust';
 
 /** All white-label demo configs. Add a new bank by dropping a config here. */
 export const WL_CONFIGS: WhiteLabelConfig[] = [
+  southernBankTrust,
   arthurStateBank,
   firstRelianceBank,
   colonyBankcorp,

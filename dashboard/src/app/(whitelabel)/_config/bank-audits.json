@@ -1,5 +1,42 @@
 [
   {
+    "slug": "southern-bank-trust",
+    "bankName": "Southern Bank and Trust Company",
+    "shortName": "Southern Bank",
+    "auditDate": "June 2026",
+    "demoSlug": "southern-bank-trust",
+    "stats": [
+      { "label": "Total assets", "value": "~$5.25B" },
+      { "label": "Branches", "value": "57 across NC and VA" },
+      { "label": "Online loan products", "value": "1 of 6" },
+      { "label": "Chief Digital Officer", "value": "Hired 2024" }
+    ],
+    "summary": "Southern Bank and Trust runs $5.25 billion across 57 branches serving three distinct borrower economies: agricultural eastern North Carolina, military communities around Seymour Johnson AFB, and coastal vacation markets on the Outer Banks. Only mortgages have an online application, and it routes the borrower off-brand to a third-party POS (southernbank.mymortgage-online.com). Personal loans, auto/boat/RV, HELOC, and all business and agricultural lending have no digital intake at all. The deposit account opening path runs on a third-party domain with a 32-character subdomain that no borrower would trust. In 2024 the bank hired a Chief Digital Officer to fix exactly this. The next move is a single, branded, verify-as-you-go front door that handles the income complexity of a pork farmer, a sergeant, and an Outer Banks vacation property buyer without treating them all the same.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Online application via southernbank.mymortgage-online.com, a third-party Finastra portal on a separate domain that breaks brand continuity at the single highest-stakes conversion step", "status": "weak" },
+      { "channel": "Personal loans / Auto / Boat / RV", "detail": "No apply button. Call 1.855.275.7226 or submit a contact form. Zero after-hours capture for the bank's most high-volume consumer products", "status": "missing" },
+      { "channel": "HELOC / Home equity", "detail": "Learn-more pages only; no online application. Routes to a branch visit or phone call", "status": "missing" },
+      { "channel": "Business / Agricultural / Commercial", "detail": "No digital intake. Operating lines for farm businesses, construction, and commercial real estate all require a relationship manager call", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Third-party portal at b053102586.account-open.online-banking-services.com — a 32-character subdomain that breaks trust on mobile before the form even loads", "status": "missing" },
+      { "channel": "Existing-customer banking", "detail": "Digital banking via flex.online-banking-services.com — functional but not bank-branded; mobile app available", "status": "ok" }
+    ],
+    "findings": [
+      { "title": "The CDO hire is the thesis; the intake layer is the first test", "severity": "gap", "body": "Southern Bank hired a Chief Digital Officer from First Citizens Bank in 2024 specifically to modernize how borrowers move through the lending process. The current state — one off-brand mortgage portal and five product lines with no digital path — is what a CDO-level mandate is hired to replace. The verification layer is typically the first 6-month win: it has a clear before/after, does not require replacing the core, and shows up in the efficiency ratio the next quarter." },
+      { "title": "Three borrower economies, zero verified-intake paths", "severity": "gap", "body": "A pork farmer in Duplin County has seasonal income. A sergeant at Seymour Johnson has base pay plus BAH plus BAS. An Outer Banks vacation buyer has Airbnb income. All three are currently told to call a loan officer. A verify-as-you-go intake handles all three income types at the point of application, routes the file to the right product, and hands the loan officer a complete, verified package instead of a blank lead." },
+      { "title": "The account-opening portal is driving abandonment before the form starts", "severity": "friction", "body": "The deposit account opening link resolves to a 32-character subdomain on online-banking-services.com. No borrower who arrived via Google on a phone will trust that URL. Mobile banking abandonment at community banks runs 92% under the best conditions; an off-brand domain with a machine-generated subdomain makes that worse before a single field is filled in." },
+      { "title": "Military income verification is the highest-complexity gap in the portfolio", "severity": "friction", "body": "Active-duty borrowers near Seymour Johnson AFB have income profiles that manual VOE calls handle worst: base pay, BAH, BAS, and special duty pay do not appear on standard pay stubs, and PCS moves create employment gaps that look like job-hopping to a generic underwriting model. Automated military income verification closes these files in hours instead of days and captures a borrower segment that manually-intensive banks routinely lose to VA lenders." }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "Mortgage only (1 of 6)", "withRaven": "Every product, one branded front door" },
+      { "dimension": "Income verification", "today": "Manual document request after first contact", "withRaven": "Farm, military, and rental income verified automatically at intake" },
+      { "dimension": "Brand experience", "today": "Mortgage hands off to a third-party domain", "withRaven": "Southern Bank branding from first click to verified file" },
+      { "dimension": "Account opening", "today": "Off-brand 32-character subdomain", "withRaven": "Bank-branded, mobile-first, ChexSystems decision in seconds" },
+      { "dimension": "After-hours demand", "today": "Call 1.855.275.7226 (or voicemail)", "withRaven": "Captured, verified, and queued for the morning pipeline" },
+      { "dimension": "Agricultural / commercial intake", "today": "Relationship manager call, then document chase", "withRaven": "Business + owner data and financial verification captured up front" }
+    ],
+    "sources": "southernbank.com (/, /home-loans/, /personal/personal-loans/, /home-loans/equity-loan/, /personal/personal-loans/home-equity-line/, /about/officers-board/), southernbank.mymortgage-online.com (mortgage POS), b053102586.account-open.online-banking-services.com (account opening), flex.online-banking-services.com (digital banking), FDIC BankFind cert #15359. Tagline 'Grounded in Tradition. Ready for What's Next.' from the live homepage. Core system not publicly disclosed; FIS inferred from online-banking-services.com hosting pattern at low confidence. Reviewed June 2026."
+  },
+  {
     "slug": "first-reliance-bank",
     "bankName": "First Reliance Bank",
     "shortName": "First Reliance",
