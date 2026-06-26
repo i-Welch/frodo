@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import type { WhiteLabelConfig } from '../_config/types';
 import { client } from '../_client';
+import { wlTrack } from '../_client/analytics';
 
 /**
  * Loan-officer tool: compose a verification request for a borrower.
@@ -79,6 +80,11 @@ function GenerateLinkModal({ config, onClose }: { config: WhiteLabelConfig; onCl
       const origin = typeof window !== 'undefined' ? window.location.origin : '';
       setLink(`${origin}/wl/${config.slug}/verify/${token}`);
       setCopied(false);
+      wlTrack('wl_lo_link_created', {
+        slug: config.slug,
+        modules: selected.length,
+        channel: email.trim() && phone.trim() ? 'both' : email.trim() ? 'email' : 'phone',
+      });
     } catch {
       setError('Could not create the verification request. Please try again.');
     } finally {

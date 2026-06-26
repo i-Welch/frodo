@@ -10,6 +10,7 @@ import {
   type FlowKind,
 } from '../../_config/flows';
 import { client } from '../../_client';
+import { wlTrack } from '../../_client/analytics';
 import type { Intake, PullStep, SubmitResult } from '../../_client/client';
 import { usd, pct, indefiniteArticle } from '../../_config/format';
 import { LoPreview } from '../../_components/lo-preview';
@@ -79,6 +80,7 @@ export function Journey({
       .then((data) => {
         if (!active) return;
         if (!data) {
+          wlTrack('wl_verify_link_expired', { slug: config.slug });
           setVerifyState('expired');
           return;
         }
@@ -89,9 +91,14 @@ export function Journey({
           email: data.applicant.email ?? '',
           phone: data.applicant.phone ?? '',
         });
+        wlTrack('wl_verify_link_opened', { slug: config.slug });
         setVerifyState('ready');
       })
-      .catch(() => active && setVerifyState('expired'));
+      .catch(() => {
+        if (!active) return;
+        wlTrack('wl_verify_link_expired', { slug: config.slug });
+        setVerifyState('expired');
+      });
     return () => {
       active = false;
     };
@@ -108,6 +115,16 @@ export function Journey({
   const [handoff, setHandoff] = useState<'idle' | 'bridging' | 'done'>('idle');
   const [highlightLive, setHighlightLive] = useState(false);
   const bridgedRef = useRef(false);
+
+  // Funnel entry: fire once per journey load.
+  useEffect(() => {
+    wlTrack('wl_journey_started', {
+      slug: config.slug,
+      flow: initialFlow,
+      entry: verifyToken ? 'verify_link' : 'web',
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const flowDef = getFlow(flow);
   const stages = flowDef.stages;
@@ -130,6 +147,7 @@ export function Journey({
   const matched = useMemo(() => matchProducts(config, amount, purpose), [config, amount, purpose]);
 
   function resetTo(nextFlow: FlowKind) {
+    wlTrack('wl_demo_flow_switched', { slug: config.slug, to: nextFlow });
     setFlow(nextFlow);
     setStageIndex(0);
     setProduct(null);
@@ -179,9 +197,18 @@ export function Journey({
           current = await startIntakeNow();
           setIntake(current);
         }
-        setSubmitResult(await client.submit(current.intakeId));
+        const result = await client.submit(current.intakeId);
+        setSubmitResult(result);
+        wlTrack('wl_intake_submitted', {
+          slug: config.slug,
+          flow,
+          product: product?.id ?? null,
+          terminal: result.terminal,
+          creditPulled: current.creditPulled ?? null,
+        });
       }
       setStageIndex((i) => i + 1);
+      wlTrack('wl_stage_completed', { slug: config.slug, flow, from: stage, to: next });
     } finally {
       setBusy(false);
       advancingRef.current = false;
@@ -193,6 +220,7 @@ export function Journey({
 
   async function chooseTerm(termMonths: number) {
     if (!intake) return;
+    wlTrack('wl_term_selected', { slug: config.slug, flow, product: product?.id ?? null, termMonths });
     // selectTerm returns only the rate fields (no PII echoed back); merge them
     // into the intake we already hold rather than replacing it.
     const update = await client.selectTerm(intake.intakeId, termMonths);
@@ -217,8 +245,9 @@ export function Journey({
       if (p === 'officer' && intake) setHighlightLive(true);
       setHandoff('done');
       setPerspective(p);
+      wlTrack('wl_demo_perspective_switched', { slug: config.slug, to: p });
     },
-    [intake],
+    [intake, config.slug],
   );
 
   const cssVars = {
@@ -280,6 +309,7 @@ export function Journey({
             amount={amount}
             onBack={onBack}
             onSelect={(p) => {
+              wlTrack('wl_product_selected', { slug: config.slug, flow, product: p.id, type: p.type });
               setProduct(p);
               setAmount((a) => Math.min(Math.max(a, p.minAmount), p.maxAmount));
               advance();
