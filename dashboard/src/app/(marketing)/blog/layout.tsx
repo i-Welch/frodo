@@ -437,7 +437,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <InterestForm />
             <p className="blog-cta-alt">
               Or email us at{' '}
-              <a href="mailto:founders@reportraven.tech">founders@reportraven.tech</a>
+              <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
             </p>
           </div>
         </section>

@@ -1012,7 +1012,7 @@ export default function LandingPage() {
             <InterestForm />
             <p className="cta-alt">
               Or email us directly at{' '}
-              <a href="mailto:contact@reportraven.tech">contact@reportraven.tech</a>
+              <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
             </p>
           </div>
         </section>
