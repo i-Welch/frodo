@@ -78,10 +78,297 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'first-reliance-sells-at-the-top': {
+    title: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
+    description:
+      'First Reliance Bancshares just posted record growth, then agreed to sell to Colony Bankcorp for $163 million. Why a winning $1 billion bank chose to partner up, and what the four-state, $5 billion result says about Southeast consolidation.',
+    publishedDate: 'June 21, 2026',
+    readTime: '6 min read',
+    content: `# First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.
+
+*Published June 26, 2026*
+
+First Reliance Bancshares just posted the best numbers of its life. Net income up 113% year over year, $1.1 billion in assets, nine branches across eight South Carolina cities. So on June 24, founder Rick Saunders agreed to sell it.
+
+Colony Bankcorp, the $3.7 billion Georgia bank out of Fitzgerald, is buying First Reliance in a cash-and-stock deal worth about $163 million. The combined company will run roughly $5 billion in assets, $4 billion in deposits, and $3.2 billion in loans across four states: Alabama, Florida, Georgia, and South Carolina. Both boards approved it unanimously. It is expected to close in the fourth quarter.
+
+Here is the part worth sitting with. Most community banks sell because they are stuck. First Reliance sold because it was flying.
+
+## The terms
+
+First Reliance shareholders get to choose: $19.75 in cash or 0.94 shares of Colony stock for each share they own. After proration, the mix lands near 20% cash and 80% stock. First Reliance Bank folds into Colony Bank. Colony says the deal is immediately accretive to earnings per share once you set aside one-time merger costs, which is the line every acquirer uses and the one every acquirer has to actually deliver.
+
+Saunders does not ride off. He becomes Executive Vice Chairman and joins Colony's board. His bench comes with him. Justin Strickland stays on as President for South Carolina, CFO Robert Haile becomes Colony's Chief Investment Officer and Treasurer, and mortgage chief Chuck Stuart will co-run Colony Mortgage. Director Rick Redden takes a Colony board seat.
+
+That is not how a distressed sale looks. That is a bank handing over the keys while keeping a hand on the wheel.
+
+## Why sell when you're winning
+
+The honest answer is that $1 billion is an awkward size. Big enough to need real compliance, technology, and lending infrastructure. Too small to spread the cost of all three across enough loans. First Reliance grew into a market, the Carolinas, where competitors get faster and better funded every quarter. Staying independent meant building a modern digital and lending stack alone, on a billion-dollar base, against banks spending far more.
+
+Selling at a high-water mark is the smart version of this trade. You negotiate from strength. Your stock fetches a better exchange ratio. Your people land in senior roles instead of getting reorganized out. Saunders said it plainly on LinkedIn: the point is to "protect and expand" what First Reliance built, not walk away from it. "The names on our buildings won't change," he wrote. "The bankers you work with will be the same."
+
+## Colony's acquisition machine
+
+This is the context that makes the deal make sense. Colony does not dabble in M&A. It runs a program.
+
+Start in 2019, when Colony absorbed LBC Bancshares and merged Calumet Bank into the franchise. Then came 2021 and the big one: SouthCrest Financial Group, about $84 million, which added more than $700 million in assets and nine branches and made Colony the fourth largest bank in Georgia at $2.4 billion. A year later it picked up TC Bancshares and its Thomasville thrift for roughly $86 million. Add the insurance agencies, Barnes in 2021 and Ellerbee in 2025, feeding the fee-income business that has become Colony's second engine.
+
+First Reliance is the biggest bite yet. At $163 million, it runs close to double Colony's previous largest bank deal. And the structure is nearly a photocopy of the SouthCrest playbook: a cash-or-stock election (SouthCrest holders chose $10.45 or 0.7318 shares, First Reliance holders choose $19.75 or 0.94), heavy on stock, light on cash, built to keep the acquired bank's owners invested in the result.
+
+Colony CEO Heath Fountain framed the ambition without much hedging. The combined company, he said, is "a premier Southeast banking franchise that is uniquely positioned to capture market share." For a bank that started as a peanut-belt agricultural lender in 1975, a four-state, $5 billion footprint is a long way from Fitzgerald.
+
+## What "nothing changes" actually means
+
+Every merger release promises continuity. Same bankers, same relationships, same name on the door. Some of that is true. Some of it is the kind of thing you say to keep deposits from walking.
+
+What actually changes is the plumbing. First Reliance customers will eventually move onto Colony's core systems, its online banking, its loan platforms. Core conversions are where community-bank mergers get tested, because that is the moment a customer feels the gap between a promise and an operating reality. Get it smooth and the "nothing changes" line holds. Get it wrong and a 27-year relationship reconsiders itself over a login screen.
+
+It is also where the strategic logic lives or dies. The pitch to First Reliance customers is more products and better digital tools. Delivering that means Colony's onboarding, verification, and lending experiences have to be meaningfully better than what a billion-dollar bank could build alone. Scale is the promise. Execution is the invoice.
+
+## The integration test
+
+A $5 billion bank has options a $1 billion bank does not. More capital to lend, more room to invest in technology, more ability to absorb the rising fixed cost of compliance and fraud and data. That is the real prize, for both sides.
+
+But scale does not automatically fix the parts borrowers actually feel. A bigger bank can still make someone wait days for income verification, still chase documents by email, still lose a fast-moving borrower to a lender that closes in a week. The Southeast is consolidating precisely because the cost of being slow keeps climbing, and bigger banks are not immune to slow. They just have more places to hide it.
+
+The merger gives Colony and First Reliance the balance sheet. Whether borrowers in Florence and Fitzgerald feel the difference comes down to the boring, decisive work of making verification and onboarding fast across a four-state footprint. That is the part no press release can promise. It is the part that has to be built.
+`,
+  },
+  'community-bank-ai-lending-guide': {
+    title: 'How Community Banks Can Use AI in Lending Without the Risk',
+    description: 'Community bank AI adoption tripled in 2026. Here is what the regulations actually require, where AI fits today, and how to implement it without triggering examiner problems.',
+    publishedDate: 'June 26, 2026',
+    readTime: '7 min read',
+    content: `# How Community Banks Can Use AI in Lending Without the Risk
+
+*Published June 26, 2026*
+
+Forty-nine percent of community banks deployed generative AI in 2026. That is triple the rate from 2025, according to Cornerstone Advisors. In mortgage lending specifically, 38% of lenders were using AI or machine learning in 2024, up from 15% just one year earlier.
+
+The adoption wave is not theoretical. It is happening now, and the banks watching from the sidelines are falling behind on speed. Banks with AI underwriting handle three to four times more loan applications with the same staff. Processing times run 30 to 40% faster.
+
+The question is not whether to use AI. It is how to do it without handing examiners a finding.
+
+## What the Regulations Actually Say
+
+The governing framework is SR 11-7, issued by the Federal Reserve and OCC in 2011 and adopted by the FDIC in 2017. The core rule has not changed: model risk exists when model outputs are wrong or misused, vendor models count just as much as in-house models, and governance must be documented.
+
+This is where community banks sometimes get a false sense of security. If a fintech built the AI model and you are licensing it, you cannot disclaim responsibility when an examiner asks about model validation. You are the institution. The model is yours to validate.
+
+Two regulatory updates in 2025 and 2026 add important context. OCC Bulletin 2025-26 clarified that community banks are not required to perform annual model validation. Requirements must be proportionate to the bank's size and complexity. Then on April 17, 2026, the OCC, Federal Reserve, and FDIC issued updated interagency Model Risk Management guidance that explicitly reset expectations for community-bank scale. It is the clearest signal regulators have sent that they understand a $300 million community bank cannot maintain the same MRM apparatus as JPMorgan Chase.
+
+There is one hard floor that does not bend for size: adverse action explainability. The CFPB is explicit that when AI influences a credit denial, lenders must provide specific, accurate reasons. Generic explanations do not satisfy ECOA or Regulation B simply because an algorithm made the call. Black-box models are not just a regulatory risk. They are a compliance liability.
+
+## Where AI Actually Fits Today
+
+The three examiner requirements banks need to prepare for, based on OCC Bulletin 2026-13 and the updated interagency SR 26-2 framework: source-page citations on every figure an AI extracts, override history preserved when an underwriter adjusts an AI-generated value, and a named model risk owner inside the bank. These are auditable artifacts. The question every vendor should be able to answer is whether their system generates them automatically.
+
+With that framework in mind, the low-risk entry points are narrow.
+
+**Fraud detection** is the fastest-ROI AI application for community banks. AI fraud detection reduces false positives by 50 to 70% while catching more actual fraud. Measurable results typically arrive within 60 to 90 days. Implementation costs for community bank tiers run $2,000 to $15,000 per month plus $15,000 to $80,000 upfront depending on core system complexity. ROI typically arrives within 6 to 12 months. The examiner risk is low because fraud detection models do not trigger adverse action decisions.
+
+**Document processing and data extraction** is the other clear entry point. One implementation documented in ICBA coverage in 2025 describes an AI agent that monitors a bank's email inbox for customer-submitted financial statements, downloads and extracts the key figures, runs calculations, and routes the summary into underwriting automatically. No human touches the document until the summary is ready for review.
+
+This is a deliberately narrow use case. The AI did not make a credit decision. It extracted data from a PDF and did some arithmetic. The underwriter reviewed the output and made the call. That is the architecture examiners can follow.
+
+**Credit underwriting support** is where things get more complicated. ICBA's 2026 AI Task Force position is that AI can help community banks meet regulatory burdens and expand credit access, but "cannot replace the personal relationships and local knowledge integral to the community banking model." That framing is not anti-AI. It is a clear description of where AI belongs: supporting the underwriter, not replacing them. Banks that position AI as a recommendation engine with documented human override are in a far better regulatory position than those pitching AI as an autonomous credit decisioning system.
+
+## How to Implement Without Getting in Trouble
+
+Start with a use case that does not touch credit decisions. Fraud detection, statement extraction, document classification, and customer routing are all AI applications where the risk framework is simpler and the value is demonstrable within a quarter.
+
+When you do move toward underwriting, build the paper trail before you go live. Identify your model risk owner (that person needs to be named, not just implied). Document how you validated the model before deployment. Establish a process for preserving override history when underwriters adjust AI outputs.
+
+For vendor selection, apply the same standard to AI tools that you would apply to any LOS vendor: ask which community banks in your asset range are running this system, how many examiners have reviewed it, and what the certification path looks like on your core. An AI vendor that cannot produce exam-ready documentation is not ready for community banking.
+
+The banks that will benefit most from AI over the next three years are not the ones who adopt it fastest. They are the ones who build a defensible governance structure from day one, then iterate within that framework as the regulatory landscape stabilizes.
+
+ICBA's formal position to Congress is that AI-specific federal regulation is premature. The OCC, Fed, and FDIC have all signaled proportionality. The window for early adoption, with reasonable regulatory risk, is open. It will not stay this clear for long.
+  `,
+  },
+  'white-label-borrower-portal-community-bank': {
+    title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
+    description: 'Only 24% of small banks accepted small business loan applications online in 2024. Here is what a white-label borrower portal is, what it costs, and why it is the fastest path to closing the digital gap.',
+    publishedDate: 'June 26, 2026',
+    readTime: '6 min read',
+    content: `# The White-Label Borrower Portal: What It Is and Why Community Banks Need One
+
+*Published June 26, 2026*
+
+Twenty-four percent.
+
+That is the share of small banks that accepted small business loan applications online in 2024, according to the FDIC's Small Business Lending Survey. And of those that did, fewer than half could handle the process digitally end to end. The application might start online, but somewhere before approval, the borrower was handed a PDF or asked to come into a branch.
+
+Meanwhile, Chime opened checking accounts in two minutes. Rocket Mortgage collected income data without a single uploaded document. The experience gap is not a data point anymore. It is the reason 44% of new checking accounts went to neobanks in 2024.
+
+The most common response from community bank leadership is: "We would love to fix it, but we cannot afford to build something from scratch." That is correct. You should not. There is already a product for this.
+
+## What a White-Label Portal Actually Is
+
+A white-label borrower portal is a ready-made lending platform that the bank deploys under its own brand. The bank's logo, colors, and domain sit on top of a third-party technology stack that handles loan application intake, document collection, credit decisioning support, e-signatures, and a borrower self-service dashboard.
+
+The vendor is invisible. The borrower applies, gets a status update, receives a proposal, signs, and accesses servicing all inside a branded interface that looks like the bank built it. The bank owns the customer relationship and the data. The vendor owns the infrastructure and the maintenance burden.
+
+This is not a new concept in software. It is how most industries operate. What has changed is that the fintech vendors serving community banks have matured to the point where the integration story is credible. Q2, MeridianLink, Baker Hill, Abrigo, Jifiti, and Hawthorn River all offer white-labeled front ends that sit on top of the bank's existing core without requiring a full replatform. Banks on Fiserv and Jack Henry have multiple certified options.
+
+## The Cost Case
+
+Building a branded digital lending platform from scratch costs north of $5 million before compliance. That is just development. Add integration, testing, security audits, and ongoing maintenance and you are looking at an annual cost structure that exceeds most community bank IT budgets entirely.
+
+White-label deployments run $50,000 to $600,000 depending on customization level and integrations, based on published ranges from SDK.finance. That is a 10x to 100x cost difference for a bank that needs a functioning product, not a custom one.
+
+Time is the other number that matters. A custom build takes 12 to 24 months before a borrower can use it. White-label solutions shorten time-to-market to weeks. A bank that commits to a white-label deployment in Q1 can have a branded borrower portal live before Q2 earnings.
+
+The global digital banking market sits at $22.4 billion in 2026 and is growing at 18.6% annually. The white-label banking segment alone is projected to reach $5.1 billion by 2028. This market exists because community banks and credit unions figured out it was cheaper to buy than build.
+
+## What Branded Means in Practice
+
+The customer experience matters as much as the economics. One pattern that matters operationally: the borrower never leaves the bank's branded environment during the application.
+
+This sounds obvious. It is not. Many community banks send borrowers to a third-party URL during the application process, either for identity verification or document upload. Every time a borrower sees a different domain, trust erodes. Conversion falls. In cases where a borrower abandons mid-application, they often do not know whether to contact the bank or the vendor.
+
+A properly implemented white-label portal keeps the borrower inside one branded experience from start to funded. The bank's domain, the bank's logo, the bank's communication templates. DocuSign or a similar e-signature layer gets embedded; it does not redirect. Plaid income verification happens inline. The borrower never sees the infrastructure.
+
+Banks that go further and tailor the portal to a specific niche see meaningful conversion gains over generic deployments. When the borrower experience is built specifically for the institution's target customer, rather than configured for generic use, trust and completion metrics both improve.
+
+## What to Look for When Evaluating Vendors
+
+Four questions that reveal whether a white-label vendor is ready for community banking:
+
+**Core certification.** Is the integration with your specific core (Fiserv Precision, Jack Henry Silverlake, etc.) a certified integration with community bank references, or is it a custom build they will maintain as one-off code? The distinction matters for implementation timelines and long-term support.
+
+**Regulatory audit trail.** Does the system generate the document artifacts required for BSA/AML and fair lending compliance automatically, or does the bank have to configure that separately? Ask to see an example audit log.
+
+**Abandonment recovery.** Can the portal save partial applications and resume them? Email or SMS outreach to borrowers who abandon is the single fastest way to improve pull-through rates. Ask for the vendor's documented abandonment recovery rate.
+
+**Timeline.** Get a reference from a community bank in your asset range that launched in the last 12 months. Ask them how long it actually took. Ask what went wrong. The vendor's sales timeline and the implementation reality are often different numbers.
+
+A 2024 Digital Banking Report survey found 90% of institutions let consumers apply online for consumer credit. The gap is not whether the channel exists. It is whether the experience inside that channel is good enough to compete. A white-label portal built to the right standard closes that gap in a quarter, not a decade.
+  `,
+  },
+  'digital-account-opening-community-bank': {
+    title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap',
+    description: 'Neobanks captured 44% of new checking accounts in 2024. Community banks opened only 16% of their new accounts digitally. Here is what top-performing platforms do differently and what closing this gap is worth.',
+    publishedDate: 'June 26, 2026',
+    readTime: '6 min read',
+    content: `# Digital Account Opening for Community Banks: The Deposit Side of the Gap
+
+*Published June 26, 2026*
+
+Neobanks captured 44% of new checking account openings in 2024.
+
+That number comes from Financial Brand and Bank On National Data Hub research. It means that when a consumer decided to open a new checking account last year, they chose a neobank nearly half the time. Not a big bank. Not their local community institution. A neobank.
+
+Community bank digital account openings fell to just 16% of total openings at community financial institutions in the same period. The remaining 84% happened in a branch, by phone, or through some combination of paper and follow-up.
+
+The deposit acquisition gap is not a lending problem with a digital face. It is its own structural problem, and it is worth solving separately.
+
+## What Neobanks Are Doing That's Different
+
+Chime opens an account in approximately two minutes. Download the app, enter name, date of birth, email, address, phone, and Social Security number, pass automated identity verification, and you are funded. No branch visit. No mailed forms. No follow-up call asking for documentation they did not mention on the website.
+
+The abandonment data explains why this matters. Industry average abandonment for digital account applications sits around 51%. Some studies put it as high as 68% for financial services broadly. Abandonment exceeds 50% when the process takes more than three to five minutes. Every additional step after the first three minutes costs completions.
+
+Forty-eight percent of consumers who hit digital friction took their business to a different bank. That is not a close call. That is a majority of people who tried and failed, going somewhere else.
+
+The best-performing community bank platforms have closed the gap on speed. Narmi's consumer account opening is documented at two minutes and thirteen seconds. MANTL, acquired by Alkami in March 2025, completes the process in under three minutes from application to funded account. MANTL processed nearly one million applications in 2024 across 150 community banks and helped those institutions raise close to $10 billion in deposits.
+
+That last number deserves a second read. Ten billion dollars in deposits from one platform serving 150 community banks, in one year.
+
+## The Conversion Gap
+
+Speed is necessary. It is not sufficient. Conversion rates vary dramatically by platform quality: high-performing digital account opening solutions convert above 35%. Low-performing ones convert below 10%. An RCG Global study across more than 50 community bank engagements found an average completion rate of 42%. Meaning on a typical community bank's OAO platform, more than half the people who start never finish.
+
+The conversion gap has three causes that show up consistently across research:
+
+**Length.** Every field beyond the minimum reduces completion. Most community bank applications ask for information at account opening that can be collected later: secondary contact, beneficiary designation, specific product preferences. Strip the application to the minimum required to open the account. Collect the rest after the customer is funded.
+
+**Identity verification timing.** KYC processes that require document uploads see dramatically higher abandonment than those using real-time verification. The friction of finding a passport or driver's license, photographing it clearly, and uploading a legible file is enough to end most mobile sessions. Modern identity verification via data-matching (name, DOB, SSN against public records) completes in seconds.
+
+**Mobile experience.** Seventy-seven percent of consumers prefer mobile or online account management. An account opening flow designed for desktop and adapted for mobile is not the same as one built mobile-first. The difference shows up in completion rates.
+
+## The Intent Is There
+
+The consumer demand for community bank accounts is real. Forty-one percent of Gen Z and 38% of millennials rank the ability to open an account online as a top requirement when choosing a financial institution. Half of Gen Z and millennials say they are open to switching their primary institution to a community bank or credit union, but only if the digital experience qualifies.
+
+This is the part that should make community bank leadership uncomfortable: the preference for local, relationship-based banking has not disappeared. It is being blocked by an experience problem.
+
+The 2023 SVB instability period is the clearest demonstration of this dynamic in recent history. When Silicon Valley Bank collapsed, neobanks Mercury and Brex captured an estimated 29% of the displaced deposit outflows. Not because business owners preferred neobanks. Because when they needed to move money fast, neobanks had the only account opening experience that worked in hours rather than days.
+
+## What Closing This Gap Is Worth
+
+Fifty-nine percent of community bank executives planned to increase digital marketing spend heading into 2025. Running paid search campaigns that drive consumers to a five-minute-or-more account opening flow converts that spend into abandonment. The acquisition math only works if the destination converts.
+
+A community bank processing 2,000 new account applications annually with a 42% completion rate is opening 840 accounts digitally. Move to a 60% completion rate, achievable on high-performing platforms, and that is 1,200 accounts. At an average deposit balance of $8,000 per new checking account and a net interest margin of 3.5%, that is $112,000 in incremental annual NIM from the conversion improvement alone. Before cross-sell. Before relationships that deepen over years.
+
+The deposit franchise is the community bank's core asset. A branch network builds it in one channel. A high-performing digital account opening platform builds it in another. MANTL's 150-bank deployment shows the solution exists and is implementable at community bank scale. The question is whether the deposit gap is a board-level priority or still a line item on the technology wish list.
+  `,
+  },
+  'open-banking-community-bank-guide': {
+    title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support',
+    description: 'Section 1033 is enjoined, but open banking is already deployed at community banks. Here is what Plaid, Fiserv, and Jack Henry actually offer, what works, and what still requires custom integration.',
+    publishedDate: 'June 26, 2026',
+    readTime: '7 min read',
+    content: `# Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support
+
+*Published June 26, 2026*
+
+The CFPB's Section 1033 open banking rule was issued on October 22, 2024. A federal district court enjoined enforcement. The Trump administration initiated reconsideration. The CFPB released an Advance Notice of Proposed Rulemaking on August 22, 2025. A new proposed rule is forthcoming. No compliance dates are currently active.
+
+For community banks, the temptation is to treat open banking as a regulatory problem that has been postponed. That reading is wrong.
+
+Open banking is already deployed at community banks. Plaid processes income verification for community lenders through MeridianLink. Jack Henry has certified integrations with every major U.S. data exchange platform. Fiserv has an open API gateway, though it requires deliberate adoption. The question is not whether open banking is coming. It is which of your institution's workflows would benefit from connecting to it now.
+
+## What the Regulation Actually Says
+
+Section 1033 of the Dodd-Frank Act requires covered financial institutions to make consumer-permissioned data available to authorized third parties. The CFPB's 2024 rule would have implemented that mandate through a standardized developer interface requirement.
+
+Two things matter for community banks in the current state. First, the third-party developer interface mandate in the 2024 rule exempted institutions below $850 million in assets. ICBA has formally asked the CFPB to raise that threshold to $10 billion under any new rule, and to exempt all community banks from the mandate to build and maintain a third-party developer interface. Second, even with the rule enjoined, the underlying statutory obligation has not changed. If a consumer asks for their data, the institution still has to provide it. The regulatory uncertainty is about the technical standards and compliance timelines. The directional obligation is settled law.
+
+The practical effect for most community banks right now: you are not required to build an API. You are still required to participate in consumer-permissioned data sharing in some form. And the lenders who have implemented open banking connectivity are not waiting for the rule.
+
+## What Plaid Actually Supports for Community Banks
+
+Plaid's network covers more than 12,000 financial institutions. The coverage is not uniform. Smaller community banks are often reached via screen-scraping fallbacks rather than direct API connections, which is less reliable and creates liability questions when account credentials are involved.
+
+In November 2025, Plaid expanded its Data Partner Dashboard to let community banks and credit unions self-manage their Plaid presence: fix connection issues, update branding, enable the Auth product. This was a direct response to the connectivity gap for smaller institutions.
+
+The most concrete deployment in community bank lending happened in April 2026, when MeridianLink announced an expanded Plaid partnership embedding Plaid Income directly into MeridianLink Consumer. The integration drives 80% conversion in lending flows by replacing manual document uploads with real-time income verification. A borrower connects their bank account once; Plaid pulls income and asset data automatically. Plans to expand to cash flow underwriting are on the roadmap for later 2026.
+
+For a community lender running MeridianLink, this is not a future capability. It is available today. The income verification step that used to take days now takes minutes.
+
+## What Fiserv and Jack Henry Actually Offer
+
+The core platforms differ significantly in how they approach open banking connectivity.
+
+**Fiserv.** Open banking runs through Communicator Open, described as an enterprise services framework and a prerequisite for deploying pre-integrated apps or building custom applications. API usage is free up to a defined threshold, then shifts to consumption-based pricing. Fiserv serves community banks on Portico, Precision, and Premier. The important caveat: Communicator Open access is not automatic. Banks have to activate the framework deliberately. If your bank is on Fiserv and you have not had a conversation with your rep about Communicator Open, you probably do not have it turned on.
+
+**Jack Henry.** The most fintech-integrated of the three platforms for community banks. Jack Henry announced integrations with Plaid, Akoya, Finicity, and Yodlee, making it the first core processor to have certified relationships with all major U.S. financial data-exchange platforms. Its Fintech Integration Network (FIN) gives fintechs direct access to Jack Henry's core technical resources, which meaningfully reduces time-to-deployment for community bank clients. A fintech that wants to integrate with a Jack Henry bank does not have to build a custom connection: they use the FIN.
+
+The practical difference: a community bank on Jack Henry that wants to enable Plaid income verification for loan applications has a shorter path to implementation than one on Fiserv, primarily because the certification work is already done.
+
+## Where Open Banking Adds Value Right Now
+
+Three use cases are documented and live at community banks today.
+
+**Income and employment verification.** This is the highest-ROI entry point. Replacing manual document collection with Plaid Income or similar tools cuts the verification step from days to minutes and eliminates the single most common point of abandonment in digital loan applications. The MeridianLink/Plaid deployment is the clearest community bank case study in the current data.
+
+**Deposit opening and funding.** Open banking connections allow instant bank verification during account opening, replacing the micro-deposit verification flow that adds two to three days to the new account timeline. For community banks trying to close the account opening speed gap against Chime's two-minute flow, removing the micro-deposit wait is a direct conversion improvement.
+
+**Cash flow underwriting.** Using transaction data from a borrower's connected accounts to supplement or replace traditional income documentation is a growing use case for thin-file borrowers and small business applicants who have revenue but limited W-2 history. Jack Henry's roadmap and MeridianLink's announced plans both point to cash flow underwriting as a near-term capability.
+
+Only about 11% of U.S. consumers used open banking payments as of 2025, according to Plaid's own consumer research. Seventy percent said they were comfortable sharing financial data with tools they trust, but 56% of non-adopters cited security and trust concerns. The infrastructure is ahead of consumer behavior.
+
+For community banks, this asymmetry is an advantage. The friction is not technical anymore. It is trust. And trust is the one thing community banks have spent decades building that fintech competitors cannot replicate at scale.
+
+The regulatory uncertainty around Section 1033 will resolve. The direction is not in doubt. The banks that have built operational experience with open banking while compliance timelines are soft will implement faster when the timelines harden. The ones waiting for the final rule will be building under a deadline.
+  `,
+  },
   'fintech-grade-loan-application-community-bank': {
     title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank',
     description: "The banking industry's average loan application conversion rate is 3%. Here is how fintechs get it to 80%, and how community banks can copy the playbook without replacing their core.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 16, 2026',
     readTime: '7 min read',
     content: `# How to Offer a Fintech-Grade Loan Application as a Community Bank
 
@@ -150,7 +437,7 @@ The banks that compete on digital loan applications in 2026 are not the ones wit
   'what-neobanks-get-right-community-banks': {
     title: 'What Neobanks Get Right (and What Community Banks Already Have That They Don\'t)',
     description: "Neobanks won on UX. Community banks won on trust, deposits, and relationships. 70% of small businesses prefer community banks but only 31% use one. The gap is digital capability, not preference.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 9, 2026',
     readTime: '7 min read',
     content: `# What Neobanks Get Right (and What Community Banks Already Have That They Don't)
 
@@ -208,7 +495,7 @@ The competitive asymmetry runs in both directions. Neobanks have better interfac
   'community-bank-borrower-experience-roi': {
     title: 'The ROI of Modernizing Your Community Bank Borrower Experience',
     description: "Blend's third-party ROI study found a 10.15x return per loan and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 2, 2026',
     readTime: '7 min read',
     content: `# The ROI of Modernizing Your Community Bank Borrower Experience
 
@@ -274,7 +561,7 @@ Combined, the number is not small. And it does not require a new core.
   'community-bank-digital-lending-platform-guide': {
     title: 'What to Look for in a Community Bank Digital Lending Platform',
     description: "There are five platforms most community banks evaluate when they go shopping for a loan origination system. Pricing runs $50K to $500K annually. Here is what to ask before you sign anything.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 26, 2026',
     readTime: '7 min read',
     content: `# What to Look for in a Community Bank Digital Lending Platform
 
@@ -334,7 +621,7 @@ The community bank technology landscape is full of implementations that looked r
   'community-bank-ceo-digital-lending-2026': {
     title: "The Community Bank CEO's Guide to Digital Lending in 2026",
     description: "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 19, 2026',
     readTime: '7 min read',
     content: `# The Community Bank CEO's Guide to Digital Lending in 2026
 
@@ -402,7 +689,7 @@ The banks that make the right decision in 2026 will be the ones that stopped ask
   'community-banks-lose-loans-fintechs': {
     title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)',
     description: "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 12, 2026',
     readTime: '7 min read',
     content: `# Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)
 
@@ -464,7 +751,7 @@ That path exists. Community banks that find it are the ones that will be gaining
   'community-bank-compete-neobank-core': {
     title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core',
     description: "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 5, 2026',
     readTime: '6 min read',
     content: `# How Community Banks Can Compete With Neobanks Without Replacing Their Core
 
@@ -530,7 +817,7 @@ The banks that figure this out won't be the ones who spent five years on a core 
   'south-atlantic-bank-coastal-growth-engine': {
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description: 'South Atlantic Bank turned a 2007 startup in Myrtle Beach into a $1.93B coastal lending machine in under 17 years. Here\'s how in-migration math, a 53% CRE concentration, and 13% loan growth are forcing a digital reckoning.',
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 20, 2026',
     readTime: '6 min read',
     content: `# South Atlantic Bank: The $2B Coastal Lender Built on In-Migration
 
@@ -600,7 +887,7 @@ South Atlantic Bank has built something genuinely impressive in under two decade
   'conway-national-bank-grand-strand-dominance': {
     title: "Conway National Bank's Quiet Dominance on the Grand Strand",
     description: 'Conway National Bank runs a sub-48% efficiency ratio and holds the top deposit share in one of America\'s fastest-growing counties. Here\'s what their numbers reveal about scaling a lean community bank into a surging coastal market.',
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 13, 2026',
     readTime: '6 min read',
     content: `# Conway National Bank's Quiet Dominance on the Grand Strand
 
@@ -667,7 +954,7 @@ The banks that capture the most of that volume will be the ones that can verify 
   'bank-travelers-rest-greenville-growth-engine': {
     title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
     description: 'Bank of Travelers Rest is posting 1.44% ROA and 21.82% ROE from a single county in South Carolina. Here is how a 10-branch community bank became the quiet growth engine of one of the fastest-moving metros in the Southeast.',
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'June 11, 2026',
     readTime: '6 min read',
     content: `# Bank of Travelers Rest: Greenville's $1.6B Growth Engine
 
@@ -717,7 +1004,7 @@ For Bank of Travelers Rest, which already has the market position, the profitabi
   'security-federal-bank-cdfi-rate-rebound-aiken': {
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     description: "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 21, 2026',
     readTime: '6 min read',
     content: `# Security Federal Bank: CDFI Giant Navigating the Rate Rebound
 
@@ -779,7 +1066,7 @@ Open banking verification infrastructure is no longer experimental. It is produc
   'ccnb-myrtle-beach-merger-growth-2026': {
     title: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
     description: "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion, and the clock is ticking.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 14, 2026',
     readTime: '6 min read',
     content: `# CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast
 
@@ -827,7 +1114,7 @@ The banks that are winning in high-growth coastal markets in 2026 are not winnin
   'first-capital-bank-charleston-growth-digital-gap': {
     title: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
     description: "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'May 7, 2026',
     readTime: '6 min read',
     content: `# First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?
 
@@ -897,7 +1184,7 @@ The bank that figured out how to pair its local credibility with a borrower inta
   'first-community-bank-sc-cre-merger-growth': {
     title: 'First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight',
     description: 'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'April 30, 2026',
     readTime: '6 min read',
     content: `# First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight
 
@@ -949,7 +1236,7 @@ Getting the document collection infrastructure right during the merger integrati
   'countybank-greenwood-sc-sba-deep-dive': {
     title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",
     description: "Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'April 23, 2026',
     readTime: '6 min read',
     content: `# Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business
 
@@ -1001,7 +1288,7 @@ For a bank in a market that is not going to grow its way to higher loan volume, 
   'optus-bank-cdfi-columbia-growth': {
     title: "Optus Bank: Columbia's CDFI Institution Betting on Scale",
     description: "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'April 16, 2026',
     readTime: '6 min read',
     content: `# Optus Bank: Columbia's CDFI Institution Betting on Scale
 
@@ -1055,7 +1342,7 @@ The CDFI mission and operational excellence are not in tension. They are aligned
   'beacon-community-bank-charleston-growth-capacity': {
     title: 'Beacon Community Bank: Growth at the Edge of Capacity',
     description: "Beacon Community Bank grew from $36M to $972M in assets in seven years without building a digital front door. In a market adding 8,500 households a year, a 404 mortgage page is a strategy problem, not a website bug.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'April 9, 2026',
     readTime: '6 min read',
     content: `
 Beacon Community Bank started 2018 with $36 million in assets. Seven years later it sits at $972 million, and its mortgage application page returns a 404 error.
@@ -1130,7 +1417,7 @@ The $972 million loan book is the easy part. The next $400 million is where veri
   'first-palmetto-bank-sc-performance-deep-dive': {
     title: 'First Palmetto Bank: 120 Years Old, $1B in Assets, Zero Excuses',
     description: 'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'April 2, 2026',
     readTime: '6 min read',
     content: `
 First Palmetto Bank was founded in 1904. The Wright Brothers had just flown at Kitty Hawk. The Federal Reserve didn't exist yet. And the bank still doesn't have an online mortgage application.
@@ -1205,7 +1492,7 @@ First Palmetto has earned the right to make that choice on its own terms. The bo
   'queensborough-national-bank-trust-deep-dive': {
     title: "Queensborough's Long Runway: A $2.3B Georgia Bank Built to Last",
     description: "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. The bank carries a $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper. Here is the story behind the numbers.",
-    publishedDate: 'June 26, 2026',
+    publishedDate: 'March 26, 2026',
     readTime: '6 min read',
     content: `
 Queensborough National Bank & Trust has never made an acquisition. Not one. Every dollar of its $2.34 billion in assets was built the old-fashioned way: one relationship at a time, in markets that most bank strategists would have passed on.
@@ -2455,7 +2742,7 @@ The 42-day mortgage isn't inevitable. It's a symptom of manual verification in a
     title: 'Community Banks Are Losing the Lending Race. Here\'s How to Catch Up.',
     description:
       'Banks originated 42.5% of mortgages in 2018. By 2024, that fell to 30.1%. Non-bank lenders now close more than half of all home loans. This is a structural shift, and it is accelerating.',
-    publishedDate: 'March 24, 2026',
+    publishedDate: 'March 17, 2026',
     readTime: '9 min read',
     content: `In 2018, banks originated 42.5% of all mortgages in the United States. By 2024, that number had fallen to 30.1%. Non-bank lenders — fintechs, independent mortgage companies, and digital-first platforms — now close more than half of all home loans, at 53.3% and climbing, according to the NCRC Mortgage Market Report and FDIC data.
 
@@ -2564,7 +2851,7 @@ Community banks have something fintechs cannot build: decades of trust, local ma
     title: 'Your Next Generation of Borrowers Won\'t Wait 42 Days',
     description:
       '54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers are already gone.',
-    publishedDate: 'March 24, 2026',
+    publishedDate: 'March 10, 2026',
     readTime: '8 min read',
     content: `**54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers aren't just preferring digital — they're already gone.**
 
@@ -2662,7 +2949,7 @@ The next generation of borrowers has already decided what lending should feel li
     title: 'The $59 Billion Compliance Burden — And How Automation Is Cutting It in Half',
     description:
       'U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
-    publishedDate: 'March 24, 2026',
+    publishedDate: 'March 3, 2026',
     readTime: '10 min read',
     content: `**U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks. The smallest banks pay the highest price for the same regulations.**
 
@@ -2783,7 +3070,7 @@ The $59 billion compliance burden is real. But the portion of it that consists o
     title: 'How Figure Closes a HELOC in 5 Days (And What Community Banks Can Learn)',
     description:
       'Figure originates at $730 per loan versus the industry average of $11,230. Their S-1 reveals the speed comes from automated data aggregation, not blockchain. The playbook is more replicable than you think.',
-    publishedDate: 'March 24, 2026',
+    publishedDate: 'February 24, 2026',
     readTime: '11 min read',
     content: `Figure went from zero to $6 billion in annual home equity lending in four years. They close HELOCs in 5 days at a cost of $730 per loan — while the industry spends $11,230. They filed for a $5.29 billion IPO. And buried in their S-1 is a detail that should change how every community bank CTO thinks about competing with them.
 
@@ -2912,7 +3199,7 @@ Community banks do not need to become fintechs. They need to verify like fintech
     title: 'One Link, Complete Verification: How RAVEN Works for Community Banks',
     description:
       'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from seven providers with a full audit trail.',
-    publishedDate: 'March 24, 2026',
+    publishedDate: 'February 17, 2026',
     readTime: '12 min read',
     content: `What if verifying a borrower took 5 minutes instead of 5 weeks?
 

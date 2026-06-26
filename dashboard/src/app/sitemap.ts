@@ -5,48 +5,70 @@ import { getRoiBank } from './(marketing)/roi/roi-data';
 const SITE = 'https://reportraven.tech';
 const APP = 'https://app.reportraven.tech';
 
-// Blog article slugs. Mirrors the articles rendered by /blog/[slug].
+// Blog article slugs — phased rollout to avoid content flood signals.
+// To publish a phase: uncomment the slugs on/after the target date and deploy.
+//
+// Phase 1 LIVE (Jun 26): foundational institutional + 7 SEO articles (LinkedIn Jun 30–Jul 10)
+// Phase 2 (Jul 7):  uncomment queensborough through first-community-bank
+// Phase 3 (Jul 14): uncomment first-capital through white-label + security-federal
+// Phase 4 (Jul 21): uncomment bank-travelers through open-banking
+// Phase 5 (Jul 28): uncomment first-reliance through colony-bankcorp
+// Phase 6 (Aug 4):  uncomment chime + southern-bank-nc
+
 const BLOG_SLUGS = [
-  '59-billion-compliance-burden',
-  'affirm-vs-community-bank-personal-loans',
-  'anderson-brothers-bank-myrtle-beach-bet',
-  'arthur-state-bank-upstate-bet',
-  'bank-travelers-rest-greenville-growth-engine',
-  'beacon-community-bank-charleston-growth-capacity',
-  'carolina-bank-between-two-economies',
-  'ccnb-myrtle-beach-merger-growth-2026',
-  'chime-account-opening-deposit-war',
-  'coastal-states-bank-boat-bank',
-  'colony-bankcorp-farm-to-fees',
-  'community-bank-borrower-experience-roi',
-  'community-bank-ceo-digital-lending-2026',
-  'community-bank-compete-neobank-core',
-  'community-bank-digital-lending-platform-guide',
-  'community-banks-are-losing-the-lending-race',
-  'community-banks-lose-loans-fintechs',
-  'conway-national-bank-grand-strand-dominance',
-  'countybank-greenwood-sc-sba-deep-dive',
-  'fintech-grade-loan-application-community-bank',
-  'first-capital-bank-charleston-growth-digital-gap',
-  'first-community-bank-sc-cre-merger-growth',
-  'first-palmetto-bank-sc-performance-deep-dive',
-  'first-reliance-outgrew-florence',
-  'foreclosure-wave-hiding-in-plain-sight',
-  'how-figure-closes-heloc-in-5-days',
-  'income-verification-fintech-vs-bank',
-  'next-generation-borrowers-wont-wait',
-  'oconee-federal-quiet-comeback',
+  // — Institutional research & macro (Feb–Mar 2026) —
   'one-link-complete-verification',
-  'optus-bank-cdfi-columbia-growth',
-  'queensborough-national-bank-trust-deep-dive',
-  'rocket-mortgage-22-days-how',
-  'security-federal-bank-cdfi-rate-rebound-aiken',
-  'south-atlantic-bank-coastal-growth-engine',
-  'southern-bank-nc-digital-bet',
-  'southern-first-bank-upstate-sc-bet',
-  'trillion-dollar-ipo-wave-2026',
-  'what-neobanks-get-right-community-banks',
+  'how-figure-closes-heloc-in-5-days',
+  '59-billion-compliance-burden',
+  'next-generation-borrowers-wont-wait',
+  'community-banks-are-losing-the-lending-race',
   'why-it-takes-42-days-to-close-a-mortgage',
+  // — SEO articles (May–Jun 2026, LinkedIn Jun 30–Jul 10) —
+  'community-bank-compete-neobank-core',
+  'community-banks-lose-loans-fintechs',
+  'community-bank-ceo-digital-lending-2026',
+  'community-bank-digital-lending-platform-guide',
+  'community-bank-borrower-experience-roi',
+  'what-neobanks-get-right-community-banks',
+  'fintech-grade-loan-application-community-bank',
+  // — Established articles (already had varied dates, May–Jun 2026) —
+  'foreclosure-wave-hiding-in-plain-sight',
+  'southern-first-bank-upstate-sc-bet',
+  'income-verification-fintech-vs-bank',
+  'anderson-brothers-bank-myrtle-beach-bet',
+  'trillion-dollar-ipo-wave-2026',
+  'arthur-state-bank-upstate-bet',
+  'affirm-vs-community-bank-personal-loans',
+  'oconee-federal-quiet-comeback',
+  'coastal-states-bank-boat-bank',
+  'rocket-mortgage-22-days-how',
+  // — Phase 2: add Jul 7 (bank deep dives, Mar–Apr 2026 dates) —
+  // 'queensborough-national-bank-trust-deep-dive',
+  // 'first-palmetto-bank-sc-performance-deep-dive',
+  // 'beacon-community-bank-charleston-growth-capacity',
+  // 'optus-bank-cdfi-columbia-growth',
+  // 'countybank-greenwood-sc-sba-deep-dive',
+  // 'first-community-bank-sc-cre-merger-growth',
+  // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
+  // 'first-capital-bank-charleston-growth-digital-gap',
+  // 'ccnb-myrtle-beach-merger-growth-2026',
+  // 'security-federal-bank-cdfi-rate-rebound-aiken',
+  // 'community-bank-ai-lending-guide',
+  // 'white-label-borrower-portal-community-bank',
+  // — Phase 4: add Jul 21 (+ promote digital-account + open-banking via LinkedIn) —
+  // 'bank-travelers-rest-greenville-growth-engine',
+  // 'conway-national-bank-grand-strand-dominance',
+  // 'south-atlantic-bank-coastal-growth-engine',
+  // 'first-reliance-sells-at-the-top',
+  // 'digital-account-opening-community-bank',
+  // 'open-banking-community-bank-guide',
+  // — Phase 5: add Jul 28 —
+  // 'first-reliance-outgrew-florence',
+  // 'carolina-bank-between-two-economies',
+  // 'colony-bankcorp-farm-to-fees',
+  // — Phase 6: add Aug 4 —
+  // 'chime-account-opening-deposit-war',
+  // 'southern-bank-nc-digital-bet',
 ];
 
 const LEGAL_PATHS = [

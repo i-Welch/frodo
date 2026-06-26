@@ -17,6 +17,46 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'first-reliance-sells-at-the-top',
+    title: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
+    description:
+      'First Reliance Bancshares just posted record growth, then agreed to sell to Colony Bankcorp for $163 million. Why a winning $1 billion bank chose to partner up, and what the four-state, $5 billion result says about Southeast consolidation.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-bank-ai-lending-guide',
+    title: 'How Community Banks Can Use AI in Lending Without the Risk',
+    description:
+      'Community bank AI adoption tripled in 2026. Here is what the regulations actually require, where AI fits today, and how to implement it without triggering examiner problems.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'white-label-borrower-portal-community-bank',
+    title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
+    description:
+      'Only 24% of small banks accepted small business loan applications online in 2024. Here is what a white-label borrower portal is, what it costs, and why it is the fastest path to closing the digital gap.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'digital-account-opening-community-bank',
+    title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap',
+    description:
+      'Neobanks captured 44% of new checking accounts in 2024. Community banks opened only 16% of their new accounts digitally. Here is what top-performing platforms do differently and what closing this gap is worth.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'open-banking-community-bank-guide',
+    title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support',
+    description:
+      'Section 1033 is enjoined, but open banking is already deployed at community banks. Here is what Plaid, Fiserv, and Jack Henry actually offer, what works, and what still requires custom integration.',
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'fintech-grade-loan-application-community-bank',
     title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank',
     description:
@@ -46,7 +86,7 @@ const articles = [
     description:
       "There are five platforms most community banks evaluate when they go shopping for a loan origination system. Pricing runs $50K to $500K annually. Here is what to ask before you sign anything.",
     readTime: '7 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'community-bank-ceo-digital-lending-2026',
@@ -54,7 +94,7 @@ const articles = [
     description:
       "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
     readTime: '7 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'community-banks-lose-loans-fintechs',
@@ -62,7 +102,7 @@ const articles = [
     description:
       "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
     readTime: '7 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'community-bank-compete-neobank-core',
@@ -70,7 +110,7 @@ const articles = [
     description:
       "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'south-atlantic-bank-coastal-growth-engine',
@@ -102,7 +142,7 @@ const articles = [
     description:
       "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'ccnb-myrtle-beach-merger-growth-2026',
@@ -110,7 +150,7 @@ const articles = [
     description:
       "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'first-capital-bank-charleston-growth-digital-gap',
@@ -118,7 +158,7 @@ const articles = [
     description:
       "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'May 2026',
   },
   {
     slug: 'first-community-bank-sc-cre-merger-growth',
@@ -126,7 +166,7 @@ const articles = [
     description:
       'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'April 2026',
   },
   {
     slug: 'countybank-greenwood-sc-sba-deep-dive',
@@ -134,7 +174,7 @@ const articles = [
     description:
       'Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.',
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'April 2026',
   },
   {
     slug: 'optus-bank-cdfi-columbia-growth',
@@ -142,7 +182,7 @@ const articles = [
     description:
       "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'April 2026',
   },
   {
     slug: 'beacon-community-bank-charleston-growth-capacity',
@@ -150,7 +190,7 @@ const articles = [
     description:
       "Beacon Community Bank grew from $36M to $972M in assets in seven years without building a digital front door. In a market adding 8,500 households a year, a 404 mortgage page is a strategy problem, not a website bug.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'April 2026',
   },
   {
     slug: 'first-palmetto-bank-sc-performance-deep-dive',
@@ -158,7 +198,7 @@ const articles = [
     description:
       'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'April 2026',
   },
   {
     slug: 'queensborough-national-bank-trust-deep-dive',
@@ -166,7 +206,7 @@ const articles = [
     description:
       "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'March 2026',
   },
   {
     slug: 'southern-bank-nc-digital-bet',
@@ -326,7 +366,7 @@ const articles = [
     description:
       'Figure originates at $730 per loan versus the industry average of $11,230. Their S-1 reveals the speed comes from automated data aggregation, not blockchain. The playbook is more replicable than you think.',
     readTime: '11 min read',
-    date: 'March 2026',
+    date: 'February 2026',
   },
   {
     slug: 'one-link-complete-verification',
@@ -334,7 +374,7 @@ const articles = [
     description:
       'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from seven providers with a full audit trail.',
     readTime: '12 min read',
-    date: 'March 2026',
+    date: 'February 2026',
   },
 ];
 
