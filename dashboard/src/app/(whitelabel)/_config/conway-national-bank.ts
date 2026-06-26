@@ -227,7 +227,7 @@ export const conwayNationalBank: WhiteLabelConfig = {
   },
 
   coreSync: {
-    system: 'none',
+    system: 'unknown',
     displayName: 'Unknown',
     mode: 'mock',
   },

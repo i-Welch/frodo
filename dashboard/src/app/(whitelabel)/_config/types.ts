@@ -171,7 +171,7 @@ export interface RateCard {
 /* Core banking sync                                                   */
 /* ------------------------------------------------------------------ */
 
-export type CoreSystem = 'fis' | 'fiserv' | 'jackhenry' | 'none';
+export type CoreSystem = 'fis' | 'fiserv' | 'jackhenry' | 'none' | 'unknown';
 
 export interface CoreSyncConfig {
   system: CoreSystem;

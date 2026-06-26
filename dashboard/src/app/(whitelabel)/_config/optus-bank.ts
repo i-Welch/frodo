@@ -227,7 +227,7 @@ export const optusBank: WhiteLabelConfig = {
   },
 
   coreSync: {
-    system: 'none',
+    system: 'unknown',
     displayName: 'Smiley Technologies (SIBanking)',
     mode: 'mock',
   },

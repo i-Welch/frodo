@@ -13,7 +13,7 @@ export default async function VerificationDetailPage({
   const token = await getToken();
 
   // Fetch the verification record
-  let verification: Record<string, unknown> | null = null;
+  let verification: Record<string, unknown> | null;
   try {
     verification = await api<Record<string, unknown>>(`/api/v1/verifications/${id}`, { token: token ?? undefined });
   } catch {

@@ -553,7 +553,7 @@ function HandoffOverlay({
         <h3>That&rsquo;s all {firstName} had to do.</h3>
         <p>
           The moment they finished, a fully verified submission landed in{' '}
-          {config.branding.shortName}&rsquo;s team queue and synced to {config.coreSync.displayName}.
+          {config.branding.shortName}&rsquo;s team queue{config.coreSync.system !== 'unknown' && <> and synced to {config.coreSync.displayName}</>}.
           Here&rsquo;s what just hit your team.
         </p>
         <button className="wl-handoff-btn" onClick={onProceed}>
@@ -1047,12 +1047,14 @@ function Confirmation({
               <span>Status</span><strong>Under review</strong>
             </div>
           )}
-          <div className="wl-receipt-row">
-            <span>Synced to core</span>
-            <strong className="wl-synced">
-              <span className="wl-sync-dot" /> {config.coreSync.displayName}
-            </strong>
-          </div>
+          {config.coreSync.system !== 'unknown' && (
+            <div className="wl-receipt-row">
+              <span>Synced to core</span>
+              <strong className="wl-synced">
+                <span className="wl-sync-dot" /> {config.coreSync.displayName}
+              </strong>
+            </div>
+          )}
         </div>
 
         <button className="wl-btn wl-btn-ghost wl-btn-block" onClick={() => setShowLo(!showLo)}>
@@ -1064,7 +1066,7 @@ function Confirmation({
         <div className="wl-lo-wrap">
           <p className="wl-lo-caption">
             The moment you finished, this appeared in {config.branding.shortName}&rsquo;s RAVEN
-            dashboard, fully verified and synced to {config.coreSync.displayName}.
+            dashboard, fully verified{config.coreSync.system !== 'unknown' && <> and synced to {config.coreSync.displayName}</>}.
           </p>
           <LoPreview config={config} summary={summary} />
         </div>

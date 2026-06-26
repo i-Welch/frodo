@@ -17,6 +17,62 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'fintech-grade-loan-application-community-bank',
+    title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank',
+    description:
+      "The banking industry's average loan application conversion rate is 3%. Here is how fintechs get it to 80%, and how community banks can copy the playbook without replacing their core.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'what-neobanks-get-right-community-banks',
+    title: "What Neobanks Get Right (and What Community Banks Already Have That They Don't)",
+    description:
+      "Neobanks won on UX. Community banks won on trust, deposits, and relationships. 70% of small businesses prefer community banks but only 31% use one. The gap is digital capability, not preference.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-bank-borrower-experience-roi',
+    title: 'The ROI of Modernizing Your Community Bank Borrower Experience',
+    description:
+      "Blend's third-party ROI study found a 10.15x return per loan and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-bank-digital-lending-platform-guide',
+    title: 'What to Look for in a Community Bank Digital Lending Platform',
+    description:
+      "There are five platforms most community banks evaluate when they go shopping for a loan origination system. Pricing runs $50K to $500K annually. Here is what to ask before you sign anything.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-bank-ceo-digital-lending-2026',
+    title: "The Community Bank CEO's Guide to Digital Lending in 2026",
+    description:
+      "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-banks-lose-loans-fintechs',
+    title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)',
+    description:
+      "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
+    readTime: '7 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'community-bank-compete-neobank-core',
+    title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core',
+    description:
+      "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'south-atlantic-bank-coastal-growth-engine',
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description:

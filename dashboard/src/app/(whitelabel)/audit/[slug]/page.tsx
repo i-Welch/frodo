@@ -191,7 +191,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
           <h2>What your loan officer receives</h2>
           <p className="aud-sub">
             The instant a borrower finishes that flow, a fully verified application lands in the
-            RAVEN dashboard and syncs to {config.coreSync.displayName}. No rekeying, no document
+            RAVEN dashboard{config.coreSync.system !== 'unknown' && <> and syncs to {config.coreSync.displayName}</>}. No rekeying, no document
             chase, full audit trail.
           </p>
           <div className="aud-lo">
@@ -345,8 +345,8 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
           <div className="aud-cta">
             <h2>Want this with {audit.shortName}&rsquo;s real products and rates?</h2>
             <p>
-              We&rsquo;ll wire your actual product lineup, your rate card, and a {config.coreSync.displayName}{' '}
-              sync into a private demo, then pressure-test every number above against your real volumes.
+              We&rsquo;ll wire your actual product lineup, your rate card,{config.coreSync.system !== 'unknown' ? <> and a {config.coreSync.displayName} sync</> : ''}{' '}
+              into a private demo, then pressure-test every number above against your real volumes.
             </p>
             <InterestForm source={`audit:${audit.slug}`} />
           </div>

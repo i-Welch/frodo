@@ -228,7 +228,7 @@ export const queensboroughNationalBank: WhiteLabelConfig = {
   },
 
   coreSync: {
-    system: 'none',
+    system: 'unknown',
     displayName: 'Unknown (in transition)',
     mode: 'mock',
   },
