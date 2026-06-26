@@ -694,6 +694,18 @@ export default function LandingPage() {
           transition: color 200ms;
         }
         .footer-links a:hover { color: var(--white); }
+        .footer-contact {
+          display: block;
+          margin-top: 0.5rem;
+          font-size: 0.8rem !important;
+          color: var(--gray-400) !important;
+        }
+        .footer-contact a {
+          color: var(--gray-200);
+          text-decoration: none;
+          transition: color 200ms;
+        }
+        .footer-contact a:hover { color: var(--white); }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
@@ -725,6 +737,7 @@ export default function LandingPage() {
             <a href="/blog">Blog</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="tel:+12293796131">(229) 379-6131</a>
             <DemoModal source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
           </div>
         </nav>
@@ -756,7 +769,7 @@ export default function LandingPage() {
             </p>
             <div className="hero-actions">
               <DemoModal source="landing-hero" label="Request a Demo" buttonClassName="btn btn-white" />
-              <a href="/legal/security" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+              <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 Security &amp; Compliance
               </a>
             </div>
@@ -1008,6 +1021,11 @@ export default function LandingPage() {
           <div>
             <span>&copy; 2026 RAVEN. All rights reserved.</span>
             <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.65rem', color: 'var(--gray-600)', letterSpacing: '0.05em' }}>A South Carolina company</span>
+            <span className="footer-contact">
+              <a href="tel:+12293796131">(229) 379-6131</a>
+              <span aria-hidden="true"> · </span>
+              <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
+            </span>
           </div>
           <div className="footer-links">
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>

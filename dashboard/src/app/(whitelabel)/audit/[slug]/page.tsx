@@ -99,6 +99,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
           <div className="aud-nav-links">
             <a href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">Live demo ↗</a>
             <a href="/blog">Blog</a>
+            <a href="tel:+12293796131">(229) 379-6131</a>
             <DemoModal source={`audit-nav:${audit.slug}`} label="Request a Demo" buttonClassName="aud-btn" />
           </div>
           <a href="/blog" className="aud-nav-blog-mobile">Blog</a>
@@ -375,7 +376,11 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
 
         <footer>
           <span>&copy; {new Date().getFullYear()} RAVEN</span>
-          <span>reportraven.tech</span>
+          <span className="aud-foot-contact">
+            <a href="tel:+12293796131">(229) 379-6131</a>
+            <span aria-hidden="true"> · </span>
+            <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
+          </span>
         </footer>
       </div>
     </>
@@ -528,6 +533,8 @@ const styles = `
 
   .aud-shell footer { padding:2rem 3rem; border-top:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; }
   .aud-shell footer span { font-size:0.75rem; color:var(--g600); }
+  .aud-foot-contact a { color:var(--g300); text-decoration:none; transition:color 200ms; }
+  .aud-foot-contact a:hover { color:var(--white); }
 
   @media (max-width:768px) {
     .aud-shell nav { padding:1rem 1.5rem; }

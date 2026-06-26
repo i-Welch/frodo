@@ -374,6 +374,18 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           transition: color 200ms;
         }
         .blog-footer-links a:hover { color: var(--white); }
+        .blog-footer-contact {
+          display: block;
+          margin-top: 0.4rem;
+          font-size: 0.8rem;
+          color: var(--gray-400);
+        }
+        .blog-footer-contact a {
+          color: var(--gray-200);
+          text-decoration: none;
+          transition: color 200ms;
+        }
+        .blog-footer-contact a:hover { color: var(--white); }
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
@@ -406,6 +418,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <a href="/">Home</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="tel:+12293796131">(229) 379-6131</a>
             <DemoModal source="blog-nav" label="Request a Demo" buttonClassName="blog-nav-cta" />
           </div>
         </nav>
@@ -430,7 +443,14 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         </section>
 
         <footer>
-          <span>&copy; {new Date().getFullYear()} RAVEN</span>
+          <span>
+            &copy; {new Date().getFullYear()} RAVEN
+            <span className="blog-footer-contact">
+              <a href="tel:+12293796131">(229) 379-6131</a>
+              <span aria-hidden="true"> · </span>
+              <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
+            </span>
+          </span>
           <div className="blog-footer-links">
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
