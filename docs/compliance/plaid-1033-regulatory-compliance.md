@@ -50,7 +50,7 @@ RAVEN maintains a written information security program reviewed at least annuall
 
 2. Technical controls
 
-Specific implementation details (published in our Security Practices statement at https://reportraven.tech/legal/security):
+Specific implementation details (published in our Security Practices statement at https://app.reportraven.tech/legal/security):
 
 - Encryption at rest: AES-256-GCM with per-user Data Encryption Keys (DEKs); DEKs are themselves encrypted under AWS KMS master keys (envelope encryption); field-level encryption such that compromise of one field does not expose others; key rotation managed by AWS KMS.
 - Crypto-shredding. Deleting a consumer's DEK renders that consumer's data permanently unrecoverable, including from backups — supporting consumer revocation and deletion obligations under §1033 and state privacy laws.
@@ -68,7 +68,7 @@ RAVEN's Privacy Policy describes data collection, use, sharing, retention, and t
 
 4. Data retention
 
-Retention windows are codified in our Data Retention Policy (https://reportraven.tech/legal/data-retention), mapped to FCRA, GLBA, BSA/AML, FERPA, and contractual obligations. Data is retained only as long as necessary for the consumer-requested product, with documented permissible-purpose records preserved for legally required retention windows after consumer revocation.
+Retention windows are codified in our Data Retention Policy (https://app.reportraven.tech/legal/data-retention), mapped to FCRA, GLBA, BSA/AML, FERPA, and contractual obligations. Data is retained only as long as necessary for the consumer-requested product, with documented permissible-purpose records preserved for legally required retention windows after consumer revocation.
 
 5. Incident response and breach notification
 

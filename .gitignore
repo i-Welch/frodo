@@ -39,6 +39,15 @@ Thumbs.db
 
 # prospecting (local sales data)
 prospecting/
+scripts/generate-audit-pdf.ts
+scripts/send-email.js
+
+# local marketing assets (LinkedIn banners, logos)
+raven-linkedin-banner*
+raven-logo-linkedin*
+
+# local agent / IDE settings
+.claude/
 
 # bun
 bun.lockb

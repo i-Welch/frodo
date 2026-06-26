@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RAVEN Audit Mailer — Southern Bank and Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════
+   BANK-SPECIFIC — search "BANK:" to find every
+   spot to update per bank (7 locations)
+   ═══════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: #d0d8e4;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color: #0f172a;
+}
+
+/* ───────────────────────────────────────────────
+   DESIGN TOKENS
+   Steel-blue palette: desaturated, enterprise,
+   reads as "serious tech company" not "startup"
+   ─────────────────────────────────────────────── */
+:root {
+  /* Blues — desaturated, muted */
+  --blue-deep:  #1a3a5c;   /* cover bg */
+  --blue-mid:   #2e5897;   /* section accents, labels */
+  --blue-light: #4a7ab5;   /* lighter accent */
+  --blue-tint:  #edf2f8;   /* panel tint bg */
+  --blue-rule:  #c8d8ea;   /* hairline between sections */
+
+  /* Type */
+  --ink:    #0f172a;
+  --body:   #334155;
+  --muted:  #64748b;
+  --faint:  #94a3b8;
+
+  /* Status */
+  --green:  #22c55e;
+  --green2: #16a34a;
+  --amber:  #f59e0b;
+  --red:    #dc2626;
+
+  /* Misc */
+  --border: #e2e8f0;
+  --white:  #ffffff;
+}
+
+/* ───────────────────────────────────────────────
+   SHEET  — 11" × 8.5" landscape
+   Two panels per sheet, each 5.5" × 8.5"
+   ─────────────────────────────────────────────── */
+.sheet {
+  width: 11in;
+  height: 8.5in;
+  display: flex;
+  background: white;
+  margin: 0.35in auto 0.5in;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.sheet::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 0; bottom: 0;
+  border-left: 1px dashed rgba(0,0,0,0.12);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.panel {
+  width: 5.5in;
+  height: 8.5in;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ═══════════════════════════════════════════════
+   SIDE A  ·  OUTSIDE
+   Left = mailing panel   Right = cover
+   ═══════════════════════════════════════════════ */
+
+/* ── Mailing panel ── */
+.panel-mailing {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5in;
+  background: white;
+}
+
+.mail-return {
+  font-size: 9pt;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.mail-return strong {
+  display: block;
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.06em;
+  margin-bottom: 2px;
+}
+
+.mail-stamp {
+  position: absolute;
+  top: 0.5in; right: 0.5in;
+  width: 0.75in; height: 0.9in;
+  border: 1px solid #d0d0d0;
+  display: flex; align-items: center; justify-content: center;
+}
+.mail-stamp span {
+  font-size: 7pt; font-family: system-ui;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  color: #bbb; text-align: center; line-height: 1.5;
+}
+
+.mail-to { margin: auto 0; }
+.mail-to-name  { font-size: 13pt; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 3px; }
+.mail-to-title { font-size: 9pt; color: var(--muted); margin-bottom: 11px; }
+.mail-to-bank  { font-size: 10pt; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+.mail-to-addr  { font-size: 10pt; color: var(--body); line-height: 1.6; }
+
+.mail-footer { display: flex; align-items: center; gap: 9px; }
+.mail-footer-logo { width: 28px; height: 28px; opacity: 0.45; flex-shrink: 0; }
+.mail-footer-url  { font-size: 8pt; color: #b0b0b0; letter-spacing: 0.04em; }
+
+/* ── Cover panel ── */
+.panel-cover {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5in;
+  background: var(--blue-deep);
+  color: var(--white);
+}
+
+/* Logo sits at top, subtle */
+.cover-logo-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: auto; /* push everything else down */
+  padding-bottom: 0.35in;
+}
+.cover-logo-mark { width: 36px; height: 36px; flex-shrink: 0; opacity: 0.9; }
+.cover-logo-word {
+  font-size: 12pt; font-weight: 700;
+  letter-spacing: 0.28em; color: rgba(255,255,255,0.75);
+}
+
+/* Main content block — anchored to lower half of panel */
+.cover-main { flex-shrink: 0; }
+
+/* BANK: eyebrow */
+.cover-eyebrow {
+  font-size: 8pt; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+/* BANK: bank name — hero element */
+.cover-bank-name {
+  font-size: 34px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1.05; color: white;
+  margin-bottom: 10px;
+}
+
+/* BANK: audit date */
+.cover-date {
+  font-size: 9pt; color: rgba(255,255,255,0.38);
+  margin-bottom: 0.28in;
+}
+
+.cover-rule {
+  height: 1px;
+  background: linear-gradient(to right, rgba(255,255,255,0.2) 0%, transparent 80%);
+  margin-bottom: 0.22in;
+}
+
+/* One-sentence tagline */
+.cover-tagline {
+  font-size: 13pt; font-weight: 300; line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 0.22in;
+}
+.cover-tagline strong { font-weight: 600; color: white; }
+
+/* Capability bullets */
+.cover-caps { display: flex; flex-direction: column; gap: 9px; margin-bottom: 0.32in; }
+.cover-cap  { display: flex; align-items: flex-start; gap: 9px; }
+.cover-cap-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0;
+  margin-top: 4px;
+}
+.cover-cap-text { font-size: 10pt; font-weight: 400; color: rgba(255,255,255,0.72); line-height: 1.5; }
+
+/* Footer */
+.cover-footer {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cover-footer-url { font-size: 8pt; color: rgba(255,255,255,0.3); letter-spacing: 0.02em; }
+.cover-footer-badge {
+  font-size: 7pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue-deep); background: var(--green);
+  padding: 3.5px 10px; border-radius: 999px;
+}
+
+/* ═══════════════════════════════════════════════
+   SIDE B  ·  INSIDE
+   All four quadrants use the same editorial
+   section-label treatment — no filled bars.
+   Sections are separated by whitespace + a
+   hairline rule.
+   ═══════════════════════════════════════════════ */
+
+.panel-inside {
+  display: flex; flex-direction: column;
+  background: white;
+}
+
+/* The heading row that starts each section:
+   a short colored dash followed by all-caps label */
+.sec-head {
+  display: flex; align-items: center; gap: 9px;
+  padding: 0.28in 0.42in 0.14in;
+  flex-shrink: 0;
+}
+.sec-head::before {
+  content: '';
+  display: block;
+  width: 16px; height: 2.5px;
+  background: var(--blue-mid);
+  flex-shrink: 0;
+}
+.sec-head-label {
+  font-size: 8pt; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--blue-mid);
+}
+
+/* Hairline between the two halves of each panel */
+.sec-divider {
+  height: 1px;
+  background: var(--blue-rule);
+  margin: 0 0.42in;
+  flex-shrink: 0;
+}
+
+/* Content area for each half */
+.sec-body {
+  flex: 1;
+  padding: 0.12in 0.42in 0.16in;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Top half gets more room, bottom half less */
+.panel-half-top  { flex: 58; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+.panel-half-bot  { flex: 42; display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
+
+/* ── Left panel: products ── */
+.products-list { display: flex; flex-direction: column; gap: 0.1in; flex: 1; margin-bottom: 0.08in; }
+
+.product-item { display: flex; gap: 10px; align-items: flex-start; }
+
+.product-icon {
+  width: 26px; height: 26px;
+  background: var(--blue-tint);
+  border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.product-icon svg { width: 13px; height: 13px; }
+
+.product-name { font-size: 10pt; font-weight: 700; color: var(--ink); line-height: 1.2; margin-bottom: 3px; }
+.product-desc { font-size: 9pt; color: var(--muted); line-height: 1.5; }
+
+.integration-note {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: var(--blue-tint);
+  border-left: 2.5px solid var(--blue-mid);
+  padding: 7px 9px;
+  border-radius: 0 4px 4px 0;
+  flex-shrink: 0;
+}
+.integration-note svg { width: 12px; height: 12px; color: var(--blue-mid); flex-shrink: 0; margin-top: 1px; }
+.integration-note-text { font-size: 8pt; color: var(--blue-mid); line-height: 1.5; font-weight: 500; }
+
+/* ── Left panel: CTA ── */
+.cta-intro {
+  font-size: 9pt; color: var(--body); line-height: 1.6;
+  margin-bottom: 0.11in; flex-shrink: 0;
+}
+.cta-intro strong { color: var(--ink); font-weight: 700; }
+
+.cta-qr-row {
+  display: flex; align-items: flex-start; gap: 0.12in;
+  flex-shrink: 0; margin-bottom: 0.1in;
+}
+
+.cta-qr-img {
+  width: 0.7in; height: 0.7in;
+  flex-shrink: 0;
+  border: 1.5px solid var(--ink);
+  display: block;
+}
+
+.cta-scan-label {
+  font-size: 8pt; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--faint);
+  margin-bottom: 4px;
+}
+.cta-url {
+  font-size: 9pt; font-weight: 700; color: var(--blue-mid);
+  word-break: break-all; margin-bottom: 4px; line-height: 1.4;
+}
+.cta-url-note { font-size: 8pt; color: var(--faint); line-height: 1.45; }
+
+.cta-flex { flex: 1; min-height: 0.06in; }
+
+.cta-contact {
+  flex-shrink: 0;
+  padding-top: 0.09in;
+  border-top: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 5px;
+}
+.cta-contact-label {
+  font-size: 8pt; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faint); margin-bottom: 2px;
+}
+.cta-contact-row { display: flex; align-items: center; gap: 7px; }
+.cta-contact-row svg { width: 11px; height: 11px; color: var(--muted); flex-shrink: 0; }
+.cta-contact-val { font-size: 10pt; font-weight: 600; color: var(--ink); }
+
+/* ── Right panel: ROI ── */
+.roi-number {
+  font-size: 52px; font-weight: 700; letter-spacing: -0.04em;
+  line-height: 1; color: var(--green2);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 5px; flex-shrink: 0;
+}
+.roi-sublabel {
+  font-size: 8.5pt; color: var(--muted); line-height: 1.5;
+  margin-bottom: 0.1in; flex-shrink: 0;
+}
+
+/* Two-driver breakdown */
+.roi-drivers {
+  display: flex; flex-direction: column; gap: 6px;
+  flex-shrink: 0; margin-bottom: 0.1in;
+}
+.roi-driver {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--blue-tint);
+  border-left: 2.5px solid var(--blue-mid);
+  border-radius: 0 4px 4px 0;
+  padding: 0.07in 0.1in;
+}
+.roi-driver-left { flex: 1; min-width: 0; }
+.roi-driver-label {
+  font-size: 8pt; font-weight: 700; color: var(--ink);
+  margin-bottom: 2px; line-height: 1.2;
+}
+.roi-driver-desc {
+  font-size: 7.5pt; color: var(--muted); line-height: 1.4;
+}
+.roi-driver-val {
+  font-size: 12pt; font-weight: 700; color: var(--blue-mid);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0; white-space: nowrap;
+}
+
+/* Condensed scenario range — single row */
+.roi-scenarios {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #f1f5f9;
+  border-radius: 4px;
+  padding: 6px 10px;
+  flex-shrink: 0;
+  margin-bottom: 7px;
+}
+.roi-scen { text-align: center; }
+.roi-scen-label {
+  font-size: 7pt; color: var(--faint);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  display: block; margin-bottom: 1px;
+}
+.roi-scen-val {
+  font-size: 10pt; font-weight: 600; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.roi-scen.expected .roi-scen-label { color: var(--blue-mid); }
+.roi-scen.expected .roi-scen-val { color: var(--blue-mid); font-size: 11pt; }
+
+.roi-source {
+  font-size: 7pt; color: var(--faint); font-style: italic; line-height: 1.55;
+  flex-shrink: 0;
+}
+
+/* ── Right panel: Gaps ── */
+.gaps-table { width: 100%; border-collapse: collapse; flex-shrink: 0; }
+
+.gaps-table tr { border-bottom: 1px solid #f1f4f8; }
+.gaps-table tr:first-child td { padding-top: 0.06in; }
+
+.g-ch {
+  font-size: 9pt; font-weight: 600; color: var(--ink);
+  padding: 0.05in 0.04in 0.05in 0;
+  vertical-align: top; width: 33%; line-height: 1.3;
+}
+.g-detail {
+  font-size: 8pt; color: var(--muted);
+  padding: 0.05in 0.04in;
+  vertical-align: top; line-height: 1.45;
+}
+.g-st {
+  font-size: 11pt; padding: 0.04in 0 0.04in 0.03in;
+  vertical-align: middle; text-align: right; width: 10%;
+}
+
+.st-p { color: var(--amber); }
+.st-m { color: var(--red); }
+.st-o { color: var(--green); }
+
+.gaps-flex { flex: 1; min-height: 0.04in; }
+
+.gaps-footer {
+  flex-shrink: 0;
+  border-top: 2px solid var(--blue-mid);
+  padding-top: 0.07in;
+}
+.gaps-summary { font-size: 10pt; font-weight: 700; color: var(--ink); }
+
+/* Right panel left border */
+.panel-right { border-left: 1px solid var(--border); }
+
+/* ───────────────────────────────────────────────
+   SCREEN LABELS + INSTRUCTIONS
+   ─────────────────────────────────────────────── */
+.sheet-label {
+  max-width: 11in; margin: 0 auto 0.08in;
+  font-family: system-ui; font-size: 11px; color: #666;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding-top: 0.3in;
+}
+.sheet-label:first-of-type { padding-top: 0.4in; }
+
+.instructions {
+  max-width: 11in; margin: 0.2in auto 0;
+  background: white; border: 1px solid #d4d4d4;
+  padding: 0.3in 0.45in;
+  font-family: system-ui; font-size: 12px; line-height: 1.75; color: #444;
+}
+.instructions strong { display: block; font-size: 13px; color: #111; margin-bottom: 6px; }
+.instructions ol { padding-left: 1.2em; }
+.instructions code { background: #f5f5f5; padding: 1px 5px; border-radius: 3px; font-size: 11px; }
+
+/* ───────────────────────────────────────────────
+   PRINT
+   ─────────────────────────────────────────────── */
+@media print {
+  body { background: white; }
+  .sheet-label, .instructions { display: none; }
+  .sheet { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+  .sheet::before { display: none; }
+  @page { size: 11in 8.5in landscape; margin: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<!--
+  RAVEN PERSONALIZED AUDIT MAILER  ·  v3.0
+  Format: Bifold self-mailer · 11" × 8.5" landscape
+  Folded size: 5.5" × 8.5"  ·  4 panels
+
+  Search "BANK:" to find the 7 customization spots.
+-->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SIDE A  ·  OUTSIDE  ·  Print first
+     ═══════════════════════════════════════════════════════════ -->
+<p class="sheet-label">Side A — Outside — Print first</p>
+<div class="sheet">
+
+  <!-- LEFT: Mailing panel -->
+  <div class="panel panel-mailing">
+
+    <!-- BANK: return address -->
+    <div class="mail-return">
+      <strong>RAVEN</strong>
+      [Your Street Address]<br>
+      [City, State ZIP]
+    </div>
+
+    <div class="mail-stamp"><span>First&#8209;Class<br>Mail<br>Postage<br>Here</span></div>
+
+    <!-- BANK: recipient -->
+    <div class="mail-to">
+      <div class="mail-to-name">Sondra McCorquodale</div>
+      <div class="mail-to-title">EVP &amp; Chief Digital Officer</div>
+      <div class="mail-to-bank">Southern Bank and Trust Company</div>
+      <div class="mail-to-addr">127 W. James Street<br>Mount Olive, NC 28365</div>
+    </div>
+
+    <div class="mail-footer">
+      <svg class="mail-footer-logo" viewBox="0 0 3000 3000" fill="none">
+        <circle cx="1500" cy="1500" r="1319.5" stroke="#000" stroke-width="109"/>
+        <path d="M2162.9,2626.4c17.1-6.3,35.7-13.6,48.6-20.1-51.8-.7-99,.5-146.3-2.5-162.9-10.5-321.8-40.2-475.8-94.7-166.9-59.1-321-140.7-453.7-259.6-62.1-55.7-115.4-118.4-149.3-195.7-26.4-60.1-37.6-122.5-21.4-187.2,40.1-160.7,200.7-247.3,361.8-218-40.9,6.9-78.6,15.9-111.1,38.7-32.7,22.9-58.8,51.1-72.2,91.7,36.3-26.9,91.2-50.3,120.1-51.6-2.5,1.9-4.3,3.6-6.4,5-68.4,45.2-101.9,109.3-103.6,190.8-1.5,69.4,23.3,130.2,60.2,187.1,59.4,91.5,140.5,160.3,231.8,217.9,111.4,70.2,231,119.8,354.7,155.9,104,30.3,211.3,49.4,320,51.4,13.3.2,26.7,0,40,0-6.1-6.8-12.7-10.1-19-13.8-49-29.3-81.5-73.1-106-123.2-29.6-60.7-58.7-122.2-87.8-183.2-61.6-129.2-138.6-248-238.7-351.1-71.7-73.8-152.5-134.8-247.9-174.8-6.9-2.9-11.5-7.8-15.8-13.5-29.2-38.3-54-79.1-69.9-124.8-20.3-58.6-22.5-117.4.7-175.8,26.8-67.4,77.5-111.8,140.8-143.3,59.7-29.7,123.7-45.2,189.1-56.1,85.4-14.3,171.3-19.1,257.7-11.2,26.4,2.4,52.3,8.2,79.6,12.8-1.6-3.8-2.4-6.2-3.5-8.4-2.8-5.4-5.4-10.8-8.6-16-37.3-61.5-87.7-110.2-148.5-148.2-110.1-68.9-232.1-98.4-360.2-105.6-33.6-1.9-61.3-9.6-89.6-30.3-109.5-80.1-233.4-107.2-367.7-91.9-103.9,11.8-197.9,48.4-283.8,107.6-91.3,62.8-170.3,141.4-263.4,201.4,1.3,3.6,3.6,2.7,5.4,2.8,70.6,3.8,138.8-11.9,207.7-25.2-142.7,75.7-262.1,171.7-303,338.1,41.4-38.3,88-67.6,140.8-87.1-39,42-68.8,89.9-92.5,141.4-79.6,173.1-94.5,354.4-61,539.8,31.9,177,108.7,333.6,226.4,469.8,6.6,7.6,13.6,14.9,20.7,22.1,6.6,6.8,13.5,13.3,23.1,22.7l254,162c139.8,87.7,294.6,130.1,457.6,141.8,166.5,12,330.1-7.8,489.8-57.3,12.2-3.8,24.1-8.5,36-13.1s19.2-8.2,28.5-13.1l114-60.6c31.6-16.8,64.3-31.5,97.9-43.8Z" fill="#000"/>
+      </svg>
+      <span class="mail-footer-url">reportraven.tech</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: Cover -->
+  <div class="panel panel-cover">
+
+    <!-- Logo — subtle brand attribution at top -->
+    <div class="cover-logo-row">
+      <svg class="cover-logo-mark" viewBox="0 0 3000 3000" fill="none">
+        <circle cx="1500" cy="1500" r="1319.5" stroke="white" stroke-width="109"/>
+        <path d="M2162.9,2626.4c17.1-6.3,35.7-13.6,48.6-20.1-51.8-.7-99,.5-146.3-2.5-162.9-10.5-321.8-40.2-475.8-94.7-166.9-59.1-321-140.7-453.7-259.6-62.1-55.7-115.4-118.4-149.3-195.7-26.4-60.1-37.6-122.5-21.4-187.2,40.1-160.7,200.7-247.3,361.8-218-40.9,6.9-78.6,15.9-111.1,38.7-32.7,22.9-58.8,51.1-72.2,91.7,36.3-26.9,91.2-50.3,120.1-51.6-2.5,1.9-4.3,3.6-6.4,5-68.4,45.2-101.9,109.3-103.6,190.8-1.5,69.4,23.3,130.2,60.2,187.1,59.4,91.5,140.5,160.3,231.8,217.9,111.4,70.2,231,119.8,354.7,155.9,104,30.3,211.3,49.4,320,51.4,13.3.2,26.7,0,40,0-6.1-6.8-12.7-10.1-19-13.8-49-29.3-81.5-73.1-106-123.2-29.6-60.7-58.7-122.2-87.8-183.2-61.6-129.2-138.6-248-238.7-351.1-71.7-73.8-152.5-134.8-247.9-174.8-6.9-2.9-11.5-7.8-15.8-13.5-29.2-38.3-54-79.1-69.9-124.8-20.3-58.6-22.5-117.4.7-175.8,26.8-67.4,77.5-111.8,140.8-143.3,59.7-29.7,123.7-45.2,189.1-56.1,85.4-14.3,171.3-19.1,257.7-11.2,26.4,2.4,52.3,8.2,79.6,12.8-1.6-3.8-2.4-6.2-3.5-8.4-2.8-5.4-5.4-10.8-8.6-16-37.3-61.5-87.7-110.2-148.5-148.2-110.1-68.9-232.1-98.4-360.2-105.6-33.6-1.9-61.3-9.6-89.6-30.3-109.5-80.1-233.4-107.2-367.7-91.9-103.9,11.8-197.9,48.4-283.8,107.6-91.3,62.8-170.3,141.4-263.4,201.4,1.3,3.6,3.6,2.7,5.4,2.8,70.6,3.8,138.8-11.9,207.7-25.2-142.7,75.7-262.1,171.7-303,338.1,41.4-38.3,88-67.6,140.8-87.1-39,42-68.8,89.9-92.5,141.4-79.6,173.1-94.5,354.4-61,539.8,31.9,177,108.7,333.6,226.4,469.8,6.6,7.6,13.6,14.9,20.7,22.1,6.6,6.8,13.5,13.3,23.1,22.7l254,162c139.8,87.7,294.6,130.1,457.6,141.8,166.5,12,330.1-7.8,489.8-57.3,12.2-3.8,24.1-8.5,36-13.1s19.2-8.2,28.5-13.1l114-60.6c31.6-16.8,64.3-31.5,97.9-43.8Z" fill="white"/>
+      </svg>
+      <span class="cover-logo-word">RAVEN</span>
+    </div>
+
+    <!-- Main content — bank name is the hero -->
+    <div class="cover-main">
+      <!-- BANK: eyebrow + name + date -->
+      <div class="cover-eyebrow">Digital Lending Audit</div>
+      <div class="cover-bank-name">Southern Bank<br>and Trust Company</div>
+      <div class="cover-date">June 2026</div>
+
+      <div class="cover-rule"></div>
+
+      <div class="cover-tagline">
+        <strong>Automated borrower verification,</strong> white-labeled in your brand and integrated with your existing core.
+      </div>
+
+      <div class="cover-caps">
+        <div class="cover-cap">
+          <div class="cover-cap-dot"></div>
+          <span class="cover-cap-text">Digital onboarding and online loan application across all products</span>
+        </div>
+        <div class="cover-cap">
+          <div class="cover-cap-dot"></div>
+          <span class="cover-cap-text">LO-driven income, identity, and employment verification in 90 seconds</span>
+        </div>
+        <div class="cover-cap">
+          <div class="cover-cap-dot"></div>
+          <span class="cover-cap-text">Integrates with FIS, Jack Henry, Fiserv — no rebuild required</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <span class="cover-footer-url">reportraven.tech</span>
+      <span class="cover-footer-badge">Community bank infrastructure</span>
+    </div>
+
+  </div>
+</div><!-- /side-a -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SIDE B  ·  INSIDE  ·  Flip on long edge, print second
+     ═══════════════════════════════════════════════════════════ -->
+<p class="sheet-label">Side B — Inside — Flip paper on long edge, print second</p>
+<div class="sheet">
+
+  <!-- LEFT PANEL: what we build (top 58%) | CTA (bottom 42%) -->
+  <div class="panel panel-inside">
+
+    <div class="panel-half-top">
+      <div class="sec-head">
+        <span class="sec-head-label">What We'd Build for Southern Bank</span>
+      </div>
+      <div class="sec-body">
+        <div class="products-list">
+
+          <div class="product-item">
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <div>
+              <div class="product-name">Digital Onboarding</div>
+              <div class="product-desc">Branded deposit account opening and loan pre-qualification in minutes. Mobile-first, in Southern Bank's domain, with no off-brand subdomains.</div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
+              </svg>
+            </div>
+            <div>
+              <div class="product-name">Online Loan Application</div>
+              <div class="product-desc">One front door for every product — mortgage, HELOC, personal, auto, business, and agricultural — in Southern Bank's branding, from first click to submitted file.</div>
+            </div>
+          </div>
+
+          <div class="product-item">
+            <div class="product-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><polyline points="9 12 11 14 15 10"/>
+              </svg>
+            </div>
+            <div>
+              <div class="product-name">LO-Driven Data Collection + Verification</div>
+              <div class="product-desc">Identity, income, employment, and property verified in ~90 seconds via Plaid, Socure, Truework, and Melissa. Your loan officer receives a complete verified file — no document chase, no VOE calls.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="integration-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/>
+          </svg>
+          <span class="integration-note-text">Integrates with your existing core — FIS, Jack Henry, Fiserv, or similar. No rebuild, no rip-and-replace. RAVEN is a front-end layer that syncs verified data directly into the system you already run.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <div class="panel-half-bot">
+      <div class="sec-head">
+        <span class="sec-head-label">See the Southern Bank Experience Live</span>
+      </div>
+      <div class="sec-body">
+        <p class="cta-intro">
+          We built a working demo of what Southern Bank's borrower experience could look like — every product, your branding, the full verification flow. <strong>Scan or visit to walk through it.</strong>
+        </p>
+
+        <div class="cta-qr-row">
+          <!--
+            BANK: UTM params — update utm_campaign and utm_term per mailer.
+            utm_campaign = bank slug (e.g. southern-bank-trust)
+            utm_term     = recipient slug (e.g. sondra-mccorquodale)
+            QR data URL must be fully URL-encoded in the src below.
+          -->
+          <img
+            class="cta-qr-img"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Freportraven.tech%2Faudit%2Fsouthern-bank-trust%3Futm_source%3Ddirect-mail%26utm_medium%3Dmailer%26utm_campaign%3Dsouthern-bank-trust%26utm_term%3Dsondra-mccorquodale%26utm_content%3Dqr&bgcolor=ffffff&color=0f172a&margin=4&qzone=1"
+            alt="QR — reportraven.tech/audit/southern-bank-trust"
+          >
+          <div>
+            <div class="cta-scan-label">Full audit + live demo</div>
+            <!-- BANK: audit URL (display stays clean; tracking is on the QR) -->
+            <div class="cta-url">reportraven.tech/audit/<wbr>southern-bank-trust</div>
+            <div class="cta-url-note">Includes the ROI model, experience analysis, and a live demo of Southern Bank's digital intake.</div>
+          </div>
+        </div>
+
+        <div class="cta-flex"></div>
+
+        <div class="cta-contact">
+          <div class="cta-contact-label">To talk through the numbers</div>
+          <!-- BANK: contact details -->
+          <div class="cta-contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span class="cta-contact-val">isaac@reportraven.tech</span>
+          </div>
+          <div class="cta-contact-row">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="cta-contact-val">(229) 379-6131</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /left panel -->
+
+
+  <!-- RIGHT PANEL: ROI (top 58%) | gaps (bottom 42%) -->
+  <div class="panel panel-inside panel-right">
+
+    <div class="panel-half-top">
+      <div class="sec-head">
+        <span class="sec-head-label">What It's Worth</span>
+      </div>
+      <div class="sec-body">
+        <!-- BANK: ROI figures -->
+        <div class="roi-number">$407K</div>
+        <div class="roi-sublabel">estimated annual value — broken out below by driver</div>
+
+        <div class="roi-drivers">
+          <div class="roi-driver">
+            <div class="roi-driver-left">
+              <div class="roi-driver-label">Staff Time Saved</div>
+              <div class="roi-driver-desc">Mortgage, commercial, and consumer loan files verified automatically instead of manually (6–14 hrs/file for mortgage, 8–16 for commercial, 2–6 for consumer) at $38–48/hr loaded staff cost</div>
+            </div>
+            <div class="roi-driver-val">~$395K</div>
+          </div>
+          <div class="roi-driver">
+            <div class="roi-driver-left">
+              <div class="roi-driver-label">Pull-through Revenue</div>
+              <div class="roi-driver-desc">15 additional closed loans per year from reduced mortgage application abandonment — a 3-point improvement on existing originations at $785/loan (MBA benchmark)</div>
+            </div>
+            <div class="roi-driver-val">~$12K</div>
+          </div>
+        </div>
+
+        <div class="roi-scenarios">
+          <div class="roi-scen">
+            <span class="roi-scen-label">Conservative</span>
+            <span class="roi-scen-val">$224K</span>
+          </div>
+          <div class="roi-scen expected">
+            <span class="roi-scen-label">Expected ◉</span>
+            <span class="roi-scen-val">$407K</span>
+          </div>
+          <div class="roi-scen">
+            <span class="roi-scen-label">Optimistic</span>
+            <span class="roi-scen-val">$644K</span>
+          </div>
+        </div>
+
+        <div class="roi-source">
+          FDIC BankFind cert #15359, HMDA Modified LAR (2024), MBA performance benchmarks. Verification hours from Blend Labs (2025) case studies. Directional estimate only.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <div class="panel-half-bot">
+      <div class="sec-head">
+        <span class="sec-head-label">Your Current Digital Experience</span>
+      </div>
+      <div class="sec-body">
+
+        <!-- BANK: update channels and status -->
+        <table class="gaps-table">
+          <tbody>
+            <tr>
+              <td class="g-ch">Mortgage</td>
+              <td class="g-detail">Online, but routes to a third-party domain — off-brand at the critical moment</td>
+              <td class="g-st"><span class="st-p">◐</span></td>
+            </tr>
+            <tr>
+              <td class="g-ch">Personal / Auto / Boat</td>
+              <td class="g-detail">No apply path. Call or contact form only</td>
+              <td class="g-st"><span class="st-m">✗</span></td>
+            </tr>
+            <tr>
+              <td class="g-ch">HELOC / Home Equity</td>
+              <td class="g-detail">Learn-more pages only. No application</td>
+              <td class="g-st"><span class="st-m">✗</span></td>
+            </tr>
+            <tr>
+              <td class="g-ch">Business / Agricultural</td>
+              <td class="g-detail">Relationship manager call required. No digital intake</td>
+              <td class="g-st"><span class="st-m">✗</span></td>
+            </tr>
+            <tr>
+              <td class="g-ch">Account Opening</td>
+              <td class="g-detail">32-character off-brand subdomain. Mobile abandonment near-certain</td>
+              <td class="g-st"><span class="st-m">✗</span></td>
+            </tr>
+            <tr>
+              <td class="g-ch">Existing Customers</td>
+              <td class="g-detail">Digital banking is functional</td>
+              <td class="g-st"><span class="st-o">✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="gaps-flex"></div>
+
+        <!-- BANK: update the count -->
+        <div class="gaps-footer">
+          <div class="gaps-summary">1 of 6 products available to start online today.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /right panel -->
+
+</div><!-- /side-b -->
+
+
+<div class="instructions">
+  <strong>Before printing</strong>
+  <ol>
+    <li>Add your RAVEN return address to the mailing panel (marked <code>[Your Street Address]</code>).</li>
+    <li>Add your phone number (marked <code>(XXX) XXX-XXXX</code>).</li>
+    <li>The QR code loads from api.qrserver.com — requires internet access to display. For offline print, download it at:<br>
+    <code>https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=https%3A%2F%2Freportraven.tech%2Faudit%2Fsouthern-bank-trust</code><br>
+    and replace the <code>&lt;img src&gt;</code> with a local file path.</li>
+  </ol>
+  <br>
+  <strong>Printing (Chrome only)</strong>
+  <ol>
+    <li>File → Print · Paper: <strong>Letter</strong> · Orientation: <strong>Landscape</strong> · Margins: <strong>None</strong> · Background graphics: <strong>On</strong>.</li>
+    <li>Print <strong>Side A</strong> first.</li>
+    <li>Flip paper on the <strong>long edge</strong> (left stays left). Print <strong>Side B</strong>.</li>
+    <li>Fold in half. Cover faces out on the right.</li>
+  </ol>
+  <br>
+  <strong>To customize for a new bank</strong> — search <code>BANK:</code> in this file. 7 spots to update.
+</div>
+
+</body>
+</html>

@@ -17,6 +17,102 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'south-atlantic-bank-coastal-growth-engine',
+    title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
+    description:
+      "South Atlantic Bank turned a 2007 startup in Myrtle Beach into a $1.93B coastal lending machine in under 17 years. How in-migration math, a 53% CRE concentration, and 13% loan growth are forcing a digital reckoning.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'conway-national-bank-grand-strand-dominance',
+    title: "Conway National Bank's Quiet Dominance on the Grand Strand",
+    description:
+      "Conway National Bank runs a sub-48% efficiency ratio and holds the top deposit share in one of America's fastest-growing counties. What their numbers reveal about scaling a lean community bank into a surging coastal market.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'bank-travelers-rest-greenville-growth-engine',
+    title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
+    description:
+      'Bank of Travelers Rest is posting 1.44% ROA and 21.82% ROE from a single county in South Carolina. How a 10-branch community bank became the quiet growth engine of one of the fastest-moving metros in the Southeast.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'security-federal-bank-cdfi-rate-rebound-aiken',
+    title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
+    description:
+      "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'ccnb-myrtle-beach-merger-growth-2026',
+    title: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
+    description:
+      "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'first-capital-bank-charleston-growth-digital-gap',
+    title: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
+    description:
+      "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'first-community-bank-sc-cre-merger-growth',
+    title: 'First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight',
+    description:
+      'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'countybank-greenwood-sc-sba-deep-dive',
+    title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",
+    description:
+      'Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'optus-bank-cdfi-columbia-growth',
+    title: "Optus Bank: Columbia's CDFI Institution Betting on Scale",
+    description:
+      "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'beacon-community-bank-charleston-growth-capacity',
+    title: 'Beacon Community Bank: Growth at the Edge of Capacity',
+    description:
+      "Beacon Community Bank grew from $36M to $972M in assets in seven years without building a digital front door. In a market adding 8,500 households a year, a 404 mortgage page is a strategy problem, not a website bug.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'first-palmetto-bank-sc-performance-deep-dive',
+    title: 'First Palmetto Bank: 120 Years Old, $1B in Assets, Zero Excuses',
+    description:
+      'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'queensborough-national-bank-trust-deep-dive',
+    title: "Queensborough's Long Runway: A $2.3B Georgia Bank Built to Last",
+    description:
+      "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'southern-bank-nc-digital-bet',
     title: 'The Century Bank That Hired a Chief Digital Officer',
     description:
