@@ -14,6 +14,7 @@ const APP = 'https://app.reportraven.tech';
 // Phase 4 (Jul 21): uncomment bank-travelers through open-banking
 // Phase 5 (Jul 28): uncomment first-reliance through colony-bankcorp
 // Phase 6 (Aug 4):  uncomment chime + southern-bank-nc
+// Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 const BLOG_SLUGS = [
   // — Institutional research & macro (Feb–Mar 2026) —
@@ -55,20 +56,24 @@ const BLOG_SLUGS = [
   // 'security-federal-bank-cdfi-rate-rebound-aiken',
   // 'community-bank-ai-lending-guide',
   // 'white-label-borrower-portal-community-bank',
-  // — Phase 4: add Jul 21 (+ promote digital-account + open-banking via LinkedIn) —
+  // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
+  // 'digital-account-opening-community-bank',
+  // 'open-banking-community-bank-guide',
+  // — Phase 5: add Jul 21 (remaining June bank deep dives) —
   // 'bank-travelers-rest-greenville-growth-engine',
   // 'conway-national-bank-grand-strand-dominance',
   // 'south-atlantic-bank-coastal-growth-engine',
   // 'first-reliance-sells-at-the-top',
-  // 'digital-account-opening-community-bank',
-  // 'open-banking-community-bank-guide',
-  // — Phase 5: add Jul 28 —
+  // — Phase 6: add Jul 28 —
   // 'first-reliance-outgrew-florence',
   // 'carolina-bank-between-two-economies',
   // 'colony-bankcorp-farm-to-fees',
   // — Phase 6: add Aug 4 —
   // 'chime-account-opening-deposit-war',
   // 'southern-bank-nc-digital-bet',
+  // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
+  // 'jack-henry-symitar-loan-origination',
+  // 'fiserv-premier-digital-lending',
 ];
 
 const LEGAL_PATHS = [

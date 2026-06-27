@@ -747,3 +747,69 @@ The Southeast is consolidating fast. The banks that win the next decade won't ju
 I broke down what the deal really signals for community banks: https://reportraven.tech/blog/first-reliance-sells-at-the-top
 
 #CommunityBanking #BankMergers #Fintech #DigitalBanking #Lending
+
+---
+
+## POST 25 — August 11, 2026 (Tuesday)
+**Article:** Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support
+**URL:** https://reportraven.tech/blog/jack-henry-symitar-loan-origination
+
+### Variant A (Data hook)
+SilverLake powers 425 community banks. Symitar serves 700+ credit unions. In 2025, Jack Henry formalized a reseller deal with MeridianLink because neither core ships a modern digital LOS on its own.
+
+That sentence is worth sitting with.
+
+The number one and number two cores for community banks and credit unions in the U.S. both require a separate licensing conversation before you can offer a borrower a digital loan application.
+
+Here is what that actually looks like in practice: LoanVantage for commercial lending. Jack Henry Origination for consumer. MeridianLink for institutions that go third-party. Two separate APIs (jXchange for SilverLake, SymXchange for Symitar) that each require per-core certification from any fintech vendor you evaluate.
+
+We broke down exactly what is native, what is add-on, and how the 950-partner FIN ecosystem works in practice: https://reportraven.tech/blog/jack-henry-symitar-loan-origination
+
+What is your institution running for loan origination on Jack Henry?
+
+#CommunityBanking #JackHenry #DigitalLending #Symitar #SilverLake
+
+### Variant B (Narrative hook)
+A community bank CEO asked me recently: "We are on SilverLake. Can we just turn on digital lending?"
+
+The answer is more complicated than yes or no.
+
+SilverLake and Symitar are reliable, high-retention cores. They are not digital lending platforms. Origination workflow, income verification, and document management all require either a Jack Henry add-on module (LoanVantage, Jack Henry Origination) or a certified third-party LOS integrated via jXchange or SymXchange.
+
+The 2025 MeridianLink reseller deal made this reality explicit. More than 500 banks and credit unions now run MeridianLink on Jack Henry cores. The integration works. The question is whether your institution knows which path it is on.
+
+We mapped the full stack: https://reportraven.tech/blog/jack-henry-symitar-loan-origination
+
+#CommunityBanking #JackHenry #LoanOrigination #DigitalLending #BankTech
+
+---
+
+## POST 26 — August 12, 2026 (Wednesday)
+**Article:** Digital Lending on Fiserv: What Premier and Portico Actually Support
+**URL:** https://reportraven.tech/blog/fiserv-premier-digital-lending
+
+### Variant A (Data hook)
+300+ financial institutions use Fiserv's Communicator Open API layer. The reason is that Premier, Portico, and Precision do not ship a native digital LOS.
+
+Fiserv's AppMarket markets a 30-calendar-day implementation window. Baker Hill NextGen, connected to Premier via Communicator Open, drove a 30% loan volume increase at First State Bank of the Florida Keys and a 200% production gain at Mechanics Bank.
+
+Those results are real. The fine print: the 30-day timeline applies to cloud-hosted Premier clients. On-premises Premier clients pay connectivity fees and require network SOWs before anything starts. Portico credit unions have fewer validated vendor options than Premier banks.
+
+If you are on Fiserv and evaluating digital lending, knowing which platform you run and whether you are cloud-hosted or on-premises is the first question, not the vendor comparison.
+
+We broke it all down: https://reportraven.tech/blog/fiserv-premier-digital-lending
+
+#CommunityBanking #Fiserv #DigitalLending #CommunityBanks #BankTech
+
+### Variant B (Narrative hook)
+Every Fiserv community bank has had this conversation.
+
+"We want to add digital loan origination. What do we need to do?"
+
+The short answer: at least two things. First, you need Communicator Open, Fiserv's API middleware that makes third-party integrations possible. Second, you need an LOS vendor validated for your specific core (Premier, Portico, or Precision) and your specific hosting model (cloud vs. on-premises).
+
+Neither Loan Director nor Mortgage Director comes bundled in your core contract. The AppMarket's 30-day implementation claim is real for cloud-hosted Premier clients and more complicated for everyone else.
+
+We mapped what Premier, Portico, and Precision support natively versus what requires the AppMarket, and which vendors have delivered measurable results: https://reportraven.tech/blog/fiserv-premier-digital-lending
+
+#CommunityBanking #Fiserv #Premier #DigitalLending #LoanOrigination

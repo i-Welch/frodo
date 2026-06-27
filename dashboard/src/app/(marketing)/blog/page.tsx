@@ -17,6 +17,22 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'jack-henry-symitar-loan-origination',
+    title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
+    description:
+      'SilverLake powers 425 banks, Symitar serves 700+ credit unions. Neither ships a native digital LOS. Here is what Jack Henry actually provides for loan origination, what requires a separate license, and how the 950-partner integration ecosystem works in practice.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
+    slug: 'fiserv-premier-digital-lending',
+    title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support',
+    description:
+      'Premier serves 194 community banks. Portico serves nearly 500 credit unions. None of the three Fiserv legacy cores ships with a native digital LOS. Here is what Communicator Open actually costs, which AppMarket vendors have delivered results, and where the Portico gap is.',
+    readTime: '6 min read',
+    date: 'June 2026',
+  },
+  {
     slug: 'first-reliance-sells-at-the-top',
     title: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
     description:
