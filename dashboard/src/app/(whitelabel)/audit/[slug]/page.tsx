@@ -331,16 +331,6 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             headline number above.
           </p>
 
-          <h2 className="aud-strategic-h">Beyond the dollar math</h2>
-          <div className="aud-strategic">
-            {bank.strategic.map((s) => (
-              <div className="aud-card" key={s.title}>
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
-              </div>
-            ))}
-          </div>
-
           {/* ---------- Conversion ---------- */}
           <div className="aud-cta">
             <h2>Want this with {audit.shortName}&rsquo;s real products and rates?</h2>
