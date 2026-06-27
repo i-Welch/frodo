@@ -3559,7 +3559,10 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     notFound();
   }
 
-  const html = convertMarkdown(article.content);
+  const cleanContent = article.content
+    .replace(/^[\s]*# [^\n]+\n+/, '')
+    .replace(/^\*Published[^\n]+\*\n+/, '');
+  const html = convertMarkdown(cleanContent);
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
