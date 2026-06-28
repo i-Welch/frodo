@@ -20,6 +20,9 @@ import { queensboroughNationalBank } from './queensborough-national-bank';
 import { firstCommunityBankSc } from './first-community-bank-sc';
 import { countybank } from './countybank';
 import { optusBank } from './optus-bank';
+import { oconeStateBank } from './oconee-state-bank';
+import { amerisBank } from './ameris-bank';
+import { unitedBank } from './united-bank';
 
 /** All white-label demo configs. Add a new bank by dropping a config here. */
 export const WL_CONFIGS: WhiteLabelConfig[] = [
@@ -44,6 +47,9 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   firstCommunityBankSc,
   countybank,
   optusBank,
+  oconeStateBank,
+  amerisBank,
+  unitedBank,
 ];
 
 export function getWlConfig(slug: string): WhiteLabelConfig | undefined {

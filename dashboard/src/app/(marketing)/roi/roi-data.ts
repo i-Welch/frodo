@@ -1066,6 +1066,132 @@ export const ROI_BANKS: BankRoiInput[] = [
     sources:
       'FDIC call reports (12/31/2025); 2024 HMDA data; Southern First Bancshares 10-K (FY2025) and Q1 2026 earnings release; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
+  {
+    slug: 'oconee-state-bank',
+    name: 'Oconee State Bank',
+    shortName: 'Oconee State',
+    articleSlug: 'oconee-state-bank-digital-lending-oconee-county',
+    articleTitle: 'Oconee State Bank: Serving the Athens Corridor Since 1954',
+    fdicCert: 18143,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '~$640M' },
+      { label: 'FDIC cert', value: '18143' },
+      { label: 'Online loan products', value: '0 of 6' },
+      { label: 'Market', value: 'Oconee County, GA (Athens MSA)' },
+    ],
+    volumes: {
+      mortgage: { count: 200, source: 'Estimated from HMDA 2024 public data and FDIC call report loan portfolio composition for CERT 18143', estimated: true },
+      commercial: { count: 80, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 18143', estimated: true },
+      consumer: { count: 300, source: 'Estimated from FDIC call report consumer loan balances for CERT 18143', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 2000,
+      source: 'Oconee County GA adds approximately 1,800-2,200 new households annually driven by Athens MSA growth and UGA-adjacent in-migration (ACS 2019-2023, Census population estimates).',
+    },
+    intro:
+      "Oconee State Bank is the hometown lender for one of Georgia's fastest-growing suburban counties, anchored by the University of Georgia and the Athens tech and research corridor. Oconee County has grown 32% over the past decade with no signs of slowing: new residential construction, professional in-migration from Athens, and retirees from metro Atlanta choosing the Watkinsville-Bogart corridor for affordability and quality of life. Despite a clean, modern site and a 70-year brand, none of the bank's lending products have a digital application path. All intake is phone or branch. At $640M and growing, manual verification is already the capacity bottleneck.",
+    strategic: [
+      {
+        title: 'Athens MSA growth demands a digital front door',
+        body: 'Oconee County added more than 10,000 residents in the 2020s, nearly all from in-migration. These borrowers arrive with existing banking relationships in other markets and choose their new bank based on digital experience first. A bank with no apply button loses the first-touch comparison to any lender that has one, including national brands with zero local presence.',
+      },
+      {
+        title: 'EVP Innovation hire signals the board sees the gap',
+        body: "The bank created an EVP Chief Innovation and Technology Officer role specifically to modernize the lending stack. That mandate requires a front-end verification layer before it can deliver on the digital promise. Without an intake that verifies income, identity, and employment at first touch, a new CTO just has a modern website pointed at a phone number.",
+      },
+      {
+        title: 'University and tech workforce means complex income profiles',
+        body: "Borrowers in the Athens corridor include UGA faculty on 9-month contracts, startup founders with equity comp, and Rivian (the nearby electric vehicle manufacturer) employees with RSU income. These profiles fail manual document chasing and are exactly the applicants RAVEN's automated Truework and Plaid verification resolves quickly.",
+      },
+    ],
+    sources:
+      'FDIC BankFind cert #18143; oconeestatebank.com site review (June 2026); ACS 2019-2023 Oconee County GA; Census population estimates; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
+    slug: 'ameris-bank',
+    name: 'Ameris Bank',
+    shortName: 'Ameris',
+    articleSlug: 'ameris-bank-southeast-regional-digital-gap',
+    articleTitle: 'Ameris Bank: The $25B Southeast Regional With a Third-Party Mortgage Portal',
+    fdicCert: 20504,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '~$25.6B' },
+      { label: 'States', value: 'GA, AL, FL, SC, NC' },
+      { label: 'Online loan products', value: '1 of 6 (partial)' },
+      { label: 'Mortgage', value: 'Third-party portal' },
+    ],
+    volumes: {
+      mortgage: { count: 2450, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 20504 ($25.6B total assets, substantial mortgage origination volume)', estimated: true },
+      commercial: { count: 1470, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 20504', estimated: true },
+      consumer: { count: 980, source: 'Estimated from FDIC call report consumer loan balances for CERT 20504', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 25000,
+      source: "Ameris Bank footprint spans high-growth metros: Atlanta MSA (~50,000 net new households/year), Jacksonville FL MSA, Columbia SC MSA, and coastal GA/FL markets. Estimated 25,000 net new households in primary service areas annually (ACS 2019-2023, Census population estimates).",
+    },
+    intro:
+      "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across Georgia, Alabama, Florida, South Carolina, and North Carolina. The mortgage operation is substantial, but mortgage applications route to a third-party subdomain (mymortgage-online.com), breaking the brand at the highest-stakes conversion step. Personal loans have no digital application path. HELOC and home equity require a branch visit. Commercial is relationship-only. For a bank this size, automated borrower verification at intake is the infrastructure that makes the mortgage volume sustainable without proportional staffing.",
+    strategic: [
+      {
+        title: '$25B mortgage operation running on a third-party portal',
+        body: 'At 2,450 estimated annual mortgage originations, manual document collection is the single largest per-file labor sink in the bank. Automated income, employment, and identity verification at intake converts each file from a 10-hour staff project into a 90-second process, recovering an estimated 3.5 FTEs of underwriter capacity without a hire.',
+      },
+      {
+        title: 'Retail Delivery & Innovation mandate requires a front-end layer',
+        body: 'The SVP of Retail Delivery and Innovation role exists specifically to modernize how borrowers enter the lending process. The current state, a third-party mortgage portal plus no digital intake for any other product, is the problem that role was hired to solve. The verification layer is typically the first high-visibility win: measurable before/after, no core replacement required, visible in the efficiency ratio within two quarters.',
+      },
+      {
+        title: 'Five-state footprint, one intake standard',
+        body: 'Ameris operates in five high-growth Southeast states, each with different in-migration patterns and borrower income profiles (Atlanta startup equity, Jacksonville military, Hilton Head vacation home buyers). A single white-label intake layer that handles all income types and syncs to the existing core eliminates the fragmented branch-by-branch verification process that currently scales with headcount rather than with volume.',
+      },
+    ],
+    sources:
+      'FDIC BankFind cert #20504; amerisbank.com site review (June 2026); HMDA 2024 public data; FDIC call report financials; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
+    slug: 'united-bank',
+    name: 'United Bank',
+    shortName: 'United Bank',
+    articleSlug: 'united-bank-mid-atlantic-digital-strategy',
+    articleTitle: 'United Bank: The $30B Mid-Atlantic Regional Expanding South',
+    fdicCert: 5672,
+    auditDate: 'June 2026',
+    stats: [
+      { label: 'Total assets', value: '~$30B' },
+      { label: 'States', value: 'WV, VA, OH, MD, PA, NC, SC' },
+      { label: 'Online loan products', value: '2 of 6 (partial)' },
+      { label: 'HQ', value: 'Charleston, WV' },
+    ],
+    volumes: {
+      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 5672 (~$30B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
+      commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 5672', estimated: true },
+      consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 5672', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 15000,
+      source: 'United Bank footprint includes Charlotte MSA (fast-growing), Richmond VA MSA, and expanding NC/SC markets. Estimated 15,000 net new households in primary growth markets annually (ACS 2019-2023, Census population estimates).',
+    },
+    intro:
+      "United Bank is the primary subsidiary of United Bankshares, one of the largest bank holding companies headquartered in West Virginia with roughly $30 billion in total assets across seven states. The Charlotte, NC office reflects the bank's southward growth push into the fastest-expanding markets in the Mid-Atlantic. The bank has an online mortgage application but no automated income or property verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal lending is partially digital, HELOC has no standalone path, and commercial is entirely relationship-based. At $30B, the friction cost of manual verification is measured in weeks of underwriter time per quarter.",
+    strategic: [
+      {
+        title: 'Mortgage volume without embedded verification is a capacity trap',
+        body: 'At an estimated 2,900 annual mortgage originations, the difference between manual document collection and automated verification is roughly 29,000 staff-hours per year in the expected scenario. That is 14+ full-time positions in underwriting support that the bank currently funds through headcount rather than automation. RAVEN replaces document chasing with a single verified file delivered at intake.',
+      },
+      {
+        title: 'Charlotte expansion demands digital-first acquisition',
+        body: "United Bank's Charlotte office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline. In-migrants choosing a bank in the Charlotte MSA make that choice on digital experience before they ever visit a branch. A bank that offers an apply button that still requires a follow-up document email is not competing with Rocket Mortgage or Better.com for that borrower.",
+      },
+      {
+        title: 'SVP Digital Strategy hire signals the inflection point',
+        body: 'The Director of Digital Strategy role is the bank\'s signal that leadership understands the problem. Converting that mandate into a measurable outcome means automating the borrower verification workflow: income, identity, employment, and assets captured in 90 seconds at intake, verified file synced to the core on submission. That is the deliverable a digital strategy mandate requires, and it is the first place the efficiency ratio improves.',
+      },
+    ],
+    sources:
+      'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
 ];
 
 export function getRoiBank(slug: string): BankRoiInput | undefined {

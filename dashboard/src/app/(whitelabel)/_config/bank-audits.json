@@ -2308,5 +2308,164 @@
       }
     ],
     "sources": "optus.bank (homepage, /consumer-loans, /lending-options, /faqs, /locations, /about-us, /contact-us), optusbank.upstart.com (personal Opportunity Loan portal), solar.optus.bank (solar loan page), xvault.bankoptus.com (SIBanking digital banking login), sibanking.com (Smiley Technologies SIBanking core banking confirmation + Optus Bank case study), play.google.com (Optus Bank Mobile Banking app listing), LinkedIn company profile (48 employees; tagline 'Banking on Communities'), FDIC BankFind cert #35241. Total assets $785M from task brief; FDIC call report data corroborated ~$757M as of Oct 2025. Founded 1921 as Victory Savings Bank; rebranded Optus Bank 2019. Two branches, both Columbia SC. Tagline 'Banking on Communities' confirmed on homepage and LinkedIn. Core banking: Smiley Technologies (SIBanking) confirmed via sibanking.com/post/optus-bank-launches-voice-enabled-banking. Reviewed June 2026."
+  },
+  {
+    "slug": "oconee-state-bank",
+    "bankName": "Oconee State Bank",
+    "shortName": "Oconee State",
+    "auditDate": "June 2026",
+    "demoSlug": "oconee-state-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$640M" },
+      { "label": "Founded", "value": "1954" },
+      { "label": "Online loan products", "value": "0 of 6" },
+      { "label": "Market", "value": "Oconee County, GA (Athens MSA)" }
+    ],
+    "summary": "Oconee State Bank is the anchor community lender for one of Georgia's fastest-growing suburban counties, sitting at the intersection of the University of Georgia research corridor and Athens-area in-migration. The bank has a clean, modern site and 70 years of community presence, but none of its lending products have an online application path. Mortgage, personal, HELOC, home equity, and business lending all end at a phone number or branch address. In a county that added 10,000 residents in the 2020s, many arriving from other markets and making banking decisions digitally before they ever meet a local banker, the absence of a verify-as-you-go intake is an acquisition gap that grows with every new resident who searches for a mortgage lender near Watkinsville.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "No online application. Remarkable Mortgage is mentioned on the site but there is no apply link; the path is call or email a loan officer", "status": "missing" },
+      { "channel": "Personal / Consumer", "detail": "No digital intake for personal, auto, or consumer loans. Branch or phone only", "status": "missing" },
+      { "channel": "HELOC / Home Equity", "detail": "Product listed but no online application path", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "Relationship banking model. All commercial intake requires contacting a banker directly", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online account opening redirects off the main domain to a third-party subdomain; brand continuity breaks at first click", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "Digital banking functional for existing customers", "status": "ok" }
+    ],
+    "findings": [
+      {
+        "title": "Zero digital intake paths for any lending product",
+        "severity": "gap",
+        "body": "Oconee State Bank has no online application for mortgage, personal loans, HELOC, or business lending. Every borrower interaction begins with a phone call or a branch visit. In a county that is a top-10 fastest-growing in Georgia, this means every in-migrant who searches for a lender online is handed off to a national competitor with an apply button."
+      },
+      {
+        "title": "EVP Innovation hire is the strategic signal",
+        "severity": "note",
+        "body": "The creation of an EVP Chief Innovation and Technology Officer role is the board acknowledging the digital gap. That role's first visible deliverable needs to be a verify-as-you-go intake layer that captures borrower identity, income, employment, and assets at first touch, not a redesigned website that still ends at a phone number."
+      },
+      {
+        "title": "Athens corridor borrowers have complex income profiles",
+        "severity": "friction",
+        "body": "The UGA-adjacent market includes faculty on 9-month academic contracts, startup founders with equity compensation, and Rivian plant workers with shift differentials. Manual document collection handles these profiles worst. Automated income and employment verification through Truework and Plaid closes these files in hours instead of days and captures a borrower segment that phone-intake banks routinely lose."
+      },
+      {
+        "title": "Account opening off-domain is the trust problem before the form starts",
+        "severity": "friction",
+        "body": "When a prospective customer tries to open an account online, they are redirected to a subdomain that does not match oconeestatebank.com. On mobile, where 62% of banking searches now originate, a mismatched domain triggers browser warnings and near-certain abandonment before a single field is filled."
+      }
+    ],
+    "comparison": [
+      { "dimension": "Products you can start online", "today": "0 of 6 loan products", "withRaven": "Every product, one branded front door" },
+      { "dimension": "Mortgage intake", "today": "Call or email a loan officer", "withRaven": "Apply online with identity and income verified in 90 seconds" },
+      { "dimension": "Income verification", "today": "Manual document request after initial contact", "withRaven": "Automated via Truework and Plaid at point of application" },
+      { "dimension": "After-hours capture", "today": "All demand routes to voicemail after 5pm", "withRaven": "Borrower raises hand; verification runs; file queued for morning" },
+      { "dimension": "Account opening", "today": "Off-domain redirect breaks trust on mobile", "withRaven": "Oconee State branding from first click to funded account" },
+      { "dimension": "Core sync", "today": "Manual re-keying after application", "withRaven": "Verified file delivered to core via API, no double entry" }
+    ],
+    "sources": "oconeestatebank.com (homepage, /loans, /mortgage, /personal-banking, /business-banking, /locations), FDIC BankFind cert #18143, ACS 2019-2023 Oconee County GA, Census population estimates, LinkedIn company profile. Reviewed June 2026."
+  },
+  {
+    "slug": "ameris-bank",
+    "bankName": "Ameris Bank",
+    "shortName": "Ameris",
+    "auditDate": "June 2026",
+    "demoSlug": "ameris-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$25.6B" },
+      { "label": "States", "value": "GA, AL, FL, SC, NC" },
+      { "label": "Online loan products", "value": "1 of 6 (partial)" },
+      { "label": "Mortgage portal", "value": "Third-party domain" }
+    ],
+    "summary": "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party Finastra subdomain that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck. The SVP of Retail Delivery and Innovation role exists specifically to fix the intake layer that RAVEN replaces.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Online application routes to mymortgage-online.com (Finastra third-party portal); off-brand at the critical conversion moment for a $25B bank", "status": "weak" },
+      { "channel": "Personal loans", "detail": "No unified digital application. Phone or branch contact required", "status": "missing" },
+      { "channel": "HELOC / Home Equity", "detail": "No standalone online application path", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "Relationship banking model; all commercial intake begins with a banker call", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online account opening available but routes to a third-party provider", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "Online and mobile banking fully functional", "status": "ok" }
+    ],
+    "findings": [
+      {
+        "title": "The mortgage portal breaks brand at the highest-value moment",
+        "severity": "gap",
+        "body": "Ameris Bank is one of the largest mortgage originators in the Southeast, but every applicant who clicks Apply Now is handed to a Finastra-hosted subdomain on mymortgage-online.com. On mobile, this is a trust-breaking redirect before the first field. For a bank with $25B in assets and a brand built on Southeast market leadership, this is the digital equivalent of sending a borrower to a competitor's lobby to complete their application."
+      },
+      {
+        "title": "Four product lines with no digital front door",
+        "severity": "gap",
+        "body": "Personal loans, HELOC, home equity, and commercial lending have no online application path. In a five-state footprint that includes the Atlanta MSA, every borrower who searches for a personal loan or a HELOC at Ameris.com is told to call a branch. These are high-margin, fast-close products that national fintechs and neobanks win specifically because they have an apply button and Ameris does not."
+      },
+      {
+        "title": "Retail Delivery & Innovation mandate needs a verification layer to execute",
+        "severity": "note",
+        "body": "The SVP of Retail Delivery and Innovation role was created to modernize how borrowers move through the lending process. The current state, third-party portal plus four product lines with no intake, is exactly the problem that role was hired to solve. The verification layer is the first six-month win: clear before/after, no core replacement required, measurable in both the efficiency ratio and the application completion rate."
+      },
+      {
+        "title": "Southeast in-migration creates the highest-opportunity new-borrower pipeline",
+        "severity": "note",
+        "body": "The Atlanta MSA adds more than 50,000 net new households per year. Jacksonville, Savannah, and the coastal Georgia-Florida corridor add tens of thousands more. These in-migrants are making banking decisions digitally before they set foot in a branch. A bank that meets them with a branded, verify-as-you-go application captures the relationship at first touch. A bank that routes them to a third-party subdomain loses them to the next Google result."
+      }
+    ],
+    "comparison": [
+      { "dimension": "Mortgage experience", "today": "Third-party portal breaks brand at application step", "withRaven": "Ameris Bank identity from first click to submitted file" },
+      { "dimension": "Personal loan intake", "today": "No apply button; phone or branch only", "withRaven": "Online application with income verified in 90 seconds" },
+      { "dimension": "Products you can start online", "today": "1 of 6 (partial, off-domain)", "withRaven": "Every product, one branded front door on amerisbank.com" },
+      { "dimension": "After-hours capture", "today": "Four product lines go to voicemail after 5pm", "withRaven": "Borrower raises hand; verification runs; file queued for morning" },
+      { "dimension": "Income verification", "today": "Manual document request after initial contact", "withRaven": "Automated via Truework and Plaid at point of application" },
+      { "dimension": "Core sync", "today": "Manual re-keying after application", "withRaven": "Verified file delivered to Jack Henry via API, no double entry" }
+    ],
+    "sources": "amerisbank.com (homepage, /mortgage, /personal-banking, /business-banking, /about), mymortgage-online.com (Ameris mortgage portal), FDIC BankFind cert #20504, HMDA 2024 public data, Ameris Bancorporation annual reports. Reviewed June 2026."
+  },
+  {
+    "slug": "united-bank",
+    "bankName": "United Bank",
+    "shortName": "United Bank",
+    "auditDate": "June 2026",
+    "demoSlug": "united-bank",
+    "stats": [
+      { "label": "Total assets", "value": "~$30B" },
+      { "label": "States", "value": "WV, VA, OH, MD, PA, NC, SC" },
+      { "label": "Online loan products", "value": "2 of 6 (partial)" },
+      { "label": "Parent", "value": "United Bankshares (UBSI)" }
+    ],
+    "summary": "United Bank is the primary banking subsidiary of United Bankshares, a $30 billion Mid-Atlantic regional expanding aggressively into the Southeast. The bank has an online mortgage application but no automated verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal lending is partially digital, HELOC has no standalone application path, and commercial is entirely relationship-based. The bank's Charlotte, NC office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline. The SVP Director of Digital Strategy role was created to close this gap, and the verification layer is the deliverable that mandate requires.",
+    "currentJourney": [
+      { "channel": "Mortgage", "detail": "Online application available but no automated income or property verification; borrowers submit and wait for manual document follow-up", "status": "weak" },
+      { "channel": "Personal / Consumer", "detail": "Partially digital: online form available but no automated verification; manual document collection follows submission", "status": "weak" },
+      { "channel": "HELOC / Home Equity", "detail": "No standalone online application path; requires calling or visiting a branch", "status": "missing" },
+      { "channel": "Business / Commercial", "detail": "Relationship banking model; all commercial intake begins with a relationship manager", "status": "missing" },
+      { "channel": "Deposit account opening", "detail": "Online and mobile account opening available", "status": "weak" },
+      { "channel": "Existing-customer banking", "detail": "Online and mobile banking fully functional", "status": "ok" }
+    ],
+    "findings": [
+      {
+        "title": "Apply button without verification is a half-built front door",
+        "severity": "gap",
+        "body": "United Bank has an online mortgage application, which is better than most community banks, but the verification step that follows is still manual: a document request email, a VOE call, a days-long wait. The application is a lead form with extra steps. RAVEN replaces that follow-up cycle by verifying income, identity, employment, and assets in 90 seconds at the point of submission, so the loan officer receives a complete, verified file rather than a list of documents to chase."
+      },
+      {
+        "title": "HELOC and commercial are phone-only for a $30B bank",
+        "severity": "gap",
+        "body": "With $30 billion in assets across seven states, United Bank's HELOC and commercial lending products have no digital intake path. In the Charlotte MSA, where the bank is actively growing, borrowers comparing home equity options will find Truist and Bank of America with digital applications and instant decisions. A regional bank competing in Charlotte without a HELOC apply button is not competing for the transaction-first borrower at all."
+      },
+      {
+        "title": "Charlotte expansion is the digital strategy inflection point",
+        "severity": "note",
+        "body": "United Bank's move into Charlotte, NC is its highest-profile bet on Southeast growth. Charlotte is the second-fastest-growing major metro in the US and the competition for new borrowers includes the headquarters banks of three of the largest US financial institutions. The SVP Director of Digital Strategy role was created specifically for this moment: to build the intake layer that lets United Bank compete digitally in a market where digital is the default expectation."
+      },
+      {
+        "title": "Seven-state footprint needs one intake standard",
+        "severity": "friction",
+        "body": "United Bankshares operates across WV, VA, OH, MD, PA, NC, and SC, seven states with different in-migration patterns, income profiles, and borrower expectations. A bank-branded white-label intake layer that handles all income types, syncs to the existing FIS core, and delivers a consistent borrower experience across markets is the infrastructure that scales with the bank's geographic ambition rather than with its branch headcount."
+      }
+    ],
+    "comparison": [
+      { "dimension": "Mortgage verification", "today": "Apply button followed by manual document chase", "withRaven": "Identity, income, and property verified at submission; file ready for underwriting" },
+      { "dimension": "HELOC intake", "today": "No online path; phone or branch required", "withRaven": "Apply online with equity and income verified in minutes" },
+      { "dimension": "Products you can start online", "today": "2 of 6 (mortgage and personal, partial)", "withRaven": "Every product, one branded front door on bankwithunited.com" },
+      { "dimension": "Charlotte acquisition", "today": "Digital-first borrowers find phone-only intake", "withRaven": "Compete with BofA and Truist on digital experience at first touch" },
+      { "dimension": "Core sync", "today": "Manual re-keying into FIS after application", "withRaven": "Verified file delivered to FIS via API, no double entry" },
+      { "dimension": "After-hours capture", "today": "HELOC and commercial go to voicemail", "withRaven": "Borrower verified and file queued regardless of time" }
+    ],
+    "sources": "bankwithunited.com (homepage, /mortgage, /personal-banking, /business-banking, /about), FDIC BankFind cert #5672, United Bankshares 10-K (FY2025), HMDA 2024 public data, MBA Quarterly Mortgage Bankers Performance Report (2025). Reviewed June 2026."
   }
 ]

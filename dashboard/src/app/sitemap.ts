@@ -91,11 +91,15 @@ const LEGAL_PATHS = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
+  // Slugs added to the codebase but not yet ready to surface in search.
+  // Remove a slug from this list when it's ready to be indexed.
+  const SITEMAP_HOLD: Set<string> = new Set(['oconee-state-bank', 'ameris-bank', 'united-bank']);
+
   // Audit pages are generated exactly where the route generates them
   // (an audit needs a matching ROI model), so the sitemap never lists a 404
   // and never misses a page as banks are added. Note: /roi/<slug> 301-redirects
   // to /audit/<slug>, so only the canonical /audit URLs belong here.
-  const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug)).map((a) => ({
+  const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug) && !SITEMAP_HOLD.has(a.slug)).map((a) => ({
     url: `${SITE}/audit/${a.slug}`,
     lastModified,
     changeFrequency: 'monthly' as const,
