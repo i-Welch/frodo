@@ -63,7 +63,7 @@ const BLOG_SLUGS = [
   // 'bank-travelers-rest-greenville-growth-engine',
   // 'conway-national-bank-grand-strand-dominance',
   // 'south-atlantic-bank-coastal-growth-engine',
-  // 'first-reliance-sells-at-the-top',
+  'first-reliance-sells-at-the-top',
   // — Phase 6: add Jul 28 —
   // 'first-reliance-outgrew-florence',
   // 'carolina-bank-between-two-economies',
