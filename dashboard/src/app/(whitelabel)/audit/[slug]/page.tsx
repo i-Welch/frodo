@@ -1,7 +1,7 @@
+import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { InterestForm } from '../../../(marketing)/interest-form';
-import { DemoModal } from '../../../(marketing)/demo-modal';
+import { CalendlyButton } from '../../../(marketing)/calendly-button';
 import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
 import { AUDITS, getAudit } from '../../_config/audit-data';
@@ -14,9 +14,32 @@ const RAVEN_PATH =
 
 const STATUS_LABEL: Record<string, string> = { ok: 'Solid', weak: 'Friction', missing: 'No digital path' };
 
+const SEVERITY_LABEL: Record<string, string> = {
+  gap: 'High impact',
+  friction: 'Enhancement',
+  note: 'Advantage',
+};
+
+function renderFindingBody(text: string) {
+  // Auto-highlight quantitative claims so the card is skimmable at a glance.
+  const parts = text.split(
+    /(\$[\d,.]+[MKB]?|\b\d+(?:,\d{3})*(?:\.\d+)?%|\b\d+\s+(?:staff\s+)?(?:hours?|days?|minutes?|weeks?|files?|products?|loans?|branches?|employees?)\b|\b\d+\s*(?:of|out\s+of)\s*\d+\b)/gi,
+  );
+  return (
+    <>
+      {parts.map((p, i) =>
+        i % 2 === 1 ? (
+          <span key={i} className="aud-stat-hi">{p}</span>
+        ) : (
+          p
+        ),
+      )}
+    </>
+  );
+}
+
 const fmtK = (n: number) => `$${Math.round(n / 1000)}K`;
 
-// A combined page renders only where BOTH the digital audit and the ROI model exist.
 export function generateStaticParams() {
   return AUDITS.filter((a) => getRoiBank(a.slug)).map((a) => ({ slug: a.slug }));
 }
@@ -52,7 +75,6 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
   const bank = getRoiBank(slug);
   if (!audit || !config || !bank) notFound();
 
-  // A representative completed application to show the loan-officer view.
   const demoSummary = buildApplicationSummary(
     config,
     config.products.find((p) => p.id === 'heloc') ?? config.products[0],
@@ -100,12 +122,13 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             <a href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">Live demo ↗</a>
             <a href="/blog">Blog</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
-            <DemoModal source={`audit-nav:${audit.slug}`} label="Request a Demo" buttonClassName="aud-btn" />
+            <CalendlyButton source={`audit-nav:${audit.slug}`} label="Book a Demo" buttonClassName="aud-btn" />
           </div>
           <a href="/blog" className="aud-nav-blog-mobile">Blog</a>
         </nav>
 
         <main className="aud-main">
+          {/* ── Header ── */}
           <span className="aud-tag">Digital Lending Audit · {audit.auditDate}</span>
           <h1>{audit.bankName}</h1>
           <p className="aud-intro">{audit.summary}</p>
@@ -119,7 +142,45 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             ))}
           </div>
 
-          {/* ---------- Part 1: the experience today ---------- */}
+          {/* ── ROI Hero ── */}
+          <div className="aud-roi-hero">
+            <div className="aud-roi-glow" aria-hidden="true" />
+            <div className="aud-roi-eyebrow">Estimated annual value of verification automation</div>
+            <div className="aud-headline-num">
+              <CountUp value={Math.round(roi.expected.totalValue / 1000)} prefix="$" suffix="K" />
+            </div>
+            <div className="aud-roi-context">
+              expected case &middot; built from public FDIC &amp; HMDA data &middot;{' '}
+              <a href="#methodology">see methodology</a>
+            </div>
+            <ScenarioRange
+              low={roi.conservative.totalValue}
+              mid={roi.expected.totalValue}
+              high={roi.optimistic.totalValue}
+            />
+            <div className="aud-roi-breakdown">
+              <div className="aud-roi-bp">
+                <span className="aud-roi-bp-num">{fmtK(roi.expected.laborValue)}</span>
+                <span className="aud-roi-bp-label">Staff time recovered</span>
+              </div>
+              <span className="aud-roi-plus" aria-hidden="true">+</span>
+              <div className="aud-roi-bp">
+                <span className="aud-roi-bp-num">{fmtK(roi.expected.pullThroughRevenue)}</span>
+                <span className="aud-roi-bp-label">Pull-through revenue</span>
+              </div>
+              <span className="aud-roi-plus" aria-hidden="true">+</span>
+              <div className="aud-roi-bp">
+                <span className="aud-roi-bp-num">{fmtK(roi.digitalIntake.expected.value)}</span>
+                <span className="aud-roi-bp-label">New-resident lead pipeline</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="aud-sub">{bank.intro}</p>
+
+          {/* ── Section 01: Current experience ── */}
+          <div className="aud-section-label"><span className="aud-section-num">01</span> Current experience</div>
+
           <h2>The borrower journey today</h2>
           <p className="aud-sub">
             How a prospective borrower actually moves through {audit.shortName}&rsquo;s digital
@@ -135,18 +196,33 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             ))}
           </div>
 
-          <h2>What we&rsquo;d change</h2>
+          <h2>What we&rsquo;d upgrade</h2>
           <div className="aud-findings">
             {audit.findings.map((f) => (
               <div className={`aud-finding aud-finding-${f.severity}`} key={f.title}>
-                <span className="aud-finding-sev">{f.severity}</span>
+                <div className="aud-finding-head">
+                  <span className={`aud-finding-sev aud-finding-sev-${f.severity}`}>
+                    {f.severity === 'gap' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    )}
+                    {f.severity === 'friction' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    )}
+                    {f.severity === 'note' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    )}
+                    {SEVERITY_LABEL[f.severity]}
+                  </span>
+                </div>
                 <h3>{f.title}</h3>
-                <p>{f.body}</p>
+                <p>{renderFindingBody(f.body)}</p>
               </div>
             ))}
           </div>
 
-          {/* ---------- Part 2: what it could look like ---------- */}
+          {/* ── Section 02: The upgrade ── */}
+          <div className="aud-section-label"><span className="aud-section-num">02</span> The upgrade</div>
+
           <h2>What it could look like</h2>
           <p className="aud-sub">
             Below is a live, interactive white-label demo in {audit.shortName}&rsquo;s own branding:
@@ -166,26 +242,27 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </a>
           </div>
 
-          <h2>Today vs. with RAVEN</h2>
-          <div className="aud-table-wrap">
-            <table className="aud-table">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Today</th>
-                  <th>With RAVEN white-label</th>
-                </tr>
-              </thead>
-              <tbody>
-                {audit.comparison.map((c) => (
-                  <tr key={c.dimension}>
-                    <td className="aud-dim">{c.dimension}</td>
-                    <td className="aud-today">{c.today}</td>
-                    <td className="aud-raven">{c.withRaven}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2>Before &amp; after</h2>
+          <div className="aud-compare-grid">
+            <div className="aud-compare-header aud-compare-header-today">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Current state
+            </div>
+            <div className="aud-compare-arrow-head" aria-hidden="true"></div>
+            <div className="aud-compare-header aud-compare-header-raven">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              With RAVEN
+            </div>
+            {audit.comparison.map((c) => (
+              <Fragment key={c.dimension}>
+                <div className="aud-compare-dim">{c.dimension}</div>
+                <div className="aud-compare-today">{c.today}</div>
+                <div className="aud-compare-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div className="aud-compare-raven">{c.withRaven}</div>
+              </Fragment>
+            ))}
           </div>
 
           <h2>What your loan officer receives</h2>
@@ -198,26 +275,8 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             <LoPreview config={config} summary={demoSummary} />
           </div>
 
-          {/* ---------- Part 3: what it's worth ---------- */}
-          <h2 className="aud-part">What automated verification is worth at {audit.shortName}</h2>
-          <p className="aud-sub">
-            {bank.intro} All figures below are estimates built from public data (FDIC, HMDA, CRA
-            filings). <a href="#methodology" className="aud-fn-mark">See the methodology</a>.
-          </p>
-
-          <div className="aud-headline">
-            <div className="aud-headline-num">
-              <CountUp value={Math.round(roi.expected.totalValue / 1000)} prefix="$" suffix="K" />
-            </div>
-            <div className="aud-headline-label">
-              estimated annual value of automated verification at {bank.shortName} (expected case)
-            </div>
-            <ScenarioRange
-              low={roi.conservative.totalValue}
-              mid={roi.expected.totalValue}
-              high={roi.optimistic.totalValue}
-            />
-          </div>
+          {/* ── Section 03: The math ── */}
+          <div className="aud-section-label"><span className="aud-section-num">03</span> The math</div>
 
           <h2>Where the time goes today</h2>
           <p className="aud-sub">
@@ -268,13 +327,22 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
                 </tr>
                 <tr>
                   <td>
-                    Pull-through revenue ({roi.conservative.pullThroughLoans}-
+                    Pull-through revenue ({roi.conservative.pullThroughLoans}&ndash;
                     {roi.optimistic.pullThroughLoans} added closings)
                     <a href="#methodology" className="aud-fn-mark">[4]</a>
                   </td>
                   <td className="aud-td-num">{fmtK(roi.conservative.pullThroughRevenue)}</td>
                   <td className="aud-td-num">{fmtK(roi.expected.pullThroughRevenue)}</td>
                   <td className="aud-td-num">{fmtK(roi.optimistic.pullThroughRevenue)}</td>
+                </tr>
+                <tr>
+                  <td>
+                    New-resident lead pipeline ({bank.market.newHouseholdsPerYear.toLocaleString('en-US')} new households/yr)
+                    <a href="#methodology" className="aud-fn-mark">[6]</a>
+                  </td>
+                  <td className="aud-td-num">{fmtK(roi.digitalIntake.conservative.value)}</td>
+                  <td className="aud-td-num">{fmtK(roi.digitalIntake.expected.value)}</td>
+                  <td className="aud-td-num">{fmtK(roi.digitalIntake.optimistic.value)}</td>
                 </tr>
                 <tr className="aud-row-total">
                   <td>Total estimated annual value</td>
@@ -286,59 +354,25 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </table>
           </div>
 
-          <h2>The growth side: new residents, captured digitally</h2>
-          <p className="aud-sub">
-            Roughly {bank.market.newHouseholdsPerYear.toLocaleString('en-US')} new households move
-            into {bank.shortName}&apos;s footprint every year, and about 30% of movers open an
-            account with a new bank. They shop with their phones. A white-label, fintech-grade
-            intake flow (the same 5-minute experience above) turns that migration into a lead
-            channel the bank owns instead of renting.<a href="#methodology" className="aud-fn-mark">[6]</a>
-          </p>
-          <div className="aud-table-wrap">
-            <table className="aud-table aud-table-num">
-              <thead>
-                <tr>
-                  <th>Annual</th>
-                  <th className="aud-td-num">Conservative</th>
-                  <th className="aud-td-num">Expected</th>
-                  <th className="aud-td-num">Optimistic</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Digital leads captured</td>
-                  <td className="aud-td-num">{roi.digitalIntake.conservative.leads.toLocaleString('en-US')}</td>
-                  <td className="aud-td-num">{roi.digitalIntake.expected.leads.toLocaleString('en-US')}</td>
-                  <td className="aud-td-num">{roi.digitalIntake.optimistic.leads.toLocaleString('en-US')}</td>
-                </tr>
-                <tr>
-                  <td>Funded loans from those leads</td>
-                  <td className="aud-td-num">{roi.digitalIntake.conservative.fundedLoans.toLocaleString('en-US')}</td>
-                  <td className="aud-td-num">{roi.digitalIntake.expected.fundedLoans.toLocaleString('en-US')}</td>
-                  <td className="aud-td-num">{roi.digitalIntake.optimistic.fundedLoans.toLocaleString('en-US')}</td>
-                </tr>
-                <tr className="aud-row-total">
-                  <td>Value (loan profit + avoided lead spend)</td>
-                  <td className="aud-td-num">{fmtK(roi.digitalIntake.conservative.value)}</td>
-                  <td className="aud-td-num">{fmtK(roi.digitalIntake.expected.value)}</td>
-                  <td className="aud-td-num">{fmtK(roi.digitalIntake.optimistic.value)}</td>
-                </tr>
-              </tbody>
-            </table>
+          {/* ── Strategic context ── */}
+          <h2 className="aud-strategic-h">Why this matters for {bank.shortName}</h2>
+          <div className="aud-strategic">
+            {bank.strategic.map((s) => (
+              <div className="aud-card" key={s.title}>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            ))}
           </div>
-          <p className="aud-sub" style={{ marginTop: '0.75rem' }}>
-            This is new revenue, not savings, so it is shown separately and excluded from the
-            headline number above.
-          </p>
 
-          {/* ---------- Conversion ---------- */}
+          {/* ── CTA ── */}
           <div className="aud-cta">
             <h2>Want this with {audit.shortName}&rsquo;s real products and rates?</h2>
             <p>
               We&rsquo;ll wire your actual product lineup, your rate card,{config.coreSync.system !== 'unknown' ? <> and a {config.coreSync.displayName} sync</> : ''}{' '}
               into a private demo, then pressure-test every number above against your real volumes.
             </p>
-            <InterestForm source={`audit:${audit.slug}`} />
+            <CalendlyButton source={`audit:${audit.slug}`} label="Book a Demo Call" buttonClassName="aud-cta-btn" />
           </div>
 
           <WhiteLabelPrompt bankName={audit.shortName} slug={audit.slug} />
@@ -380,167 +414,324 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
   .aud-shell *, .aud-shell *::before, .aud-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  .aud-shell { --black:#0A0A0A; --g900:#171717; --g600:#525252; --g500:#737373; --g400:#A3A3A3; --g300:#D4D4D4; --g200:#E5E5E5; --white:#fff; --raven:#22c55e;
-    --gray-900:#171717; --gray-800:#262626; --gray-600:#525252; --gray-500:#737373; --gray-400:#A3A3A3; --gray-300:#D4D4D4; --gray-200:#E5E5E5;
-    font-family:'DM Sans',sans-serif; background:var(--black); color:var(--white); -webkit-font-smoothing:antialiased; min-height:100vh; }
-  .aud-shell nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:1.5rem 3rem; background:rgba(10,10,10,0.8); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,255,255,0.06); }
-  .aud-nav-logo { display:flex; align-items:center; gap:0.6rem; text-decoration:none; color:var(--white); }
-  .aud-nav-wordmark { font-size:0.85rem; font-weight:700; letter-spacing:0.14em; }
-  .aud-nav-links { display:flex; gap:2rem; align-items:center; }
-  .aud-nav-links a { color:var(--g400); text-decoration:none; font-size:0.85rem; transition:color 200ms; }
-  .aud-nav-links a:hover { color:var(--white); }
-  .aud-nav-blog-mobile { display:none; color:var(--g300); text-decoration:none; font-size:0.85rem; font-weight:500; padding:0.5rem 0.9rem; border:1px solid rgba(255,255,255,0.2); border-radius:6px; }
-  .aud-btn { font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:500; padding:0.8rem 1.5rem; border-radius:8px; border:none; background:var(--white); color:var(--black); cursor:pointer; transition:opacity 200ms; white-space:nowrap; }
-  .aud-btn:hover { opacity:0.85; }
+  .aud-shell {
+    --black: #0A0A0A;
+    --g900: #171717; --g800: #262626; --g600: #525252; --g500: #737373; --g400: #A3A3A3; --g300: #D4D4D4; --g200: #E5E5E5;
+    --gray-900: #171717; --gray-800: #262626; --gray-600: #525252; --gray-500: #737373; --gray-400: #A3A3A3; --gray-300: #D4D4D4; --gray-200: #E5E5E5;
+    --white: #fff;
+    --accent: #6C8EFF;
+    --accent-dim: rgba(108,142,255,0.12);
+    --accent-border: rgba(108,142,255,0.25);
+    font-family: 'DM Sans', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
 
-  .aud-main { max-width:880px; margin:0 auto; padding:9rem 1.5rem 4rem; }
-  .aud-tag { display:inline-block; font-size:0.7rem; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--g500); margin-bottom:1rem; }
-  .aud-main h1 { font-size:clamp(2rem,4.5vw,3rem); font-weight:700; letter-spacing:-0.025em; line-height:1.12; margin-bottom:1.25rem; }
-  .aud-intro { font-size:1.1rem; line-height:1.8; color:var(--g300); max-width:760px; margin-bottom:2.5rem; }
-  .aud-main h2 { font-size:1.6rem; font-weight:600; letter-spacing:-0.015em; margin:3.5rem 0 0.75rem; }
-  .aud-main h2.aud-part { margin-top:4.5rem; padding-top:3rem; border-top:1px solid rgba(255,255,255,0.1); }
-  .aud-sub { font-size:0.95rem; color:var(--g400); line-height:1.7; margin-bottom:2rem; max-width:720px; }
-  .aud-sub a { color:var(--g300); }
+  /* Nav */
+  .aud-shell nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .aud-nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--white); }
+  .aud-nav-wordmark { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; }
+  .aud-nav-links { display: flex; gap: 2rem; align-items: center; }
+  .aud-nav-links a { color: var(--g400); text-decoration: none; font-size: 0.85rem; transition: color 200ms; }
+  .aud-nav-links a:hover { color: var(--white); }
+  .aud-nav-blog-mobile { display: none; color: var(--g300); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.5rem 0.9rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; }
+  .aud-btn { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .aud-btn:hover { opacity: 0.85; }
 
-  .aud-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; margin-bottom:1rem; }
-  .aud-stat { background:var(--black); padding:1.5rem 1.25rem; }
-  .aud-stat-num { font-size:1.5rem; font-weight:700; letter-spacing:-0.02em; }
-  .aud-stat-label { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--g500); margin-top:0.5rem; }
+  /* Main layout */
+  .aud-main { max-width: 880px; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
+  .aud-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--g500); margin-bottom: 1rem; }
+  .aud-main h1 { font-size: clamp(2rem,4.5vw,3rem); font-weight: 700; letter-spacing: -0.025em; line-height: 1.12; margin-bottom: 1.25rem; }
+  .aud-intro { font-size: 1.1rem; line-height: 1.8; color: var(--g300); max-width: 760px; margin-bottom: 2.5rem; }
+  .aud-main h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.015em; margin: 3.5rem 0 0.75rem; }
+  .aud-sub { font-size: 0.95rem; color: var(--g400); line-height: 1.7; margin-bottom: 2rem; max-width: 720px; }
+  .aud-sub a { color: var(--g300); }
+
+  /* Stats strip */
+  .aud-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; overflow: hidden; margin-bottom: 2rem; }
+  .aud-stat { background: var(--black); padding: 1.5rem 1.25rem; }
+  .aud-stat-num { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  .aud-stat-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--g500); margin-top: 0.5rem; }
+
+  /* ROI Hero */
+  .aud-roi-hero {
+    position: relative;
+    text-align: center;
+    padding: 3.5rem 2rem 2.5rem;
+    margin: 0 0 2rem;
+    border: 1px solid var(--accent-border);
+    border-radius: 20px;
+    background: rgba(108,142,255,0.04);
+    overflow: hidden;
+  }
+  .aud-roi-glow {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 260px;
+    background: radial-gradient(ellipse, rgba(108,142,255,0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .aud-roi-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; position: relative; }
+  .aud-headline-num { font-size: clamp(3rem,8vw,5rem); font-weight: 700; letter-spacing: -0.04em; color: var(--accent); position: relative; }
+  .aud-roi-context { font-size: 0.8rem; color: var(--g500); margin-top: 0.75rem; position: relative; }
+  .aud-roi-context a { color: var(--g400); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 1px; }
+  .aud-roi-context a:hover { color: var(--white); }
+  .aud-roi-breakdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .aud-roi-bp { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+  .aud-roi-bp-num { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.02em; color: var(--white); }
+  .aud-roi-bp-label { font-size: 0.72rem; color: var(--g500); text-transform: uppercase; letter-spacing: 0.1em; }
+  .aud-roi-plus { font-size: 1.2rem; color: var(--accent-border); font-weight: 300; margin-bottom: 1.2rem; }
+
+  /* Section labels */
+  .aud-section-label { display: flex; align-items: center; gap: 0.75rem; margin: 4rem 0 -1rem; }
+  .aud-section-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); border-radius: 999px; padding: 0.2rem 0.6rem; }
+  .aud-section-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
 
   /* Journey */
-  .aud-journey { display:flex; flex-direction:column; gap:0.5rem; }
-  .aud-jrow { display:grid; grid-template-columns:200px 1fr auto; gap:1rem; align-items:center; padding:1rem 1.25rem; border:1px solid rgba(255,255,255,0.08); border-radius:10px; border-left-width:3px; }
-  .aud-jrow.aud-ok { border-left-color:#22c55e; }
-  .aud-jrow.aud-weak { border-left-color:#f59e0b; }
-  .aud-jrow.aud-missing { border-left-color:#ef4444; }
-  .aud-jchannel { font-size:0.95rem; font-weight:600; }
-  .aud-jdetail { font-size:0.85rem; color:var(--g400); line-height:1.55; }
-  .aud-jstatus { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--g300); white-space:nowrap; border:1px solid rgba(255,255,255,0.15); border-radius:999px; padding:0.25rem 0.7rem; }
-  .aud-ok .aud-jstatus { color:#86efac; border-color:rgba(34,197,94,0.4); }
-  .aud-weak .aud-jstatus { color:#fcd34d; border-color:rgba(245,158,11,0.4); }
-  .aud-missing .aud-jstatus { color:#fca5a5; border-color:rgba(239,68,68,0.4); }
+  .aud-journey { display: flex; flex-direction: column; gap: 0.5rem; }
+  .aud-jrow { display: grid; grid-template-columns: 200px 1fr auto; gap: 1rem; align-items: center; padding: 1rem 1.25rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; border-left-width: 3px; }
+  .aud-jrow.aud-ok { border-left-color: #22c55e; }
+  .aud-jrow.aud-weak { border-left-color: #f59e0b; }
+  .aud-jrow.aud-missing { border-left-color: #ef4444; }
+  .aud-jchannel { font-size: 0.95rem; font-weight: 600; }
+  .aud-jdetail { font-size: 0.85rem; color: var(--g400); line-height: 1.55; }
+  .aud-jstatus { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--g300); white-space: nowrap; border: 1px solid rgba(255,255,255,0.15); border-radius: 999px; padding: 0.25rem 0.7rem; }
+  .aud-ok .aud-jstatus { color: #86efac; border-color: rgba(34,197,94,0.4); }
+  .aud-weak .aud-jstatus { color: #fcd34d; border-color: rgba(245,158,11,0.4); }
+  .aud-missing .aud-jstatus { color: #fca5a5; border-color: rgba(239,68,68,0.4); }
 
   /* Findings */
-  .aud-findings { display:grid; grid-template-columns:repeat(2,1fr); gap:1.25rem; }
-  .aud-finding { border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.5rem; background:rgba(255,255,255,0.02); }
-  .aud-finding-sev { display:inline-block; font-size:0.62rem; text-transform:uppercase; letter-spacing:0.12em; font-weight:600; padding:0.2rem 0.55rem; border-radius:999px; margin-bottom:0.8rem; }
-  .aud-finding-gap .aud-finding-sev { background:rgba(239,68,68,0.15); color:#fca5a5; }
-  .aud-finding-friction .aud-finding-sev { background:rgba(245,158,11,0.15); color:#fcd34d; }
-  .aud-finding-note .aud-finding-sev { background:rgba(34,197,94,0.15); color:#86efac; }
-  .aud-finding h3 { font-size:1.02rem; font-weight:600; margin-bottom:0.5rem; line-height:1.3; }
-  .aud-finding p { font-size:0.86rem; color:var(--g400); line-height:1.65; }
+  .aud-findings { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
+  .aud-finding { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.5rem; background: rgba(255,255,255,0.02); border-top-width: 3px; }
+  .aud-finding-gap { border-top-color: var(--accent); }
+  .aud-finding-friction { border-top-color: #f59e0b; }
+  .aud-finding-note { border-top-color: #22c55e; }
+  .aud-finding-head { margin-bottom: 0.9rem; }
+  .aud-finding-sev { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; padding: 0.25rem 0.6rem; border-radius: 999px; }
+  .aud-finding-sev-gap { background: rgba(108,142,255,0.15); color: var(--accent); }
+  .aud-finding-sev-friction { background: rgba(245,158,11,0.15); color: #fcd34d; }
+  .aud-finding-sev-note { background: rgba(34,197,94,0.15); color: #86efac; }
+  .aud-finding h3 { font-size: 1.02rem; font-weight: 600; margin-bottom: 0.65rem; line-height: 1.3; }
+  .aud-finding p { font-size: 0.86rem; color: var(--g400); line-height: 1.7; }
+  .aud-stat-hi { font-weight: 700; color: var(--g200); background: rgba(255,255,255,0.06); border-radius: 3px; padding: 0 3px; }
 
   /* Demo embed */
-  .aud-demo { display:flex; flex-direction:column; align-items:center; gap:1.25rem; }
-  .aud-device { width:100%; max-width:480px; border:1px solid rgba(255,255,255,0.12); border-radius:16px; overflow:hidden; background:#000; box-shadow:0 24px 80px rgba(0,0,0,0.5); }
-  .aud-device-bar { display:flex; align-items:center; gap:0.4rem; padding:0.7rem 1rem; background:#1a1a1a; border-bottom:1px solid rgba(255,255,255,0.08); }
-  .aud-device-dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.2); }
-  .aud-device-url { margin-left:0.75rem; font-size:0.72rem; color:var(--g500); }
-  .aud-iframe { width:100%; height:680px; border:none; background:#fff; display:block; }
-  .aud-demo-open { font-size:0.9rem; font-weight:500; color:var(--black); background:var(--white); padding:0.75rem 1.4rem; border-radius:8px; text-decoration:none; transition:opacity 200ms; }
-  .aud-demo-open:hover { opacity:0.85; }
+  .aud-demo { display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+  .aud-device { width: 100%; max-width: 480px; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+  .aud-device-bar { display: flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1rem; background: #1a1a1a; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .aud-device-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+  .aud-device-url { margin-left: 0.75rem; font-size: 0.72rem; color: var(--g500); }
+  .aud-iframe { width: 100%; height: 680px; border: none; background: #fff; display: block; }
+  .aud-demo-open { font-size: 0.9rem; font-weight: 500; color: var(--black); background: var(--white); padding: 0.75rem 1.4rem; border-radius: 8px; text-decoration: none; transition: opacity 200ms; }
+  .aud-demo-open:hover { opacity: 0.85; }
 
-  /* Tables (comparison + numeric ROI) */
-  .aud-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  .aud-table { width:100%; border-collapse:collapse; font-size:0.9rem; }
-  .aud-table th { text-align:left; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--g500); font-weight:500; padding:0.7rem 1rem; border-bottom:1px solid rgba(255,255,255,0.15); }
-  .aud-table td { padding:0.9rem 1rem; border-bottom:1px solid rgba(255,255,255,0.06); vertical-align:top; color:var(--g300); }
-  .aud-table td:first-child { color:var(--white); }
-  .aud-dim { color:var(--white); font-weight:600; width:30%; }
-  .aud-today { color:var(--g400); }
-  .aud-raven { color:var(--g200); }
-  .aud-table-num th:last-child { color:var(--g500); }
-  .aud-td-num { text-align:right; font-variant-numeric:tabular-nums; }
-  th.aud-td-num { text-align:right; }
-  .aud-table-num tr.aud-row-total td { font-weight:700; color:var(--white); border-top:1px solid rgba(255,255,255,0.2); }
-  .aud-fn-mark { color:var(--g500); font-size:0.75em; vertical-align:super; text-decoration:none; }
-  .aud-fn-mark:hover { color:var(--white); }
+  /* Tables */
+  .aud-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .aud-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  .aud-table th { text-align: left; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--g500); font-weight: 500; padding: 0.7rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+  .aud-table td { padding: 0.9rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.06); vertical-align: top; color: var(--g300); }
+  .aud-table td:first-child { color: var(--white); }
+  /* Before & after comparison grid */
+  .aud-compare-grid { display: grid; grid-template-columns: minmax(120px, 1.5fr) 2fr 28px 2fr; gap: 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; overflow: hidden; font-size: 0.88rem; }
+  .aud-compare-header { display: flex; align-items: center; gap: 0.45rem; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 0.75rem 1rem; }
+  .aud-compare-header-today { background: rgba(245,158,11,0.1); color: #fcd34d; grid-column: 2; }
+  .aud-compare-arrow-head { background: rgba(255,255,255,0.03); grid-column: 3; }
+  .aud-compare-header-raven { background: rgba(108,142,255,0.12); color: var(--accent); grid-column: 4; }
+  .aud-compare-dim { padding: 0.85rem 1rem; font-weight: 600; color: var(--white); font-size: 0.82rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; background: rgba(255,255,255,0.01); }
+  .aud-compare-today { padding: 0.85rem 1rem; color: var(--g400); border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.5; display: flex; align-items: center; background: rgba(245,158,11,0.04); }
+  .aud-compare-arrow { display: flex; align-items: center; justify-content: center; color: var(--g600); border-top: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.02); }
+  .aud-compare-raven { padding: 0.85rem 1rem; color: var(--g200); border-top: 1px solid rgba(255,255,255,0.06); line-height: 1.5; display: flex; align-items: center; background: rgba(108,142,255,0.05); }
+  .aud-table-num th:last-child { color: var(--g500); }
+  .aud-td-num { text-align: right; font-variant-numeric: tabular-nums; }
+  th.aud-td-num { text-align: right; }
+  .aud-table-num tr.aud-row-total td { font-weight: 700; color: var(--accent); border-top: 1px solid rgba(108,142,255,0.3); }
+  .aud-fn-mark { color: var(--g500); font-size: 0.75em; vertical-align: super; text-decoration: none; }
+  .aud-fn-mark:hover { color: var(--white); }
 
-  .aud-lo { margin-top:0.5rem; }
+  .aud-lo { margin-top: 0.5rem; }
 
-  /* ROI headline + scenario range */
-  .aud-headline { text-align:center; padding:3.5rem 1.5rem; margin:2rem 0 1rem; border:1px solid rgba(255,255,255,0.1); border-radius:16px; background:rgba(255,255,255,0.03); }
-  .aud-headline-num { font-size:clamp(2.6rem,6vw,4rem); font-weight:700; letter-spacing:-0.03em; }
-  .aud-headline-label { font-size:0.85rem; color:var(--g400); margin-top:0.75rem; }
-  .roi-range { margin:4.5rem 0 3.5rem; padding:0 2.5rem; }
-  .roi-range-track { position:relative; height:6px; border-radius:3px; background:rgba(255,255,255,0.08); }
-  .roi-range-fill { position:absolute; inset:0; border-radius:3px; background:linear-gradient(90deg, rgba(255,255,255,0.25), var(--white)); transform:scaleX(0); transform-origin:left; transition:transform 1200ms cubic-bezier(0.22,1,0.36,1); }
-  .roi-range-in .roi-range-fill { transform:scaleX(1); }
-  .roi-range-marker { position:absolute; top:-0.6rem; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:0.3rem; opacity:0; transition:opacity 500ms ease 900ms; }
-  .roi-range-in .roi-range-marker { opacity:1; }
-  .roi-range-marker::before { content:''; width:14px; height:14px; border-radius:50%; background:var(--white); border:3px solid var(--black); box-shadow:0 0 0 1px rgba(255,255,255,0.4); }
-  .roi-range-num { font-size:1.05rem; font-weight:700; margin-top:0.4rem; }
-  .roi-range-tag { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--g500); }
+  /* ROI scenario range */
+  .roi-range { margin: 4.5rem 0 3.5rem; padding: 0 2.5rem; }
+  .roi-range-track { position: relative; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.08); }
+  .roi-range-fill { position: absolute; inset: 0; border-radius: 3px; background: linear-gradient(90deg, rgba(108,142,255,0.4), var(--accent)); transform: scaleX(0); transform-origin: left; transition: transform 1200ms cubic-bezier(0.22,1,0.36,1); }
+  .roi-range-in .roi-range-fill { transform: scaleX(1); }
+  .roi-range-marker { position: absolute; top: -4px; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.3rem; opacity: 0; transition: opacity 500ms ease 900ms; }
+  .roi-range-in .roi-range-marker { opacity: 1; }
+  .roi-range-marker::before { content: ''; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); border: 3px solid var(--black); box-shadow: 0 0 0 1px var(--accent-border); }
+  .roi-range-num { font-size: 1.05rem; font-weight: 700; margin-top: 0.4rem; }
+  .roi-range-tag { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--g500); }
 
   /* ROI bars */
-  .roi-bars { display:flex; flex-direction:column; gap:1.4rem; margin:2rem 0; }
-  .roi-bar-head { display:flex; justify-content:space-between; margin-bottom:0.5rem; gap:1rem; }
-  .roi-bar-label { font-size:0.9rem; color:var(--g300); }
-  .roi-bar-sublabel { color:var(--g500); font-size:0.8rem; }
-  .roi-bar-value { font-size:0.9rem; font-weight:600; white-space:nowrap; }
-  .roi-bar-track { height:10px; border-radius:5px; background:rgba(255,255,255,0.07); overflow:hidden; }
-  .roi-bar-fill { height:100%; border-radius:5px; background:linear-gradient(90deg, var(--g400), var(--white)); width:0%; transition:width 1100ms cubic-bezier(0.22,1,0.36,1); }
+  .roi-bars { display: flex; flex-direction: column; gap: 1.4rem; margin: 2rem 0; }
+  .roi-bar-head { display: flex; justify-content: space-between; margin-bottom: 0.5rem; gap: 1rem; }
+  .roi-bar-label { font-size: 0.9rem; color: var(--g300); }
+  .roi-bar-sublabel { color: var(--g500); font-size: 0.8rem; }
+  .roi-bar-value { font-size: 0.9rem; font-weight: 600; white-space: nowrap; color: var(--accent); }
+  .roi-bar-track { height: 10px; border-radius: 5px; background: rgba(255,255,255,0.07); overflow: hidden; }
+  .roi-bar-fill { height: 100%; border-radius: 5px; background: linear-gradient(90deg, rgba(108,142,255,0.5), var(--accent)); width: 0%; transition: width 1100ms cubic-bezier(0.22,1,0.36,1); }
 
   /* Strategic cards */
-  .aud-strategic-h { margin-top:3.5rem; }
-  .aud-strategic { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; margin:2rem 0; }
-  .aud-card { border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:1.6rem; background:rgba(255,255,255,0.02); }
-  .aud-card h3 { font-size:1rem; font-weight:600; margin-bottom:0.6rem; }
-  .aud-card p { font-size:0.85rem; color:var(--g400); line-height:1.65; }
+  .aud-strategic-h { margin-top: 3.5rem; }
+  .aud-strategic { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin: 2rem 0 3.5rem; }
+  .aud-card { border: 1px solid rgba(255,255,255,0.08); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 1.6rem; background: rgba(108,142,255,0.03); }
+  .aud-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.35; }
+  .aud-card p { font-size: 0.85rem; color: var(--g400); line-height: 1.65; }
 
   /* Methodology */
-  .aud-methodology { margin-top:4rem; padding-top:2.5rem; border-top:1px solid rgba(255,255,255,0.08); }
-  .aud-methodology h2 { font-size:1.2rem; margin:0 0 1.5rem; }
-  .aud-fn { display:flex; gap:0.9rem; margin-bottom:1.25rem; }
-  .aud-fn-num { flex-shrink:0; width:22px; height:22px; border-radius:50%; border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:0.7rem; color:var(--g400); }
-  .aud-fn-body { font-size:0.84rem; color:var(--g400); line-height:1.7; }
-  .aud-fn-body strong { color:var(--g200); font-weight:600; }
-  .aud-article-link { display:inline-flex; align-items:center; gap:0.5rem; font-size:0.85rem; color:var(--g300); text-decoration:none; border:1px solid rgba(255,255,255,0.15); border-radius:8px; padding:0.6rem 1.1rem; margin-top:1rem; transition:border-color 200ms, color 200ms; }
-  .aud-article-link:hover { border-color:rgba(255,255,255,0.4); color:var(--white); }
+  .aud-methodology { margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.08); }
+  .aud-methodology h2 { font-size: 1.2rem; margin: 0 0 1.5rem; }
+  .aud-fn { display: flex; gap: 0.9rem; margin-bottom: 1.25rem; }
+  .aud-fn-num { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--accent-border); background: var(--accent-dim); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; color: var(--accent); }
+  .aud-fn-body { font-size: 0.84rem; color: var(--g400); line-height: 1.7; }
+  .aud-fn-body strong { color: var(--g200); font-weight: 600; }
+  .aud-article-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--g300); text-decoration: none; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.6rem 1.1rem; margin-top: 1rem; transition: border-color 200ms, color 200ms; }
+  .aud-article-link:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
 
-  .aud-cta { text-align:center; margin:4.5rem 0 2rem; padding:3.5rem 2rem; border:1px solid rgba(255,255,255,0.1); border-radius:16px; background:rgba(255,255,255,0.03); }
-  .aud-cta h2 { margin:0 0 0.75rem; }
-  .aud-cta p { font-size:0.95rem; color:var(--g400); margin-bottom:2rem; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.7; }
-  .aud-sources { font-size:0.75rem; color:var(--g600); line-height:1.7; margin-top:1.25rem; font-style:italic; }
+  /* CTA */
+  .aud-cta { text-align: center; margin: 4.5rem 0 2rem; padding: 3.5rem 2rem; border: 1px solid var(--accent-border); border-radius: 16px; background: rgba(108,142,255,0.04); }
+  .aud-cta h2 { margin: 0 0 0.75rem; }
+  .aud-cta p { font-size: 0.95rem; color: var(--g400); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+  .aud-cta-btn { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; padding: 1rem 2rem; border-radius: 10px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .aud-cta-btn:hover { opacity: 0.85; }
 
-  /* The WhiteLabelPrompt modal portals to document.body, outside .aud-shell, so
-     it can't see the shell-scoped color vars. Provide them on the portal root. */
-  .demo-modal-overlay { --black:#0A0A0A; --white:#fff; --g500:#737373; --gray-400:#A3A3A3; --gray-500:#737373; }
+  .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; }
 
-  .interest-form { max-width:520px; margin:0 auto; }
-  .form-row { display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center; }
-  .form-input { font-family:'DM Sans',sans-serif; font-size:0.9rem; padding:0.8rem 1rem; border-radius:8px; border:1px solid rgba(255,255,255,0.15); background:rgba(255,255,255,0.05); color:var(--white); outline:none; transition:border-color 200ms; flex:1; min-width:160px; }
-  .form-input::placeholder { color:var(--g500); }
-  .form-input:focus { border-color:rgba(255,255,255,0.4); }
-  .form-btn { font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:500; padding:0.8rem 1.5rem; border-radius:8px; border:none; background:var(--white); color:var(--black); cursor:pointer; transition:opacity 200ms; white-space:nowrap; }
-  .form-btn:hover { opacity:0.85; }
-  .form-btn:disabled { opacity:0.5; cursor:not-allowed; }
-  .form-error { color:#ef4444; font-size:0.8rem; margin-top:0.75rem; }
-  .form-success { text-align:center; }
-  .form-success-check { width:48px; height:48px; border-radius:50%; background:rgba(34,197,94,0.15); color:#22c55e; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; }
-  .form-success-title { font-size:1.2rem; font-weight:600; margin-bottom:0.3rem; }
-  .form-success-sub { font-size:0.9rem; color:var(--g400); }
+  /* WhiteLabelPrompt modal */
+  .demo-modal-overlay { --black: #0A0A0A; --white: #fff; --g500: #737373; --gray-400: #A3A3A3; --gray-500: #737373; }
 
-  .aud-shell footer { padding:2rem 3rem; border-top:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; }
-  .aud-shell footer span { font-size:0.75rem; color:var(--g600); }
-  .aud-foot-contact a { color:var(--g300); text-decoration:none; transition:color 200ms; }
-  .aud-foot-contact a:hover { color:var(--white); }
+  /* Interest form (used in WhiteLabelPrompt) */
+  .interest-form { max-width: 520px; margin: 0 auto; }
+  .form-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
+  .form-input { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: var(--white); outline: none; transition: border-color 200ms; flex: 1; min-width: 160px; }
+  .form-input::placeholder { color: var(--g500); }
+  .form-input:focus { border-color: rgba(255,255,255,0.4); }
+  .form-btn { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .form-btn:hover { opacity: 0.85; }
+  .form-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-error { color: #ef4444; font-size: 0.8rem; margin-top: 0.75rem; }
+  .form-success { text-align: center; }
+  .form-success-check { width: 48px; height: 48px; border-radius: 50%; background: rgba(34,197,94,0.15); color: #22c55e; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+  .form-success-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .form-success-sub { font-size: 0.9rem; color: var(--g400); }
 
-  @media (max-width:768px) {
-    .aud-shell nav { padding:1rem 1.5rem; }
-    .aud-nav-links { display:none; }
-    .aud-nav-blog-mobile { display:inline-block; }
-    .aud-main { padding:7rem 1.25rem 3rem; }
-    .aud-stats { grid-template-columns:repeat(2,1fr); }
-    .aud-findings { grid-template-columns:1fr; }
-    .aud-strategic { grid-template-columns:1fr; }
-    .aud-jrow { grid-template-columns:1fr; gap:0.4rem; }
-    .aud-jstatus { justify-self:start; }
-    .aud-iframe { height:600px; }
-    .aud-table { font-size:0.8rem; }
-    .aud-table th, .aud-table td { padding:0.6rem 0.6rem; }
-    .roi-range { padding:0 1rem; }
-    .roi-range-num { font-size:0.85rem; }
-    .aud-shell footer { padding:1.5rem; flex-direction:column; gap:1rem; }
+  /* Demo modal animations */
+  @keyframes demoOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes demoModalIn { from { opacity: 0; transform: translateY(18px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .demo-modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,0.45); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; animation: demoOverlayIn 250ms ease-out both; }
+  .demo-modal { animation: demoModalIn 380ms cubic-bezier(0.22,1,0.36,1) 60ms both; font-family: 'DM Sans', sans-serif; position: relative; width: 100%; max-width: 560px; background: rgba(23,23,23,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 3rem 2.5rem 2.5rem; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+  .demo-modal h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.75rem; }
+  .demo-modal > p { font-size: 0.95rem; color: #A3A3A3; line-height: 1.7; margin-bottom: 1.75rem; }
+  .demo-modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #737373; cursor: pointer; padding: 0.4rem; line-height: 0; transition: color 200ms; }
+  .demo-modal-close:hover { color: #fff; }
+  @media (prefers-reduced-motion: reduce) { .demo-modal-overlay, .demo-modal { animation: none; } }
+
+  /* Footer */
+  .aud-shell footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+  .aud-shell footer span { font-size: 0.75rem; color: var(--g600); }
+  .aud-foot-contact a { color: var(--g300); text-decoration: none; transition: color 200ms; }
+  .aud-foot-contact a:hover { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .aud-shell nav { padding: 1rem 1.5rem; }
+    .aud-nav-links { display: none; }
+    .aud-nav-blog-mobile { display: inline-block; }
+    .aud-main { padding: 7rem 1.25rem 3rem; }
+    .aud-stats { grid-template-columns: repeat(2,1fr); }
+    .aud-findings { grid-template-columns: 1fr; }
+    .aud-strategic { grid-template-columns: 1fr; }
+    .aud-jrow { grid-template-columns: 1fr; gap: 0.4rem; }
+    .aud-jstatus { justify-self: start; }
+    .aud-iframe { height: 600px; }
+    .aud-table { font-size: 0.8rem; }
+    .aud-table th, .aud-table td { padding: 0.6rem 0.6rem; }
+    .aud-shell footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
+
+    /* ROI hero */
+    .aud-roi-hero { padding: 2rem 1.1rem 1.75rem; }
+    .aud-roi-breakdown { flex-direction: column; align-items: center; gap: 1.25rem; padding-top: 1.5rem; margin-top: 5rem; }
+    .aud-roi-plus { display: none; }
+    .aud-roi-bp { flex-direction: row; align-items: center; gap: 0.75rem; }
+    .aud-roi-bp-label { text-align: left; }
+
+    /* Scenario range */
+    .roi-range { margin: 4.5rem 0 0; padding: 0; }
+    .roi-range-num { font-size: 0.8rem; }
+    .roi-range-tag { font-size: 0.6rem; }
+    .roi-range-low { transform: none; align-items: flex-start; }
+    .roi-range-low .roi-range-tag { display: none; }
+    .roi-range-high { left: auto; right: 0; transform: none; align-items: flex-end; }
+
+    /* Section labels */
+    .aud-section-label { margin: 2.5rem 0 -1rem; }
+
+    /* Before & after: collapse 4-column to stacked per row */
+    .aud-compare-grid { grid-template-columns: 1fr; }
+    .aud-compare-header { display: none; }
+    .aud-compare-arrow-head { display: none; }
+    .aud-compare-arrow { display: none; }
+    .aud-compare-header-today,
+    .aud-compare-arrow-head,
+    .aud-compare-header-raven { grid-column: 1; }
+    .aud-compare-dim {
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-bottom: none;
+      color: var(--g500);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.55rem 1rem;
+    }
+    .aud-compare-today {
+      border-top: none;
+      border-bottom: 1px solid rgba(245,158,11,0.12);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.6rem 1rem 0.65rem;
+      gap: 0.3rem;
+      font-size: 0.84rem;
+    }
+    .aud-compare-raven {
+      border-top: none;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0.6rem 1rem 0.85rem;
+      gap: 0.3rem;
+      font-size: 0.84rem;
+    }
+    .aud-compare-today::before {
+      content: 'Before';
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #fcd34d;
+      flex-shrink: 0;
+    }
+    .aud-compare-raven::before {
+      content: 'With RAVEN';
+      font-size: 0.58rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
   }
 `;

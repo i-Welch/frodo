@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { InterestForm } from '../../interest-form';
+import { CalendlyButton } from '../../calendly-button';
 import { ROI_BANKS } from '../../roi/roi-data';
 
 /* ---------- Markdown-to-HTML helper ---------- */
@@ -48,6 +48,11 @@ function convertMarkdown(md: string): string {
   // Pull quotes: :::pullquote ... ::: (must be on its own paragraph)
   html = html.replace(/^:::pullquote\n([\s\S]+?)\n:::/gm, (_match, inner) => {
     return `<blockquote class="pullquote">${inner.trim()}</blockquote>`;
+  });
+
+  // Stat callouts: :::stat ... ::: — first **bold** becomes the headline number
+  html = html.replace(/^:::stat\n([\s\S]+?)\n:::/gm, (_match, inner) => {
+    return `<div class="stat-callout">${inner.trim()}</div>`;
   });
 
   // Paragraphs: wrap remaining non-tag lines separated by blank lines
@@ -105,6 +110,10 @@ This matters for your vendor conversations. When a lending software vendor says 
 
 Ask for the core-specific certification before the demo, not after.
 
+:::pullquote
+Ask for the core-specific certification before the demo, not after.
+:::
+
 ## What Jack Henry Ships for Lending
 
 Neither SilverLake nor Symitar bundles a full-featured modern LOS. Both are systems of record. The core handles general ledger, account servicing, and transaction processing. Origination workflow, borrower-facing applications, automated decisioning, and document management all require something separate.
@@ -145,11 +154,20 @@ The FIN is open to fintechs competing directly with Jack Henry products. That is
 
 Jack Henry's 2025 Strategy Benchmark found that 90% of surveyed institutions plan to enhance lending capabilities in the next 12 to 18 months. The top priorities: automated workflow, financial spreading, and portfolio credit monitoring for commercial banks; AI-assisted underwriting and decision engines for credit unions.
 
+:::stat
+**90%**
+Nine in ten Jack Henry institutions surveyed plan to enhance lending capabilities within the next 12 to 18 months.
+:::
+
 That number confirms where the gap is. It is not in the core. SilverLake and Symitar are reliable systems of record, which is why retention rates run so high. The gap is in the origination layer: the borrower-facing application, the income and employment verification, the automated decision, the document assembly.
 
 The standard deployment pattern for a Jack Henry institution that has solved this: SilverLake or Symitar as the system of record, a separate LOS (LoanVantage, MeridianLink, Blend, or Algebrik AI) handling origination workflow, and an open banking layer handling real-time income and employment verification at intake.
 
 The borrower experience is determined by the origination and verification layer, not by the core.
+
+:::pullquote
+The borrower experience is determined by the origination and verification layer, not by the core.
+:::
 
 A community bank on SilverLake with a modern front-end LOS and real-time income verification can close loans as fast as any digital lender. That combination exists today, and the integration paths are well-documented. The core is not the constraint. The integration is.
     `,
@@ -187,6 +205,10 @@ The important distinction: neither is a bundled module included in a Premier or 
 
 A community bank evaluating digital lending on Fiserv is making at least two procurement decisions: the core contract and the LOS.
 
+:::pullquote
+A community bank evaluating digital lending on Fiserv is making at least two procurement decisions: the core contract and the LOS.
+:::
+
 ## Communicator Open: The Integration Layer
 
 Communicator Open is the API middleware that makes third-party LOS integrations possible on Premier, Signature, and Precision. It exposes RESTful JSON and FDX-compliant APIs, replacing older SOAP and APEX interfaces. More than 300 financial institutions actively use it.
@@ -208,6 +230,11 @@ Fiserv's AppMarket is a curated fintech storefront for pre-integrated apps, mark
 - **Narmi** (Premier)
 
 Baker Hill is the clearest documented case of the pattern working at scale. The pre-built Communicator Open connector eliminates manual rekeying between origination and core booking, which is where most community bank LOS integrations break down.
+
+:::stat
+**200%**
+Production increase reported by Mechanics Bank after deploying Baker Hill NextGen LOS on a Communicator Open-connected Premier core.
+:::
 
 The 30-day timeline applies to cloud-hosted Premier clients. For on-premises clients, additional connectivity setup and network SOWs add time and cost that the AppMarket listing does not mention.
 
@@ -236,6 +263,10 @@ Community banks that have solved this are seeing measurable results: 30% loan vo
 A cloud-hosted Premier bank with a validated AppMarket LOS and a modern open banking layer for real-time income verification can close loans as fast as any fintech. That combination takes three vendors, two integration agreements, and a clear understanding of your own infrastructure.
 
 The community banks moving fastest stopped treating "we are on Fiserv" as a constraint. They started treating it as a starting point.
+
+:::pullquote
+The community banks moving fastest stopped treating "we are on Fiserv" as a constraint. They started treating it as a starting point.
+:::
     `,
   },
   'first-reliance-sells-at-the-top': {
@@ -250,6 +281,11 @@ The community banks moving fastest stopped treating "we are on Fiserv" as a cons
 
 First Reliance Bancshares just posted the best numbers of its life. Net income up 113% year over year, $1.1 billion in assets, nine branches across eight South Carolina cities. So on June 24, founder Rick Saunders agreed to sell it.
 
+:::stat
+**113%**
+Net income growth year over year at First Reliance — the best numbers in the bank's history, posted right before the sale was announced.
+:::
+
 Colony Bankcorp, the $3.7 billion Georgia bank out of Fitzgerald, is buying First Reliance in a cash-and-stock deal worth about $163 million. The combined company will run roughly $5 billion in assets, $4 billion in deposits, and $3.2 billion in loans across four states: Alabama, Florida, Georgia, and South Carolina. Both boards approved it unanimously. It is expected to close in the fourth quarter.
 
 Here is the part worth sitting with. Most community banks sell because they are stuck. First Reliance sold because it was flying.
@@ -261,6 +297,10 @@ First Reliance shareholders get to choose: $19.75 in cash or 0.94 shares of Colo
 Saunders does not ride off. He becomes Executive Vice Chairman and joins Colony's board. His bench comes with him. Justin Strickland stays on as President for South Carolina, CFO Robert Haile becomes Colony's Chief Investment Officer and Treasurer, and mortgage chief Chuck Stuart will co-run Colony Mortgage. Director Rick Redden takes a Colony board seat.
 
 That is not how a distressed sale looks. That is a bank handing over the keys while keeping a hand on the wheel.
+
+:::pullquote
+That is not how a distressed sale looks. That is a bank handing over the keys while keeping a hand on the wheel.
+:::
 
 ## Why sell when you're winning
 
@@ -276,6 +316,11 @@ Start in 2019, when Colony absorbed LBC Bancshares and merged Calumet Bank into 
 
 First Reliance is the biggest bite yet. At $163 million, it runs close to double Colony's previous largest bank deal. And the structure is nearly a photocopy of the SouthCrest playbook: a cash-or-stock election (SouthCrest holders chose $10.45 or 0.7318 shares, First Reliance holders choose $19.75 or 0.94), heavy on stock, light on cash, built to keep the acquired bank's owners invested in the result.
 
+:::stat
+**$163 million**
+Colony's purchase price for First Reliance — nearly double Colony's previous largest bank acquisition and the biggest deal in its M&A program to date.
+:::
+
 Colony CEO Heath Fountain framed the ambition without much hedging. The combined company, he said, is "a premier Southeast banking franchise that is uniquely positioned to capture market share." For a bank that started as a peanut-belt agricultural lender in 1975, a four-state, $5 billion footprint is a long way from Fitzgerald.
 
 ## What "nothing changes" actually means
@@ -285,6 +330,10 @@ Every merger release promises continuity. Same bankers, same relationships, same
 What actually changes is the plumbing. First Reliance customers will eventually move onto Colony's core systems, its online banking, its loan platforms. Core conversions are where community-bank mergers get tested, because that is the moment a customer feels the gap between a promise and an operating reality. Get it smooth and the "nothing changes" line holds. Get it wrong and a 27-year relationship reconsiders itself over a login screen.
 
 It is also where the strategic logic lives or dies. The pitch to First Reliance customers is more products and better digital tools. Delivering that means Colony's onboarding, verification, and lending experiences have to be meaningfully better than what a billion-dollar bank could build alone. Scale is the promise. Execution is the invoice.
+
+:::pullquote
+Scale is the promise. Execution is the invoice.
+:::
 
 ## The integration test
 
@@ -308,6 +357,11 @@ Forty-nine percent of community banks deployed generative AI in 2026. That is tr
 
 The adoption wave is not theoretical. It is happening now, and the banks watching from the sidelines are falling behind on speed. Banks with AI underwriting handle three to four times more loan applications with the same staff. Processing times run 30 to 40% faster.
 
+:::stat
+**49%**
+The share of community banks that deployed generative AI in 2026 — triple the rate from 2025, according to Cornerstone Advisors.
+:::
+
 The question is not whether to use AI. It is how to do it without handing examiners a finding.
 
 ## What the Regulations Actually Say
@@ -315,6 +369,10 @@ The question is not whether to use AI. It is how to do it without handing examin
 The governing framework is SR 11-7, issued by the Federal Reserve and OCC in 2011 and adopted by the FDIC in 2017. The core rule has not changed: model risk exists when model outputs are wrong or misused, vendor models count just as much as in-house models, and governance must be documented.
 
 This is where community banks sometimes get a false sense of security. If a fintech built the AI model and you are licensing it, you cannot disclaim responsibility when an examiner asks about model validation. You are the institution. The model is yours to validate.
+
+:::pullquote
+The question is not whether to use AI. It is how to do it without handing examiners a finding.
+:::
 
 Two regulatory updates in 2025 and 2026 add important context. OCC Bulletin 2025-26 clarified that community banks are not required to perform annual model validation. Requirements must be proportionate to the bank's size and complexity. Then on April 17, 2026, the OCC, Federal Reserve, and FDIC issued updated interagency Model Risk Management guidance that explicitly reset expectations for community-bank scale. It is the clearest signal regulators have sent that they understand a $300 million community bank cannot maintain the same MRM apparatus as JPMorgan Chase.
 
@@ -344,6 +402,10 @@ For vendor selection, apply the same standard to AI tools that you would apply t
 
 The banks that will benefit most from AI over the next three years are not the ones who adopt it fastest. They are the ones who build a defensible governance structure from day one, then iterate within that framework as the regulatory landscape stabilizes.
 
+:::pullquote
+The banks that will benefit most from AI over the next three years are not the ones who adopt it fastest.
+:::
+
 ICBA's formal position to Congress is that AI-specific federal regulation is premature. The OCC, Fed, and FDIC have all signaled proportionality. The window for early adoption, with reasonable regulatory risk, is open. It will not stay this clear for long.
   `,
   },
@@ -370,6 +432,10 @@ A white-label borrower portal is a ready-made lending platform that the bank dep
 
 The vendor is invisible. The borrower applies, gets a status update, receives a proposal, signs, and accesses servicing all inside a branded interface that looks like the bank built it. The bank owns the customer relationship and the data. The vendor owns the infrastructure and the maintenance burden.
 
+:::pullquote
+The experience gap is not a data point anymore. It is the reason 44% of new checking accounts went to neobanks in 2024.
+:::
+
 This is not a new concept in software. It is how most industries operate. What has changed is that the fintech vendors serving community banks have matured to the point where the integration story is credible. Q2, MeridianLink, Baker Hill, Abrigo, Jifiti, and Hawthorn River all offer white-labeled front ends that sit on top of the bank's existing core without requiring a full replatform. Banks on Fiserv and Jack Henry have multiple certified options.
 
 ## The Cost Case
@@ -377,6 +443,11 @@ This is not a new concept in software. It is how most industries operate. What h
 Building a branded digital lending platform from scratch costs north of $5 million before compliance. That is just development. Add integration, testing, security audits, and ongoing maintenance and you are looking at an annual cost structure that exceeds most community bank IT budgets entirely.
 
 White-label deployments run $50,000 to $600,000 depending on customization level and integrations, based on published ranges from SDK.finance. That is a 10x to 100x cost difference for a bank that needs a functioning product, not a custom one.
+
+:::stat
+**$5M+**
+What building a branded digital lending platform from scratch costs before compliance — before integration, testing, security audits, or ongoing maintenance.
+:::
 
 Time is the other number that matters. A custom build takes 12 to 24 months before a borrower can use it. White-label solutions shorten time-to-market to weeks. A bank that commits to a white-label deployment in Q1 can have a branded borrower portal live before Q2 earnings.
 
@@ -387,6 +458,10 @@ The global digital banking market sits at $22.4 billion in 2026 and is growing a
 The customer experience matters as much as the economics. One pattern that matters operationally: the borrower never leaves the bank's branded environment during the application.
 
 This sounds obvious. It is not. Many community banks send borrowers to a third-party URL during the application process, either for identity verification or document upload. Every time a borrower sees a different domain, trust erodes. Conversion falls. In cases where a borrower abandons mid-application, they often do not know whether to contact the bank or the vendor.
+
+:::pullquote
+Every time a borrower sees a different domain, trust erodes.
+:::
 
 A properly implemented white-label portal keeps the borrower inside one branded experience from start to funded. The bank's domain, the bank's logo, the bank's communication templates. DocuSign or a similar e-signature layer gets embedded; it does not redirect. Plaid income verification happens inline. The borrower never sees the infrastructure.
 
@@ -430,11 +505,20 @@ Chime opens an account in approximately two minutes. Download the app, enter nam
 
 The abandonment data explains why this matters. Industry average abandonment for digital account applications sits around 51%. Some studies put it as high as 68% for financial services broadly. Abandonment exceeds 50% when the process takes more than three to five minutes. Every additional step after the first three minutes costs completions.
 
+:::pullquote
+Forty-eight percent of consumers who hit digital friction took their business to a different bank.
+:::
+
 Forty-eight percent of consumers who hit digital friction took their business to a different bank. That is not a close call. That is a majority of people who tried and failed, going somewhere else.
 
 The best-performing community bank platforms have closed the gap on speed. Narmi's consumer account opening is documented at two minutes and thirteen seconds. MANTL, acquired by Alkami in March 2025, completes the process in under three minutes from application to funded account. MANTL processed nearly one million applications in 2024 across 150 community banks and helped those institutions raise close to $10 billion in deposits.
 
 That last number deserves a second read. Ten billion dollars in deposits from one platform serving 150 community banks, in one year.
+
+:::stat
+**$10 billion**
+Deposits raised in one year by 150 community banks using MANTL's digital account opening platform.
+:::
 
 ## The Conversion Gap
 
@@ -451,6 +535,10 @@ The conversion gap has three causes that show up consistently across research:
 ## The Intent Is There
 
 The consumer demand for community bank accounts is real. Forty-one percent of Gen Z and 38% of millennials rank the ability to open an account online as a top requirement when choosing a financial institution. Half of Gen Z and millennials say they are open to switching their primary institution to a community bank or credit union, but only if the digital experience qualifies.
+
+:::pullquote
+The preference for local, relationship-based banking has not disappeared. It is being blocked by an experience problem.
+:::
 
 This is the part that should make community bank leadership uncomfortable: the preference for local, relationship-based banking has not disappeared. It is being blocked by an experience problem.
 
@@ -480,6 +568,10 @@ For community banks, the temptation is to treat open banking as a regulatory pro
 
 Open banking is already deployed at community banks. Plaid processes income verification for community lenders through MeridianLink. Jack Henry has certified integrations with every major U.S. data exchange platform. Fiserv has an open API gateway, though it requires deliberate adoption. The question is not whether open banking is coming. It is which of your institution's workflows would benefit from connecting to it now.
 
+:::pullquote
+Open banking is already deployed at community banks.
+:::
+
 ## What the Regulation Actually Says
 
 Section 1033 of the Dodd-Frank Act requires covered financial institutions to make consumer-permissioned data available to authorized third parties. The CFPB's 2024 rule would have implemented that mandate through a standardized developer interface requirement.
@@ -495,6 +587,11 @@ Plaid's network covers more than 12,000 financial institutions. The coverage is 
 In November 2025, Plaid expanded its Data Partner Dashboard to let community banks and credit unions self-manage their Plaid presence: fix connection issues, update branding, enable the Auth product. This was a direct response to the connectivity gap for smaller institutions.
 
 The most concrete deployment in community bank lending happened in April 2026, when MeridianLink announced an expanded Plaid partnership embedding Plaid Income directly into MeridianLink Consumer. The integration drives 80% conversion in lending flows by replacing manual document uploads with real-time income verification. A borrower connects their bank account once; Plaid pulls income and asset data automatically. Plans to expand to cash flow underwriting are on the roadmap for later 2026.
+
+:::stat
+**80%**
+Conversion rate in lending flows when Plaid Income replaces manual document uploads in MeridianLink Consumer.
+:::
 
 For a community lender running MeridianLink, this is not a future capability. It is available today. The income verification step that used to take days now takes minutes.
 
@@ -522,6 +619,10 @@ Only about 11% of U.S. consumers used open banking payments as of 2025, accordin
 
 For community banks, this asymmetry is an advantage. The friction is not technical anymore. It is trust. And trust is the one thing community banks have spent decades building that fintech competitors cannot replicate at scale.
 
+:::pullquote
+Trust is the one thing community banks have spent decades building that fintech competitors cannot replicate at scale.
+:::
+
 The regulatory uncertainty around Section 1033 will resolve. The direction is not in doubt. The banks that have built operational experience with open banking while compliance timelines are soft will implement faster when the timelines harden. The ones waiting for the final rule will be building under a deadline.
   `,
   },
@@ -543,6 +644,10 @@ The gap between a fintech-grade loan application and a community bank loan appli
 ## The Abandonment Problem
 
 Loan application abandonment rates reach 97.5% in some segments, per Resolve Pay and Gnosari's 2026 research. The average digital application abandonment rate hit 67% in 2025. If your borrower cannot complete the application in under five minutes, abandonment likelihood rises above 60%.
+
+:::pullquote
+Every field you add to the form makes it worse.
+:::
 
 Every field you add to the form makes it worse. Every additional field beyond three reduces completion by 5 to 10%. A three-field form converts at a rate 10% higher than a six-field form. Complex identity verification steps alone can drive a 30% increase in abandonment.
 
@@ -571,6 +676,11 @@ The fintech solution is open banking income verification.
 
 MeridianLink announced a partnership with Plaid in April 2026 specifically to bring this capability to community financial institutions. The integration drives 80% conversion in lending flows by replacing manual document upload with a direct connection to the borrower's bank or payroll account. Instead of waiting days for the borrower to locate and scan documents, the bank pulls the data directly, with the borrower's authorization, in minutes.
 
+:::stat
+**80%**
+Conversion rate in lending flows when Plaid Income replaces manual document uploads, per MeridianLink's April 2026 deployment data.
+:::
+
 Plaid connects to 9,706 financial institutions in the United States. Traditional bank verification that required faxed documents and took weeks now delivers account balance, account holder name, account number, and transaction history in real time.
 
 That is not a marginal improvement. For a borrower applying for a personal loan at 8 PM on a Tuesday, it is the difference between completing the application and abandoning it.
@@ -591,6 +701,10 @@ The Financial Brand's 12-step digital lending action plan for community institut
 
 Retargeting deserves specific mention. Most community banks do not follow up with borrowers who started an application and did not finish. Fintechs do, systematically, with automated reminders that bring the borrower back to exactly where they left off.
 
+:::pullquote
+The banks that compete on digital loan applications in 2026 are not the ones with the most features. They are the ones with the fewest steps between "I need a loan" and "I just got approved."
+:::
+
 The banks that compete on digital loan applications in 2026 are not the ones with the most features. They are the ones with the fewest steps between "I need a loan" and "I just got approved."
 `,
   },
@@ -608,6 +722,11 @@ Let's be fair about what neobanks actually do well, because community banks can'
 J.D. Power's 2025 U.S. Direct Banking Satisfaction Study put online-only direct bank checking accounts at 692 satisfaction points, 24 points above regional banks and 35 above national banks. That lead is real. It is driven by interface simplicity, fast onboarding, and no fees. Those things matter to consumers.
 
 But the same study contained a number that gets far less attention: 28% of neobank customers reported a problem or complaint in the prior 12 months. For traditional online banks, that number was 23%. Neobanks win on experience and lose on reliability.
+
+:::stat
+**28%**
+Share of neobank customers who reported a problem or complaint in the prior 12 months, versus 23% for traditional online banks.
+:::
 
 Community banks have something neobanks are spending years and billions trying to acquire. The right question is whether they are using it.
 
@@ -631,6 +750,10 @@ Chime accumulated more than 920 CFPB complaints since 2020, nearly 200 involving
 
 That is a customer service problem at scale with no branch to walk into and no loan officer to call.
 
+:::pullquote
+That is a customer service problem at scale with no branch to walk into and no loan officer to call.
+:::
+
 The Synapse bankruptcy in April 2024 made the structural risk explicit. When the BaaS middleware provider that linked several neobanks to their sponsor banks filed for bankruptcy, approximately $85 million in customer deposits became inaccessible for months. A shortfall of $65 to $96 million was identified that FDIC coverage could not resolve because the account ledgers were contradictory. Customers had done nothing wrong and could not access their money.
 
 Community banks do not have a Synapse problem. They have direct FDIC coverage, direct core access, and a loan officer the borrower can call by name.
@@ -640,6 +763,10 @@ Community banks do not have a Synapse problem. They have direct FDIC coverage, d
 AlternaCX's analysis put traditional bank trust and stability perception scores at 87, versus 74 for neobanks. That 13-point gap reflects genuine differences in what happens when something goes wrong.
 
 More than 70% of small businesses say they prefer or would prefer to bank with a community bank. Only 31% currently do. The gap is digital capability, not preference. Fifty-five percent of millennial-run small businesses say they would prefer a community institution if it matched digital capabilities.
+
+:::pullquote
+The gap is digital capability, not preference.
+:::
 
 That is the market opportunity in a single sentence. The preference is already there. The conversion barrier is the experience.
 
@@ -667,7 +794,16 @@ That is the documented return per loan that Blend's mortgage suite customers ach
 
 The same study found $914 in cost savings per loan, 7.3 days removed from the average loan cycle, and a 50% reduction in borrower withdrawal rates. These are not projections. They are averages across Blend's actual customer base.
 
+:::stat
+**$914**
+Cost savings per loan achieved by Blend mortgage suite customers in a third-party ROI study, alongside a 50% reduction in borrower withdrawal rates.
+:::
+
 The ROI of modernizing a community bank borrower experience is not theoretical. It is documented, and it is large.
+
+:::pullquote
+The ROI of modernizing a community bank borrower experience is not theoretical. It is documented, and it is large.
+:::
 
 ## What the Hard Numbers Show
 
@@ -698,6 +834,10 @@ Digital banking customers generate incremental revenue at 10.7% annually. Non-di
 Attrition tells the same story. Digital customers leave at 8.9% annually. Non-digital customers leave at 13.8%. The difference is nearly 5 percentage points of annual retention, which compounds dramatically over a 5 to 10-year relationship.
 
 The ROI of a better borrower experience is not just in the loan file. It is in the lifetime value of the customer relationship.
+
+:::pullquote
+The ROI of a better borrower experience is not just in the loan file. It is in the lifetime value of the customer relationship.
+:::
 
 ## The Small Things That Move the Metric
 
@@ -737,9 +877,18 @@ Abrigo serves more than 2,400 financial institutions and has the deepest communi
 
 None of these are wrong choices. The right one depends on your asset size, loan mix, core system, and how much internal IT capacity you have to manage an implementation.
 
+:::pullquote
+None of these are wrong choices. The right one depends on your asset size, loan mix, core system, and how much internal IT capacity you have to manage an implementation.
+:::
+
 ## The Real Cost
 
 The pricing reality is that licensing runs $50,000 to $500,000 annually, depending on asset size, loan volume, and which modules you select. Implementation adds another $15,000 to $200,000 upfront. A full LOS replacement, accounting for data migration, configuration, core integration, staff training, and parallel processing, takes 6 to 18 months.
+
+:::stat
+**$50K–$500K**
+Annual licensing cost for a community bank LOS, depending on asset size, loan volume, and modules selected.
+:::
 
 Mid-tier implementations land closer to 6 months. Phased approaches that prioritize one loan type first can deliver initial borrower-facing value in 3 to 6 months.
 
@@ -767,11 +916,20 @@ ICBA's fintech vendor evaluation guidance flags five risk categories that should
 
 Contracts without explicit data-portability and off-boarding provisions are a red flag. The vendor's incentive is to make switching expensive. Yours is to preserve optionality.
 
+:::pullquote
+Contracts without explicit data-portability and off-boarding provisions are a red flag. The vendor's incentive is to make switching expensive. Yours is to preserve optionality.
+:::
+
 ## The ROI Benchmark to Hold Vendors To
 
 When vendors present ROI projections, the industry benchmarks give you something to push back with.
 
 Digital lending implementations at community bank scale have produced an 80% reduction in per-loan origination costs in documented cases. Blend's mortgage-specific ROI study showed a 10.15x return per loan and a 20% higher pull-through rate. Abrigo reports that customers on its platform show 38% higher loan growth on average than peer institutions.
+
+:::stat
+**80%**
+Reduction in per-loan origination costs documented in community bank digital lending implementations.
+:::
 
 The 2 to 4 times return within 2 to 3 years benchmark is achievable. Ask vendors to show you reference customers in your asset class who have hit it, with specific numbers, not testimonial quotes.
 
@@ -801,13 +959,20 @@ The intent is clearly there. The execution gap is what varies.
 
 What keeps banks stuck is not a lack of desire to modernize. It is the framing of the problem. When "digital lending" is understood as "replace the core," the economics are terrible. A full core migration runs $100 million to $2 billion over 3 to 7 years. That math does not work for a $500 million community bank.
 
+:::pullquote
 But that is not what digital lending has to mean.
+:::
 
 ## What "Digital Lending" Actually Means
 
 Ninety percent of community banks already offer online loan applications, up from 76% in 2019. The channel exists.
 
 The problem is what happens when borrowers find it. Auto loan completion rates run at 28%. Personal loans complete at 42%. Credit cards at 34%. The average digital application abandonment rate hit 67% in 2025, more than double the prior year.
+
+:::stat
+**67%**
+The average digital loan application abandonment rate in 2025, more than double the prior year, despite 90% of community banks offering online applications.
+:::
 
 The bank built a front door. Nobody is walking through it.
 
@@ -820,6 +985,10 @@ Community banks issued 38% of total U.S. small and medium business credit in 202
 When only 25% of visitors who reach a community bank loan page even begin the application, and of those, 67% abandon before finishing, the actual conversion rate from visitor to completed application is under 10%.
 
 Fintechs are not winning on rates. They are not winning on trust. They are winning because a borrower who starts an application on their platform has a meaningfully higher probability of finishing it.
+
+:::pullquote
+The fix is not a new core. It is a better application flow, integrated with the core you already have.
+:::
 
 The fix is not a new core. It is a better application flow, integrated with the core you already have.
 
@@ -871,6 +1040,10 @@ The same trend is playing out in small business lending. Fintechs now capture 28
 
 Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% today. The compression is slow but relentless.
 
+:::pullquote
+Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% today. The compression is slow but relentless.
+:::
+
 ## The Application Experience Leak
 
 The reasons behind the numbers are not mysterious.
@@ -880,6 +1053,11 @@ Fintech platforms issue loan approval decisions in minutes. AI-driven underwriti
 That speed gap creates a specific problem in the digital channel that most community banks have not measured carefully enough.
 
 The average digital loan application abandonment rate hit 67% in 2025, more than double the prior year, according to Cornerstone Advisors. Some research puts mobile banking application abandonment even higher: Forrester has measured it at 97.5% for certain product types. And only 25% of users who visit a community bank's loan page even begin the application.
+
+:::stat
+**67%**
+The average digital loan application abandonment rate in 2025, more than double the prior year, according to Cornerstone Advisors.
+:::
 
 Read that again. Three out of four prospective borrowers who show up at the digital front door and look at the loan page leave without starting.
 
@@ -892,6 +1070,10 @@ Gen Z is not waiting for community banks to catch up.
 Twenty-nine percent of Gen Z consumers now name a digital bank or fintech as their primary checking provider, up from 11% just four years ago. Sixty-one percent say fintech apps specifically help them manage financial challenges better than their bank does. Seventy-seven percent insist that their financial institution integrates with the apps they already use.
 
 These are not edge cases. They are early signals of a generation building financial habits outside the traditional banking system. Once a 24-year-old opens a Chime account and takes out an SoFi personal loan, the community bank relationship has to be rebuilt from scratch, and the switching cost makes that unlikely.
+
+:::pullquote
+Once a 24-year-old opens a Chime account and takes out an SoFi personal loan, the community bank relationship has to be rebuilt from scratch, and the switching cost makes that unlikely.
+:::
 
 The borrowers who are forming financial habits right now are doing so with fintech-native experiences as their baseline. When they need a mortgage in five years, that baseline is what they will compare a community bank application against.
 
@@ -937,6 +1119,10 @@ A customer applying at the average community bank waits two to four weeks for th
 
 That gap is not a technology problem. It's an experience problem.
 
+:::pullquote
+That gap is not a technology problem. It's an experience problem.
+:::
+
 And it's costing community banks real business. Seventy-nine percent of consumers say they'll pay more for convenience and fast transactions. Eighty-nine percent expect 24/7 access to banking services. Seventy-four percent want personalized experiences. These aren't fringe preferences; they're baseline expectations that neobanks have set, and that borrowers now apply everywhere, including their local bank.
 
 ## The Core Replacement Trap
@@ -946,6 +1132,11 @@ Here's where most of the vendor conversation goes wrong.
 When community bank leadership says "we need to modernize," the technology industry's answer is to sell a new core. The pitch is compelling: newer architecture, better APIs, purpose-built for digital. The problem is the price tag and the timeline.
 
 A full core migration runs between $100 million and $2 billion. It takes three to seven years. During that entire window, your team is managing the migration instead of serving customers. Staff is in training. Integrations are being rebuilt. And at the end of it, you have a new core, but you still need a modern front-end to show borrowers.
+
+:::stat
+**$100M–$2B**
+The cost range for a full core migration, which takes three to seven years and consumes staff and capital the entire time.
+:::
 
 Thirty-five percent of community banks are already dissatisfied with their core provider, according to the American Bankers Association's 2025 Core Platform Survey. That dissatisfaction is real. But dissatisfaction with your core is not the same thing as needing a new one.
 
@@ -966,6 +1157,10 @@ This is not theoretical. Banks that have layered modern digital experiences on t
 Here's what the neobank narrative conveniently leaves out.
 
 During the deposit crunch of 2022-2023, the first annual deposit decline in nearly 30 years, large banks took the steepest hits. Community banks reported deposit growth. The relationship model held.
+
+:::pullquote
+Chime's $519 million marketing spend exists because customer acquisition is expensive when you have no relationship and no trust. Community banks don't have that problem.
+:::
 
 Chime's $519 million marketing spend exists because customer acquisition is expensive when you have no relationship and no trust. Community banks don't have that problem. They have customers who have banked with them for twenty years. The challenge is keeping those customers as expectations shift, and attracting the next generation before it defaults to digital-only.
 
@@ -991,6 +1186,11 @@ That detail alone tells you something about the market they picked and how they 
 
 Founded in Myrtle Beach under holding company South Atlantic Bancshares (OTCQX: SABK), the bank has compounded from zero to $1.93B in assets in under 17 years. Net income hit $16.17M in 2025, up 60.8% year-over-year. The efficiency ratio sits at 59.99%. Return on assets is 1.05%, respectable for any community bank and genuinely impressive for one still in aggressive growth mode.
 
+:::stat
+**$16.17M**
+Net income in 2025, up 60.8% year-over-year, for a bank launched two months before the financial crisis.
+:::
+
 The numbers look even better when you consider the headcount. South Atlantic runs 12 branches and 159 full-time employees. That is a lean operation for a book this size. Net interest margin holds at 3.06%, and nonperforming assets are essentially zero. CEO K. Wayne Wicker was elected to the American Bankers Association board, which is not something that happens to banks just treading water.
 
 What's powering it? The zip codes.
@@ -998,6 +1198,10 @@ What's powering it? The zip codes.
 Horry County, home to Myrtle Beach, Conway, and North Myrtle Beach, is growing at 3.8% annually. That is not organic birth-rate growth. Every percentage point of it is in-migration. Retirees from Ohio and Pennsylvania relocating to the Grand Strand. Remote workers from the Northeast choosing Myrtle Beach over Miami. Second-home buyers who looked at Florida prices and turned north on I-95. The bank's footprint also reaches into Georgetown County and the Beaufort/Jasper MSA covering Hilton Head and Bluffton, all of which are running similar in-migration dynamics. Horry County alone is projected to add 216,000 residents by 2042.
 
 Roughly 15,000 new residents arrive each year. That translates to approximately 7,500 net new households entering the footprint annually, all of them shopping for mortgages, HELOCs, and auto loans with no existing relationship at a local bank.
+
+:::pullquote
+South Atlantic Bank is positioned exactly where the people are going.
+:::
 
 South Atlantic Bank is positioned exactly where the people are going.
 
@@ -1009,7 +1213,14 @@ Total loans grew 13.1% in 2024 and another 9.5% in 2025. Real estate loans are n
 
 That is a lot of deal flow for 12 branches.
 
-Secondary mortgage income jumped 80% in 2024, driven by increased origination commissions. The bank is writing more loans, faster. The pipeline is clearly moving. But nothing in the publicly available technology stack suggests the processing infrastructure has scaled at the same pace. The digital banking page covers bill pay, transfers, and account viewing. There is no mention of online loan applications, document upload portals, income verification integrations, or any automated workflow tools for the lending side. Job postings for a Digital Banking Specialist I and a Systems Administrator III suggest they are building out IT capacity, but those roles are foundational hires, not fintech integrations.
+Secondary mortgage income jumped 80% in 2024, driven by increased origination commissions. The bank is writing more loans, faster. The pipeline is clearly moving. But nothing in the publicly available technology stack suggests the processing infrastructure has scaled at the same pace.
+
+:::stat
+**80%**
+Secondary mortgage income growth in 2024, driven by origination commissions, while the manual processing infrastructure remained unchanged.
+:::
+
+The digital banking page covers bill pay, transfers, and account viewing. There is no mention of online loan applications, document upload portals, income verification integrations, or any automated workflow tools for the lending side. Job postings for a Digital Banking Specialist I and a Systems Administrator III suggest they are building out IT capacity, but those roles are foundational hires, not fintech integrations.
 
 A loan officer closing a residential mortgage on an in-migrant retiree from New Jersey is currently doing some version of the same manual document shuffle that every other community bank does: emailing requests for pay stubs, waiting for bank statements to come back via PDF, chasing down the second piece of ID. Multiply that by a pipeline growing at double-digit annual rates and you have a meaningful drag on throughput.
 
@@ -1018,6 +1229,10 @@ A loan officer closing a residential mortgage on an in-migrant retiree from New 
 Here's the uncomfortable part for any community bank in this market.
 
 The borrowers arriving in Horry County from the Northeast and Midwest are not loyal to South Atlantic Bank. They have no prior relationship. They are transaction shoppers, often comparing rates across multiple lenders simultaneously. And many of them have recent experience applying for a mortgage with Rocket Mortgage, Better.com, or a regional lender that offered a fully digital application with near-instant income and asset verification.
+
+:::pullquote
+Closing speed matters enormously in a market with active construction and high CRE transaction volume.
+:::
 
 Closing speed matters enormously in a market with active construction and high CRE transaction volume. A developer building a 40-unit condominium complex on Ocean Boulevard is not going to wait three extra days for a term sheet while a loan officer manually requests two years of business tax returns and entity documents. They will call the next bank.
 
@@ -1063,6 +1278,10 @@ The question worth asking: how long does that formula hold as the county transfo
 
 Horry County added 7,331 new housing units in 2024 alone. The county is projected to absorb 216,000 additional residents by 2042. The people arriving are not just retirees looking for warm weather (though there are plenty of those, many from New York, New Jersey, Pennsylvania, and the DC metro). Remote workers. Families chasing coastal affordability. Second-home buyers from the Mid-Atlantic who found they could work from Pawleys Island just as well as from Bethesda.
 
+:::pullquote
+Most banks that dominate a market do it by spending their way there. CNB does it by being genuinely disciplined.
+:::
+
 CNB's 2024 HMDA data captures this shift. The bank originated 309 mortgages last year, with 159 of those being conventional purchase loans. That purchase-heavy mix reflects a market driven by new arrivals, not just existing homeowners refinancing. And the Georgetown County footprint tells an even more interesting story: 41 originations there, with an average loan size around $352,000, well above the Horry County average. The Waccamaw Neck corridor (Pawleys Island, Murrells Inlet, Litchfield Beach) is a high-income second-home and retirement market, and CNB is already in it.
 
 The bank's messaging leans heavily on community rootedness. "Our lenders live here too." That positioning works exceptionally well for the long-tenured local customer who wants to call someone they recognize. It works less well for the retired couple from Northern Virginia who is buying a $450,000 home in Murrells Inlet, has a pension plus brokerage income, and has never been inside a Conway branch.
@@ -1074,6 +1293,11 @@ That borrower is arriving in volume. The question is whether the bank's intake p
 CNB reported net income of $23.1 million in FY2025, up 26.6% from the prior year. Return on assets came in at 1.23% for the full year and accelerated to 1.40% annualized in Q1 2026. The net interest margin for Q1 2026 was approximately 3.10% annualized, with $15.2 million in quarterly net interest income on a $1.94 billion asset base.
 
 The efficiency ratio tells the real story of how they get there. 51.76% for full-year 2025. 47.38% in Q1 2026. For context, the average community bank runs somewhere in the low-to-mid 60s. Getting below 50% with a growing loan portfolio and only 16 branches requires relentless cost control on every line item.
+
+:::stat
+**47.38%**
+CNB's efficiency ratio in Q1 2026, well below the low-to-mid 60s average for community banks, achieved with only 16 branches and a loan portfolio near $850 million.
+:::
 
 The loan portfolio stood at $845 million net at the end of Q1 2026. Total noninterest expense for 2025 was $34.6 million. Think about that ratio: nearly a billion dollars in loans managed on a cost base that most banks that size would consider lean to the point of stress. Every dollar of operational friction matters.
 
@@ -1100,6 +1324,10 @@ Forty-one originations at a $352,000 average loan size. That is a high-balance, 
 CNB's competitive advantage in that market is its local knowledge, its relationships with the real estate community along the Grand Strand, and the trust it has built over decades. Those matter enormously. But a buyer from Connecticut who is purchasing remotely, coordinating through a local agent, and trying to close before the school year starts in September is also paying attention to how quickly the bank can verify their assets and income.
 
 The faster that verification happens, the more of that segment CNB can capture without adding a single underwriter.
+
+:::pullquote
+The faster that verification happens, the more of that segment CNB can capture without adding a single underwriter.
+:::
 
 A 20% increase in Georgetown County originations (about 8 additional loans per year) at the current average loan size would represent roughly $2.8 million in additional origination volume. Compounded across improved pull-through on the full pipeline, the revenue impact of cutting document collection time in half is not trivial for a bank managing a sub-50% efficiency ratio.
 
@@ -1186,13 +1414,24 @@ Security Federal operates across Aiken, Lexington, and Richland counties in Sout
 
 The current numbers reflect a bank performing steadily but not spectacularly. Return on assets sits at 0.79%, net interest margin at 3.03%, and the efficiency ratio at 71.77%. For context, community banks with efficiency ratios below 60% are generally considered well-run on the cost side. At 71.77%, Security Federal is leaving margin on the table somewhere in its operations. Finding where is the interesting question.
 
+:::stat
+**71.77%**
+Security Federal's efficiency ratio, against a community bank benchmark of below 60% for well-run operations on the cost side.
+:::
+
 ## The CDFI Charter Creates a Document Problem Nobody Talks About
 
 Here is the part that rarely makes it into analyst commentary on community banks with CDFI designations. Serving LMI borrowers, first-time homebuyers, and underbanked households is genuinely good mission work. It is also, operationally, much harder than conventional mortgage lending.
 
 A W-2 employee with two years at the same employer is a simple file. Two pay stubs, one employer verification call, done. The borrowers Security Federal is explicitly chartered to serve often look nothing like that. Gig workers. Seasonal laborers. Self-employed applicants with Schedule C income that requires two years of tax returns, a year-to-date profit and loss statement, and sometimes a CPA letter. Households with multiple part-time jobs. Federal contractors on short-term assignments who technically have stable income but unconventional documentation.
 
-For these files, manual document collection can run two to three times longer than a conventional loan. That is not an exaggeration. It is a structural reality of CDFI lending. A processor chasing a self-employed borrower's bank statements across three institutions, waiting on employer callbacks, and manually keying income figures into the LOS is burning hours that do not show up in a single line item on the income statement. They show up as a collectively elevated efficiency ratio.
+For these files, manual document collection can run two to three times longer than a conventional loan. That is not an exaggeration. It is a structural reality of CDFI lending.
+
+:::pullquote
+For these files, manual document collection can run two to three times longer than a conventional loan.
+:::
+
+A processor chasing a self-employed borrower's bank statements across three institutions, waiting on employer callbacks, and manually keying income figures into the LOS is burning hours that do not show up in a single line item on the income statement. They show up as a collectively elevated efficiency ratio.
 
 Security Federal's mortgage portal runs on ICE Mortgage Technology. That is a meaningful fact. ICE is a modern, integration-ready platform. Borrowers can apply online. The front-end infrastructure works. What the portal does not show is any open banking income or asset verification, no Plaid, no Finicity, no Day 1 Certainty or equivalent program, no automated verification of income, employment, or assets at the point of application. None of it.
 
@@ -1216,6 +1455,10 @@ That competitive reality is not abstract. In a market where Aiken County is addi
 
 Security Federal is not a bank that needs a strategy reset. The market is right, the charter is right, the mission is legitimate, and the LOS infrastructure is modern. The opportunity sitting in front of this bank is operational, not strategic.
 
+:::pullquote
+Security Federal is not a bank that needs a strategy reset. The opportunity sitting in front of this bank is operational, not strategic.
+:::
+
 Banks that close the verification gap in complex borrower segments tend to see efficiency ratios compress 300 to 600 basis points within 12 to 18 months of full deployment, based on industry data from similar community bank implementations. For Security Federal, moving from 71.77% to something closer to 66% would represent real earnings capacity, either returned to shareholders or reinvested in the branch expansion the bank has already signaled.
 
 The Aiken-Augusta-Columbia corridor is going to keep growing. Federal employment at Savannah River Site is stable. Fort Gordon's Cyber Command mission is expanding. Remote workers and retirees are not stopping their migration southward. The bank that builds the fastest, most reliable borrower intake process in this market, one that handles the complexity of a CDFI borrower file without making the borrower wait four extra weeks, will compound the referral advantages that community banks live on.
@@ -1234,6 +1477,10 @@ Open banking verification infrastructure is no longer experimental. It is produc
 
 Here is the counterintuitive fact about Coastal Carolina National Bank: it was founded in June 2009, right in the teeth of the financial crisis, in a coastal resort market that was getting crushed by falling vacation-property values and tourist spending collapse. Most community banking veterans would have called that timing suicidal. Fifteen years later, CCNB sits at $1.28 billion in assets, just announced a merger of equals with Beacon Holding Company that will create a $2.2 billion SC franchise, and posted $10.94 million in net income for FY2025, up 29% year over year. Bad timing turned out to be very good timing.
 
+:::pullquote
+Bad timing turned out to be very good timing.
+:::
+
 The market context matters here. Myrtle Beach is not a typical community bank territory. The Myrtle Beach-Conway-North Myrtle Beach MSA grew 3.8% in 2024, making it the third fastest-growing metro in the country. Horry County ranked 10th nationally for domestic in-migration in the July 2022-2023 period. That growth is not driven by young families chasing starter homes. CCNB's own HMDA 2024 data shows the dominant income band among its mortgage borrowers was $250,000-plus, with $150,000 to $250,000 running a close second. Average mortgage loan size was $342,000. This is a move-up and retirement-community buyer profile, retirees and remote workers relocating from the Northeast and Midwest who arrive with complex income documentation and meaningful purchasing power.
 
 ## How a De Novo Becomes a Regional Franchise
@@ -1241,6 +1488,11 @@ The market context matters here. Myrtle Beach is not a typical community bank te
 CCNB did not stay put on the strand. The bank now holds branches across Horry, Georgetown, Richland, Aiken, Greenville, Spartanburg, and Brunswick (NC) counties, 10 branches in total, expanding deliberately into SC's interior population-growth corridors rather than just stacking up presence along the coast. The inland pivot into Columbia, Aiken, Greenville, and Spartanburg gives the bank exposure to markets that are less weather-dependent and less seasonal than a pure coastal book.
 
 The financials back the strategy. Net interest margin held at 3.54% in FY2025. Return on assets came in at 0.93% for the full year, with the trailing Q4 figure clocking 1.03%, suggesting momentum heading into 2026. The efficiency ratio improved materially, from 66.24% in FY2024 to 61.78% in FY2025. That is real operating leverage. The loan book grew 13% to $945 million, concentrated in non-owner occupied commercial real estate and 1-4 family residential. Zero non-performing assets as of Q4 2024. For a bank that originated through a credit crisis and scaled through a pandemic, the credit quality is notable.
+
+:::stat
+**$10.94 million**
+CCNB's net income for FY2025, up 29% year over year from a bank founded during the worst financial crisis in a generation.
+:::
 
 The mortgage product mix tells you something about positioning. CCNB markets condotel loans, bridge loans, lot loans, and portfolio ARM structures. These are loan types that the big banks either won't touch or make borrowers fight for. The "We Can Do That" tagline is not just marketing copy; it reflects a deliberate credit philosophy. Condotel and portfolio ARM borrowers in coastal SC frequently have self-employment income, rental income streams, or asset-heavy financial profiles that do not fit cleanly into agency underwriting boxes. That complexity is a feature of the franchise, not a bug. It is also operationally demanding.
 
@@ -1258,7 +1510,13 @@ Horry County is adding roughly 7,000 net new households per year. Those are not 
 
 Manual verification of a file like that takes time. Time kills purchase contracts. In a coastal market where buyers are comparing multiple lenders simultaneously, a 48-hour difference in turnaround is meaningful. CCNB's HMDA borrower profile sits exactly in the $150,000-plus income band where these documentation patterns are most common. The borrower is financially strong; the paperwork is complicated. That is precisely the gap where automated income and employment verification earns its keep.
 
-Speed is not just a customer service issue in a 3.8%-growth market. It is a competitive moat. CCNB competes with regional banks, credit unions, and mortgage companies that all want the same high-income relocating buyer. The bank has already differentiated on product flexibility. Operational speed is the logical next layer. A lender that can confirm income and employment in hours instead of days, and hand the borrower a clear-to-close without a document chase, wins repeat business and referrals from the real estate community in a market that runs on relationships.
+Speed is not just a customer service issue in a 3.8%-growth market. It is a competitive moat.
+
+:::pullquote
+Speed is not just a customer service issue in a 3.8%-growth market. It is a competitive moat.
+:::
+
+CCNB competes with regional banks, credit unions, and mortgage companies that all want the same high-income relocating buyer. The bank has already differentiated on product flexibility. Operational speed is the logical next layer. A lender that can confirm income and employment in hours instead of days, and hand the borrower a clear-to-close without a document chase, wins repeat business and referrals from the real estate community in a market that runs on relationships.
 
 The digital picture today shows room to grow. CCNB's online mortgage application routes to a third-party portal at myccnb.mymortgage-online.com. The website discloses no automated income or asset verification capability, no digital appraisal ordering, no eClosing integration. No technology or digital lending roles are visible on the careers page. The bank has Zelle and IntraFi. That is a reasonable fintech footprint for a community bank, but it stops well short of a modern origination workflow.
 
@@ -1298,7 +1556,16 @@ The bank has made smart strategic moves recently. It divested its Laurinburg, NC
 
 The financials are genuinely strong. A net interest margin of 3.49% is healthy in the current rate environment. An efficiency ratio of 53.63% means the bank is keeping operating costs at roughly 54 cents for every dollar of revenue, which is well below the 60-plus percent that many peers are running. Four branches serving a metro area of nearly 900,000 people means this bank is doing a lot with a little.
 
+:::stat
+**53.63%**
+First Capital Bank's efficiency ratio — keeping operating costs at roughly 54 cents per dollar of revenue, well below the 60-plus percent that many peers are running, across just four branches serving a metro of nearly 900,000 people.
+:::
+
 So the question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.24B is the same one that gets it to $2B.
+
+:::pullquote
+The question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.24B is the same one that gets it to $2B.
+:::
 
 ---
 
@@ -1338,6 +1605,10 @@ Regional banks and non-bank lenders with digital-native workflows are not ignori
 
 First Capital's competitive advantage right now is local relationships, local knowledge, and a reputation built over 25 years in the Charleston market. That is real. It matters. But relationship banking has always operated alongside process banking, and when the process gap gets wide enough, even strong relationships lose deals to faster closings.
 
+:::pullquote
+Relationship banking has always operated alongside process banking, and when the process gap gets wide enough, even strong relationships lose deals to faster closings.
+:::
+
 The bank that figured out how to pair its local credibility with a borrower intake process as fast as a fintech's could own the new-resident segment in a market projected to grow for another decade. For a four-branch community bank with a clean balance sheet and sharp new leadership, that combination is more achievable than it might look from the outside. The question is how long the current model holds before the growth rate of the market outpaces the capacity of a manual workflow to keep up.
 `,
   },
@@ -1360,9 +1631,16 @@ Columbia, South Carolina is not a coastal market. It does not have the in-migrat
 
 Richland County, home to Columbia, added 6,241 residents between 2020 and 2023. Lexington County next door added 9,421, reflecting the suburban expansion that is reshaping the Columbia MSA. The growth here is different from the coast: it is driven by military families, state government professionals, healthcare workers, and University of South Carolina's administrative and research staff. Stable incomes. Predictable employment verification. Lower documentation complexity than a coastal CRE market full of short-term rental investors and seasonal workers.
 
+:::pullquote
 That is a favorable borrower profile for a community bank running a manual verification workflow. But the CRE book is a different story.
+:::
 
 First Community Bank SC's loan portfolio carries a commercial real estate concentration around 46% of total loans. For a $2.4B institution, that is a $1.1B CRE position spanning owner-occupied commercial properties, investor CRE, and construction loans across the Midlands and Upstate. At current collateral values and with the merger integration still ongoing, that concentration is not a risk flag. It is, however, a documentation management challenge.
+
+:::stat
+**46%**
+First Community Bank SC's commercial real estate concentration, putting $1.1B in CRE exposure across the Midlands and Upstate on a $2.4B balance sheet.
+:::
 
 ## Why CRE at Scale Is a Workflow Problem
 
@@ -1390,7 +1668,9 @@ Automated verification is one of the cleanest levers available. The cost per loa
 
 The Midlands market will keep delivering borrowers. The Fort Jackson employment base is stable. The University hospital system is growing. Columbia's suburban ring is expanding into Lexington and Richland counties at a pace that will sustain mortgage originations for years. The borrowers are available. The question is how efficiently First Community Bank SC can process them as a $2.4B institution competing against both larger regional banks with modern digital onboarding and smaller community banks with tighter local relationships.
 
+:::pullquote
 Getting the document collection infrastructure right during the merger integration window is the moment where that efficiency gap either closes or compounds.
+:::
 `,
   },
   'countybank-greenwood-sc-sba-deep-dive': {
@@ -1406,6 +1686,11 @@ Greenwood, South Carolina is not where you would expect to find one of the state
 
 Countybank has been doing them for more than a century. Founded in 1934 as Greenwood County Bank, the institution now holds approximately $900M in assets, operates 14 branches across five Upstate and Midlands counties, and posts performance metrics that most banks its size would be proud to claim: a return on equity of 17.6%, an efficiency ratio of 55%, and a net interest margin above 4% in a rate environment where most community banks are fighting for every basis point.
 
+:::stat
+**55%**
+Countybank's efficiency ratio, a level most community banks its size would struggle to match, achieved in a declining-population market.
+:::
+
 The SBA lending program is the part of the story that most people outside the Upstate SC banking market do not know about.
 
 ## The SBA Advantage in a Shrinking Market
@@ -1414,7 +1699,13 @@ Greenwood County has been losing population. The 2020 Census counted roughly 71,
 
 For a bank in a market like this, the traditional community bank playbook, grow deposits, grow consumer loans, grow residential mortgage volume, is difficult to execute when the population base is contracting. Countybank's response has been to double down on small business lending, where the bank's local knowledge and speed advantage over regional competitors creates durable relationships that are stickier than rate-sensitive consumer deposits.
 
-The SBA program is the cornerstone of that strategy. Countybank is not the largest SBA lender in South Carolina, but it punches well above its weight class relative to asset size. SBA 7(a) loans, the program's workhorse, are particularly attractive for small business borrowers in markets like Greenwood because they allow longer amortization periods and lower down payments than conventional commercial loans, making capital more accessible for businesses that might not qualify for standard CRE or C&I terms. For the bank, the government guarantee on the guaranteed portion reduces credit risk while the fee income from originating and servicing SBA loans adds a meaningful noninterest income line.
+The SBA program is the cornerstone of that strategy.
+
+:::pullquote
+The SBA program is the cornerstone of that strategy.
+:::
+
+Countybank is not the largest SBA lender in South Carolina, but it punches well above its weight class relative to asset size. SBA 7(a) loans, the program's workhorse, are particularly attractive for small business borrowers in markets like Greenwood because they allow longer amortization periods and lower down payments than conventional commercial loans, making capital more accessible for businesses that might not qualify for standard CRE or C&I terms. For the bank, the government guarantee on the guaranteed portion reduces credit risk while the fee income from originating and servicing SBA loans adds a meaningful noninterest income line.
 
 The mechanics of SBA lending are also where the document problem is most acute.
 
@@ -1439,6 +1730,10 @@ The borrower experience improvement matters too. A small business owner in Green
 ## The Greenwood Model and What It Proves
 
 Here is the underappreciated insight from Countybank's performance numbers. A 17.6% ROE and 55% efficiency ratio in a declining-population market is not an accident. It is the result of a bank that has found the borrower segments where it can win on local knowledge and relationship depth, built a lending program around those segments (SBA small business in this case), and executed with enough discipline to maintain strong credit quality while generating above-average fee income.
+
+:::pullquote
+A 17.6% ROE and 55% efficiency ratio in a declining-population market is not an accident.
+:::
 
 That model scales better with digital document infrastructure than without it. The relationship and local knowledge advantages that Countybank has built over 90 years do not go away when a borrower submits documents digitally rather than by fax. The credit judgment that protects the bank's credit quality does not get replaced by automation. What automation replaces is the weeks of document chasing that sit between a signed term sheet and a complete credit file.
 
@@ -1466,6 +1761,15 @@ Optus Bank holds a CDFI certification from the US Treasury, which means a substa
 
 The asset growth from $130M to $250M over three years is meaningful. In absolute terms, it is a small bank. In mission terms, it represents a doubling of the lending capacity directed at underserved Columbia-area borrowers. Getting to $500M, which appears to be the bank's medium-term target based on its strategic communications, would require sustaining that growth rate while managing the operational complexity that comes with scale.
 
+:::pullquote
+In mission terms, it represents a doubling of the lending capacity directed at underserved Columbia-area borrowers.
+:::
+
+:::stat
+**$250M**
+Optus Bank's current asset size after doubling from $130M in three years, making it South Carolina's only Black-owned CDFI bank at this scale.
+:::
+
 ## The CDFI Borrower Documentation Problem
 
 Here is the operational reality that most CDFI bank commentary overlooks.
@@ -1485,6 +1789,10 @@ Optus Bank's growth trajectory creates a tension that is familiar to any CDFI in
 The banks that have resolved this tension successfully are the ones that adopted digital income and asset verification early, before the throughput problem became a headcount problem. Not because digital verification makes the credit decision easier, but because it makes the document collection step dramatically faster and less prone to the errors and delays that come from manual aggregation.
 
 For a CDFI bank, there is an additional equity argument for digital verification. A borrower applying at Optus Bank for a mortgage on a $175,000 home in Eau Claire should not have to wait five weeks for document collection when a borrower applying at a conventional lender for a $450,000 home in Forest Acres gets a digital income pull in two days. The speed disparity is not the borrower's fault. It is a function of the verification infrastructure available to the lender. CDFI banks that deploy the same verification tools that conventional lenders use eliminate that disparity without compromising the underwriting rigor that protects the bank's credit quality.
+
+:::pullquote
+CDFI banks that deploy the same verification tools that conventional lenders use eliminate that disparity without compromising the underwriting rigor that protects the bank's credit quality.
+:::
 
 ## What Getting to $500M Requires
 
@@ -1522,6 +1830,11 @@ That is not a sustainable combination.
 At the current pace, loan officers at Beacon's six Mount Pleasant locations are processing a rising volume of mortgage and commercial files with no automated income verification, no employment verification tools, and no borrower self-service intake. Every new application begins with a call to 843-936-5100. Every document arrives via email or fax. Every income check involves a human chasing a pay stub or dialing an HR department.
 
 This is the throughput ceiling. It is not visible on the call report yet. But at $80 million a quarter in new originations, it is coming.
+
+:::stat
+**$80 million**
+New originations every 90 days at Beacon, processed through a manual intake model with no automated income or employment verification and no borrower self-service portal.
+:::
 
 ## The Borrower Profile Beacon Is Facing
 
@@ -1571,6 +1884,10 @@ The question is whether the origination infrastructure can keep pace with the ma
 
 Banks that solve that problem with technology, connecting the right data sources in the right sequence automatically, keep compounding. Banks that solve it with headcount eventually hit a margin wall. The Charleston market is going to deliver borrowers either way. How fast Beacon can turn an application into a closed loan will determine how much of that flow stays in-house versus leaks to lenders who answer with a link instead of a phone number.
 
+:::pullquote
+The $972 million loan book is the easy part. The next $400 million is where verification speed becomes the product.
+:::
+
 The $972 million loan book is the easy part. The next $400 million is where verification speed becomes the product.
     `,
   },
@@ -1592,6 +1909,10 @@ ROA of 1.07% for fiscal year 2025. Net interest margin of 3.54%. Efficiency rati
 
 The efficiency ratio is worth sitting with. The community bank average runs around 60-65%. First Palmetto is spending 53 cents to make every revenue dollar, a full dime cheaper per dollar than the typical peer. That's not a fluke. It reflects disciplined staffing, a clean loan book, and a management culture that doesn't chase growth it can't underwrite.
 
+:::pullquote
+First Palmetto is spending 53 cents to make every revenue dollar, a full dime cheaper per dollar than the typical peer.
+:::
+
 The footprint is genuinely diverse. First Palmetto's 22 offices span the Midlands (Camden, Columbia, Lugoff, Lexington), the Lowcountry (Mount Pleasant, Summerville), the Pee Dee (Darlington, Manning, Bishopville), four Grand Strand locations (Myrtle Beach, Surfside Beach, Little River, Loris), and Upstate markets including Greenville. That's five distinct South Carolina economies under one charter. Camden, where the bank is headquartered, is a quiet Midlands city with a manufacturing and agricultural base. Myrtle Beach is a different story entirely.
 
 **The bank has been independent since 1904.** No holding company. No M&A activity. No private equity backstory. Just 120 years of relationship banking from the same city.
@@ -1609,6 +1930,11 @@ This is a deliberate model. First Palmetto built its franchise on knowing borrow
 The problem is what the approach costs in competitive markets at volume.
 
 Each of those 511 files required someone on staff to chase pay stubs, W-2s, bank statements, employer confirmations, and IRS transcripts. At the industry average of 10-14 staff hours per mortgage file for document collection and income verification, that's somewhere between 5,100 and 7,100 staff hours a year spent gathering information that already exists in the borrower's bank accounts and payroll records. The information problem is solved. The connection to it isn't.
+
+:::stat
+**5,100 to 7,100**
+Staff hours First Palmetto spends annually on mortgage document collection and income verification across its 511-loan pipeline.
+:::
 
 ## The Grand Strand Volume Problem
 
@@ -1637,6 +1963,10 @@ Bank-level asset verification and business income confirmation that runs in minu
 The Camden headquarters, the Newsweek recognition, the CLIMB Fund partnership, the pristine efficiency ratio: all of it reflects an institution that has made thoughtful decisions for a long time.
 
 The absence of a digital mortgage application in 2026 is also a decision. It's defensible from a relationship-banking philosophy. It's expensive from an operational standpoint. And it's a real risk in the four counties where First Palmetto's growth opportunity is largest.
+
+:::pullquote
+The absence of a digital mortgage application in 2026 is also a decision.
+:::
 
 No job postings for technology or digital roles appear on the bank's site as of mid-2026. No fintech partnership is disclosed. The current digital infrastructure (Zelle, mobile deposit, contactless payments) is payment rails, not origination infrastructure.
 
@@ -1691,6 +2021,11 @@ Here is the number that stands out most on the balance sheet.
 
 Queensborough's non-residential real estate exposure hit $477 million as of Q1 2026. That is the single largest loan category, representing over 35% of total loans. The bank holds Commercial Lending Specialization status from the FDIC, meaning CRE and C&I are the core business, not a side product.
 
+:::stat
+**$477M**
+Queensborough's non-residential real estate book as of Q1 2026, the single largest loan category at over 35% of total loans, all flowing through a commercial intake process with no online application.
+:::
+
 Go to the commercial banking page on qnbtrust.bank. There is no online application. The page directs all inquiries to a branch visit or a phone call.
 
 That is not unusual for a community bank. It is the standard approach. But consider what it means operationally: every commercial borrower in the CSRA (Central Savannah River Area) who wants a loan from Queensborough starts the process by driving to a branch or picking up a phone. Then they spend hours, sometimes days, assembling tax returns, business bank statements, rent rolls, and entity documents. The underwriting team re-keys those documents. Someone chases the missing ones.
@@ -1708,6 +2043,10 @@ The question now is whether the lending intake process can keep pace with two co
 A bank that can offer a rural borrower in Sylvania the same speed of income and asset verification that Rocket Mortgage offers a borrower in suburban Augusta is not just competing on relationships anymore. It is competing on capability. The local decision-making stays local. The lender relationship stays intact. But the bottleneck that makes community banks look slow relative to digital lenders disappears.
 
 For a 453-mortgage, $477M-commercial-book institution operating across a 150-mile corridor, the arithmetic is straightforward. Every verified file that moves faster is capacity recovered. Every VA loan that closes before a competing digital lender gets the call is market share retained. And every commercial borrower who does not have to drive to a branch to start a loan application is a relationship that does not have the opportunity to end up somewhere else.
+
+:::pullquote
+Every VA loan that closes before a competing digital lender gets the call is market share retained.
+:::
 
 Queensborough has been built to last. The next phase is built to move.
     `,
@@ -1730,6 +2069,11 @@ Southern Bank and Trust Company is the banking subsidiary of Southern BancShares
 
 The Q1 2026 numbers: ROA of 0.89% on $11.7 million in quarterly net income. Efficiency ratio of 53.23%. Net loans of $3.44 billion. Those are solid numbers for a bank operating in one of the less economically dynamic corners of the American Southeast.
 
+:::stat
+**53.23%**
+Southern Bank's Q1 2026 efficiency ratio, trending down from the mid-50s, on a 57-branch footprint spanning three distinct borrower economies.
+:::
+
 Full year 2025 was stronger: ROA of approximately 1.17%, full-year net income approaching $60 million, and an efficiency ratio trending from the mid-50s toward the low 50s. The fourth quarter of 2025 showed ROA of 1.19%, consistent with a well-run institution operating near the top of its performance range. For a bank this size, in this geography, those numbers represent genuine execution.
 
 ## Eastern Carolina
@@ -1743,6 +2087,10 @@ Wayne County is also classified as one of North Carolina's most economically dis
 But Southern Bank's footprint is not just Wayne County. Their branches run from the tobacco-and-hog-farming interior (Duplin County, Lenoir County, Wilson County) to the coast. The Kill Devil Hills branch sits in Dare County, home of the Outer Banks. These are markets with entirely different borrower profiles: agricultural businesses with seasonal income cycles in the west, military families rotating through Goldsboro in the center, vacation property investors and hospitality workers on the coast.
 
 That geographic complexity is not a liability if you can price and verify it correctly. It becomes a liability when your verification stack treats a crop-year-end payment from a Duplin County pork farmer the same as a Dare County beach house mortgage.
+
+:::pullquote
+That geographic complexity is not a liability if you can price and verify it correctly.
+:::
 
 ## What 57 Branches Means in Practice
 
@@ -1761,6 +2109,10 @@ The C&I book runs at $246 million. Agricultural loans are $39.6 million, less th
 Sondra McCorquodale joined Southern Bank as Executive Vice President and Chief Digital Officer. She came from First Citizens Bank, where she built digital experience as that institution grew into a $220 billion bank after its Silicon Valley Bank acquisition. Before First Citizens, she was at RBC Bank. She completed the LSU Graduate School of Banking program in 2016.
 
 The CDO title at a $5 billion eastern North Carolina bank is not a vanity appointment. Southern Bank is not a startup looking for a press release. The hire signals a specific thesis: that the next phase of growth at a 125-year-old institution requires a systematic upgrade to how borrowers move through the lending process, not just a better mobile app.
+
+:::pullquote
+The CDO title at a $5 billion eastern North Carolina bank is not a vanity appointment.
+:::
 
 The question McCorquodale is working through is how to modernize the intake layer across 57 branches serving three distinct borrower economies without dismantling what has worked for 125 years. That is a harder problem than the hire makes it sound.
 
@@ -1811,9 +2163,18 @@ You need a government-issued photo ID, your Social Security number, an initial d
 
 It is thorough. It is relationship-oriented. It is also 45 minutes when your competitor does it in two.
 
+:::pullquote
+It is thorough. It is relationship-oriented. It is also 45 minutes when your competitor does it in two.
+:::
+
 The digital version is theoretically faster. In practice, 67% of community bank digital account applications are abandoned before completion. On mobile, that number is 92%. Customers hit a friction point (document upload, video verification, initial deposit transfer) and leave. Most never come back.
 
 Only 20% of community bank checking accounts originate online, despite 31% year-over-year growth in digital openings. The growth is real. The base is still small.
+
+:::stat
+**92%**
+The mobile abandonment rate for community bank digital account opening flows — the share of customers who start an application on their phone and never finish it.
+:::
 
 ## The CFPB File
 
@@ -1834,6 +2195,10 @@ Fifty-two percent of consumers say they are open to switching banks in the next 
 The average checking customer now holds accounts at three different institutions. Primary bank, high-yield savings somewhere else, maybe a fintech account for a specific purpose. The concept of a single banking relationship is eroding faster than most community bankers want to believe.
 
 The top driver of switching? Mobile banking capability, cited by 36% of switchers. Not rate. Not fees. The phone.
+
+:::pullquote
+The top driver of switching? Mobile banking capability, cited by 36% of switchers. Not rate. Not fees. The phone.
+:::
 
 ## What Can Actually Be Fixed
 
@@ -1864,9 +2229,18 @@ ROA of 1.25%. ROE of 14.53%. NIM of 3.77%, up 28 basis points year-over-year. Ne
 
 These are not the numbers of a bank hunkering down in a challenging market. They are the numbers of a bank performing near the top of the South Carolina community bank peer group.
 
+:::pullquote
+These are not the numbers of a bank hunkering down in a challenging market. They are the numbers of a bank performing near the top of the South Carolina community bank peer group.
+:::
+
 First Reliance was founded in 1999, making it 27 years old, a relative newcomer compared to the 90-year-old institutions that dominate these profiles. $1.12 billion in total assets. Nine South Carolina branches. Loan book of $801 million, growing at 10.9% annualized in Q1. The loan mix skews heavily commercial: CRE is 59% of the book, consumer real estate another 30%, C&I 9%.
 
 The NIM expansion is the number worth sitting with. Going from 3.49% to 3.77% in a year, in a rate environment where most community banks are fighting to hold margin flat, says something about how the bank is pricing its book.
+
+:::stat
+**113%**
+Net income growth year-over-year at First Reliance in Q1 2026, posted while Florence unemployment climbed to 6.0% and the city's flagship battery plant sat half-built and on hold.
+:::
 
 ## What Happened to the Battery Plant
 
@@ -1878,6 +2252,11 @@ Then 2025 arrived. Federal EV policy shifted. Tariffs complicated the supply cha
 
 Only about 200 of the promised 1,620 jobs have been hired. The full expansion, a separate $1.5 billion second facility, is completely paused.
 
+:::stat
+**200**
+Jobs actually hired at the AESC Florence battery plant out of the 1,620 promised, with the full second-facility expansion completely paused and the remaining hiring contingent on a recovery that could take years.
+:::
+
 Construction has technically restarted, and officials say major hiring could resume within 8-12 months. But "could resume within 8-12 months" is a sentence that requires a certain amount of faith to bank on.
 
 ## How First Reliance Stopped Depending on Florence
@@ -1887,6 +2266,10 @@ Here is the thing: First Reliance does not look like a bank waiting on a battery
 They have branches in Greenville, Mount Pleasant, Myrtle Beach, Columbia, Lexington, Simpsonville, and West Columbia. Florence is home base, with two branches there. But the loan production across those other markets is what is driving the 10.9% annualized growth. Greenville and the Charleston suburbs are among the strongest commercial real estate markets in the Southeast. Myrtle Beach is a deposit machine.
 
 A bank founded in Florence in 1999 quietly built a statewide footprint over 25 years. Rick Saunders, who started First Reliance and still runs it as CEO, has a line for why: "Every time we grow, the money comes back to Florence County." That decision looks smart right now.
+
+:::pullquote
+A bank founded in Florence in 1999 quietly built a statewide footprint over 25 years.
+:::
 
 The CRE concentration (59% of the loan book) is worth watching in any environment, but the quality numbers are clean. $2.1 million in nonperforming assets on a $1.12 billion balance sheet is effectively nothing. An allowance coverage ratio of 1.14% against that NPA level means the reserve is conservatively set relative to actual stress.
 
@@ -1933,6 +2316,10 @@ South Georgia agriculture is having a hard stretch. Peanut growers are losing mo
 
 The irony is that peanuts used to be the safe bet. Georgia produces roughly half of the U.S. peanut crop. Fitzgerald sits in the middle of it. Colony built its first decades on agricultural lending to exactly these farmers, so a multi-year cost-price squeeze in the sector isn't a distant macro story. It's a balance sheet question.
 
+:::pullquote
+The irony is that peanuts used to be the safe bet.
+:::
+
 The bright spot is poultry. Georgia's broiler industry generated $6.09 billion in cash receipts, and that part of the ag economy is running fine. Colony's agricultural credit quality has so far stayed clean: net charge-offs in Q1 2026 came in at $315,000, or 5 basis points annualized. NPL coverage sits at 122%. Nonaccruals are declining quarter over quarter.
 
 Clean numbers. But the farm squeeze is ongoing, and cost-price pressure that runs for multiple years eventually shows up somewhere.
@@ -1953,7 +2340,16 @@ Here is where the story gets interesting.
 
 Colony's wealth management division hit $555 million in assets under management, triple where it was a year ago. Their insurance business had a record quarter. Mortgage pretax income was up 7x year-over-year, off a low base but still a real move.
 
+:::stat
+**$555M**
+Assets under management in Colony's wealth division, up 3x in a single year.
+:::
+
 Non-interest income is the metric that separates banks with a plan from banks running on rate tailwinds. At 3.48%, Colony's NIM is healthy but not exceptional for a bank its size. The fee income growth is the signal that management is deliberately reshaping the revenue mix.
+
+:::pullquote
+Tripling AUM in a year doesn't happen by accident.
+:::
 
 Tripling AUM in a year doesn't happen by accident. It requires hiring advisors, building a platform, and convincing existing deposit customers to bring their investment relationships to the bank. That Colony has done it while simultaneously integrating an acquisition and managing agricultural stress suggests real execution capacity.
 
@@ -2000,6 +2396,11 @@ Then there's the capital ratio: 20.23% Tier 1 risk-based. Nearly double the regu
 
 The OREO line (other real estate owned, the catch-all for properties a bank has had to take back from borrowers) is zero. No foreclosures. No watch flags. For a community bank whose footprint includes counties with unemployment above 5%, that's not luck. That's underwriting.
 
+:::stat
+**1.68%**
+Carolina Bank & Trust's return on assets, clearing the community bank average of roughly 1.32% by a comfortable margin while running a 44.86% efficiency ratio and zero foreclosed real estate.
+:::
+
 ## Darlington's Hard Year
 
 Darlington County has had a rough stretch. Unemployment hit 5.5% in mid-2025, ticking up as Canfor, the Canadian timber giant, announced it was closing its local sawmill for good. The company had posted a $942 million operating loss in 2024. About 120 jobs disappeared.
@@ -2009,6 +2410,10 @@ This kind of event ripples. A sawmill doesn't just employ sawyers. It employs th
 Carolina Bank operates right in the middle of this. Lamar is in Darlington County. Their customers include the kind of small businesses and households that feel a mill closure in their cash flow months before it shows up in any economic data.
 
 The fact that their loan book looks pristine anyway says something.
+
+:::pullquote
+The fact that their loan book looks pristine anyway says something.
+:::
 
 ## Florence and the Battery Bet
 
@@ -2042,6 +2447,10 @@ That kind of knowledge doesn't show up on a call report. But the results do.
 
 Banks that navigate economic transitions well aren't always the ones with the slickest technology or the largest balance sheets. They're the ones that can distinguish between a borrower who's temporarily stressed and one who's structurally impaired. In a region where both types exist in the same zip code, that's the whole game.
 
+:::pullquote
+Banks that navigate economic transitions well aren't always the ones with the slickest technology or the largest balance sheets.
+:::
+
 The $0 OREO line is the evidence. Carolina Bank is playing it right.
     `,
   },
@@ -2054,6 +2463,11 @@ The $0 OREO line is the evidence. Carolina Bank is playing it right.
 Independent mortgage banks now originate 84.1% of all U.S. single-family mortgages. Banks held that market. They gave it away, one slow VOE call at a time.
 
 The number that explains the shift isn't the interest rate or the loan limit. It's 22. That's how many days Rocket Mortgage takes to close, on average, against an industry average of 42 (ICE Mortgage Technology, June 2025). The gap isn't marketing. It's process. And the process difference is specific enough to walk through step by step.
+
+:::stat
+**22 days**
+Rocket Mortgage's average time to close, against an industry average of 42 days — a 20-day gap built entirely out of process decisions, not rate advantages.
+:::
 
 ## What Rocket actually does
 
@@ -2093,6 +2507,10 @@ Freddie Mac's 2024 Cost to Originate study found that lenders fully adopting its
 
 The piece that doesn't require a technology overhaul is verification. VOE by phone call is a policy choice, not a technical constraint. The Work Number covers the majority of employed borrowers. Automated income verification through bank data connectivity is Fannie DU-certified. The community bank that wires these into its existing process captures most of the time savings without replacing its LOS, its underwriting team, or its relationships.
 
+:::pullquote
+Twenty days isn't magic. It's the sum of several verifications that take seconds instead of days, an appraisal that doesn't happen at all on half of refinances, and a document collection process that runs in parallel instead of serially.
+:::
+
 Twenty days isn't magic. It's the sum of several verifications that take seconds instead of days, an appraisal that doesn't happen at all on half of refinances, and a document collection process that runs in parallel instead of serially. The gap closes from the bottom up, one step at a time, and the first step is the easiest one to take.
     `,
   },
@@ -2105,6 +2523,11 @@ Twenty days isn't magic. It's the sum of several verifications that take seconds
 Coastal States Bank holds more deposits in Beaufort County than Wells Fargo. More than Bank of America. More than SouthState, Truist, or TD. And the loan book behind that #1 hometown franchise is, to a degree that surprises almost everyone who looks, made of boats.
 
 Marine vessels are 18.9% of total loans. Senior housing is another 15.6%. The "island bank" on Hilton Head is actually a national specialty lender that happens to dominate one of the wealthiest retirement markets in America.
+
+:::stat
+**18.9%**
+Marine vessels make up nearly one-fifth of Coastal States Bank's total loan book, more than residential mortgages.
+:::
 
 ## From recapitalization to the NYSE in eight years
 
@@ -2133,6 +2556,10 @@ But the growth-mode costs are visible too. ROE has come down from 15.9% in 2023 
 One number stands out in the HMDA data: 42.
 
 That's how many reportable mortgages Coastal States originated in 2024, roughly $51 million, in a market where the typical Hilton Head home is worth $704,740 (up 4.6% in a year) and Bluffton is up 6.8%. Next door, Jasper County was the single fastest-growing county in the United States last year. Beaufort County's growth is carried entirely by in-migration; the largest age cohort is 70 to 74.
+
+:::pullquote
+The 12.4% residential share isn't an oversight. It's the strategy.
+:::
 
 The 12.4% residential share isn't an oversight. It's the strategy. Residential mortgage is a low-margin, high-friction product, and the bank's capital earns more in marine vessels and senior housing. Most of its mortgage-adjacent exposure runs through warehouse lines to mortgage bankers instead: lending to the lenders rather than the borrowers.
 
@@ -2177,6 +2604,11 @@ Here's the stat that should make larger competitors uncomfortable. In Oconee Cou
 
 Wells Fargo is second at $261.6 million. Truist holds $161.9 million. Bank of America, with all its national advertising muscle, manages $106.2 million.
 
+:::stat
+**22.3%**
+Oconee Federal's deposit market share in Oconee County — the #1 position, ahead of Wells Fargo, Truist, and Bank of America.
+:::
+
 A century-old savings and loan, with a product menu you could fit on an index card, out-gathers three of the four largest banks in America on its home turf. Deposit franchises like this are why community banking still works. They're also nearly impossible to build from scratch, which is why the bank's $560.6 million in total deposits (up from $486.5 million at the end of 2023) is the asset that matters most on its balance sheet.
 
 And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 58 consecutive quarters, every quarter since December 2011.
@@ -2204,6 +2636,10 @@ None of this threatens a bank with 12.4% capital. It does mean the next leg of g
 Oconee Federal's recovery is a balance sheet story with a happy ending. The franchise, the deposits, the capital, the patience: all of it is real, and most banks would trade for it.
 
 What time alone can't fix is the front of the house. The retirees relocating to Keowee are selling homes through digital-first lenders, wiring proceeds through apps, and arriving with expectations set by whoever closed their last mortgage in three weeks. A bank can dominate county deposits for a century and still lose the next loan to a lender that verifies income in an afternoon instead of a week.
+
+:::pullquote
+A bank can dominate county deposits for a century and still lose the next loan to a lender that verifies income in an afternoon instead of a week.
+:::
 
 The banks that hold positions like Oconee Federal's have already won the hard part. The remaining gap, the one between a great balance sheet and a great borrower experience, is the most closable problem in community banking. The ones that close it get to keep compounding for another hundred years.
 
@@ -2245,6 +2681,11 @@ Banks headquartered in markets like this are supposed to struggle too. Deposit p
 
 Arthur State Bank is running a 4.44% net interest margin. The industry average for community banks right now is around 3.36%. The gap between those two numbers, sustained over $825 million in assets, is the difference between a bank that's grinding and one that's compounding.
 
+:::stat
+**4.44%**
+Arthur State Bank's net interest margin, against a community bank industry average of 3.36% — a 108 basis point edge sustained over $825 million in assets out of one of South Carolina's most economically stressed counties.
+:::
+
 How do you run a 4.44% NIM out of Union, South Carolina? Two reasons.
 
 First, they portfolio-lend. Half the loan book (50.4%) is residential mortgage, and rather than selling those loans into the secondary market, Arthur State keeps them. That means the yield stays on their balance sheet instead of being passed through to Fannie Mae. It also means they're making relationship-based credit decisions rather than conforming to GSE guidelines on every file. A borrower with a complex income history who has kept a checking account at Arthur State for fifteen years gets a fair look. A big bank's algorithm says no.
@@ -2258,6 +2699,11 @@ Arthur State Bank's 18 branches don't cluster around Union. They spread across S
 Greenville-Spartanburg is one of the ten fastest-growing metro areas in the country for the second consecutive year. The region added more than 10,500 residents between July 2023 and July 2024 alone. BMW's Spartanburg plant employs 11,000 people and is opening a $1.7 billion EV battery facility in 2026. Woodward just committed $200 million to a new aerospace components plant in Spartanburg. Michelin, Boeing, GE, and Lockheed Martin all have significant operations in the corridor.
 
 South Carolina's GDP grew at 3.5% year-over-year in Q3 2025, the fastest rate in the nation. The Upstate is driving most of that.
+
+:::stat
+**10,500**
+Residents added to the Greenville-Spartanburg metro in a single year, making it one of the ten fastest-growing metros in the country and the primary driver behind Arthur State Bank's residential mortgage concentration strategy.
+:::
 
 A bank with roots in declining Union County but branches throughout that growth corridor is quietly positioned in one of the best lending environments in the Southeast. The residential mortgage concentration starts to make more sense when you realize the collateral is increasingly located in a market where median home prices are $397,600 and rising 4.1% year-over-year.
 
@@ -2311,6 +2757,11 @@ That's not a knock on community banks. It's a description of what happens when o
 
 The personal loan market is at a record $277 billion in outstanding balances as of Q1 2026, up 21.7% year-over-year. Affirm alone processed $10.8 billion in loan volume in a single quarter, growing 42% from the prior year. They just turned profitable. Their average customer takes out 6.1 loans per year across the platform.
 
+:::stat
+**$277B**
+Outstanding personal loan balances as of Q1 2026, up 21.7% year-over-year — a market that largely didn't exist at this scale a decade ago.
+:::
+
 Community banks are watching this happen from the sidelines.
 
 ## How Affirm Actually Works
@@ -2363,6 +2814,11 @@ Affirm has 24 million active borrowers averaging 6 loans a year because they sho
 
 The cost math matters too. Affirm's scale allows it to originate at a fraction of a community bank's per-loan cost. Banks that have digitized their consumer lending can get origination costs down to $60-80 per loan from $200-300, but most community banks haven't made that investment.
 
+:::stat
+**$60-80**
+Per-loan origination cost for digitized community banks, versus $200-300 for traditional manual processes — a gap that compounds across every loan in the book.
+:::
+
 ## What Community Banks Can Actually Do
 
 The answer is not to out-Affirm Affirm. Community banks cannot build real-time ML underwriting at checkout in a reasonable timeframe or budget.
@@ -2404,6 +2860,11 @@ Let's be direct about what investors are buying.
 
 SpaceX is the most straightforward of the three. Revenue of $18.7 billion in 2025, up 33% year-over-year. Starlink generates $11.4 billion of that, with $4.4 billion in operating profit. The company lost $4.94 billion net last year, a swing from a $791 million profit in 2024, largely due to Starship development costs. There's a real business here, with a real moat, in a sector (aerospace and satellite internet) that is genuinely hard to replicate.
 
+:::stat
+**$18.7 billion**
+SpaceX's 2025 revenue, up 33% year-over-year, with Starlink alone generating $11.4 billion and $4.4 billion in operating profit.
+:::
+
 OpenAI and Anthropic are a different animal. OpenAI is targeting a $60 billion raise at an $852 billion valuation, with 2025 revenues of roughly $20 billion and a projected $14 billion net loss in 2026. Anthropic's annualized revenue run rate is about $47 billion (up from $10 billion a year ago), but the company has never disclosed a path to profitability.
 
 These are not valuations grounded in discounted cash flows. They are bets on category dominance in a technology that may be the most consequential since the internet. That's not irrational. It is, however, a different kind of risk than buying into a company that makes rockets and sells broadband.
@@ -2413,6 +2874,11 @@ These are not valuations grounded in discounted cash flows. They are bets on cat
 The underwriting fees are the visible part. The scarier number is on the loan book.
 
 US banks have committed $450 billion in AI-related lending, representing roughly 25% of aggregate Tier 1 capital for participating banks. That's an 80% surge over the past year. The commitments are largely undrawn, meaning actual drawn AI loans represent only about 0.8% of total bank assets today. But committed facilities convert fast when a borrower needs liquidity.
+
+:::stat
+**$450 billion**
+US bank commitments to AI-related lending, representing 25% of participating banks' aggregate Tier 1 capital — an 80% surge in a single year.
+:::
 
 The Chicago Fed has flagged this explicitly: prolonged high interest rates could trigger massive losses if committed facilities get drawn during adverse conditions. The St. Louis Fed noted that AI investment contributed 39% of US GDP growth in 2025, a higher share than tech contributed at the peak of the dot-com bubble in 2000 (28%).
 
@@ -2484,6 +2950,11 @@ The industry average NIM for community banks is around 3.3%. Most banks would co
 
 Full-year 2025 net income: $29 million. Record.
 
+:::stat
+**6.1%**
+Anderson Brothers' net interest margin, nearly double the community bank industry average of 3.3%.
+:::
+
 To put that in context, the bank had $500 million in total assets in 2015. Today it has $2.19 billion. That's 16% compounded annual growth over a decade, and not a single acquisition since buying Anderson State Bank in Hemingway in 2000. Every dollar of growth has come the hard way.
 
 How does a community bank in rural South Carolina generate margins that would make most regional bank CFOs do a double-take? Two things: what they lend, and who they fund it with.
@@ -2511,6 +2982,11 @@ Consumer loans represent 28.5% of the loan book, a notably high share for a bank
 The math works because the yield on non-prime auto more than compensates for the higher loss rate, especially when you're funding it with 60%-market-share rural deposits. Anderson Brothers is essentially running a carry trade that most community banks either can't execute or won't touch. They've been doing it long enough to manage the cycle.
 
 Credit quality across the full book is clean. Non-current loans sit at 0.52% of the portfolio. The Texas Ratio (a measure of problem assets relative to capital and reserves) is 4.16%. Any figure below 10% is considered healthy. The loan loss reserve covers non-current loans at 338%. These are not the numbers of a bank taking reckless risk.
+
+:::stat
+**338%**
+Anderson Brothers' loan loss reserve covers non-current loans at more than triple the balance, signaling a conservative credit cushion despite the higher-yield non-prime book.
+:::
 
 ## Six Years, Eleven Spots
 
@@ -2601,6 +3077,11 @@ For self-employed borrowers, add a year-to-date profit and loss statement to the
 
 **Total income verification cost per mortgage file:** IRS transcript ($40+ per order, plus resubmission costs), Work Number ($55–280 depending on borrower count and timing), staff time for manual calls and document chasing. The average cost to originate a mortgage was approximately $11,800 in Q2 2025. Income verification is not a trivial line item.
 
+:::stat
+**$11,800**
+The average cost to originate a mortgage in Q2 2025 — income verification alone can consume hundreds of dollars of that total through The Work Number and IRS transcript fees.
+:::
+
 ## The Step-by-Step Comparison
 
 Here's the same borrower moving through both systems.
@@ -2640,6 +3121,10 @@ Fintechs serving non-GSE loan categories have walked away from that infrastructu
 The mortgage market is more constrained by GSE requirements, but even there, Plaid's Fannie DU certification means a bank could offer a genuinely faster pre-qualification experience by pulling bank income data upfront, before the full application stack starts, reducing borrower churn during the wait.
 
 The verification delay is not an immutable fact of lending. It's a product of infrastructure built on top of institutions (a credit bureau, the IRS) that did not design their systems around lender speed. The data already exists in the borrower's bank account. How long lenders pay a premium to access it the slow way is increasingly a choice.
+
+:::pullquote
+The verification delay is not an immutable fact of lending. It's a product of infrastructure built on top of institutions that did not design their systems around lender speed.
+:::
     `,
   },
   'southern-first-bank-upstate-sc-bet': {
@@ -2685,6 +3170,11 @@ Migration doesn't happen in a vacuum. People follow jobs, and the Upstate has be
 
 BMW's plant in Spartanburg is already the largest BMW Group facility in the world by production volume. Now they're doubling down. A $1.7 billion investment in EV production, plus a new battery plant in Woodruff set to open in 2026, will bring hundreds more jobs online in Southern First's backyard. The annual economic impact of the BMW operation alone totals approximately $26.7 billion across South Carolina, per a University of South Carolina study.
 
+:::stat
+**$1.7 billion**
+BMW's EV production investment in Spartanburg, landing in Southern First's primary lending territory and anchoring the industrial job growth that drives the bank's residential and commercial loan demand.
+:::
+
 Spartanburg County landed $3.5 billion in total new investment last year across 20 projects. Greenville's development arm secured $725 million in new capital and 1,293 jobs. The region now hosts 508 foreign companies from 38 countries, drawn by the BMW supplier ecosystem, Michelin, Boeing, GE, Lockheed Martin, and a manufacturing base that keeps expanding.
 
 When a bank's loan book is 44% commercial real estate and 30% consumer real estate, this is the environment you want to be operating in. Rising incomes, population inflows, new commercial construction, and homebuyers who came from markets where $312,000 felt like a deal.
@@ -2710,6 +3200,10 @@ Inventory is up 28.2% year-over-year. Days on market climbed to 71, up from 62 a
 The honest read is that Southern First's credit quality has benefited from a rising-tide market. Borrowers who got in trouble could sell. Collateral values held. That cushion is thinner now. Not gone, just thinner.
 
 The BMW battery plant opens next year. Migration is still running at 30 people a day. The industrial investment pipeline is full. Those are real tailwinds and Art Seaver has been navigating this market long enough to know the difference between a headwind and a speed bump.
+
+:::pullquote
+For now, the numbers say this is a bank that has earned the right to be optimistic.
+:::
 
 For now, the numbers say this is a bank that has earned the right to be optimistic.
 
@@ -2737,6 +3231,11 @@ Your bank's residential mortgage portfolio is probably showing sound credit qual
 This isn't a broad-based mortgage collapse. It's surgical. Almost all of it is concentrated in one loan type: FHA.
 
 As of March 2026, **11.6% of FHA borrowers were delinquent.** FHA loans now account for **55% of all seriously delinquent mortgages** in the country, despite being a fraction of total outstanding balances.
+
+:::stat
+**11.6%**
+Share of FHA borrowers delinquent as of March 2026 — and FHA loans now represent 55% of all seriously delinquent mortgages in the country.
+:::
 
 Community banks mostly originate conventional conforming loans. Stronger borrower profiles. Better coverage ratios. So your call report looks fine. The Fed's May 2026 Financial Stability Report says residential mortgage delinquencies at commercial banks "remained historically low." The FDIC's 2026 Risk Review agrees: credit quality in residential portfolios is "relatively sound."
 
@@ -2833,6 +3332,11 @@ That's a 7% margin on a process that takes six weeks and involves dozens of manu
 
 At $11,094 per origination across a 42-day cycle, the daily carrying cost of an in-process loan is roughly $264. Every day a file sits waiting for a document is a day that cost accrues. Multiply that by your pipeline volume and the number gets uncomfortable fast.
 
+:::stat
+**$264**
+The daily carrying cost of an in-process mortgage loan, based on $11,094 average origination cost spread across a 42-day cycle.
+:::
+
 ## The Abandonment Problem
 
 Here's where the cost becomes invisible — because it's the loans you never close.
@@ -2864,6 +3368,11 @@ In a 42-day process with dozens of moving parts, most borrowers end up calling. 
 While community banks are managing 42-day timelines, a different class of lender has rewritten the math.
 
 **Figure** approves HELOCs in 5 minutes and funds in 5 days. Their cost per loan is $730 — against an industry average of $11,230. That's a 15x cost advantage, and it drove $340.9 million in net revenue in 2024, up 62.7% year-over-year. They IPO'd at a $5.29 billion valuation.
+
+:::stat
+**$730**
+Figure's cost per loan origination, versus the $11,230 industry average — a 15x cost advantage built entirely on automated verification pipelines.
+:::
 
 **Better.com** issues mortgage commitment letters in 24 hours and closes HELOCs in 3 days. Their HELOC volume grew 416% year-over-year in Q4 2024.
 
@@ -2942,6 +3451,11 @@ The financial impact of this technology gap is stark.
 
 Figure originates loans at a cost of $730 each. The industry average, according to the MBA, is $11,230. That is a 15x cost advantage — not because Figure pays its employees less or cuts corners on compliance, but because automation eliminates the manual labor that drives origination cost.
 
+:::stat
+**$730**
+Figure's cost to originate a loan, versus the MBA industry average of $11,230 — a 15x gap driven entirely by automated verification.
+:::
+
 Figure generated $340.9 million in net revenue in 2024, up 62.7% year-over-year, and IPO'd at a $5.29 billion valuation. That valuation wasn't built on a better marketing campaign. It was built on a cost structure that traditional lenders cannot match with manual processes.
 
 At the MBA's reported average of $11,094 per mortgage origination and $785 in profit per loan, community banks are running on a 7% margin for a process that takes six weeks. Figure runs on a fraction of the cost with a process that takes days. The math is not subtle.
@@ -2971,6 +3485,10 @@ That gap — between preference and behavior — is the entire opportunity. Smal
 The same dynamic plays out in consumer lending. Borrowers don't leave community banks because they dislike them. They leave because someone else gave them an answer faster. According to J.D. Power, 48% of consumers who experience digital friction in a financial interaction take their business to a competitor.
 
 Community banks don't have a demand problem. They have a speed problem. And speed, unlike brand affinity or market presence, is a solvable engineering challenge.
+
+:::pullquote
+Community banks don't have a demand problem. They have a speed problem. And speed, unlike brand affinity or market presence, is a solvable engineering challenge.
+:::
 
 ## What Community Banks Can Do Today
 
@@ -3057,6 +3575,11 @@ Here is what digital lending looks like from the borrower's side at the fintechs
 
 The common thread is not that these companies have superior underwriting judgment. It is that the borrower's experience — the part they see — requires almost nothing from them. Open a link. Connect your bank. Done.
 
+:::stat
+**$730**
+Figure's cost per loan originated in 2024 — versus the $11,230 industry average — achieved by automating the data aggregation and verification work that community banks still do by hand.
+:::
+
 ## Contrast That With the Typical Community Bank Experience
 
 A first-time homebuyer walks into a community bank branch (or more likely, finds the bank's website). Here is what follows:
@@ -3071,6 +3594,10 @@ A first-time homebuyer walks into a community bank branch (or more likely, finds
 - 42 days later — if the loan doesn't fall through — close in person at a title office
 
 Every step in that process is a step where the borrower can abandon. And they do. 68% of mortgage applications started online are never completed (MBA). Among borrowers who experience digital friction, 48% take their business to a competitor (Signicat).
+
+:::pullquote
+For a Gen Z borrower whose baseline expectation was set by Figure and Rocket, this process is not "traditional." It is broken.
+:::
 
 For a Gen Z borrower whose baseline expectation was set by Figure and Rocket, this process is not "traditional." It is broken.
 
@@ -3246,6 +3773,11 @@ Figure Technologies originated roughly $6 billion in home equity products in 202
 
 Their HELOC product approves borrowers in as little as 5 minutes and funds in 5 days. The industry median for a home equity line of credit is 39 days.
 
+:::stat
+**$730**
+Figure's cost per loan — versus the industry average of $11,230. That is a 15:1 cost advantage, driven entirely by automated data aggregation.
+:::
+
 :::pullquote
 Figure's cost per loan: $730. The industry average: $11,230. That's a 15:1 cost advantage — and it doesn't come from blockchain. It comes from automated data.
 :::
@@ -3301,6 +3833,11 @@ Figure's actual moat is the time between "borrower clicks apply" and "lender has
 In a traditional origination, that gap is measured in weeks. The borrower fills out an application. The loan officer requests documents. The borrower gathers pay stubs, tax returns, bank statements. Someone uploads them. Someone else reviews them. Discrepancies trigger re-requests. The underwriter orders a credit report, an appraisal, a title search. Each step involves a queue.
 
 The average mortgage file contains 500 pages of documentation (MBA). Lenders work from checklists with 55 line items. Borrowers submit an average of 16 separate documents per application. The process takes 42 days for a conventional mortgage, 77 days for FHA (ICE Mortgage Technology, 2025).
+
+:::stat
+**500 pages**
+The average mortgage file size, per the MBA — assembled manually, document by document, across a 42-day origination cycle.
+:::
 
 Figure compressed this by replacing document collection with data collection. Instead of asking a borrower to prove their income with uploaded documents, they pull verified income data directly from the source. Instead of ordering an appraisal, they query AVM providers. Instead of running manual KYC checks, they hit identity verification APIs.
 
@@ -3384,6 +3921,11 @@ Pull a credit report. Request pay stubs. Call the employer for verification. Wai
 Each of these steps involves a different system, a different provider, and often a different person. The loan officer toggles between platforms, re-enters data, waits for responses, and chases down discrepancies. Some verifications come back in hours. Others take days. An appraisal can take two weeks.
 
 Meanwhile, the borrower waits. And 68% of mortgage applicants who start this process abandon it before closing. Among borrowers who experience digital friction, 48% take their business to a competitor (J.D. Power, Plaid).
+
+:::stat
+**68%**
+The share of mortgage applicants who abandon the process before closing — not because they stopped wanting a loan, but because the verification workflow drove them away.
+:::
 
 The process is not broken because bankers are slow. It is broken because the workflow requires serial, manual interactions with dozens of systems that were never designed to talk to each other.
 
@@ -3469,6 +4011,10 @@ Pulling data from multiple providers is useful. Cross-referencing it is where th
 RAVEN automatically compares data across sources. When Plaid-verified income aligns with Truework-confirmed salary, the confidence score for income increases. When the Socure-verified address matches the Melissa-confirmed residence with property ownership status, the identity confidence strengthens.
 
 When sources disagree, RAVEN flags the discrepancy. If Plaid shows deposits from Employer A but Truework verifies employment at Employer B, that shows up as a discrepancy in the report — before the loan committee sees the file, not after. If the stated address does not match the verified residence, the loan officer knows immediately.
+
+:::pullquote
+This is the difference between collecting data and verifying data. Traditional processes collect documents and trust that the borrower provided accurate information. RAVEN collects data from authoritative sources and tells the bank where the sources agree and where they do not.
+:::
 
 This is the difference between collecting data and verifying data. Traditional processes collect documents and trust that the borrower provided accurate information. RAVEN collects data from authoritative sources and tells the bank where the sources agree and where they do not.
 
@@ -3736,9 +4282,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <h2>Verification shouldn&apos;t take weeks</h2>
                 <p>
                   RAVEN gives community banks a complete borrower report from one link.
-                  Leave your name and email and we&apos;ll show you how.
+                  Book a 20-minute call and see it live.
                 </p>
-                <InterestForm source="mid-article" />
+                <CalendlyButton source="mid-article" label="Book a Demo Call" buttonClassName="article-mid-cta-btn" />
                 {roiBank && (
                   <p className="article-mid-cta-alt">
                     Not ready to talk? We calculated what automation would save{' '}

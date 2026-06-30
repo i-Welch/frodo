@@ -136,6 +136,15 @@ export function computeRoi(input: BankRoiInput): RoiResult {
     return { category: c.key, label: c.label, count: c.count, hours, value };
   });
 
+  // Compute digital intake first so it can be included in totalValue. [footnote 6]
+  const digitalIntake = {} as Record<Scenario, DigitalIntakeResult>;
+  for (const s of scenarios) {
+    const leads = Math.round(input.market.newHouseholdsPerYear * LEAD_CAPTURE_RATE[s]);
+    const fundedLoans = Math.round(leads * LEAD_TO_FUNDED[s]);
+    const value = fundedLoans * (PROFIT_PER_LOAN + AVOIDED_ACQUISITION[s]);
+    digitalIntake[s] = { leads, fundedLoans, value };
+  }
+
   const result = {} as Record<Scenario, RoiScenarioResult>;
   for (const s of scenarios) {
     const laborValue = laborByCategory.reduce((sum, c) => sum + c.value[s], 0);
@@ -151,19 +160,9 @@ export function computeRoi(input: BankRoiInput): RoiResult {
       laborValue,
       pullThroughLoans,
       pullThroughRevenue,
-      totalValue: laborValue + pullThroughRevenue,
+      totalValue: laborValue + pullThroughRevenue + digitalIntake[s].value,
       hoursRecovered,
     };
-  }
-
-  const digitalIntake = {} as Record<Scenario, DigitalIntakeResult>;
-  for (const s of scenarios) {
-    const leads = Math.round(input.market.newHouseholdsPerYear * LEAD_CAPTURE_RATE[s]);
-    const fundedLoans = Math.round(leads * LEAD_TO_FUNDED[s]);
-    // Value = profit on funded loans plus the acquisition spend the bank
-    // avoids by owning the lead instead of buying it. [footnote 6]
-    const value = fundedLoans * (PROFIT_PER_LOAN + AVOIDED_ACQUISITION[s]);
-    digitalIntake[s] = { leads, fundedLoans, value };
   }
 
   return {
@@ -203,7 +202,7 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
   {
     id: 6,
     title: 'New-resident lead generation',
-    body: 'TD Bank research reports roughly 30% of consumers open an account with a new bank after moving (and movers 55+ switch at a higher rate than millennials), while 91% of consumers say digital capability matters in choosing where to bank (MX, 2025) and more than half of online banking applications are abandoned mid-flow (The Financial Brand; Innovatrics). We model a bank with a white-label, fintech-grade intake flow capturing 1.5-9% of new-to-market households as started applications, converting 12-50% of those to funded loans (expected case: ~55% completion times the MBA-reported ~55% depository pull-through). Value per funded loan combines the $785 MBA average profit with $500-1,500 of avoided lead-acquisition spend, the going rate per funded loan from purchased shared and exclusive lead channels. New-household counts are derived from Census county population estimates and are not bank-reported figures. This line is shown separately and is not included in the headline savings number.',
+    body: 'TD Bank research reports roughly 30% of consumers open an account with a new bank after moving (and movers 55+ switch at a higher rate than millennials), while 91% of consumers say digital capability matters in choosing where to bank (MX, 2025) and more than half of online banking applications are abandoned mid-flow (The Financial Brand; Innovatrics). We model a bank with a white-label, fintech-grade intake flow capturing 1.5-9% of new-to-market households as started applications, converting 12-50% of those to funded loans (expected case: ~55% completion times the MBA-reported ~55% depository pull-through). Value per funded loan combines the $785 MBA average profit with $500-1,500 of avoided lead-acquisition spend, the going rate per funded loan from purchased shared and exclusive lead channels. New-household counts are derived from Census county population estimates and are not bank-reported figures. This line is included in the headline total.',
   },
 ];
 
