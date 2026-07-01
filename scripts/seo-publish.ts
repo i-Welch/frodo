@@ -53,12 +53,18 @@ const SITEMAP_PHASES: { date: string; label: string; slugs: string[] }[] = [
     ],
   },
   {
+    date: '2026-07-03',
+    label: 'Phase 2a — Beacon Community Bank deep dive (LinkedIn post 4)',
+    slugs: [
+      'beacon-community-bank-charleston-growth-capacity',
+    ],
+  },
+  {
     date: '2026-07-07',
-    label: 'Phase 2 — bank deep dives (Mar–Apr 2026 dates)',
+    label: 'Phase 2b — bank deep dives (Mar–Apr 2026 dates)',
     slugs: [
       'queensborough-national-bank-trust-deep-dive',
       'first-palmetto-bank-sc-performance-deep-dive',
-      'beacon-community-bank-charleston-growth-capacity',
       'optus-bank-cdfi-columbia-growth',
       'countybank-greenwood-sc-sba-deep-dive',
       'first-community-bank-sc-cre-merger-growth',
@@ -127,16 +133,17 @@ const LINKEDIN_POSTS: { id: number; date: string; slug: string; title: string }[
   { id: 1,  date: '2026-06-30', slug: 'community-bank-compete-neobank-core',          title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core' },
   { id: 2,  date: '2026-07-01', slug: 'community-banks-lose-loans-fintechs',           title: 'Why Community Banks Lose Loans to Fintechs' },
   { id: 3,  date: '2026-07-02', slug: 'community-bank-ceo-digital-lending-2026',       title: "The Community Bank CEO's Guide to Digital Lending in 2026" },
-  { id: 4,  date: '2026-07-07', slug: 'community-bank-digital-lending-platform-guide', title: 'What to Look for in a Community Bank Digital Lending Platform' },
-  { id: 5,  date: '2026-07-08', slug: 'community-bank-borrower-experience-roi',        title: 'The ROI of Modernizing Your Community Bank Borrower Experience' },
-  { id: 6,  date: '2026-07-09', slug: 'what-neobanks-get-right-community-banks',       title: 'What Neobanks Get Right (and What Community Banks Already Have)' },
-  { id: 7,  date: '2026-07-10', slug: 'fintech-grade-loan-application-community-bank', title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank' },
-  { id: 8,  date: '2026-07-14', slug: 'community-bank-ai-lending-guide',               title: 'How Community Banks Can Use AI in Lending Without the Risk' },
-  { id: 9,  date: '2026-07-15', slug: 'white-label-borrower-portal-community-bank',    title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One' },
-  { id: 10, date: '2026-07-16', slug: 'digital-account-opening-community-bank',        title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
-  { id: 11, date: '2026-07-17', slug: 'open-banking-community-bank-guide',             title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support' },
-  { id: 12, date: '2026-08-11', slug: 'jack-henry-symitar-loan-origination',           title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support' },
-  { id: 13, date: '2026-08-12', slug: 'fiserv-premier-digital-lending',                title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support' },
+  { id: 4,  date: '2026-07-03', slug: 'beacon-community-bank-charleston-growth-capacity', title: 'Beacon Community Bank: Growth at the Edge of Capacity' },
+  { id: 5,  date: '2026-07-07', slug: 'community-bank-digital-lending-platform-guide', title: 'What to Look for in a Community Bank Digital Lending Platform' },
+  { id: 6,  date: '2026-07-08', slug: 'community-bank-borrower-experience-roi',        title: 'The ROI of Modernizing Your Community Bank Borrower Experience' },
+  { id: 7,  date: '2026-07-09', slug: 'what-neobanks-get-right-community-banks',       title: 'What Neobanks Get Right (and What Community Banks Already Have)' },
+  { id: 8,  date: '2026-07-10', slug: 'fintech-grade-loan-application-community-bank', title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank' },
+  { id: 9,  date: '2026-07-14', slug: 'community-bank-ai-lending-guide',               title: 'How Community Banks Can Use AI in Lending Without the Risk' },
+  { id: 10, date: '2026-07-15', slug: 'white-label-borrower-portal-community-bank',    title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One' },
+  { id: 11, date: '2026-07-16', slug: 'digital-account-opening-community-bank',        title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
+  { id: 12, date: '2026-07-17', slug: 'open-banking-community-bank-guide',             title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support' },
+  { id: 13, date: '2026-08-11', slug: 'jack-henry-symitar-loan-origination',           title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support' },
+  { id: 14, date: '2026-08-12', slug: 'fiserv-premier-digital-lending',                title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support' },
 ];
 
 // ---------------------------------------------------------------------------

@@ -9,7 +9,8 @@ const APP = 'https://app.reportraven.tech';
 // To publish a phase: uncomment the slugs on/after the target date and deploy.
 //
 // Phase 1 LIVE (Jun 26): foundational institutional + 7 SEO articles (LinkedIn Jun 30–Jul 10)
-// Phase 2 (Jul 7):  uncomment queensborough through first-community-bank
+// Phase 2a (Jul 3): uncomment beacon-community-bank-charleston-growth-capacity
+// Phase 2b (Jul 7): uncomment queensborough through first-community-bank
 // Phase 3 (Jul 14): uncomment first-capital through white-label + security-federal
 // Phase 4 (Jul 21): uncomment bank-travelers through open-banking
 // Phase 5 (Jul 28): uncomment first-reliance through colony-bankcorp
