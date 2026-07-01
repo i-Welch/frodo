@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { InterestForm } from './interest-form';
-import { DemoModal } from './demo-modal';
+import { CalendlyButton } from './calendly-button';
+import { ScrollReveal } from './scroll-reveal';
 
 export const metadata: Metadata = {
-  title: 'RAVEN — Borrower Verification Software for Community Banks | South Carolina',
+  title: 'RAVEN — Borrower Verification Software for Community Banks',
   description:
-    'RAVEN automates borrower verification for community and regional banks. KYC, identity, income, credit, employment, and property data from one verification link. Serving banks in South Carolina and the Southeast. Replace manual data collection with a 5-minute digital experience.',
+    'RAVEN automates borrower verification for community banks. Identity, income, credit, employment, and property data from one link, verified in minutes.',
   keywords: [
     'borrower verification software',
     'community bank verification',
@@ -206,6 +206,8 @@ export default function LandingPage() {
           --gray-100: #F5F5F5;
           --gray-50: #FAFAFA;
           --white: #FFFFFF;
+          --accent: #6C8EFF;
+          --accent-dim: rgba(108,142,255,0.12);
         }
 
         html { scroll-behavior: smooth; }
@@ -254,7 +256,7 @@ export default function LandingPage() {
           align-items: center;
         }
         .nav-links a {
-          color: var(--gray-400);
+          color: var(--gray-300);
           text-decoration: none;
           font-size: 0.85rem;
           font-weight: 400;
@@ -312,6 +314,36 @@ export default function LandingPage() {
           from { opacity: 0; transform: translateY(-50%) scale(0.95); }
           to { opacity: 0.04; transform: translateY(-50%) scale(1); }
         }
+        .hero-blob {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+        }
+        .hero-blob-1 {
+          width: 750px;
+          height: 750px;
+          background: radial-gradient(circle, rgba(108,142,255,0.07) 0%, transparent 65%);
+          top: -20%;
+          left: -18%;
+          animation: blob-drift 20s ease-in-out infinite alternate;
+        }
+        .hero-blob-2 {
+          width: 500px;
+          height: 500px;
+          background: radial-gradient(circle, rgba(108,142,255,0.04) 0%, transparent 65%);
+          bottom: -5%;
+          right: 25%;
+          animation: blob-drift 26s ease-in-out infinite alternate-reverse;
+        }
+        @keyframes blob-drift {
+          0%   { transform: translate(0px, 0px) scale(1); }
+          33%  { transform: translate(55px, 30px) scale(1.04); }
+          66%  { transform: translate(-25px, 60px) scale(0.97); }
+          100% { transform: translate(35px, -45px) scale(1.02); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-blob { animation: none; }
+        }
         .hero-content {
           position: relative;
           z-index: 1;
@@ -340,12 +372,12 @@ export default function LandingPage() {
         }
         .hero h1 em {
           font-style: normal;
-          color: var(--gray-400);
+          color: var(--gray-300);
         }
         .hero-sub {
           font-size: 1.15rem;
           line-height: 1.7;
-          color: var(--gray-400);
+          color: var(--gray-200);
           max-width: 520px;
           margin-bottom: 2.5rem;
           animation: fadeUp 800ms 200ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -387,6 +419,17 @@ export default function LandingPage() {
           to { opacity: 1; transform: translateY(0); }
         }
 
+        /* --- Scroll reveal --- */
+        .reveal {
+          opacity: 0;
+          transform: translateY(28px);
+          transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1);
+        }
+        .revealed { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+          .reveal, .revealed { opacity: 1; transform: none; transition: none; }
+        }
+
         /* --- Divider --- */
         .divider {
           height: 1px;
@@ -421,6 +464,74 @@ export default function LandingPage() {
           letter-spacing: 0.05em;
         }
 
+        /* --- How it works --- */
+        .how-it-works {
+          padding: 7rem 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .how-it-works-header {
+          max-width: 540px;
+          margin-bottom: 4rem;
+        }
+        .how-it-works-header h2 {
+          font-size: 2rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+          margin-bottom: 1rem;
+        }
+        .how-it-works-header p {
+          font-size: 1rem;
+          color: var(--gray-400);
+          line-height: 1.7;
+        }
+        .steps {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: rgba(255,255,255,0.06);
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.06);
+        }
+        .step {
+          padding: 2.5rem;
+          background: var(--black);
+          position: relative;
+        }
+        .step-num {
+          font-size: 3.5rem;
+          font-weight: 700;
+          letter-spacing: -0.05em;
+          color: rgba(108,142,255,0.35);
+          line-height: 1;
+          margin-bottom: 1.5rem;
+          font-variant-numeric: tabular-nums;
+        }
+        .step-icon {
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          background: rgba(255,255,255,0.05);
+          color: var(--gray-300);
+          margin-bottom: 1.25rem;
+        }
+        .step h3 {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          letter-spacing: -0.01em;
+        }
+        .step p {
+          font-size: 0.85rem;
+          color: var(--gray-300);
+          line-height: 1.65;
+        }
+
         /* --- Features --- */
         .features {
           padding: 7rem 3rem;
@@ -448,7 +559,7 @@ export default function LandingPage() {
         }
         .features-header p {
           font-size: 1rem;
-          color: var(--gray-400);
+          color: var(--gray-200);
           line-height: 1.7;
         }
         .features-grid {
@@ -483,33 +594,111 @@ export default function LandingPage() {
         }
         .feature p {
           font-size: 0.85rem;
-          color: var(--gray-500);
+          color: var(--gray-300);
           line-height: 1.65;
         }
+        .feature {
+          transition: background 250ms;
+        }
+        .feature:hover { background: rgba(255,255,255,0.022); }
 
-        /* --- Integrations --- */
-        .integrations {
+        /* --- Team split --- */
+        .team-split {
           padding: 7rem 3rem;
           max-width: 1100px;
           margin: 0 auto;
         }
-        .integrations-header {
-          max-width: 540px;
+        .team-split-header {
+          max-width: 560px;
           margin-bottom: 4rem;
         }
-        .integrations-header h2 {
+        .team-split-header h2 {
           font-size: 2rem;
           font-weight: 600;
           letter-spacing: -0.02em;
           line-height: 1.2;
           margin-bottom: 1rem;
         }
-        .integrations-header p {
+        .team-split-header p {
           font-size: 1rem;
-          color: var(--gray-400);
+          color: var(--gray-200);
           line-height: 1.7;
         }
-        .integrations-grid {
+        .split-panels {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1px;
+          background: rgba(255,255,255,0.06);
+          border-radius: 12px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.06);
+        }
+        .split-panel {
+          padding: 3rem;
+          background: var(--black);
+        }
+        .split-panel-left {
+          background: linear-gradient(150deg, rgba(108,142,255,0.05) 0%, var(--black) 55%);
+        }
+        .split-panel-label {
+          font-size: 0.65rem;
+          font-weight: 500;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--gray-600);
+          margin-bottom: 1.25rem;
+        }
+        .split-panel h3 {
+          font-size: 1.15rem;
+          font-weight: 600;
+          letter-spacing: -0.015em;
+          line-height: 1.35;
+          margin-bottom: 1.75rem;
+        }
+        .split-list {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          list-style: none;
+        }
+        .split-list li {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+          font-size: 0.88rem;
+          color: var(--gray-300);
+          line-height: 1.55;
+        }
+        .split-check {
+          flex-shrink: 0;
+          margin-top: 0.2rem;
+          color: var(--accent);
+          opacity: 0.75;
+        }
+
+        /* --- Report grid --- */
+        .report-section {
+          padding: 7rem 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .report-header {
+          max-width: 540px;
+          margin-bottom: 4rem;
+        }
+        .report-header h2 {
+          font-size: 2rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+          margin-bottom: 1rem;
+        }
+        .report-header p {
+          font-size: 1rem;
+          color: var(--gray-200);
+          line-height: 1.7;
+        }
+        .report-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 1px;
@@ -517,57 +706,134 @@ export default function LandingPage() {
           border-radius: 12px;
           overflow: hidden;
           border: 1px solid rgba(255,255,255,0.06);
-          margin-bottom: 2.5rem;
         }
-        .integration-card {
-          padding: 2.5rem;
+        .report-item {
+          padding: 2.25rem;
           background: var(--black);
+          transition: background 250ms;
+        }
+        .report-item:hover { background: rgba(255,255,255,0.022); }
+        .report-icon {
+          width: 36px;
+          height: 36px;
           display: flex;
-          flex-direction: column;
-        }
-        .integration-name {
-          font-size: 1.15rem;
-          font-weight: 600;
-          margin-bottom: 0.35rem;
-          letter-spacing: -0.01em;
-        }
-        .integration-type {
-          font-size: 0.7rem;
-          font-weight: 500;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: var(--gray-500);
+          align-items: center;
+          justify-content: center;
+          border-radius: 8px;
+          background: rgba(108,142,255,0.1);
+          color: rgba(108,142,255,0.75);
           margin-bottom: 1rem;
         }
-        .integration-desc {
-          font-size: 0.85rem;
-          color: var(--gray-500);
-          line-height: 1.65;
-          flex: 1;
+        .report-item h3 {
+          font-size: 0.9rem;
+          font-weight: 600;
+          margin-bottom: 0.4rem;
+          letter-spacing: -0.01em;
         }
-        .integration-platforms {
-          margin-top: 1.25rem;
+        .report-item p {
+          font-size: 0.82rem;
+          color: var(--gray-300);
+          line-height: 1.6;
+        }
+
+        /* --- Core Integration --- */
+        .core-integration {
+          padding: 7rem 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .core-integration-inner {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: start;
+        }
+        .core-integration-copy h2 {
+          font-size: 2rem;
+          font-weight: 600;
+          letter-spacing: -0.02em;
+          line-height: 1.2;
+          margin-bottom: 1rem;
+        }
+        .core-integration-copy p {
+          font-size: 1rem;
+          color: var(--gray-200);
+          line-height: 1.7;
+          margin-bottom: 2rem;
+        }
+        .core-integration-promise {
           display: flex;
-          flex-wrap: wrap;
-          gap: 0.4rem;
+          flex-direction: column;
+          gap: 0.9rem;
         }
-        .integration-platforms span {
-          font-size: 0.7rem;
-          color: var(--gray-400);
-          padding: 0.25rem 0.6rem;
-          border: 1px solid rgba(255,255,255,0.1);
+        .promise-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 0.75rem;
+        }
+        .promise-check {
+          width: 20px;
+          height: 20px;
+          flex-shrink: 0;
+          margin-top: 0.05rem;
+          color: var(--gray-300);
+        }
+        .promise-item span {
+          font-size: 0.9rem;
+          color: var(--gray-300);
+          line-height: 1.5;
+        }
+        .core-logos-col {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+        .core-logos-group-label {
+          font-size: 0.65rem;
+          font-weight: 500;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--gray-600);
+          margin-bottom: 0.75rem;
+        }
+        .core-logos-row {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+        .core-logo-chip {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.25rem;
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 8px;
+          background: rgba(255,255,255,0.02);
+          transition: border-color 200ms, background 200ms;
+        }
+        .core-logo-chip:hover {
+          border-color: rgba(255,255,255,0.15);
+          background: rgba(255,255,255,0.04);
+        }
+        .core-logo-name {
+          font-size: 0.95rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          color: var(--gray-200);
+        }
+        .core-logo-platforms {
+          display: flex;
+          gap: 0.35rem;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+        .core-logo-platforms span {
+          font-size: 0.65rem;
+          color: var(--gray-600);
+          padding: 0.2rem 0.5rem;
+          border: 1px solid rgba(255,255,255,0.07);
           border-radius: 100px;
           white-space: nowrap;
-        }
-        .integrations-also {
-          text-align: center;
-          color: var(--gray-500);
-          font-size: 0.9rem;
-          line-height: 1.7;
-        }
-        .integrations-also strong {
-          color: var(--gray-300);
-          font-weight: 500;
         }
 
         /* --- CTA --- */
@@ -576,20 +842,54 @@ export default function LandingPage() {
           text-align: center;
         }
         .cta-inner {
-          max-width: 520px;
+          max-width: 560px;
           margin: 0 auto;
         }
         .cta h2 {
-          font-size: 2rem;
+          font-size: 2.2rem;
           font-weight: 600;
-          letter-spacing: -0.02em;
+          letter-spacing: -0.03em;
+          line-height: 1.15;
           margin-bottom: 1rem;
         }
         .cta p {
           font-size: 1rem;
-          color: var(--gray-400);
+          color: var(--gray-200);
           line-height: 1.7;
           margin-bottom: 2rem;
+        }
+        .cta-primary-action {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 2.5rem;
+        }
+        .cta-primary-action button,
+        .cta-primary-action a {
+          font-size: 1rem !important;
+          padding: 0.9rem 2.25rem !important;
+        }
+        .cta-divider {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 2.5rem;
+        }
+        .cta-divider-line {
+          flex: 1;
+          height: 1px;
+          background: rgba(255,255,255,0.08);
+        }
+        .cta-divider-text {
+          font-size: 0.75rem;
+          color: var(--gray-600);
+          letter-spacing: 0.05em;
+        }
+        .cta-email-label {
+          font-size: 0.8rem;
+          color: var(--gray-500);
+          margin-bottom: 1rem;
         }
         .interest-form {
           max-width: 520px;
@@ -657,7 +957,7 @@ export default function LandingPage() {
         }
         .form-success-sub {
           font-size: 0.9rem;
-          color: var(--gray-400);
+          color: var(--gray-300);
         }
         .cta-alt {
           margin-top: 1.25rem;
@@ -716,10 +1016,16 @@ export default function LandingPage() {
           .hero h1 { font-size: 2.2rem; }
           .hero-watermark { width: 80vw; right: -20%; opacity: 0.03; }
           .stats { grid-template-columns: repeat(2, 1fr); }
+          .how-it-works { padding: 4rem 1.5rem; }
+          .steps { grid-template-columns: 1fr; }
           .features { padding: 4rem 1.5rem; }
           .features-grid { grid-template-columns: 1fr; }
-          .integrations { padding: 4rem 1.5rem; }
-          .integrations-grid { grid-template-columns: 1fr; }
+          .team-split { padding: 4rem 1.5rem; }
+          .split-panels { grid-template-columns: 1fr; }
+          .report-section { padding: 4rem 1.5rem; }
+          .report-grid { grid-template-columns: 1fr 1fr; }
+          .core-integration { padding: 4rem 1.5rem; }
+          .core-integration-inner { grid-template-columns: 1fr; gap: 3rem; }
           .cta { padding: 4rem 1.5rem; }
           .landing footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
           .divider { margin: 0 1.5rem; }
@@ -727,6 +1033,7 @@ export default function LandingPage() {
       `}</style>
 
       <div className="landing">
+        <ScrollReveal />
         <nav>
           <div className="nav-logo">
             <RavenLogo />
@@ -738,11 +1045,13 @@ export default function LandingPage() {
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
-            <DemoModal source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
+            <CalendlyButton source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
           </div>
         </nav>
 
         <section className="hero">
+          <div className="hero-blob hero-blob-1" />
+          <div className="hero-blob hero-blob-2" />
           <svg className="hero-watermark" viewBox="0 0 3000 3000" fill="currentColor">
             <path d={RAVEN_PATH} />
             <circle
@@ -768,15 +1077,15 @@ export default function LandingPage() {
               in South Carolina and the Southeast.
             </p>
             <div className="hero-actions">
-              <DemoModal source="landing-hero" label="Request a Demo" buttonClassName="btn btn-white" />
-              <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                Security &amp; Compliance
+              <CalendlyButton source="landing-hero" label="Request a Demo" buttonClassName="btn btn-white" />
+              <a href="#how-it-works" className="btn btn-ghost">
+                See How It Works
               </a>
             </div>
           </div>
         </section>
 
-        <div className="stats">
+        <div className="stats reveal">
           <div className="stat">
             <div className="stat-num">18+</div>
             <div className="stat-label">Data Sources</div>
@@ -786,8 +1095,8 @@ export default function LandingPage() {
             <div className="stat-label">Borrower Experience</div>
           </div>
           <div className="stat">
-            <div className="stat-num">1</div>
-            <div className="stat-label">Verification Link</div>
+            <div className="stat-num">4–6 hrs</div>
+            <div className="stat-label">Saved Per Loan</div>
           </div>
           <div className="stat">
             <div className="stat-num">100%</div>
@@ -795,98 +1104,110 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* --- For Lenders --- */}
-        <section className="features">
-          <div className="features-header">
-            <div className="section-tag">For loan officers</div>
-            <h2>Send a link. Get a complete report.</h2>
+        {/* --- How it works --- */}
+        <section id="how-it-works" className="how-it-works reveal">
+          <div className="how-it-works-header">
+            <div className="section-tag">How it works</div>
+            <h2>Three steps. No new workflows.</h2>
             <p>
-              Stop chasing documents. Enter a borrower&apos;s phone number or email, and RAVEN handles
-              everything — consent collection, bank connection, identity checks, and data enrichment.
-              You get a formatted report ready for your loan file.
+              RAVEN slots into how your loan officers already work. No software to install,
+              no training sessions, no migration. You&apos;re collecting better data within
+              minutes of getting access.
             </p>
           </div>
-          <div className="features-grid">
-            <div className="feature">
-              <div className="feature-icon">
+          <div className="steps">
+            <div className="step">
+              <div className="step-num">01</div>
+              <div className="step-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
               </div>
-              <h3>One-Click Verification</h3>
-              <p>Enter a phone number or email. RAVEN sends your borrower a branded verification link — by text or email. No portals, no logins, no back-and-forth.</p>
+              <h3>You send one link</h3>
+              <p>Enter a borrower&apos;s name, phone number, or email. RAVEN generates a branded verification link and delivers it by text or email — no portal, no login, no back-and-forth.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              </div>
-              <h3>Print-Ready Reports</h3>
-              <p>Every verification produces a formatted PDF report with identity, income, credit, employment, and property data — ready to drop into a loan file.</p>
-            </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-              </div>
-              <h3>Real-Time Status</h3>
-              <p>Track every verification from your dashboard. See when the borrower opens the link, completes each step, and when the report is ready to review.</p>
-            </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-              </div>
-              <h3>Audit-Ready Compliance</h3>
-              <p>Every data point is sourced and timestamped. Full audit trails, borrower consent records, and field-level provenance — all in one place for examiners.</p>
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* --- For Borrowers --- */}
-        <section className="features">
-          <div className="features-header">
-            <div className="section-tag">For borrowers</div>
-            <h2>Five minutes. No paperwork.</h2>
-            <p>
-              Borrowers receive a simple link — no app downloads, no account creation, no scanning
-              documents. They confirm their identity, connect their bank, and they&apos;re done.
-            </p>
-          </div>
-          <div className="features-grid">
-            <div className="feature">
-              <div className="feature-icon">
+            <div className="step">
+              <div className="step-num">02</div>
+              <div className="step-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
               </div>
-              <h3>Works on Any Device</h3>
-              <p>Borrowers open a link on their phone, tablet, or computer. No app to install, no account to create. The entire process works in a mobile browser.</p>
+              <h3>Borrower completes in 5 minutes</h3>
+              <p>They confirm their identity, connect their bank account through Plaid, and consent to sharing their data — all from a browser on any device. No app to download.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div className="step">
+              <div className="step-num">03</div>
+              <div className="step-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
               </div>
-              <h3>Guided Identity Check</h3>
-              <p>A few quick questions to confirm their identity — name, date of birth, and last four of their SSN. Verified instantly against multiple sources.</p>
-            </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-              </div>
-              <h3>Secure Bank Connection</h3>
-              <p>Borrowers connect their bank through Plaid — the same technology used by Venmo, Robinhood, and thousands of financial apps. Read-only access, no credentials shared.</p>
-            </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              </div>
-              <h3>Privacy First</h3>
-              <p>All data is encrypted end-to-end and only shared with the lender the borrower is working with. Clear consent at every step. Nothing is collected without permission.</p>
+              <h3>Your complete report is ready</h3>
+              <p>Identity, income, credit, employment, and property data — sourced, cross-referenced, and formatted into a print-ready PDF. Ready to drop directly into your loan file.</p>
             </div>
           </div>
         </section>
 
         <div className="divider" />
 
-        {/* --- What's in the report --- */}
-        <section className="features">
-          <div className="features-header">
+        {/* --- Team + Borrower split --- */}
+        <section className="team-split reveal">
+          <div className="team-split-header">
+            <div className="section-tag">Built for both sides</div>
+            <h2>Simple for your team. Painless for borrowers.</h2>
+            <p>
+              RAVEN is designed around both the people sending the link and the people receiving it —
+              fast for loan officers, frictionless for the borrower on the other end.
+            </p>
+          </div>
+          <div className="split-panels">
+            <div className="split-panel split-panel-left">
+              <div className="split-panel-label">For your loan officers</div>
+              <h3>Get a complete report without chasing a single document.</h3>
+              <ul className="split-list">
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Send a verification link from your dashboard in seconds — by text or email
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Receive a print-ready PDF with every data point the loan file needs
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Track status in real time — see every step complete as it happens
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Sourced, timestamped audit trail ready for examiners — no manual assembly
+                </li>
+              </ul>
+            </div>
+            <div className="split-panel">
+              <div className="split-panel-label">For your borrowers</div>
+              <h3>Five minutes. No appointments, no paperwork.</h3>
+              <ul className="split-list">
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Opens on any phone, tablet, or computer — no download required
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Guided identity check in about 2 minutes — name, DOB, last 4 SSN
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Connects their bank through Plaid — read-only, no credentials ever shared
+                </li>
+                <li>
+                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  Clear consent at every step — they control exactly what gets shared
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* --- Report contents --- */}
+        <section className="report-section reveal">
+          <div className="report-header">
             <div className="section-tag">What you get</div>
             <h2>Everything you need for the loan file.</h2>
             <p>
@@ -894,124 +1215,166 @@ export default function LandingPage() {
               lenders need — sourced from 18+ data providers and cross-referenced automatically.
             </p>
           </div>
-          <div className="features-grid">
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div className="report-grid">
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
               </div>
               <h3>Identity &amp; KYC</h3>
-              <p>Name, SSN, and date of birth verified against multiple sources. Fraud risk scoring, watchlist screening, and synthetic identity detection.</p>
+              <p>Name, SSN, and DOB verified across sources. Fraud scoring, OFAC/PEP screening, and synthetic identity detection.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               </div>
               <h3>Income &amp; Assets</h3>
-              <p>Bank account balances, income streams, and transaction history. Categorized spending patterns and cash flow analysis.</p>
+              <p>Bank balances, income streams, and 12 months of transactions. Categorized cash flow and spending patterns.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               </div>
               <h3>Credit History</h3>
-              <p>Credit scores, tradelines, payment history, outstanding liabilities, and utilization rates from all three bureaus.</p>
+              <p>Scores, tradelines, payment history, liabilities, and utilization from all three bureaus.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
               </div>
               <h3>Employment</h3>
-              <p>Current and past employers, job titles, salary information, and employment dates — verified directly with employers.</p>
+              <p>Employer-verified job titles, salary, start dates, and employment history — confirmed directly with employers.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
               </div>
               <h3>Property &amp; Residence</h3>
-              <p>Address verification, ownership history, property valuations, tax assessments, and length of residence at current address.</p>
+              <p>Address verification, AVM valuations, tax assessments, ownership history, and length of residence.</p>
             </div>
-            <div className="feature">
-              <div className="feature-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div className="report-item">
+              <div className="report-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </div>
               <h3>Full Audit Trail</h3>
-              <p>Every data point timestamped and sourced. Consent records, verification steps, and field-level provenance — ready for regulatory review.</p>
+              <p>Every data point sourced and timestamped. Consent records and field-level provenance ready for regulatory review.</p>
             </div>
           </div>
         </section>
 
         <div className="divider" />
 
-        {/* --- Integrations --- */}
-        <section className="integrations">
-          <div className="integrations-header">
-            <div className="section-tag">Integrations</div>
-            <h2>Works with your core.</h2>
-            <p>
-              Enriched borrower data flows directly into the core banking and loan origination
-              systems your team already uses. No manual re-entry.
-            </p>
+        {/* --- Core Integration --- */}
+        <section className="core-integration reveal">
+          <div className="core-integration-inner">
+            <div className="core-integration-copy">
+              <div className="section-tag">Works with your core</div>
+              <h2>Live in your existing stack. In a week or less.</h2>
+              <p>
+                RAVEN connects directly to the core banking and loan origination systems your
+                team already runs. There is nothing to rip out, nothing to migrate, and no
+                IT project to scope. Our implementation team handles the integration from
+                start to finish — you focus on running your bank.
+              </p>
+              <div className="core-integration-promise">
+                <div className="promise-item">
+                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Native API integrations — no middleware, no custom ETL pipelines</span>
+                </div>
+                <div className="promise-item">
+                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Dedicated implementation support from day one through go-live</span>
+                </div>
+                <div className="promise-item">
+                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Most banks are fully operational within 5 business days</span>
+                </div>
+                <div className="promise-item">
+                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                  <span>Works standalone from day one if your core team needs more time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="core-logos-col">
+              <div>
+                <div className="core-logos-group-label">Core banking platforms</div>
+                <div className="core-logos-row">
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">Jack Henry</span>
+                    <div className="core-logo-platforms">
+                      <span>SilverLake</span>
+                      <span>CIF 20/20</span>
+                      <span>Symitar</span>
+                    </div>
+                  </div>
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">Fiserv</span>
+                    <div className="core-logo-platforms">
+                      <span>DNA</span>
+                      <span>Premier</span>
+                      <span>Precision</span>
+                    </div>
+                  </div>
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">FIS</span>
+                    <div className="core-logo-platforms">
+                      <span>MBP</span>
+                      <span>IBS</span>
+                      <span>Horizon</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <div className="core-logos-group-label">Loan origination systems</div>
+                <div className="core-logos-row">
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">nCino</span>
+                    <div className="core-logo-platforms">
+                      <span>Bank Operating System</span>
+                    </div>
+                  </div>
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">Abrigo</span>
+                    <div className="core-logo-platforms">
+                      <span>Sageworks Lending</span>
+                    </div>
+                  </div>
+                  <div className="core-logo-chip">
+                    <span className="core-logo-name">Baker Hill</span>
+                    <div className="core-logo-platforms">
+                      <span>NextGen</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="integrations-grid">
-            <div className="integration-card">
-              <div className="integration-name">Jack Henry</div>
-              <div className="integration-type">Core Banking</div>
-              <p className="integration-desc">
-                Push verified borrower profiles and loan application data directly into your
-                core through the jXchange API layer.
-              </p>
-              <div className="integration-platforms">
-                <span>SilverLake</span>
-                <span>CIF 20/20</span>
-                <span>Symitar</span>
-              </div>
-            </div>
-            <div className="integration-card">
-              <div className="integration-name">Fiserv</div>
-              <div className="integration-type">Core Banking</div>
-              <p className="integration-desc">
-                Export enriched customer records and credit applications via the Banking Hub
-                API across all Fiserv platforms.
-              </p>
-              <div className="integration-platforms">
-                <span>DNA</span>
-                <span>Premier</span>
-                <span>Precision</span>
-              </div>
-            </div>
-            <div className="integration-card">
-              <div className="integration-name">FIS</div>
-              <div className="integration-type">Core Banking</div>
-              <p className="integration-desc">
-                Real-time event-driven sync for Modern Banking Platform, plus batch and API
-                export for legacy cores.
-              </p>
-              <div className="integration-platforms">
-                <span>MBP</span>
-                <span>IBS</span>
-                <span>Horizon</span>
-              </div>
-            </div>
-          </div>
-          <p className="integrations-also">
-            Also works with leading loan origination systems including{' '}
-            <strong>nCino</strong>, <strong>Abrigo</strong>, and <strong>Baker Hill</strong>.
-          </p>
         </section>
 
         <div className="divider" />
 
-        <section id="get-started" className="cta">
+        <section id="get-started" className="cta reveal">
           <div className="cta-inner">
             <div className="section-tag">Get started</div>
-            <h2>Ready to move faster?</h2>
+            <h2>See it running in your bank.</h2>
             <p>
-              RAVEN is currently in early access for regional banks and lending platforms. Leave your
-              info and we&apos;ll reach out to schedule a demo.
+              Book a 20-minute call. We&apos;ll walk through a live verification using your
+              bank&apos;s branding, show you the full report output, and answer every question
+              your compliance team will have.
             </p>
-            <InterestForm />
+            <CalendlyButton source="landing-cta" label="Book a Demo Call" buttonClassName="btn btn-white" />
             <p className="cta-alt">
-              Or email us directly at{' '}
+              Prefer email?{' '}
               <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
             </p>
           </div>

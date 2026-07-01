@@ -13,6 +13,9 @@ export const metadata: Metadata = {
     siteName: 'RAVEN',
     type: 'website',
   },
+  alternates: {
+    canonical: 'https://reportraven.tech/blog',
+  },
 };
 
 type ArticleCategory = 'bank' | 'fintech' | 'guide' | 'platform';
@@ -492,7 +495,9 @@ const blogJsonLd = {
     headline: a.title,
     description: a.description,
     url: `https://reportraven.tech/blog/${a.slug}`,
-    datePublished: '2026-03-24',
+    // Index cards only carry month-level dates ('June 2026'); first of month
+    // keeps this ISO-valid without claiming false precision.
+    datePublished: new Date(`${a.date.replace(' ', ' 1, ')} UTC`).toISOString().slice(0, 10),
     author: { '@type': 'Organization', name: 'RAVEN' },
   })),
 };

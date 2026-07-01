@@ -4070,6 +4070,13 @@ export function generateStaticParams() {
   return Object.keys(articles).map((slug) => ({ slug }));
 }
 
+// 'June 26, 2026' → '2026-06-26'. Google's structured-data parser requires
+// ISO 8601; human-readable dates are silently dropped.
+function toIsoDate(publishedDate: string): string {
+  const d = new Date(`${publishedDate} UTC`);
+  return d.toISOString().slice(0, 10);
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const article = articles[slug];
@@ -4079,13 +4086,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${article.title} — RAVEN Blog`,
     description: article.description,
+    alternates: {
+      canonical: `https://reportraven.tech/blog/${slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.description,
       url: `https://reportraven.tech/blog/${slug}`,
       siteName: 'RAVEN',
       type: 'article',
-      publishedTime: article.publishedDate,
+      publishedTime: toIsoDate(article.publishedDate),
     },
     twitter: {
       card: 'summary_large_image',
@@ -4126,8 +4136,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         headline: article.title,
         description: article.description,
         url: `https://reportraven.tech/blog/${slug}`,
-        datePublished: article.publishedDate,
-        dateModified: article.publishedDate,
+        image: 'https://reportraven.tech/opengraph-image',
+        datePublished: toIsoDate(article.publishedDate),
+        dateModified: toIsoDate(article.publishedDate),
         author: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
         publisher: {
           '@type': 'Organization',
