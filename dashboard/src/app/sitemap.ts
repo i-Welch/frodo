@@ -19,6 +19,7 @@ const APP = 'https://app.reportraven.tech';
 
 const BLOG_SLUGS = [
   // — Institutional research & macro (Feb–Mar 2026) —
+  'one-in-116-mortgage-fraud',
   'one-link-complete-verification',
   'how-figure-closes-heloc-in-5-days',
   '59-billion-compliance-burden',
@@ -82,6 +83,7 @@ const BLOG_SLUGS = [
 // dates. Extracted from publishedDate in blog/[slug]/page.tsx — keep in sync
 // when adding articles.
 const BLOG_DATES: Record<string, string> = {
+  'one-in-116-mortgage-fraud': '2026-07-04',
   'jack-henry-symitar-loan-origination': '2026-06-26',
   'fiserv-premier-digital-lending': '2026-06-26',
   'first-reliance-sells-at-the-top': '2026-06-21',

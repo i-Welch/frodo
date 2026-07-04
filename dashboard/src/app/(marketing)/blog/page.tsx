@@ -33,6 +33,15 @@ interface Article {
 
 const articles: Article[] = [
   {
+    slug: 'one-in-116-mortgage-fraud',
+    title: 'One in 116 Mortgage Applications Is Lying to You',
+    description:
+      'Cotality data shows 1 in 116 mortgage applications carries indications of material misrepresentation, and income fraud leads Fannie Mae findings at 46%. The VOE phone call your bank relies on is the exact attack surface fraud rings are built around.',
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
     slug: 'jack-henry-symitar-loan-origination',
     title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
     description:

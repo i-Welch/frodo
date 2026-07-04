@@ -83,6 +83,79 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'one-in-116-mortgage-fraud': {
+    title: 'One in 116 Mortgage Applications Is Lying to You',
+    description:
+      'Cotality data shows 1 in 116 mortgage applications carries indications of material misrepresentation, and income fraud leads Fannie Mae findings at 46%. The VOE phone call your bank relies on is the exact attack surface fraud rings are built around.',
+    publishedDate: 'July 4, 2026',
+    readTime: '6 min read',
+    content: `
+# One in 116 Mortgage Applications Is Lying to You
+
+*Published July 4, 2026*
+
+Cotality's 2025 Annual Mortgage Fraud Report landed with a number that should bother every chief credit officer in the country: 1 in 116 mortgage applications now shows indications of material misrepresentation. On purchase loans, it's 1 in 106.
+
+That's not a rounding error. That's roughly one fraudulent file per loan officer per quarter at a typical community bank origination pace.
+
+The national fraud risk index rose 6.1% year over year through Q2 2025. And the categories driving the increase are exactly the ones a manual verification process is worst at catching.
+
+## What borrowers actually lie about
+
+The fastest-growing lie in mortgage lending right now is undisclosed real estate debt, up 12% year over year. A borrower buys an investment property, quietly carries the mortgage, and leaves it off the next application. Their DTI looks clean. It isn't.
+
+Transaction fraud risk rose 6.2%. Income fraud risk rose 2.1%. Identity fraud crept up 0.4%. The only category that fell was occupancy fraud, down less than a point.
+
+:::stat
+**46%**
+of Fannie Mae's confirmed mortgage fraud investigation findings involve income misrepresentation, the top category year after year.
+:::
+
+Income has led Fannie Mae's fraud findings for years, and it isn't close. Nearly half of everything their investigators confirm comes down to a borrower, or an ecosystem of paid helpers, inventing money that doesn't exist.
+
+Some segments are worse. Applications on 2-to-4-unit properties, the classic house-hack investment play, flag at 1 in 27. If your bank is growing its small rental portfolio, your highest-fraud-risk product is also your fastest-growing one.
+
+:::pullquote
+One fraudulent application per loan officer per quarter. That's what 1 in 116 means at community bank volume.
+:::
+
+## The fake employer industry
+
+Here's the part that should change how you think about your verification process, not just your fraud filters.
+
+Fannie Mae's fraud team maintains a running list of fictitious employers: companies that appear on loan applications as the borrower's place of work but that investigators could not confirm exist. The list has grown to 63 named entities. These aren't typos or defunct businesses. They're purpose-built fakes, some with websites, staffed phone lines, and someone on the other end ready to verify employment for anyone who asks.
+
+Read that again. The fake employers have staffed phone lines.
+
+The verification-of-employment call, the one your processor makes to the number the borrower provided, is not a fraud control. It's the attack surface. A fraud ring that can print a fake paystub can absolutely answer a phone and say "yes, she works here." The entire scheme is designed around the assumption that your bank verifies employment by calling a number on the application.
+
+:::pullquote
+The fake employers have staffed phone lines. The VOE call isn't your fraud control. It's the attack surface.
+:::
+
+## Community banks are carrying the exposure with the fewest tools
+
+The CSBS 2025 Annual Survey of Community Banks found that card fraud, check fraud, and identity theft account for nearly 88% of fraud cases at community banks. Those are the categories with dashboards, vendor tools, and daily attention. Application fraud doesn't make that list, because it doesn't show up as a fraud loss. It shows up two years later as a nonperforming loan.
+
+Synthetic identity fraud, where a real Social Security number gets paired with a fabricated person, has already cost US lenders an estimated $6 billion, and the Federal Reserve calls it the fastest-growing financial crime in the country. ICBA is blunt about who's most exposed: it's one of the hardest fraud types for community banks to detect, because the synthetic borrower has no history to contradict, and community bank underwriting leans on documents the applicant provides.
+
+That's the structural problem. A fintech lender ingests bank transaction data, payroll records, and IRS transcripts at the source. A community bank processor collects PDFs from the borrower and calls a phone number the borrower supplied. One of these processes can be gamed with a laser printer and a burner phone. The other can't.
+
+## The fraud fix and the speed fix are the same fix
+
+Community banks usually evaluate verification automation as a speed and cost play: fewer phone calls, faster closes, less staff time per file. All true. But the same architecture is a fraud control, and arguably a better one than anything in the fraud budget.
+
+Income verified directly from a payroll provider can't be inflated with an edited paystub. Employment confirmed at the data source can't be vouched for by a fraud ring's phone operator. Bank account data pulled with the borrower's consent shows the undisclosed mortgage payment that never made it onto the application. Identity checks run against authoritative sources make a synthetic borrower's thin file visible instead of invisible.
+
+:::pullquote
+Verified-at-source data isn't just faster than borrower-supplied documents. It's the only version fraud rings can't manufacture.
+:::
+
+None of this requires new underwriting standards. It requires replacing borrower-supplied documents with source-verified data, which is the same change that takes verification from weeks to minutes.
+
+The 1-in-116 number is going to keep climbing. Fraud rings industrialize; community bank processes haven't. The banks that close that gap won't just close loans faster. They'll quietly stop being the softest target in the market.
+    `,
+  },
   'jack-henry-symitar-loan-origination': {
     title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
     description:
