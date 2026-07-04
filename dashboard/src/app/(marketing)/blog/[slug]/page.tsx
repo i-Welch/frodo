@@ -143,6 +143,10 @@ That's the structural problem. A fintech lender ingests bank transaction data, p
 
 ## The fraud fix and the speed fix are the same fix
 
+There's a version of this conversation happening in bank boardrooms right now, and it usually ends the wrong way. A bank tries online account opening, gets flooded with fraudulent applications, and shuts the channel down. The lesson gets recorded as "digital invites fraud." Branch-only feels safe again.
+
+But look at what actually failed. The digital channel didn't verify anyone. It collected the same self-reported information and borrower-supplied documents as the paper process, just faster and at internet scale. Fraud rings automate; a front door that accepts unverified applications at machine speed is an invitation. The problem was never the front door. It was that the front door had no ID check.
+
 Community banks usually evaluate verification automation as a speed and cost play: fewer phone calls, faster closes, less staff time per file. All true. But the same architecture is a fraud control, and arguably a better one than anything in the fraud budget.
 
 Income verified directly from a payroll provider can't be inflated with an edited paystub. Employment confirmed at the data source can't be vouched for by a fraud ring's phone operator. Bank account data pulled with the borrower's consent shows the undisclosed mortgage payment that never made it onto the application. Identity checks run against authoritative sources make a synthetic borrower's thin file visible instead of invisible.
