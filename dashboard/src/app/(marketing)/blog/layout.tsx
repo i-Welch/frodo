@@ -498,6 +498,8 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           <div className="blog-nav-links">
             <a href="/blog">Blog</a>
             <a href="/">Home</a>
+            <a href="/solutions">Solutions</a>
+            <a href="/glossary">Glossary</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
             <a href="tel:+12293796131">(229) 379-6131</a>

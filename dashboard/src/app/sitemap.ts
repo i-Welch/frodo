@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import { AUDITS } from './(whitelabel)/_config/audit-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
+import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
+import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 
 const SITE = 'https://reportraven.tech';
 const APP = 'https://app.reportraven.tech';
@@ -134,7 +136,7 @@ const BLOG_DATES: Record<string, string> = {
 };
 
 // Bump manually when non-blog page content meaningfully changes.
-const SITE_UPDATED = new Date('2026-07-01');
+const SITE_UPDATED = new Date('2026-07-05');
 
 const LEGAL_PATHS = [
   'security',
@@ -167,6 +169,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE, lastModified: SITE_UPDATED, changeFrequency: 'weekly', priority: 1 },
     { url: `${SITE}/blog`, lastModified: SITE_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
+    ...SOLUTIONS.map((s) => ({
+      url: `${SITE}/solutions/${s.slug}`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
+    { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
+    ...GLOSSARY_TERMS.map((t) => ({
+      url: `${SITE}/glossary/${t.slug}`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     ...BLOG_SLUGS.map((slug) => ({
       url: `${SITE}/blog/${slug}`,
       lastModified: BLOG_DATES[slug] ? new Date(BLOG_DATES[slug]) : SITE_UPDATED,
