@@ -4223,7 +4223,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           url: 'https://reportraven.tech',
           logo: {
             '@type': 'ImageObject',
-            url: 'https://reportraven.tech/raven-icon.svg',
+            url: 'https://reportraven.tech/icon.png',
           },
         },
         mainEntityOfPage: {
