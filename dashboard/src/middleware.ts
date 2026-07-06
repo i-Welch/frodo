@@ -1,20 +1,10 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse, type NextRequest } from 'next/server';
 
-const isPublicRoute = createRouteMatcher([
-  '/',
-  '/sign-in(.*)',
-  '/sign-up(.*)',
-  '/legal(.*)',
-  '/forms(.*)',
-  '/blog(.*)',
-  '/roi(.*)',
-  '/wl(.*)',
-  '/audit(.*)',
-  '/api/v1/wl(.*)',
-  '/sitemap.xml',
-  '/robots.txt',
-]);
+// Protect-by-list: only routes named here require auth. Everything else —
+// including unknown paths — falls through to normal routing so bad URLs
+// render the not-found page instead of bouncing to sign-in.
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
 
 const WL_DOMAIN = 'submit.loans';
 
@@ -61,7 +51,7 @@ export default clerkMiddleware(async (auth, request) => {
   const wl = handleWhiteLabelHost(request, host);
   if (wl) return wl;
 
-  if (!isPublicRoute(request)) {
+  if (isProtectedRoute(request)) {
     await auth.protect();
   }
 });
