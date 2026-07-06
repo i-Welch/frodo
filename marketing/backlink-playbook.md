@@ -21,7 +21,7 @@ local/entity SEO). Fill in the two bracketed items once and reuse everywhere.
 - HQ: [City, State]
 - Founded: [Year]
 - LinkedIn: [company page URL — create one first if it doesn't exist; several directories require it]
-- Logo: use the SVG/PNG favicon assets in `dashboard/public/`; export a 400x400 PNG and a 1024x1024 PNG before starting
+- Logo (hosted, ready to use): https://reportraven.tech/logo-1024.png (1024x1024), https://reportraven.tech/logo-400.png (400x400), https://reportraven.tech/icon.png (192x192)
 - Screenshots: capture 3-5 from the demo flow and an audit page (directories with screenshots convert far better)
 
 **One-liner (tagline fields, ~60 chars)**
