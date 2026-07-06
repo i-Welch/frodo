@@ -36,6 +36,10 @@ RAVEN gives community banks fintech-grade borrower verification. One link to the
 
 RAVEN is a borrower verification platform built for community banks and credit unions. Instead of collecting paystubs, calling employers, and faxing verification-of-deposit forms, the bank sends one link. The borrower authorizes their data once, and RAVEN returns a complete verification report: identity validated against authoritative sources, income and employment direct from payroll systems of record, bank balances and transaction history through consented account connections, plus credit and property data, all in one audit-ready file. Because verification runs on source data instead of borrower-supplied documents, RAVEN doubles as a fraud control: edited paystubs, fictitious employers, and synthetic identities have nothing to attach to. The borrower experience is fully white-labeled, there is no core conversion or LOS dependency, and banks send their first verification link within days of onboarding. RAVEN serves community banks across the Southeast and nationally.
 
+**Target market blurb ("who is it for" fields)**
+
+RAVEN is built for community banks and credit unions, roughly $100M to $5B in assets, that want to verify borrowers and open accounts digitally without replacing their core. Typical buyers are CEOs, COOs, chief credit officers, and heads of retail or lending at institutions still running verification on phone calls, faxes, and borrower-supplied documents. It fits banks on any core (Jack Henry, Fiserv, CSI, and others), with or without an existing LOS, including banks with no digital application channel at all.
+
 **Category selections (pick whichever each directory offers, in this priority)**
 1. Identity Verification / KYC Software
 2. Lending Software / Loan Origination Software
