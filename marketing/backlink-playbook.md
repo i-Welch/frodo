@@ -25,30 +25,16 @@ local/entity SEO). Fill in the two bracketed items once and reuse everywhere.
 - Screenshots: capture 3-5 from the demo flow and an audit page (directories with screenshots convert far better)
 
 **One-liner (tagline fields, ~60 chars)**
-> Borrower verification for community banks. One link, minutes.
+
+Borrower verification for community banks. One link, minutes.
 
 **50-word blurb (short description fields)**
-> RAVEN gives community banks fintech-grade borrower verification. One link to the
-> borrower returns identity, income, employment, credit, bank, and property data,
-> verified at the source in minutes instead of weeks. No core replacement, no
-> LOS dependency, white-labeled to your bank, live in days.
+
+RAVEN gives community banks fintech-grade borrower verification. One link to the borrower returns identity, income, employment, credit, bank, and property data, verified at the source in minutes instead of weeks. No core replacement, no LOS dependency, white-labeled to your bank, live in days.
 
 **150-word blurb (standard description fields)**
-> RAVEN is a borrower verification platform built for community banks and credit
-> unions. Instead of collecting paystubs, calling employers, and faxing
-> verification-of-deposit forms, the bank sends one link. The borrower authorizes
-> their data once, and RAVEN returns a complete verification report: identity
-> validated against authoritative sources, income and employment direct from
-> payroll systems of record, bank balances and transaction history through
-> consented account connections, plus credit and property data, all in one
-> audit-ready file.
->
-> Because verification runs on source data instead of borrower-supplied documents,
-> RAVEN doubles as a fraud control: edited paystubs, fictitious employers, and
-> synthetic identities have nothing to attach to. The borrower experience is fully
-> white-labeled, there is no core conversion or LOS dependency, and banks send
-> their first verification link within days of onboarding. RAVEN serves community
-> banks across the Southeast and nationally.
+
+RAVEN is a borrower verification platform built for community banks and credit unions. Instead of collecting paystubs, calling employers, and faxing verification-of-deposit forms, the bank sends one link. The borrower authorizes their data once, and RAVEN returns a complete verification report: identity validated against authoritative sources, income and employment direct from payroll systems of record, bank balances and transaction history through consented account connections, plus credit and property data, all in one audit-ready file. Because verification runs on source data instead of borrower-supplied documents, RAVEN doubles as a fraud control: edited paystubs, fictitious employers, and synthetic identities have nothing to attach to. The borrower experience is fully white-labeled, there is no core conversion or LOS dependency, and banks send their first verification link within days of onboarding. RAVEN serves community banks across the Southeast and nationally.
 
 **Category selections (pick whichever each directory offers, in this priority)**
 1. Identity Verification / KYC Software
@@ -60,9 +46,8 @@ local/entity SEO). Fill in the two bracketed items once and reuse everywhere.
 **Competitor/alternative fields**: Blend, Truv, Plaid (IDV), The Work Number
 
 **Founder bio (for bylines and podcast pitches, 40 words)**
-> Isaac Welch is the founder of RAVEN, a borrower verification platform for
-> community banks. He writes data-driven analysis of community bank performance,
-> lending speed, and verification fraud at reportraven.tech/blog.
+
+Isaac Welch is the founder of RAVEN, a borrower verification platform for community banks. He writes data-driven analysis of community bank performance, lending speed, and verification fraud at reportraven.tech/blog.
 
 ---
 
