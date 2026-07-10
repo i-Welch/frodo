@@ -3,7 +3,7 @@ import { CalendlyButton } from './calendly-button';
 import { ScrollReveal } from './scroll-reveal';
 
 export const metadata: Metadata = {
-  title: 'RAVEN — Borrower Verification Software for Community Banks',
+  title: { absolute: 'RAVEN — Borrower Verification Software for Community Banks' },
   description:
     'RAVEN automates borrower verification for community banks. Identity, income, credit, employment, and property data from one link, verified in minutes.',
   keywords: [
@@ -116,11 +116,6 @@ const jsonLd = {
         'Borrower verification platform for community and regional banks. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
       url: 'https://reportraven.tech',
       provider: { '@id': 'https://reportraven.tech/#organization' },
-      offers: {
-        '@type': 'Offer',
-        priceCurrency: 'USD',
-        description: 'Contact for pricing. Early access available for community banks.',
-      },
       featureList: [
         'KYC and identity verification',
         'OFAC/PEP watchlist screening',

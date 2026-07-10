@@ -4161,7 +4161,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: 'Article Not Found' };
   }
   return {
-    title: `${article.title} — RAVEN Blog`,
+    title: article.title,
     description: article.description,
     alternates: {
       canonical: `https://reportraven.tech/blog/${slug}`,

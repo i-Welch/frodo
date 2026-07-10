@@ -52,7 +52,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const audit = getAudit(slug);
   if (!audit) return {};
-  const title = `Digital Lending Audit: ${audit.bankName} | RAVEN`;
+  const title = `Digital Lending Audit: ${audit.bankName}`;
   const description = `${audit.bankName}'s current digital borrower experience, a live white-label demo of what it could be, and what automated verification would be worth, built from public data.`;
   return {
     title,

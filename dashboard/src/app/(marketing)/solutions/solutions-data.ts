@@ -202,7 +202,7 @@ export const SOLUTIONS: Solution[] = [
   {
     slug: 'kyc-software',
     h1: 'KYC Software for Community Banks',
-    metaTitle: 'KYC Software for Community Banks | RAVEN',
+    metaTitle: 'KYC Software for Community Banks',
     metaDescription:
       'KYC and CIP verification for community banks: authoritative identity checks, synthetic identity detection, and an examiner-ready audit trail from one link.',
     eyebrow: 'Compliance',

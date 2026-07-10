@@ -3,7 +3,7 @@ import { SiteShell } from '../site-shell';
 import { INTEGRATION_CATEGORIES, getIntegrationsByCategory } from './integrations-data';
 
 export const metadata: Metadata = {
-  title: 'Integrations | RAVEN',
+  title: 'Integrations',
   description:
     'RAVEN integrates with Plaid, Socure, Truework, Melissa, and FullContact, and works with Jack Henry, Fiserv, FIS, CSI, nCino, MeridianLink, Baker Hill, Abrigo, and Encompass.',
   alternates: { canonical: 'https://reportraven.tech/integrations' },

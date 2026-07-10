@@ -266,7 +266,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'core',
     description: 'Works alongside Symitar and SilverLake today with no core integration required.',
     h1: 'RAVEN + Jack Henry: Verified Data for Symitar and SilverLake',
-    metaTitle: 'Jack Henry Integration | RAVEN',
+    metaTitle: 'Jack Henry Integration',
     metaDescription:
       'RAVEN works alongside Jack Henry Symitar and SilverLake with no core integration required. Verified borrower files arrive as structured data and an examiner-ready PDF.',
     eyebrow: 'Core Banking',
@@ -314,7 +314,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'core',
     description: 'Works alongside DNA and Premier today with no core integration required.',
     h1: 'RAVEN + Fiserv: Verified Data for DNA and Premier',
-    metaTitle: 'Fiserv Integration | RAVEN',
+    metaTitle: 'Fiserv Integration',
     metaDescription:
       'RAVEN works alongside Fiserv DNA and Premier with no core integration required. Verified borrower files arrive as structured data and an examiner-ready PDF.',
     eyebrow: 'Core Banking',
@@ -358,7 +358,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'core',
     description: 'Works alongside Horizon and IBS today with no core integration required.',
     h1: 'RAVEN + FIS: Verified Data for Horizon and IBS',
-    metaTitle: 'FIS Integration | RAVEN',
+    metaTitle: 'FIS Integration',
     metaDescription:
       'RAVEN works alongside FIS Horizon and IBS with no core integration required. Verified borrower files arrive as structured data and an examiner-ready PDF.',
     eyebrow: 'Core Banking',
@@ -402,7 +402,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'core',
     description: 'Works alongside CSI cores today with no core integration required.',
     h1: 'RAVEN + CSI: Verified Data for Your Core',
-    metaTitle: 'CSI Integration | RAVEN',
+    metaTitle: 'CSI Integration',
     metaDescription:
       'RAVEN works alongside CSI cores with no core integration required. Verified borrower files arrive as structured data and an examiner-ready PDF.',
     eyebrow: 'Core Banking',
@@ -450,7 +450,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'los',
     description: 'Verified applicant files that fit any nCino pipeline.',
     h1: 'RAVEN + nCino: Verified Files Into Your Pipeline',
-    metaTitle: 'nCino Integration | RAVEN',
+    metaTitle: 'nCino Integration',
     metaDescription:
       'RAVEN delivers source-verified borrower files that fit any nCino pipeline: structured data plus an examiner-ready PDF, verified before the application enters your workflow.',
     eyebrow: 'Loan Origination',
@@ -493,7 +493,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'los',
     description: 'Verified applicant files that fit any MeridianLink pipeline.',
     h1: 'RAVEN + MeridianLink: Verified Files Into Your Pipeline',
-    metaTitle: 'MeridianLink Integration | RAVEN',
+    metaTitle: 'MeridianLink Integration',
     metaDescription:
       'RAVEN delivers source-verified borrower files that fit any MeridianLink pipeline: structured data plus an examiner-ready PDF, verified before the application enters your workflow.',
     eyebrow: 'Loan Origination',
@@ -536,7 +536,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'los',
     description: 'Verified applicant files that fit any Baker Hill pipeline.',
     h1: 'RAVEN + Baker Hill NextGen: Verified Files Into Your Pipeline',
-    metaTitle: 'Baker Hill NextGen Integration | RAVEN',
+    metaTitle: 'Baker Hill NextGen Integration',
     metaDescription:
       'RAVEN delivers source-verified borrower files that fit any Baker Hill NextGen pipeline: structured data plus an examiner-ready PDF, verified before the application enters your workflow.',
     eyebrow: 'Loan Origination',
@@ -579,7 +579,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'los',
     description: 'Verified applicant files that fit any Abrigo pipeline.',
     h1: 'RAVEN + Abrigo: Verified Files Into Your Pipeline',
-    metaTitle: 'Abrigo Integration | RAVEN',
+    metaTitle: 'Abrigo Integration',
     metaDescription:
       'RAVEN delivers source-verified borrower files that fit any Abrigo pipeline: structured data plus an examiner-ready PDF, verified before the application enters your workflow.',
     eyebrow: 'Loan Origination',
@@ -622,7 +622,7 @@ export const INTEGRATIONS: Integration[] = [
     category: 'los',
     description: 'Verified applicant files that fit any Encompass pipeline.',
     h1: 'RAVEN + Encompass: Verified Files Into Your Pipeline',
-    metaTitle: 'ICE Mortgage Technology Encompass Integration | RAVEN',
+    metaTitle: 'ICE Mortgage Technology Encompass Integration',
     metaDescription:
       'RAVEN delivers source-verified borrower files that fit any Encompass pipeline: structured data plus an examiner-ready PDF, verified before the application enters your workflow.',
     eyebrow: 'Loan Origination',

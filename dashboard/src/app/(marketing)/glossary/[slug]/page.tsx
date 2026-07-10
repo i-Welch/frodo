@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const term = getGlossaryTerm(slug);
   if (!term) return { title: 'Term Not Found' };
   return {
-    title: `${term.metaTitle} | RAVEN Glossary`,
+    title: term.metaTitle,
     description: term.metaDescription,
     alternates: { canonical: `https://reportraven.tech/glossary/${slug}` },
     openGraph: {

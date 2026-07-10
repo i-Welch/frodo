@@ -3,7 +3,7 @@ import { SiteShell } from '../site-shell';
 import { SOLUTIONS } from './solutions-data';
 
 export const metadata: Metadata = {
-  title: 'Solutions for Community Banks | RAVEN',
+  title: 'Solutions for Community Banks',
   description:
     'Verification-first infrastructure for community banks: borrower verification, digital account opening, KYC, and instant income and employment verification.',
   alternates: { canonical: 'https://reportraven.tech/solutions' },

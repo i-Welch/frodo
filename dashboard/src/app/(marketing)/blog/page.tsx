@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { CalendlyButton } from '../calendly-button';
 
 export const metadata: Metadata = {
-  title: 'RAVEN Blog — Insights for Community Banks',
+  title: { absolute: 'RAVEN Blog — Insights for Community Banks' },
   description:
     'Articles on borrower verification, lending automation, compliance, and how community banks can compete with fintechs. Research-backed insights from RAVEN.',
   openGraph: {

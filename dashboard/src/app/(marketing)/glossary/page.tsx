@@ -3,7 +3,7 @@ import { SiteShell } from '../site-shell';
 import { GLOSSARY_TERMS } from './glossary-data';
 
 export const metadata: Metadata = {
-  title: 'Lending Verification Glossary | RAVEN',
+  title: 'Lending Verification Glossary',
   description:
     'Plain-English definitions of borrower verification terms: VOD, VOE, VOM, asset verification, income verification, synthetic identity fraud, and more.',
   alternates: { canonical: 'https://reportraven.tech/glossary' },
