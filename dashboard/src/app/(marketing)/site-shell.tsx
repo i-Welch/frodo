@@ -140,6 +140,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
             <a href="/">Home</a>
             <a href="/blog">Blog</a>
             <a href="/solutions">Solutions</a>
+            <a href="/integrations">Integrations</a>
             <a href="/glossary">Glossary</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
             <CalendlyButton source={`${ctaSource}-nav`} label="Request a Demo" buttonClassName="site-nav-cta" />

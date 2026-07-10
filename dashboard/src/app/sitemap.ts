@@ -3,6 +3,7 @@ import { AUDITS } from './(whitelabel)/_config/audit-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
+import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 
 const SITE = 'https://reportraven.tech';
 const APP = 'https://app.reportraven.tech';
@@ -11,12 +12,12 @@ const APP = 'https://app.reportraven.tech';
 // To publish a phase: uncomment the slugs on/after the target date and deploy.
 //
 // Phase 1 LIVE (Jun 26): foundational institutional + 7 SEO articles (LinkedIn Jun 30–Jul 10)
-// Phase 2a (Jul 3): uncomment beacon-community-bank-charleston-growth-capacity
-// Phase 2b (Jul 7): uncomment queensborough through first-community-bank
+// Phase 2 LIVE (Jul 7): bank deep dives (queensborough through first-community-bank)
 // Phase 3 (Jul 14): uncomment first-capital through white-label + security-federal
-// Phase 4 (Jul 21): uncomment bank-travelers through open-banking
-// Phase 5 (Jul 28): uncomment first-reliance through colony-bankcorp
-// Phase 6 (Aug 4):  uncomment chime + southern-bank-nc
+// Phase 4 (Jul 16): uncomment digital-account-opening + open-banking
+// Phase 5 (Jul 21): uncomment bank-travelers through south-atlantic
+// Phase 6 (Jul 28): uncomment first-reliance-outgrew-florence through colony-bankcorp
+// Phase 7 (Aug 4):  uncomment chime + southern-bank-nc
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 const BLOG_SLUGS = [
@@ -47,13 +48,13 @@ const BLOG_SLUGS = [
   'oconee-federal-quiet-comeback',
   'coastal-states-bank-boat-bank',
   'rocket-mortgage-22-days-how',
-  // — Phase 2: add Jul 7 (bank deep dives, Mar–Apr 2026 dates) —
-  // 'queensborough-national-bank-trust-deep-dive',
-  // 'first-palmetto-bank-sc-performance-deep-dive',
-  // 'beacon-community-bank-charleston-growth-capacity',
-  // 'optus-bank-cdfi-columbia-growth',
-  // 'countybank-greenwood-sc-sba-deep-dive',
-  // 'first-community-bank-sc-cre-merger-growth',
+  // — Phase 2 LIVE (Jul 7): bank deep dives, Mar–Apr 2026 dates —
+  'queensborough-national-bank-trust-deep-dive',
+  'first-palmetto-bank-sc-performance-deep-dive',
+  'beacon-community-bank-charleston-growth-capacity',
+  'optus-bank-cdfi-columbia-growth',
+  'countybank-greenwood-sc-sba-deep-dive',
+  'first-community-bank-sc-cre-merger-growth',
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
   // 'first-capital-bank-charleston-growth-digital-gap',
   // 'ccnb-myrtle-beach-merger-growth-2026',
@@ -72,7 +73,7 @@ const BLOG_SLUGS = [
   // 'first-reliance-outgrew-florence',
   // 'carolina-bank-between-two-economies',
   // 'colony-bankcorp-farm-to-fees',
-  // — Phase 6: add Aug 4 —
+  // — Phase 7: add Aug 4 —
   // 'chime-account-opening-deposit-war',
   // 'southern-bank-nc-digital-bet',
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
@@ -175,6 +176,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: SITE_UPDATED,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
+    })),
+    { url: `${SITE}/integrations`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.8 },
+    ...INTEGRATIONS.map((i) => ({
+      url: `${SITE}/integrations/${i.slug}`,
+      lastModified: SITE_UPDATED,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
     })),
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({

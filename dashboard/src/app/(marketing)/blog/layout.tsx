@@ -499,6 +499,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <a href="/blog">Blog</a>
             <a href="/">Home</a>
             <a href="/solutions">Solutions</a>
+            <a href="/integrations">Integrations</a>
             <a href="/glossary">Glossary</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
