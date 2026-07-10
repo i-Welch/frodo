@@ -38,7 +38,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           min-height: 100vh;
         }
 
-        .site-shell nav {
+        .site-shell > nav {
           position: fixed;
           top: 0; left: 0; right: 0;
           z-index: 100;
@@ -119,7 +119,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
         .site-footer-contact a:hover { color: var(--white); }
 
         @media (max-width: 768px) {
-          .site-shell nav { padding: 1rem 1.5rem; }
+          .site-shell > nav { padding: 1rem 1.5rem; }
           .site-nav-links { display: none; }
           .site-nav-mobile-link { display: inline-block; }
           .site-shell footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }

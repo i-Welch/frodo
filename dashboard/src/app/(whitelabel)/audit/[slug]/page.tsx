@@ -430,7 +430,7 @@ const styles = `
   }
 
   /* Nav */
-  .aud-shell nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .aud-shell > nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 3rem; background: rgba(10,10,10,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.06); }
   .aud-nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--white); }
   .aud-nav-wordmark { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; }
   .aud-nav-links { display: flex; gap: 2rem; align-items: center; }
@@ -647,7 +647,7 @@ const styles = `
   .aud-foot-contact a:hover { color: var(--white); }
 
   @media (max-width: 768px) {
-    .aud-shell nav { padding: 1rem 1.5rem; }
+    .aud-shell > nav { padding: 1rem 1.5rem; }
     .aud-nav-links { display: none; }
     .aud-nav-blog-mobile { display: inline-block; }
     .aud-main { padding: 7rem 1.25rem 3rem; }

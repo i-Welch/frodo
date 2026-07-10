@@ -38,7 +38,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         }
 
         /* --- Nav --- */
-        .blog-shell nav {
+        .blog-shell > nav {
           position: fixed;
           top: 0;
           left: 0;
@@ -470,7 +470,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
-          .blog-shell nav { padding: 1rem 1.5rem; }
+          .blog-shell > nav { padding: 1rem 1.5rem; }
           .blog-nav-links { display: none; }
           .blog-nav-blog-mobile { display: inline-block; }
           .blog-main { padding-top: 4rem; }
