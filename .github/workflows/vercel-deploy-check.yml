@@ -1,0 +1,38 @@
+name: Vercel Deploy Check
+on:
+  push:
+    branches: [master]
+
+# Vercel posts a "Vercel" commit status but GitHub never notifies on
+# third-party statuses, so a failed dashboard deploy leaves production
+# silently stale (happened 2026-07-10: infra blip killed the build in
+# 778ms and the commit never went live). This job waits for the status
+# and fails the run on error, which triggers GitHub's failed-workflow
+# email to the pusher.
+
+jobs:
+  verify-vercel-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      statuses: read
+    steps:
+      - name: Wait for Vercel deployment status
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 60); do
+            state=$(gh api "repos/${{ github.repository }}/commits/${{ github.sha }}/status" \
+              --jq '[.statuses[] | select(.context == "Vercel")][0].state // "pending"')
+            echo "attempt $i/60: Vercel status = $state"
+            case "$state" in
+              success)
+                echo "Vercel deployment succeeded."
+                exit 0 ;;
+              failure|error)
+                echo "::error::Vercel deployment FAILED for ${{ github.sha }} — production is stale. Retry with 'vercel redeploy' or push again."
+                exit 1 ;;
+            esac
+            sleep 20
+          done
+          echo "::error::Timed out after 20m waiting for Vercel deployment status."
+          exit 1
