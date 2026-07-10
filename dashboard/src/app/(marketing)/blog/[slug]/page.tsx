@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getRelatedArticles } from '../articles-index';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
 import { ROI_BANKS } from '../../roi/roi-data';
@@ -4197,6 +4198,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     .replace(/^\*Published[^\n]+\*\n+/, '');
   const html = convertMarkdown(cleanContent);
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
+  const related = getRelatedArticles(slug);
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
   // Articles with fewer than 3 sections render in one piece (no mid CTA).
@@ -4339,6 +4341,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         @media (max-width: 768px) {
           .article-audit-callout { flex-direction: column; align-items: flex-start; padding: 1.75rem 1.5rem; }
         }
+        .article-related { margin-top: 3.5rem; padding-top: 2.25rem; border-top: 1px solid rgba(255,255,255,0.08); }
+        .article-related-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--gray-500); margin-bottom: 1.25rem; }
+        .article-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .article-related-card { display: flex; flex-direction: column; gap: 0.6rem; padding: 1.25rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; background: rgba(255,255,255,0.015); text-decoration: none; transition: background 200ms, border-color 200ms; }
+        .article-related-card:hover { background: rgba(255,255,255,0.035); border-color: rgba(255,255,255,0.16); }
+        .article-related-title { font-size: 0.92rem; font-weight: 600; line-height: 1.4; color: var(--white); letter-spacing: -0.01em; }
+        .article-related-meta { font-size: 0.75rem; color: var(--gray-500); margin-top: auto; }
+        @media (max-width: 700px) {
+          .article-related-grid { grid-template-columns: 1fr; }
+        }
       `}</style>
 
       <article className="article-wrap">
@@ -4399,6 +4411,19 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
             </aside>
+          )}
+          {related.length > 0 && (
+            <nav className="article-related" aria-label="Related articles">
+              <div className="article-related-label">Related reading</div>
+              <div className="article-related-grid">
+                {related.map((r) => (
+                  <a key={r.slug} href={`/blog/${r.slug}`} className="article-related-card">
+                    <span className="article-related-title">{r.title}</span>
+                    <span className="article-related-meta">{r.readTime}</span>
+                  </a>
+                ))}
+              </div>
+            </nav>
           )}
         </div>
       </article>
