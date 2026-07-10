@@ -449,9 +449,253 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'The endgame of a synthetic identity: after building credit limits over months or years, the fraudster draws every available line at once and abandons the identity.',
       },
     ],
-    relatedTerms: ['income-verification', 'bank-account-verification', 'verification-of-employment'],
+    relatedTerms: ['first-party-fraud', 'bust-out-fraud', 'ecbsv', 'new-account-fraud'],
     relatedArticles: [
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
+    ],
+    relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
+  },
+  {
+    slug: 'first-party-fraud',
+    term: 'First-Party Fraud',
+    metaTitle: 'What Is First-Party Fraud?',
+    metaDescription:
+      'First-party fraud is committed by a real person using their own identity while lying about facts or intent. Now 36% of reported fraud. Why KYC misses it and what catches it.',
+    definition:
+      'First-party fraud is fraud committed by a person using their own, real identity while misrepresenting facts or intent for financial gain: inflating income on a loan application, disputing legitimate charges, or taking credit with no intention to repay. Because the identity is genuine, it passes the checks built to catch impostors.',
+    sections: [
+      {
+        heading: 'The fastest-growing fraud category',
+        paragraphs: [
+          'LexisNexis Risk Solutions found first-party fraud made up 36% of all reported fraud in 2024, up from 15% a year earlier, overtaking scams as the leading form of fraud globally. Inflation and cost-of-living pressure feed it: ordinary customers rationalize an inflated income figure or a false chargeback in ways they never would a stolen card.',
+        ],
+      },
+      {
+        heading: 'What it looks like in practice',
+        paragraphs: [],
+        bullets: [
+          'Application fraud: inflating income, hiding debts, or misstating employment to qualify for credit',
+          'Chargeback abuse ("friendly fraud"): disputing purchases that were legitimately made and received',
+          'Never-pay: opening credit with no intent to repay, sometimes after months of normal behavior',
+          'Bust-out: cultivating limits and drawing everything at once (see bust-out fraud)',
+          'Goods-lost claims: asserting an ordered item never arrived',
+        ],
+      },
+      {
+        heading: 'Why KYC doesn’t catch it',
+        paragraphs: [
+          'Identity verification answers "is this person real and who they claim to be," and for first-party fraud the honest answer is yes. The lie lives in the facts around the identity: the income, the debts, the intent. That is why first-party losses usually surface as credit losses rather than fraud cases, quietly mispricing the loan book while the fraud program watches for impostors.',
+          'The control that works is verifying the claims, not just the claimant: income and employment from payroll systems instead of paystubs, debts from bank transaction data instead of self-report, disputes checked against delivery and usage evidence. A first-party fraudster can pass an identity check; they cannot make a payroll system report income that doesn’t exist.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between first-party and third-party fraud?',
+        a: 'Third-party fraud uses someone else’s identity (identity theft). First-party fraud uses one’s own identity but misrepresents facts or intent. Synthetic identity fraud sits between them: a fabricated person built on real identity elements.',
+      },
+      {
+        q: 'How big is first-party fraud?',
+        a: 'LexisNexis measured it at 36% of all reported fraud in 2024, up from 15% the year before, making it the leading fraud category globally. Each dollar lost costs North American financial institutions over $5 in total impact.',
+      },
+      {
+        q: 'How do lenders detect first-party fraud?',
+        a: 'By verifying claims at the source: payroll-based income and employment verification, bank transaction data that reveals undisclosed obligations, and behavioral signals like credit-seeking velocity. Identity checks alone cannot catch it.',
+      },
+    ],
+    relatedTerms: ['bust-out-fraud', 'synthetic-identity-fraud', 'income-verification'],
+    relatedArticles: [
+      { slug: 'first-party-fraud-community-banks', title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.' },
+      { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
+    ],
+    relatedSolution: { slug: 'bank-verification-software', label: 'Bank verification software' },
+  },
+  {
+    slug: 'bust-out-fraud',
+    term: 'Bust-Out Fraud',
+    metaTitle: 'What Is Bust-Out Fraud?',
+    metaDescription:
+      'Bust-out fraud builds credit trust over months, then draws every line at once and disappears. How the scheme works, the warning signs, and why losses hide in charge-offs.',
+    definition:
+      'Bust-out fraud is a long-game scheme in which a fraudster, using a synthetic identity or their own, builds a trustworthy credit profile over months or years, then draws every available credit line at once and disappears. The name comes from the final move: busting out of the carefully cultivated accounts.',
+    sections: [
+      {
+        heading: 'The three stages',
+        paragraphs: [],
+        bullets: [
+          'Seeding: open small accounts, often with a synthetic identity that has been aged into a credit file',
+          'Cultivation: months of on-time payments, gradual limit increases, new tradelines added on the strengthened profile',
+          'Bust-out: max every line, sometimes paying with checks that will bounce to temporarily restore limits, then vanish',
+        ],
+      },
+      {
+        heading: 'Why it hides in the loan book',
+        paragraphs: [
+          'A bust-out looks like a model customer until the last week. When the loss lands, it usually books as a charge-off, a credit decision gone bad, rather than a fraud case, because there is often no identity theft victim to dispute anything. That misclassification matters: it sends the loss to the credit team instead of the fraud team, and the pattern never gets studied.',
+          'Warning signs cluster late: rapid credit-seeking across institutions, utilization jumping across every line simultaneously, payment-then-draw cycles, and contact details that quietly change ahead of the draw. Earlier detection lives at onboarding: synthetic-identity checks and SSN validation stop the seeded identities before the cultivation phase begins.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is bust-out fraud first-party or synthetic?',
+        a: 'Both patterns exist. Synthetic bust-outs use fabricated identities and leave no one to pursue. First-party bust-outs use real identities, and the perpetrator often claims financial hardship rather than fraud.',
+      },
+      {
+        q: 'How long does a bust-out scheme take?',
+        a: 'Typically months to two years. The cultivation phase is what makes the scheme work: the longer the good behavior, the higher the limits at bust-out time.',
+      },
+      {
+        q: 'What stops bust-out fraud?',
+        a: 'At onboarding: authoritative identity and SSN validation that catches synthetic identities before they enter the book. In the portfolio: monitoring for simultaneous utilization spikes, cross-institution credit velocity, and payment-then-draw patterns.',
+      },
+    ],
+    relatedTerms: ['synthetic-identity-fraud', 'first-party-fraud', 'new-account-fraud'],
+    relatedArticles: [
+      { slug: 'first-party-fraud-community-banks', title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.' },
+    ],
+    relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
+  },
+  {
+    slug: 'new-account-fraud',
+    term: 'New Account Fraud',
+    metaTitle: 'What Is New Account Fraud (Account Opening Fraud)?',
+    metaDescription:
+      'New account fraud opens bank accounts with stolen, synthetic, or misrepresented identities: mule accounts, deposit fraud, bonus abuse. Why digital channels get hit and what stops it.',
+    definition:
+      'New account fraud (also called account opening fraud) is the opening of a deposit or credit account using a stolen identity, a synthetic identity, or the fraudster’s own identity with intent to defraud: money mule accounts, first-deposit check fraud, or sign-up bonus abuse. It is the fraud category that made many banks turn off online account opening entirely.',
+    sections: [
+      {
+        heading: 'The shapes it takes',
+        paragraphs: [],
+        bullets: [
+          'Stolen-identity accounts: opened in a real victim’s name, used to receive fraud proceeds or launch further fraud',
+          'Synthetic accounts: fabricated identities seeding future bust-outs',
+          'Mule accounts: opened by real people (willing or duped) to move stolen money',
+          'Deposit fraud: funding new accounts with bad checks and drawing before the return',
+          'Bonus and promotion abuse: serial account opening for incentives',
+        ],
+      },
+      {
+        heading: 'Why digital channels got hit, and what changed',
+        paragraphs: [
+          'The first generation of online account opening collected the same self-reported data as the paper process, at internet speed, with no source verification. Fraud rings automated against it, and one in five financial institutions reported losing over $5 million to fraud in a recent twelve-month period. Many banks responded by shutting the channel.',
+          'The current answer is verification-first opening: identity validated against authoritative sources (including SSA-level SSN checks that catch synthetics), funding accounts confirmed by direct connection instead of micro-deposits, and device and behavior signals screening the session itself. Done this way, the digital channel produces better-verified customers than the branch, because staff can’t check SSN issuance records by eye.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between new account fraud and account takeover?',
+        a: 'New account fraud opens a fresh account under false pretenses; account takeover hijacks an existing customer’s account. They require different controls: verification at opening versus authentication in servicing.',
+      },
+      {
+        q: 'Why do fraudsters open bank accounts?',
+        a: 'A verified bank account is infrastructure for other crimes: a landing spot for stolen funds, a mule hop, a source of checks, or the deposit relationship that anchors future credit for a bust-out.',
+      },
+      {
+        q: 'How do banks prevent account opening fraud without losing good applicants?',
+        a: 'By replacing typed-in data with source verification. Authoritative identity checks, eCBSV SSN validation, and instant funding-account confirmation add seconds for legitimate applicants and walls for fraudulent ones.',
+      },
+    ],
+    relatedTerms: ['synthetic-identity-fraud', 'ecbsv', 'bank-account-verification', 'first-party-fraud'],
+    relatedArticles: [
+      { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
+      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+    ],
+    relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
+  },
+  {
+    slug: 'ecbsv',
+    term: 'eCBSV',
+    metaTitle: 'What Is eCBSV? SSA’s SSN Verification Service',
+    metaDescription:
+      'eCBSV is the Social Security Administration’s electronic consent-based SSN verification service: a real-time match of name, SSN, and date of birth against SSA records.',
+    definition:
+      'eCBSV (electronic Consent Based Social Security Number Verification) is a Social Security Administration service that lets permitted entities verify, in real time and with the consumer’s consent, whether a name, SSN, and date of birth combination matches SSA records. It returns a yes/no match plus a death indicator, straight from the agency that issued the number.',
+    sections: [
+      {
+        heading: 'Why it exists',
+        paragraphs: [
+          'Synthetic identity fraud works by attaching a fabricated person to a real SSN, usually one with no credit history. Traditional checks compare applications against credit bureau data, which a cultivated synthetic identity has already infiltrated. eCBSV checks the combination against the issuance record itself, which a synthetic identity cannot fake. Congress authorized the service in the 2018 Banking Bill specifically to combat synthetic fraud, and it launched in 2020.',
+        ],
+      },
+      {
+        heading: 'How it works in practice',
+        paragraphs: [
+          'The consumer provides written or electronic consent. The financial institution (or its service provider) submits name, SSN, and date of birth; SSA returns a match/no-match and a death indicator in seconds. eCBSV does not return the person’s data, only whether the submitted combination is consistent with SSA records, which keeps it privacy-preserving while killing the core synthetic-identity move.',
+          'Access runs through entities enrolled with SSA, and most banks consume it through an identity verification provider rather than enrolling directly. In a verification-first onboarding flow, the check runs invisibly during account opening.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What does eCBSV return?',
+        a: 'A yes/no indication that the submitted name, SSN, and date of birth match SSA records, plus a death indicator. It does not return any personal data.',
+      },
+      {
+        q: 'Who can use eCBSV?',
+        a: 'Permitted entities under the statute, chiefly financial institutions and their service providers, for credit and account-opening use cases, with consumer consent. Most banks access it through an enrolled identity verification provider.',
+      },
+      {
+        q: 'How is eCBSV different from a credit bureau SSN check?',
+        a: 'Bureau checks compare against compiled credit-header data, which synthetic identities deliberately seed and can pass. eCBSV checks against the SSA issuance record itself, which a fabricated identity cannot alter.',
+      },
+    ],
+    relatedTerms: ['synthetic-identity-fraud', 'customer-identification-program', 'new-account-fraud'],
+    relatedArticles: [
+      { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
+    ],
+    relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
+  },
+  {
+    slug: 'customer-identification-program',
+    term: 'Customer Identification Program',
+    abbreviation: 'CIP',
+    metaTitle: 'Customer Identification Program (CIP) Requirements',
+    metaDescription:
+      'CIP is the USA PATRIOT Act requirement that banks verify the identity of everyone opening an account: the four required data points, verification methods, and recordkeeping rules.',
+    definition:
+      'A Customer Identification Program (CIP) is the written identity verification program every US bank must maintain under Section 326 of the USA PATRIOT Act (31 CFR 1020.220). It requires collecting and verifying identifying information from every person opening an account, keeping records of the verification, and checking applicants against government lists.',
+    sections: [
+      {
+        heading: 'The four required data points',
+        paragraphs: [
+          'Before opening an account, the bank must collect, at minimum: name, date of birth, address, and an identification number (SSN or TIN for US persons). Collection is only the start; the program must then verify identity through documents, non-documentary methods, or both, within a reasonable time of account opening.',
+        ],
+      },
+      {
+        heading: 'Documentary vs. non-documentary verification',
+        paragraphs: [
+          'Documentary verification inspects credentials: a driver’s license, a passport. Non-documentary verification checks the claimed identity against independent sources: consumer reporting data, public databases, authoritative services like eCBSV, or contacting the customer through verified channels. Most modern programs run both, because documents alone miss the current failure mode: synthetic identities whose documents are technically genuine.',
+          'The program must also address recordkeeping (identity records kept five years after account closure), customer notice that identity will be verified, and procedures for when verification fails. Examiners test whether the written program matches actual practice, and whether the bank can reconstruct, for any customer, what was verified, when, and against which source.',
+        ],
+      },
+      {
+        heading: 'CIP is a floor, not a fraud program',
+        paragraphs: [
+          'CIP compliance answers the regulatory question: did you verify identity as your program requires? It does not by itself answer the business question: is this applicant going to defraud you? First-party fraud, in particular, walks through CIP untouched, because the identity is real. Banks increasingly treat CIP as the base layer of a verification stack that also confirms income, employment, funding accounts, and fraud-risk signals in the same flow.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What are the CIP requirements?',
+        a: 'Collect name, date of birth, address, and an ID number from every account opener; verify identity via documentary or non-documentary methods within a reasonable time; keep verification records five years after closure; give notice; and check government lists as required.',
+      },
+      {
+        q: 'Does CIP require a physical ID document?',
+        a: 'No. The rule permits documentary verification, non-documentary verification, or a combination. Fully digital account opening satisfies CIP when non-documentary methods reliably verify identity.',
+      },
+      {
+        q: 'What do examiners look for in a CIP review?',
+        a: 'That the written program is risk-based and board-approved, that actual practice matches it, and that the bank can produce verification records showing what was checked, when, and against what source for any given customer.',
+      },
+    ],
+    relatedTerms: ['ecbsv', 'synthetic-identity-fraud', 'bank-account-verification'],
+    relatedArticles: [
+      { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
+      { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
     ],
     relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
   },

@@ -16,6 +16,33 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'first-party-fraud-community-banks',
+    title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.',
+    description:
+      'First-party fraud jumped from 15% to 36% of all reported fraud in one year and now leads every category globally. Your KYC program can’t see it, because the identity checks out. Here is what catches it.',
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
+    slug: 'account-opening-fraud-prevention',
+    title: 'Preventing Fraud at Account Opening Without Killing the Channel',
+    description:
+      'Banks that turned off online account opening after a fraud wave diagnosed the wrong problem. A walkthrough of verification-first account opening: what runs, in what order, and what it catches.',
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
+    slug: 'suspect-fraud-cant-prove-it',
+    title: 'You Suspect Fraud. You Can’t Prove It. Now What?',
+    description:
+      'Every BSA officer knows the file: strong suspicion, thin evidence. The standards for SARs and account closure are lower than you think, and the evidence problem is solvable, mostly at onboarding.',
+    readTime: '5 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
     slug: 'how-to-start-a-bank',
     title: 'How to Start a Bank: The De Novo Playbook',
     description:

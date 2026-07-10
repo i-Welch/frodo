@@ -84,6 +84,172 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'first-party-fraud-community-banks': {
+    title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.',
+    description:
+      'First-party fraud jumped from 15% to 36% of all reported fraud in one year and now leads every category globally. Your KYC program can’t see it, because the identity checks out. Here is what catches it.',
+    publishedDate: 'July 10, 2026',
+    readTime: '6 min read',
+    content: `
+# First-Party Fraud: The Applicant Is Real. The Application Isn't.
+
+*Published July 10, 2026*
+
+The fastest-growing fraud category in banking is committed by people using their own names.
+
+LexisNexis Risk Solutions measured [first-party fraud](/glossary/first-party-fraud) at 36% of all reported fraud in 2024, up from 15% a year earlier. It has overtaken scams as the leading form of fraud attack globally. And it is close to invisible to the systems most banks call a fraud program, because those systems are built to answer one question: is this person who they say they are?
+
+For first-party fraud, the answer is yes. That's the problem.
+
+## The lie isn't the identity. It's everything else.
+
+First-party fraud is a real person misrepresenting facts or intent for financial gain. The name, the SSN, the date of birth: all genuine. What's false is the income figure, the undisclosed debt, the chargeback claim, or the intention to ever repay.
+
+:::stat
+**36%**
+of all reported fraud in 2024 was first-party fraud, up from 15% the year before. It now leads every category globally, per LexisNexis Risk Solutions.
+:::
+
+The taxonomy is broader than most bankers expect. Application fraud: inflating income or hiding obligations to qualify. Friendly fraud: disputing purchases that arrived just fine. Never-pay: borrowing with no intention of repayment. [Bust-out](/glossary/bust-out-fraud): months of model behavior, then every line drawn at once. Different schemes, one common trait: a legitimate identity at the center.
+
+Economic pressure feeds it. Inflation and cost-of-living stress turn otherwise ordinary customers into rationalizers. Inflating income by 20% to qualify for the house doesn't feel like fraud to the person doing it. On your books, it performs exactly like fraud, two years later, as a default you priced as prime.
+
+## Why your fraud program can't see it
+
+Walk through what happens when a first-party fraudster applies. KYC verifies the identity: pass, it's real. Watchlist screening: clean, they're not a criminal, they're a schoolteacher who added $30,000 to their income. Document review: the paystub looks right, because paystub templates are a commodity. The verbal VOE: the number rings to a cooperative friend, or the real employer confirms employment without confirming wages.
+
+:::pullquote
+First-party fraud walks through KYC untouched. The identity is real; the lie is in the facts around it.
+:::
+
+Then the loan defaults, and here's the quiet part: the loss books as a credit loss, not a fraud loss. No identity theft victim ever calls to dispute anything. The file goes to collections, the charge-off goes in the credit bucket, and the fraud team never studies the case. LexisNexis puts the true cost at more than $5 for every $1 lost, and at community banks the miscategorization means nobody is even counting the $1.
+
+Fannie Mae's numbers show the concentration point: income misrepresentation is 46% of confirmed mortgage fraud findings, year after year. Most of that is first-party. It's also the share of the 1-in-116 problem that no identity product will ever fix.
+
+## What actually catches it
+
+The control that works follows a simple principle: verify the claims, not just the claimant.
+
+Income verified at the payroll source can't be inflated, no matter how good the paystub template is. Employment confirmed through the payroll system of record bypasses the cooperative phone number entirely. Bank transaction data, pulled with consent, surfaces the undisclosed mortgage payment and the three BNPL obligations that never made it onto the application. None of this asks whether the person is real. It asks whether their story is.
+
+:::pullquote
+Verify the claims, not just the claimant. A first-party fraudster can pass every identity check you own. They can't make a payroll system report income that doesn't exist.
+:::
+
+Community banks have a structural exposure here worth naming honestly: relationship lending. The assumption that we know our customers is real strength in a market and real weakness in an application file, because familiarity substitutes for verification exactly where first-party fraud lives. The teller has known the applicant for years. The applicant has never lied to the bank before. The income figure goes unchecked.
+
+Source verification doesn't require abandoning the relationship model. It requires backing it with data: the same one-link verification that speeds files up happens to be the only control category that touches first-party fraud at all. Banks usually buy verification automation for the hours it saves. Against the fastest-growing fraud category in the industry, it's also the only defense on the field.
+    `,
+  },
+  'account-opening-fraud-prevention': {
+    title: 'Preventing Fraud at Account Opening Without Killing the Channel',
+    description:
+      'Banks that turned off online account opening after a fraud wave diagnosed the wrong problem. A walkthrough of verification-first account opening: what runs, in what order, and what it catches.',
+    publishedDate: 'July 10, 2026',
+    readTime: '6 min read',
+    content: `
+# Preventing Fraud at Account Opening Without Killing the Channel
+
+*Published July 10, 2026*
+
+There's a specific conversation that repeats across community banking. A bank launches online account opening. Fraudulent applications pour in: synthetic identities, mule accounts, bad-check funding. Losses mount, the board asks questions, and the channel gets turned off. The lesson recorded in institutional memory: digital account opening invites fraud.
+
+One in five financial institutions reported losing more than $5 million to fraud in a recent twelve-month period, so the retreat is understandable. It's also a misdiagnosis. The channel didn't fail. The verification model behind it did, and it would have failed at the branch too, just more slowly.
+
+## What actually attacked the channel
+
+[New account fraud](/glossary/new-account-fraud) comes in a few distinct shapes, and the first-generation digital channels were open to all of them: stolen identities that pass because nobody checked the SSN against its issuance record, [synthetic identities](/glossary/synthetic-identity-fraud) whose documents are technically genuine, mule accounts opened by real people with clean histories, and deposit fraud that funds accounts with checks that bounce after the withdrawal.
+
+The common enabler: those channels collected typed-in, self-reported data and verified almost none of it at the source. A form that accepts what the applicant types, at internet speed, without an authoritative check behind it, is an invitation with a submit button.
+
+:::pullquote
+The first generation of digital account opening didn't verify anyone. It collected the paper process's self-reported data at internet speed, and fraud rings automated against it.
+:::
+
+## The verification-first flow, step by step
+
+Here's what account opening looks like when verification runs at the source. This is the flow RAVEN runs, named tools and all, because the specifics are the point.
+
+**Identity, first and hardest.** Socure's RiskOS runs KYC identity verification against authoritative sources, fraud and synthetic-identity risk scoring, and OFAC/watchlist screening on every applicant. SSN checks validate that the name, number, and date of birth belong together per issuance records, the check that makes a synthetic identity visible (see [eCBSV](/glossary/ecbsv) for why that works). An OTP challenge and an "is this you?" confirmation bind the session to the person.
+
+**Funding account, confirmed by connection.** Instead of micro-deposits (two days of waiting and a fat slice of abandonment), the applicant connects their existing bank account through Plaid. The connection proves the account is real, open, and theirs, and shows its age and standing: a days-old account funding a new relationship is a different risk than a five-year-old primary checking.
+
+**Income and residence, where the product needs it.** For interest-bearing products or credit relationships, Truework pulls employment and income from payroll systems of record, and Melissa verifies the address is real and matches ownership records. Nothing rests on a typed answer.
+
+**The audit trail, automatically.** Every check lands in a timestamped, source-attributed record: what was verified, when, against which source, and what flagged. That's the [CIP](/glossary/customer-identification-program) evidence examiners ask for, produced as a byproduct instead of a project.
+
+:::stat
+**1 in 5**
+financial institutions lost more than $5 million to fraud in the past twelve months, per Alloy's industry survey. Most of it entered somewhere an applicant typed instead of verified.
+:::
+
+## What this does to the fraud math
+
+Each fraud shape hits a wall it didn't face before. Stolen identities fail the binding between session and person. Synthetics fail the issuance-record check no cultivated credit file can fake. Bad-check funding disappears because funding is a verified connection, not a deposit. Mule recruitment gets harder when the funding account's history is visible. What remains, first-party misrepresentation by real customers, is exactly what the income and bank-data verification exists to catch.
+
+Legitimate applicants, meanwhile, experience a flow that takes minutes and asks them to type almost nothing. That matters because the industry's mobile abandonment problem is brutal, and every extra manual step feeds it.
+
+:::pullquote
+Verified digital intake is a stronger fraud posture than a branch visit. Branch staff can't check SSN issuance records by eye.
+:::
+
+The banks that turned the channel off were right about the fraud and wrong about the cause. The fix was never to retreat to the branch. It was to stop trusting what applicants type, and start confirming what sources know.
+    `,
+  },
+  'suspect-fraud-cant-prove-it': {
+    title: 'You Suspect Fraud. You Can’t Prove It. Now What?',
+    description:
+      'Every BSA officer knows the file: strong suspicion, thin evidence. The standards for SARs and account closure are lower than you think, and the evidence problem is solvable, mostly at onboarding.',
+    publishedDate: 'July 10, 2026',
+    readTime: '5 min read',
+    content: `
+# You Suspect Fraud. You Can't Prove It. Now What?
+
+*Published July 10, 2026*
+
+Every BSA officer has the file. The activity looks wrong. The story doesn't hold together. Everyone in the room agrees something is off, and nobody can point to a piece of objective evidence that proves it. Meanwhile the account stays open, the exposure grows, and the question sits on the desk: file the SAR? Close the account? On what basis?
+
+The paralysis usually comes from applying the wrong standard. So start there.
+
+## The standards are lower than the instinct says
+
+A Suspicious Activity Report requires suspicion, documented and reasonable, not proof. The filing threshold is knowing, suspecting, or having reason to suspect. Certainty is not in the regulation, and examiners fault banks far more often for late or absent SARs than for filed ones that didn't pan out.
+
+Account closure runs on a lower standard still. A bank generally doesn't need to prove fraud to end a relationship; it needs documented, reasonable judgment that the risk exceeds its appetite, applied consistently with its own policies. The file has to show the judgment was grounded, not that a prosecutor could win with it.
+
+:::pullquote
+The SAR standard is documented suspicion, not proof. The closure standard is reasonable judgment, not a conviction.
+:::
+
+What both standards demand is the same thing the frustrated room is missing: objective material in the file. That's the real problem to solve, and it splits into what you can build now and what you should have captured at the start.
+
+## Building the evidence file now
+
+For the account already under suspicion, the work is converting narrative into specifics:
+
+**Behavioral documentation.** Not "activity seems inconsistent with the customer's profile" but the specific transactions: dates, amounts, counterparties, and the pattern they form. Vague narrative reads as opinion; enumerated transactions read as evidence.
+
+**Divergence from the onboarding profile.** Whatever the customer told you at account opening, expected activity, occupation, source of funds, is a baseline. Documented divergence from it is among the most defensible observations a file can contain, because the customer supplied the baseline themselves.
+
+**The written request for explanation.** Ask the customer, in writing, to explain the activity. A credible answer resolves the case. An implausible one, or silence, is itself file material, and either way the bank has demonstrated the reasonable diligence the standard asks for.
+
+**Identity re-verification.** Run the identity and account checks available today: does the SSN hold up against issuance records, is the funding account still theirs, does anything about the identity picture corroborate or contradict? A clean result narrows the theory; a flag can be the objective anchor the file was missing.
+
+## The structural fix happens at onboarding
+
+Here's the uncomfortable pattern behind most of these files: the evidence gap was created at account opening, when the bank accepted typed-in answers and filed documents instead of capturing verified data.
+
+:::pullquote
+The evidence file you need at month eighteen is mostly built in the first five minutes of the relationship, or it isn't.
+:::
+
+A verification-first onboarding produces, automatically, the objective baseline the suspicious-activity file later depends on: identity validated against authoritative sources with the results timestamped, fraud and synthetic-identity risk scores at opening, a verified funding account with its age and standing recorded, and stated income or occupation backed by source data instead of a form field. When activity later diverges, the file already contains what it diverges *from*, in evidence grade rather than anecdote.
+
+That transforms the month-eighteen conversation. Instead of "we suspect but can't prove," it becomes: identity risk signals at opening were X, the customer's verified profile said Y, the observed activity is Z, the divergence is documented transaction by transaction, and the written explanation was requested on this date. Whether that file supports a SAR, a closure, or a clean bill, it supports *something*, which is exactly what the stuck file never does.
+
+The suspicion you can't prove today is, more often than not, the verification you didn't run then. Banks fix the second one and discover the first mostly stops happening.
+    `,
+  },
   'how-to-start-a-bank': {
     title: 'How to Start a Bank: The De Novo Playbook',
     description:

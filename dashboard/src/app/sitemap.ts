@@ -22,6 +22,9 @@ const APP = 'https://app.reportraven.tech';
 
 const BLOG_SLUGS = [
   // — Institutional research & macro (Feb–Mar 2026) —
+  'first-party-fraud-community-banks',
+  'account-opening-fraud-prevention',
+  'suspect-fraud-cant-prove-it',
   'how-to-start-a-bank',
   'de-novo-bank-day-one-fraud-program',
   'one-in-116-mortgage-fraud',
@@ -88,6 +91,9 @@ const BLOG_SLUGS = [
 // dates. Extracted from publishedDate in blog/[slug]/page.tsx — keep in sync
 // when adding articles.
 const BLOG_DATES: Record<string, string> = {
+  'first-party-fraud-community-banks': '2026-07-10',
+  'account-opening-fraud-prevention': '2026-07-10',
+  'suspect-fraud-cant-prove-it': '2026-07-10',
   'how-to-start-a-bank': '2026-07-10',
   'de-novo-bank-day-one-fraud-program': '2026-07-10',
   'one-in-116-mortgage-fraud': '2026-07-04',
