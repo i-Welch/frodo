@@ -361,6 +361,70 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'rocket-mortgage-22-days-how', title: 'How Rocket Mortgage Closes in 22 Days' },
     ],
   },
+  {
+    slug: 'de-novo-bank-technology',
+    h1: 'The De Novo Bank Technology Stack: Verified From Day One',
+    metaTitle: 'De Novo Bank Technology: The Day-One Verification Stack',
+    metaDescription:
+      'Your business plan promised examiners a fraud program. RAVEN gives de novo banks source-verified onboarding through one link, live before you open.',
+    eyebrow: 'De Novo Banks',
+    intro: [
+      'A de novo bank assembles its entire technology stack in the window between conditional approval and opening day: core, digital banking, and the verification layer that decides who gets to become a customer. Most stack conversations focus on the core. The decision examiners will actually test first is verification.',
+      'Your application promised the FDIC a working BSA and fraud program. RAVEN makes that program real before you open: identity, income, employment, bank, and address data verified at the source through one borrower link, with the audit trail examiners expect from a bank under de novo conditions.',
+    ],
+    sections: [
+      {
+        heading: 'Day one is an exam, not a launch',
+        paragraphs: [
+          'A de novo operates under heightened supervision for its first three years, and its first examinations test whether the programs in the business plan exist in practice. A fraud program that consists of collecting documents and calling phone numbers is the industry’s legacy default, and it is exactly the intake model that fraud rings industrialized against. Starting from scratch means you get to skip that mistake entirely.',
+        ],
+        bullets: [
+          'CIP-grade identity verification against authoritative sources, with synthetic-identity signals',
+          'OFAC and watchlist screening on every applicant',
+          'Income and employment from payroll systems of record, assets from consented bank connections',
+          'A timestamped, source-attributed audit record per verification, built for examiner review',
+        ],
+      },
+      {
+        heading: 'Fits beside the core bundle, not inside it',
+        paragraphs: [
+          'De novos typically sign a core bundle (Jack Henry, Fiserv, FIS, or CSI) that covers ledger, digital banking, and payments. RAVEN is the verification layer in front of that bundle: applicants verify through your branded flow, and your team books complete, source-verified files into whatever core you chose. There is no core dependency, so verification can be live before your core conversion finishes, and it moves with you if the stack changes later.',
+        ],
+      },
+      {
+        heading: 'Digital intake as a fraud control, not a fraud vector',
+        paragraphs: [
+          'Plenty of established banks turned off online account opening after fraud waves, because their digital channels collected the same self-reported data as their paper process at internet speed. A de novo that launches verification-first gets the opposite result: every applicant is validated against authoritative sources before the account is booked, which makes the digital channel the most controlled intake path the bank has. Deposit growth is the de novo mandate; verified digital intake is how it happens without the fraud tax.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Can RAVEN be live before the bank opens?',
+        a: 'Yes. RAVEN has no core dependency, so the verification flow can be configured and tested during the pre-opening buildout and be operational on day one.',
+      },
+      {
+        q: 'Does this satisfy what examiners look for in the de novo period?',
+        a: 'RAVEN executes and documents CIP identity verification, watchlist screening, and income/employment/asset verification with full source attribution. Your BSA officer defines the program; RAVEN is the working evidence of it.',
+      },
+      {
+        q: 'How does pricing work for a bank with no volume yet?',
+        a: 'Pricing scales with verification volume, so a de novo pays for what it actually processes rather than an enterprise license sized for a bank ten times its age. Book a call for specifics.',
+      },
+      {
+        q: 'Which cores does it work with?',
+        a: 'Any of them. RAVEN operates at the intake layer in front of Jack Henry, Fiserv, FIS, CSI, and others; verified files arrive as structured data plus an examiner-ready PDF.',
+      },
+    ],
+    relatedGlossary: [
+      { slug: 'de-novo-bank', label: 'De Novo Bank' },
+      { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
+    ],
+    relatedArticles: [
+      { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
+      { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+    ],
+  },
 ];
 
 export function getSolution(slug: string): Solution | undefined {

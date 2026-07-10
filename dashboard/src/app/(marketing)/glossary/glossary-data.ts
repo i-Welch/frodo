@@ -358,6 +358,60 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },
   {
+    slug: 'de-novo-bank',
+    term: 'De Novo Bank',
+    metaTitle: 'What Is a De Novo Bank?',
+    metaDescription:
+      'A de novo bank is a newly chartered bank built from scratch. Capital requirements, the application timeline, the three-year de novo period, and what founders assemble before day one.',
+    definition:
+      'A de novo bank is a newly chartered bank started from scratch rather than acquired or converted from an existing charter. The term (Latin for "anew") covers the bank from its organizing group’s first filing through its early years of operation, during which regulators apply heightened supervision.',
+    sections: [
+      {
+        heading: 'What it takes to open one',
+        paragraphs: [
+          'A de novo needs a charter (national, from the OCC, or state, from the state banking regulator), deposit insurance from the FDIC, and capital sized to its business plan. The FDIC expects a tier-1 leverage ratio of at least 8% throughout the first three years, which means day-one capital equal to 8% of what the bank projects its assets will be in year three. Recent community bank approvals have raised $20 million to $40 million.',
+          'The realistic timeline runs 18 to 24 months from early planning to opening day: several months assembling the organizing group, business plan, and management team; roughly six to eight months from filing to decision; then the buildout between conditional approval and grand opening, which is when the technology stack, policies, and staff come together.',
+        ],
+      },
+      {
+        heading: 'The three-year de novo period',
+        paragraphs: [
+          'Approval comes with conditions that hold for the first three years: maintaining the capital commitments in the application, annual financial statement audits, fidelity bond coverage, and limits on deviating from the approved business plan. Examiners treat a de novo’s first exams as a test of whether the programs promised in the application, including BSA/AML and fraud controls, actually exist and function.',
+        ],
+      },
+      {
+        heading: 'Why so few community de novos exist',
+        paragraphs: [
+          'New bank formation collapsed after 2008 and never fully recovered. 2025 illustrated the current shape of the pipeline: 31 charter applications were filed, but most came from fintechs, payment platforms, and digital-asset firms seeking limited-purpose or trust charters. Only four new banks actually opened. True full-service community de novos number roughly ten to fifteen per year nationally, which makes each one a significant local event and a closely watched supervisory project.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much capital does it take to start a bank?',
+        a: 'The FDIC has cited $15 million to $30 million as a working range, and recent community bank approvals have raised $20 million to $40 million. The binding rule is an 8% tier-1 leverage ratio maintained against projected year-three assets.',
+      },
+      {
+        q: 'How long does the de novo application process take?',
+        a: 'Roughly six to eight months from filing to FDIC decision, but the full journey from organizing group to opening day typically runs 18 to 24 months.',
+      },
+      {
+        q: 'What is the de novo period?',
+        a: 'The first three years of operation, during which the FDIC holds the bank to the capital, audit, and business-plan conditions of its approval and examines it more frequently than an established bank.',
+      },
+      {
+        q: 'What do examiners expect from a de novo on day one?',
+        a: 'Working versions of everything the business plan promised: capital at the committed level, staffed compliance and BSA functions, and operating fraud and identity verification controls, not roadmap items.',
+      },
+    ],
+    relatedTerms: ['synthetic-identity-fraud', 'bank-account-verification', 'income-verification'],
+    relatedArticles: [
+      { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
+      { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+    ],
+    relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',

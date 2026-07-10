@@ -84,6 +84,120 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'how-to-start-a-bank': {
+    title: 'How to Start a Bank: The De Novo Playbook',
+    description:
+      '31 charter applications were filed in 2025. Four banks actually opened. What it really takes to start a de novo bank: the capital math, the 18-to-24-month timeline, the three-year supervision period, and the stack you build before day one.',
+    publishedDate: 'July 10, 2026',
+    readTime: '6 min read',
+    content: `
+# How to Start a Bank: The De Novo Playbook
+
+*Published July 10, 2026*
+
+Thirty-one banking charter applications were filed in 2025, the busiest year in recent memory. Four new banks actually opened.
+
+That gap is the whole story of starting a bank in America right now. The application surge is real, but most of it came from fintechs, payment platforms, and digital-asset firms chasing limited-purpose and trust charters. The true full-service community bank, a [de novo](/glossary/de-novo-bank) in the classic sense, remains rare: roughly ten to fifteen organizing groups a year nationally get one off the ground.
+
+Here is what the journey actually looks like, for founders thinking about it and for everyone who wonders why their town hasn't seen a new bank since 2008.
+
+## The money comes first
+
+The FDIC's binding rule is simple to state and expensive to satisfy: a de novo must maintain a tier-1 leverage ratio of at least 8% throughout its first three years. Because the ratio is measured against the bank's own growth projections, the capital has to be there on day one, sized to the balance sheet you promised to have in year three.
+
+:::stat
+**$20M to $40M**
+The initial capital raised by recently approved community de novo banks. The FDIC has cited $15M to $30M as a working floor.
+:::
+
+In practice that means an organizing group raises twenty to forty million dollars before the bank earns its first dollar of interest income. The raise itself is a filter: it forces a real market study, a credible management team, and directors willing to put their own money in, all of which the regulators will examine anyway.
+
+## The timeline nobody shortens
+
+From first organizing meeting to ribbon cutting, plan on 18 to 24 months. The regulatory clock is only part of it.
+
+The pre-filing phase, assembling the board, recruiting a CEO examiners will accept, writing the business plan, and lining up capital commitments, typically takes two or three months of formal preparation after months of informal groundwork. Once the deposit insurance application is filed, the FDIC determines within about 30 days whether it's substantially complete, aims to finish its field investigation within 60 days, and targets a decision within roughly four months of acceptance. Six to eight months from filing to decision is the realistic band.
+
+:::pullquote
+The approval is not the finish line. It's the starting gun for the hardest phase: building an actual bank in the months before the doors open.
+:::
+
+Then comes the buildout. Conditional approval arrives with a list of conditions to satisfy before opening: the capital must fund, key hires must land, policies must exist, and the technology stack must work. Core system, digital banking, BSA program, verification layer, all of it gets selected, contracted, and stood up in this window.
+
+## The three-year probation
+
+A new bank doesn't graduate on opening day. The [de novo period](/glossary/de-novo-bank) runs three years, during which the FDIC holds the bank to the specific commitments in its application: the capital levels, annual financial statement audits, fidelity bond coverage, and material adherence to the approved business plan. Deviating from the plan requires regulator sign-off. Exams come more frequently than an established bank would see.
+
+The first exam deserves particular respect. Examiners arrive with the business plan in hand and check whether the programs it promised exist in operation. A BSA officer on the org chart is not a BSA program. A fraud-controls section in the application is not a fraud control. The de novos that stumble early are usually the ones that treated compliance and verification as post-launch projects.
+
+## The stack decision that gets underweighted
+
+Most de novo technology conversations orbit the core: Jack Henry, Fiserv, FIS, or CSI, usually as a bundle with digital banking and payments. That decision matters and takes months. But the layer examiners test first, and the one that determines whether the digital channels in the business plan produce deposits or fraud losses, is verification: how the bank confirms that an applicant is real, employed, and creditworthy before booking them.
+
+:::pullquote
+A de novo has no legacy intake process to defend. It can be the first bank in its market where digital account opening is the most controlled channel, not the most dangerous one.
+:::
+
+The established-bank playbook, collect documents, call phone numbers, file PDFs, is the intake model fraud rings industrialized against, and it's why so many older banks turned their digital channels off. A bank built in 2026 gets to skip that inheritance entirely and [verify at the source from day one](/solutions/de-novo-bank-technology): identity checked against authoritative records, income and employment pulled from payroll systems, funding accounts confirmed by direct connection.
+
+Starting a bank is a long, expensive, heavily supervised project, and that is arguably the point: the charter is valuable because it is hard to get. The founders who do it well treat the constraints as design inputs. The capital rule sizes the ambition, the timeline sequences the build, and the de novo period rewards the bank that opened with its promises already working.
+    `,
+  },
+  'de-novo-bank-day-one-fraud-program': {
+    title: 'The De Novo Bank’s Day-One Fraud Program',
+    description:
+      'A new bank’s first exam tests whether the fraud program in its business plan actually exists. Why document-based intake fails that test, and what a source-verified day-one program looks like.',
+    publishedDate: 'July 10, 2026',
+    readTime: '5 min read',
+    content: `
+# The De Novo Bank's Day-One Fraud Program
+
+*Published July 10, 2026*
+
+Every de novo bank application contains a promise: a BSA/AML and fraud program, described in detail, committed to in writing. The FDIC's conditional approval turns that promise into a condition, and the bank's first examination tests whether it came true.
+
+That test arrives fast. A [de novo](/glossary/de-novo-bank) operates under heightened supervision for its first three years, with more frequent exams and less benefit of the doubt than an established bank gets. Examiners walk in with the business plan and check it against reality. A named BSA officer is not a program. A policy binder is not a control. What counts is whether the bank can show, applicant by applicant, that it verified who it let in the door.
+
+## The default you inherited is the problem
+
+Here's the uncomfortable part: the fraud program most banks would build by default is the one that's currently failing across the industry.
+
+The default is document-based intake. The applicant types their information into a form or hands over paperwork; staff collect paystubs and statements; someone calls the employer number on the application. Every artifact in that chain is applicant-supplied, and applicant-supplied artifacts are precisely what fraud rings manufacture.
+
+:::stat
+**1 in 116**
+mortgage applications now shows indications of material misrepresentation, and income fraud leads Fannie Mae's confirmed findings at 46%.
+:::
+
+The numbers from the lending side show where this ends up. Cotality puts material misrepresentation at 1 in 116 mortgage applications. Fannie Mae's fraud team maintains a watchlist of 63 fictitious employers, some with staffed phone lines whose entire purpose is to answer verification calls. On the deposit side, synthetic identities, real Social Security numbers attached to fabricated people, have cost lenders an estimated $6 billion, and they pass document-based onboarding because no document is technically fake.
+
+:::pullquote
+The fraud program most banks would build by default is the one that's currently failing across the industry.
+:::
+
+More than one bank executive has told us the ending of that story: they launched digital account opening, fraud poured in, and they shut the channel down. The channel wasn't the problem. The verification model behind it was.
+
+## What source verification changes
+
+A source-verified program inverts the trust model. Instead of trusting what the applicant supplies, the bank confirms every material fact against the system that originates it.
+
+Identity gets validated against authoritative sources, with SSN issuance checks that make synthetic identities visible instead of invisible. Employment and income come from payroll systems of record, so a fake employer's phone line never enters the loop. Funding accounts are confirmed by direct, consented connection rather than a voided check. And each of those verifications produces a timestamped, source-attributed record, which is exactly the evidence a de novo needs sitting in the file when the first exam team asks how the bank knows its customers are real.
+
+For a bank under [de novo conditions](/glossary/de-novo-bank), this isn't just better fraud math. It's the difference between telling examiners about a program and handing them one.
+
+## The buildout window is the opportunity
+
+The months between conditional approval and opening day are when the entire stack gets assembled: core, digital banking, compliance tooling. Verification belongs in that first wave, not the post-launch backlog, for a practical reason: it has no core dependency, so it can be [configured, tested, and demonstrably working](/solutions/de-novo-bank-technology) before the core conversion finishes and before the first customer walks in.
+
+:::pullquote
+An established bank has to unwind a decade of document-based habit. A de novo just has to make one good decision during the buildout.
+:::
+
+There's a competitive edge hiding in the compliance requirement, too. The de novo mandate is deposit growth, and the fastest deposit channel is digital, the same channel established competitors turned off after their fraud waves. A new bank that opens with verification-first intake can run digital account opening as its most controlled channel from the first day, in a market where the incumbents retreated to branch-only.
+
+The business plan promised examiners a fraud program. Build it as source verification and it doubles as the growth engine.
+    `,
+  },
   'one-in-116-mortgage-fraud': {
     title: 'One in 116 Mortgage Applications Is Lying to You',
     description:

@@ -22,6 +22,8 @@ const APP = 'https://app.reportraven.tech';
 
 const BLOG_SLUGS = [
   // — Institutional research & macro (Feb–Mar 2026) —
+  'how-to-start-a-bank',
+  'de-novo-bank-day-one-fraud-program',
   'one-in-116-mortgage-fraud',
   'one-link-complete-verification',
   'how-figure-closes-heloc-in-5-days',
@@ -86,6 +88,8 @@ const BLOG_SLUGS = [
 // dates. Extracted from publishedDate in blog/[slug]/page.tsx — keep in sync
 // when adding articles.
 const BLOG_DATES: Record<string, string> = {
+  'how-to-start-a-bank': '2026-07-10',
+  'de-novo-bank-day-one-fraud-program': '2026-07-10',
   'one-in-116-mortgage-fraud': '2026-07-04',
   'jack-henry-symitar-loan-origination': '2026-06-26',
   'fiserv-premier-digital-lending': '2026-06-26',

@@ -16,6 +16,24 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'how-to-start-a-bank',
+    title: 'How to Start a Bank: The De Novo Playbook',
+    description:
+      '31 charter applications were filed in 2025. Four banks actually opened. What it really takes to start a de novo bank: the capital math, the 18-to-24-month timeline, the three-year supervision period, and the stack you build before day one.',
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
+    slug: 'de-novo-bank-day-one-fraud-program',
+    title: 'The De Novo Bank’s Day-One Fraud Program',
+    description:
+      'A new bank’s first exam tests whether the fraud program in its business plan actually exists. Why document-based intake fails that test, and what a source-verified day-one program looks like.',
+    readTime: '5 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
     slug: 'one-in-116-mortgage-fraud',
     title: 'One in 116 Mortgage Applications Is Lying to You',
     description:
