@@ -980,7 +980,9 @@ export default function LandingPage() {
         }
         .footer-links {
           display: flex;
-          gap: 1.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.75rem 1.5rem;
         }
         .footer-links a {
           font-size: 0.75rem;
@@ -1037,8 +1039,8 @@ export default function LandingPage() {
           <a href="/blog" className="nav-blog-mobile">Blog</a>
           <div className="nav-links">
             <a href="/blog">Blog</a>
-            <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
-            <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="/solutions">Solutions</a>
+            <a href="/glossary">Glossary</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
             <CalendlyButton source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
           </div>
@@ -1386,6 +1388,10 @@ export default function LandingPage() {
             </span>
           </div>
           <div className="footer-links">
+            <a href="/blog">Blog</a>
+            <a href="/solutions">Solutions</a>
+            <a href="/glossary">Glossary</a>
+            <a href="/integrations">Integrations</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
             <a href="https://app.reportraven.tech/legal/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>

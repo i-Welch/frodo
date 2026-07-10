@@ -111,7 +111,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           align-items: center;
         }
         .site-shell footer span { font-size: 0.75rem; color: var(--gray-600); }
-        .site-footer-links { display: flex; gap: 1.5rem; }
+        .site-footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.5rem; }
         .site-footer-links a { font-size: 0.75rem; color: var(--gray-500); text-decoration: none; transition: color 200ms; }
         .site-footer-links a:hover { color: var(--white); }
         .site-footer-contact { margin-left: 1rem; }
@@ -173,6 +173,10 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
             </span>
           </span>
           <div className="site-footer-links">
+            <a href="/blog">Blog</a>
+            <a href="/solutions">Solutions</a>
+            <a href="/glossary">Glossary</a>
+            <a href="/integrations">Integrations</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
           </div>

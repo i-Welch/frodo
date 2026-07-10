@@ -446,7 +446,9 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         }
         .blog-footer-links {
           display: flex;
-          gap: 1.5rem;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.75rem 1.5rem;
         }
         .blog-footer-links a {
           font-size: 0.75rem;
@@ -501,8 +503,6 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <a href="/solutions">Solutions</a>
             <a href="/integrations">Integrations</a>
             <a href="/glossary">Glossary</a>
-            <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
-            <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
             <CalendlyButton source="blog-nav" label="Request a Demo" buttonClassName="blog-nav-cta" />
           </div>
@@ -537,6 +537,10 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             </span>
           </span>
           <div className="blog-footer-links">
+            <a href="/blog">Blog</a>
+            <a href="/solutions">Solutions</a>
+            <a href="/glossary">Glossary</a>
+            <a href="/integrations">Integrations</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
           </div>
