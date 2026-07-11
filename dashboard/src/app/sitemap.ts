@@ -21,6 +21,9 @@ const APP = 'https://app.reportraven.tech';
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 const BLOG_SLUGS = [
+  // — De Novo Watch (Jul 2026) —
+  'portrait-bank-winter-park-de-novo',
+  'glades-bank-broward-de-novo',
   // — Institutional research & macro (Feb–Mar 2026) —
   'first-party-fraud-community-banks',
   'account-opening-fraud-prevention',
@@ -91,6 +94,8 @@ const BLOG_SLUGS = [
 // dates. Extracted from publishedDate in blog/[slug]/page.tsx — keep in sync
 // when adding articles.
 const BLOG_DATES: Record<string, string> = {
+  'portrait-bank-winter-park-de-novo': '2026-07-11',
+  'glades-bank-broward-de-novo': '2026-07-11',
   'first-party-fraud-community-banks': '2026-07-10',
   'account-opening-fraud-prevention': '2026-07-10',
   'suspect-fraud-cant-prove-it': '2026-07-10',

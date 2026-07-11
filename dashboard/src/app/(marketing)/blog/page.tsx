@@ -49,7 +49,7 @@ const ArrowRight = () => (
 function FeaturedCard({ article }: { article: Article }) {
   return (
     <a href={`/blog/${article.slug}`} className="blog-featured-card">
-      <div className="blog-featured-cat">{article.category === 'fintech' ? 'Fintech vs. Bank' : article.category === 'bank' ? 'Bank Deep Dive' : 'Industry Research'}</div>
+      <div className="blog-featured-cat">{article.category === 'fintech' ? 'Fintech vs. Bank' : article.category === 'bank' ? 'Bank Deep Dive' : article.category === 'denovo' ? 'De Novo Watch' : 'Industry Research'}</div>
       <h2>{article.title}</h2>
       <p>{article.description}</p>
       <span className="blog-card-read">
@@ -98,10 +98,13 @@ function SectionLabel({ num, label, description }: { num: string; label: string;
 
 export default function BlogIndex() {
   const featured = articles.filter((a) => a.featured);
+  const denovoArticles = articles.filter((a) => a.category === 'denovo' && !a.featured);
   const bankArticles = articles.filter((a) => a.category === 'bank' && !a.featured);
   const fintechArticles = articles.filter((a) => a.category === 'fintech' && !a.featured);
   const platformArticles = articles.filter((a) => a.category === 'platform');
   const guideArticles = articles.filter((a) => a.category === 'guide' && !a.featured);
+  // Section numbers shift by one when the De Novo Watch section has articles to show.
+  const num = (n: number) => String(n + (denovoArticles.length > 0 ? 1 : 0)).padStart(2, '0');
 
   return (
     <>
@@ -316,6 +319,20 @@ export default function BlogIndex() {
         }
         .blog-card-audit-link:hover { opacity: 1; }
 
+        /* De novo grid - 3 columns, emerald accent */
+        .blog-denovo-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: rgba(255,255,255,0.06);
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .blog-denovo-grid .blog-card-wrap {
+          border-left: 3px solid rgba(52,211,153,0.4);
+        }
+
         /* Fintech grid - 2 columns, more compact */
         .blog-fintech-grid {
           display: grid;
@@ -370,6 +387,7 @@ export default function BlogIndex() {
         @media (max-width: 900px) {
           .blog-featured-grid { grid-template-columns: 1fr; }
           .blog-bank-grid { grid-template-columns: repeat(2, 1fr); }
+          .blog-denovo-grid { grid-template-columns: repeat(2, 1fr); }
           .blog-guide-grid { grid-template-columns: repeat(2, 1fr); }
           .blog-featured-card { padding: 1.75rem; }
           .blog-section { margin-bottom: 3rem; }
@@ -381,6 +399,7 @@ export default function BlogIndex() {
           .blog-featured-card { padding: 1.5rem; border-top-width: 2px; }
           .blog-featured-card h2 { font-size: 1.05rem; }
           .blog-bank-grid,
+          .blog-denovo-grid,
           .blog-fintech-grid,
           .blog-platform-grid,
           .blog-guide-grid { grid-template-columns: 1fr; }
@@ -424,10 +443,26 @@ export default function BlogIndex() {
           </div>
         </div>
 
+        {/* De Novo Watch */}
+        {denovoArticles.length > 0 && (
+          <div className="blog-section">
+            <SectionLabel
+              num="02"
+              label="De Novo Watch"
+              description="Filing-by-filing coverage of new bank charters: the organizers, the market math, and the day-one stack decisions that shape the first exam."
+            />
+            <div className="blog-denovo-grid">
+              {denovoArticles.map((a) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Fintech vs. Bank */}
         <div className="blog-section">
           <SectionLabel
-            num="02"
+            num={num(2)}
             label="Fintech vs. Community Bank"
             description="Step-by-step breakdowns of how fintechs operate versus traditional bank workflows, and what community banks can realistically copy."
           />
@@ -441,7 +476,7 @@ export default function BlogIndex() {
         {/* Core & Platform */}
         <div className="blog-section">
           <SectionLabel
-            num="03"
+            num={num(3)}
             label="Core & Platform Research"
             description="What Jack Henry, Fiserv, and open banking platforms actually support for community bank lending and account opening."
           />
@@ -455,7 +490,7 @@ export default function BlogIndex() {
         {/* Guides & Research */}
         <div className="blog-section">
           <SectionLabel
-            num="04"
+            num={num(4)}
             label="Guides & Industry Research"
             description="Data-driven guides on digital lending strategy, compliance costs, borrower expectations, and the macro trends reshaping community banking."
           />

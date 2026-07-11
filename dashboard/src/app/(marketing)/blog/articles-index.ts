@@ -1,7 +1,7 @@
 // Shared blog index data: used by the blog index page and by article pages
 // for related-article cross-linking.
 
-export type ArticleCategory = 'bank' | 'fintech' | 'guide' | 'platform';
+export type ArticleCategory = 'bank' | 'fintech' | 'guide' | 'platform' | 'denovo';
 
 export interface Article {
   slug: string;
@@ -15,6 +15,24 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    slug: 'portrait-bank-winter-park-de-novo',
+    title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back',
+    description:
+      "Central Florida's last de novo grew to $827M and got absorbed by a Michigan credit union. Eight months later, Portrait Bank chartered in the same city with $43M from 256 local investors and 'agentic AI' in its press release.",
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'denovo',
+  },
+  {
+    slug: 'glades-bank-broward-de-novo',
+    title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind',
+    description:
+      "The five banks still headquartered in Broward County hold 2.4% of its $69.7B in deposits. A group led by the ex-Amerant executive who digitized Florida's largest community bank just filed to build a new one.",
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'denovo',
+  },
   {
     slug: 'first-party-fraud-community-banks',
     title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.',

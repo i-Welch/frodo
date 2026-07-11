@@ -84,6 +84,152 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'portrait-bank-winter-park-de-novo': {
+    title: "Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back",
+    description:
+      "Central Florida's last de novo grew to $827M and got absorbed by a Michigan credit union. Eight months later, Portrait Bank chartered in the same city with $43M from 256 local investors and 'agentic AI' in its press release.",
+    publishedDate: 'July 11, 2026',
+    readTime: '6 min read',
+    content: `
+# Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back
+
+*Published July 11, 2026*
+
+On November 3, 2025, the Orlando area's only new bank of the past two decades disappeared into a Michigan credit union. Eight months later, and a few blocks away, Portrait Bank got its charter.
+
+That sequence is the whole story of Central Florida banking in miniature. Winter Park National Bank opened in 2017, grew to $827 million in assets, proved a hometown bank could still win in this market, and got bought for its trouble. DFCU Financial, a credit union headquartered 1,100 miles away in Dearborn, completed the acquisition last November. The market's reward for building a successful local bank was ceasing to be one.
+
+Erik Weiner watched all of it. "Whenever there's a community bank that's proven successful, there's somebody waiting in the wings to pick them off," he told Florida Trend in April. His answer was to build the next one anyway.
+
+## The filing: 54% over the floor
+
+Portrait Bank's organizers filed with the FDIC on August 27, 2025. Conditional approval came February 5, 2026. The Florida Office of Financial Regulation granted the state charter on June 29, and the bank is now soft-open by appointment at 941 West Morse Boulevard in Winter Park, with a full public grand opening set for September.
+
+The capital story is the part worth reading twice. The FDIC's order required initial paid-in capital of exactly $27,996,000. Portrait closed its raise at $43 million.
+
+:::stat
+**$43 million**
+Raised from 256 local investors, with a $100,000 minimum buy-in and an average check around $200,000. That is 54% above the FDIC's required minimum.
+:::
+
+No private equity sponsor. No out-of-market anchor investor. 256 Central Florida households and business owners who wrote six-figure checks to get their bank back. The organizers set out to raise $30 million and had to keep raising the target because demand would not stop.
+
+## The people: three careers, one pattern
+
+Weiner, 52, is a Winter Park native and UCF finance graduate with roughly 30 years in Central Florida banking: SouthTrust, Fifth Third, BankUnited, and most recently City National Bank of Florida, where he was Central Florida market president from 2019 until January 2025.
+
+His COO, Jay Darulla, spent 25-plus years in retail banking at Bank of America, at one point running the largest and most profitable financial center in Florida. Chairman Ed Timberlake has 50 years in the business: 15 as a Bank of America regional president, then 13 as regional board chairman of Seaside National Bank & Trust.
+
+Notice the pattern. Seaside sold to United Community Banks in 2020. Winter Park National sold in 2025. Every strong local institution these three touched eventually got absorbed by someone bigger and farther away.
+
+:::pullquote
+Every strong local bank this team touched eventually got absorbed by someone bigger and farther away. This time they own the thing.
+:::
+
+The 14-member board reads like a Winter Park chamber of commerce meeting: a catering company owner, a construction executive, a managing partner of a law firm, the Central Florida market president of Florida Blue, a retired CPA. That is not window dressing. In community banking, a board of local operators is a deposit-gathering machine.
+
+## The market: $44.6 billion, two thirds of it answering elsewhere
+
+Orange County held $44.59 billion in deposits as of the FDIC's June 2025 Summary of Deposits. Truist, Bank of America, JPMorgan Chase, and Wells Fargo control 64.6% of it. The largest locally headquartered competitor, One Florida Bank, holds 2.4%.
+
+The consolidation math behind that: Central Florida had 38 locally headquartered banks in 2000. Today it has about six. Portrait is the first new bank chartered in Orange County since 2008.
+
+Meanwhile the market underneath keeps compounding. The Orlando metro added 37,690 residents in the year ending July 2025, reaching nearly 2.96 million, and posted the highest job growth rate among the 30 largest US metros in 2024. Winter Park itself is one of Florida's wealthiest enclaves: median household income of $105,724 and a median home value of $731,400.
+
+More people, more businesses, more wealth, fewer local banks every year. That is the gap Portrait's 256 investors are betting on.
+
+## The gauntlet: what the next three years require
+
+New bank formation nationally has, in FDIC Chairman Travis Hill's words, "fallen off a cliff." Roughly 85 banks opened in the entire 2010 to 2025 stretch, fewer than six per year, against 93 or more every single year from 1995 to 2007. Only four opened in all of 2025. Six have opened so far in 2026, and the FDIC's pending list held about two dozen applications as of July 7, a real thaw by recent standards.
+
+Getting the charter is the start, not the finish. Portrait's own FDIC order spells out the three-year de novo leash: a Tier 1 leverage ratio of at least 8%, no dividends without prior FDIC approval, annual independent audits, FDIC non-objection for every new director or senior executive, and operation within the business plan on file, with prior notice of any material deviation.
+
+That last condition matters more than it sounds. The business plan Portrait submitted promises service to small and medium-sized businesses and individuals across the Orlando MSA. Whatever fraud and compliance program that plan describes, examiners will expect to see it running at the first exam, not on a roadmap.
+
+## The stack: agentic AI in a charter press release
+
+Portrait's June 29 charter announcement contains a sentence you will not find in many community bank press releases: the bank is "deploying advanced tools like agentic AI for real-time fraud detection." Timberlake went further, claiming "the technology to compete with any national bank on day one."
+
+:::pullquote
+A de novo community bank put "agentic AI for real-time fraud detection" in its charter press release. The vendor behind it has not been named.
+:::
+
+That is a genuinely differentiated posture for a de novo. Most new banks talk about relationships and local decision-making; Portrait is talking about relationships plus a fraud stack, which is exactly the right instinct. The banks that bolted digital account opening onto document-based intake over the past decade learned the hard way that a fast application without verification behind it is a fraud vector, not a growth channel. More than one bank COO has turned digital account opening off entirely after a fraud wave.
+
+Portrait gets to skip that mistake. A bank built in 2026 can make source-verified onboarding, where identity, income, employment, and address come from authoritative data sources rather than borrower-typed documents, a day-one architectural decision instead of a retrofit. No public source yet names Portrait's core provider or its AI partner, so the most interesting question about the most interesting de novo in Florida is still open: what, exactly, is under the hood when the doors open in September?
+
+The 256 investors who oversubscribed this bank are betting Orlando wants its hometown bank back. The September opening will start answering whether the technology matches the talk. Given who is building it, the smart money says take them seriously.
+  `,
+  },
+  'glades-bank-broward-de-novo': {
+    title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind',
+    description:
+      "The five banks still headquartered in Broward County hold 2.4% of its $69.7B in deposits. A group led by the ex-Amerant executive who digitized Florida's largest community bank just filed to build a new one.",
+    publishedDate: 'July 11, 2026',
+    readTime: '6 min read',
+    content: `
+# Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind
+
+*Published July 11, 2026*
+
+The five banks still headquartered in Broward County hold 2.4% of its deposits. The other 97.6% of a $69.7 billion market answers to boardrooms in Charlotte, New York, San Francisco, and Toronto.
+
+Into that vacuum, on June 2, 2026, a group led by former Amerant executive Howard Levine filed an FDIC application for Glades Bank and Trust, a proposed new bank headquartered in Plantation. The filing itself is one sentence on the FDIC's pending list. The market it targets took two decades to hollow out.
+
+## The filing: $45 million and a head start
+
+The FDIC received the Glades application on June 2; it is pending, and the organizers are reportedly raising $45 million. For scale, that is more than the $38 million Locality Bank raised to open in Fort Lauderdale in 2022, and well above the roughly $30 million behind Evermore Bank the same year.
+
+One detail suggests this has been in motion far longer than the filing date implies: gladesbank.com was registered on October 9, 2025, eight months before the application landed. Whatever Glades is building, it was not rushed.
+
+:::pullquote
+The domain was registered eight months before the FDIC filing. Whatever Glades is building, it was not rushed.
+:::
+
+Levine's own framing, from his LinkedIn announcement: a bank "built on relationships" for "founders, business owners, professionals, and growing companies," where a business owner "can easily reach someone who knows their name, understands their business, and is genuinely invested in their success."
+
+## The people: the executive who digitized Florida's largest community bank
+
+Levine is not a first-time operator testing a thesis. He spent four years in the executive suite of Amerant Bank, the $9.9 billion Coral Gables institution that calls itself the largest community bank headquartered in Florida. He arrived in 2021 as chief revenue officer of Amerant Mortgage, was named head of consumer banking in 2022 with Private Client, Wealth, Mortgage, Business Banking, and Retail under him, and rose to senior EVP and chief consumer banking officer before stepping down in February 2025.
+
+The relevant part of that tenure is what happened to Amerant's consumer business while he ran it. The bank executed a digital transformation that made it a 2023 Banking Tech Awards USA finalist, partnering with Alloy for identity and onboarding, Numerated for digital business lending, Marstone for digital wealth, and Q2's ClickSWITCH for deposit acquisition. Levine has seen what a modern consumer banking stack looks like from the inside, at scale, in this exact market.
+
+His co-organizers, per The Bank Slate, are executives from Exuma Capital Partners, a private equity firm founded in 2022 by Air Pros USA founder Anthony Perera. Exuma's headquarters sit in Plantation, the same city as the proposed bank. A hometown bank organized by people whose firm is already headquartered in that hometown is exactly how this is supposed to work.
+
+## The market: the county the banks left behind
+
+Broward County is Florida's second most populous county: 1.99 million people, a $136.6 billion economy, 81,809 business establishments, and a small business base of 58,510 employer firms plus another 336,055 nonemployer businesses.
+
+Here is who banks it. Bank of America, Chase, Wells Fargo, and Truist hold 64% of the county's $69.7 billion in deposits. The five banks still headquartered in the county, two of which are Canadian-owned retail outposts, hold $1.7 billion combined.
+
+:::stat
+**2.4%**
+The share of Broward County's $69.7 billion in deposits held by all five banks still headquartered in the county, combined.
+:::
+
+Seventeen Broward-headquartered banks have disappeared since 2008. The most recent was the most symbolic: American National Bank of Oakland Park, family-owned for 38 years and often called Broward's oldest community bank, sold to Georgia's United Community Banks for roughly $80 million in May 2025.
+
+The counter-evidence that local demand survived the consolidation: Locality Bank, the county's first new bank since 2009, opened in January 2022 and passed $300 million in assets within three years. The market did not stop wanting a hometown bank. It just stopped having ones to choose from.
+
+## The gauntlet: a Florida wave meets a friendlier FDIC
+
+Glades is filing into the strongest de novo environment in years, and the epicenter is its home state. Five of the fifteen deposit insurance applications filed nationally in 2026 through early July are Florida banks: New South Bank in Tampa, Tidestone Bank and Florida Bank of Finance in Coral Gables, Portrait Bank in Winter Park (chartered June 29), and Glades. Add BankMiami's March 2025 opening and Echelon Bank's April 2026 opening in Clearwater, and Florida is producing new banks faster than any state in the country.
+
+The regulatory weather helps. FDIC Chairman Travis Hill has called the post-2010 formation drought, roughly 86 new banks in 15 years against 412 in 1984 alone, a problem to fix, and has proposed easing capital expectations for noncomplex community banks. In June, the FFIEC issued a joint statement explicitly supporting new bank formation.
+
+None of that softens the standard that follows approval: three years of enhanced supervision, an 8% minimum Tier 1 leverage ratio, dividend restrictions, and a first examination that tests whether the programs described in the business plan actually exist. For a bank whose stated market is founders and growing companies, the BSA and fraud program examiners will want to see is not a generic one. Business banking means entity documents, beneficial ownership, and owners whose income rarely fits on a pay stub.
+
+## The stack: an early signal most de novos never send
+
+Most bank organizing groups say nothing about technology until after approval. Levine has already named a core: he noted on LinkedIn that Glades is partnering with CSI, the community bank core processor, as the institution takes shape.
+
+That is an unusually early commitment, and a revealing one. Choosing the core first is the conventional sequence; the decisions that follow it are the ones that will define how Glades actually feels to the founders and business owners it wants. Account opening, identity verification, income and employment data, fraud screening: the layer between the borrower and the core is where a 2026 de novo can be genuinely better than the incumbents, because it gets to start source-verified instead of retrofitting verification onto document-based intake the way every 20-year-old bank must.
+
+Levine has already run that playbook once, wiring Alloy, Numerated, and Marstone into a $10 billion balance sheet. The interesting question for Glades is what the equivalent stack looks like when you get to design it before day one, for a county with 336,000 nonemployer businesses whose owners do not have W-2s.
+
+Broward has been exporting its banks for twenty years. A $45 million filing organized by the executive who digitized Florida's largest community bank, backed by a PE firm headquartered in the same city, is the most credible attempt yet to reverse the flow.
+  `,
+  },
   'first-party-fraud-community-banks': {
     title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.',
     description:
