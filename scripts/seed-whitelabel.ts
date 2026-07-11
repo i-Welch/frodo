@@ -19,6 +19,7 @@ import { coastalStatesBank } from '../src/whitelabel/coastal-states-bank.js';
 import { oconeeFederal } from '../src/whitelabel/oconee-federal.js';
 import { andersonBrothersBank } from '../src/whitelabel/anderson-brothers-bank.js';
 import { southernFirstBank } from '../src/whitelabel/southern-first-bank.js';
+import { ravenBank } from '../src/whitelabel/raven-bank.js';
 import type { WhiteLabelConfig } from '../src/whitelabel/types.js';
 
 interface Seed {
@@ -37,6 +38,7 @@ const SEEDS: Seed[] = [
   { tenantId: 'tnt_oconee_federal', mode: 'demo', hosts: ['oconee-federal.submit.loans'], config: oconeeFederal },
   { tenantId: 'tnt_anderson_brothers', mode: 'demo', hosts: ['anderson-brothers-bank.submit.loans'], config: andersonBrothersBank },
   { tenantId: 'tnt_southern_first', mode: 'demo', hosts: ['southern-first-bank.submit.loans'], config: southernFirstBank },
+  { tenantId: 'tnt_raven_bank', mode: 'demo', hosts: ['raven-bank.submit.loans'], config: ravenBank },
 ];
 
 async function main() {

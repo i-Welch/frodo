@@ -12,7 +12,7 @@
  * lives in the config (allowedFlows).
  */
 
-export type FlowKind = 'data_only' | 'rate_range' | 'full_application';
+export type FlowKind = 'data_only' | 'rate_range' | 'full_application' | 'account_opening';
 
 /** The ordered steps a journey can render. Each flow uses a subset. */
 export type Stage =
@@ -78,6 +78,18 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     terminal: 'decision',
     isLegalApplication: true,
     consentTemplate: 'application-fcra',
+  },
+  account_opening: {
+    kind: 'account_opening',
+    label: 'Open an account',
+    path: 'open-account',
+    // Deposit account opening: no loan front door (no amount/purpose), no rate
+    // stage. KYC/CIP verification only — no credit report is pulled.
+    stages: ['product', 'applicant', 'consent', 'dataPull', 'confirmation'],
+    creditPull: 'none',
+    terminal: 'decision',
+    isLegalApplication: true,
+    consentTemplate: 'account-opening',
   },
 };
 

@@ -144,7 +144,16 @@ export function Journey({
     setAmount((a) => Math.min(Math.max(a, sliderMin), sliderMax));
   }, [sliderMin, sliderMax]);
 
-  const matched = useMemo(() => matchProducts(config, amount, purpose), [config, amount, purpose]);
+  // Account opening skips the loan front door: the catalog is every deposit
+  // product, not an amount/purpose match.
+  const isAccountFlow = flow === 'account_opening';
+  const matched = useMemo(
+    () =>
+      isAccountFlow
+        ? config.products.filter((p) => p.type === 'deposit')
+        : matchProducts(config, amount, purpose),
+    [config, amount, purpose, isAccountFlow],
+  );
 
   function resetTo(nextFlow: FlowKind) {
     wlTrack('wl_demo_flow_switched', { slug: config.slug, to: nextFlow });
@@ -171,7 +180,8 @@ export function Journey({
       },
       product: product ?? undefined,
       amount: product ? amount : undefined,
-      purpose: product ? purpose : undefined,
+      // The purpose dropdown is loan-only; an account application has none.
+      purpose: product && !isAccountFlow ? purpose : undefined,
       modules: flow === 'data_only' ? modules : undefined,
     });
   }
@@ -307,11 +317,15 @@ export function Journey({
           <Products
             products={matched}
             amount={amount}
+            account={isAccountFlow}
             onBack={onBack}
             onSelect={(p) => {
               wlTrack('wl_product_selected', { slug: config.slug, flow, product: p.id, type: p.type });
               setProduct(p);
-              setAmount((a) => Math.min(Math.max(a, p.minAmount), p.maxAmount));
+              // Account opening: the amount is the opening deposit, not a loan
+              // amount carried in from the front-door slider.
+              if (isAccountFlow) setAmount(p.defaultAmount);
+              else setAmount((a) => Math.min(Math.max(a, p.minAmount), p.maxAmount));
               advance();
             }}
           />
@@ -639,18 +653,23 @@ function FrontDoor({
 }
 
 function Products({
-  products, amount, onBack, onSelect,
+  products, amount, account, onBack, onSelect,
 }: {
   products: WLProduct[];
   amount: number;
+  account?: boolean;
   onBack?: () => void;
   onSelect: (p: WLProduct) => void;
 }) {
   return (
     <div className="wl-step">
       {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
-      <h2>Here&rsquo;s what fits {usd(amount)}.</h2>
-      <p className="wl-lede">Choose a product to continue. You can change the amount anytime.</p>
+      <h2>{account ? 'Choose your account.' : <>Here&rsquo;s what fits {usd(amount)}.</>}</h2>
+      <p className="wl-lede">
+        {account
+          ? 'Open it online in about five minutes. Your identity is verified automatically, with no documents to upload.'
+          : 'Choose a product to continue. You can change the amount anytime.'}
+      </p>
       <div className="wl-products">
         {products.map((p) => (
           <button key={p.id} className="wl-product" onClick={() => onSelect(p)}>
@@ -687,14 +706,18 @@ function Applicant({
   onContinue: () => void;
 }) {
   const valid = applicant.fullName.trim().length > 1 && /.+@.+\..+/.test(applicant.email);
+  const isDeposit = product?.type === 'deposit';
   return (
     <div className="wl-card wl-step">
       {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
-      {product && <span className="wl-eyebrow">{product.label} · {usd(amount)}</span>}
+      {product && (
+        <span className="wl-eyebrow">{isDeposit ? product.label : `${product.label} · ${usd(amount)}`}</span>
+      )}
       <h2>Let&rsquo;s start with the basics.</h2>
       <p className="wl-lede">
-        This is all we need from you. We&rsquo;ll securely verify your identity, income, and the
-        rest, no documents to upload.
+        {isDeposit
+          ? 'This is all we need from you. We’ll securely verify your identity and the details needed to open your account, no documents to upload.'
+          : 'This is all we need from you. We’ll securely verify your identity, income, and the rest, no documents to upload.'}
       </p>
       <label className="wl-field">
         <span className="wl-label">Full name</span>
@@ -726,18 +749,21 @@ function Consent({
   busy: boolean;
 }) {
   const [agreed, setAgreed] = useState(false);
-  const isApplication = getFlow(flow).isLegalApplication;
+  const isAccount = flow === 'account_opening';
+  const isApplication = getFlow(flow).isLegalApplication && !isAccount;
   // For data_only, show the customer the predetermined data set (chosen when the
   // link was generated) so they can see exactly what they're authorizing.
   const showDataList = flow === 'data_only' && modules.length > 0;
-  const body = isApplication
-    ? `I authorize ${config.branding.shortName} to obtain my credit report and verify my information to evaluate my application. I understand this is an application for credit.`
-    : `I authorize ${config.branding.shortName} and RAVEN to verify my identity, income, and the information needed for this request with trusted data partners.`;
+  const body = isAccount
+    ? `I authorize ${config.branding.shortName} to verify my identity and the information needed to open my deposit account with trusted data partners. This is not an application for credit; no credit report is pulled.`
+    : isApplication
+      ? `I authorize ${config.branding.shortName} to obtain my credit report and verify my information to evaluate my application. I understand this is an application for credit.`
+      : `I authorize ${config.branding.shortName} and RAVEN to verify my identity, income, and the information needed for this request with trusted data partners.`;
   return (
     <div className="wl-card wl-step">
       {onBack && <button className="wl-back" onClick={onBack}>← Back</button>}
       <span className="wl-eyebrow">Your authorization</span>
-      <h2>{isApplication ? 'Authorize your application' : 'Authorize verification'}</h2>
+      <h2>{isAccount ? 'Authorize account opening' : isApplication ? 'Authorize your application' : 'Authorize verification'}</h2>
       <p className="wl-lede">{body}</p>
       {showDataList && (
         <div className="wl-data-list">
@@ -764,7 +790,7 @@ function Consent({
         </span>
       </label>
       <button className="wl-btn wl-btn-primary wl-btn-block" disabled={!agreed || busy} onClick={onContinue}>
-        {busy ? 'Working…' : isApplication ? 'Agree & submit application' : 'Agree & continue'}
+        {busy ? 'Working…' : isAccount ? 'Agree & open my account' : isApplication ? 'Agree & submit application' : 'Agree & continue'}
       </button>
     </div>
   );
@@ -997,6 +1023,7 @@ function Confirmation({
   const article = indefiniteArticle(config.branding.shortName, true);
   const isDecision = terminal === 'decision';
   const isVerify = terminal === 'routeToLo' && summary.amount === 0;
+  const isDeposit = summary.product.type === 'deposit' && isDecision;
 
   return (
     <div className="wl-step">
@@ -1008,11 +1035,13 @@ function Confirmation({
           {isDecision ? 'Application received' : 'You’re all set'}, {firstName}.
         </h2>
         <p className="wl-lede">
-          {isDecision
-            ? `${config.branding.shortName} is reviewing your application and will reach out with a decision shortly.`
-            : isVerify
-              ? `Your information is verified and on its way to ${config.branding.shortName}. ${article} ${config.branding.shortName} representative will follow up.`
-              : `Your ${summary.product.label.toLowerCase()} request for ${usd(summary.amount)} is in. ${article} ${config.branding.shortName} loan officer will reach out shortly to finalize your rate.`}
+          {isDeposit
+            ? `Your identity is verified and your ${summary.product.label} application is in. ${config.branding.shortName} will email your new account details shortly.`
+            : isDecision
+              ? `${config.branding.shortName} is reviewing your application and will reach out with a decision shortly.`
+              : isVerify
+                ? `Your information is verified and on its way to ${config.branding.shortName}. ${article} ${config.branding.shortName} representative will follow up.`
+                : `Your ${summary.product.label.toLowerCase()} request for ${usd(summary.amount)} is in. ${article} ${config.branding.shortName} loan officer will reach out shortly to finalize your rate.`}
         </p>
 
         <div className="wl-confirm-receipt">
@@ -1058,7 +1087,7 @@ function Confirmation({
         </div>
 
         <button className="wl-btn wl-btn-ghost wl-btn-block" onClick={() => setShowLo(!showLo)}>
-          {showLo ? 'Hide' : 'See'} what the loan officer receives
+          {showLo ? 'Hide' : 'See'} what the {isDeposit ? 'bank' : 'loan officer'} receives
         </button>
       </div>
 

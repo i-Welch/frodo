@@ -21,7 +21,7 @@ export type ProductType =
   | 'business'
   | 'deposit';
 
-export type FlowKind = 'data_only' | 'rate_range' | 'full_application';
+export type FlowKind = 'data_only' | 'rate_range' | 'full_application' | 'account_opening';
 
 export interface WLBranding {
   name: string;

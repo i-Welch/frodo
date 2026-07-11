@@ -23,9 +23,11 @@ import { optusBank } from './optus-bank';
 import { oconeStateBank } from './oconee-state-bank';
 import { amerisBank } from './ameris-bank';
 import { unitedBank } from './united-bank';
+import { ravenBank } from './raven-bank';
 
 /** All white-label demo configs. Add a new bank by dropping a config here. */
 export const WL_CONFIGS: WhiteLabelConfig[] = [
+  ravenBank,
   southernBankTrust,
   arthurStateBank,
   firstRelianceBank,

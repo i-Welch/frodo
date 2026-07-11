@@ -32,6 +32,18 @@ export const FLOWS: Record<FlowKind, FlowDefinition> = {
     isLegalApplication: true,
     consentTemplate: 'application-fcra',
   },
+  account_opening: {
+    kind: 'account_opening',
+    label: 'Open an account',
+    path: 'open-account',
+    // Deposit account opening: no loan front door, no rate stage. KYC/CIP
+    // verification only — no credit report is pulled.
+    stages: ['product', 'applicant', 'consent', 'dataPull', 'confirmation'],
+    creditPull: 'none',
+    terminal: 'decision',
+    isLegalApplication: true,
+    consentTemplate: 'account-opening',
+  },
 };
 
 export const ALL_FLOWS: FlowDefinition[] = Object.values(FLOWS);
