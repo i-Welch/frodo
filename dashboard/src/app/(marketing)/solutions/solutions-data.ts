@@ -82,6 +82,7 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'verification-of-deposit', label: 'Verification of Deposit (VOD)' },
       { slug: 'verification-of-employment', label: 'Verification of Employment (VOE)' },
       { slug: 'asset-verification', label: 'Asset Verification' },
+      { slug: 'first-party-fraud', label: 'First-Party Fraud' },
     ],
     relatedArticles: [
       { slug: 'one-link-complete-verification', title: 'One Link, Complete Verification: How RAVEN Works' },
@@ -247,6 +248,7 @@ export const SOLUTIONS: Solution[] = [
     ],
     relatedGlossary: [
       { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
+      { slug: 'first-party-fraud', label: 'First-Party Fraud' },
       { slug: 'bank-account-verification', label: 'Bank Account Verification' },
     ],
     relatedArticles: [

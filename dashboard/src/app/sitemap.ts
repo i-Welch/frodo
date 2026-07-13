@@ -202,7 +202,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({
       url: `${SITE}/glossary/${t.slug}`,
-      lastModified: SITE_UPDATED,
+      lastModified: t.updated ? new Date(t.updated) : SITE_UPDATED,
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),

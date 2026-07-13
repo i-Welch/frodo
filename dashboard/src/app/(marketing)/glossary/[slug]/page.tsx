@@ -1,8 +1,19 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { GLOSSARY_TERMS, getGlossaryTerm } from '../glossary-data';
+
+/** Renders [text](/path) markdown links in body strings as internal <a> elements. */
+function renderInline(text: string): ReactNode[] {
+  const parts = text.split(/(\[[^\]]+\]\([^)]+\))/g);
+  return parts.map((part, i) => {
+    const m = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (m) return <a key={i} href={m[2]}>{m[1]}</a>;
+    return part;
+  });
+}
 
 export function generateStaticParams() {
   return GLOSSARY_TERMS.map((t) => ({ slug: t.slug }));
@@ -92,14 +103,36 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
           <section key={s.heading}>
             <h2>{s.heading}</h2>
             {s.paragraphs.map((p, i) => (
-              <p key={i}>{p}</p>
+              <p key={i}>{renderInline(p)}</p>
             ))}
             {s.bullets && (
               <ul>
                 {s.bullets.map((b) => (
-                  <li key={b}>{b}</li>
+                  <li key={b}>{renderInline(b)}</li>
                 ))}
               </ul>
+            )}
+            {s.table && (
+              <div className="glos-table-wrap">
+                <table className="glos-table">
+                  <thead>
+                    <tr>
+                      {s.table.headers.map((h) => (
+                        <th key={h}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {s.table.rows.map((row, ri) => (
+                      <tr key={ri}>
+                        {row.map((cell, ci) => (
+                          <td key={ci}>{renderInline(cell)}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
           </section>
         ))}
@@ -109,7 +142,7 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
           {term.faqs.map((f) => (
             <div className="glos-faq-item" key={f.q}>
               <h3>{f.q}</h3>
-              <p>{f.a}</p>
+              <p>{renderInline(f.a)}</p>
             </div>
           ))}
         </section>
@@ -168,6 +201,13 @@ const styles = `
   .glos-page section p { font-size: 0.98rem; line-height: 1.8; color: var(--gray-300); margin-bottom: 1rem; }
   .glos-page section ul { padding-left: 1.4rem; margin-bottom: 1rem; }
   .glos-page section li { font-size: 0.95rem; line-height: 1.8; color: var(--gray-300); margin-bottom: 0.35rem; }
+  .glos-page section p a, .glos-page section li a, .glos-page section td a, .glos-faq-item p a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-border); }
+  .glos-page section p a:hover, .glos-page section li a:hover, .glos-page section td a:hover, .glos-faq-item p a:hover { border-bottom-color: var(--accent); }
+  .glos-table-wrap { overflow-x: auto; margin: 0.5rem 0 1rem; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; }
+  .glos-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .glos-table th { text-align: left; font-weight: 600; color: var(--gray-200); background: rgba(255,255,255,0.04); padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
+  .glos-table td { padding: 0.65rem 0.9rem; color: var(--gray-300); line-height: 1.6; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: top; min-width: 8rem; }
+  .glos-table tr:last-child td { border-bottom: none; }
   .glos-faq { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
   .glos-faq-item { margin-bottom: 1.5rem; }
   .glos-faq-item h3 { font-size: 1rem; font-weight: 600; color: var(--gray-100, #F5F5F5); margin-bottom: 0.4rem; }

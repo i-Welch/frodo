@@ -554,7 +554,7 @@ Fannie Mae's fraud team maintains a running list of fictitious employers: compan
 
 Read that again. The fake employers have staffed phone lines.
 
-The verification-of-employment call, the one your processor makes to the number the borrower provided, is not a fraud control. It's the attack surface. A fraud ring that can print a fake paystub can absolutely answer a phone and say "yes, she works here." The entire scheme is designed around the assumption that your bank verifies employment by calling a number on the application.
+The [verification-of-employment call](/glossary/verification-of-employment), the one your processor makes to the number the borrower provided, is not a fraud control. It's the attack surface. A fraud ring that can print a fake paystub can absolutely answer a phone and say "yes, she works here." The entire scheme is designed around the assumption that your bank verifies employment by calling a number on the application.
 
 :::pullquote
 The fake employers have staffed phone lines. The VOE call isn't your fraud control. It's the attack surface.
@@ -1945,7 +1945,7 @@ That gap means the back half of every mortgage file is still manual. The borrowe
 
 Security Federal has done the hard part of technology adoption. Running a modern LOS like ICE is not trivial for a 19-branch community bank. The integration work, the staff training, the process redesign around a digital origination workflow: that investment is real and it is done.
 
-What sits between that investment and a meaningfully better efficiency ratio is the verification layer. Automated VOI, VOE, and VOA, verification of income, employment, and assets, pulled directly from payroll providers and financial institutions at the point of application, before a processor ever touches the file. This is not a rip-and-replace conversation. The LOS stays. The workflow stays. What changes is that the document-chasing step, historically the most time-consuming part of processing a complex CDFI borrower file, gets compressed from days to minutes.
+What sits between that investment and a meaningfully better efficiency ratio is the verification layer. Automated VOI, [VOE](/glossary/verification-of-employment), and VOA, verification of income, employment, and assets, pulled directly from payroll providers and financial institutions at the point of application, before a processor ever touches the file. This is not a rip-and-replace conversation. The LOS stays. The workflow stays. What changes is that the document-chasing step, historically the most time-consuming part of processing a complex CDFI borrower file, gets compressed from days to minutes.
 
 Consider the math at a high level. If Security Federal's loan processors average even 30 minutes per file on manual verification tasks for straightforward borrowers, and two to four hours on complex CDFI files that represent a significant share of their volume, and if automated verification eliminates 80% of that time: the same team handles meaningfully more files per month. No new hires. No expanded branches ahead of the market demand.
 
@@ -2964,7 +2964,7 @@ The $0 OREO line is the evidence. Carolina Bank is playing it right.
     publishedDate: 'June 15, 2026',
     readTime: '7 min read',
     content: `
-Independent mortgage banks now originate 84.1% of all U.S. single-family mortgages. Banks held that market. They gave it away, one slow VOE call at a time.
+Independent mortgage banks now originate 84.1% of all U.S. single-family mortgages. Banks held that market. They gave it away, one slow [VOE call](/glossary/verification-of-employment) at a time.
 
 The number that explains the shift isn't the interest rate or the loan limit. It's 22. That's how many days Rocket Mortgage takes to close, on average, against an industry average of 42 (ICE Mortgage Technology, June 2025). The gap isn't marketing. It's process. And the process difference is specific enough to walk through step by step.
 
@@ -3575,7 +3575,7 @@ The borrower submits two recent pay stubs, two years of W-2s, and one to two yea
 
 Here's what goes wrong: the IRS rejects 30–40% of all 4506-C requests. When a form is rejected, the IRS returns it without an error code. The lender has to diagnose the problem, correct the form, and resubmit from scratch, restarting the 10-business-day clock. A single rejection cycle can consume the entire back half of a 30-day purchase closing window.
 
-Meanwhile, the lender also needs to verify employment. If the employer is in The Work Number's database, an automated report comes back instantly. But The Work Number's coverage is inconsistent for small businesses, nonprofits, newer companies, and gig platforms. When an employer isn't in the database, a human initiates outbound verification: independently validate the employer's phone number and physical location, call HR, verbally confirm employment status and job title, and obtain income details in a separate written format. Fannie Mae requires a verbal VOE completed within 10 business days of the loan note date regardless, which means lenders cannot do this step early. It becomes a closing-week bottleneck on every single file.
+Meanwhile, the lender also needs to verify employment. If the employer is in The Work Number's database, an automated report comes back instantly. But The Work Number's coverage is inconsistent for small businesses, nonprofits, newer companies, and gig platforms. When an employer isn't in the database, a human initiates outbound verification: independently validate the employer's phone number and physical location, call HR, verbally confirm employment status and job title, and obtain income details in a separate written format. Fannie Mae requires a [verbal VOE](/glossary/verification-of-employment) completed within 10 business days of the loan note date regardless, which means lenders cannot do this step early. It becomes a closing-week bottleneck on every single file.
 
 For self-employed borrowers, add a year-to-date profit and loss statement to the stack. Underwriting complexity scales up from there.
 

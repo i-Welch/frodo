@@ -2,12 +2,15 @@ export interface GlossarySection {
   heading: string;
   paragraphs: string[];
   bullets?: string[];
+  table?: { headers: string[]; rows: string[][] };
 }
 
 export interface GlossaryTerm {
   slug: string;
   term: string;
   abbreviation?: string;
+  /** ISO date of last substantive content update; falls back to the site-wide date in sitemap.ts */
+  updated?: string;
   /** Title tag, under 60 chars */
   metaTitle: string;
   /** Meta description, ~150 chars */
@@ -84,36 +87,98 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     slug: 'verification-of-employment',
     term: 'Verification of Employment',
     abbreviation: 'VOE',
-    metaTitle: 'What Is a Verification of Employment (VOE)?',
+    updated: '2026-07-13',
+    metaTitle: 'Verification of Employment (VOE): Written, Verbal, Instant',
     metaDescription:
-      'A verification of employment (VOE) confirms a borrower’s job and income with their employer. How verbal and written VOEs work, the fraud problem, and instant alternatives.',
+      'How written (WVOE) and verbal (VVOE) verification of employment works: Fannie Mae requirements, timing rules, costs, fraud risks, and instant payroll-sourced VOE.',
     definition:
-      'A verification of employment (VOE) is a lender’s confirmation that a borrower works where the application says they work, in the role and at the income stated. Mortgage lenders typically perform a written VOE during underwriting and a verbal VOE within 10 days of closing.',
+      'A verification of employment (VOE) is a lender’s confirmation that a borrower works where the application says they work, in the role and at the income stated. Mortgage lenders typically perform a written VOE (Form 1005) during underwriting and a verbal VOE within 10 business days of closing.',
     sections: [
       {
-        heading: 'Written vs. verbal VOE',
+        heading: 'The written VOE (WVOE)',
         paragraphs: [
-          'The written VOE (Fannie Mae Form 1005) asks the employer to confirm position, hire date, base pay, and the probability of continued employment. The verbal VOE is a phone call made days before closing to confirm the borrower still works there. Both exist because income that disappears between application and closing is one of the fastest ways a performing loan becomes a problem loan.',
+          'The written VOE, often abbreviated WVOE, is a form the lender sends to the employer during underwriting. Fannie Mae Form 1005 is the standard: it asks the employer to confirm position, hire date, base pay, overtime and bonus history, and the probability of continued employment. Lenders order a WVOE when paystubs and W-2s are unavailable or insufficient, or when income structure needs employer confirmation (commission, recent job changes, employment gaps).',
+          'Turnaround depends entirely on the employer. Large employers route WVOEs to a service like The Work Number; small employers may take days to return the form, and every request is a task on someone’s desk at both companies.',
+        ],
+      },
+      {
+        heading: 'The verbal VOE (VVOE)',
+        paragraphs: [
+          'The verbal VOE, or VVOE, is a phone call made shortly before closing to confirm the borrower still works there. It exists because income that disappears between application and closing is one of the fastest ways a performing loan becomes a problem loan.',
+          'There is no GSE-mandated VVOE form, but the call must be documented, and most lenders use an internal worksheet that captures: the name and title of the person who placed the call, the date of the call, the name and title of the employer contact who answered, the business name, and, critically, the source of the phone number. The number must be obtained independently (directory assistance, the employer’s verified website, a database), not taken from the application, because a borrower-supplied number can ring to anyone.',
+        ],
+      },
+      {
+        heading: 'Fannie Mae VOE requirements',
+        paragraphs: [
+          'Fannie Mae’s Selling Guide (B3-3.1-07) requires a verbal VOE for each employed borrower within 10 business days prior to the note date. For self-employed borrowers, the requirement is different: the lender must verify the existence of the business through a third party (a CPA, regulatory agency, or licensing bureau) within 120 calendar days prior to the note date.',
+          'The written VOE can be waived when income is validated through Desktop Underwriter’s validation service (Day 1 Certainty): if DU validates income from an eligible data vendor, the lender gets relief from the documentation requirement. Freddie Mac’s AIM program works the same way on the automated-asset-and-income side. The verbal VOE requirement, however, does not disappear under either program.',
         ],
       },
       {
         heading: 'The fraud problem with phone-based VOE',
         paragraphs: [
           'The verbal VOE has a structural weakness: the lender calls a phone number that ultimately traces back to information the borrower supplied. Fannie Mae’s fraud team maintains a list of fictitious employers, 63 named entities and growing, invented specifically to answer these calls. Some maintain websites and staffed phone lines whose only job is to confirm employment for co-conspirators.',
-          'Income misrepresentation is the most common finding in Fannie Mae fraud investigations, at 46% of confirmed cases. The VOE call, as traditionally performed, is not a strong control against it.',
+          'Income misrepresentation is the most common finding in Fannie Mae fraud investigations, at 46% of confirmed cases. The VOE call, as traditionally performed, is not a strong control against it. It is one of the main channels for [first-party fraud](/glossary/first-party-fraud): a real applicant misrepresenting their own employment or income.',
         ],
       },
       {
         heading: 'Instant VOE from payroll data',
         paragraphs: [
           'Payroll-sourced verification flips the trust model. Instead of calling a number, the lender receives employment and income data directly from the payroll system of record (with the borrower’s consent) in seconds. The employer’s identity is established by the payroll provider’s relationship, not by whoever answers a phone. It also captures what a call can’t: pay frequency, year-to-date earnings, and deductions.',
+          'Because it is a data pull rather than a document request, the pre-closing re-verification becomes a refresh instead of a new round of phone tag. This is how [instant employment verification](/solutions/instant-employment-verification) works in RAVEN.',
         ],
+      },
+      {
+        heading: 'Written vs. verbal vs. payroll-sourced VOE',
+        paragraphs: [],
+        table: {
+          headers: ['', 'Written VOE (WVOE)', 'Verbal VOE (VVOE)', 'Payroll-sourced VOE'],
+          rows: [
+            [
+              'What it confirms',
+              'Position, hire date, base pay, probability of continued employment',
+              'Borrower is still employed at the stated employer',
+              'Employer, role, hire date, pay frequency, year-to-date earnings',
+            ],
+            [
+              'When it happens',
+              'During underwriting',
+              'Within 10 business days of the note date',
+              'Any point in the loan; re-verification is a refresh',
+            ],
+            ['Turnaround', 'Days, employer-dependent', 'Minutes to days of phone tag', 'Seconds'],
+            [
+              'Fraud resistance',
+              'Form can be completed by a coached contact',
+              'Defeated by fictitious-employer schemes',
+              'Data comes from the payroll system of record',
+            ],
+            ['Typical cost', 'Staff time, or $55–$280 via a service', 'Staff time', 'A few dollars per pull'],
+          ],
+        },
       },
     ],
     faqs: [
       {
         q: 'When do lenders verify employment?',
         a: 'Twice, typically: a written or data-sourced VOE during underwriting, and a verbal re-verification within about 10 business days of closing to confirm nothing changed.',
+      },
+      {
+        q: 'What is a WVOE?',
+        a: 'A WVOE is a written verification of employment: a form (Fannie Mae Form 1005 for conforming loans) that the employer completes to confirm position, hire date, pay, and the probability of continued employment. Lenders order it when paystubs and W-2s aren’t sufficient on their own.',
+      },
+      {
+        q: 'What is a verbal VOE (VVOE)?',
+        a: 'A VVOE is a phone call the lender makes within 10 business days before closing to confirm the borrower is still employed. The lender must document who called, who answered, and where the phone number came from; the number has to be sourced independently, not taken from the application.',
+      },
+      {
+        q: 'What are Fannie Mae’s verbal VOE requirements?',
+        a: 'Per Selling Guide B3-3.1-07: for employed borrowers, a verbal VOE within 10 business days prior to the note date. For self-employed borrowers, verification that the business exists through a third party within 120 calendar days prior to the note date. DU income validation can waive the written VOE, but not the verbal one.',
+      },
+      {
+        q: 'How long is a VOE valid?',
+        a: 'Income documentation, including a written VOE, must generally be no more than 120 days old at the note date under GSE guidelines. The verbal VOE has a tighter window: within 10 business days of the note date, which is why it lands in closing week.',
       },
       {
         q: 'How much does a VOE cost?',
@@ -124,7 +189,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'Phone-based VOEs can be and are defeated by fictitious employer schemes. Payroll-sourced VOE is materially harder to fake because the data comes from the payroll system of record rather than a person answering a phone.',
       },
     ],
-    relatedTerms: ['income-verification', 'verification-of-income-and-assets', 'synthetic-identity-fraud'],
+    relatedTerms: ['income-verification', 'verification-of-income-and-assets', 'first-party-fraud', 'synthetic-identity-fraud'],
     relatedArticles: [
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
       { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
@@ -458,11 +523,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
   {
     slug: 'first-party-fraud',
     term: 'First-Party Fraud',
-    metaTitle: 'What Is First-Party Fraud?',
+    updated: '2026-07-13',
+    metaTitle: 'First-Party Fraud: Definition, Detection & Prevention',
     metaDescription:
-      'First-party fraud is committed by a real person using their own identity while lying about facts or intent. Now 36% of reported fraud. Why KYC misses it and what catches it.',
+      'First-party fraud: a real person lying about facts or intent, now 36% of reported fraud. How it differs from third-party fraud, and how lenders detect and prevent it.',
     definition:
-      'First-party fraud is fraud committed by a person using their own, real identity while misrepresenting facts or intent for financial gain: inflating income on a loan application, disputing legitimate charges, or taking credit with no intention to repay. Because the identity is genuine, it passes the checks built to catch impostors.',
+      'First-party fraud, sometimes called first-party abuse, is fraud committed by a person using their own, real identity while misrepresenting facts or intent for financial gain: inflating income on a loan application, disputing legitimate charges, or taking credit with no intention to repay. Because the identity is genuine, it passes the checks built to catch impostors.',
     sections: [
       {
         heading: 'The fastest-growing fraud category',
@@ -471,20 +537,75 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         ],
       },
       {
+        heading: 'First-party vs. third-party vs. synthetic fraud',
+        paragraphs: [
+          'The three categories differ in whose identity is used and where the lie lives. Third-party fraud is identity theft: a real victim, an impostor, and controls built to spot the mismatch. [Synthetic identity fraud](/glossary/synthetic-identity-fraud) fabricates a person from real elements. First-party fraud uses a genuine identity and lies about everything around it.',
+        ],
+        table: {
+          headers: ['', 'First-party fraud', 'Third-party fraud', 'Synthetic identity fraud'],
+          rows: [
+            [
+              'Identity used',
+              'The fraudster’s own, real identity',
+              'A real victim’s stolen identity',
+              'A fabricated person built on real elements, often a real SSN',
+            ],
+            [
+              'The lie',
+              'The facts and intent: income, debts, repayment',
+              'Who is applying',
+              'That the person exists at all',
+            ],
+            [
+              'Who disputes it',
+              'No one; there is no consumer victim',
+              'The person whose identity was stolen',
+              'No one; the person isn’t real',
+            ],
+            [
+              'How the loss books',
+              'Usually as a credit loss or charge-off',
+              'As fraud, once the victim disputes',
+              'As a default with no one to pursue',
+            ],
+            [
+              'What catches it',
+              'Verifying the claims at the source',
+              'Identity verification and device signals',
+              'SSN validation (eCBSV) and credit-file forensics',
+            ],
+          ],
+        },
+      },
+      {
         heading: 'What it looks like in practice',
         paragraphs: [],
         bullets: [
           'Application fraud: inflating income, hiding debts, or misstating employment to qualify for credit',
           'Chargeback abuse ("friendly fraud"): disputing purchases that were legitimately made and received',
           'Never-pay: opening credit with no intent to repay, sometimes after months of normal behavior',
-          'Bust-out: cultivating limits and drawing everything at once (see bust-out fraud)',
+          '[Bust-out](/glossary/bust-out-fraud): cultivating limits and drawing everything at once',
           'Goods-lost claims: asserting an ordered item never arrived',
+        ],
+      },
+      {
+        heading: 'How lenders detect first-party fraud',
+        paragraphs: [
+          'Detection starts from an uncomfortable fact: the applicant will pass every identity check, because the identity is real. What can be checked are the claims. Income and employment verified against the payroll system of record instead of borrower-supplied paystubs; debts read from bank transaction data instead of self-report; disputed purchases checked against delivery confirmation and usage evidence.',
+          'Behavioral signals fill in the rest: credit-seeking velocity across institutions, utilization patterns, and application details that shift between attempts. The hardest part is organizational, not technical. First-party losses usually book as charge-offs, so they land on the credit team’s desk and never get studied as fraud, which means most institutions systematically undercount it.',
+        ],
+      },
+      {
+        heading: 'How to prevent first-party fraud',
+        paragraphs: [
+          'Prevention concentrates at origination, because that is where the misrepresentation happens. Source-data verification of income and employment (a payroll pull rather than a paystub upload) removes the easiest lie from the application. Bank transaction data surfaces undisclosed obligations before underwriting prices the loan. [eCBSV](/glossary/ecbsv) validates that name, SSN, and date of birth match Social Security records, which closes the adjacent synthetic-identity path.',
+          'Source verification also deters. An applicant who knows income will be read from the payroll system rather than a document they control is far less likely to inflate it, so the control pays for itself partly in applications that never turn fraudulent.',
         ],
       },
       {
         heading: 'Why KYC doesn’t catch it',
         paragraphs: [
-          'Identity verification answers "is this person real and who they claim to be," and for first-party fraud the honest answer is yes. The lie lives in the facts around the identity: the income, the debts, the intent. That is why first-party losses usually surface as credit losses rather than fraud cases, quietly mispricing the loan book while the fraud program watches for impostors.',
+          'Identity verification answers "is this person real and who they say they are," and for first-party fraud the honest answer is yes. The lie lives in the facts around the identity: the income, the debts, the intent. That is why first-party losses usually surface as credit losses rather than fraud cases, quietly mispricing the loan book while the fraud program watches for impostors.',
           'The control that works is verifying the claims, not just the claimant: income and employment from payroll systems instead of paystubs, debts from bank transaction data instead of self-report, disputes checked against delivery and usage evidence. A first-party fraudster can pass an identity check; they cannot make a payroll system report income that doesn’t exist.',
         ],
       },
@@ -495,6 +616,14 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'Third-party fraud uses someone else’s identity (identity theft). First-party fraud uses one’s own identity but misrepresents facts or intent. Synthetic identity fraud sits between them: a fabricated person built on real identity elements.',
       },
       {
+        q: 'What is a first-party fraudster?',
+        a: 'A person who commits fraud as themselves: a real applicant with a genuine identity who inflates income, hides debts, disputes legitimate charges, or borrows with no intent to repay. They pass identity checks because the identity is authentic; the fraud is in the claims.',
+      },
+      {
+        q: 'What is first-party abuse?',
+        a: 'Another name for first-party fraud, used especially for the softer end of the spectrum: chargeback abuse, returns abuse, and promotion abuse committed by real customers on their own accounts. The mechanics are the same: a genuine identity misrepresenting facts.',
+      },
+      {
         q: 'How big is first-party fraud?',
         a: 'LexisNexis measured it at 36% of all reported fraud in 2024, up from 15% the year before, making it the leading fraud category globally. Each dollar lost costs North American financial institutions over $5 in total impact.',
       },
@@ -502,8 +631,12 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         q: 'How do lenders detect first-party fraud?',
         a: 'By verifying claims at the source: payroll-based income and employment verification, bank transaction data that reveals undisclosed obligations, and behavioral signals like credit-seeking velocity. Identity checks alone cannot catch it.',
       },
+      {
+        q: 'Is first-party fraud a crime?',
+        a: 'Yes. Knowingly misrepresenting income, employment, or debts on a loan application is fraud, and on a mortgage application it is a federal offense. In practice it is prosecuted far less often than third-party fraud because losses book as credit losses and there is no consumer victim driving a case.',
+      },
     ],
-    relatedTerms: ['bust-out-fraud', 'synthetic-identity-fraud', 'income-verification'],
+    relatedTerms: ['bust-out-fraud', 'synthetic-identity-fraud', 'verification-of-employment', 'income-verification'],
     relatedArticles: [
       { slug: 'first-party-fraud-community-banks', title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.' },
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
