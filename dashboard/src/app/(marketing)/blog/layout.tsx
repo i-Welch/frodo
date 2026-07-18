@@ -541,8 +541,11 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <a href="/solutions">Solutions</a>
             <a href="/glossary">Glossary</a>
             <a href="/integrations">Integrations</a>
+            <a href="/de-novo-watch">De Novo Watch</a>
+            <a href="/about">About</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy</a>
+            <a href="/ai-info">For AI assistants</a>
           </div>
         </footer>
       </div>

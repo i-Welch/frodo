@@ -80,10 +80,161 @@ interface Article {
   description: string;
   content: string;
   publishedDate: string;
+  /** Set only when the body gets a real content update; drives dateModified.
+   *  AI engines diff content, so never bump this without a substantive edit. */
+  updatedDate?: string;
   readTime: string;
 }
 
 const articles: Record<string, Article> = {
+  // ---- SEO DRAFTS (Jul 18, 2026) ----------------------------------------
+  // Routable for preview but NOT published: absent from articles-index.ts
+  // (blog listing, related-article pool) and from blog/published.ts (sitemap,
+  // llms.txt). To publish: review the competitor claims, then add the slug to
+  // both files.
+  'the-work-number-alternatives-community-banks': {
+    title: 'The Work Number Alternatives for Community Banks (2026)',
+    description:
+      'The Work Number is instant when it works, and expensive always. A community bank buyer’s guide to the alternatives: Truework, Truv, Argyle, Experian Verify, the verbal VOE, and where a multi-source verification layer fits.',
+    publishedDate: 'July 18, 2026',
+    readTime: '7 min read',
+    content: `
+# The Work Number Alternatives for Community Banks (2026)
+
+*Published July 18, 2026*
+
+Disclosure up front: RAVEN, which publishes this site, sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
+
+The Work Number, owned by Equifax, is the default answer to employment verification in US lending. It is a database of payroll records contributed by employers and payroll providers, and when a borrower's employer is in it, a verification that used to take three phone calls comes back in seconds. Two things push lenders to look for alternatives anyway: per-report pricing that has risen steeply year over year, and coverage gaps exactly where community banks lend, at small employers, farms, municipalities, and self-employed borrowers who are in nobody's payroll database.
+
+For a community bank, the question is not "what replaces The Work Number." It is "what mix of verification methods covers my borrower base at a cost that works on a $250,000 loan, and satisfies my examiner and the GSEs." Here are the realistic options.
+
+## What you are actually buying
+
+Employment and income verification tools differ on five axes:
+
+- **Coverage model.** Database lookups (The Work Number, Experian Verify) cover employees of contributing employers. Consumer-permissioned connections (Truv, Argyle) cover anyone who can log into their payroll or bank account. Orchestration platforms (Truework) chain methods: instant lookup first, then credentials, then human outreach.
+- **Borrower friction.** A database lookup asks nothing of the borrower. A permissioned connection asks them to log into their payroll provider, which most can do in under a minute and some will refuse.
+- **GSE acceptance.** Fannie Mae's DU validation service and Freddie Mac's AIM each maintain lists of eligible report suppliers. If you sell to the agencies, confirm the vendor is on the current list before signing anything.
+- **Compliance posture.** Employment verifications used in lending decisions are consumer reports under the FCRA; the vendor should be operating as a consumer reporting agency or clearly documenting why it is not.
+- **Cost model.** Per-report pricing, subscriptions, and per-completed-verification pricing behave very differently at community bank volumes. We wrote about the underlying economics in [The $70 Phone Call](/blog/income-verification-fintech-vs-bank).
+
+## The alternatives
+
+### Truework
+
+Truework is an orchestration layer: it tries an instant database match, then a borrower-permissioned payroll login, then, if both miss, its own team completes a manual verification with the employer. That waterfall is the honest response to the real world, where no single method covers everyone. It is strongest for mortgage lenders that need a completed verification on every file, not just the easy ones. Truework publishes its pricing, which is worth something by itself in this category.
+
+### Truv
+
+Truv is consumer-permissioned: the borrower connects their payroll account directly, and the lender receives source data rather than a database snapshot. Truv markets coverage of most of the US workforce, positions itself directly against The Work Number on price, and is eligible under both major GSE validation programs. The tradeoff of the permissioned model is completion: some borrowers will not or cannot connect, so plan a fallback path.
+
+### Argyle
+
+Argyle sells the same consumer-permissioned model as Truv, with direct payroll connections and GSE program eligibility, and competes explicitly on cost against database pricing. Mortgage lenders and IMBs are its center of gravity. As with Truv, the design question for a bank is what happens to the file when the borrower does not connect.
+
+### Experian Verify
+
+Experian built its own employer records network as a second database option. Coverage is smaller than The Work Number's but growing, and for lenders that already buy Experian data, it can be an easy add-on lookup before paying for a premium report elsewhere.
+
+### The verbal VOE, still
+
+For portfolio loans, the phone call remains free and compliant. Fannie Mae's rules for verbal verification of employment are specific about timing and about sourcing the employer's phone number independently; our [verification of employment glossary entry](/glossary/verification-of-employment) walks through the written and verbal requirements, including Form 1005 and Form 90. The verbal VOE does not scale and does not catch a coached reference on a fraud ring's phone line, but it is the correct floor for low-volume, in-market lending.
+
+### Where RAVEN fits
+
+RAVEN is not a standalone VOE database. It is the verification layer around the whole application: identity and synthetic-identity screening, bank-connected income and assets, employer-verified employment (Truework is our employment source), and property data, returned from one borrower link with the sources cross-referenced. Community banks buy it when the problem is not "verify this one employer" but "stop running a document chase on every loan." If you only need raw VOE reports at volume, buy one of the tools above directly; if the employment check is one of six verifications your processors are juggling per file, that is the problem RAVEN exists for. See [instant employment verification](/solutions/instant-employment-verification) for how it works.
+
+## How to choose
+
+- **You sell mostly to the GSEs:** shortlist vendors on the current DU validation and AIM eligibility lists, then compare completion rates on your actual borrower mix, not the marketing coverage number.
+- **You lend to small-employer and self-employed borrowers:** a database-only strategy will miss often. Prefer orchestration or permissioned models with a manual fallback.
+- **You are cost-sensitive at community bank volume:** get per-completed-verification pricing in writing from two vendors and compare against your current per-file spend, including staff time on callbacks.
+- **You suspect application fraud:** no employment database catches a fabricated employer with a live phone line. Source-verified data does. Our piece on [first-party fraud](/glossary/first-party-fraud) explains why the identity can check out while the application lies.
+
+## FAQ
+
+**Is consumer-permissioned payroll data acceptable to Fannie Mae and Freddie Mac?**
+Yes, when it comes through a vendor on the agencies' current eligible-supplier lists and is processed through DU validation or AIM. Confirm the specific vendor and report type against the current list; the lists change.
+
+**Does any alternative fully replace The Work Number?**
+No single tool matches its instant-hit rate on large-employer borrowers. Realistic strategies either orchestrate multiple methods or accept a manual fallback for the misses. The decision is about cost and coverage on your borrower base, not about a one-for-one swap.
+
+**What does employment verification cost in 2026?**
+Database reports are typically priced per pull and have risen steeply; permissioned and orchestrated vendors generally price lower per completed verification and publish pricing more readily. Manual verification costs staff time, roughly an hour per file across the callbacks. Get current quotes; published numbers age fast.
+`,
+  },
+  'best-digital-account-opening-software-community-banks': {
+    title: 'Best Digital Account Opening Software for Community Banks (2026)',
+    description:
+      'An honest comparison of digital account opening platforms for community banks: MANTL (Alkami), Narmi, Apiture, core-attached options from Jack Henry, Fiserv, and CSI, and verification-first intake. Written by a vendor, with the disclosure to match.',
+    publishedDate: 'July 18, 2026',
+    readTime: '8 min read',
+    content: `
+# Best Digital Account Opening Software for Community Banks (2026)
+
+*Published July 18, 2026*
+
+Disclosure: RAVEN, which publishes this guide, is one of the vendors below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
+
+The benchmark numbers in this market are public and brutal. The best community-bank platforms open a funded account in two to three minutes. Megabank and neobank onboarding set borrower expectations, and an application that takes twenty minutes and ends with "visit a branch to fund your account" loses most of its applicants before the finish line. Meanwhile the banks that moved fast without verification learned the other lesson: an account-opening flow that accepts whatever the applicant types is a fraud vector, and more than one bank has [turned online account opening off entirely](/blog/account-opening-fraud-prevention) after a fraud wave.
+
+So the honest selection criteria are speed to funded account, fraud controls at the front door, core compatibility, implementation weight, and what it costs at your asset size. Here is how the field actually breaks down.
+
+## The dedicated platforms
+
+### MANTL (now part of Alkami)
+
+MANTL built its reputation on deposit origination for community banks and credit unions and was acquired by Alkami in March 2025. The performance numbers are the category benchmark: account opening in under three minutes, roughly a million applications processed in 2024 across about 150 institutions, and close to $10 billion in deposits raised. It is a strong choice for deposit-growth-driven banks that want a proven engine and are comfortable buying from a larger digital-banking company post-acquisition. Pricing is not published.
+
+### Narmi
+
+Narmi sells digital banking and account opening built specifically for community banks and credit unions, and documents a consumer account opening time of two minutes and thirteen seconds. Its case studies name real community institutions with real numbers, which is rarer in this market than it should be. Narmi fits banks that want a modern digital banking front end and account opening from one vendor. Most pricing is not published.
+
+### Apiture
+
+Apiture provides digital banking with account opening for US banks and credit unions, and is a common shortlist entry for community institutions that want a full digital banking suite from a bank-focused vendor rather than a core provider.
+
+## The core-attached options
+
+If you run a Jack Henry, Fiserv, or CSI core, each will sell you account opening that is already integrated: Banno for Jack Henry shops, Fiserv's digital origination products, and CSI's digital account opening for its core customers. The integration is the point; the tradeoff is that your account-opening roadmap moves at the core vendor's pace, and switching cores later means switching this too. See our notes on [Jack Henry](/integrations/jack-henry), [Fiserv](/integrations/fiserv), and [CSI](/integrations/csi) for how third-party tools coexist with each.
+
+### Candescent
+
+Candescent (the former NCR Voyix digital banking business) serves a large installed base of financial institutions and partners with fintech vendors for capabilities like direct deposit switching. Banks already on Candescent digital banking typically evaluate its native flows first.
+
+### nCino
+
+nCino is the heavyweight option: onboarding and origination on a Salesforce foundation, strongest in commercial and business banking. For a community bank whose pain is consumer deposit account opening, it is usually more platform than the problem requires.
+
+## The verification-first option
+
+### RAVEN
+
+RAVEN, our product, approaches the same problem from the fraud end. The flow verifies at the source as the applicant moves through it: identity and synthetic-identity screening against authoritative records, watchlist checks, bank-account verification by direct connection rather than a typed routing number, and income or employment data when the account or the relationship calls for it. The output is a funded, verified account and an examiner-ready record of what was checked and where every data point came from.
+
+Where it fits: banks that turned digital account opening off after fraud losses, banks opening it for the first time and unwilling to accept typed-and-unverified intake, and de novo banks building a [day-one stack](/solutions/de-novo-bank-technology). It layers on your existing core and LOS rather than replacing your digital banking. Where it does not fit: if you want one vendor for your entire digital banking experience, buy one of the platforms above; RAVEN is the verification-first intake layer, not a mobile banking suite. Details at [digital account opening](/solutions/digital-account-opening).
+
+## How to run the evaluation
+
+- **Time yourself.** Open an account at your own bank on your phone, stopwatch running, and then do the same at a neobank. The gap is your requirement document.
+- **Ask every vendor the fraud question first.** What is checked at the source before an account can be funded: identity, SSN issuance, funding account ownership? "We integrate with a fraud tool" is a different answer than "these checks run on every application."
+- **Count the implementation.** Core-attached options integrate fastest; dedicated platforms bring more capability and more project; a verification layer in front of intake is the smallest lift but is not a full digital banking replacement.
+- **Get funding-rate numbers, not application numbers.** Applications started is a vanity metric. Ask references for funded-account rate and first-30-day deposit balances.
+
+## FAQ
+
+**How fast should digital account opening be in 2026?**
+Two to five minutes from start to funded account is the competitive benchmark; the best community-bank implementations document times near two minutes.
+
+**Why do community banks turn off online account opening?**
+Fraud, almost always: flows that accepted typed, unverified data at internet speed attracted first-party fraud, synthetic identities, and [new account fraud](/glossary/new-account-fraud) faster than back offices could review it. The fix is verification at the source, not abandoning the channel.
+
+**Do I have to replace my core to offer digital account opening?**
+No. Every option in this guide, including the core vendors' own products, runs alongside an existing core. The real variable is how much of your digital front end you want to replace at the same time.
+`,
+  },
+  // ---- END SEO DRAFTS ----------------------------------------------------
   'portrait-bank-winter-park-de-novo': {
     title: "Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back",
     description:
@@ -4600,6 +4751,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: 'RAVEN',
       type: 'article',
       publishedTime: toIsoDate(article.publishedDate),
+      modifiedTime: toIsoDate(article.updatedDate ?? article.publishedDate),
+      authors: ['Isaac Welch'],
     },
     twitter: {
       card: 'summary_large_image',
@@ -4643,8 +4796,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         url: `https://reportraven.tech/blog/${slug}`,
         image: 'https://reportraven.tech/opengraph-image',
         datePublished: toIsoDate(article.publishedDate),
-        dateModified: toIsoDate(article.publishedDate),
-        author: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+        dateModified: toIsoDate(article.updatedDate ?? article.publishedDate),
+        author: {
+          '@type': 'Person',
+          name: 'Isaac Welch',
+          url: 'https://reportraven.tech/about',
+          sameAs: [
+            'https://www.linkedin.com/in/isaac-welch-22a463179',
+            'https://github.com/i-Welch',
+          ],
+        },
         publisher: {
           '@type': 'Organization',
           name: 'RAVEN',
@@ -4698,6 +4859,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           transition: color 200ms;
         }
         .article-back:hover { color: var(--white); }
+        .article-body .article-meta-author { color: var(--gray-300); text-decoration: none; font-weight: 500; transition: color 200ms; }
+        .article-body .article-meta-author:hover { color: var(--white); }
         .article-body .article-meta-audit { color: var(--gray-300); text-decoration: none; }
         .article-body .article-meta-audit:hover { color: var(--white); }
         .article-meta-audit {
@@ -4788,7 +4951,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className="article-body">
           <h1>{article.title}</h1>
           <div className="article-meta">
+            <span>
+              By{' '}
+              <a href="/about" className="article-meta-author">
+                Isaac Welch
+              </a>
+            </span>
+            <span className="article-meta-dot" />
             <span>{article.publishedDate}</span>
+            {article.updatedDate && (
+              <>
+                <span className="article-meta-dot" />
+                <span>Updated {article.updatedDate}</span>
+              </>
+            )}
             <span className="article-meta-dot" />
             <span>{article.readTime}</span>
             {roiBank && (

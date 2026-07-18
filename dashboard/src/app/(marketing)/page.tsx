@@ -96,6 +96,18 @@ const jsonLd = {
         email: 'isaac@reportraven.tech',
         url: 'https://reportraven.tech',
       },
+      founder: {
+        '@type': 'Person',
+        name: 'Isaac Welch',
+        jobTitle: 'Founder',
+        url: 'https://reportraven.tech/about',
+        sameAs: [
+          'https://www.linkedin.com/in/isaac-welch-22a463179',
+          'https://github.com/i-Welch',
+        ],
+      },
+      // Org-level sameAs: add LinkedIn company page, Crunchbase, and G2 profile
+      // URLs here as each profile is created (see marketing/seo-aeo-playbook.md).
     },
     {
       '@type': 'WebSite',
@@ -1392,9 +1404,12 @@ export default function LandingPage() {
             <a href="/solutions">Solutions</a>
             <a href="/glossary">Glossary</a>
             <a href="/integrations">Integrations</a>
+            <a href="/de-novo-watch">De Novo Watch</a>
+            <a href="/about">About</a>
             <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
             <a href="https://app.reportraven.tech/legal/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
             <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
+            <a href="/ai-info">For AI assistants</a>
           </div>
         </footer>
       </div>

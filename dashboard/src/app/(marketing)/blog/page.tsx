@@ -36,7 +36,7 @@ const blogJsonLd = {
     // Index cards only carry month-level dates ('June 2026'); first of month
     // keeps this ISO-valid without claiming false precision.
     datePublished: new Date(`${a.date.replace(' ', ' 1, ')} UTC`).toISOString().slice(0, 10),
-    author: { '@type': 'Organization', name: 'RAVEN' },
+    author: { '@type': 'Person', name: 'Isaac Welch', url: 'https://reportraven.tech/about' },
   })),
 };
 
