@@ -87,6 +87,92 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'south-carolina-de-novo-drought': {
+    title: 'No One Starts Banks in South Carolina Anymore',
+    description:
+      'South Carolina chartered 56 banks in the 15 years before 2010 and one in the 16 years since. Thirteen charters have retired since 2018, in the fastest-growing state in America. The de novo drought, in FDIC data.',
+    publishedDate: 'July 21, 2026',
+    readTime: '6 min read',
+    content: `
+# No One Starts Banks in South Carolina Anymore
+
+*Published July 21, 2026*
+
+The Census Bureau ranked South Carolina the fastest-growing state in America in 2023. The FDIC has not insured a new South Carolina bank since January 2018.
+
+Hold those two facts next to each other for a second. Population growth is the entire underwriting case for a community bank: new households need mortgages, new businesses need operating accounts, new money needs somewhere local to sit. South Carolina has all three in abundance. What it no longer has is anyone building banks to catch them.
+
+## The class of 56
+
+From 1995 through 2009, the FDIC insured 56 new institutions chartered in South Carolina. Fifty-six. Nearly four a year, every year, for fifteen years, in a state that started the run with about 3.7 million people.
+
+The class had range. Lowcountry startups chasing the Charleston boom. Upstate commercial lenders in Greenville and Spartanburg. Coastal banks built for the Grand Strand's growth machine. The last two members arrived in 2009: Regent Bank in Greenville that April, Coastal Carolina National Bank in Myrtle Beach that June.
+
+Then the assembly line stopped.
+
+## Then the door closed
+
+Since 2010, the FDIC has issued exactly two new South Carolina certificates. One was CertusBank in 2011, a shelf charter assembled to buy failed banks out of receivership, which is a different animal from a community bank and is itself long gone. The other was Beacon Community Bank in January 2018.
+
+One true [de novo](/glossary/de-novo-bank) in sixteen and a half years.
+
+:::pullquote
+One new bank in sixteen and a half years, in the fastest-growing state in America.
+:::
+
+The freeze had national causes. In 2009 the FDIC stretched de novo supervision from three years to seven, and organizers stopped organizing; the agency rescinded the policy in 2016, but the pipeline had emptied. A decade of zero interest rates wrecked the spread math a startup bank lives on. And the capital ante kept climbing: when Portrait Bank chartered in Florida last month, its FDIC order required exactly $27,996,000 in paid-in capital before the doors could open.
+
+The operating math got harder too. CSBS data puts compliance at 8.7% of noninterest expense for banks under $100 million in assets, against 2.9% for banks over $1 billion. The smallest banks pay triple the regulatory tax, and every de novo starts as the smallest bank.
+
+:::stat
+**56**
+FDIC-insured institutions were chartered in South Carolina in the 15 years from 1995 through 2009. In the 16 years since 2010: one true de novo.
+:::
+
+## Meanwhile, the exits never stopped
+
+Since the day Beacon opened, thirteen South Carolina charters have been retired, nearly all through acquisition.
+
+Independence National in Greenville went first, fifteen days after Beacon's opening. Then Atlantic Community in Bluffton. Palmetto Heritage in Pawleys Island. Heritage Community and, later, Mutual Savings, both of Hartsville. Clover Community. Carolina Alliance and First South, both of Spartanburg. CresCom in Charleston. Sandhills in North Myrtle Beach. GrandSouth in Greenville. Community First in Walhalla. And in 2020, South State, the biggest bank the state ever built, merged into a Florida charter and took its headquarters with it.
+
+South Carolina is down to 44 FDIC-insured institutions headquartered in the state. Number fourteen is already in the pipeline: [First Reliance announced its sale in June](/blog/first-reliance-sells-at-the-top).
+
+Consolidation is not a South Carolina quirk. It is the national story, and it is the stated rationale in nearly every de novo application filed anywhere. The South Carolina quirk is that nothing replaces the banks that leave.
+
+Florida has filed five of the nation's fifteen deposit insurance applications in 2026, and one of them, Portrait Bank, is already chartered. Alabama produced two new banks in two years; the second, Solutions Plus Bank in Albertville, reached $34 million in assets within seven months of opening. Georgia's last new bank came in 2022, North Carolina's in 2020.
+
+South Carolina has nothing pending on the FDIC's application list, and no organizing group has surfaced publicly.
+
+## The one that got in
+
+Beacon Community Bank raised its capital in Mount Pleasant and opened in January 2018, the only true de novo to clear the door before it swung shut.
+
+It started that year with $36 million in assets. As of the FDIC's latest data, it holds $972 million in assets and $763 million in deposits.
+
+:::stat
+**27x**
+Beacon Community Bank's asset growth since opening in January 2018: from $36 million to $972 million, in a Charleston market adding roughly 8,500 households a year.
+:::
+
+Read that as a market signal, because that is what it is. If South Carolina's problem were demand, the one new bank of the past sixteen years would be small. Instead it compounded 27-fold in eight and a half years, fast enough that [its balance sheet outgrew its own intake](/blog/beacon-community-bank-charleston-growth-capacity), which is the kind of problem most bankers would trade for.
+
+:::pullquote
+The one bank that got through the door before it closed grew twenty-seven-fold. The demand was never the problem.
+:::
+
+## What it would take to break the drought
+
+The mechanics are documented. [The de novo playbook](/blog/how-to-start-a-bank) runs from organizing group to FDIC application to conditional approval to a three-year heightened-supervision period, and nationally only ten to fifteen true community bank groups a year get one off the ground. The ante is roughly $30 million now, and Portrait's organizers raised $43 million from 256 local investors to clear it comfortably.
+
+A South Carolina group would start with unusual advantages. The growth math writes itself. Thirteen retired charters mean thirteen sets of displaced veteran bankers and thirteen books of customers who did not choose their new, larger bank. Every acquisition that thinned the market also stocked it with exactly the people who start banks.
+
+And a bank built in 2026 gets one advantage the class of 56 never had: it can skip the industry's intake mistake entirely. The banks that bolted digital account opening onto document-based processes learned that a fast application without verification behind it is a fraud channel, and [a de novo's first exam tests the fraud program its application promised](/blog/de-novo-bank-day-one-fraud-program). Starting source-verified from day one is an architectural decision that costs a fraction of retrofitting it later.
+
+We track every new filing, charter, and opening at [De Novo Watch](/de-novo-watch). Florida's section keeps growing. Alabama earned two rows. The South Carolina row has been empty since January 2018.
+
+Someone should fix that.
+`,
+  },
   // ---- SEO DRAFTS (Jul 18, 2026) ----------------------------------------
   // Routable for preview but NOT published: absent from articles-index.ts
   // (blog listing, related-article pool) and from blog/published.ts (sitemap,

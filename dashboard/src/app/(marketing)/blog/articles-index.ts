@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'south-carolina-de-novo-drought',
+    title: 'No One Starts Banks in South Carolina Anymore',
+    description:
+      'South Carolina chartered 56 banks in the 15 years before 2010 and one in the 16 years since. Thirteen charters have retired since 2018, in the fastest-growing state in America. The de novo drought, in FDIC data.',
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'guide',
+  },
+  {
     slug: 'portrait-bank-winter-park-de-novo',
     title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back',
     description:

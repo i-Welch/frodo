@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Institutional research (Jul 2026) —
+  'south-carolina-de-novo-drought',
   // — De Novo Watch (Jul 2026) —
   'portrait-bank-winter-park-de-novo',
   'glades-bank-broward-de-novo',
@@ -91,6 +93,7 @@ export const BLOG_SLUGS = [
 // dates. Extracted from publishedDate in blog/[slug]/page.tsx — keep in sync
 // when adding articles.
 export const BLOG_DATES: Record<string, string> = {
+  'south-carolina-de-novo-drought': '2026-07-21',
   'portrait-bank-winter-park-de-novo': '2026-07-11',
   'glades-bank-broward-de-novo': '2026-07-11',
   'first-party-fraud-community-banks': '2026-07-10',
