@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
-import { DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 
 export const metadata: Metadata = {
   title: 'De Novo Bank Tracker: 2026 Charters and Applications',
@@ -141,6 +141,35 @@ export default function DeNovoWatchPage() {
         <p className="dnw-note">
           Rows are added as applications are filed and verified against a public source.
         </p>
+
+        <h2>Charter moves: the side door</h2>
+        <p>
+          Not every new bank arrives through an FDIC application. Some groups buy an existing
+          charter and relocate or relaunch it, skipping the de novo queue entirely. We track those
+          here because they change local markets the same way a de novo does.
+        </p>
+        <div className="dnw-table-wrap">
+          <table className="dnw-table">
+            <thead>
+              <tr>
+                <th>Bank</th>
+                <th>Charter origin</th>
+                <th>The move</th>
+                <th>Coverage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {CHARTER_MOVES.map((m) => (
+                <tr key={m.name}>
+                  <td className="dnw-bank">{m.name}</td>
+                  <td>{m.charterOrigin}</td>
+                  <td>{m.move}</td>
+                  <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         <h2 id="citation">Methodology and citation</h2>
         <p>

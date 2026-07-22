@@ -87,11 +87,85 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'southern-bank-spartanburg-side-door': {
+    title: "South Carolina's Newest Bank Is 81 Years Old",
+    description:
+      "On April 14, 2026, Southern Bank moved its headquarters to Spartanburg on a charter issued in 1945. Inside the recapitalization that took a $93M Sardis, Georgia bank to $400M across South Carolina's growth markets, through the de novo process's side door.",
+    publishedDate: 'July 22, 2026',
+    readTime: '6 min read',
+    content: `
+# South Carolina's Newest Bank Is 81 Years Old
+
+*Published July 22, 2026*
+
+On April 14, 2026, South Carolina got its first new bank headquarters since 2018. No FDIC application, no conditional approval order, no capital campaign with a charter lawyer on retainer. The newest bank in the state arrived on a charter issued on July 2, 1945.
+
+Southern Bank, now of Spartanburg, spent most of its life as the Bank of Sardis, serving a Burke County, Georgia town of about a thousand people. It was renamed Bank of Burke County in 2001 and kept doing what tiny rural banks do: $80 million in assets, $45 million in loans, a quiet half-percent return, decade after decade.
+
+Then somebody bought the keys. (A reader pointed us to this one after last week's [drought piece](/blog/south-carolina-de-novo-drought). Credit where due.)
+
+## The side door
+
+The front door to banking is the de novo process: an FDIC application, roughly $30 million in committed capital, and a three-year supervisory leash. Nobody has walked through it in South Carolina since Beacon Community Bank in January 2018.
+
+The side door is buying a charter that already exists. An investor group did exactly that with the Bank of Burke County, and the call reports mark the moment: the bank posted a $718,000 loss in 2020, its only loss in the modern record, and new equity started arriving by mid-2021. Capital stair-stepped from $9.5 million to $31.4 million across successive raises. The name became Southern Bank. The strategy became something no Sardis bank ever attempted.
+
+:::pullquote
+By headquarters date, the newest bank in South Carolina is three months old. By charter date, it is eighty-one.
+:::
+
+This is the same route Georgia's newest bank took this summer, when First City Bank relaunched in Alpharetta on a different 1945 charter. When the front door stays shut for eight years, the market routes around it. The charter purchase skips the application queue; what it cannot skip is everything that comes after.
+
+## The rebuild
+
+What came after, in Southern Bank's case, was growth at a pace that looks more like a de novo than an 80-year-old institution, because functionally that is what it is.
+
+Assets ran $93 million at the end of 2020. Then $145 million in 2021. Then $224 million, $295 million, $338 million, $371 million at each following year-end. As of the first quarter of 2026: $400 million, with $347 million in deposits. The loan book grew from $45 million to $234 million over the same stretch.
+
+:::stat
+**$400 million**
+Southern Bank's assets at Q1 2026, up from $93 million at the end of 2020. The loan book grew from $45 million to $234 million over the same period.
+:::
+
+The income statement tells the honest other half. Net income for 2025 was $856,000, a 0.24% return on assets. Margin compressed from 4.5% in the sleepy years to a 2.87% trough in early 2024 before recovering to 3.4% in 2025. That is what a balance sheet being built at speed looks like: the earnings come later, after the growth is paid for. Every de novo investor knows this curve. Southern Bank's shareholders are living it with an 81-year-old charter instead of a new one.
+
+## The march up the map
+
+The expansion sequence reads like a tour of South Carolina's growth markets, and, not coincidentally, like our own coverage map.
+
+A Greenville branch opened in July 2022, planting the flag in [the Upstate market where Southern First built a $4 billion franchise on relationship banking](/blog/southern-first-bank-upstate-sc-bet). Aiken followed in December 2023, [Security Federal's territory](/blog/security-federal-bank-cdfi-rate-rebound-aiken). Myrtle Beach opened in September 2025, the Grand Strand market where [Anderson Brothers](/blog/anderson-brothers-bank-myrtle-beach-bet) has been proving what a community bank can do with a growth tailwind. And in April the headquarters moved to Spartanburg, with more Greenville and Spartanburg locations announced on the bank's site.
+
+Spartanburg is a pointed choice. The county lost both of its homegrown charters in 2019, when Carolina Alliance and First South were acquired within a month of each other.
+
+:::pullquote
+Spartanburg lost two homegrown charters in 2019. In April, it imported one.
+:::
+
+Eight offices now span the two states: four in South Carolina's fastest-growing corridors, four in the legacy Burke County footprint that still anchors the charter's history.
+
+## Forty decades of bankers, one modern stack
+
+The leadership page explains how a $400 million balance sheet got built this fast. CEO M.J. "J." Huggins III brings nearly four decades in community banking. Jamin M. Hujik runs the holding company, Southern Financial Corp, as CEO and serves as the bank's executive vice-chairman. President and Chief Banking Officer Scott M. Frierson, Chief Lending Officer Frank Townsend, and Chief Administrative Officer Kristi Eller each carry more than 35 years. This is not a fintech cosplaying as a bank. It is five long-tenure bankers who have watched the state's charters disappear and decided the answer was to bring one in.
+
+The posture is explicitly digital. The bank's tagline is "Modern bank technology. Small-town values." It runs online account opening for both personal and business customers, and it is currently paying 4.10% APY on a 10-month CD, which is what deposit-gathering mode looks like in 2026. Deposits grew $30 million in the first quarter alone.
+
+## What a growth bank's intake has to carry
+
+Here is the structural observation, and it applies to every bank on this trajectory, not to this one specifically.
+
+A bank that grows 4x in five years across four metro markets is, by definition, onboarding customers its bankers have never met. Online account opening in growth markets means applications from people with no branch relationship, no referral, and no history with the institution. The industry's default intake, typed-in data and borrower-supplied documents, was built for the opposite customer, and it is [the mistake that made older banks retreat from digital channels entirely](/blog/account-opening-fraud-prevention) after fraud waves found them.
+
+The banks that get this right treat verification as the growth enabler: identity checked against authoritative sources, funding accounts confirmed by direct connection, income and employment pulled from systems of record. Fast for the real customers, closed to the fake ones. A [de novo makes that choice on day one](/blog/de-novo-bank-day-one-fraud-program); a charter reborn at 81 gets to make it mid-flight, which is harder and matters more, because the volume is already arriving.
+
+Southern Bank just became the newest entry on our [De Novo Watch](/de-novo-watch) map by the least likely route available. The next few call reports will show whether the earnings curve bends the way the growth curve promises. The intake question travels with them either way.
+`,
+  },
   'south-carolina-de-novo-drought': {
     title: 'No One Starts Banks in South Carolina Anymore',
     description:
       'South Carolina chartered 56 banks in the 15 years before 2010 and one in the 16 years since. Thirteen charters have retired since 2018, in the fastest-growing state in America. The de novo drought, in FDIC data.',
     publishedDate: 'July 21, 2026',
+    updatedDate: 'July 22, 2026',
     readTime: '6 min read',
     content: `
 # No One Starts Banks in South Carolina Anymore
@@ -142,6 +216,8 @@ Consolidation is not a South Carolina quirk. It is the national story, and it is
 Florida has filed five of the nation's fifteen deposit insurance applications in 2026, and one of them, Portrait Bank, is already chartered. Alabama produced two new banks in two years; the second, Solutions Plus Bank in Albertville, reached $34 million in assets within seven months of opening. Georgia's last new bank came in 2022, North Carolina's in 2020.
 
 South Carolina has nothing pending on the FDIC's application list, and no organizing group has surfaced publicly.
+
+**Update, July 22:** There is one asterisk, and it proves the rule. During the drought an investor group bought the 1945-chartered Bank of Burke County in Sardis, Georgia, relaunched it as Southern Bank, and in April 2026 moved its headquarters to Spartanburg, where it now holds $400 million in assets. A new bank for South Carolina without a new certificate: the side door. [We wrote up the full story.](/blog/southern-bank-spartanburg-side-door)
 
 ## The one that got in
 

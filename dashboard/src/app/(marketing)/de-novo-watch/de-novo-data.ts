@@ -26,11 +26,38 @@ export const STATUS_LABELS: Record<DeNovoStatus, string> = {
 
 // Tracker-level context, verified against FDIC data in the July 2026 research.
 export const TRACKER_SUMMARY = {
-  updated: '2026-07-18',
+  updated: '2026-07-22',
   nationalApplications2026: 15,
   floridaApplications2026: 5,
   note: 'Deposit insurance applications filed nationally in 2026 through early July. Florida accounts for five of them, the most of any state.',
 };
+
+// Charter moves: banks that entered a market by acquiring and relocating or
+// relaunching an existing charter instead of filing a de novo application.
+// Same sourcing rules as DE_NOVO_BANKS.
+export interface CharterMove {
+  name: string;
+  charterOrigin: string;
+  move: string;
+  articleSlug?: string;
+  asOf: string;
+}
+
+export const CHARTER_MOVES: CharterMove[] = [
+  {
+    name: 'Southern Bank',
+    charterOrigin: 'Chartered July 2, 1945 in Sardis, GA (Bank of Sardis, later Bank of Burke County)',
+    move: 'Recapitalized starting 2021 (equity $9.5M to $31.4M); relaunched as Southern Bank; headquarters redomiciled to Spartanburg, SC on April 14, 2026. $400M assets at Q1 2026, with branches in Greenville, Aiken, and Myrtle Beach.',
+    articleSlug: 'southern-bank-spartanburg-side-door',
+    asOf: '2026-07-22',
+  },
+  {
+    name: 'First City Bank',
+    charterOrigin: 'Chartered July 2, 1945 (Georgia)',
+    move: 'Relaunched in Alpharetta, GA in June 2026 by a group led by CEO Bob Koncerak after a $22M+ raise (The Bank Slate, June 1, 2026).',
+    asOf: '2026-07-21',
+  },
+];
 
 export const DE_NOVO_BANKS: DeNovoBank[] = [
   {

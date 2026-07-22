@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'southern-bank-spartanburg-side-door',
+    title: "South Carolina's Newest Bank Is 81 Years Old",
+    description:
+      "On April 14, 2026, Southern Bank moved its headquarters to Spartanburg on a charter issued in 1945. The recapitalization that took a $93M Sardis, Georgia bank to $400M across South Carolina's growth markets, through the de novo process's side door.",
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'bank',
+  },
+  {
     slug: 'south-carolina-de-novo-drought',
     title: 'No One Starts Banks in South Carolina Anymore',
     description:
