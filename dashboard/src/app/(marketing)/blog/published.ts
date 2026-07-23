@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Institutional research (Jul 2026) —
+  'huntington-bank-southeast-expansion',
   'southern-bank-spartanburg-side-door',
   'south-carolina-de-novo-drought',
   // — De Novo Watch (Jul 2026) —
@@ -94,6 +95,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'huntington-bank-southeast-expansion': '2026-07-23',
   'southern-bank-spartanburg-side-door': '2026-07-22',
   'south-carolina-de-novo-drought': '2026-07-22',
   'portrait-bank-winter-park-de-novo': '2026-07-11',

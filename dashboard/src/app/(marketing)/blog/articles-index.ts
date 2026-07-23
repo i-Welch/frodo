@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'huntington-bank-southeast-expansion',
+    title: 'The $284 Billion Bank Down the Street',
+    description:
+      "Huntington added $18.8B in deposits in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
+    readTime: '6 min read',
+    date: 'July 2026',
+    category: 'bank',
+  },
+  {
     slug: 'southern-bank-spartanburg-side-door',
     title: "South Carolina's Newest Bank Is 81 Years Old",
     description:

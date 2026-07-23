@@ -87,6 +87,77 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'huntington-bank-southeast-expansion': {
+    title: 'The $284 Billion Bank Down the Street',
+    description:
+      "Huntington added $18.8B in deposits in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
+    publishedDate: 'July 23, 2026',
+    readTime: '6 min read',
+    content: `
+# The $284 Billion Bank Down the Street
+
+*Published July 23, 2026*
+
+Huntington Bancshares reported second-quarter earnings this morning: $727 million in net income, loans up $15.0 billion, deposits up $18.8 billion. In one quarter.
+
+Nobody grows like that. Huntington didn't either. Those numbers are what it looks like when the Gulf South's biggest homegrown bank finishes becoming a division of a Columbus, Ohio company, and they are the clearest picture yet of what is rolling toward every community bank market in the Southeast.
+
+## The march south, in two deals
+
+Huntington spent 2025 buying its way below the Mason-Dixon line. In October, it closed on Veritex, a $13 billion Dallas bank. Four months later, on February 1, 2026, it absorbed the big one: Cadence Bank, $53.5 billion in assets, headquartered in Tupelo, Mississippi, with a franchise stretching from Houston to the Florida panhandle.
+
+The systems conversion finished in mid-June. This morning's release closed the book: "With the Veritex, Janney & TM Capital, and Cadence integrations behind us," CEO Steve Steinour said, "we are well positioned to deliver the full economic benefits of our combined company."
+
+The combined company is now a $284 billion bank with 1,627 offices, and its FDIC branch map reads like a Southeast community banker's service area. Mississippi: 89 branches. Alabama: 52. Georgia: 39. Tennessee: 33. Florida: 21. Texas: 152. Every one of them acquired in a single February morning.
+
+:::stat
+**$18.8 billion**
+Deposit growth Huntington reported for Q2 2026, mostly the Cadence effect. For scale: Beacon Community Bank, South Carolina's fastest-growing young bank, gathered $763 million in deposits in eight and a half years. Huntington added 24 times that in one quarter.
+:::
+
+## The organic front: 55 branches for the Carolinas
+
+The acquisitions bought the Gulf South. The Carolinas, Huntington is building by hand.
+
+The dates tell you how deliberate it is. Charleston opened in February 2025. Spartanburg in May 2025, eleven months before [an 81-year-old Georgia charter redomiciled there](/blog/southern-bank-spartanburg-side-door) to become the state's newest bank. Greenville in December 2025, into [the same Upstate market where Southern First spent 26 years building a $4 billion franchise](/blog/southern-first-bank-upstate-sc-bet). And last Monday, a newly built freestanding branch at 103 Station Street in Summerville, the fourth in South Carolina and the eleventh in the Carolinas, against a stated plan of roughly 55 across the two states.
+
+"The opening of our first branch in Summerville represents another milestone in Huntington's continued expansion across the Carolinas," is how regional president Trent Holland put it. Milestone is the right word. There are 44 more coming.
+
+## Mississippi's double loss
+
+Set the Cadence deal next to a number from our [de novo drought research](/blog/south-carolina-de-novo-drought): Mississippi has not chartered a new bank since 2008. Eighteen years without a single new institution, and every Mississippi bank chartered since 2000 is already gone.
+
+Now its largest homegrown bank is gone too, not failed, not diminished, just headquartered 700 miles north.
+
+:::pullquote
+Consolidation without replacement: the state that stopped making banks just lost its biggest one.
+:::
+
+This is the de novo drought thesis at super-regional scale. When acquisitions retire charters and nothing new gets born, decision-making migrates out of state one deal at a time. The [De Novo Watch tracker](/de-novo-watch) counts what's being born; the Cadence deal is a reminder of what the other side of the ledger looks like.
+
+## The digital part is the point
+
+Three days before the earnings release, Huntington put out a different announcement: it had been named the United States' best digital bank for consumers.
+
+That pairing is the whole competitive story. The neobank threat community banks have watched for a decade was [an app with no branches](/blog/what-neobanks-get-right-community-banks). The super-regional threat is the app plus a freestanding branch on Station Street, plus a business banker who shows up to the chamber of commerce lunch. Huntington built its retail reputation on products like 24-Hour Grace and digital onboarding that finishes in minutes, and it has been the nation's most active SBA 7(a) lender by loan count for years, a claim it repeats in nearly every expansion announcement.
+
+Read that last part again if you are a community bank that leans on SBA volume. The lender that does more 7(a) loans than anyone in America is opening branches in [the same markets where SBA lending has been a community bank differentiator](/blog/countybank-greenwood-sc-sba-deep-dive).
+
+## The counter
+
+Community banks have survived every previous wave of consolidation, and the survivors share a pattern: they kept the things scale can't buy and fixed the things it can.
+
+What scale can't buy: local credit decisions made by people who know the borrower, board members who live in the market, the ability to structure around a business that doesn't fit a template. Huntington's Charleston market president is one person; the Lowcountry has dozens of bankers with thirty-year relationships.
+
+What scale absolutely buys: intake. A Huntington customer opens an account or starts a loan application in minutes, verified digitally, from a couch. When that experience was in Columbus, a paper-first process in Summerville was a quirk. Now it is a side-by-side comparison, [and the fix is not turning off the digital channel](/blog/account-opening-fraud-prevention), it is making the community bank's intake as fast and as verified as the one down the street.
+
+:::pullquote
+When the best digital bank in America opens a branch on Main Street, the digital gap stops being theoretical.
+:::
+
+The $284 billion bank is coming either way. The 55 branches are announced, the systems are converted, and the Q2 numbers say the machine is fed. What happens next in Greenville, Spartanburg, and Summerville depends less on Huntington than on how quickly the banks already there close the intake gap. The relationships were never the problem.
+`,
+  },
   'southern-bank-spartanburg-side-door': {
     title: "South Carolina's Newest Bank Is 81 Years Old",
     description:
