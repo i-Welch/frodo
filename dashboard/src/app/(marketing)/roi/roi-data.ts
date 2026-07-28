@@ -208,6 +208,64 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'optimumbank',
+    name: 'OptimumBank',
+    shortName: 'OptimumBank',
+    articleSlug: 'optimumbank-98-percent-cre-growth',
+    articleTitle: 'The 98.7% Bank',
+    fdicCert: 35430,
+    auditDate: 'July 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.40B' },
+      { label: 'ROA', value: '2.04% (Q2 2026, annualized)' },
+      { label: 'NIM', value: '4.57%' },
+      { label: 'Branch count', value: '4' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 20,
+        source:
+          'OptimumBank was a HMDA reporter in 2023 only, originating 9 loans for $23.9M (CRA Public File, Feb 2026); bank records show 29 loans/$37.7M in 2021 and 39 loans/$87.5M in 2022. Residential real estate book was $78.3M at 6/30/26, up $11.7M YoY. Estimate of ~20 residential files per year reflects the 2021-2023 range and the current book growth.',
+        estimated: true,
+      },
+      commercial: {
+        count: 210,
+        source:
+          'Q2 2026 earnings release (8-K, 7/24/26): CRE $905.2M (+$427.0M YoY), multifamily $52.6M, land and construction $46.3M, commercial $51.4M. Net CRE growth of $427.0M plus assumed payoffs implies roughly $500-550M originated over twelve months; at a $3M average South Florida CRE note that is ~170 credits, plus SBA files (noninterest income includes gains on sale of government guaranteed SBA loans) and C&I renewals.',
+        estimated: true,
+      },
+      consumer: {
+        count: 180,
+        source:
+          'Q2 2026 earnings release: consumer loan segment $83.4M at 6/30/26, up $23.5M (39.2%) YoY. Estimate assumes an average consumer note in the low six figures, consistent with a commercially oriented book.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 3500,
+      source:
+        'Broward County has roughly 1.99 million residents and approximately 740,000 households. Population growth has slowed sharply on affordability and domestic out-migration, so this uses a conservative ~0.5% annual household formation rate. OptimumBank operates 3 of Broward\'s 369 branches plus one Miami-Dade office, so only a fraction of county household formation is addressable.',
+    },
+    intro:
+      "OptimumBank is the largest bank still headquartered in Broward County, holding $865.3 million of local deposits across three branches as of the FDIC's June 2025 survey. That is more than half of all deposits held by the five remaining Broward-headquartered institutions combined, in a $69.69 billion market dominated by Bank of America, Chase, and Wells Fargo. The bank grew total assets 40.2% in the twelve months ending June 30, 2026, to $1.40 billion, and 98.7% of its $432.5 million in loan growth was commercial real estate. The borrower base is South Florida commercial: investors and operators in CRE, HOA and property management relationships, SBA-eligible small businesses, and, through the new OptimumFunding subsidiary, skilled nursing, senior housing, and multifamily sponsors seeking bridge-to-HUD financing. This is a commercial verification problem, not a retail mortgage one.",
+    strategic: [
+      {
+        title: 'A CRE Book That Nearly Doubled in a Year Has to Prove Its File Quality',
+        body: "Commercial real estate went from $478.2 million to $905.2 million in four quarters, and now represents 74.4% of gross loans. Against Tier 1 capital plus reserves of roughly $158.7 million, that is about 570% of capital, well past the 300% level at which interagency guidance directs examiners to take a closer look, and the 50%-over-36-months growth criterion was met in a single year. Nothing about that is disqualifying on its own. What it does guarantee is that the next safety-and-soundness exam will test whether underwriting discipline held while the book doubled: global cash flow on sponsors, verified rent rolls, entity documentation, and consistent income and asset support on guarantors. Files assembled by email and PDF do not produce that evidence on demand. RAVEN captures borrower and guarantor income, assets, and entity data from source at intake, with a timestamped audit trail per file, which is precisely the artifact an examiner asks for when the concentration ratio is the first thing on the scoping memo.",
+      },
+      {
+        title: "The Website Says 'Traditional In-Person Banking.' The Balance Sheet Says Otherwise.",
+        body: "The title tag on optimumbank.com reads \"Traditional in-person banking for businesses and consumers residing in South Florida.\" The SBA page, advertising loans up to $5 million, ends at \"Schedule an Appointment Now.\" There is no online loan application for any product, no digital deposit account opening, and the online banking links serve existing customers only. That was a coherent posture for a $154.5 million bank. It is a strange one for a $1.4 billion bank adding $126 million of loans per quarter with four offices. Every dollar of that growth currently arrives through a lender's relationships and a calendar invitation. A branded digital intake layer does not replace the relationship model that built this bank; it stops the bank from losing the deals that arrive at 9pm from a sponsor who found them through a broker and wants to move this week.",
+      },
+      {
+        title: 'Growth Is Outrunning the Cost Base, and Verification Is Where That Shows Up First',
+        body: "OptimumBank runs a 48.78% efficiency ratio, which is genuinely excellent. Look at what it took to hold there. Salaries and employee benefits rose 41.2% year over year, from $3.74 million to $5.28 million per quarter. Data processing rose 57.8%, from $625,000 to $986,000. Both grew faster than the 40.2% asset growth. That is the signature of an operation buying headcount and systems to keep pace with volume rather than getting leverage from it. Commercial verification is the highest-labor step in the files driving this growth: two years of business returns, K-1s, rent rolls, operating statements, and guarantor financials, chased by email across multiple entities per deal. Automating source-verified collection on 200-plus commercial files a year is where a bank at this growth rate converts headcount spend into throughput, and it is the difference between a 48% efficiency ratio that holds and one that drifts as the book gets larger.",
+      },
+    ],
+    sources:
+      'OptimumBank Holdings 8-K and Exhibit 99.1 filed 7/24/26 (Q2 2026 results, SEC CIK 1288855); OptimumBank Holdings 10-Q for Q1 2026 and 10-K for FY2025; FDIC BankFind cert #35430; FDIC Summary of Deposits, June 30 2025 (Broward County market share); OptimumBank CRA Public File, February 2026 (HMDA and small business lending history, assessment area competition); optimumbank.com homepage, SBA and Small Business Services page, and Remote Banking page (reviewed July 2026); Colliers Broward County Office Market Report Q2 2026; Newmark Broward Florida Office Market Report Q1 2026; Interagency Guidance on Concentrations in Commercial Real Estate Lending; FDIC FIL-64-2023.',
+  },
+  {
     slug: 'south-atlantic-bank',
     name: 'South Atlantic Bank',
     shortName: 'South Atlantic',

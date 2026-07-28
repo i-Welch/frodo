@@ -20,6 +20,7 @@ import { queensboroughNationalBank } from './queensborough-national-bank';
 import { firstCommunityBankSc } from './first-community-bank-sc';
 import { countybank } from './countybank';
 import { optusBank } from './optus-bank';
+import { optimumbank } from './optimumbank';
 import { oconeStateBank } from './oconee-state-bank';
 import { amerisBank } from './ameris-bank';
 import { unitedBank } from './united-bank';
@@ -49,6 +50,7 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   firstCommunityBankSc,
   countybank,
   optusBank,
+  optimumbank,
   oconeStateBank,
   amerisBank,
   unitedBank,

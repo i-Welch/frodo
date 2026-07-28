@@ -1,5 +1,118 @@
 [
   {
+    "slug": "optimumbank",
+    "bankName": "OptimumBank",
+    "shortName": "OptimumBank",
+    "auditDate": "July 2026",
+    "demoSlug": "optimumbank",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$1.40B"
+      },
+      {
+        "label": "Branches",
+        "value": "4 (3 Broward, 1 Miami-Dade)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "0 of 5"
+      },
+      {
+        "label": "Asset growth",
+        "value": "40.2% YoY"
+      }
+    ],
+    "summary": "OptimumBank grew total assets 40.2% in twelve months to $1.40 billion, posted a 2.04% ROA, and ranked 49th out of 3,465 U.S. community banks by S&P Global. It did all of that with a website whose title tag reads \"Traditional in-person banking.\" There is no online application for any lending product. The SBA page, advertising loans up to $5 million, ends at \"Schedule an Appointment Now.\" There is no digital deposit account opening. Online banking serves existing customers only. That posture was coherent for the $154.5 million bank Moishe Gubin took over in 2010; it is a strange fit for a $1.4 billion commercial lender adding $126 million of loans per quarter from four offices. The gap here is not a retail mortgage funnel, which this bank does not want. It is verified commercial intake for the CRE, SBA, and HUD sponsors who now drive nearly all of the growth.",
+    "currentJourney": [
+      {
+        "channel": "Commercial real estate",
+        "detail": "No digital intake. CRE is 74.4% of the loan book and grew $427.0M in twelve months, entirely through lender relationships and scheduled appointments",
+        "status": "missing"
+      },
+      {
+        "channel": "SBA / small business",
+        "detail": "SBA and Small Business Services page markets loans up to $5 million and ends at a \"Schedule an Appointment Now\" button. No application, no document upload, no after-hours capture",
+        "status": "missing"
+      },
+      {
+        "channel": "HUD / FHA (OptimumFunding)",
+        "detail": "New subsidiary originating bridge-to-HUD financing for skilled nursing, senior housing, and multifamily. First loan closed Q2 2026 at $14.2M. No public intake path at all",
+        "status": "missing"
+      },
+      {
+        "channel": "Residential mortgage",
+        "detail": "No online application. The bank reported HMDA data in 2023 only, originating 9 loans; residential is $78.3M of a $1.22B book",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "No online account opening. \"Simply Free Checking\" is the homepage hero offer and the only path to it is a branch visit",
+        "status": "missing"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Personal and business online banking plus mobile, with remote deposit capture, ACH origination, and online domestic wires for cash management clients. Servicing works",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "A 570% CRE concentration makes file quality an examination issue, not a preference",
+        "severity": "gap",
+        "body": "Commercial real estate reached $905.2 million against roughly $158.7 million of Tier 1 capital plus reserves, about 570%. Interagency guidance directs examiners toward closer review at 300% paired with 50% CRE growth over 36 months; this book grew 89.3% in twelve. The exam that follows will test global cash flow on sponsors, verified rent rolls, entity documentation, and guarantor income and asset support. Email-and-PDF file assembly cannot produce that evidence on demand across 200-plus commercial credits. Source-verified intake with a per-file audit trail can."
+      },
+      {
+        "title": "Zero digital front doors on a balance sheet growing $126 million a quarter",
+        "severity": "gap",
+        "body": "Not one of the bank's five lending lines has an online application. Every dollar of a 40.2% annual growth rate arrives through a lender's phone and a calendar invitation, from four offices. That is a remarkable sales operation and also a hard ceiling. A branded, verify-as-you-go intake does not replace relationship lending at a bank like this; it captures the sponsor who found the bank through a broker at 9pm and wants a term sheet before the week is out."
+      },
+      {
+        "title": "Expenses are growing faster than the balance sheet",
+        "severity": "friction",
+        "body": "Salaries and employee benefits rose 41.2% year over year and data processing rose 57.8%, both outpacing 40.2% asset growth. The 48.78% efficiency ratio is excellent today, but it is being held by adding people and systems rather than by getting leverage from them. Commercial verification is the single most labor-intensive step in the files driving the growth, and it is the first place automation converts headcount spend into throughput."
+      },
+      {
+        "title": "OptimumFunding is launching with no intake layer at all",
+        "severity": "friction",
+        "body": "The new non-bank subsidiary closed its first loan in Q2 2026 at $14.2 million, funded by a $14.0 million note at 10.00%, targeting skilled nursing, senior housing, and multifamily sponsors who need bridge financing that converts to HUD-insured permanent debt. HUD borrowers face heavy documentation requirements and long timelines, which makes intake speed a genuine differentiator. A vertical launching from zero is the cheapest possible moment to build verified intake in from the start rather than retrofit it after the pipeline exists."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Products you can start online",
+        "today": "None (0 of 5)",
+        "withRaven": "Every product, one branded front door"
+      },
+      {
+        "dimension": "Commercial borrower intake",
+        "today": "\"Schedule an Appointment Now\"",
+        "withRaven": "Entity, guarantor, and property data captured and verified before the first meeting"
+      },
+      {
+        "dimension": "Exam evidence on CRE files",
+        "today": "Emailed PDFs assembled per deal",
+        "withRaven": "Source-verified data with a timestamped audit trail on every file"
+      },
+      {
+        "dimension": "After-hours demand",
+        "today": "Nothing to capture it",
+        "withRaven": "Captured, verified, and queued for the morning pipeline"
+      },
+      {
+        "dimension": "Deposit account opening",
+        "today": "Branch visit only",
+        "withRaven": "Bank-branded, mobile-first, ChexSystems decision in seconds"
+      },
+      {
+        "dimension": "HUD / bridge vertical",
+        "today": "Launching with no intake path",
+        "withRaven": "Sponsor and property documentation verified at day one of the vertical"
+      }
+    ],
+    "sources": "optimumbank.com (homepage, /SBA-and-Small-Business-Services.aspx, /remote-banking.php), reviewed July 2026. OptimumBank Holdings 8-K and Exhibit 99.1 filed 7/24/26 (Q2 2026 results, SEC CIK 1288855); 10-K FY2025 and 10-Q Q1 2026; OptimumBank CRA Public File, February 2026; FDIC BankFind cert #35430; FDIC Summary of Deposits, June 30 2025; Interagency Guidance on Concentrations in Commercial Real Estate Lending; FDIC FIL-64-2023. Core system not publicly disclosed."
+  },
+  {
     "slug": "southern-bank-trust",
     "bankName": "Southern Bank and Trust Company",
     "shortName": "Southern Bank",

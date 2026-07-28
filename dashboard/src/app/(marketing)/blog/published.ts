@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Bank deep dives (Jul 2026) —
+  'optimumbank-98-percent-cre-growth',
   // — Institutional research (Jul 2026) —
   'huntington-bank-southeast-expansion',
   'southern-bank-spartanburg-side-door',
@@ -95,6 +97,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'optimumbank-98-percent-cre-growth': '2026-07-28',
   'huntington-bank-southeast-expansion': '2026-07-23',
   'southern-bank-spartanburg-side-door': '2026-07-22',
   'south-carolina-de-novo-drought': '2026-07-22',

@@ -87,6 +87,89 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'optimumbank-98-percent-cre-growth': {
+    title: 'The 98.7% Bank',
+    description:
+      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 570% of capital, all in the same quarter.',
+    publishedDate: 'July 28, 2026',
+    readTime: '6 min read',
+    content: `
+# The 98.7% Bank
+
+*Published July 28, 2026*
+
+OptimumBank added $432.5 million in loans over the twelve months ending June 30, 2026. Commercial real estate accounted for $427.0 million of it.
+
+That is 98.7% of a year's growth in one asset class. Depending on which table you read first, this is either the best community bank story in Florida or the most concentrated balance sheet in the state. The July 24 earnings release makes a strong case for the first. The loan segment table makes a quieter case for the second.
+
+## A Record Quarter By Almost Any Measure
+
+Start with what the Fort Lauderdale bank actually did, because it is genuinely impressive.
+
+Second-quarter net income hit $6.7 million, up 85% from $3.6 million a year earlier. Return on average assets was 2.04% annualized. Return on average equity was 20.34%. The efficiency ratio came in at 48.78%, meaning the bank spends under 49 cents to earn a dollar of revenue while running one of the fastest balance sheet expansions in the country. Total assets went from $999.1 million to $1.40 billion in twelve months, a 40.2% increase.
+
+The margin story is better than the growth story. Net interest margin expanded to 4.57%, up 25 basis points year over year, because loan yields rose 22 basis points to 6.75% while the cost of interest-bearing liabilities fell 19 basis points to 3.30%. Getting both sides of that trade to move your way in the same year is rare.
+
+Credit looks pristine. Net charge-offs for the quarter were $11,000. Not $11 million. Eleven thousand dollars, against a $1.2 billion loan book. Nonaccruals sat at $2.1 million, or 0.17% of loans, down from $3.2 million a year ago, and one of those loans was settled after quarter end.
+
+S&P Global Market Intelligence ranked OptimumBank 49th out of 3,465 U.S. community banks in the first quarter. Raymond James placed it in the top 10% of publicly traded community banks. All three research firms covering the stock rate it a buy.
+
+:::pullquote
+Net charge-offs for the quarter were $11,000. Not $11 million. Eleven thousand dollars, against a $1.2 billion loan book.
+:::
+
+## Where the $432 Million Went
+
+Now the loan table.
+
+Commercial real estate stood at $905.2 million on June 30, out of $1.217 billion in gross loans. That is 74.4% of the book. A year earlier it was $478.2 million, so the CRE portfolio grew 89.3% in four quarters. Add multifamily at $52.6 million and land and construction at $46.3 million, and property-secured commercial lending reaches $1.00 billion, or 82.5% of all loans.
+
+Everything else shrank or crawled. Multifamily fell $15.8 million year over year. Land and construction fell $14.8 million. The actual C&I book grew $1.0 million, from $50.4 million to $51.4 million, on a balance sheet that added $402 million in assets.
+
+:::stat
+**570%**
+OptimumBank's commercial real estate loans as a share of Tier 1 capital plus reserves. Interagency guidance flags banks that cross 300% while growing CRE 50% over three years. This book grew 89% in one.
+:::
+
+The interagency guidance on CRE concentrations, issued jointly by the FDIC, Federal Reserve, and OCC, singles out an institution for closer supervisory review when two things are true at once: total CRE loans exceed 300% of Tier 1 capital plus the allowance, and the CRE portfolio has grown 50% or more over the prior 36 months. OptimumBank reported Tier 1 capital at 10.54% of total assets, roughly $147.7 million. Add the $11.0 million allowance and the denominator is about $158.7 million. The CRE line alone works out to 570% of that. Both criteria are cleared by a wide margin, and the growth criterion was met in one year rather than three.
+
+Two caveats, in fairness. The guidance excludes owner-occupied commercial property, and OptimumBank does not disclose that split, so the true regulatory ratio is lower. And 300% is a screening trigger, not a limit. Plenty of healthy banks operate above it for years. What it does mean is that examiners look harder at underwriting, stress testing, and capital planning. Tier 1 leverage has now declined four quarters running, from 11.89% to 10.54%, because earning assets are growing faster than retained earnings.
+
+The allowance moved the other way. It ended June at 0.91% of loans, down from 1.01% in March and 1.19% a year ago. The provision swung from $770,000 of expense in the first quarter to a small net reversal in the second, an $807,000 improvement that landed directly in the $8.8 million pre-tax result. Credit quality genuinely improved. But a falling reserve rate and a doubling CRE book sit next to each other in the same filing.
+
+## What Broward Is Actually Doing
+
+Broward County holds $69.69 billion in deposits across 369 branches and 44 institutions. Only five of those institutions are still headquartered in the county, and together they hold 2.4% of the market. OptimumBank's three Broward branches held $865.3 million in the FDIC's June 2025 survey, more than half of that entire locally headquartered total. In a county that has exported seventeen bank charters since 2008, OptimumBank is most of what is left.
+
+That scarcity is real franchise value. It is also why the concentration deserves a market test rather than a reflex.
+
+Broward's office market is holding up better than the national picture without accelerating. Colliers put county office vacancy at 13.2% in the second quarter, flat from the first, on 57,400 square feet of negative absorption. The first quarter was worse at 161,637 square feet negative. Asking rents are at record highs, $42.83 per square foot overall and $48.51 for Class A, both more than 5% above year-ago levels, but that strength comes from constrained supply rather than tenant expansion. Newmark counted nearly two years without a new office delivery. Suburban submarkets are softer, with Sawgrass Park vacancy running above 22%.
+
+The wildcard is maturities. A large volume of five-year loans written in 2020 and 2021 comes due across 2026 and 2027 into a much higher rate environment, and market analysts expect that to produce distressed sales and recapitalizations over the next eighteen months.
+
+:::pullquote
+A bank that just doubled its CRE book at 7.16% yields is underwriting into the maturity wall, not away from it.
+:::
+
+## The Funding Side of a Fast Balance Sheet
+
+Deposits grew 38.1% year over year to $1.21 billion, a genuine achievement in a market where Bank of America, Chase, and Wells Fargo control most of the retail base. The mix is where it gets interesting.
+
+Time deposits went from $318.1 million to $511.4 million, up 60.7%, and now make up 42.1% of all deposits at an average cost of 3.87%. Noninterest-bearing demand grew too, up 22.9% to $319.4 million, but its share of the funding base slipped to 26.3%. The loan-to-deposit ratio climbed from 88.13% to 99.20% in a year.
+
+Then there is OptimumFinance. The new non-bank subsidiary made its first loan in the second quarter, $14.2 million, funded by a $14.0 million note payable at 10.00% that the holding company guarantees. Management described the logic plainly: the subsidiary "leveraged their balance sheet to attain the highest yield they could earn for the risk they took." That is a candid sentence to put in an earnings release, and it tells you the direction of travel.
+
+## What the Next Four Quarters Test
+
+None of this says OptimumBank is in trouble. A 2.04% ROA and $11,000 of net charge-offs are not the signature of a bank in trouble. Moishe Gubin took over a $154.5 million institution operating under a consent order in 2010 and built it past $1.4 billion, adding the CEO title in May after sixteen years as chairman. That is a real turnaround, and the market has priced it.
+
+The question is what happens when a growth engine built on relationship CRE lending has to keep running at this speed. Adding $126 million of loans in a single quarter from four branches means every incremental dollar depends on underwriting throughput. Salaries rose 41% year over year and data processing expense rose 58%, both faster than the 40% asset growth. That is the shape of an operation buying people and systems to keep pace with volume.
+
+This is the point where verification infrastructure stops being back-office plumbing and becomes the growth constraint. Property-secured commercial lending at scale means income and asset verification, entity documentation, and rent rolls on every borrower, and examiners looking at a 570% concentration will want evidence that file quality did not degrade while the book doubled. Banks that pull verified borrower and property data from source in minutes, with a full audit trail, can defend the growth rate and the exam at the same time. Banks that cannot eventually pick one.
+
+OptimumBank has four quarters to show it never had to pick.
+    `,
+  },
   'huntington-bank-southeast-expansion': {
     title: 'The $284 Billion Bank Down the Street',
     description:
