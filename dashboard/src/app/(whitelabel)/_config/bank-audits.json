@@ -2429,19 +2429,55 @@
     "auditDate": "June 2026",
     "demoSlug": "oconee-state-bank",
     "stats": [
-      { "label": "Total assets", "value": "~$640M" },
-      { "label": "Founded", "value": "1954" },
-      { "label": "Online loan products", "value": "0 of 6" },
-      { "label": "Market", "value": "Oconee County, GA (Athens MSA)" }
+      {
+        "label": "Total assets",
+        "value": "~$640M"
+      },
+      {
+        "label": "Founded",
+        "value": "1954"
+      },
+      {
+        "label": "Online loan products",
+        "value": "0 of 6"
+      },
+      {
+        "label": "Market",
+        "value": "Oconee County, GA (Athens MSA)"
+      }
     ],
     "summary": "Oconee State Bank is the anchor community lender for one of Georgia's fastest-growing suburban counties, sitting at the intersection of the University of Georgia research corridor and Athens-area in-migration. The bank has a clean, modern site and 70 years of community presence, but none of its lending products have an online application path. Mortgage, personal, HELOC, home equity, and business lending all end at a phone number or branch address. In a county that added 10,000 residents in the 2020s, many arriving from other markets and making banking decisions digitally before they ever meet a local banker, the absence of a verify-as-you-go intake is an acquisition gap that grows with every new resident who searches for a mortgage lender near Watkinsville.",
     "currentJourney": [
-      { "channel": "Mortgage", "detail": "No online application. Remarkable Mortgage is mentioned on the site but there is no apply link; the path is call or email a loan officer", "status": "missing" },
-      { "channel": "Personal / Consumer", "detail": "No digital intake for personal, auto, or consumer loans. Branch or phone only", "status": "missing" },
-      { "channel": "HELOC / Home Equity", "detail": "Product listed but no online application path", "status": "missing" },
-      { "channel": "Business / Commercial", "detail": "Relationship banking model. All commercial intake requires contacting a banker directly", "status": "missing" },
-      { "channel": "Deposit account opening", "detail": "Online account opening redirects off the main domain to a third-party subdomain; brand continuity breaks at first click", "status": "weak" },
-      { "channel": "Existing-customer banking", "detail": "Digital banking functional for existing customers", "status": "ok" }
+      {
+        "channel": "Mortgage",
+        "detail": "No online application. Remarkable Mortgage is mentioned on the site but there is no apply link; the path is call or email a loan officer",
+        "status": "missing"
+      },
+      {
+        "channel": "Personal / Consumer",
+        "detail": "No digital intake for personal, auto, or consumer loans. Branch or phone only",
+        "status": "missing"
+      },
+      {
+        "channel": "HELOC / Home Equity",
+        "detail": "Product listed but no online application path",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / Commercial",
+        "detail": "Relationship banking model. All commercial intake requires contacting a banker directly",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Online account opening redirects off the main domain to a third-party subdomain; brand continuity breaks at first click",
+        "status": "weak"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Digital banking functional for existing customers",
+        "status": "ok"
+      }
     ],
     "findings": [
       {
@@ -2466,12 +2502,36 @@
       }
     ],
     "comparison": [
-      { "dimension": "Products you can start online", "today": "0 of 6 loan products", "withRaven": "Every product, one branded front door" },
-      { "dimension": "Mortgage intake", "today": "Call or email a loan officer", "withRaven": "Apply online with identity and income verified in 90 seconds" },
-      { "dimension": "Income verification", "today": "Manual document request after initial contact", "withRaven": "Automated via Truework and Plaid at point of application" },
-      { "dimension": "After-hours capture", "today": "All demand routes to voicemail after 5pm", "withRaven": "Borrower raises hand; verification runs; file queued for morning" },
-      { "dimension": "Account opening", "today": "Off-domain redirect breaks trust on mobile", "withRaven": "Oconee State branding from first click to funded account" },
-      { "dimension": "Core sync", "today": "Manual re-keying after application", "withRaven": "Verified file delivered to core via API, no double entry" }
+      {
+        "dimension": "Products you can start online",
+        "today": "0 of 6 loan products",
+        "withRaven": "Every product, one branded front door"
+      },
+      {
+        "dimension": "Mortgage intake",
+        "today": "Call or email a loan officer",
+        "withRaven": "Apply online with identity and income verified in 90 seconds"
+      },
+      {
+        "dimension": "Income verification",
+        "today": "Manual document request after initial contact",
+        "withRaven": "Automated via Truework and Plaid at point of application"
+      },
+      {
+        "dimension": "After-hours capture",
+        "today": "All demand routes to voicemail after 5pm",
+        "withRaven": "Borrower raises hand; verification runs; file queued for morning"
+      },
+      {
+        "dimension": "Account opening",
+        "today": "Off-domain redirect breaks trust on mobile",
+        "withRaven": "Oconee State branding from first click to funded account"
+      },
+      {
+        "dimension": "Core sync",
+        "today": "Manual re-keying after application",
+        "withRaven": "Verified file delivered to core via API, no double entry"
+      }
     ],
     "sources": "oconeestatebank.com (homepage, /loans, /mortgage, /personal-banking, /business-banking, /locations), FDIC BankFind cert #18143, ACS 2019-2023 Oconee County GA, Census population estimates, LinkedIn company profile. Reviewed June 2026."
   },
@@ -2482,19 +2542,55 @@
     "auditDate": "June 2026",
     "demoSlug": "ameris-bank",
     "stats": [
-      { "label": "Total assets", "value": "~$25.6B" },
-      { "label": "States", "value": "GA, AL, FL, SC, NC" },
-      { "label": "Online loan products", "value": "1 of 6 (partial)" },
-      { "label": "Mortgage portal", "value": "Third-party domain" }
+      {
+        "label": "Total assets",
+        "value": "~$25.6B"
+      },
+      {
+        "label": "States",
+        "value": "GA, AL, FL, SC, NC"
+      },
+      {
+        "label": "Online loan products",
+        "value": "1 of 6 (partial)"
+      },
+      {
+        "label": "Mortgage portal",
+        "value": "Third-party domain"
+      }
     ],
     "summary": "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party Finastra subdomain that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck. The SVP of Retail Delivery and Innovation role exists specifically to fix the intake layer that RAVEN replaces.",
     "currentJourney": [
-      { "channel": "Mortgage", "detail": "Online application routes to mymortgage-online.com (Finastra third-party portal); off-brand at the critical conversion moment for a $25B bank", "status": "weak" },
-      { "channel": "Personal loans", "detail": "No unified digital application. Phone or branch contact required", "status": "missing" },
-      { "channel": "HELOC / Home Equity", "detail": "No standalone online application path", "status": "missing" },
-      { "channel": "Business / Commercial", "detail": "Relationship banking model; all commercial intake begins with a banker call", "status": "missing" },
-      { "channel": "Deposit account opening", "detail": "Online account opening available but routes to a third-party provider", "status": "weak" },
-      { "channel": "Existing-customer banking", "detail": "Online and mobile banking fully functional", "status": "ok" }
+      {
+        "channel": "Mortgage",
+        "detail": "Online application routes to mymortgage-online.com (Finastra third-party portal); off-brand at the critical conversion moment for a $25B bank",
+        "status": "weak"
+      },
+      {
+        "channel": "Personal loans",
+        "detail": "No unified digital application. Phone or branch contact required",
+        "status": "missing"
+      },
+      {
+        "channel": "HELOC / Home Equity",
+        "detail": "No standalone online application path",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / Commercial",
+        "detail": "Relationship banking model; all commercial intake begins with a banker call",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Online account opening available but routes to a third-party provider",
+        "status": "weak"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Online and mobile banking fully functional",
+        "status": "ok"
+      }
     ],
     "findings": [
       {
@@ -2519,12 +2615,36 @@
       }
     ],
     "comparison": [
-      { "dimension": "Mortgage experience", "today": "Third-party portal breaks brand at application step", "withRaven": "Ameris Bank identity from first click to submitted file" },
-      { "dimension": "Personal loan intake", "today": "No apply button; phone or branch only", "withRaven": "Online application with income verified in 90 seconds" },
-      { "dimension": "Products you can start online", "today": "1 of 6 (partial, off-domain)", "withRaven": "Every product, one branded front door on amerisbank.com" },
-      { "dimension": "After-hours capture", "today": "Four product lines go to voicemail after 5pm", "withRaven": "Borrower raises hand; verification runs; file queued for morning" },
-      { "dimension": "Income verification", "today": "Manual document request after initial contact", "withRaven": "Automated via Truework and Plaid at point of application" },
-      { "dimension": "Core sync", "today": "Manual re-keying after application", "withRaven": "Verified file delivered to Jack Henry via API, no double entry" }
+      {
+        "dimension": "Mortgage experience",
+        "today": "Third-party portal breaks brand at application step",
+        "withRaven": "Ameris Bank identity from first click to submitted file"
+      },
+      {
+        "dimension": "Personal loan intake",
+        "today": "No apply button; phone or branch only",
+        "withRaven": "Online application with income verified in 90 seconds"
+      },
+      {
+        "dimension": "Products you can start online",
+        "today": "1 of 6 (partial, off-domain)",
+        "withRaven": "Every product, one branded front door on amerisbank.com"
+      },
+      {
+        "dimension": "After-hours capture",
+        "today": "Four product lines go to voicemail after 5pm",
+        "withRaven": "Borrower raises hand; verification runs; file queued for morning"
+      },
+      {
+        "dimension": "Income verification",
+        "today": "Manual document request after initial contact",
+        "withRaven": "Automated via Truework and Plaid at point of application"
+      },
+      {
+        "dimension": "Core sync",
+        "today": "Manual re-keying after application",
+        "withRaven": "Verified file delivered to Jack Henry via API, no double entry"
+      }
     ],
     "sources": "amerisbank.com (homepage, /mortgage, /personal-banking, /business-banking, /about), mymortgage-online.com (Ameris mortgage portal), FDIC BankFind cert #20504, HMDA 2024 public data, Ameris Bancorporation annual reports. Reviewed June 2026."
   },
@@ -2535,19 +2655,55 @@
     "auditDate": "June 2026",
     "demoSlug": "united-bank",
     "stats": [
-      { "label": "Total assets", "value": "~$30B" },
-      { "label": "States", "value": "WV, VA, OH, MD, PA, NC, SC" },
-      { "label": "Online loan products", "value": "2 of 6 (partial)" },
-      { "label": "Parent", "value": "United Bankshares (UBSI)" }
+      {
+        "label": "Total assets",
+        "value": "~$30B"
+      },
+      {
+        "label": "States",
+        "value": "WV, VA, OH, MD, PA, NC, SC"
+      },
+      {
+        "label": "Online loan products",
+        "value": "2 of 6 (partial)"
+      },
+      {
+        "label": "Parent",
+        "value": "United Bankshares (UBSI)"
+      }
     ],
     "summary": "United Bank is the primary banking subsidiary of United Bankshares, a $30 billion Mid-Atlantic regional expanding aggressively into the Southeast. The bank has an online mortgage application but no automated verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal lending is partially digital, HELOC has no standalone application path, and commercial is entirely relationship-based. The bank's Charlotte, NC office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline. The SVP Director of Digital Strategy role was created to close this gap, and the verification layer is the deliverable that mandate requires.",
     "currentJourney": [
-      { "channel": "Mortgage", "detail": "Online application available but no automated income or property verification; borrowers submit and wait for manual document follow-up", "status": "weak" },
-      { "channel": "Personal / Consumer", "detail": "Partially digital: online form available but no automated verification; manual document collection follows submission", "status": "weak" },
-      { "channel": "HELOC / Home Equity", "detail": "No standalone online application path; requires calling or visiting a branch", "status": "missing" },
-      { "channel": "Business / Commercial", "detail": "Relationship banking model; all commercial intake begins with a relationship manager", "status": "missing" },
-      { "channel": "Deposit account opening", "detail": "Online and mobile account opening available", "status": "weak" },
-      { "channel": "Existing-customer banking", "detail": "Online and mobile banking fully functional", "status": "ok" }
+      {
+        "channel": "Mortgage",
+        "detail": "Online application available but no automated income or property verification; borrowers submit and wait for manual document follow-up",
+        "status": "weak"
+      },
+      {
+        "channel": "Personal / Consumer",
+        "detail": "Partially digital: online form available but no automated verification; manual document collection follows submission",
+        "status": "weak"
+      },
+      {
+        "channel": "HELOC / Home Equity",
+        "detail": "No standalone online application path; requires calling or visiting a branch",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / Commercial",
+        "detail": "Relationship banking model; all commercial intake begins with a relationship manager",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Online and mobile account opening available",
+        "status": "weak"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Online and mobile banking fully functional",
+        "status": "ok"
+      }
     ],
     "findings": [
       {
@@ -2572,13 +2728,763 @@
       }
     ],
     "comparison": [
-      { "dimension": "Mortgage verification", "today": "Apply button followed by manual document chase", "withRaven": "Identity, income, and property verified at submission; file ready for underwriting" },
-      { "dimension": "HELOC intake", "today": "No online path; phone or branch required", "withRaven": "Apply online with equity and income verified in minutes" },
-      { "dimension": "Products you can start online", "today": "2 of 6 (mortgage and personal, partial)", "withRaven": "Every product, one branded front door on bankwithunited.com" },
-      { "dimension": "Charlotte acquisition", "today": "Digital-first borrowers find phone-only intake", "withRaven": "Compete with BofA and Truist on digital experience at first touch" },
-      { "dimension": "Core sync", "today": "Manual re-keying into FIS after application", "withRaven": "Verified file delivered to FIS via API, no double entry" },
-      { "dimension": "After-hours capture", "today": "HELOC and commercial go to voicemail", "withRaven": "Borrower verified and file queued regardless of time" }
+      {
+        "dimension": "Mortgage verification",
+        "today": "Apply button followed by manual document chase",
+        "withRaven": "Identity, income, and property verified at submission; file ready for underwriting"
+      },
+      {
+        "dimension": "HELOC intake",
+        "today": "No online path; phone or branch required",
+        "withRaven": "Apply online with equity and income verified in minutes"
+      },
+      {
+        "dimension": "Products you can start online",
+        "today": "2 of 6 (mortgage and personal, partial)",
+        "withRaven": "Every product, one branded front door on bankwithunited.com"
+      },
+      {
+        "dimension": "Charlotte acquisition",
+        "today": "Digital-first borrowers find phone-only intake",
+        "withRaven": "Compete with BofA and Truist on digital experience at first touch"
+      },
+      {
+        "dimension": "Core sync",
+        "today": "Manual re-keying into FIS after application",
+        "withRaven": "Verified file delivered to FIS via API, no double entry"
+      },
+      {
+        "dimension": "After-hours capture",
+        "today": "HELOC and commercial go to voicemail",
+        "withRaven": "Borrower verified and file queued regardless of time"
+      }
     ],
     "sources": "bankwithunited.com (homepage, /mortgage, /personal-banking, /business-banking, /about), FDIC BankFind cert #5672, United Bankshares 10-K (FY2025), HMDA 2024 public data, MBA Quarterly Mortgage Bankers Performance Report (2025). Reviewed June 2026."
+  },
+  {
+    "slug": "rev-federal-credit-union",
+    "bankName": "REV Federal Credit Union",
+    "shortName": "REV",
+    "auditDate": "August 2026",
+    "demoSlug": "rev-federal-credit-union",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$1.2B (member-owned, not stock-issued)"
+      },
+      {
+        "label": "Members",
+        "value": "67,000+"
+      },
+      {
+        "label": "Branches",
+        "value": "17 (plus 5 pending in WV)"
+      },
+      {
+        "label": "Lending portals in use",
+        "value": "3 separate systems"
+      }
+    ],
+    "summary": "REV Federal Credit Union is buying a bank 520 miles from its own field of membership, the first-ever credit union purchase of a bank in West Virginia. Its digital lending experience at home isn't ready for the member base it's about to inherit. Auto, personal, and REVline loans apply directly through REV's own domain, a genuinely good first-party experience. Mortgage hands off to a third-party Mortgagebot-style portal on a different domain. Commercial term loans route through a third, separate portal. Commercial real estate ends at an email address, and the business credit card requires a branch visit. REV already knows this: it relaunched its digital banking platform and has an in-house loan origination system targeted for a 2026 launch. That build just got a harder job, verifying members in a rural West Virginia county with no nearby REV branch as easily as it verifies members in Summerville.",
+    "currentJourney": [
+      {
+        "channel": "Auto / RV / watercraft loans",
+        "detail": "Direct \"Apply Now\" to join.revfcu.com/loans/apply/vehicle, first-party domain, no third-party handoff",
+        "status": "ok"
+      },
+      {
+        "channel": "Personal loans / REVline",
+        "detail": "Same first-party join.revfcu.com application experience as auto lending",
+        "status": "ok"
+      },
+      {
+        "channel": "Mortgage / HELOC / land loans",
+        "detail": "Apply Now hands off to revfcu3333.mymortgage-online.com, a separate domain with a different look and workflow ID per product",
+        "status": "weak"
+      },
+      {
+        "channel": "Commercial term loans",
+        "detail": "Apply Now routes to revfcu.onlineportalnow.com, a third portal distinct from both the consumer-loan and mortgage systems",
+        "status": "weak"
+      },
+      {
+        "channel": "Commercial real estate",
+        "detail": "No online application. Page directs applicants to email businesssolutions@revfcu.com",
+        "status": "missing"
+      },
+      {
+        "channel": "Business credit card",
+        "detail": "Site states: \"Please visit your nearest branch to apply\"",
+        "status": "missing"
+      },
+      {
+        "channel": "New membership / share draft account",
+        "detail": "Opens digitally through join.revfcu.com with eligibility screening built into the flow",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Three lending portals, three different experiences",
+        "severity": "gap",
+        "body": "A member financing a car and a member applying for a mortgage get two completely different digital experiences from the same credit union, on two different domains, and the mortgage one isn't even revfcu.com. A third domain handles commercial term loans. There is no single, branded front door for lending at REV today."
+      },
+      {
+        "title": "Commercial lending is the least digital, right as it becomes the priority",
+        "severity": "gap",
+        "body": "REV just promoted its business-solutions director to Vice President of Commercial Banking, signaling a real strategic push into commercial lending. But commercial real estate has no online application at all, and the business credit card requires a branch visit. REV is about to absorb First Neighborhood Bank's commercial customers in Roane County, West Virginia, a rural, commercial-dependent market 520 miles from the nearest REV branch. Email and branch visits do not scale across that distance."
+      },
+      {
+        "title": "REV already knows this needs fixing",
+        "severity": "note",
+        "body": "REV relaunched its digital banking platform in the past year and has a new, in-house loan origination and application system targeted for a 2026 launch. That is the right instinct. A verification layer that works identically across every product and every domain, rather than three separate ones, is the fastest way to make that build pay off without another year of stitching portals together."
+      },
+      {
+        "title": "Mortgage breaks brand at the exact moment it matters most",
+        "severity": "friction",
+        "body": "The mortgage \"Apply Now\" button hands the borrower to revfcu3333.mymortgage-online.com, a Mortgagebot-style legacy portal with its own look and a workflow ID in the URL. At the single highest-value conversion moment in consumer lending, the member leaves REV's brand entirely."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Lending systems a member encounters",
+        "today": "Three separate portals depending on product",
+        "withRaven": "One branded flow for every product"
+      },
+      {
+        "dimension": "Mortgage brand experience",
+        "today": "Hands off to mymortgage-online.com",
+        "withRaven": "REV branding end to end"
+      },
+      {
+        "dimension": "Commercial real estate applicants",
+        "today": "Email businesssolutions@revfcu.com and wait",
+        "withRaven": "Verified intake, same day"
+      },
+      {
+        "dimension": "Verifying an out-of-state member (West Virginia)",
+        "today": "Manual document chase across time zones and no local branch",
+        "withRaven": "Automated income, identity, and employment verification regardless of geography"
+      },
+      {
+        "dimension": "Business credit card",
+        "today": "Branch visit required",
+        "withRaven": "Applied for online alongside every other product"
+      }
+    ],
+    "sources": "revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026); join.revfcu.com application domain; revfcu3333.mymortgage-online.com and revfcu.onlineportalnow.com (third-party lending portals); revfcu.com press release \"South Carolina CU Expands With Planned Bank Acquisition in West Virginia\"; revfcu.com \"REV Announces Organizational and Leadership Changes as Next Phase of its Mission: Growth with Purpose VISION2030\"; NCUA charter #9986 (bestcashcow.com, ncuso.org call report aggregation); S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition."
+  },
+  {
+    "slug": "palmetto-citizens-federal-credit-union",
+    "bankName": "Palmetto Citizens Federal Credit Union",
+    "shortName": "Palmetto Citizens",
+    "auditDate": "August 2026",
+    "demoSlug": "palmetto-citizens-federal-credit-union",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$1.44B"
+      },
+      {
+        "label": "Members",
+        "value": "85,933"
+      },
+      {
+        "label": "Branches",
+        "value": "14 SC (plus 4 new in Georgia)"
+      },
+      {
+        "label": "Business loan categories online",
+        "value": "0 of 5"
+      }
+    ],
+    "summary": "Palmetto Citizens Federal Credit Union just closed its first out-of-state expansion in 90 years, four former Southern Bank branches in rural Georgia, and its consumer digital lending experience is genuinely solid: vehicle loans, mortgages, home equity, and credit cards all apply through one consolidated first-party flow at applynow.palmettocitizens.org on Tyfone's nFinia platform. New membership runs through MeridianLink, a purpose-built account-opening vendor. The gap is business lending. Lines of credit, term loans, commercial real estate, SBA 7(a) loans, and nonprofit financing all require a phone call, a Help Desk message, or a branch visit. Zero of the five have an online application. That was a minor gap for a Midlands credit union with established local businesses. It's a bigger one now that Palmetto Citizens, a CDFI-certified institution, is the primary financial option in Georgia counties where median household income runs near $41,600 and SBA-backed small-business lending is exactly the kind of product its own mission points toward.",
+    "currentJourney": [
+      {
+        "channel": "Vehicle loans",
+        "detail": "Apply through the consolidated first-party flow at applynow.palmettocitizens.org",
+        "status": "ok"
+      },
+      {
+        "channel": "Mortgage / home equity",
+        "detail": "Same consolidated first-party flow as vehicle loans, running on Tyfone nFinia",
+        "status": "ok"
+      },
+      {
+        "channel": "Credit cards / personal loans",
+        "detail": "Same consolidated first-party application flow",
+        "status": "ok"
+      },
+      {
+        "channel": "New membership / share draft account",
+        "detail": "Opens through MeridianLink (app.consumer.meridianlink.com), a third-party but purpose-built account-opening platform",
+        "status": "weak"
+      },
+      {
+        "channel": "Business lines of credit / credit cards",
+        "detail": "No online application. Contact Help Desk, call, or visit a branch",
+        "status": "missing"
+      },
+      {
+        "channel": "Business term loans",
+        "detail": "No online application. Contact Help Desk, call, or visit a branch",
+        "status": "missing"
+      },
+      {
+        "channel": "Commercial real estate",
+        "detail": "No online application. Contact Help Desk, call, or visit a branch",
+        "status": "missing"
+      },
+      {
+        "channel": "SBA 7(a) loans",
+        "detail": "No online application, despite this being the flagship small-business product for a CDFI-certified lender",
+        "status": "missing"
+      },
+      {
+        "channel": "Nonprofit organization loans",
+        "detail": "No online application. Contact Help Desk, call, or visit a branch",
+        "status": "missing"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Consumer lending is genuinely consolidated. Business lending has nothing.",
+        "severity": "gap",
+        "body": "Palmetto Citizens already solved the problem most of the banks and credit unions we've audited haven't: one first-party flow for vehicle, mortgage, home equity, and credit card applications. That makes the complete absence of a digital path for any of its five business loan categories, lines of credit, term loans, CRE, SBA 7(a), and nonprofit lending, stand out more, not less. The consumer side proves Palmetto Citizens can build this. It just hasn't built it for business borrowers."
+      },
+      {
+        "title": "A CDFI mission with no digital path for its own flagship product",
+        "severity": "gap",
+        "body": "Palmetto Citizens has held CDFI certification since 2023, a designation that exists to reward lenders serving low-income and underserved communities. SBA 7(a) lending, guaranteed in part by the federal government specifically to expand small-business credit access, is the product built for that mission. It has zero digital intake. As Palmetto Citizens takes on Georgia members in counties with a 26% poverty rate, that gap sits directly between the credit union's stated mission and the borrowers it now serves."
+      },
+      {
+        "title": "A 500-mile-wide member base needs verification that doesn't require a branch visit",
+        "severity": "friction",
+        "body": "Every business loan category ends at \"visit a branch.\" That was a reasonable ask when every member lived within a short drive of a Midlands branch. It's a harder ask for a small-business owner in Waynesboro or Gibson, Georgia, small, rural towns where a Help Desk message or a phone call is now the only path to any commercial credit at all."
+      },
+      {
+        "title": "New membership already runs on a purpose-built platform",
+        "severity": "note",
+        "body": "MeridianLink is a real account-opening and lending platform built for financial institutions, not a generic lead form. It's a smaller gap than a Mortgagebot-style handoff. The opportunity is tying that new-member flow and the existing consumer lending flow together with the same verification layer, rather than running them as two separate systems that happen to sit next to each other."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Consumer lending",
+        "today": "One consolidated first-party flow (already solid)",
+        "withRaven": "Same flow, verified in real time instead of after the fact"
+      },
+      {
+        "dimension": "Business lending",
+        "today": "Phone, Help Desk, or branch visit; zero online path",
+        "withRaven": "Verified digital intake for every business loan category"
+      },
+      {
+        "dimension": "SBA 7(a) applicants",
+        "today": "No digital path for a federally guaranteed small-business product",
+        "withRaven": "Verified income, entity, and identity data collected online"
+      },
+      {
+        "dimension": "New Georgia members needing credit",
+        "today": "Branch visit required for any business loan",
+        "withRaven": "Applied for and verified without a branch nearby"
+      },
+      {
+        "dimension": "New membership onboarding",
+        "today": "Third-party MeridianLink flow, separate from lending",
+        "withRaven": "One verification layer spanning membership and lending"
+      }
+    ],
+    "sources": "palmettocitizens.org (loan/, business/loans/, personal/vehicles/, personal/mortgage/, personal/homeequity/ pages, reviewed August 2026); applynow.palmettocitizens.org and app.consumer.meridianlink.com (application domains); fintechfutures.com coverage of the Tyfone nFinia platform adoption; palmettocitizens.org CDFI designation press release (April 2023) and CUInsight coverage; bestcashcow.com and ncuso.org NCUA charter #1472 call-report aggregation (assets, net worth, net worth ratio); cutoday.info and coladaily.com coverage of the Southern Bank Georgia branch acquisition (announced November 2025, closed August 1, 2026); Census QuickFacts and worldpopulationreview.com for Burke, Glascock, and Richmond County GA and the eight South Carolina Midlands counties."
+  },
+  {
+    "slug": "uwharrie-bank",
+    "bankName": "Uwharrie Bank",
+    "shortName": "Uwharrie",
+    "auditDate": "August 2026",
+    "demoSlug": "uwharrie-bank",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$1.25B"
+      },
+      {
+        "label": "Branches",
+        "value": "10 (Stanly, Cabarrus, Anson, Mecklenburg, NC)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "4 of 6"
+      },
+      {
+        "label": "ROA",
+        "value": "1.14%"
+      }
+    ],
+    "summary": "Uwharrie Bank, the only commercial bank headquartered in Stanly County, NC, already runs real online applications for mortgage, auto, personal loans, and deposit account opening. HELOC and business lending are the two exceptions: both dead-end at a pre-filled contact form instead of an application. Closing those two gaps completes a self-serve stack the bank has mostly already built.",
+    "currentJourney": [
+      {
+        "channel": "Mortgage",
+        "detail": "\"Apply Now Online\" across all mortgage types links to a hosted Home Hub application portal at mymortgage.uwharrie.com",
+        "status": "ok"
+      },
+      {
+        "channel": "Auto loans",
+        "detail": "\"Apply Now Online\" routes to a loanwebcenter.com portal; a distinct application portal exists though full form-fill was not confirmed end to end",
+        "status": "weak"
+      },
+      {
+        "channel": "Personal loans",
+        "detail": "Same loanwebcenter.com portal as auto loans",
+        "status": "weak"
+      },
+      {
+        "channel": "HELOC / home equity",
+        "detail": "\"Contact Us to Apply Today\" leads to a pre-filled contact form, plus phone and branch options. No online application",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / commercial lending",
+        "detail": "Business, SBA, and USDA commercial loans all route to the same contact/apply form. No online application",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "A Fivision-hosted online account opening flow is confirmed at forms.fivision.com/uwharrie/oa/",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Two specific gaps in an otherwise solid stack",
+        "severity": "gap",
+        "body": "Uwharrie already invested in self-serve infrastructure across mortgage, auto, personal, and deposit account opening. HELOC and business lending are the exceptions, both routing to a contact form. Closing those two channels completes a stack that's mostly already built."
+      },
+      {
+        "title": "Charlotte-adjacent branches face Charlotte-level competition",
+        "severity": "friction",
+        "body": "Loan-production offices reaching into Cabarrus and Mecklenburg counties put a portion of Uwharrie's pipeline in direct competition with national digital lenders on speed, even as the core franchise remains a rural, single-county bank by charter."
+      },
+      {
+        "title": "You already run the infrastructure to close this gap",
+        "severity": "note",
+        "body": "A Home Hub mortgage portal and a Fivision deposit account opening flow show real investment in self-serve infrastructure elsewhere. Extending automated verification to HELOC and business lending is an incremental addition, not a rebuild."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Products with a real online application",
+        "today": "4 of 6 (mortgage, auto, personal, deposits)",
+        "withRaven": "6 of 6, one consistent flow"
+      },
+      {
+        "dimension": "HELOC / business lending",
+        "today": "Pre-filled contact form only",
+        "withRaven": "Full online application with automated verification"
+      },
+      {
+        "dimension": "Identity / income / property",
+        "today": "Collected manually after a phone call",
+        "withRaven": "Verified automatically in ~90 seconds"
+      },
+      {
+        "dimension": "After-hours demand",
+        "today": "Contact form, follow-up next business day",
+        "withRaven": "Captured, verified, and queued immediately"
+      }
+    ],
+    "sources": "uwharrie.com (personal-banking/mortgages, personal-banking/loans, business-banking/loans, reviewed August 2026); mymortgage.uwharrie.com, uwharrie.loanwebcenter.com, forms.fivision.com/uwharrie (application portal domains); FDIC BankFind cert #24919."
+  },
+  {
+    "slug": "wilson-bank-and-trust",
+    "bankName": "Wilson Bank and Trust",
+    "shortName": "Wilson Bank",
+    "auditDate": "August 2026",
+    "demoSlug": "wilson-bank-and-trust",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$5.99B"
+      },
+      {
+        "label": "Branches",
+        "value": "32 (greater Nashville exurban ring, TN)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "5 of 6, on 3 separate vendor portals"
+      },
+      {
+        "label": "ROA",
+        "value": "1.52%"
+      }
+    ],
+    "summary": "Wilson Bank and Trust grew from a single 1987 de novo charter into a $6B, 32-branch bank across the counties ringing Nashville, largely through acquiring smaller local banks. Mortgage, auto, personal loans, HELOC, and deposit account opening all have real online applications today, but they run on three separate vendor portals across three different domains. Business lending has no online application at all.",
+    "currentJourney": [
+      {
+        "channel": "Mortgage",
+        "detail": "\"Apply For a Home Mortgage Now\" links to a MortgageWebCenter portal on its own domain",
+        "status": "weak"
+      },
+      {
+        "channel": "Auto loans",
+        "detail": "\"Apply for a Vehicle Loan\" links to a separate LoanWebCenter portal",
+        "status": "weak"
+      },
+      {
+        "channel": "Personal loans",
+        "detail": "Same LoanWebCenter portal as auto loans",
+        "status": "weak"
+      },
+      {
+        "channel": "HELOC / home equity",
+        "detail": "\"Apply for a HELOC Now\" links to yet another MortgageWebCenter instance on its own subdomain",
+        "status": "weak"
+      },
+      {
+        "channel": "Business / commercial lending",
+        "detail": "\"Click Here for More Information\" leads only to an inquiry form; page copy emphasizes talking to a local loan officer. No online application",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Dedicated consumer and business account-opening subdomains at openaccounts.wilsonbank.com, a fourth distinct portal",
+        "status": "ok"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Treasury Management hosted on Jack Henry infrastructure; personal login/enrollment vendor not publicly confirmed",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Fragmentation, not absence, is the gap here",
+        "severity": "friction",
+        "body": "Unlike most banks in this series, Wilson Bank already offers real self-serve applications across nearly every consumer lending line. The problem is that a borrower bounces between four different vendor portals across four different domains, depending on which product they want."
+      },
+      {
+        "title": "Business lending is the one channel with no digital path at all",
+        "severity": "gap",
+        "body": "Every consumer lending line has an apply button somewhere. Business and commercial loans route only to an inquiry form and a branch relationship manager."
+      },
+      {
+        "title": "A bank built by acquisition inherited acquisition's verification habits",
+        "severity": "note",
+        "body": "Each acquired community bank (DeKalb Community Bank, Community Bank of Smith County, among others) likely brought its own document-collection habits before consolidating onto the current multi-portal setup. One standardized borrower session replaces that patchwork across all 32 branches."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Vendor portals a borrower may hit",
+        "today": "4 separate domains depending on product",
+        "withRaven": "One consistent, branded flow"
+      },
+      {
+        "dimension": "Business lending",
+        "today": "Inquiry form + branch relationship only",
+        "withRaven": "Full online application with automated verification"
+      },
+      {
+        "dimension": "Brand experience",
+        "today": "Hands off to third-party vendor domains",
+        "withRaven": "Wilson Bank branding end to end"
+      },
+      {
+        "dimension": "Identity / income / property",
+        "today": "Collected separately per portal",
+        "withRaven": "Verified once, automatically, in ~90 seconds"
+      }
+    ],
+    "sources": "wilsonbank.com (loans/home-loans, loans/vehicle, loans/personal, loans/home-equity-line-of-credit, loans/business-loans, reviewed August 2026); centralized-wilsonbanktn.mortgagewebcenter.com, wilsonbank.loanwebcenter.com, openaccounts.wilsonbank.com (application portal domains); treasury.jackhenry.com/wilsonbank; FDIC BankFind cert #26962."
+  },
+  {
+    "slug": "cogent-bank",
+    "bankName": "Cogent Bank",
+    "shortName": "Cogent",
+    "auditDate": "August 2026",
+    "demoSlug": "cogent-bank",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$2.45B"
+      },
+      {
+        "label": "Branches",
+        "value": "10 (Central & South Florida)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "0 of 5"
+      },
+      {
+        "label": "ROE",
+        "value": "23.04%"
+      }
+    ],
+    "summary": "Cogent Bank runs a Specialty Lending Group that doubled loan commitments from $100M to $200M in a single year and holds SBA Preferred Lender status across three federal programs. None of it has an online application. Mortgage, specialty lending, SBA, personal, and business lending all end at a phone call or a named specialist's contact info, and the site's account-opening form is a scheduling request, not a self-serve application.",
+    "currentJourney": [
+      {
+        "channel": "Mortgage",
+        "detail": "Lists conventional, FHA/VA/USDA, jumbo, and construction products with no apply button; directs to phone or branch",
+        "status": "missing"
+      },
+      {
+        "channel": "Specialty / SBA lending",
+        "detail": "SBA page lists four named specialists with direct contact info; primary CTA is \"Contact Us Now\"",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / commercial lending",
+        "detail": "CRE, business lines of credit, and term loans listed with no online application; branch/phone contact only",
+        "status": "missing"
+      },
+      {
+        "channel": "Personal / consumer loans",
+        "detail": "Listed under personal banking with no apply-now or online form found",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "A web form exists, but it's an appointment-request form: name, contact info, and a preferred time. A rep contacts you within one business day, no identity verification or funding step online",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "A fast-growing specialty lender with no fast digital front door",
+        "severity": "gap",
+        "body": "The Specialty Lending Group's growth depends on speed to compete for $1M-$15M deals. Every one of those deals starts with a phone call today. Automated identity, income, and asset verification lets underwriters spend time on the specialty-credit analysis that differentiates the deal, instead of the document chase before it."
+      },
+      {
+        "title": "SBA Preferred Lender status rewards whoever closes fastest",
+        "severity": "gap",
+        "body": "SBA brokers route deals to whichever Preferred Lender can close quickest. Cogent's SBA page lists four named specialists and a phone number; there is no application to start a file before that first call happens."
+      },
+      {
+        "title": "The account-opening form isn't actually an application",
+        "severity": "friction",
+        "body": "The \"Open a New Personal Account\" page collects contact info and an appointment preference, then promises a callback within one business day. There is no identity verification or funding step online, for either personal or business accounts."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Products you can start online",
+        "today": "0 of 5",
+        "withRaven": "Every product, one front door"
+      },
+      {
+        "dimension": "Account opening",
+        "today": "Appointment-request form, callback next business day",
+        "withRaven": "Self-serve, verified in ~90 seconds"
+      },
+      {
+        "dimension": "SBA / specialty deal intake",
+        "today": "Phone call to a named specialist",
+        "withRaven": "Online start, verified identity and financials before the call"
+      },
+      {
+        "dimension": "After-hours demand",
+        "today": "No path until the next business day",
+        "withRaven": "Captured, verified, and queued immediately"
+      }
+    ],
+    "sources": "cogentbank.com (personal/, business/, sba-lending/, open-a-new-personal-account/, reviewed August 2026); FDIC BankFind cert #34908. Digital banking login observed at a white-label \"Flex\" domain; core vendor not positively identified."
+  },
+  {
+    "slug": "chesapeake-bank",
+    "bankName": "Chesapeake Bank",
+    "shortName": "Chesapeake",
+    "auditDate": "August 2026",
+    "demoSlug": "chesapeake-bank",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$1.72B"
+      },
+      {
+        "label": "Branches",
+        "value": "19 (Northern Neck & Middle Peninsula, VA)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "1 of 5 (mortgage only)"
+      },
+      {
+        "label": "ROA",
+        "value": "1.49%"
+      }
+    ],
+    "summary": "Chesapeake Bank runs Chesapeake Payment Systems, a 30-year-old merchant-payments subsidiary that recently partnered with fintech Silverflow, real sophistication in financial infrastructure. That hasn't reached borrower-facing lending: only mortgage has a real online application. Personal loans and business lending are contact-only, no dedicated auto loan product was found on the site, and one of the bank's three checking products is branch-only while the other two open online.",
+    "currentJourney": [
+      {
+        "channel": "Mortgage",
+        "detail": "\"Start online today\" links to a Mortgage Web Center portal, plus a \"contact a local lender\" option",
+        "status": "ok"
+      },
+      {
+        "channel": "Auto loans",
+        "detail": "No dedicated auto loan product page found; personal loans page mentions installment loans that can finance a vehicle, but no standalone product or application",
+        "status": "missing"
+      },
+      {
+        "channel": "Personal loans",
+        "detail": "No application portal; CTA is \"find a lender\" linking to the staff directory, plus a contact form",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / commercial lending",
+        "detail": "\"Submit a loan inquiry\" links to a generic Microsoft Forms inquiry page, plus a phone number. No online application",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Two of three checking products (Essential, Prosper) open online via a Salesforce self-registration portal; the entry-level Pathway Checking is branch-only",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "A bank that already backs fintech partnerships understands this ROI case",
+        "severity": "note",
+        "body": "Chesapeake Payment Systems' Silverflow partnership shows this bank invests in modern financial infrastructure when the case is clear. Verification automation is the same logic, applied to lending instead of payments."
+      },
+      {
+        "title": "Business lending routes through a generic form",
+        "severity": "gap",
+        "body": "Business loan inquiries go to a Microsoft Forms link and a phone number, a plain front door for a bank that runs its own payments-processing subsidiary."
+      },
+      {
+        "title": "The newest customers face the most friction",
+        "severity": "friction",
+        "body": "Two of three checking products open online through a Salesforce self-registration portal. The entry-level Pathway Checking product, the one a first-time or credit-building customer is most likely to choose, is branch-only."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Lending products with a real online application",
+        "today": "1 of 5 (mortgage only)",
+        "withRaven": "Every product, one front door"
+      },
+      {
+        "dimension": "Business lending intake",
+        "today": "Generic Microsoft Forms inquiry",
+        "withRaven": "Branded online application with automated verification"
+      },
+      {
+        "dimension": "Entry-level checking",
+        "today": "Branch-only",
+        "withRaven": "Online, consistent with the bank's other checking tiers"
+      },
+      {
+        "dimension": "Identity / income / property",
+        "today": "Collected manually after a phone call",
+        "withRaven": "Verified automatically in ~90 seconds"
+      }
+    ],
+    "sources": "ches.bank (personal/lending/home-loans, personal/lending/personal-loans, business/business-lending/business-loans, personal/personal-checking, reviewed August 2026); chesbank2.mortgagewebcenter.com, chesapeakebank.my.site.com (application portal domains); FDIC BankFind cert #6862. Brand colors (#002D5B, #E16B43) pulled directly from live site CSS."
+  },
+  {
+    "slug": "bankplus",
+    "bankName": "BankPlus",
+    "shortName": "BankPlus",
+    "auditDate": "August 2026",
+    "demoSlug": "bankplus",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$8.28B"
+      },
+      {
+        "label": "Branches",
+        "value": "75 (Mississippi, Alabama & Louisiana)"
+      },
+      {
+        "label": "Online loan products",
+        "value": "1 of 6 (mortgage only)"
+      },
+      {
+        "label": "ROA",
+        "value": "1.40%"
+      }
+    ],
+    "summary": "BankPlus has made American Banker's \"Best Banks to Work For\" list for nine consecutive years, one of only seven U.S. banks with that full streak, real evidence of investment in staff experience. The borrower-facing digital experience hasn't kept pace: of six lending lines, only mortgage has a real online application. The remaining five all route to \"meet with a banker\" or a branch locator, and the deposit-account-opening link found on multiple pages did not load correctly when tested.",
+    "currentJourney": [
+      {
+        "channel": "Mortgage",
+        "detail": "\"Apply To Purchase\" and \"Apply to Refinance\" link to a live mymortgage-online.com portal",
+        "status": "ok"
+      },
+      {
+        "channel": "Auto loans",
+        "detail": "No application form; sole CTA is \"Meet with a Banker Today\" with a branch locator",
+        "status": "missing"
+      },
+      {
+        "channel": "Personal loans",
+        "detail": "Directs to \"visit your nearest branch\" or a phone number. No online application",
+        "status": "missing"
+      },
+      {
+        "channel": "HELOC / home equity",
+        "detail": "Only a branch locator and phone number; no application link",
+        "status": "missing"
+      },
+      {
+        "channel": "Business / commercial lending",
+        "detail": "\"Talk to a Lender Today\" with a branch locator; no online application found",
+        "status": "missing"
+      },
+      {
+        "channel": "Wealth management",
+        "detail": "Advisor names/emails and \"Call Me\" prompts; no online scheduling or contact form for prospects",
+        "status": "missing"
+      },
+      {
+        "channel": "Deposit account opening",
+        "detail": "Multiple pages link to an \"Open an Account\" portal that returned an error page when tested directly; not confirmed working",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Nine years of \"Best Banks to Work For\" is worth extending to borrowers",
+        "severity": "note",
+        "body": "A bank that consistently invests in staff experience has the same incentive to modernize the borrower-facing side of lending. That investment hasn't reached the loan application, where auto, personal, HELOC, and business borrowers all get the same instruction: visit a branch."
+      },
+      {
+        "title": "At 75 branches, an $8.3B bank still has a phone-call front door",
+        "severity": "gap",
+        "body": "Scale doesn't eliminate the labor problem, it multiplies it across 75 branches and their loan officers. Automating verification protects margin as growth, including the 2021 First Trust Corporation acquisition, continues to add branches and files."
+      },
+      {
+        "title": "The account-opening link needs a direct check",
+        "severity": "friction",
+        "body": "Multiple deposit-product pages link to an \"Open an Account\" portal that returned an error page when tested directly. If that's broken for real customers too, there may currently be no working self-serve path into the bank at all outside a mortgage refinance."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Lending products with a real online application",
+        "today": "1 of 6 (mortgage only)",
+        "withRaven": "Every product, one front door"
+      },
+      {
+        "dimension": "Account opening",
+        "today": "Link returned an error page when tested",
+        "withRaven": "Reliable, self-serve, verified in ~90 seconds"
+      },
+      {
+        "dimension": "After-hours demand across 75 branches",
+        "today": "\"Meet with a banker\" / branch locator",
+        "withRaven": "Captured, verified, and queued immediately"
+      },
+      {
+        "dimension": "Identity / income / property",
+        "today": "Collected manually after a branch visit",
+        "withRaven": "Verified automatically in ~90 seconds"
+      }
+    ],
+    "sources": "bankplus.net (personal/borrow/home-mortgages, personal/borrow/auto-loans, personal/borrow/personal-loan, personal/borrow/home-equity-line, business/borrow/business-loans, wealth-management/services, reviewed August 2026); bankplus.mymortgage-online.com (mortgage application portal); apply.bankplus.net (deposit account link tested, returned an error page); FDIC BankFind cert #5903."
   }
 ]

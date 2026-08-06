@@ -377,13 +377,17 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
 
           <WhiteLabelPrompt bankName={audit.shortName} slug={audit.slug} />
 
-          <p className="aud-sub" style={{ marginTop: '2.5rem' }}>
-            We also published an independent analysis of {bank.shortName}&apos;s performance and market:
-          </p>
-          <a href={`/blog/${bank.articleSlug}`} className="aud-article-link">
-            Read: {bank.articleTitle}
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
+          {bank.articleSlug && bank.articleTitle && (
+            <>
+              <p className="aud-sub" style={{ marginTop: '2.5rem' }}>
+                We also published an independent analysis of {bank.shortName}&apos;s performance and market:
+              </p>
+              <a href={`/blog/${bank.articleSlug}`} className="aud-article-link">
+                Read: {bank.articleTitle}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </>
+          )}
 
           <div className="aud-methodology" id="methodology">
             <h2>Methodology &amp; footnotes</h2>

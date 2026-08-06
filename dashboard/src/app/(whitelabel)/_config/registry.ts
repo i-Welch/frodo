@@ -25,6 +25,13 @@ import { oconeStateBank } from './oconee-state-bank';
 import { amerisBank } from './ameris-bank';
 import { unitedBank } from './united-bank';
 import { ravenBank } from './raven-bank';
+import { revFederalCreditUnion } from './rev-federal-credit-union';
+import { palmettoCitizensFcu } from './palmetto-citizens-federal-credit-union';
+import { uwharrieBank } from './uwharrie-bank';
+import { wilsonBankAndTrust } from './wilson-bank-and-trust';
+import { cogentBank } from './cogent-bank';
+import { chesapeakeBank } from './chesapeake-bank';
+import { bankplus } from './bankplus';
 
 /** All white-label demo configs. Add a new bank by dropping a config here. */
 export const WL_CONFIGS: WhiteLabelConfig[] = [
@@ -54,6 +61,13 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   oconeStateBank,
   amerisBank,
   unitedBank,
+  revFederalCreditUnion,
+  palmettoCitizensFcu,
+  uwharrieBank,
+  wilsonBankAndTrust,
+  cogentBank,
+  chesapeakeBank,
+  bankplus,
 ];
 
 export function getWlConfig(slug: string): WhiteLabelConfig | undefined {

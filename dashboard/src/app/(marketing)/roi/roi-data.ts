@@ -67,8 +67,8 @@ export interface BankRoiInput {
   slug: string;
   name: string;
   shortName: string;
-  articleSlug: string;
-  articleTitle: string;
+  articleSlug?: string;
+  articleTitle?: string;
   fdicCert: number;
   // At-a-glance stats shown in the header
   stats: { label: string; value: string }[];
@@ -1248,6 +1248,328 @@ export const ROI_BANKS: BankRoiInput[] = [
     ],
     sources:
       'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
+    slug: 'rev-federal-credit-union',
+    name: 'REV Federal Credit Union',
+    shortName: 'REV',
+    articleSlug: 'rev-credit-union-west-virginia-bet',
+    articleTitle: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
+    // NOTE: this field is named for the FDIC certificate a bank carries; REV is
+    // a credit union with no FDIC cert. Populated with REV's NCUA charter
+    // number (9986) instead until this field is generalized. See `sources`.
+    fdicCert: 9986,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.2B (net worth, not stock-issued)' },
+      { label: 'Net worth ratio', value: '14.16% (Dec 2025)' },
+      { label: 'Members', value: '67,000+' },
+      { label: 'Branch count', value: '17 (plus 5 pending in WV)' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 260,
+        source:
+          'REV\'s mortgage, HELOC, and land loans route through a third-party portal (mymortgage-online.com) rather than REV\'s own domain. No independently confirmed HMDA figure for this credit union: a same-named "Revity Federal Credit Union" (formerly Greensboro Municipal FCU, NC) creates a naming collision in public HMDA lookups that this estimate deliberately avoids relying on. Estimate derived from a $1.2B balance sheet at a typical credit-union residential-real-estate share of assets.',
+        estimated: true,
+      },
+      commercial: {
+        count: 90,
+        source:
+          'REV promoted its Director of Business Solutions to Vice President of Commercial Banking in 2025, signaling commercial as a growth priority, but commercial real estate has no online application (email-only) and REV does not publish NCUA 5300 category-level loan detail publicly. Estimate reflects a credit union of this size building a young commercial book.',
+        estimated: true,
+      },
+      consumer: {
+        count: 3200,
+        source:
+          'Auto, personal, and REVline (personal line of credit) are REV\'s highest-volume digitally-native products, all applied for at join.revfcu.com. Estimate reflects auto lending as the flagship product for a 67,000-member, $1.2B credit union; not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 7200,
+      source:
+        "REV's federal charter covers Berkeley, Charleston, Colleton, and Dorchester counties (SC), Brunswick and Columbus counties (NC), and Joint Base Charleston, a materially larger addressable area than a single county. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to field of membership, the actual legal ceiling on who REV can serve, rather than a county deposit market. The Charleston Regional Development Alliance estimates the Berkeley-Charleston-Dorchester tri-county area (the bulk of REV's SC footprint) adds roughly 17,500 residents/year, about 7,000 households at 2.5 persons/household; Colleton County and the two North Carolina counties add modest additional growth, netting to roughly 7,200/year.",
+    },
+    intro:
+      "REV Federal Credit Union is buying a bank 520 miles outside its own field of membership: First Neighborhood Bank in Spencer, West Virginia, the first-ever credit union purchase of a bank in that state's history. REV brings real strengths to that expansion. Net worth sits at 14.16% of assets, more than double the 7% regulatory floor, funded entirely from retained member dividends since credit unions cannot issue stock. What it does not yet bring is a consistent digital front door: auto, personal, and REVline loans apply directly on REV's own domain, but mortgage and commercial lending each hand off to a different third-party portal, and commercial real estate has no online path at all. That gap is a member-experience problem today. It becomes a member-acquisition problem the moment REV starts serving members two states away with no nearby branch.",
+    strategic: [
+      {
+        title: 'Three Lending Portals for One Credit Union, Right Before the Member Base Spreads Across Two States',
+        body: "A REV member financing a car applies at join.revfcu.com. The same member applying for a mortgage lands on revfcu3333.mymortgage-online.com, a different domain with a different look. Commercial term loans route through a third portal, revfcu.onlineportalnow.com. None of this matters much when every member lives within a short drive of a branch. It matters considerably more once REV is verifying members in Roane County, West Virginia, where the nearest REV branch is 500-plus miles away and every one of those handoffs becomes a place a member can get lost or give up. RAVEN's single verification layer works identically across every product REV offers, which turns three inconsistent systems into one experience regardless of which state a member is applying from.",
+      },
+      {
+        title: 'Commercial Lending Is REV\'s Newest Priority and Its Least Digital Product',
+        body: 'REV elevated its Director of Business Solutions to Vice President of Commercial Banking in 2025, a clear signal that commercial lending is where REV wants to grow next. Commercial real estate borrowers currently get an email address, businesssolutions@revfcu.com, and the business credit card requires a branch visit. Roane County, West Virginia is a rural, commercial-dependent county with 11% unemployment and no REV branch presence at all. Verifying a small-business borrower\'s income, entity documents, and guarantor financials by email across a time zone and 500 miles is exactly the kind of manual process that RAVEN\'s automated intake replaces, at the moment REV needs it most.',
+      },
+      {
+        title: 'REV Is Already Building the Fix. The Question Is Whether It Builds Three of Them or One.',
+        body: 'REV relaunched its digital banking platform over the past year and has an in-house loan origination and application system targeted for a 2026 launch, its own admission that the current patchwork needs replacing. That build-not-buy instinct is the right one for an institution that wants to control the member experience end to end. The risk is building a single new system that still has to reconcile data from three legacy vendor relationships (the consumer portal, the mortgage Mortgagebot-style platform, and the commercial portal) behind the scenes. RAVEN sits underneath a build like that as the verification layer, so REV\'s new front door captures identity, income, and asset data the same way for a Charleston auto loan and a West Virginia mortgage, instead of inheriting three different data shapes from three legacy systems.',
+      },
+    ],
+    sources:
+      'revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026); join.revfcu.com, revfcu3333.mymortgage-online.com, and revfcu.onlineportalnow.com (REV\'s three lending application domains); NCUA charter #9986 via bestcashcow.com and ncuso.org call-report aggregation (net worth, net worth ratio, non-current loans, loan loss reserves, Texas ratio; Dec 2025); revfcu.com press release "South Carolina CU Expands With Planned Bank Acquisition in West Virginia"; S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition (approved May 27, 2026); Charleston Regional Development Alliance population data; Census QuickFacts Berkeley/Charleston/Colleton/Dorchester Counties SC; e-WV / Roane County WV economic data. fdicCert field holds REV\'s NCUA charter number, not an FDIC certificate; REV is a federally insured credit union with no FDIC cert.',
+  },
+  {
+    slug: 'palmetto-citizens-federal-credit-union',
+    name: 'Palmetto Citizens Federal Credit Union',
+    shortName: 'Palmetto Citizens',
+    articleSlug: 'palmetto-citizens-90-year-wait',
+    articleTitle: 'Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.',
+    // NOTE: this field is named for the FDIC certificate a bank carries; Palmetto
+    // Citizens is a credit union with no FDIC cert. Populated with its NCUA
+    // charter number (1472) instead until this field is generalized. See `sources`.
+    fdicCert: 1472,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.44B' },
+      { label: 'Net worth ratio', value: '13.34%' },
+      { label: 'Members', value: '85,933' },
+      { label: 'Branch count', value: '14 SC (plus 4 new in Georgia)' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 310,
+        source:
+          'Palmetto Citizens consolidates vehicle, mortgage, home equity, and credit card applications into one first-party flow (applynow.palmettocitizens.org) but does not publish category-level NCUA 5300 loan detail publicly. Estimate derived from Chief Lending Officer Robert Terrell\'s disclosed ~$734M loan portfolio at a typical credit-union residential-real-estate share of the book.',
+        estimated: true,
+      },
+      commercial: {
+        count: 60,
+        source:
+          'All five Palmetto Citizens business loan categories (lines of credit, term loans, commercial real estate, SBA 7(a), nonprofit lending) require phone, Help Desk, or branch contact with no online application. Estimate reflects a CDFI-certified Midlands credit union with a modest, largely relationship-driven commercial book; not an NCUA-reported figure.',
+        estimated: true,
+      },
+      consumer: {
+        count: 4100,
+        source:
+          'Vehicle loans and personal loans are Palmetto Citizens\' highest-volume digitally-native products via the applynow.palmettocitizens.org flow. Estimate reflects an 85,933-member, $1.44B credit union with vehicle lending as a flagship product ("no payments for up to 90 days" marketing); not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 3600,
+      source:
+        "Palmetto Citizens' federal charter covers eight South Carolina Midlands counties (Calhoun, Fairfield, Kershaw, Lexington, Newberry, Orangeburg, Richland, Saluda), plus an associational partnership with the Carolina Consumer Council already open to SC, NC, GA, TN, and VA residents, a materially larger addressable area than a single county. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to field of membership rather than a county deposit market. Census data shows Richland County added roughly 4,100 residents and Lexington County roughly 3,500 in the most recent year (about 3,000 households at 2.5 persons/household); the other six Midlands counties are slower-growing or flat, netting to roughly 3,600 households/year across the core SC footprint. The four new Georgia counties are flat to shrinking and are not counted toward this figure.",
+    },
+    intro:
+      "Palmetto Citizens Federal Credit Union closed its first expansion outside South Carolina in 90 years on August 1, 2026, four former Southern Bank branches in rural Georgia, even though its charter's associational membership option had already made Georgia residents eligible to join for years. What it brings to that expansion is a genuinely solid consumer lending experience: vehicle loans, mortgages, home equity, and credit cards all apply through one consolidated first-party flow. What it doesn't bring is any digital path for business lending. All five commercial loan categories, including the SBA 7(a) program that is the natural fit for a CDFI-certified lender entering high-poverty Georgia counties, require a phone call, a Help Desk message, or a branch visit.",
+    strategic: [
+      {
+        title: 'Consumer Lending Proves Palmetto Citizens Can Build This. Business Lending Proves It Hasn\'t.',
+        body: "Vehicle loans, mortgages, home equity, and credit cards all run through one first-party application flow on Tyfone's nFinia platform, a genuinely better setup than most of the community banks and credit unions in this series. That makes the complete absence of an online application for any of the five business loan categories, lines of credit, term loans, commercial real estate, SBA 7(a), and nonprofit lending, harder to explain as a resourcing problem and easier to read as a sequencing one. RAVEN's verification layer plugs into an existing consumer flow like this one directly, which means extending the same automated identity, income, and financial verification to business borrowers is an extension of infrastructure Palmetto Citizens already runs, not a new build.",
+      },
+      {
+        title: 'A CDFI-Certified Lender Just Inherited the Market Its Mission Was Built For, With No Digital Path to Serve It',
+        body: 'Palmetto Citizens earned CDFI certification in 2023 specifically to serve low-income and underserved communities. Waynesboro, Georgia, the largest of its four new branch towns, carries a 26% poverty rate and a median household income of $41,620. SBA 7(a) lending, guaranteed in part by the federal government to expand small-business credit in exactly these markets, is the product built for this moment, and it has zero online application. A small-business owner in Gibson or Sardis, Georgia now has to drive to a branch or call a Help Desk for a loan program designed to reach borrowers like them. RAVEN\'s automated income, entity, and identity verification removes that distance requirement entirely.',
+      },
+      {
+        title: 'New Membership and Lending Run on Two Different Systems That Happen to Sit Next to Each Other',
+        body: "New membership applications route through MeridianLink, a real, purpose-built account-opening platform, while lending runs through Palmetto Citizens' own applynow.palmettocitizens.org flow on Tyfone. That's a smaller gap than a legacy third-party handoff, but it's still two systems instead of one. A new Georgia member who joins through MeridianLink and then wants a business loan starts over in a completely different flow. RAVEN sits underneath both as a single verification layer, so a member's identity and financial data verified at account opening doesn't have to be re-collected the moment they apply for credit.",
+      },
+    ],
+    sources:
+      'palmettocitizens.org (loan/, business/loans/, personal/vehicles/, personal/mortgage/, personal/homeequity/ pages, reviewed August 2026); applynow.palmettocitizens.org and app.consumer.meridianlink.com (application domains); fintechfutures.com coverage of the Tyfone nFinia digital banking platform adoption; NCUA charter #1472 via bestcashcow.com and ncuso.org call-report aggregation (assets, net worth, net worth ratio); palmettocitizens.org CDFI certification press release (April 2023) and CUInsight coverage; cutoday.info, coladaily.com, and Yahoo Finance coverage of the Southern Bank Georgia branch acquisition (announced November 2025, closed August 1, 2026, serving customers August 3, 2026); Census QuickFacts and worldpopulationreview.com for Burke, Glascock, and Richmond County GA and the eight South Carolina Midlands counties; theorg.com and Columbia Business Monthly for Palmetto Citizens leadership (CEO Robert Dozier, CFO Elizabeth Bunn, CLO Robert Terrell). fdicCert field holds Palmetto Citizens\' NCUA charter number, not an FDIC certificate; Palmetto Citizens is a federally insured credit union with no FDIC cert.',
+  },
+  {
+    slug: 'uwharrie-bank',
+    name: 'Uwharrie Bank',
+    shortName: 'Uwharrie',
+    fdicCert: 24919,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.25B' },
+      { label: 'Branches', value: '10, Stanly/Cabarrus/Anson/Mecklenburg, NC' },
+      { label: 'ROA', value: '1.14%' },
+      { label: 'Online lending channels', value: '4 of 6' },
+    ],
+    volumes: {
+      mortgage: { count: 220, source: 'Estimated from the 10-office Stanly County footprint', estimated: true },
+      commercial: { count: 110, source: 'Estimated from FDIC call-report loan mix', estimated: true },
+      consumer: { count: 70, source: 'Estimated from the 10-office footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 800,
+      source: 'Estimated from Census population growth in Stanly and Cabarrus counties, NC (Cabarrus County, adjacent to Charlotte, is the faster-growing of the two); not a bank-specific figure.',
+    },
+    intro:
+      "Uwharrie Bank is the only commercial bank headquartered in Stanly County, NC, with loan-production offices reaching into Cabarrus and Mecklenburg counties toward Charlotte. The bank already runs real online application portals for mortgage, auto, personal loans, and deposit account opening. HELOC and business lending are the two exceptions: both dead-end at a contact form.",
+    strategic: [
+      {
+        title: 'Two specific gaps in an otherwise solid stack',
+        body: "Uwharrie already invested in self-serve infrastructure: a mortgage application portal (Home Hub), a loan portal for auto and personal loans, and a Fivision-hosted deposit account opening flow. HELOC and business lending are the exceptions, both routing to a pre-filled contact form instead of an application. Closing those two gaps completes a stack the bank has mostly already built.",
+      },
+      {
+        title: 'Charlotte-adjacent branches face Charlotte-level digital competition',
+        body: 'The loan-production offices reaching into Cabarrus and Mecklenburg counties put a portion of Uwharrie\'s pipeline in direct competition with national digital lenders on speed, even though the core franchise remains a rural, single-county bank by charter.',
+      },
+      {
+        title: 'A 10-branch operation has little room for manual drag',
+        body: 'At this scale, a few hours of manual document-chasing per file is a meaningful share of loan-ops capacity. Automated verification recovers that time without adding staff.',
+      },
+    ],
+    sources:
+      'uwharrie.com (personal-banking/mortgages, personal-banking/loans, business-banking/loans pages, reviewed August 2026); mymortgage.uwharrie.com, uwharrie.loanwebcenter.com, forms.fivision.com/uwharrie (application portal domains); FDIC BankFind cert #24919. Brand colors (#5C8118, #594A25) pulled from inline site styles, not an official brand guide.',
+  },
+  {
+    slug: 'wilson-bank-and-trust',
+    name: 'Wilson Bank and Trust',
+    shortName: 'Wilson Bank',
+    fdicCert: 26962,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$5.99B' },
+      { label: 'Branches', value: '32, greater Nashville exurban ring, TN' },
+      { label: 'ROA', value: '1.52%' },
+      { label: 'Online lending channels', value: '5 of 6, on 3 different vendor portals' },
+    ],
+    volumes: {
+      mortgage: { count: 1400, source: 'Estimated from the 32-branch, nine-county footprint', estimated: true },
+      commercial: { count: 600, source: 'Estimated from FDIC call-report loan mix', estimated: true },
+      consumer: { count: 300, source: 'Estimated from the 32-branch footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 3000,
+      source: 'Estimated from Census population growth across Wilson, Rutherford, Sumner, and Williamson counties, TN, among the fastest-growing counties in the Nashville MSA; not a bank-specific figure.',
+    },
+    intro:
+      'Wilson Bank and Trust grew from a single 1987 de novo charter into a $6B, 32-branch bank across the counties ringing Nashville, largely through acquiring smaller local banks. Mortgage, auto, personal loans, HELOC, and deposit account opening all have real online applications today, but they run on three separate vendor portals (MortgageWebCenter, LoanWebCenter, and a dedicated openaccounts subdomain). Business lending has no online application at all.',
+    strategic: [
+      {
+        title: 'Fragmentation, not absence, is the gap here',
+        body: "Unlike most banks in this series, Wilson Bank already offers real self-serve applications across nearly every consumer lending line. The problem is that a borrower bounces between three different vendor portals, on three different domains, depending on which product they want. RAVEN's value here is consolidation into one verified flow, not adding capability that doesn't exist.",
+      },
+      {
+        title: 'Business lending is the one channel with no digital path',
+        body: 'Every other consumer lending line has an apply button. Business and commercial loans route only to a branch relationship manager. For a bank that grew by acquiring local community banks with strong commercial relationships, digitizing verification for that line is the one piece still missing.',
+      },
+      {
+        title: 'A bank built by acquisition inherited a bank built by acquisition\'s verification habits',
+        body: 'Each acquired community bank (DeKalb Community Bank, Community Bank of Smith County, among others) likely brought its own document-collection habits before consolidating onto the current three-portal setup. One standardized borrower session replaces that patchwork for good, across all 32 branches.',
+      },
+    ],
+    sources:
+      'wilsonbank.com (loans/home-loans, loans/vehicle, loans/personal, loans/home-equity-line-of-credit, loans/business-loans pages, reviewed August 2026); centralized-wilsonbanktn.mortgagewebcenter.com, wilsonbank.loanwebcenter.com, openaccounts.wilsonbank.com (application portal domains); treasury.jackhenry.com/wilsonbank (Treasury Management, indicating a Jack Henry relationship); FDIC BankFind cert #26962.',
+  },
+  {
+    slug: 'cogent-bank',
+    name: 'Cogent Bank',
+    shortName: 'Cogent',
+    fdicCert: 34908,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$2.45B' },
+      { label: 'Branches', value: '10, Central & South Florida' },
+      { label: 'ROE', value: '23.04%' },
+      { label: 'Online lending channels', value: '0 of 5' },
+    ],
+    volumes: {
+      mortgage: { count: 150, source: 'Estimated; Cogent is not primarily a retail mortgage lender', estimated: true },
+      commercial: { count: 500, source: 'Estimated, weighted toward the Specialty Lending Group\'s deal flow', estimated: true },
+      consumer: { count: 100, source: 'Estimated from the 10-branch Central/South Florida footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 1000,
+      source: 'Estimated from Central Florida population growth trends; Cogent\'s footprint and business mix are commercial-lending-weighted, so this is a smaller retail-intake estimate than a comparably-sized retail bank.',
+    },
+    intro:
+      "Cogent Bank runs a Specialty Lending Group that doubled loan commitments from $100M to $200M in a single year and holds SBA Preferred Lender status across three federal programs. None of it has an online application. Mortgage, specialty lending, SBA, personal, and business lending all end at a phone call or a named specialist's contact info, and the site's 'open an account' form is a scheduling request, not a self-serve application.",
+    strategic: [
+      {
+        title: 'A fast-growing specialty lender with no fast digital front door',
+        body: "The Specialty Lending Group's growth (asset-based lending, lender finance, recurring-revenue lending) depends on speed to compete for $1M-$15M deals. Every one of those deals starts with a phone call today. Automated identity, income, and asset verification lets underwriters spend their time on the specialty-credit analysis that actually differentiates the deal, instead of the document chase before it.",
+      },
+      {
+        title: 'SBA Preferred Lender status rewards the lender who closes fastest',
+        body: 'SBA brokers route deals to whichever Preferred Lender can close quickest. Cogent\'s SBA page lists four named specialists and a phone number; there is no application to start a file before that first call happens.',
+      },
+      {
+        title: 'The account-opening form isn\'t actually an application',
+        body: 'Cogent\'s "Open a New Personal Account" page collects contact info and an appointment preference, then promises a callback within one business day. There is no identity verification or funding step online, for either personal or business accounts.',
+      },
+    ],
+    sources:
+      'cogentbank.com (personal/, business/, sba-lending/, open-a-new-personal-account/ pages, reviewed August 2026); FDIC BankFind cert #34908. Digital banking login vendor observed at a white-label "Flex" domain; not positively identified as a named core provider.',
+  },
+  {
+    slug: 'chesapeake-bank',
+    name: 'Chesapeake Bank',
+    shortName: 'Chesapeake',
+    fdicCert: 6862,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$1.72B' },
+      { label: 'Branches', value: '19, Northern Neck & Middle Peninsula, VA' },
+      { label: 'ROA', value: '1.49%' },
+      { label: 'Online lending channels', value: '1 of 5 (mortgage only)' },
+    ],
+    volumes: {
+      mortgage: { count: 500, source: 'Estimated from the 19-branch Chesapeake Bay footprint', estimated: true },
+      commercial: { count: 250, source: 'Estimated from FDIC call-report loan mix', estimated: true },
+      consumer: { count: 150, source: 'Estimated; no dedicated auto loan product was found, and HELOC/personal are contact-only', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 600,
+      source: 'Estimated from Census population trends in Virginia\'s Northern Neck and Middle Peninsula, a slower-growing, second-home-heavy market; not a bank-specific figure.',
+    },
+    intro:
+      "Chesapeake Bank runs Chesapeake Payment Systems, a 30-year-old merchant-payments subsidiary that recently partnered with fintech Silverflow, real sophistication in financial infrastructure. That sophistication hasn't reached borrower-facing lending: only mortgage has a real online application. Personal loans and business lending are contact-only, no dedicated auto loan product was found on the site, and one of the bank's three checking products is branch-only while the other two open online.",
+    strategic: [
+      {
+        title: 'A bank that already backs fintech partnerships understands this ROI case',
+        body: "Chesapeake Payment Systems' Silverflow partnership shows this bank invests in modern financial infrastructure when the case is clear. Verification automation is the same logic, applied to the lending side of the house instead of the payments side.",
+      },
+      {
+        title: 'Business lending routes through a generic form',
+        body: "Business loan inquiries go to a Microsoft Forms link and a phone number, a plain front door for a bank that runs its own payments-processing subsidiary and clearly has the technical sophistication to do better.",
+      },
+      {
+        title: 'The newest customers face the most friction',
+        body: 'Two of three checking products (Essential and Prosper) open online through a Salesforce self-registration portal. The entry-level Pathway Checking product, the one a first-time or credit-building customer is most likely to choose, is branch-only.',
+      },
+    ],
+    sources:
+      'ches.bank (personal/lending/home-loans, personal/lending/personal-loans, business/business-lending/business-loans, personal/personal-checking pages, reviewed August 2026); chesbank2.mortgagewebcenter.com, chesapeakebank.my.site.com (application portal domains); FDIC BankFind cert #6862. Brand colors (#002D5B, #E16B43) pulled directly from live site CSS.',
+  },
+  {
+    slug: 'bankplus',
+    name: 'BankPlus',
+    shortName: 'BankPlus',
+    fdicCert: 5903,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$8.28B' },
+      { label: 'Branches', value: '75, Mississippi, Alabama & Louisiana' },
+      { label: 'ROA', value: '1.40%' },
+      { label: 'Online lending channels', value: '1 of 6 (mortgage only)' },
+    ],
+    volumes: {
+      mortgage: { count: 1800, source: 'Estimated from the 75-branch, three-state footprint', estimated: true },
+      commercial: { count: 1200, source: 'Estimated from FDIC call-report loan mix', estimated: true },
+      consumer: { count: 500, source: 'Estimated from the 75-branch footprint', estimated: true },
+    },
+    market: {
+      newHouseholdsPerYear: 2500,
+      source: 'Estimated from Census population trends across BankPlus\' Mississippi, Alabama, and Louisiana footprint; not a bank-specific figure.',
+    },
+    intro:
+      "BankPlus has made American Banker's 'Best Banks to Work For' list for nine consecutive years, one of only seven U.S. banks with that full streak, real evidence of investment in staff experience. The borrower-facing digital experience hasn't kept pace: of six lending lines (mortgage, auto, personal, HELOC, business, and wealth management access), only mortgage has a real online application. The remaining five all route to 'meet with a banker' or a branch locator, and the deposit-account-opening link found on multiple pages did not load correctly when tested.",
+    strategic: [
+      {
+        title: 'Nine years of "Best Banks to Work For" is worth extending to borrowers',
+        body: "A bank that consistently invests in staff experience has the same incentive to modernize the borrower-facing side of lending. Right now that investment hasn't reached the loan application, where auto, personal, HELOC, and business borrowers all get the same instruction: visit a branch.",
+      },
+      {
+        title: 'At 75 branches, an $8.3B bank still has a phone-call front door',
+        body: 'Scale doesn\'t eliminate the labor problem, it multiplies it across 75 branches and their loan officers. Automating verification protects margin as growth (including the 2021 First Trust Corporation acquisition) continues to add branches and files.',
+      },
+      {
+        title: 'The account-opening link needs a direct check',
+        body: 'Multiple deposit-product pages link to an "Open an Account" portal that returned an error page when tested directly. If that\'s broken for real customers too, and not just an artifact of how it was tested, there may currently be no working self-serve path into the bank at all outside a mortgage refinance.',
+      },
+    ],
+    sources:
+      'bankplus.net (personal/borrow/home-mortgages, personal/borrow/auto-loans, personal/borrow/personal-loan, personal/borrow/home-equity-line, business/borrow/business-loans, wealth-management/services pages, reviewed August 2026); bankplus.mymortgage-online.com (mortgage application portal); apply.bankplus.net (deposit account link tested, returned an error page); FDIC BankFind cert #5903.',
   },
 ];
 

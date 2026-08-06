@@ -100,7 +100,7 @@ async function findNextLead(skipEmails: string[]) {
   const sheets = await getSheets();
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
-    range: `${SHEET_NAME}!A1:P1000`,
+    range: `${SHEET_NAME}!A1:P20000`,
   });
 
   const rows = res.data.values ?? [];
@@ -174,7 +174,7 @@ async function logOutcome(args: Record<string, string>) {
   const sheets = await getSheets();
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
-    range: `${SHEET_NAME}!G1:G1000`,
+    range: `${SHEET_NAME}!G1:G20000`,
   });
 
   const rows = res.data.values ?? [];
@@ -216,7 +216,7 @@ async function markFollowupSent(args: Record<string, string>) {
   const sheets = await getSheets();
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SHEET_ID,
-    range: `${SHEET_NAME}!G1:G1000`,
+    range: `${SHEET_NAME}!G1:G20000`,
   });
 
   const rows = res.data.values ?? [];
