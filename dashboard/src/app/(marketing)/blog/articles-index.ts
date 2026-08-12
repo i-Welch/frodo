@@ -1,7 +1,7 @@
 // Shared blog index data: used by the blog index page and by article pages
 // for related-article cross-linking.
 
-export type ArticleCategory = 'bank' | 'fintech' | 'guide' | 'platform' | 'denovo';
+export type ArticleCategory = 'bank' | 'fintech' | 'guide' | 'platform' | 'denovo' | 'creditunion';
 
 export interface Article {
   slug: string;
@@ -15,6 +15,36 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    slug: 'champions-first-fsu-rebrand',
+    title: 'The Credit Union Formerly Known as FSU',
+    description:
+      "Champions First Credit Union grew assets 34% since 2022 through two mergers and a rebrand. It added roughly 900 members. Inside a $535 million Tallahassee credit union whose new name still hasn't reached its application layer.",
+    readTime: '6 min read',
+    date: 'August 2026',
+    category: 'creditunion',
+    auditSlug: 'champions-first-credit-union',
+  },
+  {
+    slug: 'palmetto-citizens-90-year-wait',
+    title: 'Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.',
+    description:
+      "Palmetto Citizens Federal Credit Union's own charter has let Georgia residents join for years. It still took a struggling bank's branch sale, and the same Sardis, Georgia institution RAVEN already profiled, to actually show up there.",
+    readTime: '6 min read',
+    date: 'August 2026',
+    category: 'creditunion',
+    auditSlug: 'palmetto-citizens-federal-credit-union',
+  },
+  {
+    slug: 'rev-credit-union-west-virginia-bet',
+    title: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
+    description:
+      "A Charleston-area credit union is buying a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its own charter doesn't reach anywhere near there.",
+    readTime: '6 min read',
+    date: 'August 2026',
+    category: 'creditunion',
+    auditSlug: 'rev-federal-credit-union',
+  },
   {
     slug: 'optimumbank-98-percent-cre-growth',
     title: 'The 98.7% Bank',

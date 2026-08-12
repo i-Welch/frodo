@@ -1250,6 +1250,68 @@ export const ROI_BANKS: BankRoiInput[] = [
       'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
+    slug: 'champions-first-credit-union',
+    name: 'Champions First Credit Union',
+    shortName: 'Champions First',
+    articleSlug: 'champions-first-fsu-rebrand',
+    articleTitle: 'The Credit Union Formerly Known as FSU',
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Champions First is a credit union with no FDIC cert. Populated with its
+    // NCUA charter number (67874) instead until this field is generalized.
+    // See `sources`.
+    fdicCert: 67874,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$535.8M (Mar 2026)' },
+      { label: 'Net worth ratio', value: '10.1% (Mar 2026)' },
+      { label: 'Members', value: '32,930' },
+      { label: 'Branch count', value: '9 across North Florida' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 170,
+        source:
+          'Champions First does not appear on the 2023 or 2024 HMDA filer lists (verified against the FFIEC filer API), so no reported origination count exists. Real estate loans grew from $113.4M (2023) to $138.4M (2024) to $162.4M (Mar 2026) per the annual report and NCUA 5300 aggregation; estimate reflects roughly $25M/year of net real estate growth plus payoff replacement at North Florida loan sizes.',
+        estimated: true,
+      },
+      commercial: {
+        count: 30,
+        source:
+          'Champions First markets business loans but publishes no member-business-lending detail, and the Business Loans page carries no business-specific online application (it routes to the same generic MeridianLink consumer loan portal). Estimate reflects a $535M credit union with a small, relationship-driven commercial book.',
+        estimated: true,
+      },
+      consumer: {
+        count: 2400,
+        source:
+          'Auto is the volume product: roughly $42M of 2024 originations came through the iDrive CUSO indirect dealer channel alone (2024 annual report), which implies about 1,500 dealership-sourced loans at typical used-auto balances, before counting direct auto, personal, and credit rebuilder volume from $151M in total 2024 loan production. Not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 5500,
+      source:
+        "Champions First's state charter covers anyone who lives or works in 18 North Florida counties (roughly 1.6 million people per Census county estimates), the legal ceiling on who it can serve. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to field of membership rather than a county deposit market. Census estimates show the western counties (Santa Rosa, Walton, Okaloosa, Escambia, Bay) among Florida's faster-growing, adding roughly 12,000-14,000 residents a year combined, with Leon County near flat and the rural eastern counties flat to shrinking; at 2.5 persons per household that nets to roughly 5,500 new households a year across the footprint.",
+    },
+    intro:
+      "Champions First Credit Union spent six years assembling growth machinery: the GPCE Credit Union merger (2020), the FDOT Credit Union merger (2022), and the October 2024 retirement of the FSU Credit Union name in favor of a brand built for all 18 counties it can legally serve. Assets grew 34% to $535.8 million. Membership went from roughly 32,000 to 32,930. The gap between those two numbers is a funnel: every loan product hands applicants to MeridianLink's app.loanspq.com portal, account opening routes to a MeridianLink domain whose lender reference still reads 'Floridascu,' and the loan page's App Store link still points to an app named FSU Credit Union Mobility. Champions First is replatforming its digital banking in August 2026, which makes right now the moment the intake layer gets decided.",
+    strategic: [
+      {
+        title: 'The Rebrand Reached the Signage. The Application Layer Still Says Floridascu.',
+        body: "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But a prospective member who clicks 'join' today is handed to app.consumer.meridianlink.com, a third-party domain whose URL still carries the FSU-era lender reference 'Floridascu,' and every loan product routes to MeridianLink's generic app.loanspq.com portal. The brand investment stops at exactly the moment a prospect decides whether to become a member. RAVEN's white-label intake keeps the entire join-and-apply experience on Champions First's own domain, with identity, income, and funding-account verification built into the flow instead of bolted on after the handoff.",
+      },
+      {
+        title: 'Allowed 2,500 New Members a Year. Netting About 220.',
+        body: "Florida's Office of Financial Regulation capped Champions First's 2018 western expansion at 2,500 new members a year, a ceiling the credit union has never approached: net membership growth since January 2022 is roughly 900 total, about 220 a year, across a field of membership of 1.6 million people growing as fast as anywhere in Florida. That is a conversion problem, not a demand problem. Verification-first account opening, where a new member proves identity and links a funding account in minutes instead of abandoning a third-party form, is the single highest-leverage fix for an institution whose penetration sits near 2% while comparable Southeast credit unions run near 9%.",
+      },
+      {
+        title: 'Funding Costs Rose 49% Because New Members Did Not Show Up',
+        body: 'Only 17% of Champions First shares sit in share drafts, the primary-relationship balances that come with new members. So 2024 growth was bought instead: dividends on shares jumped 49% to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares, money loyal to a rate rather than the institution. The indirect auto channel (roughly $42M through the iDrive CUSO in 2024) compounds this, because dealership-sourced borrowers are notoriously single-product. A digital front door that converts an indirect borrower into a verified, share-draft-holding primary member at the moment of loan intake attacks the cost-of-funds problem at its source.',
+      },
+    ],
+    sources:
+      "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com (application domains; lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno online banking, fingerprinted August 2026); Champions First 2024 Annual Report (assets, loan mix, dividends, net income, iDrive CUSO volume, CDFI grant, Pensacola property); NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026: assets, loans, shares, share mix, equity, members, branches); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer (state-chartered 501(c)(14)); Florida OFR field-of-membership record (2018 seven-county expansion, 2,500 members/year condition); American Banker and cucentral.the-league.coop coverage of the FDOT CU merger (Jan 1, 2022) and GPCE CU merger (Oct 1, 2020); FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates for the 18-county field of membership. fdicCert field holds the NCUA charter number, not an FDIC certificate; Champions First is a federally insured credit union with no FDIC cert.",
+  },
+  {
     slug: 'rev-federal-credit-union',
     name: 'REV Federal Credit Union',
     shortName: 'REV',

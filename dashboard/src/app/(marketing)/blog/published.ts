@@ -15,6 +15,10 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Credit Union Deep Dives (Aug 2026) —
+  'champions-first-fsu-rebrand',
+  'palmetto-citizens-90-year-wait',
+  'rev-credit-union-west-virginia-bet',
   // — Bank deep dives (Jul 2026) —
   'optimumbank-98-percent-cre-growth',
   // — Institutional research (Jul 2026) —
@@ -97,6 +101,9 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'champions-first-fsu-rebrand': '2026-08-12',
+  'palmetto-citizens-90-year-wait': '2026-08-03',
+  'rev-credit-union-west-virginia-bet': '2026-08-02',
   'optimumbank-98-percent-cre-growth': '2026-07-28',
   'huntington-bank-southeast-expansion': '2026-07-23',
   'southern-bank-spartanburg-side-door': '2026-07-22',

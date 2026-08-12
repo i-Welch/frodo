@@ -87,6 +87,216 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'champions-first-fsu-rebrand': {
+    title: 'The Credit Union Formerly Known as FSU',
+    description:
+      "Champions First Credit Union grew assets 34% since 2022 through two mergers and a rebrand. It added roughly 900 members. Inside a $535 million Tallahassee credit union whose new name still hasn't reached its application layer.",
+    publishedDate: 'August 12, 2026',
+    readTime: '6 min read',
+    content: `
+# The Credit Union Formerly Known as FSU
+
+*Published August 12, 2026*
+
+## The Number That Doesn't Fit
+
+Champions First Credit Union has spent six years doing everything a growth-minded credit union is supposed to do. It merged in Pensacola-based GPCE Credit Union in October 2020, picking up branches in Pensacola and Panama City. It merged in the Florida Department of Transportation Credit Union in January 2022. And on October 1, 2024, after what management described as nearly three years of research, it retired the FSU Credit Union name it had carried since 1954 and became Champions First, a brand built to tell 18 counties of North Florida that you don't need a Florida State connection to join.
+
+Assets responded. The combined institution held nearly $400 million when the FDOT merger closed. As of March 31, 2026, it holds $535.8 million, growth of roughly 34% in a little over four years.
+
+Membership didn't. The FDOT merger created a credit union with about 32,000 members. Today it has 32,930.
+
+:::stat
+**~900**
+Net new members Champions First has added since January 1, 2022, a stretch in which total assets grew roughly 34%. That works out to about 220 net members a year.
+:::
+
+That's the number that doesn't fit. Two mergers, a seven-county charter expansion, a full rebrand, and a balance sheet a third bigger. Everything grew except the number of member-owners.
+
+## The Membership Math
+
+The legal ceiling here is generous. Champions First's field of membership covers anyone who lives or works in 18 North Florida counties, from Escambia on the Alabama line to Columbia County out east past Tallahassee. Add up the Census estimates and that's roughly 1.6 million people. At 32,930 members, penetration sits right around 2%.
+
+For context, the two credit unions we profiled earlier this month, [REV Federal](/blog/rev-credit-union-west-virginia-bet) and [Palmetto Citizens](/blog/palmetto-citizens-90-year-wait), each penetrate their fields of membership at just under 9%. Champions First is working with a fraction of that, in a footprint that includes some of the fastest-growing counties in Florida.
+
+There's a sharper version of this number in the regulatory record. When the credit union expanded west in 2018, adding Escambia, Santa Rosa, Okaloosa, Walton, Holmes, Washington, and Jefferson counties, Florida's Office of Financial Regulation approved the expansion with a condition attached: no more than 2,500 new members a year from the new territory.
+
+:::pullquote
+The state capped Champions First at 2,500 new members a year from its western expansion. The entire credit union is netting about 220.
+:::
+
+Net numbers hide churn, to be fair. The credit union signs up far more than 220 people a year and loses most of the gain to attrition. But that is the point. For a cooperative, net member growth is the growth rate that matters, because members are the customer base and the funding base at the same time.
+
+Meanwhile the local market is consolidating around them. Envision Credit Union, the other Tallahassee credit union founded in 1954, was absorbed by Orlando's Addition Financial on October 1, 2025, creating a $3.8 billion institution with 250,000 members. First Commerce, at $1.15 billion, is now the largest credit union still headquartered in Tallahassee. Champions First is what remains of the second tier.
+
+One structural note. For a bank, we'd check county deposit share from the FDIC Summary of Deposits and mortgage rank from HMDA. Neither exists here. Credit unions don't file into the FDIC's deposit data at all, and Champions First doesn't appear on the 2023 or 2024 HMDA filer lists. Membership penetration is the metric that's left, and it says the constraint isn't the charter.
+
+## The Balance Sheet
+
+Inside the $413.6 million loan book, the engine has been swapped mid-flight. Real estate lending grew 22% in 2024, from $113.4 million to $138.4 million, and stands at $162.4 million as of March 2026. Real estate went from under a third of the loan book two years ago to nearly 40% today.
+
+The bucket that used to define this credit union is moving the other way. Autos and other consumer loans, $235.1 million at the end of 2023, slipped to $231.1 million in 2024. Credit cards fell 4%. About $42 million of 2024's auto volume came through the iDrive CUSO, an indirect lending pipeline that puts Champions First financing on dealership desks in Leon and Bay counties. Indirect paper keeps a loan book full, but a dealership-sourced borrower gets you a loan, not necessarily a member. Indirect members are notoriously single-product.
+
+The funding side tells you what flat membership costs. Of $476.2 million in total shares, just $79.8 million, under 17%, sits in share drafts, the checking-equivalent balances that mark a member's primary financial relationship. Certificates and money market balances make up 54.5% of shares. That money is loyal to a rate, not to an institution.
+
+And the rate got paid. Dividends on shares jumped 49% in 2024, to $8.0 million, while interest income grew 20%. Provision expense rose 24%. Net income fell 12%, to $3.0 million, a return on assets of about 0.6%.
+
+:::stat
+**49%**
+The one-year increase in dividends Champions First paid on shares in 2024, against 20% growth in interest income. When new members don't walk in, funding has to be bought.
+:::
+
+## The Capital Ceiling
+
+None of this is a solvency story. Net worth stands at roughly $54.2 million, 10.1% of assets, comfortably clear of the 7% floor that defines a well-capitalized credit union. Asset quality looks tame, with the allowance at 0.73% of loans.
+
+The ceiling is arithmetic. A credit union cannot issue stock, and Champions First carries no subordinated debt, so every dollar of future capital has to come from retained earnings. An institution earning 0.6% on assets while holding a 10% net worth ratio can grow about 6% a year before the ratio starts to slide. Champions First grew 6.5% in 2024. It is running at almost exactly the speed its earnings allow, with nothing in reserve.
+
+That's what makes the funding math risky to extrapolate. Flat membership means growth gets bought with certificate rates. Bought funding compresses earnings. Compressed earnings lower the speed limit. A $900,000 CDFI grant in 2024, nearly a third of that year's net income, helped the earnings line once. The flagship branch planned for Pensacola, on property purchased in 2024, adds fixed cost pointed at the market the GPCE members came from.
+
+:::pullquote
+Flat membership never shows up on a cooperative's income statement as a missing line. It shows up as a 49% jump in the price of funding.
+:::
+
+## The Stack
+
+Here's the part of the story you can see from a browser. The rebrand made it to the signage, the ribbon cuttings, and the domain name. It has not made it to the application layer.
+
+Online banking at my.championsfirst.org runs on Jack Henry's Banno platform, a credible mainstream front end. The lending and membership funnel is where the seams show. Click "Apply for a Loan" on any product page, auto, personal, mortgage, or the credit rebuilder program, and you leave the brand entirely for app.loanspq.com, MeridianLink's loan origination portal. Opening an account routes to a MeridianLink consumer domain whose URL still carries the lender reference "Floridascu." The loan page's App Store link still points to an iOS app named FSU Credit Union Mobility. Nearly two years after the name change, a prospective member who clicks "join" is handed to a vendor page that, under the hood, still calls the institution by its old name.
+
+This month, that's changing. Champions First has been preparing members since January for an August 2026 rollout of a new online banking platform and mobile app, alongside a new chatbot and phone system. It's the first major infrastructure decision of the Champions First era.
+
+The replatform will fix how the front door looks. Whether it fixes the funnel depends on what happens after someone taps "apply": whether identity, income, and a funding account get verified in one sitting, or whether the new brand still hands its most important moment to a third-party domain that remembers the old name. Champions First is allowed 2,500 new members a year from its western counties alone and is netting about 220 across the whole institution. In a footprint growing as fast as the Florida Panhandle, that gap isn't a demand problem. It's a funnel problem, and funnel problems, unlike charters and names, don't take three years of research to fix.
+    `,
+  },
+  'palmetto-citizens-90-year-wait': {
+    title: 'Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.',
+    description:
+      "Palmetto Citizens Federal Credit Union's own charter has let Georgia residents join for years. It still took a struggling bank's branch sale, and the same Sardis, Georgia institution RAVEN already profiled, to actually show up there.",
+    publishedDate: 'August 3, 2026',
+    readTime: '6 min read',
+    content: `
+# Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.
+
+*Published August 3, 2026*
+
+## The Number That Doesn't Fit
+
+Palmetto Citizens Federal Credit Union didn't need anyone's permission to serve a member in Georgia. Its charter has allowed that for years, through a partnership with the Carolina Consumer Council that opens membership to residents of South Carolina, North Carolina, Georgia, Tennessee, and Virginia. Nobody had to file anything. Nobody had to wait on the NCUA.
+
+And yet the Columbia, South Carolina credit union didn't put a branch in Georgia until August 1, 2026, when it closed on four branches bought from Southern Bank in Waynesboro, Sardis, Gibson, and Hephzibah. It started serving those roughly 7,000 customers as members two days later. Ninety years after its 1936 charter, this is Palmetto Citizens' first physical presence outside South Carolina.
+
+The seller has its own story, and it's one we've told before. [Southern Bank is the 1945-chartered Georgia bank](/blog/southern-bank-spartanburg-side-door) that recapitalized, moved its headquarters to Spartanburg, and grew from $93 million to $400 million by planting itself squarely in South Carolina's growth corridor. This deal is Southern Bank finishing that job: selling off the Georgia branches it grew out of, the town of Sardis among them, to a South Carolina credit union that was legally free to serve those same Georgia customers the whole time and simply never had a reason to show up until the bank that started there decided to leave.
+
+:::pullquote
+The legal door to Georgia had been open for years. It took a bank deciding to leave for the credit union to actually walk through it.
+:::
+
+That's the number that doesn't fit: 90 years, against a membership rule that put no real barrier in the way at all. Charter access and market presence turned out to be two entirely different things.
+
+## The Membership Math
+
+Palmetto Citizens' core field of membership runs through eight counties in the South Carolina Midlands: Calhoun, Fairfield, Kershaw, Lexington, Newberry, Orangeburg, Richland, and Saluda. Add those up and you get something close to 990,000 people. Palmetto Citizens' 85,933 members work out to under 9% of that population, almost the exact headroom we found at REV Federal Credit Union on the coast a few weeks back. Whatever is keeping South Carolina credit unions from converting their own charters, it isn't a shortage of eligible people.
+
+:::stat
+**Under 9%**
+Palmetto Citizens' approximate membership penetration across its eight-county South Carolina field of membership, before counting the Carolina Consumer Council states. The Georgia acquisition adds members faster than years of eligible-but-unconverted South Carolinians would.
+:::
+
+The Georgia side of the math looks nothing like the Midlands. Waynesboro, the biggest of the four new towns and the seat of Burke County, has 5,439 people and is shrinking at roughly 1% a year. Median household income sits at $41,620, with more than a quarter of residents below the poverty line. Sardis has 995 people. Gibson is the seat of Glascock County, the fourth-least-populous county in the entire state of Georgia, at 2,884 residents. Hephzibah, the largest by population at 3,830, at least sits inside the Augusta metro.
+
+None of that is a knock on the deal. Palmetto Citizens has held CDFI certification since April 2023, one of only 20 credit unions in South Carolina to earn it, a designation that exists specifically to reward lenders serving low-income and underserved communities. A shrinking Georgia county with a 26% poverty rate is exactly the kind of market that certification is built around. It's just a very different member than the one Palmetto Citizens has spent 90 years signing up in growing, affluent Lexington County.
+
+## The Balance Sheet
+
+The acquisition itself barely moves Palmetto Citizens' numbers. The credit union carries roughly $1.44 billion in assets, $192.9 million in net worth, and a net worth ratio of 13.34%, comfortably above the 7% regulatory floor and ahead of the roughly 11.3% the credit union industry ran in aggregate at the end of 2025. Chief Lending Officer Robert Terrell oversees a loan portfolio of about $734 million. Palmetto Citizens doesn't publish category-level loan mix the way a bank's 10-Q footnotes would, and no CRA performance evaluation exists for a credit union at all, so the auto-versus-mortgage-versus-business split behind that $734 million stays private.
+
+Against that balance sheet, the Georgia branches bring roughly $83 million in shares and $20 million in loans onto the books, per the terms disclosed when the deal was announced in November 2025. That's about 5.8% of Palmetto Citizens' total assets and less than 3% of its loan book. This is not a balance sheet-altering transaction. It's a rounding error with a press release attached, which is exactly why a credit union with no stock to issue and no equity market to tap could absorb it without much strain.
+
+## The Capital Ceiling
+
+Here's where the real constraint shows up, and it isn't this deal. CEO Robert Dozier has said he wants Palmetto Citizens above $2 billion in assets by 2028 or 2029. That's roughly 39% growth from today's $1.44 billion in three to four years, funded entirely by retained earnings the credit union kept instead of paying out as member dividends, tax-free, the tradeoff for a structure with no shareholders and no stock offering waiting in reserve if growth outpaces capital.
+
+A $20 million loan book from four small-town Georgia branches doesn't test that math. A repeat of this deal, five or six times the size, would. Dozier's own target implies exactly that kind of repeat performance: either faster organic growth than a 13.34%-net-worth-ratio institution typically produces on its own, or more acquisitions like this one, each a little bigger, each drawing the same capital cushion down a little further.
+
+:::pullquote
+Ninety years of patience bought Palmetto Citizens a comfortable net worth ratio. Three years of an explicit growth target will test how much of that cushion is actually spendable.
+:::
+
+## The Stack
+
+Palmetto Citizens' digital lending experience is, honestly, ahead of most of the community banks and credit unions we've profiled. Vehicle loans, mortgages, home equity, and credit cards all apply through one consolidated first-party flow at applynow.palmettocitizens.org, running on Tyfone's nFinia digital banking platform. New membership applications route through MeridianLink, a purpose-built account-opening platform, not the most seamless third-party handoff we've seen, but a long way from a dated legacy portal.
+
+Then there's business lending. Lines of credit, term loans, commercial real estate, SBA 7(a) loans, and nonprofit financing: every single one requires a phone call, a Help Desk message, or a branch visit. Zero of the five have an online application. That gap was a curiosity for a Midlands credit union serving established South Carolina small businesses. It's a mismatch for an institution that just became the primary financial option in Georgia counties where the CDFI mission and small-business programs like SBA 7(a) are supposed to be the point. The member base just got more rural and more dependent on exactly the loan category Palmetto Citizens hasn't figured out how to put online.
+    `,
+  },
+  'rev-credit-union-west-virginia-bet': {
+    title: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
+    description:
+      "A Charleston-area credit union is buying a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its own charter doesn't reach anywhere near there.",
+    publishedDate: 'August 2, 2026',
+    readTime: '6 min read',
+    content: `
+# REV Federal Credit Union's 520-Mile Bet on West Virginia
+
+*Published August 2, 2026*
+
+## The Number That Doesn't Fit
+
+Spencer, West Virginia sits 520 miles from Summerville, South Carolina. Nine hours by car, most of it through mountains that eat cell signal. REV Federal Credit Union has never had a member in Spencer. It's about to own the town's only bank.
+
+The target is First Neighborhood Bank, a 114-year-old institution with roughly $150 million in assets, five branches, and 39 employees spread across Spencer, Ripley, and Parkersburg. REV announced the deal in 2024. West Virginia's Division of Financial Institutions, the FDIC, and the NCUA signed off on May 27, 2026, clearing the way for a close targeted for May 1, 2027. Lawyers on the transaction called it the first time a credit union has ever bought a bank in West Virginia. Nobody in that state had a form for this, which is a decent explanation for why approval took the better part of two years.
+
+REV isn't some scrappy startup punching above its weight. It's a $1.15 billion federal credit union with 67,000 members and 17 branches around Charleston, and this is its third expansion in five years, after 2021 mergers with two small North Carolina credit unions, Riegelwood and Hamlet. CEO Jason Lee calls the strategy "Growth with Purpose," part of a five-year plan he's named VISION2030, and he's been explicit about the destination: he wants REV to "operate as a multi-billion financial institution."
+
+:::pullquote
+A credit union chartered around Charleston's harbor just became the presumptive owner of a bank in a county most of its own members couldn't find on a map.
+:::
+
+That's the number that doesn't fit. Not the price tag, which is small change against REV's balance sheet. It's the 520 miles, and everything they imply about why a growing institution goes looking for growth somewhere its own charter doesn't reach.
+
+## The Membership Math
+
+Here's what REV's federal charter actually authorizes. Anyone who lives, works, worships, volunteers, or goes to school in Berkeley, Charleston, Colleton, or Dorchester County, South Carolina, qualifies. So does anyone in Brunswick or Columbus County, North Carolina. So does anyone connected to Joint Base Charleston: active duty, veterans, retirees, their families. And if none of that applies, a $15 donation to the credit union's affiliated foundation buys eligibility anyway, the associational side door most multiple-common-bond credit unions build into their charter for exactly this purpose.
+
+Not one line of that list touches West Virginia.
+
+Which raises the obvious question: how does a customer of First Neighborhood Bank in Spencer become a member of REV once the deal closes? The honest answer, based on how the NCUA has handled prior credit-union-buys-bank deals, is that the agency effectively folds the acquired customer base into membership as a condition of approving the transaction. It's a workaround, not a charter expansion, and West Virginia had never seen the workaround applied before this deal.
+
+Meanwhile, REV's actual home turf is nowhere near full. Charleston, Berkeley, and Dorchester counties alone hold something north of 840,000 people, and Colleton adds another 39,000. REV's 67,000 members work out to somewhere under 8% of that population, before anyone counts the North Carolina counties or the base affiliation. This is a credit union with a nine-figure runway of unconverted eligible members sitting inside its own charter, choosing to spend capital chasing 7,000 new members two states and a mountain range away instead.
+
+:::stat
+**8%**
+Roughly REV's membership penetration across just its South Carolina field of membership, before counting North Carolina or Joint Base Charleston. There's more growth sitting inside its own charter than the West Virginia deal adds.
+:::
+
+## The Balance Sheet
+
+Whatever REV is doing, it isn't doing it from a position of weakness. The credit union closed out 2025 with $167.5 million in net worth against total assets near $1.2 billion, a net worth ratio of 14.16%, more than double the 7% floor federal regulators use to call an institution well capitalized, and well ahead of the roughly 11.3% the credit union industry was running in aggregate at the same point.
+
+Asset quality backs that up. Non-current loans sat at $9.93 million against $4.28 million in loan loss reserves, and REV's Texas ratio, a shorthand that compares troubled assets against the capital and reserves available to absorb them, came in at 5.84%. Anything under 100% is considered healthy. REV isn't close to the danger zone.
+
+What the public numbers don't show is loan mix. REV doesn't publish the kind of category-level breakdown a bank's quarterly filings would carry, and unlike a public bank holding company, it has no 10-Q footnotes to fill that gap. What's visible from its own marketing is a push toward commercial lending, most notably the recent promotion of its business-solutions director to Vice President of Commercial Banking, layered on top of the usual credit union staples of auto loans, mortgages, and share certificates.
+
+## The Capital Ceiling
+
+This is where the structural difference between a credit union and a bank actually bites. First Bancorp, a public South Carolina bank holding company, financed its own acquisition of Carolina Bank & Trust this year with a mix of stock and cash: roughly $126 million in shares and $40 million in cash. REV doesn't have that option. It can't issue stock to anyone, member or outside investor. Every dollar it spends on First Neighborhood has to come from capital it already earned and kept, tax-free, over years of member dividends the credit union chose not to pay out.
+
+That's not a knock on the model. It's the tradeoff for the exemption: no shareholders to answer to, and no equity market to tap when a deal gets expensive.
+
+:::pullquote
+A bank buying a bank can sell stock to cover the gap. A credit union buying a bank can only spend what it already has.
+:::
+
+Run the arithmetic. First Neighborhood carries roughly $150 million in assets against $12.7 million in capital. Absorb that onto a $1.2 billion balance sheet without a matching jump in net worth, and the post-close ratio mechanically drifts down from 14.16%, even if it lands somewhere still comfortably above 7%. REV has the cushion to absorb a deal this size. It does not have unlimited cushion to keep doing it every few years while still calling the plan "Growth with Purpose" rather than growth against the capital buffer. The ceiling on how fast REV can chase VISION2030 isn't ambition. It's retained earnings, one annual net income figure at a time, with no IPO waiting in the wings if the pace outruns the balance sheet.
+
+## The Stack
+
+REV is also mid-rebuild on the technology side. It relaunched its digital banking platform over the past year and has a new, in-house loan origination and application system targeted for a 2026 launch, a build decision rather than a buy decision, which is the harder and slower path but the one that gives REV control over how a Charleston-area member and a Mid-Ohio Valley member experience the same institution.
+
+That gap is about to get tested for real. A retiree in Summerville and a borrower in Roane County, where median household income runs around $37,000 and unemployment sits near 11%, are not the same member, and REV's new intake system will need to verify both without REV doubling its back office to do it. Every credit union crossing into a market its charter never anticipated hits the same day-one decision: whether the stack was built for the members it has, or for the members it's about to inherit from somewhere the charter never reached.
+    `,
+  },
   'optimumbank-98-percent-cre-growth': {
     title: 'The 98.7% Bank',
     description:

@@ -2998,6 +2998,119 @@
     "sources": "palmettocitizens.org (loan/, business/loans/, personal/vehicles/, personal/mortgage/, personal/homeequity/ pages, reviewed August 2026); applynow.palmettocitizens.org and app.consumer.meridianlink.com (application domains); fintechfutures.com coverage of the Tyfone nFinia platform adoption; palmettocitizens.org CDFI designation press release (April 2023) and CUInsight coverage; bestcashcow.com and ncuso.org NCUA charter #1472 call-report aggregation (assets, net worth, net worth ratio); cutoday.info and coladaily.com coverage of the Southern Bank Georgia branch acquisition (announced November 2025, closed August 1, 2026); Census QuickFacts and worldpopulationreview.com for Burke, Glascock, and Richmond County GA and the eight South Carolina Midlands counties."
   },
   {
+    "slug": "champions-first-credit-union",
+    "bankName": "Champions First Credit Union",
+    "shortName": "Champions First",
+    "auditDate": "August 2026",
+    "demoSlug": "champions-first-credit-union",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$535.8M (member-owned, not stock-issued)"
+      },
+      {
+        "label": "Members",
+        "value": "32,930"
+      },
+      {
+        "label": "Branches",
+        "value": "9 across North Florida"
+      },
+      {
+        "label": "Net new members since Jan 2022",
+        "value": "~900 (~220/year)"
+      }
+    ],
+    "summary": "Champions First Credit Union spent six years assembling growth machinery: the GPCE Credit Union merger in 2020, the FDOT Credit Union merger in 2022, and the October 2024 retirement of the FSU Credit Union name it had carried since 1954. Assets grew 34% to $535.8 million. Membership went from roughly 32,000 to 32,930. The funnel explains the gap. Every loan product hands applicants to MeridianLink's generic app.loanspq.com portal, account opening routes to a MeridianLink domain whose lender reference still reads 'Floridascu,' and the loan page's App Store link still points to an app named FSU Credit Union Mobility. Champions First is rolling out a new digital banking platform and mobile app in August 2026, which makes right now the moment the intake layer gets decided.",
+    "currentJourney": [
+      {
+        "channel": "Online banking",
+        "detail": "my.championsfirst.org runs on Jack Henry’s Banno platform, a credible mainstream front end",
+        "status": "ok"
+      },
+      {
+        "channel": "Auto loans (incl. OnPace / InGear programs)",
+        "detail": "“Apply Now” hands off to app.loanspq.com, MeridianLink’s loan origination portal on a third-party domain",
+        "status": "weak"
+      },
+      {
+        "channel": "Personal loans / credit rebuilder",
+        "detail": "Same app.loanspq.com handoff as auto lending, generic vendor screens with no Champions First domain",
+        "status": "weak"
+      },
+      {
+        "channel": "Mortgages",
+        "detail": "No dedicated first-party mortgage flow; routes through the same generic MeridianLink loan portal",
+        "status": "weak"
+      },
+      {
+        "channel": "Business loans",
+        "detail": "No business-specific online application; the Business Loans page routes to the generic consumer loan portal",
+        "status": "missing"
+      },
+      {
+        "channel": "New membership / account opening",
+        "detail": "Routes to app.consumer.meridianlink.com with the FSU-era lender reference “Floridascu” still in the URL",
+        "status": "weak"
+      },
+      {
+        "channel": "Mobile app",
+        "detail": "The loan page’s App Store link still points to “FSU Credit Union Mobility,” nearly two years after the rebrand",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "The rebrand stopped at the application layer",
+        "severity": "gap",
+        "body": "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But the account-opening URL still identifies the institution as “Floridascu,” the App Store listing still says FSU Credit Union Mobility, and every loan application leaves the brand for a generic MeridianLink portal. The brand investment stops at exactly the moment a prospect decides whether to become a member."
+      },
+      {
+        "title": "Allowed 2,500 new members a year from the western counties; netting about 220 total",
+        "severity": "gap",
+        "body": "Florida's Office of Financial Regulation capped the 2018 seven-county western expansion at 2,500 new members a year. The whole credit union has netted roughly 900 members since January 2022, about 220 a year, against a 1.6-million-person field of membership that includes some of Florida's fastest-growing counties. Penetration sits near 2% while comparable Southeast credit unions run near 9%. That is a conversion problem, not a demand problem."
+      },
+      {
+        "title": "Funding costs rose 49% because new members did not show up",
+        "severity": "friction",
+        "body": "Only 17% of shares sit in share drafts, the primary-relationship balances that arrive with new members. Growth got bought instead: dividends on shares jumped 49% in 2024 to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares. Rate-bought money leaves with the rate. Members do not."
+      },
+      {
+        "title": "The August 2026 replatform is the moment to fix intake, not just the interface",
+        "severity": "note",
+        "body": "Champions First is rolling out a new online banking platform, mobile app, chatbot, and phone system in August 2026, the first major infrastructure decision of the Champions First era. A new interface in front of the same third-party application handoff changes how the front door looks, not how many people get through it. Building verified intake (identity, income, funding account, in one sitting, on the credit union’s own domain) into the replatform is the difference between a facelift and a funnel."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Joining the credit union",
+        "today": "Handoff to a MeridianLink domain that still says “Floridascu”",
+        "withRaven": "Champions First-branded flow, end to end"
+      },
+      {
+        "dimension": "Applying for any loan",
+        "today": "Generic app.loanspq.com portal, same for every product",
+        "withRaven": "One branded flow with product-aware verification"
+      },
+      {
+        "dimension": "Identity, income, and funding verification",
+        "today": "Form fields and follow-up document chases",
+        "withRaven": "Automated verification in minutes, in-flow"
+      },
+      {
+        "dimension": "Indirect auto borrowers (iDrive CUSO)",
+        "today": "A loan on the books, rarely a primary member",
+        "withRaven": "Verified membership and share draft opened at loan intake"
+      },
+      {
+        "dimension": "Business lending",
+        "today": "No dedicated online application",
+        "withRaven": "Digital business intake with entity and owner verification"
+      }
+    ],
+    "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; Florida OFR field-of-membership record (2018 expansion, 2,500 members/year condition); American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
+  },
+  {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",

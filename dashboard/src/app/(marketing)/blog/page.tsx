@@ -49,7 +49,7 @@ const ArrowRight = () => (
 function FeaturedCard({ article }: { article: Article }) {
   return (
     <a href={`/blog/${article.slug}`} className="blog-featured-card">
-      <div className="blog-featured-cat">{article.category === 'fintech' ? 'Fintech vs. Bank' : article.category === 'bank' ? 'Bank Deep Dive' : article.category === 'denovo' ? 'De Novo Watch' : 'Industry Research'}</div>
+      <div className="blog-featured-cat">{article.category === 'fintech' ? 'Fintech vs. Bank' : article.category === 'bank' ? 'Bank Deep Dive' : article.category === 'denovo' ? 'De Novo Watch' : article.category === 'creditunion' ? 'Credit Union Deep Dive' : 'Industry Research'}</div>
       <h2>{article.title}</h2>
       <p>{article.description}</p>
       <span className="blog-card-read">
@@ -103,8 +103,12 @@ export default function BlogIndex() {
   const fintechArticles = articles.filter((a) => a.category === 'fintech' && !a.featured);
   const platformArticles = articles.filter((a) => a.category === 'platform');
   const guideArticles = articles.filter((a) => a.category === 'guide' && !a.featured);
-  // Section numbers shift by one when the De Novo Watch section has articles to show.
-  const num = (n: number) => String(n + (denovoArticles.length > 0 ? 1 : 0)).padStart(2, '0');
+  const creditUnionArticles = articles.filter((a) => a.category === 'creditunion' && !a.featured);
+  // De Novo Watch and Credit Union Deep Dives only render when populated, so the
+  // fixed sections after them shift by however many of the two are showing.
+  const optionalSections = (denovoArticles.length > 0 ? 1 : 0) + (creditUnionArticles.length > 0 ? 1 : 0);
+  const num = (n: number) => String(n + optionalSections).padStart(2, '0');
+  const creditUnionNum = String(2 + (denovoArticles.length > 0 ? 1 : 0)).padStart(2, '0');
 
   return (
     <>
@@ -333,6 +337,20 @@ export default function BlogIndex() {
           border-left: 3px solid rgba(52,211,153,0.4);
         }
 
+        /* Credit union grid - 3 columns, violet accent */
+        .blog-cu-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1px;
+          background: rgba(255,255,255,0.06);
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,0.08);
+        }
+        .blog-cu-grid .blog-card-wrap {
+          border-left: 3px solid rgba(167,139,250,0.4);
+        }
+
         /* Fintech grid - 2 columns, more compact */
         .blog-fintech-grid {
           display: grid;
@@ -388,6 +406,7 @@ export default function BlogIndex() {
           .blog-featured-grid { grid-template-columns: 1fr; }
           .blog-bank-grid { grid-template-columns: repeat(2, 1fr); }
           .blog-denovo-grid { grid-template-columns: repeat(2, 1fr); }
+          .blog-cu-grid { grid-template-columns: repeat(2, 1fr); }
           .blog-guide-grid { grid-template-columns: repeat(2, 1fr); }
           .blog-featured-card { padding: 1.75rem; }
           .blog-section { margin-bottom: 3rem; }
@@ -400,6 +419,7 @@ export default function BlogIndex() {
           .blog-featured-card h2 { font-size: 1.05rem; }
           .blog-bank-grid,
           .blog-denovo-grid,
+          .blog-cu-grid,
           .blog-fintech-grid,
           .blog-platform-grid,
           .blog-guide-grid { grid-template-columns: 1fr; }
@@ -453,6 +473,22 @@ export default function BlogIndex() {
             />
             <div className="blog-denovo-grid">
               {denovoArticles.map((a) => (
+                <ArticleCard key={a.slug} article={a} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Credit Union Deep Dives */}
+        {creditUnionArticles.length > 0 && (
+          <div className="blog-section">
+            <SectionLabel
+              num={creditUnionNum}
+              label="Credit Union Deep Dives"
+              description="Member-owned institutions analyzed on their own terms: NCUA 5300 call reports, net worth ratios, field-of-membership penetration, and the capital math of growing without equity."
+            />
+            <div className="blog-cu-grid">
+              {creditUnionArticles.map((a) => (
                 <ArticleCard key={a.slug} article={a} />
               ))}
             </div>
