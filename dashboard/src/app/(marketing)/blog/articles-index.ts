@@ -16,6 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'founders-credit-union-mill-town',
+    title: "The Mill Closed. The Credit Union Didn't.",
+    description:
+      "Springs Mills left South Carolina in 2007. The credit union its workers founded in 1950 now holds $5.18 billion, serves 2.5 members for every resident of its home county, and just lived through a succession reversal you'd need an 8-K to see at a bank.",
+    readTime: '6 min read',
+    date: 'August 2026',
+    category: 'creditunion',
+    auditSlug: 'founders-federal-credit-union',
+  },
+  {
     slug: 'champions-first-fsu-rebrand',
     title: 'The Credit Union Formerly Known as FSU',
     description:

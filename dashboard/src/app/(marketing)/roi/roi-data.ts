@@ -1250,6 +1250,68 @@ export const ROI_BANKS: BankRoiInput[] = [
       'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
+    slug: 'founders-federal-credit-union',
+    name: 'Founders Federal Credit Union',
+    shortName: 'Founders',
+    articleSlug: 'founders-credit-union-mill-town',
+    articleTitle: "The Mill Closed. The Credit Union Didn't.",
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Founders is a credit union with no FDIC cert. Populated with its NCUA
+    // charter number (24063) instead until this field is generalized. See
+    // `sources`.
+    fdicCert: 24063,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$5.18B (Mar 2026)' },
+      { label: 'Net worth ratio', value: '13.2% (Mar 2026)' },
+      { label: 'Members', value: '290,408' },
+      { label: 'Branch count', value: '49 across the Carolinas' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 2139,
+        source:
+          'Reported 2024 HMDA originations (action taken = originated) for Founders Federal Credit Union, LEI 5493001AGQGPJ3N3YL33, totaling $332.8M, via the FFIEC HMDA data browser API. Unlike most credit unions in this series, Founders is a HMDA reporter, so this is an actual filed figure, not an estimate.',
+        estimated: false,
+      },
+      commercial: {
+        count: 120,
+        source:
+          'Founders markets business services but publishes no member-business-lending origination detail, and no business-specific online application is visible on foundersfcu.com. Estimate reflects a $5.2B credit union with a consumer-first model and a modest commercial book.',
+        estimated: true,
+      },
+      consumer: {
+        count: 14000,
+        source:
+          'Auto, personal, express, and credit card lending dominate the book: $1.16B in vehicle/other secured loans plus $605.8M unsecured (14.9% of loans, far above industry norms) as of March 2026. Estimate scales the origination-per-member rate observed across this series (~4.8% of members annually) to 290,408 members; small-dollar express and credit-builder products push count above dollar-implied levels. Not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 9000,
+      source:
+        "Founders is a multiple common bond charter: 200+ select employer groups, immediate family, Clemson students, plus underserved-area additions covering Chester, Chesterfield, Lancaster, Laurens, and Union counties, census tracts in Cherokee, Spartanburg, and York counties (SC), and Mecklenburg County plus Gaston County tracts (NC). No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to the geographic components of the field of membership. Lancaster County added ~3,000 residents last year (fastest-growing in the Charlotte metro per Census estimates), and Mecklenburg County (Charlotte, 1.1M people, fully eligible) adds roughly 15,000+ residents a year; at 2.5 persons per household, a conservative reachable estimate nets to roughly 9,000 new households a year across the geographic FOM, before counting employer-group hiring.",
+    },
+    intro:
+      "Founders Federal Credit Union is the institution the rest of this series gets compared to. South Carolina's largest credit union ($5.18B, 290,408 members, 2.5 members for every resident of its home county) runs a lend-deep model: one loan dollar in seven is unsecured, loan yield annualizes near 7.1%, the allowance sits at a heavy 2.0% of loans, and Q1 2026 ROA still annualized to roughly 1.29%, about double the industry run rate. Its stack is equally unusual: applications run on a first-party subdomain, digital banking is Q2, and its own technology CUSO sells Corelation KeyStone tooling to other credit unions. The model's exposed nerve is intake quality: every basis point of loss in a signature-lending book enters through an application, which is precisely where verification infrastructure earns its keep.",
+    strategic: [
+      {
+        title: 'A 2% Reserve Model Lives or Dies at the Application',
+        body: "Founders reserves $81.5M against its loan book (2.0% of loans, nearly triple what comparable credit unions in this series carry) because its model lends $605.8M unsecured to ordinary members and prices for the losses. That trade works exactly as long as intake quality holds: a signature loan approved on a misstated income or a synthetic identity has no collateral behind it. Verification-first intake (identity, income, and funding account confirmed at the point of application, from source data rather than borrower-typed fields) is not a member-experience upgrade for this model. It is loss-rate insurance on the exact product line that generates Founders' industry-leading 1.29% ROA.",
+      },
+      {
+        title: 'The Rare First-Party Stack, Missing Its Verification Layer',
+        body: "Founders already did what this series keeps recommending: account opening and lending run at apply.foundersfcu.com on its own subdomain, digital banking is Q2, and its FIT CUSO commercializes internal KeyStone tooling for other credit unions. An institution that builds and sells its own core tooling doesn't need a vendor to replace its front door; it needs the verification layer inside the flow it already owns. RAVEN slots under an existing first-party application as the data layer (identity, income, employment, funding account from source) which is also a natural fit for a CUSO-minded institution that prefers owning its machinery to renting someone else's.",
+      },
+      {
+        title: '290,000 Members, 13% in Share Drafts: The Primary-Relationship Gap',
+        body: 'Founders adds members at a pace the rest of the series can only envy (roughly 4,600 net in Q1 2026 alone) yet share drafts are just 13% of the $4.42B share base while certificates and money market run 64%. Even the best member-acquisition machine in South Carolina is buying much of its funding at rate. The cheapest fix is at loan intake: a borrower joining for an auto or express loan whose identity and funding account are already verified can open a share draft in the same flow, in seconds, converting rate-shoppers into primary members at the exact moment they have a reason to say yes.',
+      },
+    ],
+    sources:
+      "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, membership pages, reviewed August 2026); apply.foundersfcu.com (first-party account opening and lending subdomain) and mortgage.foundersfcu.com (mortgage application, vendor-powered on a Founders subdomain); Q2 external-link whitelist in foundersfcu.com page source and Q2 published customer story (info.q2.com); fitcuso.com (FIT CUSO, Founders Innovative Technology: KeyStone-specific products); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026: assets, loans, loan mix, shares, share mix, equity, members, branches, income statement); FFIEC HMDA data browser API, 2024, LEI 5493001AGQGPJ3N3YL33 (2,139 originations, $332.8M); WalletHub and foundersfcu.com membership eligibility; CUToday, CU Times, WRHI, and Tyfone news coverage of the 2025-2026 leadership transition; Home Textiles Today and SC Encyclopedia for Springs Industries history; USAFacts/Census for Lancaster County population. fdicCert field holds Founders' NCUA charter number, not an FDIC certificate; Founders is a federally insured credit union with no FDIC cert. Federal charter: no IRS Form 990 exists (unlike state-chartered credit unions).",
+  },
+  {
     slug: 'champions-first-credit-union',
     name: 'Champions First Credit Union',
     shortName: 'Champions First',

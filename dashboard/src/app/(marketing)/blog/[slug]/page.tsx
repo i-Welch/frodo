@@ -87,6 +87,94 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'founders-credit-union-mill-town': {
+    title: "The Mill Closed. The Credit Union Didn't.",
+    description:
+      "Springs Mills left South Carolina in 2007. The credit union its workers founded in 1950 now holds $5.18 billion, serves 2.5 members for every resident of its home county, and just lived through a succession reversal you'd need an 8-K to see at a bank.",
+    publishedDate: 'August 17, 2026',
+    readTime: '6 min read',
+    content: `
+# The Mill Closed. The Credit Union Didn't.
+
+*Published August 17, 2026*
+
+## The Number That Doesn't Fit
+
+In 1950, a group of Springs Mills employees in Lancaster, South Carolina started a credit union to keep their coworkers away from loan sharks. They named it Springmaid, after the company's bedsheet brand. Springs wasn't just the sponsor; it was the town. At its peak, the company's original plant employed nearly a third of Lancaster County.
+
+The mill side of that story ended in June 2007, when Springs closed the Grace plants in Lancaster, its last manufacturing operations in South Carolina after 120 years, and moved production to Brazil. Five hundred forty workers lost their jobs on the way out.
+
+The credit union side kept going. Founders Federal Credit Union, as Springmaid has been called since 1980, holds $5.18 billion in assets as of March 31, 2026. It runs 49 branches across the Carolinas, employs 890 people, and serves 290,408 members from a headquarters in a county of 114,300 residents.
+
+Read that again. Two and a half members for every man, woman, and child in Lancaster County.
+
+:::stat
+**2.5x**
+Founders' 290,408 members, measured against the 114,300 people who live in its home county. The sponsor company that created it stopped manufacturing in South Carolina nineteen years ago.
+:::
+
+The sponsor died. The cooperative built on its payroll deduction became the largest credit union in South Carolina, and one of the most profitable institutions of its size in the country.
+
+## The Membership Math
+
+Founders is not a community charter like the credit unions in our recent deep dives. It's a multiple common bond charter, which means its legal market is not a map. It's a list.
+
+More than 200 select employer groups anchor the charter, along with immediate family of any member and, in a nice touch for a credit union named Founders, students at Clemson University. Layered on top are underserved-area additions that cover Chester, Chesterfield, Lancaster, Laurens, and Union counties outright, census tracts in Cherokee, Spartanburg, and York counties, and, across the state line, Mecklenburg County, North Carolina. That last one is Charlotte. 1.1 million people, eligible.
+
+The pivotal date is 1992, when Founders first opened membership beyond Springs Industries employees. Thirty-four years later, the layered charter reads like an org chart of the region's economy, assembled one employer at a time while the original employer disappeared.
+
+And the funnel works. Founders added roughly 4,600 net members in the first quarter of 2026 alone. [Champions First](/blog/champions-first-fsu-rebrand), the Tallahassee credit union we profiled last week, nets about 220 a year from an 18-county community charter. Founders puts up twenty times that in ninety days, from a charter that is technically a list of employers.
+
+:::pullquote
+Founders' sponsor company has been gone for nineteen years. The credit union built on its payroll deduction now signs up more members in a quarter than some community charters add in two decades.
+:::
+
+Geography helps. Lancaster County grew 2.7% last year, roughly 3,000 new residents, the fastest-growing county in the Charlotte metro, driven by the Indian Land panhandle where Charlotte spills across the state line. Billion-dollar Sharonview Federal moved its own headquarters to Indian Land, in the same county. The mill town is now a boomtown, and Founders was already standing there when the growth arrived.
+
+## The Balance Sheet
+
+The loan book is where Founders stops looking like everyone else. Of $4.07 billion in total loans, real estate accounts for $2.30 billion, vehicles and other secured lending about $1.16 billion, and unsecured credit $605.8 million. That last figure is the tell: roughly one loan dollar in seven at Founders is unsecured, personal loans, express loans, and credit cards extended to ordinary members on signature. The mortgage operation is big enough that Founders actually files HMDA, a rarity in this series: 2,139 originations for $332.8 million in 2024, a real reported number rather than an estimate.
+
+Lending deep pays. Loan income annualizes to a yield of about 7.1%. Cost of funds runs about 2.2% of shares. The spread between those two numbers is the engine.
+
+It's also priced for the risk it takes. The allowance for credit losses stands at $81.5 million, a full 2.0% of loans; Champions First carries 0.73%. Provision expense is running $13.8 million a quarter. Founders reserves like an institution that expects some of that signature lending to go bad, because some of it will, and the yield covers it with room to spare.
+
+The bottom line: $16.7 million in net income for the first quarter of 2026, an annualized return on assets of about 1.29%, roughly double the credit union industry's recent run rate.
+
+:::stat
+**1.29%**
+Founders' annualized return on assets in the first quarter of 2026, earned while reserving 2% of loans for credit losses. High-yield lending, priced honestly.
+:::
+
+One familiar wrinkle hides in the funding. Share drafts, the primary-relationship balances, are just $570.5 million, about 13% of the $4.42 billion share base, while certificates and money market make up 64%. Even a 290,000-member franchise pays up for funding now. The difference between Founders and everyone else is that its asset side out-earns the cost.
+
+## The Capital Ceiling
+
+Net worth stands at $684.7 million, 13.2% of assets, against the 7% well-capitalized floor and an industry aggregate around 11.3% at the end of 2025. No subordinated debt. Every dollar of it retained since 1950. At a 1.29% return on a 13.2% ratio, Founders can fund roughly 10% annual asset growth from earnings alone, faster than it's actually growing. Most institutions in this series are capital-constrained or funnel-constrained. Founders is neither.
+
+Which is why its 2026 story is about the one thing retained earnings can't buy: a succession.
+
+In January 2025, Founders announced a multi-year transition. Keith Wilson, a 25-year veteran who had spent three years as executive vice president preparing for the role, became president, with longtime CEO Bruce Brumfield set to retire December 31, 2025. In November 2025, Wilson was abruptly no longer with the organization. No reason was given. The board asked Brumfield to stay. On January 27, 2026, CFO Evan Mathis was named president.
+
+If Founders were a $5.2 billion bank, that sequence would live in the public record as an 8-K with effective dates, a proxy statement with severance terms, and pointed questions on the next earnings call. Founders is a federal credit union, a 501(c)(1) instrumentality that files no Form 990, no proxy, and no insider forms. The reversal of a CEO succession at South Carolina's largest credit union reached the public as a post on X, trade-press writeups, and a local radio story.
+
+That's not a scandal. It's the structure. The owners are the members, and the volunteer board answers to them at the annual meeting, not to the SEC. But it does mean 290,408 member-owners have less paper on their institution's leadership change than a bank shareholder with a single share.
+
+:::pullquote
+A $5.2 billion bank would have filed an 8-K. Founders' succession reversal reached the public as a post on X and a local radio story.
+:::
+
+## The Stack
+
+Here Founders inverts the usual community-institution story too. Every credit union in this series so far hands its applicants to a third-party domain at the moment of conversion. Founders doesn't: account opening and lending run at apply.foundersfcu.com, a first-party subdomain, and even the mortgage application, vendor-powered under the hood, lives on a Founders subdomain. Digital banking is Q2, confirmed both by the site's own external-link whitelist and a published Q2 customer story.
+
+The core is the best part. Founders runs a technology CUSO, FIT (Founders Innovative Technology), based in Lancaster, that sells Corelation KeyStone-specific tooling to other credit unions: API automation, core data cleanup, online banking fraud defense. That product list is the clearest public signal of the core running underneath Founders itself, and it means Founders liked its internal tooling enough to commercialize it. Add an insurance agency and a wealth management arm and you have a credit union operating CUSOs the way a bank holding company operates subsidiaries.
+
+The exposed nerve in all of this is intake quality. A 7% yield book with 15% unsecured lending and 2% reserves works precisely as long as the institution knows exactly who it's approving. Every basis point of future loss enters through an application, which makes verification-first intake, identity, income, and funding account confirmed at the point of application, cheap insurance for exactly the model Founders runs.
+
+And that's the real lesson of both stories in Lancaster. Springmaid outlived the mill because the machinery mattered more than the sponsor. Founders will outlive its succession turbulence for the same reason, as long as the machinery, from the loan file to the front door, keeps carrying the model instead of any one person.
+    `,
+  },
   'champions-first-fsu-rebrand': {
     title: 'The Credit Union Formerly Known as FSU',
     description:

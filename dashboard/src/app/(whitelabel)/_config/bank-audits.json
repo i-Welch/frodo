@@ -3111,6 +3111,114 @@
     "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; Florida OFR field-of-membership record (2018 expansion, 2,500 members/year condition); American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
   },
   {
+    "slug": "founders-federal-credit-union",
+    "bankName": "Founders Federal Credit Union",
+    "shortName": "Founders",
+    "auditDate": "August 2026",
+    "demoSlug": "founders-federal-credit-union",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$5.18B (member-owned, not stock-issued)"
+      },
+      {
+        "label": "Members",
+        "value": "290,408 (2.5x its home county population)"
+      },
+      {
+        "label": "Branches",
+        "value": "49 across the Carolinas"
+      },
+      {
+        "label": "Q1 2026 ROA",
+        "value": "~1.29% annualized (about 2x industry)"
+      }
+    ],
+    "summary": "Founders Federal Credit Union is the strongest digital operator in this series, which changes what an audit looks for. Account opening and lending already run first-party at apply.foundersfcu.com, digital banking is Q2, and Founders' own FIT CUSO sells Corelation KeyStone tooling to other credit unions. The exposure isn't the front door; it's what flows through it. Founders lends $605.8M unsecured (one loan dollar in seven, on signature), reserves a heavy 2.0% of loans, and still earns roughly double the industry's ROA. That model prices losses correctly only if intake data is correct: every basis point of future charge-off in a signature book enters through an application. Verification depth at intake, not interface quality, is where this institution's next basis points live.",
+    "currentJourney": [
+      {
+        "channel": "Online banking",
+        "detail": "Q2 digital banking, confirmed by the site’s own external-link whitelist and a published Q2 customer story",
+        "status": "ok"
+      },
+      {
+        "channel": "Account opening / new membership",
+        "detail": "First-party at apply.foundersfcu.com/account-opening, no third-party domain handoff",
+        "status": "ok"
+      },
+      {
+        "channel": "Auto / personal / express loans",
+        "detail": "First-party at apply.foundersfcu.com, consistent branding across consumer products",
+        "status": "ok"
+      },
+      {
+        "channel": "Mortgage",
+        "detail": "mortgage.foundersfcu.com/loan-app with a workflowId-style URL: vendor-powered under the hood, but kept on a Founders subdomain",
+        "status": "ok"
+      },
+      {
+        "channel": "Business lending",
+        "detail": "No business-specific online application visible; business pages route to contact and branch channels",
+        "status": "missing"
+      },
+      {
+        "channel": "Verification inside the application",
+        "detail": "Applications collect borrower-typed data; no visible source-data verification of identity, income, or funding account in-flow",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "A signature-lending model is only as good as its application data",
+        "severity": "gap",
+        "body": "Founders carries $605.8M in unsecured loans (14.9% of the book, far above industry norms) and reserves 2.0% of loans against losses, nearly triple comparable credit unions in this series. The yield covers the risk as priced. But signature lending has no collateral to fall back on when an application overstates income or a synthetic identity slips through, so every improvement in intake verification flows straight to the loss line. For an institution earning a 1.29% ROA on this model, protecting loss assumptions is worth more than any front-end redesign."
+      },
+      {
+        "title": "The best acquisition machine in the series still runs on rate-bought funding",
+        "severity": "friction",
+        "body": "Founders added roughly 4,600 net members in Q1 2026 alone, yet share drafts are just 13% of the $4.42B share base while certificates and money market make up 64%. Members arrive for loans and park rate-sensitive money; fewer make Founders their primary institution. A verified borrower whose identity and funding account are already confirmed at loan intake can open a share draft in the same flow in seconds, which is the cheapest cost-of-funds lever available to an institution this size."
+      },
+      {
+        "title": "Business lending is the one product with no digital path",
+        "severity": "gap",
+        "body": "For a credit union whose charter is literally a list of 200+ employers, business owners are the natural next relationship, and the only product category without an online application. Digital business intake with entity and owner verification would extend the first-party experience Founders already runs on the consumer side to the segment its employer-group model knows best."
+      },
+      {
+        "title": "A build-and-own culture that verification infrastructure fits naturally",
+        "severity": "note",
+        "body": "Founders commercializes its own KeyStone tooling through the FIT CUSO and keeps applications on domains it controls. This is an institution that prefers owning machinery to renting experiences. A verification layer that slots underneath the existing apply.foundersfcu.com flow, returning source-verified identity, income, employment, and account data through APIs, matches how Founders already builds, rather than asking it to replace a front door that is not broken."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Applying for a consumer loan",
+        "today": "First-party form, borrower-typed data",
+        "withRaven": "Same first-party flow, source-verified data"
+      },
+      {
+        "dimension": "Income behind a signature loan",
+        "today": "Stated by the applicant, verified manually if flagged",
+        "withRaven": "Verified from source before approval"
+      },
+      {
+        "dimension": "New member funding account",
+        "today": "Manual entry, trial deposits, or follow-up",
+        "withRaven": "Linked and verified in-flow in seconds"
+      },
+      {
+        "dimension": "Borrower-to-primary-member conversion",
+        "today": "Separate account-opening step, often skipped",
+        "withRaven": "Share draft opened in the same verified session"
+      },
+      {
+        "dimension": "Business lending",
+        "today": "No online application",
+        "withRaven": "Digital intake with entity and owner verification"
+      }
+    ],
+    "sources": "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, business and membership pages, reviewed August 2026); apply.foundersfcu.com and mortgage.foundersfcu.com (application domains); Q2 external-link whitelist in foundersfcu.com page source; info.q2.com published Founders FCU customer story; fitcuso.com (FIT CUSO KeyStone-specific product line); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 5493001AGQGPJ3N3YL33 (2,139 originations, $332.8M); CUToday, CU Times, WRHI, and Tyfone coverage of the 2025-2026 leadership transition; Home Textiles Today for Springs Industries plant closure history."
+  },
+  {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",
