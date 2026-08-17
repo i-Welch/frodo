@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Credit Union Deep Dives (Aug 2026) —
+  'robins-financial-20-million-rebate',
   'founders-credit-union-mill-town',
   'champions-first-fsu-rebrand',
   'palmetto-citizens-90-year-wait',
@@ -102,6 +103,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'robins-financial-20-million-rebate': '2026-08-17',
   'founders-credit-union-mill-town': '2026-08-17',
   'champions-first-fsu-rebrand': '2026-08-12',
   'palmetto-citizens-90-year-wait': '2026-08-03',

@@ -1250,6 +1250,68 @@ export const ROI_BANKS: BankRoiInput[] = [
       'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
+    slug: 'robins-financial-credit-union',
+    name: 'Robins Financial Credit Union',
+    shortName: 'Robins Financial',
+    articleSlug: 'robins-financial-20-million-rebate',
+    articleTitle: "The Credit Union That Can't Spend Its Money Fast Enough",
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Robins Financial is a credit union with no FDIC cert. Populated with its
+    // NCUA charter number (68670) instead until this field is generalized.
+    // See `sources`.
+    fdicCert: 68670,
+    auditDate: 'August 2026',
+    stats: [
+      { label: 'Total assets', value: '$4.91B (Mar 2026)' },
+      { label: 'Net worth ratio', value: '16.1% (Mar 2026)' },
+      { label: 'Members', value: '272,542' },
+      { label: 'Branch count', value: '24 across middle Georgia' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 1457,
+        source:
+          'Reported 2024 HMDA originations (action taken = originated) for Robins Financial Credit Union, LEI 549300AUL77A8UKADB04, totaling $173.3M, via the FFIEC HMDA data browser API. An actual filed figure, not an estimate.',
+        estimated: false,
+      },
+      commercial: {
+        count: 80,
+        source:
+          'Robins Financial markets business accounts and lending but publishes no member-business-lending origination detail. Estimate reflects a $4.9B consumer-first credit union with a modest commercial book.',
+        estimated: true,
+      },
+      consumer: {
+        count: 13000,
+        source:
+          'Vehicles dominate the book at $1.54B of $2.82B total loans (54.5%) as of March 2026, with unsecured lending at $159.4M. Estimate scales the origination-per-member rate observed across this series (~4.8% of members annually) to 272,542 members. Not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 4500,
+      source:
+        "Robins Financial's Georgia state charter (converted from federal in January 2016) covers roughly 43 middle Georgia counties plus family of members. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to the field of membership. Houston County (~170,000) and Bibb County (Macon, ~157,000) anchor the footprint; Robins AFB grew 11% in two years to 21,000+ workers whose homes span 110 of Georgia's 159 counties. Middle Georgia growth is slower than coastal or Atlanta-metro Georgia; at 2.5 persons per household, a conservative estimate nets roughly 4,500 new households a year across the 43-county footprint.",
+    },
+    intro:
+      "Robins Financial is the end state the rest of this series is chasing: a 16.1% net worth ratio, a roughly 1.8% ROA earned on a 1.15% cost of funds, and so much structural surplus that it rebated $20 million to members in December ($151 million since 2017). The engine is relationship depth: 30.9% of shares sit in share drafts, the best primary-relationship funding mix we have measured. The strategic exposure is geographic: Robins AFB employees live in 110 of Georgia's 159 counties while the credit union operates 24 branches, so for most eligible members the digital front door is the branch network, and every step of friction in joining or borrowing is a member the rebate flywheel never gets to feed.",
+    strategic: [
+      {
+        title: 'The Rebate Flywheel Only Compounds on Members the Funnel Actually Converts',
+        body: "Robins' famous December rebate pays on relationship depth: loans held, dividends earned, accounts used. That makes new-member conversion quality, not just volume, the growth metric that matters, because a member who lands with a verified identity, a linked funding account, and a share draft on day one starts feeding the flywheel immediately. Verification-first onboarding, where identity, income, and the funding account are confirmed in one digital sitting, is the difference between a new member who qualifies for a real rebate check next December and an application abandoned at a branch-visit requirement.",
+      },
+      {
+        title: '110 Counties of Eligible Members, 24 Branches',
+        body: "Robins AFB's 21,000+ employees live in 110 of Georgia's 159 counties, and the 2016 state charter opened roughly 43 counties of eligibility, yet the branch network covers a fraction of that geography. For the majority of eligible members, Robins is digital or it is nothing. Account opening already runs on a first-party subdomain (newaccount.robinsfcu.org), which is the right architecture; the remaining question is verification depth inside that flow, so a base contractor in Valdosta or a member's daughter in Savannah can join, fund, and borrow without ever seeing Warner Robins.",
+      },
+      {
+        title: 'A 30.9% Share-Draft Mix Is Worth Defending Like an Asset',
+        body: 'Robins funds itself at roughly 1.15% because nearly a third of its shares are primary-relationship checking balances, while peers pay north of 2% for certificate money. Every fintech and neobank onboarding flow is aimed at exactly these balances, and the industry lost 44% of new checking accounts to digital-first competitors last year on speed of account opening alone. Matching that opening speed, with verification rigor a 16.1%-capitalized institution expects, is the cheapest defense of the funding advantage that makes the whole model work.',
+      },
+    ],
+    sources:
+      "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026); newaccount.robinsfcu.org (first-party account opening) and onlinebanking.robinsfcu.org (Q2, fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026: assets, loans, loan mix, shares, share mix, equity, members, branches, income statement); FFIEC HMDA data browser API, 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer, EIN 580641605 (revenue, expenses, executive compensation; state-chartered 501(c)(14)); CUToday and CUInsight coverage of the December 2025 $20M member rebate and $151M cumulative total; Wikipedia and robinsfcu.org for the 1954 founding and January 2016 federal-to-state charter conversion; 13WMAZ 2026 State of the Base coverage (21,000+ workers, $4.48B impact, 110 of 159 counties). fdicCert field holds Robins Financial's NCUA charter number, not an FDIC certificate; Robins Financial is a federally insured credit union with no FDIC cert.",
+  },
+  {
     slug: 'founders-federal-credit-union',
     name: 'Founders Federal Credit Union',
     shortName: 'Founders',

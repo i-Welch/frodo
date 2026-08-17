@@ -87,6 +87,80 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'robins-financial-20-million-rebate': {
+    title: "The Credit Union That Can't Spend Its Money Fast Enough",
+    description:
+      'Robins Financial runs a 16.1% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
+    publishedDate: 'August 17, 2026',
+    readTime: '6 min read',
+    content: `
+# The Credit Union That Can't Spend Its Money Fast Enough
+
+*Published August 17, 2026*
+
+## The Number That Doesn't Fit
+
+On December 9, Robins Financial Credit Union deposited $20 million into its members' accounts. Not a promotion. Not a rate special. A rebate, computed on each member's actual relationship over the year, loans paid, dividends earned, accounts used, and handed back because the cooperative earned more than it needed. It was the ninth one. Since 2017, Robins has returned $151 million to its members this way.
+
+:::stat
+**$151 million**
+What Robins Financial has handed back to members through annual rebates since 2017, including $20 million this past December. A bank would call it a special dividend. Robins calls it Tuesday.
+:::
+
+The institution doing this started on April 1, 1954, when 13 civilian and military personnel at Robins Air Force Base signed a charter application. Seventy-two years later it holds $4.91 billion in assets, serves 272,542 members from 24 branches, and runs a 16.1% net worth ratio while earning a return on assets that annualized to roughly 1.8% in the first quarter of 2026, about two and a half times the industry's recent run rate.
+
+Every other credit union in this series strains against a capital ceiling. Robins lives so far above its own that it gives the excess away, and the pile keeps growing anyway.
+
+## The Membership Math
+
+The charter tells you how they got here. For 62 years this was Robins Federal Credit Union, an Air Force base credit union with a base credit union's boundaries. In January 2016 it converted to a Georgia state charter, dropped "Federal" from its name, and unlocked a field of membership covering roughly 43 middle Georgia counties plus family of members.
+
+The sponsor, meanwhile, did something sponsors in this series haven't done: it thrived. [Founders'](/blog/founders-credit-union-mill-town) textile mill closed in 2007. [Champions First](/blog/champions-first-fsu-rebrand) spent three years researching its way out of its sponsor's name. Robins Air Force Base grew 11% in two years to more than 21,000 workers, generates a $4.48 billion annual economic impact, and stands as Georgia's largest single-site industrial complex. Its payroll alone runs about $2.89 billion a year, and its employees live in 110 of Georgia's 159 counties.
+
+:::pullquote
+Founders' sponsor died. Champions First renamed its way around its sponsor. Robins' sponsor grew 11% in two years, and the credit union compounds on top of it.
+:::
+
+Membership grew from about 243,000 in March 2022 to 272,542 today, a steady 2.9% a year, no mergers required. That's 1.6 members for every resident of Houston County, the home county, population roughly 170,000. The base anchors it, but the arithmetic says most of those members now come from everywhere else in middle Georgia.
+
+## The Balance Sheet
+
+Start with the side most credit unions get wrong, because Robins is winning there. Of its $4.07 billion in shares, $1.26 billion, a full 30.9%, sits in share drafts, the checking-equivalent balances that mark a primary financial relationship. Founders runs 13%. Champions First runs 17%. Nobody else in this series is close, and the consequence lands directly on the income statement: Robins' cost of funds annualizes to about 1.15%, in a market where its peers pay north of 2%.
+
+:::stat
+**30.9%**
+The share of Robins' $4.07 billion in shares held in share drafts, the highest primary-relationship funding mix in this series. Cheap, loyal money is the entire foundation of the model.
+:::
+
+The asset side is almost cautious by comparison. Loans total $2.82 billion, just 69% of shares, with the rest parked in cash and investments. Vehicles dominate at $1.54 billion, real estate runs $1.11 billion, and unsecured lending is a modest $159.4 million, under 6% of the book. The allowance sits at 0.94% of loans and provision expense annualizes to roughly 0.4%. Loan yield comes in around 5.8%. The mortgage operation files HMDA: 1,457 originations for $173.3 million in 2024, a real reported figure.
+
+Put it next to Founders and you get a lesson in how differently two elite credit unions can win. Founders lends at 7.1%, reserves 2% of loans, and earns 1.29% on assets by taking priced risk. Robins lends at 5.8%, reserves under 1%, and earns 1.8% by funding itself for almost nothing. One wins on the asset side, one on the funding side. Both numbers embarrass the industry average.
+
+First-quarter net income: $21.9 million. In three months.
+
+## The Capital Ceiling
+
+Here's where Robins becomes the mirror image of everyone we've covered. A credit union can't issue stock, so retained earnings normally act as a speed limit: grow faster than earnings can support and the net worth ratio compresses. Champions First lives right at that limit. Robins has the opposite condition. At a 1.8% return on a 16.1% ratio, it could fund roughly 11% annual growth from earnings alone. It's actually growing at about 5%. The capital pile rises every year it doesn't find something to do with the money.
+
+The rebate is the release valve, and it's the purest expression of the cooperative structure you'll find. A bank in this position would announce a buyback and watch the stock pop. Robins computes each member's share of the surplus and wires it back. $20 million this year. $151 million and counting.
+
+:::pullquote
+Most credit unions hit a capital ceiling. Robins lives above its own, and once a year it lowers the roof by twenty million dollars.
+:::
+
+The 2016 charter conversion bought one more thing worth naming: disclosure. As a Georgia state charter, Robins is a 501(c)(14) that files a public Form 990. The FY2024 filing shows revenue of $251.5 million, expenses of $190.3 million, CEO Christina O'Brien's compensation at $949,487, and SVP of Lending Robert Dyal at $1,123,589, more than the CEO, a figure that likely reflects a long-tenure retirement plan payout, though the filing doesn't say. A federal charter files none of this. When Founders, a federal charter, reversed its CEO succession last November, the public record was a post on X. Robins' executive pay is on the internet, itemized, because of a paperwork consequence of the same conversion that unlocked 43 counties. Charter choices are disclosure choices, whether or not anyone frames them that way.
+
+## The Stack
+
+The digital setup is solid and conventional. Online banking runs on Q2. Account opening lives at newaccount.robinsfcu.org, a first-party subdomain, and loan applications route through the Q2 shell rather than a third-party portal. No Floridascu-style ghosts in the URLs, no handoff to a vendor domain at the moment of conversion.
+
+The strategic question is hiding in that base statistic: Robins AFB employees live in 110 of Georgia's 159 counties. Robins has 24 branches. For most of the people with the strongest possible reason to join, the nearest branch is an hour away or more, and the digital front door isn't a convenience channel. It is the branch network.
+
+That matters because the rebate, the thing that makes Robins famous, pays on relationship depth. A member who borrows, keeps a share draft, and runs their financial life through the credit union gets a real check in December. A member who parked a certificate gets a rounding error. The whole model compounds when a new member lands with a verified identity, a linked funding account, and a share draft on day one, and stalls when joining takes a branch visit that 110 counties' worth of eligible people will never make. Verification-first onboarding isn't a member-experience nicety for an institution like this. It's how the flywheel gets fed.
+
+Robins is what the end state of the cooperative model looks like: a sponsor that kept its promise, funding that costs almost nothing because members actually live there, and so much retained surplus that the institution's hardest annual decision is how much to give back. The other credit unions in this series are trying to get here. The ones that make it will do it the same way Robins did, one primary relationship at a time.
+    `,
+  },
   'founders-credit-union-mill-town': {
     title: "The Mill Closed. The Credit Union Didn't.",
     description:

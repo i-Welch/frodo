@@ -16,6 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'robins-financial-20-million-rebate',
+    title: "The Credit Union That Can't Spend Its Money Fast Enough",
+    description:
+      'Robins Financial runs a 16.1% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
+    readTime: '6 min read',
+    date: 'August 2026',
+    category: 'creditunion',
+    auditSlug: 'robins-financial-credit-union',
+  },
+  {
     slug: 'founders-credit-union-mill-town',
     title: "The Mill Closed. The Credit Union Didn't.",
     description:
