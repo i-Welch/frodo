@@ -20,7 +20,6 @@ import { legalRoutes } from './api/routes/legal.js';
 import { plaidLinkRoutes } from './api/routes/plaid-link.js';
 import { onboardRoutes } from './api/routes/onboard.js';
 import { socureVerifyRoutes } from './api/routes/socure-verify.js';
-import { clerkWebhookRoutes } from './api/routes/clerk-webhooks.js';
 import { verificationRoutes } from './api/routes/verifications.js';
 import { reportRoutes } from './api/routes/report.js';
 import { interestRoutes } from './api/routes/interest.js';
@@ -185,7 +184,6 @@ const app = new Elysia()
   .use(plaidLinkRoutes)
   .use(onboardRoutes)
   .use(socureVerifyRoutes)
-  .use(clerkWebhookRoutes)
   .use(verificationRoutes)
   .use(reportRoutes)
   .use(interestRoutes)

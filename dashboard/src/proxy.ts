@@ -1,10 +1,10 @@
-import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { auth } from '@/lib/auth/server';
 import { NextResponse, type NextRequest } from 'next/server';
 
 // Protect-by-list: only routes named here require auth. Everything else —
 // including unknown paths — falls through to normal routing so bad URLs
 // render the not-found page instead of bouncing to sign-in.
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
+const protectedDashboard = auth.middleware({ loginUrl: '/auth/sign-in' });
 
 const WL_DOMAIN = 'submit.loans';
 
@@ -46,15 +46,16 @@ function handleWhiteLabelHost(request: NextRequest, host: string): NextResponse 
   return NextResponse.rewrite(rewritten);
 }
 
-export default clerkMiddleware(async (auth, request) => {
+export default async function proxy(request: NextRequest) {
   const host = (request.headers.get('host') ?? '').toLowerCase().split(':')[0];
   const wl = handleWhiteLabelHost(request, host);
   if (wl) return wl;
 
-  if (isProtectedRoute(request)) {
-    await auth.protect();
+  if (request.nextUrl.pathname.startsWith('/dashboard')) {
+    return protectedDashboard(request);
   }
-});
+  return NextResponse.next();
+}
 
 export const config = {
   matcher: [

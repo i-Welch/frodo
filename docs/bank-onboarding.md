@@ -7,14 +7,15 @@ Step-by-step process for onboarding a new banking partner onto RAVEN.
 ## Prerequisites
 
 - RAVEN admin secret (`RAVEN_ADMIN_SECRET`)
-- Access to the Clerk dashboard (dashboard.clerk.com)
+- A Neon Auth project with Organizations and invitation emails enabled
+- RAVEN dashboard and API configured with the same `RAVEN_DASHBOARD_TOKEN_SECRET`
 - RAVEN API running (production: `https://app.reportraven.tech`, staging: `https://staging.reportraven.tech`)
 
 ---
 
 ## Step 1: Create the Tenant
 
-One API call creates both the Clerk organization and the RAVEN tenant, and auto-generates a sandbox API key.
+Create the RAVEN tenant and its sandbox API key. Create a Neon Auth organization separately from the dashboard Settings page, then link its ID to the tenant.
 
 ```bash
 curl -X POST https://app.reportraven.tech/api/v1/tenants \
@@ -22,8 +23,7 @@ curl -X POST https://app.reportraven.tech/api/v1/tenants \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Conway National Bank",
-    "webhookUrl": "https://conwaynational.com/raven-webhook",
-    "maxMembers": 25
+    "webhookUrl": "https://conwaynational.com/raven-webhook"
   }'
 ```
 
@@ -32,7 +32,6 @@ curl -X POST https://app.reportraven.tech/api/v1/tenants \
 {
   "tenantId": "abc-123-...",
   "name": "Conway National Bank",
-  "clerkOrgId": "org_XYZ...",
   "permissions": [
     { "module": "identity", "requiredTier": 0 },
     { "module": "contact", "requiredTier": 0 },
@@ -52,20 +51,26 @@ curl -X POST https://app.reportraven.tech/api/v1/tenants \
 
 **Save the `apiKey`** — it is only shown once. This is the bank's sandbox API key for programmatic access.
 
-**Save the `clerkOrgId`** — you'll need it to invite users in the next step.
+**Save the tenant ID.** Sign in as a RAVEN operator, open Dashboard → Settings, create the bank organization, and copy its Neon Auth organization ID. Link it with:
+
+```bash
+curl -X PATCH https://app.reportraven.tech/api/v1/tenants/<tenantId>/auth-organization \
+  -H "Authorization: Bearer <RAVEN_ADMIN_SECRET>" \
+  -H "Content-Type: application/json" \
+  -d '{"neonOrgId":"<organizationId>"}'
+```
+
+Only link the bank tenant after you have confirmed its identity and invited the intended staff. A linked organization grants its members access to that tenant's production dashboard data.
 
 ---
 
 ## Step 2: Invite Bank Users to the Dashboard
 
-Go to the Clerk dashboard (dashboard.clerk.com):
+In the RAVEN dashboard, select the bank organization and open Settings:
 
-1. Navigate to **Organizations**
-2. Find the organization created in Step 1 (it will have the bank's name)
-3. Click into the organization
-4. Click **Invite Members**
-5. Enter the email addresses of the bank's loan officers, compliance team, or IT contacts
-6. They'll receive an email invitation to join the RAVEN dashboard
+1. Enter the bank staff member's email under **Invite member**.
+2. Confirm the invitation succeeded and the staff member accepted it.
+3. Have the staff member select the bank organization in the sidebar.
 
 The invited users can then:
 - Sign in at the dashboard URL
@@ -237,7 +242,7 @@ curl -X DELETE https://app.reportraven.tech/api/v1/tenants/<tenantId>/api-keys/<
 ```
 
 ### Remove a user from the dashboard
-Go to the Clerk dashboard → Organizations → the bank's org → Members → remove the user.
+Use Neon Auth organization membership management to remove the member. Access stops when membership is removed because the dashboard checks the active organization before every API assertion.
 
 ---
 
@@ -245,7 +250,7 @@ Go to the Clerk dashboard → Organizations → the bank's org → Members → r
 
 - [ ] Create tenant via admin API
 - [ ] Save the API key and tenant ID
-- [ ] Invite at least one bank user via Clerk
+- [ ] Link a Neon Auth organization and invite at least one bank user
 - [ ] Confirm they can sign in and see the dashboard
 - [ ] Run a test verification with sandbox data
 - [ ] When ready, generate a production API key

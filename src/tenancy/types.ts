@@ -7,7 +7,7 @@ export interface Tenant {
   callbackUrls: string[];
   consentAddendum?: string;
   webhookUrl?: string;
-  clerkOrgId?: string;
+  neonOrgId?: string;
   createdAt: string; // ISO date
 
   // ---------------------------------------------------------------------

@@ -107,7 +107,7 @@ Customer-facing collateral that supports the answers
     - Internal policy enumerating prohibited industries, KYB requirements, sanctions screening, agreement execution, security review, insurance evidence. Referenced from the onboarding checklist.
 
 19. Subprocessor page on the marketing site
-    - Public list of subprocessors (Plaid, Socure, Truework, Melissa, ATTOM, FullContact, AWS, Clerk) with purpose and data categories. Material-change notification mechanism.
+    - Public list of subprocessors (Plaid, Socure, Truework, Melissa, ATTOM, FullContact, AWS, Neon) with purpose and data categories. Material-change notification mechanism.
 
 20. Insurance minimums and Customer Agreement Schedule
     - Cyber liability and professional liability minimum coverage amounts written into a schedule of the Customer Agreement.

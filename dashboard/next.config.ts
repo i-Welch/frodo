@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
         destination: '/audit/:slug',
         permanent: true,
       },
+      { source: '/sign-in', destination: '/auth/sign-in', permanent: true },
+      { source: '/sign-up', destination: '/auth/sign-up', permanent: true },
     ];
   },
 

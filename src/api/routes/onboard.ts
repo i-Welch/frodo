@@ -219,7 +219,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
    *   "linkSent": true
    * }
    */
-  .post('/onboard', async ({ body, tenant, apiKey, clerkUserId, set }) => {
+  .post('/onboard', async ({ body, tenant, apiKey, userId: dashboardUserId, set }) => {
     const {
       modules,
       person,
@@ -397,7 +397,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       borrowerPhone: person?.phone,
       formToken: formTokenStr,
       formUrl,
-      createdBy: (apiKey as { keyId?: string } | undefined)?.keyId ?? (clerkUserId as string | undefined) ?? 'unknown',
+      createdBy: (apiKey as { keyId?: string } | undefined)?.keyId ?? (dashboardUserId as string | undefined) ?? 'unknown',
     });
 
     log.info(

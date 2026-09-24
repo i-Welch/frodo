@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server';
 import { api } from '@/lib/api';
 import { CopyLinkButton } from './copy-link-button';
 import { DownloadPDFButton } from './download-pdf-button';
@@ -9,13 +8,11 @@ export default async function VerificationDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const { getToken } = await auth();
-  const token = await getToken();
 
   // Fetch the verification record
   let verification: Record<string, unknown> | null;
   try {
-    verification = await api<Record<string, unknown>>(`/api/v1/verifications/${id}`, { token: token ?? undefined });
+    verification = await api<Record<string, unknown>>(`/api/v1/verifications/${id}`);
   } catch {
     return <div className="text-red-600">Verification not found</div>;
   }
@@ -29,7 +26,7 @@ export default async function VerificationDetailPage({
   let report: Record<string, unknown> | null = null;
   if (status === 'complete' || status === 'enriching' || status === 'form_completed') {
     try {
-      report = await api<Record<string, unknown>>(`/api/v1/users/${userId}/report`, { token: token ?? undefined });
+      report = await api<Record<string, unknown>>(`/api/v1/users/${userId}/report`);
     } catch {
       // Report might not be ready yet
     }

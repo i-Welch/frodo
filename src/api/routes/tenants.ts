@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import { Elysia, t } from 'elysia';
-import { createTenant, getTenant, storeApiKey, revokeApiKey, updateTenant } from '../../store/tenant-store.js';
+import { createTenant, getTenant, getTenantByNeonOrgId, linkTenantToNeonOrg, storeApiKey, revokeApiKey, updateTenant } from '../../store/tenant-store.js';
 import { generateApiKey, hashApiKey, parseApiKey } from '../../tenancy/api-key.js';
 import { isProductionEligible } from '../../tenancy/permissions.js';
 import { createChildLogger } from '../../logger.js';
@@ -56,48 +56,15 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
     async ({ body, set }) => {
       const tenantId = crypto.randomUUID();
 
-      // Create the Clerk organization
-      const clerkSecretKey = process.env.CLERK_SECRET_KEY;
-      let clerkOrgId: string | undefined;
-
-      if (clerkSecretKey) {
-        try {
-          const clerkRes = await fetch('https://api.clerk.com/v1/organizations', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${clerkSecretKey}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: body.name,
-              slug: body.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-              max_allowed_memberships: body.maxMembers ?? 50,
-            }),
-          });
-
-          if (!clerkRes.ok) {
-            const err = await clerkRes.json().catch(() => ({}));
-            log.error({ status: clerkRes.status, err }, 'Failed to create Clerk organization');
-            set.status = 502;
-            return { error: `Failed to create Clerk organization: ${(err as Record<string, unknown>).message ?? clerkRes.statusText}` };
-          }
-
-          const clerkOrg = await clerkRes.json() as { id: string };
-          clerkOrgId = clerkOrg.id;
-          log.info({ clerkOrgId, name: body.name }, 'Created Clerk organization');
-        } catch (err) {
-          log.error({ err }, 'Clerk API request failed');
-          set.status = 502;
-          return { error: 'Failed to reach Clerk API' };
-        }
-      } else {
-        log.warn('CLERK_SECRET_KEY not set — skipping Clerk org creation');
+      if (body.neonOrgId && await getTenantByNeonOrgId(body.neonOrgId)) {
+        set.status = 409;
+        return { error: 'Organization is already linked to another tenant' };
       }
 
       const tenant: Tenant = {
         tenantId,
         name: body.name,
-        clerkOrgId,
+        neonOrgId: body.neonOrgId,
         permissions: body.permissions ?? [
           { module: 'identity', requiredTier: 0 },
           { module: 'contact', requiredTier: 0 },
@@ -138,9 +105,9 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
     {
       body: t.Object({
         name: t.String(),
+        neonOrgId: t.Optional(t.String({ minLength: 1 })),
         callbackUrls: t.Optional(t.Array(t.String())),
         webhookUrl: t.Optional(t.String()),
-        maxMembers: t.Optional(t.Number()),
         permissions: t.Optional(
           t.Array(
             t.Object({
@@ -214,6 +181,23 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
       }),
     },
   )
+  // -----------------------------------------------------------------------
+  // PATCH /api/v1/tenants/:id/auth-organization — link a Neon Auth organization
+  // -----------------------------------------------------------------------
+  .patch('/:id/auth-organization', async ({ params, body, set }) => {
+    const tenant = await getTenant(params.id);
+    if (!tenant) {
+      set.status = 404;
+      return { error: 'Tenant not found' };
+    }
+    const existing = await getTenantByNeonOrgId(body.neonOrgId);
+    if (existing && existing.tenantId !== params.id) {
+      set.status = 409;
+      return { error: 'Organization is already linked to another tenant' };
+    }
+    await linkTenantToNeonOrg(params.id, body.neonOrgId);
+    return { tenantId: params.id, neonOrgId: body.neonOrgId };
+  }, { body: t.Object({ neonOrgId: t.String({ minLength: 1 }) }) })
   // -----------------------------------------------------------------------
   // PATCH /api/v1/tenants/:id — record §1033 / FFIEC TPRM diligence fields
   //

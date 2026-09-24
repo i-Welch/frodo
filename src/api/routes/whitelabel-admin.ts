@@ -6,7 +6,7 @@ import { listIntakes } from '../../whitelabel/service.js';
 /**
  * White-label loan-officer API (authenticated). Separate from the public
  * borrower routes: the LO queue is scoped to the caller's tenant, resolved from
- * the Clerk JWT (or an API key) via combined auth. Same /api/v1/wl prefix,
+ * a dashboard assertion (or an API key) via combined auth. Same /api/v1/wl prefix,
  * different paths.
  */
 export const whitelabelAdminRoutes = new Elysia({ prefix: '/api/v1/wl' })
