@@ -1,7 +1,6 @@
 import { resolveAuth, AuthError } from './api-key-auth.js';
-import { resolveClerkAuth } from './clerk-auth.js';
+import { resolveDashboardAuth } from './dashboard-auth.js';
 import type { AuthContext } from './api-key-auth.js';
-import type { ClerkAuthContext } from './clerk-auth.js';
 import type { Tenant, StoredApiKey } from '../../tenancy/types.js';
 
 // ---------------------------------------------------------------------------
@@ -12,13 +11,12 @@ export interface CombinedAuthContext {
   [key: string]: unknown;
   tenant: Tenant;
   /** Which auth method was used */
-  authMethod: 'api_key' | 'clerk';
+  authMethod: 'api_key' | 'dashboard';
   /** Present when auth method is 'api_key' */
   apiKey?: StoredApiKey;
-  /** Present when auth method is 'clerk' */
-  clerkUserId?: string;
-  clerkOrgId?: string;
-  clerkOrgRole?: string;
+  /** Present when auth method is 'dashboard' */
+  userId?: string;
+  organizationId?: string;
   environment: 'sandbox' | 'production';
 }
 
@@ -27,13 +25,13 @@ export interface CombinedAuthContext {
 // ---------------------------------------------------------------------------
 
 /**
- * Resolve authentication from either a Clerk JWT or an API key.
+ * Resolve authentication from either a short-lived dashboard assertion or an API key.
  *
- * - If the Bearer token looks like a JWT (starts with "eyJ"), try Clerk first.
- * - If Clerk fails or the token doesn't look like a JWT, try API key auth.
+ * - JWTs are accepted only when signed by the dashboard and scoped to a linked tenant.
+ * - Other tokens use API key auth.
  * - If both fail, throw AuthError.
  *
- * This allows the dashboard (Clerk sessions) and programmatic access (API keys)
+ * This allows the dashboard (Neon Auth sessions) and programmatic access (API keys)
  * to use the same endpoints.
  */
 export async function resolveCombinedAuth(
@@ -46,25 +44,19 @@ export async function resolveCombinedAuth(
 
   const token = authHeader.slice('Bearer '.length);
 
-  // Try Clerk JWT first (if it looks like a JWT)
+  // Invalid JWTs must never fall back to API key authentication.
   if (token.startsWith('eyJ')) {
     try {
-      const clerkAuth = await resolveClerkAuth(token);
-      if (clerkAuth) {
-        return {
-          tenant: clerkAuth.tenant,
-          authMethod: 'clerk',
-          clerkUserId: clerkAuth.clerkUserId,
-          clerkOrgId: clerkAuth.clerkOrgId,
-          clerkOrgRole: clerkAuth.clerkOrgRole,
-          environment: clerkAuth.environment,
-        };
-      }
-    } catch (err) {
-      // If it's a Clerk-specific error (no org, not provisioned), throw it
-      if (err instanceof Error && !(err instanceof AuthError)) {
-        throw new AuthError(err.message);
-      }
+      const dashboard = await resolveDashboardAuth(token);
+      return {
+        tenant: dashboard.tenant,
+        authMethod: 'dashboard',
+        userId: dashboard.userId,
+        organizationId: dashboard.organizationId,
+        environment: dashboard.environment,
+      };
+    } catch {
+      throw new AuthError('Invalid dashboard token or organization');
     }
   }
 

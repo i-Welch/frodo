@@ -1,4 +1,3 @@
-import { auth } from '@clerk/nextjs/server';
 import { api } from '@/lib/api';
 import { NewVerificationButton } from './new-verification-button';
 import { VerificationsList } from './verifications-list';
@@ -15,12 +14,10 @@ interface Verification {
 }
 
 export default async function VerificationsPage() {
-  const { getToken } = await auth();
-  const token = await getToken();
 
   let verifications: Verification[] = [];
   try {
-    const result = await api<{ verifications: Verification[] }>('/api/v1/verifications?limit=50', { token: token ?? undefined });
+    const result = await api<{ verifications: Verification[] }>('/api/v1/verifications?limit=50');
     verifications = result.verifications;
   } catch {
     // API might not be connected yet

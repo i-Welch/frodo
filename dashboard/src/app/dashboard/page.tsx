@@ -1,10 +1,10 @@
-import { auth } from '@clerk/nextjs/server';
+import { auth } from '@/lib/auth/server';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 
 export default async function DashboardHome() {
-  const { getToken, orgId } = await auth();
-  const token = await getToken();
+  const { data: session } = await auth.getSession();
+  const orgId = session?.session?.activeOrganizationId;
 
   let stats = { total: 0, byStatus: {} as Record<string, number> };
 
@@ -22,7 +22,7 @@ export default async function DashboardHome() {
   }
 
   try {
-    stats = await api<typeof stats>('/api/v1/verifications/stats', { token: token ?? undefined });
+    stats = await api<typeof stats>('/api/v1/verifications/stats');
   } catch {
     // API might not be connected yet
   }

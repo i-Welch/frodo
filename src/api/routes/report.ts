@@ -60,7 +60,7 @@ export interface BorrowerReport {
 
 /**
  * Borrower Report API — aggregates all data for the report view.
- * Supports both API key and Clerk auth.
+ * Supports both API key and dashboard auth.
  */
 export const reportRoutes = new Elysia({ prefix: '/api/v1/users' })
   .onError(({ error, set }) => {

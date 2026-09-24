@@ -10,7 +10,7 @@ import type { VerificationStatus } from '../../store/verification-store.js';
 import type { ApiError } from '../../types.js';
 
 /**
- * Verification routes — supports both API key and Clerk auth.
+ * Verification routes — supports both API key and dashboard auth.
  */
 export const verificationRoutes = new Elysia({ prefix: '/api/v1/verifications' })
   .onError(({ error, set }) => {

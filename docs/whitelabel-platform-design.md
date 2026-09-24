@@ -85,8 +85,8 @@ new build or deploy).
   points a CNAME at `cname.vercel-dns.com` and Vercel auto-issues a per-domain
   certificate after verification. Automate domain creation in the onboarding
   flow and watch the project's domain limit for custom apex domains.
-- **Dedicated, Clerk-free app:** the borrower surface ships as its own Next app
-  on Vercel bound to `*.submit.loans`, separate from the Clerk-wrapped
+- **Dedicated app:** the borrower surface ships as its own Next app
+  on Vercel bound to `*.submit.loans`, separate from the authenticated
   `dashboard/` app on reportraven.tech, to isolate the consumer trust boundary
   and bundle. (Near term it may start in the existing `(whitelabel)` route group
   and be split out before launch.) Reference: the open-source `vercel/platforms`
@@ -301,14 +301,14 @@ DynamoDB single table + a lookup table, two GSIs (`GSI1`, `GSI2`), TTL on `ttl`.
 | "User" | Who | Modeled as | Auth |
 |---|---|---|---|
 | **Borrower / consumer** | The loan applicant / data subject | `PK=USER#<userId>` with `MODULE#`, `EVENT#`, `CONSENT#` items (this is what `USER#` means in code) | Form token / session, no login |
-| **Banking user** | Loan officer, bank admin | Clerk org member; not stored in RAVEN today. Role from JWT (`org:admin`, `org:loan_officer`, `org:viewer`) | Clerk |
+| **Banking user** | Loan officer, bank admin | Neon Auth organization member; not stored in RAVEN today. Membership is checked before each dashboard API assertion. | Neon Auth |
 | **API consumer** | Programmatic integration | API key (`APIKEY#`), `sandbox`/`production` | Bearer key |
 
 ### 5.2 Existing entities (unchanged)
 
 | Entity | PK / SK | Index |
 |---|---|---|
-| Tenant (bank) | `TENANT#<id>` / `METADATA` | `GSI2PK=CLERKORG#<orgId>` |
+| Tenant (bank) | `TENANT#<id>` / `METADATA` | `GSI2PK=NEONORG#<orgId>` |
 | API key | `TENANT#<id>` / `APIKEY#<keyId>` | `GSI1PK=APIKEY#<prefix>` |
 | Borrower module state | `USER#<id>` / `MODULE#<module>` | - |
 | Borrower event log | `USER#<id>` / `EVENT#<module>#<ts>#<id>` | `GSI1PK=EVENT#<source>` |
@@ -321,7 +321,7 @@ DynamoDB single table + a lookup table, two GSIs (`GSI1`, `GSI2`), TTL on `ttl`.
 > separate Application entity.
 
 The Tenant `METADATA` item holds permissions, callback/webhook URLs,
-`clerkOrgId`, and the §1033 / FFIEC diligence block. It stays the
+`neonOrgId`, and the §1033 / FFIEC diligence block. It stays the
 compliance/identity record.
 
 ### 5.3 New entities
@@ -363,7 +363,7 @@ has them. There is no separate Application entity.
   `productId`, `productType`, `requestedAmount`, `purpose`, `termMonths`,
   `creditPulled`, `offered { apr, termMonths, monthlyPayment, tierLabel }` or a
   range, `configVersion`, `ltvSnapshot`, `dtiSnapshot`, `isLegalApplication`,
-  `assignedToClerkUserId?`, `coreSync { system, status, ref, syncedAt? }`.
+  `assignedToUserId?`, `coreSync { system, status, ref, syncedAt? }`.
 - Present for full_application only: `decision { result, reasonCodes, aanId,
   aanDeliveredAt }`, populated asynchronously when the bank's decision arrives.
 - `data_only` intakes simply omit all the loan fields.
@@ -381,12 +381,12 @@ has them. There is no separate Application entity.
 
 **Banking-user projection — optional, recommended**
 
-- `PK=TENANT#<id>` / `SK=MEMBER#<clerkUserId>` -> `{ name, email, role,
-  nmlsId?, productsHandled?, notifyPrefs? }`, populated from Clerk webhooks
-  (Svix). Clerk stays the source of truth for identity, membership, and role
-  (read from the JWT at request time). This projection is a cache plus the home
+- `PK=TENANT#<id>` / `SK=MEMBER#<authUserId>` -> `{ name, email, role,
+  nmlsId?, productsHandled?, notifyPrefs? }`, populated from Neon Auth
+  organization membership. Neon Auth stays the source of truth for identity,
+  membership, and role. This projection is a cache plus the home
   for loan-officer attributes and the target of application assignment
-  (`assignedToClerkUserId`).
+  (`assignedToUserId`).
 
 ### 5.4 Cross-tenant consent constraint
 
@@ -524,7 +524,7 @@ boundary.
 - Persist `WhiteLabelConfig` per tenant (Zod schema ported from the front-end
   types); host-mapping records; the Application entity; the rate engine
   (range + point) in the backend; mode-aware provider + core-sync adapters.
-- Front end: a Next.js app on **Vercel** (dedicated, Clerk-free; see Section 3),
+- Front end: a Next.js app on **Vercel** (dedicated borrower surface; see Section 3),
   host-based middleware for tenant resolution, flow-driven journey as a thin
   client over the API. Delete the front-end mock engine in favor of the backend
   mock provider.
@@ -587,7 +587,7 @@ boundary.
 
 - Mode placement confirmed at the host/deployment level (vs a tenant flag)?
 - Build the `MEMBER#` banking-user projection now (enables LO assignment) or
-  defer and assign by raw Clerk userId?
+  defer and assign by raw Neon Auth user ID?
 - Single `WLCONFIG` item now vs splitting rate cards out for independent
   versioning from day one?
 - Borrower identity reuse across white-label banks: one shared `USER#`

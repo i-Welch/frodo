@@ -54,7 +54,7 @@ export const accessRoutes = new Elysia({ prefix: '/api/v1/users' })
   // -----------------------------------------------------------------------
   // POST /api/v1/users/:id/access — Request module data
   // -----------------------------------------------------------------------
-  .post('/:id/access', async ({ params, body, query, headers, tenant, apiKey, clerkUserId, set }) => {
+  .post('/:id/access', async ({ params, body, query, headers, tenant, apiKey, userId, set }) => {
     const { modules, callbackUrl } = body as {
       modules: string[];
       callbackUrl?: string;
@@ -159,7 +159,7 @@ export const accessRoutes = new Elysia({ prefix: '/api/v1/users' })
       modules,
       fields: allFields,
       verifiedTier: session.verifiedTier,
-      apiKeyId: apiKey?.keyId ?? clerkUserId ?? 'unknown',
+      apiKeyId: apiKey?.keyId ?? userId ?? 'unknown',
     }).catch((err) => {
       log.warn({ err, userId: params.id }, 'Failed to log access');
     });

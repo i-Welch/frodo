@@ -29,7 +29,7 @@ export interface VerificationRequest {
   borrowerPhone?: string;
   formToken?: string;
   formUrl?: string;
-  createdBy?: string;        // Clerk user ID or API key ID
+  createdBy?: string;        // Dashboard user ID or API key ID
   createdAt: string;
   updatedAt: string;
 }

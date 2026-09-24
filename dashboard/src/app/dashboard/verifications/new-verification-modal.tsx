@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { authClient } from '@/lib/auth/client';
 import { useRouter } from 'next/navigation';
 
 const ALL_MODULES = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence'];
 
 export function NewVerificationModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { getToken, orgId } = useAuth();
+  const { data: session } = authClient.useSession();
+  const orgId = session?.session?.activeOrganizationId;
   const router = useRouter();
   const [contactInfo, setContactInfo] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -45,19 +46,16 @@ export function NewVerificationModal({ open, onClose }: { open: boolean; onClose
     setError('');
 
     try {
-      const token = await getToken({ organizationId: orgId ?? undefined });
       const person: Record<string, string> = {};
       if (isEmail) person.email = contactInfo;
       if (isPhone) person.phone = contactInfo.startsWith('+') ? contactInfo : `+1${contactInfo.replace(/\D/g, '')}`;
       if (firstName) person.firstName = firstName;
       if (lastName) person.lastName = lastName;
 
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
-      const res = await fetch(`${apiUrl}/api/v1/onboard`, {
+      const res = await fetch('/api/v1/onboard', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
           modules,

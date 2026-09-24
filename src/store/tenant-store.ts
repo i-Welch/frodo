@@ -43,7 +43,7 @@ function hydrateTenant(item: Record<string, unknown>): Tenant {
     callbackUrls: (item.callbackUrls as string[]) ?? [],
     consentAddendum: item.consentAddendum as string | undefined,
     webhookUrl: item.webhookUrl as string | undefined,
-    clerkOrgId: item.clerkOrgId as string | undefined,
+    neonOrgId: item.neonOrgId as string | undefined,
     createdAt: item.createdAt as string,
   };
   for (const field of DILIGENCE_FIELDS) {
@@ -61,9 +61,9 @@ export async function createTenant(tenant: Tenant): Promise<void> {
     ...tenant,
   };
 
-  // Add GSI2 for Clerk org lookup if clerkOrgId is present
-  if (tenant.clerkOrgId) {
-    item.GSI2PK = `CLERKORG#${tenant.clerkOrgId}`;
+  // Add GSI2 for Neon organization lookup if an organization is linked.
+  if (tenant.neonOrgId) {
+    item.GSI2PK = `NEONORG#${tenant.neonOrgId}`;
     item.GSI2SK = `TENANT#${tenant.tenantId}`;
   }
 
@@ -79,12 +79,12 @@ export async function getTenant(tenantId: string): Promise<Tenant | null> {
 }
 
 /**
- * Look up a tenant by its Clerk Organization ID.
- * Uses GSI2: GSI2PK = CLERKORG#<orgId>
+ * Look up a tenant by its Neon Auth organization ID.
+ * Uses GSI2: GSI2PK = NEONORG#<orgId>
  */
-export async function getTenantByClerkOrgId(clerkOrgId: string): Promise<Tenant | null> {
+export async function getTenantByNeonOrgId(neonOrgId: string): Promise<Tenant | null> {
   const result = await queryItems({
-    pk: `CLERKORG#${clerkOrgId}`,
+    pk: `NEONORG#${neonOrgId}`,
     indexName: 'GSI2',
     pkField: 'GSI2PK',
     skField: 'GSI2SK',
@@ -93,6 +93,22 @@ export async function getTenantByClerkOrgId(clerkOrgId: string): Promise<Tenant 
 
   if (result.items.length === 0) return null;
   return hydrateTenant(result.items[0]);
+}
+
+/** Link an existing tenant after its organization and members are ready in Neon Auth. */
+export async function linkTenantToNeonOrg(tenantId: string, neonOrgId: string): Promise<void> {
+  await docClient.send(new UpdateCommand({
+    TableName: TABLE_NAME,
+    Key: keys.tenant(tenantId),
+    UpdateExpression: 'SET #org = :org, GSI2PK = :gsiPk, GSI2SK = :gsiSk',
+    ConditionExpression: 'attribute_exists(PK)',
+    ExpressionAttributeNames: { '#org': 'neonOrgId' },
+    ExpressionAttributeValues: {
+      ':org': neonOrgId,
+      ':gsiPk': `NEONORG#${neonOrgId}`,
+      ':gsiSk': `TENANT#${tenantId}`,
+    },
+  }));
 }
 
 /**

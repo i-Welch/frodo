@@ -1,5 +1,7 @@
-import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
+import { OrganizationControls } from './organization-controls';
 import Link from 'next/link';
+
+export const dynamic = 'force-dynamic';
 
 export default function DashboardLayout({
   children,
@@ -25,20 +27,7 @@ export default function DashboardLayout({
         </nav>
 
         <div className="border-t border-gray-200 px-4 py-3 space-y-3">
-          <OrganizationSwitcher
-            hidePersonal
-            appearance={{
-              elements: {
-                rootBox: 'w-full',
-                organizationSwitcherTrigger: 'w-full justify-between',
-                organizationSwitcherPopoverActionButton__createOrganization: 'hidden',
-              },
-            }}
-          />
-          <div className="flex items-center gap-2">
-            <UserButton />
-            <span className="text-xs text-gray-500">Account</span>
-          </div>
+          <OrganizationControls />
         </div>
       </aside>
 

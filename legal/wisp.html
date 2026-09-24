@@ -26,7 +26,7 @@
 <h3>4.1 Access Controls</h3>
 <ul>
   <li>Role-based access to production systems; least-privilege administration</li>
-  <li>Multi-factor authentication required for all administrative access to AWS, source control, identity provider (Clerk), and any system that can read decrypted customer information</li>
+  <li>Multi-factor authentication required for all administrative access to AWS, source control, identity provider (Neon Auth), and any system that can read decrypted customer information</li>
   <li>Production API keys are stored as SHA-256 hashes; raw keys are shown once at creation and never persisted (`src/tenancy/api-key.ts`)</li>
   <li>Multi-tenant isolation enforced at the data layer; module-level permission gating per tenant; sandbox and production environments separated at the key level</li>
   <li>Consumer access is gated by verification tiers (OTP, enhanced OTP, identity-match) with lockout after repeated failures</li>

@@ -1,16 +1,11 @@
-import { auth } from '@clerk/nextjs/server';
 import { api } from '@/lib/api';
 import { ApplicationsList, type IntakeRow } from './applications-list';
 
 export default async function ApplicationsPage() {
-  const { getToken } = await auth();
-  const token = await getToken();
 
   let intakes: IntakeRow[] = [];
   try {
-    const result = await api<{ intakes: IntakeRow[] }>('/api/v1/wl/intakes?limit=50', {
-      token: token ?? undefined,
-    });
+    const result = await api<{ intakes: IntakeRow[] }>('/api/v1/wl/intakes?limit=50');
     intakes = result.intakes;
   } catch {
     // Backend may not be connected, or no intakes yet.
