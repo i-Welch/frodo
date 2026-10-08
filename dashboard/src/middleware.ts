@@ -1,10 +1,9 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { auth } from '@/lib/auth/server';
+import { getAuth } from '@/lib/auth/server';
 
 // Protect-by-list: only routes named here require auth. Everything else —
 // including unknown paths — falls through to normal routing so bad URLs
 // render the not-found page instead of bouncing to sign-in.
-const protectDashboard = auth.middleware({ loginUrl: '/sign-in' });
 const isProtectedRoute = (request: NextRequest) =>
   request.nextUrl.pathname === '/dashboard' || request.nextUrl.pathname.startsWith('/dashboard/');
 
@@ -54,7 +53,7 @@ export default async function middleware(request: NextRequest) {
   if (wl) return wl;
 
   if (isProtectedRoute(request)) {
-    return protectDashboard(request);
+    return getAuth().middleware({ loginUrl: '/sign-in' })(request);
   }
   return NextResponse.next();
 }
