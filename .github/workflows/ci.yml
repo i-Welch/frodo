@@ -6,6 +6,10 @@ on:
     branches: [master]
   workflow_call:
 
+defaults:
+  run:
+    working-directory: dashboard
+
 jobs:
   lint-and-typecheck:
     runs-on: ubuntu-latest

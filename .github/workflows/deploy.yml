@@ -3,13 +3,9 @@ on:
   push:
     branches: [master]
 
-concurrency:
-  group: deploy-${{ github.ref }}
-  cancel-in-progress: false
-
-# The API previously deployed to AWS ECS. AWS has been retired; the new API
-# hosting target is not wired up yet, so this workflow only gates on CI.
-# Add the deploy job(s) here once a host is chosen.
+# The app (dashboard + API) is a single Next.js project deployed by Vercel's
+# Git integration; this workflow only gates on CI. Vercel's own status is
+# checked by vercel-deploy-check.yml.
 jobs:
   ci:
     uses: ./.github/workflows/ci.yml

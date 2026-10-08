@@ -1,5 +1,6 @@
 .vercel
 .env*.local
 
-# clerk configuration (can include secrets)
-/.clerk/
+
+# generated at build by npm run build:collect
+/public/frodo-collect.js

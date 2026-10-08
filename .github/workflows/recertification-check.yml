@@ -25,6 +25,7 @@ jobs:
           bun-version: latest
 
       - name: Install dependencies
+        working-directory: dashboard
         run: bun install --frozen-lockfile
 
       - name: Run recertification check
@@ -33,4 +34,5 @@ jobs:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           EMAIL_FROM: noreply@reportraven.tech
           RECERT_ALERT_TO: isaac@reportraven.tech
+        working-directory: dashboard
         run: bun scripts/recertification-check.ts

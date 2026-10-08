@@ -1,9 +1,9 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
-
 /**
  * Fetch wrapper for the RAVEN API.
- * In the browser, attaches the Neon Auth JWT as a Bearer token.
- * On the server, uses the token passed explicitly.
+ *
+ * The API runs inside this Next.js app (src/server). On the server we call it
+ * in-process; in the browser we use same-origin relative URLs. A Neon Auth JWT
+ * is attached as a Bearer token when provided.
  */
 export async function api<T>(
   path: string,
@@ -21,11 +21,19 @@ export async function api<T>(
     headers['Authorization'] = `Bearer ${options.token}`;
   }
 
-  const res = await fetch(`${API_URL}${path}`, {
+  const init: RequestInit = {
     method: options?.method ?? 'GET',
     headers,
     body: options?.body ? JSON.stringify(options.body) : undefined,
-  });
+  };
+
+  let res: Response;
+  if (typeof window === 'undefined') {
+    const { app } = await import('@/server/app');
+    res = await app.fetch(new Request(`http://internal${path}`, init));
+  } else {
+    res = await fetch(path, init);
+  }
 
   if (!res.ok) {
     const error = await res.json().catch(() => ({ message: res.statusText }));
