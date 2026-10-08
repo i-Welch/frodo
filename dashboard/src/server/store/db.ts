@@ -1,11 +1,36 @@
 import pg from 'pg';
+import { neon } from '@neondatabase/serverless';
 import { config } from '../config/app-config';
 
+/**
+ * Minimal pool facade over Neon's SQL-over-HTTPS endpoint. Opt-in with
+ * NEON_HTTP=1 for environments that can reach Neon over HTTPS but not the
+ * Postgres port (CI sandboxes, one-off seed scripts). Supports query() only;
+ * transactions (connect()) are not available over this transport.
+ */
+function createHttpPool(connectionString: string): pg.Pool {
+  const sql = neon(connectionString);
+  const facade = {
+    async query(text: string, params: unknown[] = []) {
+      const res = await sql.query(text, params, { fullResults: true });
+      return { rows: res.rows, rowCount: res.rowCount ?? res.rows.length };
+    },
+    async connect() {
+      throw new Error('Transactions are not supported with NEON_HTTP=1');
+    },
+    async end() {},
+  };
+  return facade as unknown as pg.Pool;
+}
+
 /** Shared Neon Postgres pool. */
-export const pool = new pg.Pool({
-  connectionString: config.databaseUrl,
-  max: Number(process.env.DATABASE_POOL_MAX ?? 10),
-});
+export const pool: pg.Pool =
+  process.env.NEON_HTTP === '1'
+    ? createHttpPool(config.databaseUrl)
+    : new pg.Pool({
+        connectionString: config.databaseUrl,
+        max: Number(process.env.DATABASE_POOL_MAX ?? 10),
+      });
 
 export const TABLE_NAME = config.itemsTable;
 export const LOOKUP_TABLE_NAME = config.lookupTable;

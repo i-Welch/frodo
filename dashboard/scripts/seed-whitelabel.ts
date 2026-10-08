@@ -8,49 +8,45 @@
  *   WLSLUG#<slug>      / METADATA     -> { tenantId, mode }
  *   HOST#<hostname>    / METADATA     -> { tenantId, slug, mode }
  *
+ * Seeds every bank in the front-end registry (_config/registry.ts).
  * Idempotent (puts overwrite). Requires DATABASE_URL.
  */
 import { putWhiteLabelConfig, putSlugRecord, putHostRecord } from '../src/server/whitelabel/config-store';
-import { arthurStateBank } from '../src/server/whitelabel/arthur-state-bank';
-import { firstRelianceBank } from '../src/server/whitelabel/first-reliance-bank';
-import { colonyBankcorp } from '../src/server/whitelabel/colony-bankcorp';
-import { carolinaBankTrust } from '../src/server/whitelabel/carolina-bank-trust';
-import { coastalStatesBank } from '../src/server/whitelabel/coastal-states-bank';
-import { oconeeFederal } from '../src/server/whitelabel/oconee-federal';
-import { andersonBrothersBank } from '../src/server/whitelabel/anderson-brothers-bank';
-import { southernFirstBank } from '../src/server/whitelabel/southern-first-bank';
-import { ravenBank } from '../src/server/whitelabel/raven-bank';
+import { WL_CONFIGS } from '../src/app/(whitelabel)/_config/registry';
+import { pool } from '../src/server/store/db';
 import type { WhiteLabelConfig } from '../src/server/whitelabel/types';
 
-interface Seed {
-  tenantId: string;
-  mode: 'demo' | 'live';
-  hosts: string[];
-  config: WhiteLabelConfig;
+// Tenant ids that were already in use before the registry-driven seed.
+const LEGACY_TENANT_IDS: Record<string, string> = {
+  'arthur-state-bank': 'tnt_arthur_state',
+  'first-reliance-bank': 'tnt_first_reliance',
+  'colony-bankcorp': 'tnt_colony_bankcorp',
+  'carolina-bank-trust': 'tnt_carolina_bank_trust',
+  'coastal-states-bank': 'tnt_coastal_states',
+  'oconee-federal': 'tnt_oconee_federal',
+  'anderson-brothers-bank': 'tnt_anderson_brothers',
+  'southern-first-bank': 'tnt_southern_first',
+  'raven-bank': 'tnt_raven_bank',
+};
+
+const WL_DOMAIN = 'submit.loans';
+
+function tenantIdFor(slug: string): string {
+  return LEGACY_TENANT_IDS[slug] ?? `tnt_${slug.replace(/-/g, '_')}`;
 }
 
-const SEEDS: Seed[] = [
-  { tenantId: 'tnt_arthur_state', mode: 'demo', hosts: ['arthur-state-bank.submit.loans'], config: arthurStateBank },
-  { tenantId: 'tnt_first_reliance', mode: 'demo', hosts: ['first-reliance-bank.submit.loans'], config: firstRelianceBank },
-  { tenantId: 'tnt_colony_bankcorp', mode: 'demo', hosts: ['colony-bankcorp.submit.loans'], config: colonyBankcorp },
-  { tenantId: 'tnt_carolina_bank_trust', mode: 'demo', hosts: ['carolina-bank-trust.submit.loans'], config: carolinaBankTrust },
-  { tenantId: 'tnt_coastal_states', mode: 'demo', hosts: ['coastal-states-bank.submit.loans'], config: coastalStatesBank },
-  { tenantId: 'tnt_oconee_federal', mode: 'demo', hosts: ['oconee-federal.submit.loans'], config: oconeeFederal },
-  { tenantId: 'tnt_anderson_brothers', mode: 'demo', hosts: ['anderson-brothers-bank.submit.loans'], config: andersonBrothersBank },
-  { tenantId: 'tnt_southern_first', mode: 'demo', hosts: ['southern-first-bank.submit.loans'], config: southernFirstBank },
-  { tenantId: 'tnt_raven_bank', mode: 'demo', hosts: ['raven-bank.submit.loans'], config: ravenBank },
-];
-
 async function main() {
-  for (const s of SEEDS) {
-    await putWhiteLabelConfig(s.tenantId, s.config);
-    await putSlugRecord(s.config.slug, s.tenantId, s.mode);
-    for (const host of s.hosts) {
-      await putHostRecord(host, s.tenantId, s.config.slug, s.mode);
-    }
-    console.log(`Seeded ${s.config.slug} (tenant ${s.tenantId}, mode ${s.mode}, hosts: ${s.hosts.join(', ')})`);
+  for (const config of WL_CONFIGS) {
+    const tenantId = tenantIdFor(config.slug);
+    const host = `${config.slug}.${WL_DOMAIN}`;
+    // The front-end and back-end config shapes are identical.
+    await putWhiteLabelConfig(tenantId, config as unknown as WhiteLabelConfig);
+    await putSlugRecord(config.slug, tenantId, 'demo');
+    await putHostRecord(host, tenantId, config.slug, 'demo');
+    console.log(`Seeded ${config.slug} (tenant ${tenantId}, mode demo, host ${host})`);
   }
-  console.log('White-label seed complete.');
+  console.log(`White-label seed complete: ${WL_CONFIGS.length} banks.`);
+  await pool.end();
 }
 
 main().catch((err) => {
