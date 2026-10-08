@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { getApiToken } from '@/lib/auth/client';
 import Link from 'next/link';
 
 interface Verification {
@@ -18,7 +18,6 @@ interface Verification {
 const POLL_INTERVAL = 15_000;
 
 export function VerificationsList({ initial }: { initial: Verification[] }) {
-  const { getToken, orgId } = useAuth();
   const [verifications, setVerifications] = useState(initial);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export function VerificationsList({ initial }: { initial: Verification[] }) {
 
     async function poll() {
       try {
-        const token = await getToken({ organizationId: orgId ?? undefined });
+        const token = await getApiToken();
         const res = await fetch('/api/v1/verifications?limit=50', {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -41,7 +40,7 @@ export function VerificationsList({ initial }: { initial: Verification[] }) {
 
     const interval = setInterval(poll, POLL_INTERVAL);
     return () => { active = false; clearInterval(interval); };
-  }, [getToken, orgId]);
+  }, []);
 
   return (
     <div className="rounded-lg border border-gray-200 bg-white overflow-hidden">

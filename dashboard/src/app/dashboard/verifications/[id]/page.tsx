@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server';
+import { getApiToken } from '@/lib/auth/token';
 import { api } from '@/lib/api';
 import { CopyLinkButton } from './copy-link-button';
 import { DownloadPDFButton } from './download-pdf-button';
@@ -9,8 +9,7 @@ export default async function VerificationDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const { getToken } = await auth();
-  const token = await getToken();
+  const token = await getApiToken();
 
   // Fetch the verification record
   let verification: Record<string, unknown> | null;

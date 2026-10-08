@@ -1,9 +1,9 @@
-import { SignUp } from '@clerk/nextjs';
+import { AuthView } from '@neondatabase/auth/react';
 
 export default function SignUpPage() {
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <SignUp />
+      <AuthView pathname="sign-up" />
     </div>
   );
 }

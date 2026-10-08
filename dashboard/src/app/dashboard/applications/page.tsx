@@ -1,10 +1,9 @@
-import { auth } from '@clerk/nextjs/server';
+import { getApiToken } from '@/lib/auth/token';
 import { api } from '@/lib/api';
 import { ApplicationsList, type IntakeRow } from './applications-list';
 
 export default async function ApplicationsPage() {
-  const { getToken } = await auth();
-  const token = await getToken();
+  const token = await getApiToken();
 
   let intakes: IntakeRow[] = [];
   try {

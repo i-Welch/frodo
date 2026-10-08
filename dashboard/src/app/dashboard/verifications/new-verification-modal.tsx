@@ -1,13 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { getApiToken } from '@/lib/auth/client';
 import { useRouter } from 'next/navigation';
 
 const ALL_MODULES = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence'];
 
 export function NewVerificationModal({ open, onClose }: { open: boolean; onClose: () => void }) {
-  const { getToken, orgId } = useAuth();
   const router = useRouter();
   const [contactInfo, setContactInfo] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -45,7 +44,7 @@ export function NewVerificationModal({ open, onClose }: { open: boolean; onClose
     setError('');
 
     try {
-      const token = await getToken({ organizationId: orgId ?? undefined });
+      const token = await getApiToken();
       const person: Record<string, string> = {};
       if (isEmail) person.email = contactInfo;
       if (isPhone) person.phone = contactInfo.startsWith('+') ? contactInfo : `+1${contactInfo.replace(/\D/g, '')}`;
@@ -113,13 +112,7 @@ export function NewVerificationModal({ open, onClose }: { open: boolean; onClose
 
         {/* Body */}
         <div className="px-6 py-5">
-          {!orgId ? (
-            <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-4">
-              <p className="text-sm text-yellow-800">
-                Please select an organization using the switcher in the sidebar before creating a verification.
-              </p>
-            </div>
-          ) : result ? (
+          {result ? (
             <div>
               {result.linkSent ? (
                 <p className="text-sm text-gray-600 mb-4">

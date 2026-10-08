@@ -2,7 +2,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000';
 
 /**
  * Fetch wrapper for the RAVEN API.
- * In the browser, attaches the Clerk session token as a Bearer token.
+ * In the browser, attaches the Neon Auth JWT as a Bearer token.
  * On the server, uses the token passed explicitly.
  */
 export async function api<T>(

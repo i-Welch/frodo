@@ -1,25 +1,11 @@
-import { auth } from '@clerk/nextjs/server';
+import { getApiToken } from '@/lib/auth/token';
 import Link from 'next/link';
 import { api } from '@/lib/api';
 
 export default async function DashboardHome() {
-  const { getToken, orgId } = await auth();
-  const token = await getToken();
+  const token = await getApiToken();
 
   let stats = { total: 0, byStatus: {} as Record<string, number> };
-
-  if (!orgId) {
-    return (
-      <div>
-        <h1 className="text-2xl font-semibold tracking-tight mb-8">Dashboard</h1>
-        <div className="rounded-lg border border-yellow-200 bg-yellow-50 p-6">
-          <p className="text-sm text-yellow-800">
-            Please select an organization using the switcher in the sidebar to get started.
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   try {
     stats = await api<typeof stats>('/api/v1/verifications/stats', { token: token ?? undefined });

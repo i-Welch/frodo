@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
-import { ClerkProvider } from '@clerk/nextjs';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
+import '@neondatabase/auth/ui/css';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://reportraven.tech'),
@@ -45,14 +46,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+        <Providers>{children}</Providers>
+        <Analytics />
+        <SpeedInsights />
+      </body>
+    </html>
   );
 }

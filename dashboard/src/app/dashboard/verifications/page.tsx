@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server';
+import { getApiToken } from '@/lib/auth/token';
 import { api } from '@/lib/api';
 import { NewVerificationButton } from './new-verification-button';
 import { VerificationsList } from './verifications-list';
@@ -15,8 +15,7 @@ interface Verification {
 }
 
 export default async function VerificationsPage() {
-  const { getToken } = await auth();
-  const token = await getToken();
+  const token = await getApiToken();
 
   let verifications: Verification[] = [];
   try {
