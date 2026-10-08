@@ -2,14 +2,8 @@ import { describe, it, expect, beforeAll, afterEach } from 'vitest';
 import crypto from 'node:crypto';
 import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { appendEvent } from '../../src/store/event-store.js';
-import {
-  registerEnricher,
-  clearEnrichers,
-} from '../../src/enrichment/registry.js';
-import {
-  checkStaleness,
-  getStaleFields,
-} from '../../src/enrichment/staleness.js';
+import { registerEnricher, clearEnrichers } from '../../src/enrichment/registry.js';
+import { checkStaleness, getStaleFields } from '../../src/enrichment/staleness.js';
 import type { DataEvent } from '../../src/events/types.js';
 
 // Side-effect import — registers module schemas

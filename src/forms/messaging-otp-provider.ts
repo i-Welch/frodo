@@ -12,11 +12,7 @@ const log = createChildLogger({ module: 'messaging-otp-provider' });
  * TELNYX_MESSAGING_PROFILE_ID.
  */
 export class MessagingOtpProvider implements OtpProvider {
-  async sendOtp(
-    channel: 'email' | 'phone',
-    destination: string,
-    code: string,
-  ): Promise<void> {
+  async sendOtp(channel: 'email' | 'phone', destination: string, code: string): Promise<void> {
     if (channel === 'email') {
       const messageId = await sendEmail({
         to: destination,

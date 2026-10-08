@@ -35,9 +35,7 @@ export async function putSession(session: UserSession): Promise<void> {
  * Returns null if the item doesn't exist (or was TTL-deleted).
  * Does NOT check expiry — caller must do that.
  */
-export async function getSessionItem(
-  sessionId: string,
-): Promise<UserSession | null> {
+export async function getSessionItem(sessionId: string): Promise<UserSession | null> {
   const key = keys.session(sessionId);
   const item = await getItem(key);
   if (!item) return null;
@@ -55,10 +53,7 @@ export async function getSessionItem(
 /**
  * Update the expiresAt (and ttl) for an existing session.
  */
-export async function updateSessionExpiry(
-  sessionId: string,
-  expiresAt: string,
-): Promise<void> {
+export async function updateSessionExpiry(sessionId: string, expiresAt: string): Promise<void> {
   const key = keys.session(sessionId);
 
   await updateItem(key, {

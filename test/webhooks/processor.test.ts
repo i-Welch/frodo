@@ -4,10 +4,7 @@ import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { getModule } from '../../src/store/user-store.js';
 import { getEventsForModule } from '../../src/store/event-store.js';
 import { processWebhook } from '../../src/webhooks/processor.js';
-import {
-  registerWebhookHandler,
-  clearWebhookHandlers,
-} from '../../src/webhooks/registry.js';
+import { registerWebhookHandler, clearWebhookHandlers } from '../../src/webhooks/registry.js';
 import type { WebhookHandler } from '../../src/webhooks/types.js';
 
 // Side-effect import — registers module schemas
@@ -86,15 +83,13 @@ describe('webhook processor', () => {
     };
     registerWebhookHandler(handler);
 
-    await expect(
-      processWebhook('plaid', {}, {}),
-    ).rejects.toThrow('validation failed');
+    await expect(processWebhook('plaid', {}, {})).rejects.toThrow('validation failed');
   });
 
   it('throws for unknown provider', async () => {
-    await expect(
-      processWebhook('unknown-provider', {}, {}),
-    ).rejects.toThrow("No webhook handler registered for provider 'unknown-provider'");
+    await expect(processWebhook('unknown-provider', {}, {})).rejects.toThrow(
+      "No webhook handler registered for provider 'unknown-provider'",
+    );
   });
 
   it('handles partial failures across multiple events', async () => {

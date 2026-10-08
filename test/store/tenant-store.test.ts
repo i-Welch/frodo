@@ -37,10 +37,7 @@ function makeTenant(overrides?: Partial<Tenant>): Tenant {
   };
 }
 
-function makeStoredApiKey(
-  tenantId: string,
-  overrides?: Partial<StoredApiKey>,
-): StoredApiKey {
+function makeStoredApiKey(tenantId: string, overrides?: Partial<StoredApiKey>): StoredApiKey {
   return {
     keyId: crypto.randomUUID(),
     tenantId,
@@ -110,12 +107,8 @@ describe('tenant-store', () => {
       expect(retrieved).not.toBeNull();
       expect(retrieved!.consentAddendum).toBe('Extra consent text');
       expect(retrieved!.webhookUrl).toBe('https://example.com/webhook');
-      expect(retrieved!.callbackUrls).toEqual([
-        'https://example.com/callback',
-      ]);
-      expect(retrieved!.permissions).toEqual([
-        { module: 'steps', requiredTier: 2 },
-      ]);
+      expect(retrieved!.callbackUrls).toEqual(['https://example.com/callback']);
+      expect(retrieved!.permissions).toEqual([{ module: 'steps', requiredTier: 2 }]);
     });
   });
 

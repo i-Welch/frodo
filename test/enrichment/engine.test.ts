@@ -4,11 +4,7 @@ import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { getModule } from '../../src/store/user-store.js';
 import { getEventsForModule } from '../../src/store/event-store.js';
 import { enrichModule } from '../../src/enrichment/engine.js';
-import {
-  registerEnricher,
-  clearEnrichers,
-  getEnrichers,
-} from '../../src/enrichment/registry.js';
+import { registerEnricher, clearEnrichers, getEnrichers } from '../../src/enrichment/registry.js';
 import { getSourceConfig } from '../../src/config/source-configs.js';
 import type { Enricher } from '../../src/enrichment/types.js';
 
@@ -163,12 +159,8 @@ describe('enrichment engine', () => {
 
     expect(report.userId).toBe(userId);
     expect(report.module).toBe('identity');
-    expect(report.successes).toEqual([
-      { source: 'socure', fields: ['firstName'] },
-    ]);
-    expect(report.failures).toEqual([
-      { source: 'clearbit', error: 'Service down' },
-    ]);
+    expect(report.successes).toEqual([{ source: 'socure', fields: ['firstName'] }]);
+    expect(report.failures).toEqual([{ source: 'clearbit', error: 'Service down' }]);
   });
 
   it('events written by enrichment have correct source, confidence, goodBy from source config', async () => {

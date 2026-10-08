@@ -20,12 +20,7 @@ export const keys = {
     SK: `MODULE#${module}`,
   }),
 
-  dataEvent: (
-    userId: string,
-    module: string,
-    ts: string,
-    eventId: string,
-  ) => ({
+  dataEvent: (userId: string, module: string, ts: string, eventId: string) => ({
     PK: `USER#${userId}`,
     SK: `EVENT#${module}#${ts}#${eventId}`,
   }),
@@ -166,13 +161,11 @@ export async function putItem(item: Item, opts?: PutOptions): Promise<void> {
   if (r.rowCount === 0) throw new ConditionalCheckFailedError();
 }
 
-export async function getItem(
-  key: { PK: string; SK: string },
-): Promise<Item | null> {
-  const r = await pool.query<{ attrs: Item }>(
-    `SELECT attrs FROM ${T} WHERE pk = $1 AND sk = $2`,
-    [key.PK, key.SK],
-  );
+export async function getItem(key: { PK: string; SK: string }): Promise<Item | null> {
+  const r = await pool.query<{ attrs: Item }>(`SELECT attrs FROM ${T} WHERE pk = $1 AND sk = $2`, [
+    key.PK,
+    key.SK,
+  ]);
   return r.rows[0]?.attrs ?? null;
 }
 
@@ -181,10 +174,7 @@ export async function getItem(
  * missing (Dynamo UpdateItem upserts; every caller updates an existing row).
  * Pass `null` to remove an attribute. `ttl` is mirrored to its column.
  */
-export async function updateItem(
-  key: { PK: string; SK: string },
-  set: Item,
-): Promise<void> {
+export async function updateItem(key: { PK: string; SK: string }, set: Item): Promise<void> {
   const patch = JSON.stringify(set);
   const hasTtl = Object.prototype.hasOwnProperty.call(set, 'ttl');
   const ttl = hasTtl && typeof set.ttl === 'number' ? Math.floor(set.ttl) : null;
@@ -220,11 +210,7 @@ export async function queryItems(params: QueryParams): Promise<QueryResult> {
   const { pk, skPrefix, limit, cursor, scanForward = true, indexName } = params;
 
   const [pkCol, skCol] =
-    indexName === 'GSI2'
-      ? ['gsi2pk', 'gsi2sk']
-      : indexName
-        ? ['gsi1pk', 'gsi1sk']
-        : ['pk', 'sk'];
+    indexName === 'GSI2' ? ['gsi2pk', 'gsi2sk'] : indexName ? ['gsi1pk', 'gsi1sk'] : ['pk', 'sk'];
   const indexed = indexName !== undefined;
 
   const args: unknown[] = [pk];
@@ -286,7 +272,10 @@ export async function scanItems(opts: {
   limit?: number;
 }): Promise<Item[]> {
   const args: unknown[] = [`${escapeLike(opts.pkPrefix)}%`];
-  const where = [`pk LIKE $1 ESCAPE '\\'`, `(ttl IS NULL OR ttl >= extract(epoch from now())::bigint)`];
+  const where = [
+    `pk LIKE $1 ESCAPE '\\'`,
+    `(ttl IS NULL OR ttl >= extract(epoch from now())::bigint)`,
+  ];
   if (opts.sk !== undefined) {
     args.push(opts.sk);
     where.push(`sk = $${args.length}`);
@@ -299,9 +288,7 @@ export async function scanItems(opts: {
   return r.rows.map((row) => row.attrs);
 }
 
-export async function deleteItem(
-  key: { PK: string; SK: string },
-): Promise<void> {
+export async function deleteItem(key: { PK: string; SK: string }): Promise<void> {
   await pool.query(`DELETE FROM ${T} WHERE pk = $1 AND sk = $2`, [key.PK, key.SK]);
 }
 

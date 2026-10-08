@@ -43,9 +43,7 @@ function makeEvent(overrides: Partial<DataEvent> = {}): DataEvent {
       },
     ],
     timestamp: overrides.timestamp ?? new Date().toISOString(),
-    ...(overrides.metadata !== undefined
-      ? { metadata: overrides.metadata }
-      : {}),
+    ...(overrides.metadata !== undefined ? { metadata: overrides.metadata } : {}),
     ...(overrides.eventId !== undefined ? { eventId: overrides.eventId } : {}),
   };
 }
@@ -241,21 +239,13 @@ describe('event-store', () => {
       await appendEvent(firstNameUpdateEvent);
 
       // Query field history for 'firstName'
-      const firstNameHistory = await getEventsForField(
-        userId,
-        'identity',
-        'firstName',
-      );
+      const firstNameHistory = await getEventsForField(userId, 'identity', 'firstName');
       expect(firstNameHistory).toHaveLength(2);
       expect(firstNameHistory[0].eventId).toBe(firstNameEvent.eventId);
       expect(firstNameHistory[1].eventId).toBe(firstNameUpdateEvent.eventId);
 
       // Query field history for 'lastName'
-      const lastNameHistory = await getEventsForField(
-        userId,
-        'identity',
-        'lastName',
-      );
+      const lastNameHistory = await getEventsForField(userId, 'identity', 'lastName');
       expect(lastNameHistory).toHaveLength(2);
       expect(lastNameHistory[0].eventId).toBe(lastNameEvent.eventId);
       expect(lastNameHistory[1].eventId).toBe(firstNameUpdateEvent.eventId);

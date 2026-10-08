@@ -3,10 +3,7 @@ import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
 import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { webhookRoutes } from '../../src/api/routes/webhooks.js';
-import {
-  registerWebhookHandler,
-  clearWebhookHandlers,
-} from '../../src/webhooks/registry.js';
+import { registerWebhookHandler, clearWebhookHandlers } from '../../src/webhooks/registry.js';
 import type { WebhookHandler } from '../../src/webhooks/types.js';
 
 // Side-effect import — registers module schemas

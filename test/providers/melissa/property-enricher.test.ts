@@ -104,8 +104,6 @@ describe('MelissaPropertyEnricher', () => {
     const noAddrUserId = crypto.randomUUID();
     const enricher = createFixtureEnricher(MelissaPropertyEnricher, FIXTURE);
 
-    await expect(enricher.enrich(noAddrUserId, {})).rejects.toThrow(
-      'requires a verified address',
-    );
+    await expect(enricher.enrich(noAddrUserId, {})).rejects.toThrow('requires a verified address');
   });
 });

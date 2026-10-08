@@ -31,11 +31,7 @@ async function ensureLookupTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    .use(userRoutes)
-    .use(moduleRoutes)
-    .use(accessRoutes);
+  return new Elysia().use(tenantRoutes).use(userRoutes).use(moduleRoutes).use(accessRoutes);
 }
 
 // ---------------------------------------------------------------------------
@@ -56,8 +52,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -66,9 +61,7 @@ function jsonRequest(
 /**
  * Creates a tenant + API key + a linked user + stores module data.
  */
-async function setupFullScenario(
-  app: ReturnType<typeof createTestApp>,
-): Promise<{
+async function setupFullScenario(app: ReturnType<typeof createTestApp>): Promise<{
   tenantId: string;
   rawKey: string;
   userId: string;
@@ -182,21 +175,14 @@ describe('access API routes', () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
       // Create a session with sufficient tier (EnhancedOTP covers employment)
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.EnhancedOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.EnhancedOTP);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access?sessionId=${session.sessionId}`,
-          {
-            method: 'POST',
-            body: { modules: ['employment'] },
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access?sessionId=${session.sessionId}`, {
+          method: 'POST',
+          body: { modules: ['employment'] },
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -211,21 +197,14 @@ describe('access API routes', () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
       // Create a BasicOTP session (tier 1)
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.BasicOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.BasicOTP);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access?sessionId=${session.sessionId}`,
-          {
-            method: 'POST',
-            body: { modules: ['employment'] },
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access?sessionId=${session.sessionId}`, {
+          method: 'POST',
+          body: { modules: ['employment'] },
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -243,21 +222,14 @@ describe('access API routes', () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
       // Create an Identity session (tier 3) — sufficient for everything
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.Identity,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.Identity);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access?sessionId=${session.sessionId}`,
-          {
-            method: 'POST',
-            body: { modules: ['employment'] },
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access?sessionId=${session.sessionId}`, {
+          method: 'POST',
+          body: { modules: ['employment'] },
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -275,21 +247,14 @@ describe('access API routes', () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
       // Create a session with tier 3
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.Identity,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.Identity);
 
       await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access?sessionId=${session.sessionId}`,
-          {
-            method: 'POST',
-            body: { modules: ['employment'] },
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access?sessionId=${session.sessionId}`, {
+          method: 'POST',
+          body: { modules: ['employment'] },
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       // Give the fire-and-forget log a moment to settle
@@ -382,11 +347,7 @@ describe('access API routes', () => {
     it('accepts session ID from X-Session-Id header', async () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.Identity,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.Identity);
 
       const res = await app.handle(
         jsonRequest(`/api/v1/users/${userId}/access`, {
@@ -408,21 +369,14 @@ describe('access API routes', () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
       // Create a session for a different user
-      const session = await createSession(
-        'different-user-id',
-        tenantId,
-        VerificationTier.Identity,
-      );
+      const session = await createSession('different-user-id', tenantId, VerificationTier.Identity);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access?sessionId=${session.sessionId}`,
-          {
-            method: 'POST',
-            body: { modules: ['employment'] },
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access?sessionId=${session.sessionId}`, {
+          method: 'POST',
+          body: { modules: ['employment'] },
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -449,19 +403,12 @@ describe('access API routes', () => {
     it('returns session info with a valid session', async () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.EnhancedOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.EnhancedOTP);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access/status?sessionId=${session.sessionId}`,
-          {
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access/status?sessionId=${session.sessionId}`, {
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -474,23 +421,16 @@ describe('access API routes', () => {
     it('returns { verified: false } with an expired session', async () => {
       const { rawKey, userId, tenantId } = await setupFullScenario(app);
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.BasicOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.BasicOTP);
 
       // Expire the session
       const pastDate = new Date(Date.now() - 1000).toISOString();
       await updateSessionExpiry(session.sessionId, pastDate);
 
       const res = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/access/status?sessionId=${session.sessionId}`,
-          {
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/access/status?sessionId=${session.sessionId}`, {
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res.status).toBe(200);
@@ -499,9 +439,7 @@ describe('access API routes', () => {
     });
 
     it('requires API key authentication', async () => {
-      const res = await app.handle(
-        jsonRequest('/api/v1/users/some-user/access/status'),
-      );
+      const res = await app.handle(jsonRequest('/api/v1/users/some-user/access/status'));
 
       expect(res.status).toBe(401);
     });

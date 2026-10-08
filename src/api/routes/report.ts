@@ -213,22 +213,31 @@ function extractRiskScores(events: DataEvent[]): Record<string, unknown> {
     if (event.source.source === 'socure') {
       if (event.metadata.decision) scores.socureDecision = event.metadata.decision;
       if (event.metadata.tags) scores.socureTags = event.metadata.tags;
-      if (event.metadata.phoneRiskScore !== undefined) scores.phoneRiskScore = event.metadata.phoneRiskScore;
-      if (event.metadata.emailRiskScore !== undefined) scores.emailRiskScore = event.metadata.emailRiskScore;
-      if (event.metadata.addressRiskScore !== undefined) scores.addressRiskScore = event.metadata.addressRiskScore;
+      if (event.metadata.phoneRiskScore !== undefined)
+        scores.phoneRiskScore = event.metadata.phoneRiskScore;
+      if (event.metadata.emailRiskScore !== undefined)
+        scores.emailRiskScore = event.metadata.emailRiskScore;
+      if (event.metadata.addressRiskScore !== undefined)
+        scores.addressRiskScore = event.metadata.addressRiskScore;
       if (event.metadata.fraudScore !== undefined) scores.fraudScore = event.metadata.fraudScore;
-      if (event.metadata.syntheticIdentityScore !== undefined) scores.syntheticIdentityScore = event.metadata.syntheticIdentityScore;
-      if (event.metadata.watchlistScore !== undefined) scores.watchlistScore = event.metadata.watchlistScore;
+      if (event.metadata.syntheticIdentityScore !== undefined)
+        scores.syntheticIdentityScore = event.metadata.syntheticIdentityScore;
+      if (event.metadata.watchlistScore !== undefined)
+        scores.watchlistScore = event.metadata.watchlistScore;
       if (event.metadata.kycScore !== undefined) scores.kycScore = event.metadata.kycScore;
-      if (event.metadata.namePhoneCorrelationScore !== undefined) scores.namePhoneCorrelationScore = event.metadata.namePhoneCorrelationScore;
-      if (event.metadata.nameAddressCorrelationScore !== undefined) scores.nameAddressCorrelationScore = event.metadata.nameAddressCorrelationScore;
+      if (event.metadata.namePhoneCorrelationScore !== undefined)
+        scores.namePhoneCorrelationScore = event.metadata.namePhoneCorrelationScore;
+      if (event.metadata.nameAddressCorrelationScore !== undefined)
+        scores.nameAddressCorrelationScore = event.metadata.nameAddressCorrelationScore;
     }
 
     // Truework verification status
     if (event.source.source === 'truework') {
-      if (event.metadata.verificationId) scores.trueworkVerificationId = event.metadata.verificationId;
+      if (event.metadata.verificationId)
+        scores.trueworkVerificationId = event.metadata.verificationId;
       if (event.metadata.state) scores.trueworkState = event.metadata.state;
-      if (event.metadata.employeeStatus) scores.trueworkEmployeeStatus = event.metadata.employeeStatus;
+      if (event.metadata.employeeStatus)
+        scores.trueworkEmployeeStatus = event.metadata.employeeStatus;
     }
 
     // Plaid metadata

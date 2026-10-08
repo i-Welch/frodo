@@ -71,16 +71,19 @@ describe('postgres store', () => {
 
   it('enforces conditional writes', async () => {
     const key = { PK: ctx.pk('cond'), SK: 'METADATA' };
-    await putItem({ ...key, status: 'open' }, { ifAttrNotIn: { attr: 'status', values: ['done'] } });
+    await putItem(
+      { ...key, status: 'open' },
+      { ifAttrNotIn: { attr: 'status', values: ['done'] } },
+    );
     await putItem({ ...key, status: 'done' });
     await expect(
       putItem({ ...key, status: 'open' }, { ifAttrNotIn: { attr: 'status', values: ['done'] } }),
     ).rejects.toBeInstanceOf(ConditionalCheckFailedError);
 
     await putItem({ ...key, status: 'done', bound: 'd1' });
-    await expect(
-      putItem({ ...key, bound: 'd2' }, { ifAttrNotSet: 'bound' }),
-    ).rejects.toMatchObject({ name: 'ConditionalCheckFailedException' });
+    await expect(putItem({ ...key, bound: 'd2' }, { ifAttrNotSet: 'bound' })).rejects.toMatchObject(
+      { name: 'ConditionalCheckFailedException' },
+    );
     await expect(putItem({ ...key }, { ifNotExists: true })).rejects.toBeInstanceOf(
       ConditionalCheckFailedError,
     );

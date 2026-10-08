@@ -36,7 +36,10 @@ export async function createFormToken(params: {
     expiresAt = null;
   } else if (params.formDefinition.expiresIn) {
     const ms = durationToMs(params.formDefinition.expiresIn);
-    expiresAt = ms > 0 ? new Date(now.getTime() + ms).toISOString() : new Date(now.getTime() + DEFAULT_EXPIRY_MS).toISOString();
+    expiresAt =
+      ms > 0
+        ? new Date(now.getTime() + ms).toISOString()
+        : new Date(now.getTime() + DEFAULT_EXPIRY_MS).toISOString();
   } else {
     // undefined = default 1 hour
     expiresAt = new Date(now.getTime() + DEFAULT_EXPIRY_MS).toISOString();
@@ -68,10 +71,7 @@ export async function createFormToken(params: {
 
   await putItem(item);
 
-  log.debug(
-    { token: token.slice(0, 8), userId: params.userId, expiresAt },
-    'Form token created',
-  );
+  log.debug({ token: token.slice(0, 8), userId: params.userId, expiresAt }, 'Form token created');
 
   return token;
 }
@@ -122,10 +122,7 @@ export async function getFormToken(token: string): Promise<FormToken | null> {
 /**
  * Update fields on an existing form token (e.g. storing OTP state).
  */
-export async function updateFormToken(
-  token: string,
-  updates: Partial<FormToken>,
-): Promise<void> {
+export async function updateFormToken(token: string, updates: Partial<FormToken>): Promise<void> {
   const key = keys.formToken(token);
 
   const patch = Object.entries(updates).filter(

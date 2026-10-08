@@ -18,24 +18,26 @@ async function ensureTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    // Inline onError + derive on the same Elysia instance.
-    // Elysia requires this pattern so the error handler catches derive errors.
-    .onError(({ error, set }) => {
-      if (error instanceof AuthError) {
-        set.status = 401;
-        return error.apiError;
-      }
-    })
-    .guard((app) =>
-      app
-        .derive(async ({ headers }) => resolveAuth(headers))
-        .get('/api/v1/users/me', ({ tenant }) => ({
-          tenantId: tenant.tenantId,
-          tenantName: tenant.name,
-        })),
-    );
+  return (
+    new Elysia()
+      .use(tenantRoutes)
+      // Inline onError + derive on the same Elysia instance.
+      // Elysia requires this pattern so the error handler catches derive errors.
+      .onError(({ error, set }) => {
+        if (error instanceof AuthError) {
+          set.status = 401;
+          return error.apiError;
+        }
+      })
+      .guard((app) =>
+        app
+          .derive(async ({ headers }) => resolveAuth(headers))
+          .get('/api/v1/users/me', ({ tenant }) => ({
+            tenantId: tenant.tenantId,
+            tenantName: tenant.name,
+          })),
+      )
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -56,8 +58,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -110,9 +111,7 @@ describe('tenant API routes', () => {
       expect(res.status).toBe(201);
       const tenant = await res.json();
       expect(tenant.callbackUrls).toEqual(['https://example.com/cb']);
-      expect(tenant.permissions).toEqual([
-        { module: 'steps', requiredTier: 1 },
-      ]);
+      expect(tenant.permissions).toEqual([{ module: 'steps', requiredTier: 1 }]);
     });
   });
 
@@ -179,10 +178,9 @@ describe('tenant API routes', () => {
 
       // Revoke the key
       const revokeRes = await app.handle(
-        jsonRequest(
-          `/api/v1/tenants/${tenant.tenantId}/api-keys/${generated.keyId}`,
-          { method: 'DELETE' },
-        ),
+        jsonRequest(`/api/v1/tenants/${tenant.tenantId}/api-keys/${generated.keyId}`, {
+          method: 'DELETE',
+        }),
       );
 
       expect(revokeRes.status).toBe(204);
@@ -226,10 +224,9 @@ describe('tenant API routes', () => {
 
       // Revoke the key
       await app.handle(
-        jsonRequest(
-          `/api/v1/tenants/${tenant.tenantId}/api-keys/${generated.keyId}`,
-          { method: 'DELETE' },
-        ),
+        jsonRequest(`/api/v1/tenants/${tenant.tenantId}/api-keys/${generated.keyId}`, {
+          method: 'DELETE',
+        }),
       );
 
       // Try to use the revoked key

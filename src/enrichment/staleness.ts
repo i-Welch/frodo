@@ -48,10 +48,7 @@ export interface RefreshJobResult {
 /**
  * Check staleness for a single user across all (or specified) modules.
  */
-export async function checkStaleness(
-  userId: string,
-  modules?: string[],
-): Promise<StalenessReport> {
+export async function checkStaleness(userId: string, modules?: string[]): Promise<StalenessReport> {
   const moduleNames = modules ?? getEnrichedModuleNames();
   const now = new Date();
 
@@ -105,10 +102,7 @@ export async function checkStaleness(
 /**
  * Get stale fields for a specific user + module.
  */
-export async function getStaleFields(
-  userId: string,
-  module: string,
-): Promise<StaleField[]> {
+export async function getStaleFields(userId: string, module: string): Promise<StaleField[]> {
   const report = await checkStaleness(userId, [module]);
   const moduleReport = report.staleModules.find((m) => m.module === module);
   return moduleReport?.staleFields ?? [];
@@ -119,9 +113,7 @@ export async function getStaleFields(
  * Emits structured logs for CloudWatch metric filters.
  * Does NOT auto-enrich.
  */
-export async function runRefreshJob(
-  options?: { limit?: number },
-): Promise<RefreshJobResult> {
+export async function runRefreshJob(options?: { limit?: number }): Promise<RefreshJobResult> {
   const start = Date.now();
   const limit = options?.limit;
 
@@ -189,10 +181,7 @@ export async function runRefreshJob(
 // Helpers
 // ---------------------------------------------------------------------------
 
-async function getAllEventsForModule(
-  userId: string,
-  module: string,
-): Promise<DataEvent[]> {
+async function getAllEventsForModule(userId: string, module: string): Promise<DataEvent[]> {
   const allEvents: DataEvent[] = [];
   let cursor: string | undefined;
 
@@ -210,9 +199,7 @@ async function getAllEventsForModule(
  * that has ever been set, regardless of goodBy date.
  * Uses epoch (1970) as `now` so the filter `goodByDate < currentTime` never triggers.
  */
-function resolveFieldsIncludingExpired(
-  events: DataEvent[],
-): Record<string, ResolvedField> {
+function resolveFieldsIncludingExpired(events: DataEvent[]): Record<string, ResolvedField> {
   return resolveFields(events, new Date(0));
 }
 

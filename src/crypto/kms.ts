@@ -1,9 +1,4 @@
-import {
-  createCipheriv,
-  createDecipheriv,
-  createHash,
-  randomBytes,
-} from 'crypto';
+import { createCipheriv, createDecipheriv, createHash, randomBytes } from 'crypto';
 import { config } from '../config/app-config.js';
 import { createChildLogger } from '../logger.js';
 
@@ -116,10 +111,7 @@ async function generateDataKey(userId: string): Promise<KmsGenerateResult> {
   return { plaintextDek, encryptedDek: wrap(plaintextDek, userId) };
 }
 
-async function decryptDataKey(
-  encryptedDek: Buffer,
-  userId: string,
-): Promise<Buffer> {
+async function decryptDataKey(encryptedDek: Buffer, userId: string): Promise<Buffer> {
   const cached = getCachedDek(encryptedDek, userId);
   if (cached) {
     log.debug({ userId }, 'DEK cache hit');

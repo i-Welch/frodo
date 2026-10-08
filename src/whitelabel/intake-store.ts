@@ -73,20 +73,26 @@ export async function putIntake(intake: StoredIntakeInput): Promise<void> {
   // overwrite a record that has already reached a terminal status, which would
   // both lose the terminal transition and resurrect a TTL on it. Terminal
   // writes (submit) always win. See the service layer for conflict handling.
-  const opts =
-    isTerminal
-      ? undefined
-      : { ifAttrNotIn: { attr: 'status', values: [...TERMINAL] } };
+  const opts = isTerminal ? undefined : { ifAttrNotIn: { attr: 'status', values: [...TERMINAL] } };
 
   await putItem(item, opts);
-  log.debug({ intakeId: intake.intakeId, tenantId: intake.tenantId, flow: intake.flow }, 'Intake stored');
+  log.debug(
+    { intakeId: intake.intakeId, tenantId: intake.tenantId, flow: intake.flow },
+    'Intake stored',
+  );
 }
 
 async function hydrate(item: Record<string, unknown>): Promise<Intake> {
   const encryptedDek = Buffer.from(item.encryptedDek as string, 'base64');
   const plaintextDek = await kmsService.decryptDataKey(encryptedDek, item.intakeId as string);
-  const profile = decryptField(plaintextDek, item.encProfile as EncryptedField) as Intake['profile'];
-  const applicant = decryptField(plaintextDek, item.encApplicant as EncryptedField) as Intake['applicant'];
+  const profile = decryptField(
+    plaintextDek,
+    item.encProfile as EncryptedField,
+  ) as Intake['profile'];
+  const applicant = decryptField(
+    plaintextDek,
+    item.encApplicant as EncryptedField,
+  ) as Intake['applicant'];
   return {
     intakeId: item.intakeId as string,
     applicationId: item.applicationId as string | undefined,

@@ -55,7 +55,14 @@ export async function createVerifyRequest(input: CreateVerifyRequestInput): Prom
   });
 
   log.debug({ token, tenantId: input.tenantId, slug: input.slug }, 'Verify request created');
-  return { token, tenantId: input.tenantId, slug: input.slug, modules: input.modules, applicant: input.applicant, createdAt };
+  return {
+    token,
+    tenantId: input.tenantId,
+    slug: input.slug,
+    modules: input.modules,
+    applicant: input.applicant,
+    createdAt,
+  };
 }
 
 export type ResolveResult =
@@ -72,7 +79,10 @@ export type ResolveResult =
  * back five minutes later." Any other device (a forwarded link, a link pulled
  * from history on a different machine) is locked out once bound.
  */
-export async function resolveVerifyRequest(token: string, deviceId: string): Promise<ResolveResult> {
+export async function resolveVerifyRequest(
+  token: string,
+  deviceId: string,
+): Promise<ResolveResult> {
   const item = await getItem(verifyKey(token));
   if (!item) return { status: 'expired' };
   // Read-time expiry: TTL purging is lazy, so an expired record may
@@ -88,10 +98,7 @@ export async function resolveVerifyRequest(token: string, deviceId: string): Pro
     // First open: bind to this device. Conditional so concurrent first-opens
     // don't both bind; re-puts the existing (encrypted) item plus the binding.
     try {
-      await putItem(
-        { ...item, boundDeviceId: deviceId },
-        { ifAttrNotSet: 'boundDeviceId' },
-      );
+      await putItem({ ...item, boundDeviceId: deviceId }, { ifAttrNotSet: 'boundDeviceId' });
       bound = deviceId;
     } catch (err) {
       if (err instanceof Error && err.name === 'ConditionalCheckFailedException') {
@@ -106,7 +113,10 @@ export async function resolveVerifyRequest(token: string, deviceId: string): Pro
 
   const encryptedDek = Buffer.from(item.encryptedDek as string, 'base64');
   const plaintextDek = await kmsService.decryptDataKey(encryptedDek, token);
-  const applicant = decryptField(plaintextDek, item.encApplicant as EncryptedField) as VerifyRequest['applicant'];
+  const applicant = decryptField(
+    plaintextDek,
+    item.encApplicant as EncryptedField,
+  ) as VerifyRequest['applicant'];
   return {
     status: 'ok',
     slug: item.slug as string,

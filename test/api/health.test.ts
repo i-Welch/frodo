@@ -3,10 +3,7 @@ import { Elysia } from 'elysia';
 import { ensureTables, pool, TABLE_NAME, LOOKUP_TABLE_NAME } from '../../src/store/db.js';
 import { requestIdMiddleware } from '../../src/api/middleware/request-id.js';
 import { errorHandler } from '../../src/api/middleware/error-handler.js';
-import {
-  AppError,
-  NotFoundError,
-} from '../../src/api/middleware/error-handler.js';
+import { AppError, NotFoundError } from '../../src/api/middleware/error-handler.js';
 import { kmsService } from '../../src/crypto/kms.js';
 
 // ---------------------------------------------------------------------------
@@ -124,9 +121,7 @@ describe('health endpoints', () => {
       expect(requestId).toBeDefined();
       expect(requestId).not.toBe('');
       // Should be a valid UUID format
-      expect(requestId).toMatch(
-        /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/,
-      );
+      expect(requestId).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
     });
   });
 

@@ -62,8 +62,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -83,9 +82,7 @@ async function setupScenario(app: ReturnType<typeof createTestApp>): Promise<{
       body: {
         name: `Collect Test Tenant ${uniqueSuffix}`,
         callbackUrls: ['https://example.com/callback'],
-        permissions: [
-          { module: 'contact', requiredTier: VerificationTier.BasicOTP },
-        ],
+        permissions: [{ module: 'contact', requiredTier: VerificationTier.BasicOTP }],
       },
     }),
   );
@@ -311,9 +308,7 @@ describe('collect API routes', () => {
         jsonRequest(`/forms/${token}/submit`, {
           method: 'POST',
           body: {
-            fields: [
-              { module: 'contact', field: 'email', value: 'frodo@shire.me' },
-            ],
+            fields: [{ module: 'contact', field: 'email', value: 'frodo@shire.me' }],
             source: 'custom-widget',
           },
         }),

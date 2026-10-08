@@ -106,15 +106,17 @@ async function checkEncryption(): Promise<HealthCheckResult> {
 // ---------------------------------------------------------------------------
 
 const app = new Elysia()
-  .use(cors({
-    origin: [
-      config.dashboardUrl,
-      'https://reportraven.tech',
-      ...(config.nodeEnv !== 'production' ? ['http://localhost:3001'] : []),
-    ],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-Id'],
-  }))
+  .use(
+    cors({
+      origin: [
+        config.dashboardUrl,
+        'https://reportraven.tech',
+        ...(config.nodeEnv !== 'production' ? ['http://localhost:3001'] : []),
+      ],
+      credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-Id'],
+    }),
+  )
   .use(requestIdMiddleware)
   .use(errorHandler)
   .get('/', ({ set }) => {

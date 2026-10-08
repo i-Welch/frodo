@@ -30,11 +30,7 @@ describe('session manager', () => {
       const userId = `user-sess-${Date.now()}`;
       const tenantId = `tenant-sess-${Date.now()}`;
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.BasicOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.BasicOTP);
 
       expect(session.sessionId).toBeDefined();
       expect(session.userId).toBe(userId);
@@ -64,16 +60,10 @@ describe('session manager', () => {
       const userId = `user-exp-${Date.now()}`;
       const tenantId = `tenant-exp-${Date.now()}`;
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.EnhancedOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.EnhancedOTP);
 
       // Manually set expiresAt to the past via the store layer
-      const { updateSessionExpiry } = await import(
-        '../../src/store/session-store.js'
-      );
+      const { updateSessionExpiry } = await import('../../src/store/session-store.js');
       const pastDate = new Date(Date.now() - 1000).toISOString();
       await updateSessionExpiry(session.sessionId, pastDate);
 
@@ -88,11 +78,7 @@ describe('session manager', () => {
       const userId = `user-ext-${Date.now()}`;
       const tenantId = `tenant-ext-${Date.now()}`;
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.BasicOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.BasicOTP);
 
       const originalExpiresAt = session.expiresAt;
 
@@ -113,19 +99,11 @@ describe('session manager', () => {
       const userId = `user-max-${Date.now()}`;
       const tenantId = `tenant-max-${Date.now()}`;
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.Identity,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.Identity);
 
       // Manually set createdAt to 55 minutes ago so the 1-hour cap kicks in
-      const { putSession: overwriteSession } = await import(
-        '../../src/store/session-store.js'
-      );
-      const createdAt55MinAgo = new Date(
-        Date.now() - 55 * 60 * 1000,
-      ).toISOString();
+      const { putSession: overwriteSession } = await import('../../src/store/session-store.js');
+      const createdAt55MinAgo = new Date(Date.now() - 55 * 60 * 1000).toISOString();
       await overwriteSession({
         ...session,
         createdAt: createdAt55MinAgo,
@@ -158,11 +136,7 @@ describe('session manager', () => {
       const userId = `user-inv-${Date.now()}`;
       const tenantId = `tenant-inv-${Date.now()}`;
 
-      const session = await createSession(
-        userId,
-        tenantId,
-        VerificationTier.BasicOTP,
-      );
+      const session = await createSession(userId, tenantId, VerificationTier.BasicOTP);
 
       // Confirm it exists
       const before = await getSession(session.sessionId);

@@ -1,6 +1,12 @@
 import crypto from 'node:crypto';
 import { Elysia, t } from 'elysia';
-import { createTenant, getTenant, storeApiKey, revokeApiKey, updateTenant } from '../../store/tenant-store.js';
+import {
+  createTenant,
+  getTenant,
+  storeApiKey,
+  revokeApiKey,
+  updateTenant,
+} from '../../store/tenant-store.js';
 import {
   addTenantMember,
   removeTenantMember,

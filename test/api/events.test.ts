@@ -29,10 +29,7 @@ async function ensureLookupTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    .use(userRoutes)
-    .use(eventRoutes);
+  return new Elysia().use(tenantRoutes).use(userRoutes).use(eventRoutes);
 }
 
 // ---------------------------------------------------------------------------
@@ -53,8 +50,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -102,10 +98,7 @@ async function setupTenantWithUserAndKey(
   };
 }
 
-function makeEvent(
-  userId: string,
-  overrides: Partial<DataEvent> = {},
-): DataEvent {
+function makeEvent(userId: string, overrides: Partial<DataEvent> = {}): DataEvent {
   return {
     eventId: overrides.eventId ?? crypto.randomUUID(),
     userId,
@@ -125,9 +118,7 @@ function makeEvent(
       },
     ],
     timestamp: overrides.timestamp ?? new Date().toISOString(),
-    ...(overrides.metadata !== undefined
-      ? { metadata: overrides.metadata }
-      : {}),
+    ...(overrides.metadata !== undefined ? { metadata: overrides.metadata } : {}),
   };
 }
 
@@ -146,10 +137,7 @@ describe('event API routes', () => {
 
   describe('GET /api/v1/users/:id/events', () => {
     it('returns empty array for user with no events', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Empty Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Empty Tenant');
 
       const res = await app.handle(
         jsonRequest(`/api/v1/users/${userId}/events`, {
@@ -165,10 +153,7 @@ describe('event API routes', () => {
     });
 
     it('returns events after appending them', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Append Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Append Tenant');
 
       const event1 = makeEvent(userId, {
         module: 'identity',
@@ -205,10 +190,7 @@ describe('event API routes', () => {
     });
 
     it('filters by module query param', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Module Filter Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Module Filter Tenant');
 
       await appendEvent(
         makeEvent(userId, {
@@ -236,10 +218,7 @@ describe('event API routes', () => {
     });
 
     it('supports pagination params', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Pagination Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Pagination Tenant');
 
       // Insert 3 events
       for (let i = 0; i < 3; i++) {
@@ -267,12 +246,9 @@ describe('event API routes', () => {
       // Second page: use cursor
       const cursor = encodeURIComponent(body1.pagination.cursor);
       const res2 = await app.handle(
-        jsonRequest(
-          `/api/v1/users/${userId}/events?limit=2&cursor=${cursor}`,
-          {
-            headers: { Authorization: `Bearer ${rawKey}` },
-          },
-        ),
+        jsonRequest(`/api/v1/users/${userId}/events?limit=2&cursor=${cursor}`, {
+          headers: { Authorization: `Bearer ${rawKey}` },
+        }),
       );
 
       expect(res2.status).toBe(200);
@@ -284,10 +260,7 @@ describe('event API routes', () => {
 
   describe('GET /api/v1/users/:id/events/:module', () => {
     it('returns events for a specific module', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Module Route Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Module Route Tenant');
 
       await appendEvent(
         makeEvent(userId, {
@@ -317,10 +290,7 @@ describe('event API routes', () => {
 
   describe('GET /api/v1/users/:id/events/:module/:field', () => {
     it('returns events for a specific field', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Event Field Route Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Event Field Route Tenant');
 
       await appendEvent(
         makeEvent(userId, {
@@ -369,9 +339,7 @@ describe('event API routes', () => {
 
   describe('authentication', () => {
     it('returns 401 without an API key', async () => {
-      const res = await app.handle(
-        jsonRequest('/api/v1/users/some-user/events'),
-      );
+      const res = await app.handle(jsonRequest('/api/v1/users/some-user/events'));
 
       expect(res.status).toBe(401);
     });
@@ -379,10 +347,7 @@ describe('event API routes', () => {
 
   describe('tenant-user link verification', () => {
     it('returns 404 for user not linked to tenant', async () => {
-      const { rawKey } = await setupTenantWithUserAndKey(
-        app,
-        'Event Unlinked Tenant',
-      );
+      const { rawKey } = await setupTenantWithUserAndKey(app, 'Event Unlinked Tenant');
 
       const res = await app.handle(
         jsonRequest('/api/v1/users/nonexistent-user-id/events', {

@@ -5,10 +5,7 @@ import { ensureTables, TABLE_NAME, LOOKUP_TABLE_NAME } from '../../src/store/db.
 import { tenantRoutes } from '../../src/api/routes/tenants.js';
 import { userRoutes } from '../../src/api/routes/users.js';
 import { enrichmentRoutes } from '../../src/api/routes/enrichment.js';
-import {
-  registerEnricher,
-  clearEnrichers,
-} from '../../src/enrichment/registry.js';
+import { registerEnricher, clearEnrichers } from '../../src/enrichment/registry.js';
 import { registerMockEnrichers } from '../../src/enrichment/mock/mock-enricher.js';
 import type { GeneratedApiKey } from '../../src/tenancy/types.js';
 
@@ -32,10 +29,7 @@ async function ensureLookupTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    .use(userRoutes)
-    .use(enrichmentRoutes);
+  return new Elysia().use(tenantRoutes).use(userRoutes).use(enrichmentRoutes);
 }
 
 // ---------------------------------------------------------------------------
@@ -56,8 +50,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -124,10 +117,7 @@ describe('enrichment API routes', () => {
 
   describe('POST /api/v1/users/:id/enrich/:module', () => {
     it('enriches a specific module and returns report', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Enrich Module Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Enrich Module Tenant');
 
       // Register a mock enricher for this test
       registerEnricher({
@@ -181,10 +171,7 @@ describe('enrichment API routes', () => {
 
   describe('POST /api/v1/users/:id/enrich', () => {
     it('enriches all modules and returns reports', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Enrich All Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Enrich All Tenant');
 
       // Register mock enrichers for a couple of modules
       registerEnricher({
@@ -216,17 +203,13 @@ describe('enrichment API routes', () => {
       expect(body.reports.length).toBeGreaterThanOrEqual(2);
 
       // Check identity report
-      const identityReport = body.reports.find(
-        (r: { module: string }) => r.module === 'identity',
-      );
+      const identityReport = body.reports.find((r: { module: string }) => r.module === 'identity');
       expect(identityReport).toBeDefined();
       expect(identityReport.successes).toHaveLength(1);
       expect(identityReport.successes[0].source).toBe('socure');
 
       // Check contact report
-      const contactReport = body.reports.find(
-        (r: { module: string }) => r.module === 'contact',
-      );
+      const contactReport = body.reports.find((r: { module: string }) => r.module === 'contact');
       expect(contactReport).toBeDefined();
       expect(contactReport.successes).toHaveLength(1);
       expect(contactReport.successes[0].source).toBe('clearbit');
@@ -235,10 +218,7 @@ describe('enrichment API routes', () => {
 
   describe('GET /api/v1/users/:id/enrichment-status', () => {
     it('returns enrichment timestamps', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Enrich Status Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Enrich Status Tenant');
 
       // Register and run an enrichment first
       registerEnricher({
@@ -287,10 +267,7 @@ describe('enrichment API routes', () => {
 
   describe('tenant-user link verification', () => {
     it('returns 404 for user not linked to tenant', async () => {
-      const { rawKey } = await setupTenantWithUserAndKey(
-        app,
-        'Enrich Unlinked Tenant',
-      );
+      const { rawKey } = await setupTenantWithUserAndKey(app, 'Enrich Unlinked Tenant');
 
       const res = await app.handle(
         jsonRequest('/api/v1/users/nonexistent-user-id/enrich/identity', {

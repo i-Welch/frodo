@@ -26,10 +26,7 @@ async function ensureLookupTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    .use(userRoutes)
-    .use(moduleRoutes);
+  return new Elysia().use(tenantRoutes).use(userRoutes).use(moduleRoutes);
 }
 
 // ---------------------------------------------------------------------------
@@ -50,8 +47,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
@@ -114,10 +110,7 @@ describe('module API routes', () => {
 
   describe('PUT + GET /api/v1/users/:id/modules/:module', () => {
     it('stores and retrieves module data', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Module PUT+GET Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Module PUT+GET Tenant');
 
       const moduleData = {
         firstName: 'Bilbo',
@@ -156,10 +149,7 @@ describe('module API routes', () => {
 
   describe('GET /api/v1/users/:id/modules/:module — 404 cases', () => {
     it('returns 404 for nonexistent module data', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Module 404 Data Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Module 404 Data Tenant');
 
       const res = await app.handle(
         jsonRequest(`/api/v1/users/${userId}/modules/identity`, {
@@ -175,10 +165,7 @@ describe('module API routes', () => {
 
   describe('PUT /api/v1/users/:id/modules/:module — validation', () => {
     it('returns 404 for unknown module name', async () => {
-      const { rawKey, userId } = await setupTenantWithUserAndKey(
-        app,
-        'Module Unknown Tenant',
-      );
+      const { rawKey, userId } = await setupTenantWithUserAndKey(app, 'Module Unknown Tenant');
 
       const res = await app.handle(
         jsonRequest(`/api/v1/users/${userId}/modules/nonexistent-module`, {

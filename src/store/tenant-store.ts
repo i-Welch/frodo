@@ -1,4 +1,13 @@
-import { keys, gsiKeys, putItem, getItem, queryItems, deleteItem, updateItem, scanItems } from './base-store.js';
+import {
+  keys,
+  gsiKeys,
+  putItem,
+  getItem,
+  queryItems,
+  deleteItem,
+  updateItem,
+  scanItems,
+} from './base-store.js';
 import type { Tenant, StoredApiKey } from '../tenancy/types.js';
 
 // ---------------------------------------------------------------------------
@@ -72,10 +81,7 @@ export async function getTenant(tenantId: string): Promise<Tenant | null> {
 /**
  * Patch tenant diligence fields. Only updates fields present in `patch`.
  */
-export async function updateTenant(
-  tenantId: string,
-  patch: Partial<Tenant>,
-): Promise<void> {
+export async function updateTenant(tenantId: string, patch: Partial<Tenant>): Promise<void> {
   const entries = Object.entries(patch).filter(([, v]) => v !== undefined);
   if (entries.length === 0) return;
 
@@ -112,9 +118,7 @@ export async function storeApiKey(apiKey: StoredApiKey): Promise<void> {
   });
 }
 
-export async function lookupApiKeyByPrefix(
-  prefix: string,
-): Promise<StoredApiKey | null> {
+export async function lookupApiKeyByPrefix(prefix: string): Promise<StoredApiKey | null> {
   const gsi = gsiKeys.apiKeyPrefix(prefix);
 
   const result = await queryItems({
@@ -138,19 +142,13 @@ export async function lookupApiKeyByPrefix(
   };
 }
 
-export async function revokeApiKey(
-  tenantId: string,
-  keyId: string,
-): Promise<void> {
+export async function revokeApiKey(tenantId: string, keyId: string): Promise<void> {
   const key = keys.apiKey(tenantId, keyId);
 
   await updateItem(key, { active: false });
 }
 
-export async function updateApiKeyLastUsed(
-  tenantId: string,
-  keyId: string,
-): Promise<void> {
+export async function updateApiKeyLastUsed(tenantId: string, keyId: string): Promise<void> {
   const key = keys.apiKey(tenantId, keyId);
 
   await updateItem(key, { lastUsedAt: new Date().toISOString() });

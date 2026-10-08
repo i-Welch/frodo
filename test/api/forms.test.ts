@@ -61,18 +61,13 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);
 }
 
-function formRequest(
-  path: string,
-  body: Record<string, string>,
-  method = 'POST',
-): Request {
+function formRequest(path: string, body: Record<string, string>, method = 'POST'): Request {
   const params = new URLSearchParams(body);
   return new Request(`http://localhost${path}`, {
     method,
@@ -112,9 +107,7 @@ async function setupScenario(app: ReturnType<typeof createTestApp>): Promise<{
       body: {
         name: `Forms Test Tenant ${uniqueSuffix}`,
         callbackUrls: ['https://example.com/callback'],
-        permissions: [
-          { module: 'contact', requiredTier: VerificationTier.BasicOTP },
-        ],
+        permissions: [{ module: 'contact', requiredTier: VerificationTier.BasicOTP }],
       },
     }),
   );
@@ -386,9 +379,7 @@ describe('forms API routes', () => {
       const { token } = await createRes.json();
 
       // Submit without the required field
-      const res = await app.handle(
-        formRequest(`/forms/${token}/submit`, {}),
-      );
+      const res = await app.handle(formRequest(`/forms/${token}/submit`, {}));
 
       expect(res.status).toBe(400);
       const html = await res.text();
@@ -412,8 +403,20 @@ describe('forms API routes', () => {
         title: 'Identity Verification',
         type: 'identity_verification',
         fields: [
-          { module: 'identity', field: 'firstName', label: 'First Name', inputType: 'text', required: true },
-          { module: 'identity', field: 'lastName', label: 'Last Name', inputType: 'text', required: true },
+          {
+            module: 'identity',
+            field: 'firstName',
+            label: 'First Name',
+            inputType: 'text',
+            required: true,
+          },
+          {
+            module: 'identity',
+            field: 'lastName',
+            label: 'Last Name',
+            inputType: 'text',
+            required: true,
+          },
           { module: 'identity', field: 'ssn', label: 'SSN', inputType: 'ssn', required: true },
         ],
       };
@@ -478,8 +481,20 @@ describe('forms API routes', () => {
         title: 'Identity Verification',
         type: 'identity_verification',
         fields: [
-          { module: 'identity', field: 'firstName', label: 'First Name', inputType: 'text', required: true },
-          { module: 'identity', field: 'lastName', label: 'Last Name', inputType: 'text', required: true },
+          {
+            module: 'identity',
+            field: 'firstName',
+            label: 'First Name',
+            inputType: 'text',
+            required: true,
+          },
+          {
+            module: 'identity',
+            field: 'lastName',
+            label: 'Last Name',
+            inputType: 'text',
+            required: true,
+          },
           { module: 'identity', field: 'ssn', label: 'SSN', inputType: 'ssn', required: true },
         ],
       };
@@ -494,9 +509,7 @@ describe('forms API routes', () => {
       const { token } = await createRes.json();
 
       // Accept consent
-      await app.handle(
-        formRequest(`/forms/${token}/consent`, { accepted: 'true' }),
-      );
+      await app.handle(formRequest(`/forms/${token}/consent`, { accepted: 'true' }));
 
       // Submit wrong SSN
       const submitRes = await app.handle(
@@ -566,9 +579,7 @@ describe('forms API routes', () => {
       const code = testOtp.lastCode!;
 
       // Step 4: Verify OTP
-      const verifyRes = await app.handle(
-        formRequest(`/forms/${token}/verify-otp`, { code }),
-      );
+      const verifyRes = await app.handle(formRequest(`/forms/${token}/verify-otp`, { code }));
       expect(verifyRes.status).toBe(200);
       const successHtml = await verifyRes.text();
       expect(successHtml).toContain('Success');
@@ -595,42 +606,30 @@ describe('forms API routes', () => {
       const { token } = await createRes.json();
 
       // Accept consent
-      await app.handle(
-        formRequest(`/forms/${token}/consent`, { accepted: 'true' }),
-      );
+      await app.handle(formRequest(`/forms/${token}/consent`, { accepted: 'true' }));
 
       // Send OTP
-      await app.handle(
-        formRequest(`/forms/${token}/send-otp`, { channel: 'email' }),
-      );
+      await app.handle(formRequest(`/forms/${token}/send-otp`, { channel: 'email' }));
 
       // Submit wrong code
-      const res1 = await app.handle(
-        formRequest(`/forms/${token}/verify-otp`, { code: '000000' }),
-      );
+      const res1 = await app.handle(formRequest(`/forms/${token}/verify-otp`, { code: '000000' }));
       expect(res1.status).toBe(400);
       const html1 = await res1.text();
       expect(html1).toContain('Invalid code');
       expect(html1).toContain('2 attempts remaining');
 
       // Submit wrong code again
-      const res2 = await app.handle(
-        formRequest(`/forms/${token}/verify-otp`, { code: '111111' }),
-      );
+      const res2 = await app.handle(formRequest(`/forms/${token}/verify-otp`, { code: '111111' }));
       expect(res2.status).toBe(400);
       const html2 = await res2.text();
       expect(html2).toContain('1 attempt remaining');
 
       // Third wrong attempt
-      const res3 = await app.handle(
-        formRequest(`/forms/${token}/verify-otp`, { code: '222222' }),
-      );
+      const res3 = await app.handle(formRequest(`/forms/${token}/verify-otp`, { code: '222222' }));
       expect(res3.status).toBe(400);
 
       // Fourth attempt should be rejected (max 3)
-      const res4 = await app.handle(
-        formRequest(`/forms/${token}/verify-otp`, { code: '333333' }),
-      );
+      const res4 = await app.handle(formRequest(`/forms/${token}/verify-otp`, { code: '333333' }));
       expect(res4.status).toBe(400);
       const html4 = await res4.text();
       expect(html4).toContain('Too many failed attempts');

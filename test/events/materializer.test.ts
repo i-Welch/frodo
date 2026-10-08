@@ -38,9 +38,7 @@ function makeEvent(overrides: Partial<DataEvent> = {}): DataEvent {
       },
     ],
     timestamp: overrides.timestamp ?? new Date().toISOString(),
-    ...(overrides.metadata !== undefined
-      ? { metadata: overrides.metadata }
-      : {}),
+    ...(overrides.metadata !== undefined ? { metadata: overrides.metadata } : {}),
   };
 }
 

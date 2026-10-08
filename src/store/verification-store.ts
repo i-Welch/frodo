@@ -27,7 +27,7 @@ export interface VerificationRequest {
   borrowerPhone?: string;
   formToken?: string;
   formUrl?: string;
-  createdBy?: string;        // Neon Auth user ID or API key ID
+  createdBy?: string; // Neon Auth user ID or API key ID
   createdAt: string;
   updatedAt: string;
 }

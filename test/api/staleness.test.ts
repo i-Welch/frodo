@@ -5,10 +5,7 @@ import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { appendEvent } from '../../src/store/event-store.js';
 import { putItem } from '../../src/store/base-store.js';
 import { adminRefreshRoute } from '../../src/api/routes/staleness.js';
-import {
-  registerEnricher,
-  clearEnrichers,
-} from '../../src/enrichment/registry.js';
+import { registerEnricher, clearEnrichers } from '../../src/enrichment/registry.js';
 import type { DataEvent } from '../../src/events/types.js';
 
 // Side-effect import — registers module schemas

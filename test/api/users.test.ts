@@ -22,9 +22,7 @@ async function ensureLookupTable(): Promise<void> {
 // ---------------------------------------------------------------------------
 
 function createTestApp() {
-  return new Elysia()
-    .use(tenantRoutes)
-    .use(userRoutes);
+  return new Elysia().use(tenantRoutes).use(userRoutes);
 }
 
 // ---------------------------------------------------------------------------
@@ -45,8 +43,7 @@ function jsonRequest(
 
   if (body !== undefined) {
     init.body = JSON.stringify(body);
-    (init.headers as Record<string, string>)['Content-Type'] =
-      'application/json';
+    (init.headers as Record<string, string>)['Content-Type'] = 'application/json';
   }
 
   return new Request(`http://localhost${path}`, init);

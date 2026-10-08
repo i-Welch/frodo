@@ -52,9 +52,27 @@ const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: 
     title: 'Personal Information',
     description: 'We need your legal name and Social Security Number for identity verification.',
     fields: [
-      { module: 'identity', field: 'firstName', label: 'First Name', inputType: 'text', required: true },
-      { module: 'identity', field: 'lastName', label: 'Last Name', inputType: 'text', required: true },
-      { module: 'identity', field: 'ssn', label: 'Social Security Number', inputType: 'ssn', required: true },
+      {
+        module: 'identity',
+        field: 'firstName',
+        label: 'First Name',
+        inputType: 'text',
+        required: true,
+      },
+      {
+        module: 'identity',
+        field: 'lastName',
+        label: 'Last Name',
+        inputType: 'text',
+        required: true,
+      },
+      {
+        module: 'identity',
+        field: 'ssn',
+        label: 'Social Security Number',
+        inputType: 'ssn',
+        required: true,
+      },
     ],
     requiresUserInput: true,
   },
@@ -62,7 +80,13 @@ const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: 
     title: 'Bank Verification',
     description: 'Securely connect your bank account to verify your financial information.',
     fields: [
-      { module: 'financial', field: 'plaidLink', label: 'Bank Account', inputType: 'plaid-link', required: true },
+      {
+        module: 'financial',
+        field: 'plaidLink',
+        label: 'Bank Account',
+        inputType: 'plaid-link',
+        required: true,
+      },
     ],
     requiresUserInput: true,
   },
@@ -71,8 +95,20 @@ const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: 
     title: 'Contact Information',
     description: 'How can we reach you?',
     fields: [
-      { module: 'contact', field: 'email', label: 'Email Address', inputType: 'email', required: true },
-      { module: 'contact', field: 'phone', label: 'Phone Number', inputType: 'phone', required: true },
+      {
+        module: 'contact',
+        field: 'email',
+        label: 'Email Address',
+        inputType: 'email',
+        required: true,
+      },
+      {
+        module: 'contact',
+        field: 'phone',
+        label: 'Phone Number',
+        inputType: 'phone',
+        required: true,
+      },
     ],
     requiresUserInput: false, // Plaid Identity returns bank-verified email/phone
   },
@@ -80,9 +116,27 @@ const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: 
     title: 'Employment',
     description: 'Tell us about your current employment.',
     fields: [
-      { module: 'employment', field: 'employer', label: 'Current Employer', inputType: 'text', required: true },
-      { module: 'employment', field: 'title', label: 'Job Title', inputType: 'text', required: true },
-      { module: 'employment', field: 'salary', label: 'Annual Salary', inputType: 'currency', required: true },
+      {
+        module: 'employment',
+        field: 'employer',
+        label: 'Current Employer',
+        inputType: 'text',
+        required: true,
+      },
+      {
+        module: 'employment',
+        field: 'title',
+        label: 'Job Title',
+        inputType: 'text',
+        required: true,
+      },
+      {
+        module: 'employment',
+        field: 'salary',
+        label: 'Annual Salary',
+        inputType: 'currency',
+        required: true,
+      },
     ],
     requiresUserInput: false, // Truework verifies with employer directly
   },
@@ -90,7 +144,13 @@ const FORM_STEPS_CONFIG: Record<string, ModuleStepConfig & { requiresUserInput: 
     title: 'Home Address',
     description: 'Your current residential address.',
     fields: [
-      { module: 'residence', field: 'currentAddress', label: 'Home Address', inputType: 'address', required: true },
+      {
+        module: 'residence',
+        field: 'currentAddress',
+        label: 'Home Address',
+        inputType: 'address',
+        required: true,
+      },
     ],
     requiresUserInput: false, // Plaid Identity / Socure return verified addresses
   },
@@ -107,7 +167,10 @@ const STEP_ORDER = ['identity', 'financial'];
  * If contact info (email/phone) was provided in the onboard request,
  * the contact step is skipped since we already have it.
  */
-function buildFormSteps(modules: string[], providedPerson?: { email?: string; phone?: string; firstName?: string; lastName?: string }): FormStep[] {
+function buildFormSteps(
+  modules: string[],
+  providedPerson?: { email?: string; phone?: string; firstName?: string; lastName?: string },
+): FormStep[] {
   const steps: FormStep[] = [];
   const requested = new Set(modules);
 
@@ -124,7 +187,9 @@ function buildFormSteps(modules: string[], providedPerson?: { email?: string; ph
     });
 
     // If all we need is SSN (name was provided), simplify the title
-    const hasNameFields = filteredFields.some((f) => f.field === 'firstName' || f.field === 'lastName');
+    const hasNameFields = filteredFields.some(
+      (f) => f.field === 'firstName' || f.field === 'lastName',
+    );
 
     steps.push({
       title: hasNameFields ? 'Personal Information' : 'Identity Verification',
@@ -137,7 +202,12 @@ function buildFormSteps(modules: string[], providedPerson?: { email?: string; ph
 
   // Contact: only show if we DON'T have email/phone from the onboard request
   // AND Plaid (financial) is not being requested (Plaid Identity provides contact info)
-  if (requested.has('contact') && !providedPerson?.email && !providedPerson?.phone && !requested.has('financial')) {
+  if (
+    requested.has('contact') &&
+    !providedPerson?.email &&
+    !providedPerson?.phone &&
+    !requested.has('financial')
+  ) {
     steps.push({
       title: FORM_STEPS_CONFIG.contact.title,
       description: FORM_STEPS_CONFIG.contact.description,
@@ -220,13 +290,7 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
    * }
    */
   .post('/onboard', async ({ body, tenant, apiKey, authUserId, set }) => {
-    const {
-      modules,
-      person,
-      sendLink,
-      callbackUrl,
-      webhookUrl,
-    } = body as {
+    const { modules, person, sendLink, callbackUrl, webhookUrl } = body as {
       modules: string[];
       person?: {
         email?: string;
@@ -294,10 +358,22 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
 
         const changes: FieldChange[] = [];
         if (person.firstName) {
-          changes.push({ field: 'firstName', previousValue: existing?.firstName ?? null, newValue: person.firstName, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+          changes.push({
+            field: 'firstName',
+            previousValue: existing?.firstName ?? null,
+            newValue: person.firstName,
+            confidence: 1,
+            goodBy: new Date(Date.now() + 365 * 86400000).toISOString(),
+          });
         }
         if (person.lastName) {
-          changes.push({ field: 'lastName', previousValue: existing?.lastName ?? null, newValue: person.lastName, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+          changes.push({
+            field: 'lastName',
+            previousValue: existing?.lastName ?? null,
+            newValue: person.lastName,
+            confidence: 1,
+            goodBy: new Date(Date.now() + 365 * 86400000).toISOString(),
+          });
         }
         await appendEvent({
           eventId: crypto.randomUUID(),
@@ -320,10 +396,22 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
 
         const changes: FieldChange[] = [];
         if (person.email) {
-          changes.push({ field: 'email', previousValue: existing?.email ?? null, newValue: person.email, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+          changes.push({
+            field: 'email',
+            previousValue: existing?.email ?? null,
+            newValue: person.email,
+            confidence: 1,
+            goodBy: new Date(Date.now() + 365 * 86400000).toISOString(),
+          });
         }
         if (person.phone) {
-          changes.push({ field: 'phone', previousValue: existing?.phone ?? null, newValue: person.phone, confidence: 1, goodBy: new Date(Date.now() + 365 * 86400000).toISOString() });
+          changes.push({
+            field: 'phone',
+            previousValue: existing?.phone ?? null,
+            newValue: person.phone,
+            confidence: 1,
+            goodBy: new Date(Date.now() + 365 * 86400000).toISOString(),
+          });
         }
         await appendEvent({
           eventId: crypto.randomUUID(),
@@ -386,7 +474,8 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
 
     // Create verification tracking record
     const { createVerification } = await import('../../store/verification-store.js');
-    const borrowerName = [person?.firstName, person?.lastName].filter(Boolean).join(' ') || undefined;
+    const borrowerName =
+      [person?.firstName, person?.lastName].filter(Boolean).join(' ') || undefined;
     const verification = await createVerification({
       tenantId: tenant.tenantId,
       userId,
@@ -397,11 +486,20 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
       borrowerPhone: person?.phone,
       formToken: formTokenStr,
       formUrl,
-      createdBy: (apiKey as { keyId?: string } | undefined)?.keyId ?? (authUserId as string | undefined) ?? 'unknown',
+      createdBy:
+        (apiKey as { keyId?: string } | undefined)?.keyId ??
+        (authUserId as string | undefined) ??
+        'unknown',
     });
 
     log.info(
-      { userId, tenantId: tenant.tenantId, modules, steps: steps.length, verificationId: verification.requestId },
+      {
+        userId,
+        tenantId: tenant.tenantId,
+        modules,
+        steps: steps.length,
+        verificationId: verification.requestId,
+      },
       'Onboarding initiated',
     );
 
@@ -439,7 +537,16 @@ export const onboardRoutes = new Elysia({ prefix: '/api/v1' })
     const { listProviderTokens } = await import('../../providers/token-store.js');
 
     const moduleStatus: Record<string, { hasData: boolean; fieldCount: number }> = {};
-    const allModules = ['identity', 'contact', 'financial', 'credit', 'employment', 'residence', 'buying-patterns', 'education'];
+    const allModules = [
+      'identity',
+      'contact',
+      'financial',
+      'credit',
+      'employment',
+      'residence',
+      'buying-patterns',
+      'education',
+    ];
 
     for (const mod of allModules) {
       const data = await getModule(params.userId, mod);
