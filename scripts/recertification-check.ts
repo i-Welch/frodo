@@ -14,13 +14,11 @@
  *   bun scripts/recertification-check.ts --warn-days=30
  */
 
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
+import { sendEmail } from '../src/messaging/email.js';
 import { listTenants } from '../src/store/tenant-store.js';
 import { isProductionEligible } from '../src/tenancy/permissions.js';
 import type { Tenant } from '../src/tenancy/types.js';
 
-const AWS_REGION = process.env.AWS_REGION ?? 'us-east-2';
-const SES_FROM_EMAIL = process.env.SES_FROM_EMAIL ?? 'noreply@reportraven.tech';
 const ALERT_TO_EMAIL = process.env.RECERT_ALERT_TO ?? 'isaac@reportraven.tech';
 
 const args = process.argv.slice(2);
@@ -112,20 +110,12 @@ async function sendAlertEmail(
   subject: string,
   body: { text: string; html: string },
 ): Promise<void> {
-  const ses = new SESClient({ region: AWS_REGION });
-  await ses.send(
-    new SendEmailCommand({
-      Source: SES_FROM_EMAIL,
-      Destination: { ToAddresses: [ALERT_TO_EMAIL] },
-      Message: {
-        Subject: { Data: subject, Charset: 'UTF-8' },
-        Body: {
-          Text: { Data: body.text, Charset: 'UTF-8' },
-          Html: { Data: body.html, Charset: 'UTF-8' },
-        },
-      },
-    }),
-  );
+  await sendEmail({
+    to: ALERT_TO_EMAIL,
+    subject,
+    text: body.text,
+    html: body.html,
+  });
 }
 
 async function main() {

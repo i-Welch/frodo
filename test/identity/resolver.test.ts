@@ -1,11 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import {
-  CreateTableCommand,
-  DescribeTableCommand,
-  ResourceNotFoundException,
-} from '@aws-sdk/client-dynamodb';
-import { ScanCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
-import { dynamoClient, docClient, LOOKUP_TABLE_NAME } from '../../src/store/dynamo-client.js';
+import { ensureTables, pool, LOOKUP_TABLE_NAME } from '../../src/store/db.js';
 import { addIdentifier, removeIdentifiers } from '../../src/store/identity-lookup-store.js';
 import { resolveIdentity } from '../../src/identity/resolver.js';
 
@@ -14,51 +8,14 @@ import { resolveIdentity } from '../../src/identity/resolver.js';
 // ---------------------------------------------------------------------------
 
 async function ensureLookupTable(): Promise<void> {
-  try {
-    await dynamoClient.send(
-      new DescribeTableCommand({ TableName: LOOKUP_TABLE_NAME }),
-    );
-  } catch (err) {
-    if (!(err instanceof ResourceNotFoundException)) throw err;
-
-    await dynamoClient.send(
-      new CreateTableCommand({
-        TableName: LOOKUP_TABLE_NAME,
-        KeySchema: [
-          { AttributeName: 'PK', KeyType: 'HASH' },
-          { AttributeName: 'SK', KeyType: 'RANGE' },
-        ],
-        AttributeDefinitions: [
-          { AttributeName: 'PK', AttributeType: 'S' },
-          { AttributeName: 'SK', AttributeType: 'S' },
-        ],
-        BillingMode: 'PAY_PER_REQUEST',
-      }),
-    );
-  }
+  await ensureTables();
 }
 
 /**
  * Remove all items from the lookup table (test isolation).
  */
 async function cleanLookupTable(): Promise<void> {
-  let lastKey: Record<string, unknown> | undefined;
-  do {
-    const scan = await docClient.send(
-      new ScanCommand({ TableName: LOOKUP_TABLE_NAME, ExclusiveStartKey: lastKey }),
-    );
-    if (scan.Items && scan.Items.length > 0) {
-      for (const item of scan.Items) {
-        await docClient.send(
-          new DeleteCommand({
-            TableName: LOOKUP_TABLE_NAME,
-            Key: { PK: item.PK as string, SK: item.SK as string },
-          }),
-        );
-      }
-    }
-    lastKey = scan.LastEvaluatedKey as Record<string, unknown> | undefined;
-  } while (lastKey);
+  await pool.query(`DELETE FROM "${LOOKUP_TABLE_NAME}"`);
 }
 
 // ---------------------------------------------------------------------------

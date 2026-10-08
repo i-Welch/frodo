@@ -75,7 +75,7 @@ export type ResolveResult =
 export async function resolveVerifyRequest(token: string, deviceId: string): Promise<ResolveResult> {
   const item = await getItem(verifyKey(token));
   if (!item) return { status: 'expired' };
-  // Read-time expiry: DynamoDB TTL deletion is lazy, so an expired record may
+  // Read-time expiry: TTL purging is lazy, so an expired record may
   // still be present. Treat it as gone.
   const ttl = item.ttl as number | undefined;
   if (ttl && ttl < Math.floor(Date.now() / 1000)) {
@@ -90,7 +90,7 @@ export async function resolveVerifyRequest(token: string, deviceId: string): Pro
     try {
       await putItem(
         { ...item, boundDeviceId: deviceId },
-        { conditionExpression: 'attribute_not_exists(boundDeviceId)' },
+        { ifAttrNotSet: 'boundDeviceId' },
       );
       bound = deviceId;
     } catch (err) {

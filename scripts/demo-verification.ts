@@ -9,9 +9,9 @@
  * 3. OTP Verification — verify via email/phone one-time code
  *
  * Prerequisites:
- *   - DynamoDB Local running: docker compose up -d
+ *   - Postgres running: docker compose up -d
  *   - Tables created: bun run db:create
- *   - Server running: DYNAMODB_ENDPOINT=http://localhost:8000 KMS_ENDPOINT=local bun run dev
+ *   - Server running: DATABASE_URL=postgres://postgres:postgres@localhost:5432/frodo bun run dev
  *
  * Usage:
  *   bun scripts/demo-verification.ts

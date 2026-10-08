@@ -1,6 +1,4 @@
-import { UpdateCommand, ScanCommand } from '@aws-sdk/lib-dynamodb';
-import { docClient, TABLE_NAME } from './dynamo-client.js';
-import { keys, gsiKeys, putItem, getItem, queryItems, deleteItem } from './base-store.js';
+import { keys, gsiKeys, putItem, getItem, queryItems, deleteItem, updateItem, scanItems } from './base-store.js';
 import type { Tenant, StoredApiKey } from '../tenancy/types.js';
 
 // ---------------------------------------------------------------------------
@@ -43,7 +41,6 @@ function hydrateTenant(item: Record<string, unknown>): Tenant {
     callbackUrls: (item.callbackUrls as string[]) ?? [],
     consentAddendum: item.consentAddendum as string | undefined,
     webhookUrl: item.webhookUrl as string | undefined,
-    clerkOrgId: item.clerkOrgId as string | undefined,
     createdAt: item.createdAt as string,
   };
   for (const field of DILIGENCE_FIELDS) {
@@ -61,12 +58,6 @@ export async function createTenant(tenant: Tenant): Promise<void> {
     ...tenant,
   };
 
-  // Add GSI2 for Clerk org lookup if clerkOrgId is present
-  if (tenant.clerkOrgId) {
-    item.GSI2PK = `CLERKORG#${tenant.clerkOrgId}`;
-    item.GSI2SK = `TENANT#${tenant.tenantId}`;
-  }
-
   await putItem(item);
 }
 
@@ -79,23 +70,6 @@ export async function getTenant(tenantId: string): Promise<Tenant | null> {
 }
 
 /**
- * Look up a tenant by its Clerk Organization ID.
- * Uses GSI2: GSI2PK = CLERKORG#<orgId>
- */
-export async function getTenantByClerkOrgId(clerkOrgId: string): Promise<Tenant | null> {
-  const result = await queryItems({
-    pk: `CLERKORG#${clerkOrgId}`,
-    indexName: 'GSI2',
-    pkField: 'GSI2PK',
-    skField: 'GSI2SK',
-    limit: 1,
-  });
-
-  if (result.items.length === 0) return null;
-  return hydrateTenant(result.items[0]);
-}
-
-/**
  * Patch tenant diligence fields. Only updates fields present in `patch`.
  */
 export async function updateTenant(
@@ -105,27 +79,7 @@ export async function updateTenant(
   const entries = Object.entries(patch).filter(([, v]) => v !== undefined);
   if (entries.length === 0) return;
 
-  const exprNames: Record<string, string> = {};
-  const exprValues: Record<string, unknown> = {};
-  const setClauses: string[] = [];
-
-  for (const [k, v] of entries) {
-    const nameKey = `#${k}`;
-    const valueKey = `:${k}`;
-    exprNames[nameKey] = k;
-    exprValues[valueKey] = v;
-    setClauses.push(`${nameKey} = ${valueKey}`);
-  }
-
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: keys.tenant(tenantId),
-      UpdateExpression: `SET ${setClauses.join(', ')}`,
-      ExpressionAttributeNames: exprNames,
-      ExpressionAttributeValues: exprValues,
-    }),
-  );
+  await updateItem(keys.tenant(tenantId), Object.fromEntries(entries));
 }
 
 export async function deleteTenant(tenantId: string): Promise<void> {
@@ -138,25 +92,8 @@ export async function deleteTenant(tenantId: string): Promise<void> {
  * checks, audits) — bank cardinality is small, so a Scan is acceptable.
  */
 export async function listTenants(): Promise<Tenant[]> {
-  const tenants: Tenant[] = [];
-  let exclusiveStartKey: Record<string, unknown> | undefined;
-
-  do {
-    const result = await docClient.send(
-      new ScanCommand({
-        TableName: TABLE_NAME,
-        FilterExpression: 'begins_with(PK, :pk) AND SK = :sk',
-        ExpressionAttributeValues: { ':pk': 'TENANT#', ':sk': 'METADATA' },
-        ExclusiveStartKey: exclusiveStartKey,
-      }),
-    );
-    for (const item of result.Items ?? []) {
-      tenants.push(hydrateTenant(item));
-    }
-    exclusiveStartKey = result.LastEvaluatedKey;
-  } while (exclusiveStartKey);
-
-  return tenants;
+  const items = await scanItems({ pkPrefix: 'TENANT#', sk: 'METADATA' });
+  return items.map(hydrateTenant);
 }
 
 // ---------------------------------------------------------------------------
@@ -207,15 +144,7 @@ export async function revokeApiKey(
 ): Promise<void> {
   const key = keys.apiKey(tenantId, keyId);
 
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: 'SET #active = :active',
-      ExpressionAttributeNames: { '#active': 'active' },
-      ExpressionAttributeValues: { ':active': false },
-    }),
-  );
+  await updateItem(key, { active: false });
 }
 
 export async function updateApiKeyLastUsed(
@@ -224,13 +153,5 @@ export async function updateApiKeyLastUsed(
 ): Promise<void> {
   const key = keys.apiKey(tenantId, keyId);
 
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: 'SET #lastUsedAt = :lastUsedAt',
-      ExpressionAttributeNames: { '#lastUsedAt': 'lastUsedAt' },
-      ExpressionAttributeValues: { ':lastUsedAt': new Date().toISOString() },
-    }),
-  );
+  await updateItem(key, { lastUsedAt: new Date().toISOString() });
 }

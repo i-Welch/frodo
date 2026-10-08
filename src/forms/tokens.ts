@@ -1,7 +1,5 @@
 import crypto from 'node:crypto';
-import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { docClient, TABLE_NAME } from '../store/dynamo-client.js';
-import { keys, putItem, getItem, deleteItem } from '../store/base-store.js';
+import { keys, putItem, getItem, deleteItem, updateItem } from '../store/base-store.js';
 import { durationToMs } from '../types.js';
 import { createChildLogger } from '../logger.js';
 import type { FormDefinition, FormToken } from './types.js';
@@ -130,33 +128,12 @@ export async function updateFormToken(
 ): Promise<void> {
   const key = keys.formToken(token);
 
-  const expressionParts: string[] = [];
-  const expressionNames: Record<string, string> = {};
-  const expressionValues: Record<string, unknown> = {};
-
-  let idx = 0;
-  for (const [field, value] of Object.entries(updates)) {
-    if (field === 'token') continue; // don't overwrite the key
-    if (value === undefined) continue; // skip undefined values
-    const alias = `#f${idx}`;
-    const valAlias = `:v${idx}`;
-    expressionNames[alias] = field;
-    expressionValues[valAlias] = value;
-    expressionParts.push(`${alias} = ${valAlias}`);
-    idx++;
-  }
-
-  if (expressionParts.length === 0) return;
-
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: `SET ${expressionParts.join(', ')}`,
-      ExpressionAttributeNames: expressionNames,
-      ExpressionAttributeValues: expressionValues,
-    }),
+  const patch = Object.entries(updates).filter(
+    ([field, value]) => field !== 'token' && value !== undefined,
   );
+  if (patch.length === 0) return;
+
+  await updateItem(key, Object.fromEntries(patch));
 
   log.debug({ token: token.slice(0, 8) }, 'Form token updated');
 }

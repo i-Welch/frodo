@@ -1,6 +1,12 @@
 import crypto from 'node:crypto';
 import { Elysia, t } from 'elysia';
 import { createTenant, getTenant, storeApiKey, revokeApiKey, updateTenant } from '../../store/tenant-store.js';
+import {
+  addTenantMember,
+  removeTenantMember,
+  listTenantMembers,
+  TENANT_ROLES,
+} from '../../store/tenant-member-store.js';
 import { generateApiKey, hashApiKey, parseApiKey } from '../../tenancy/api-key.js';
 import { isProductionEligible } from '../../tenancy/permissions.js';
 import { createChildLogger } from '../../logger.js';
@@ -56,48 +62,9 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
     async ({ body, set }) => {
       const tenantId = crypto.randomUUID();
 
-      // Create the Clerk organization
-      const clerkSecretKey = process.env.CLERK_SECRET_KEY;
-      let clerkOrgId: string | undefined;
-
-      if (clerkSecretKey) {
-        try {
-          const clerkRes = await fetch('https://api.clerk.com/v1/organizations', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${clerkSecretKey}`,
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: body.name,
-              slug: body.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
-              max_allowed_memberships: body.maxMembers ?? 50,
-            }),
-          });
-
-          if (!clerkRes.ok) {
-            const err = await clerkRes.json().catch(() => ({}));
-            log.error({ status: clerkRes.status, err }, 'Failed to create Clerk organization');
-            set.status = 502;
-            return { error: `Failed to create Clerk organization: ${(err as Record<string, unknown>).message ?? clerkRes.statusText}` };
-          }
-
-          const clerkOrg = await clerkRes.json() as { id: string };
-          clerkOrgId = clerkOrg.id;
-          log.info({ clerkOrgId, name: body.name }, 'Created Clerk organization');
-        } catch (err) {
-          log.error({ err }, 'Clerk API request failed');
-          set.status = 502;
-          return { error: 'Failed to reach Clerk API' };
-        }
-      } else {
-        log.warn('CLERK_SECRET_KEY not set — skipping Clerk org creation');
-      }
-
       const tenant: Tenant = {
         tenantId,
         name: body.name,
-        clerkOrgId,
         permissions: body.permissions ?? [
           { module: 'identity', requiredTier: 0 },
           { module: 'contact', requiredTier: 0 },
@@ -140,7 +107,6 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
         name: t.String(),
         callbackUrls: t.Optional(t.Array(t.String())),
         webhookUrl: t.Optional(t.String()),
-        maxMembers: t.Optional(t.Number()),
         permissions: t.Optional(
           t.Array(
             t.Object({
@@ -311,5 +277,36 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
   // -----------------------------------------------------------------------
   .delete('/:id/api-keys/:keyId', async ({ params }) => {
     await revokeApiKey(params.id, params.keyId);
+    return new Response(null, { status: 204 });
+  })
+  // -----------------------------------------------------------------------
+  // Members — map Neon Auth users to this tenant
+  // -----------------------------------------------------------------------
+  .get('/:id/members', async ({ params }) => {
+    return { members: await listTenantMembers(params.id) };
+  })
+  .put(
+    '/:id/members/:userId',
+    async ({ params, body, set }) => {
+      const tenant = await getTenant(params.id);
+      if (!tenant) {
+        set.status = 404;
+        const err: ApiError = {
+          status: 404,
+          code: 'NOT_FOUND',
+          message: `Tenant ${params.id} not found`,
+        };
+        return err;
+      }
+      return addTenantMember(params.id, params.userId, body.role);
+    },
+    {
+      body: t.Object({
+        role: t.Union(TENANT_ROLES.map((r) => t.Literal(r))),
+      }),
+    },
+  )
+  .delete('/:id/members/:userId', async ({ params }) => {
+    await removeTenantMember(params.id, params.userId);
     return new Response(null, { status: 204 });
   });

@@ -30,13 +30,13 @@ export function getOtpProvider(): OtpProvider {
  * Initialize the OTP provider based on environment.
  * Call this at startup after env vars are loaded.
  *
- * Uses AWS SES+SNS in production/staging, console in development/test.
+ * Uses Resend (email) + Telnyx (SMS) in production/staging, console in development/test.
  */
 export async function initOtpProvider(): Promise<void> {
   const env = process.env.NODE_ENV ?? 'development';
   if (env === 'production' || env === 'staging') {
-    const { AwsOtpProvider } = await import('./aws-otp-provider.js');
-    provider = new AwsOtpProvider();
+    const { MessagingOtpProvider } = await import('./messaging-otp-provider.js');
+    provider = new MessagingOtpProvider();
   }
   // Otherwise, keep the ConsoleOtpProvider default
 }

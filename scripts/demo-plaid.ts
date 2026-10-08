@@ -5,7 +5,7 @@
  * stores the access token, and enriches their financial data.
  *
  * Prerequisites:
- *   - Server running: DYNAMODB_ENDPOINT=http://localhost:8000 KMS_ENDPOINT=local bun run dev
+ *   - Server running: DATABASE_URL=postgres://postgres:postgres@localhost:5432/frodo bun run dev
  *   - .env has PROVIDER_PLAID_CLIENT_ID and PROVIDER_PLAID_SECRET
  *
  * Usage:

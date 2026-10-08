@@ -1,7 +1,5 @@
 import crypto from 'node:crypto';
-import { keys, putItem, getItem, queryItems } from './base-store.js';
-import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { docClient, TABLE_NAME } from './dynamo-client.js';
+import { keys, putItem, getItem, queryItems, updateItem } from './base-store.js';
 import { createChildLogger } from '../logger.js';
 
 const log = createChildLogger({ module: 'verification-store' });
@@ -29,7 +27,7 @@ export interface VerificationRequest {
   borrowerPhone?: string;
   formToken?: string;
   formUrl?: string;
-  createdBy?: string;        // Clerk user ID or API key ID
+  createdBy?: string;        // Neon Auth user ID or API key ID
   createdAt: string;
   updatedAt: string;
 }
@@ -98,21 +96,7 @@ export async function updateVerificationStatus(
 ): Promise<void> {
   const key = verificationKey(tenantId, requestId);
 
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: 'SET #status = :status, #updatedAt = :updatedAt',
-      ExpressionAttributeNames: {
-        '#status': 'status',
-        '#updatedAt': 'updatedAt',
-      },
-      ExpressionAttributeValues: {
-        ':status': status,
-        ':updatedAt': new Date().toISOString(),
-      },
-    }),
-  );
+  await updateItem(key, { status, updatedAt: new Date().toISOString() });
 
   log.debug({ requestId, tenantId, status }, 'Verification status updated');
 }

@@ -1,11 +1,6 @@
 import { describe, it, expect, beforeAll, afterEach } from 'vitest';
 import crypto from 'node:crypto';
-import {
-  CreateTableCommand,
-  DescribeTableCommand,
-  ResourceNotFoundException,
-} from '@aws-sdk/client-dynamodb';
-import { dynamoClient, TABLE_NAME } from '../../src/store/dynamo-client.js';
+import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import { getModule } from '../../src/store/user-store.js';
 import { getEventsForModule } from '../../src/store/event-store.js';
 import { processWebhook } from '../../src/webhooks/processor.js';
@@ -23,50 +18,7 @@ import '../../src/modules/index.js';
 // ---------------------------------------------------------------------------
 
 async function ensureTable(): Promise<void> {
-  try {
-    await dynamoClient.send(
-      new DescribeTableCommand({ TableName: TABLE_NAME }),
-    );
-  } catch (err) {
-    if (!(err instanceof ResourceNotFoundException)) throw err;
-
-    await dynamoClient.send(
-      new CreateTableCommand({
-        TableName: TABLE_NAME,
-        KeySchema: [
-          { AttributeName: 'PK', KeyType: 'HASH' },
-          { AttributeName: 'SK', KeyType: 'RANGE' },
-        ],
-        AttributeDefinitions: [
-          { AttributeName: 'PK', AttributeType: 'S' },
-          { AttributeName: 'SK', AttributeType: 'S' },
-          { AttributeName: 'GSI1PK', AttributeType: 'S' },
-          { AttributeName: 'GSI1SK', AttributeType: 'S' },
-          { AttributeName: 'GSI2PK', AttributeType: 'S' },
-          { AttributeName: 'GSI2SK', AttributeType: 'S' },
-        ],
-        GlobalSecondaryIndexes: [
-          {
-            IndexName: 'GSI1',
-            KeySchema: [
-              { AttributeName: 'GSI1PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI1SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-          {
-            IndexName: 'GSI2',
-            KeySchema: [
-              { AttributeName: 'GSI2PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI2SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-        ],
-        BillingMode: 'PAY_PER_REQUEST',
-      }),
-    );
-  }
+  await ensureTables();
 }
 
 // ---------------------------------------------------------------------------

@@ -1,6 +1,5 @@
 import crypto from 'node:crypto';
-import { ScanCommand, DeleteCommand } from '@aws-sdk/lib-dynamodb';
-import { docClient, TABLE_NAME } from '../src/store/dynamo-client.js';
+import { pool, TABLE_NAME } from '../src/store/db.js';
 
 export interface TestContext {
   /** Random hex prefix for isolating test keys. */
@@ -24,32 +23,7 @@ export async function createTestContext(): Promise<TestContext> {
   }
 
   async function cleanup(): Promise<void> {
-    // Scan for items whose PK begins with our test prefix and delete them.
-    let lastKey: Record<string, unknown> | undefined;
-
-    do {
-      const scan = await docClient.send(
-        new ScanCommand({
-          TableName: TABLE_NAME,
-          FilterExpression: 'begins_with(PK, :prefix)',
-          ExpressionAttributeValues: { ':prefix': `TEST#${prefix}#` },
-          ExclusiveStartKey: lastKey,
-        }),
-      );
-
-      if (scan.Items && scan.Items.length > 0) {
-        for (const item of scan.Items) {
-          await docClient.send(
-            new DeleteCommand({
-              TableName: TABLE_NAME,
-              Key: { PK: item.PK, SK: item.SK },
-            }),
-          );
-        }
-      }
-
-      lastKey = scan.LastEvaluatedKey as Record<string, unknown> | undefined;
-    } while (lastKey);
+    await pool.query(`DELETE FROM "${TABLE_NAME}" WHERE pk LIKE $1`, [`TEST#${prefix}#%`]);
   }
 
   return { prefix, pk, cleanup };

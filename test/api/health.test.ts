@@ -1,11 +1,6 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { Elysia } from 'elysia';
-import {
-  CreateTableCommand,
-  DescribeTableCommand,
-  ResourceNotFoundException,
-} from '@aws-sdk/client-dynamodb';
-import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from '../../src/store/dynamo-client.js';
+import { ensureTables, pool, TABLE_NAME, LOOKUP_TABLE_NAME } from '../../src/store/db.js';
 import { requestIdMiddleware } from '../../src/api/middleware/request-id.js';
 import { errorHandler } from '../../src/api/middleware/error-handler.js';
 import {
@@ -19,75 +14,11 @@ import { kmsService } from '../../src/crypto/kms.js';
 // ---------------------------------------------------------------------------
 
 async function ensureMainTable(): Promise<void> {
-  try {
-    await dynamoClient.send(
-      new DescribeTableCommand({ TableName: TABLE_NAME }),
-    );
-  } catch (err) {
-    if (!(err instanceof ResourceNotFoundException)) throw err;
-
-    await dynamoClient.send(
-      new CreateTableCommand({
-        TableName: TABLE_NAME,
-        KeySchema: [
-          { AttributeName: 'PK', KeyType: 'HASH' },
-          { AttributeName: 'SK', KeyType: 'RANGE' },
-        ],
-        AttributeDefinitions: [
-          { AttributeName: 'PK', AttributeType: 'S' },
-          { AttributeName: 'SK', AttributeType: 'S' },
-          { AttributeName: 'GSI1PK', AttributeType: 'S' },
-          { AttributeName: 'GSI1SK', AttributeType: 'S' },
-          { AttributeName: 'GSI2PK', AttributeType: 'S' },
-          { AttributeName: 'GSI2SK', AttributeType: 'S' },
-        ],
-        GlobalSecondaryIndexes: [
-          {
-            IndexName: 'GSI1',
-            KeySchema: [
-              { AttributeName: 'GSI1PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI1SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-          {
-            IndexName: 'GSI2',
-            KeySchema: [
-              { AttributeName: 'GSI2PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI2SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-        ],
-        BillingMode: 'PAY_PER_REQUEST',
-      }),
-    );
-  }
+  await ensureTables();
 }
 
 async function ensureLookupTable(): Promise<void> {
-  try {
-    await dynamoClient.send(
-      new DescribeTableCommand({ TableName: LOOKUP_TABLE_NAME }),
-    );
-  } catch (err) {
-    if (!(err instanceof ResourceNotFoundException)) throw err;
-
-    await dynamoClient.send(
-      new CreateTableCommand({
-        TableName: LOOKUP_TABLE_NAME,
-        KeySchema: [
-          { AttributeName: 'PK', KeyType: 'HASH' },
-          { AttributeName: 'SK', KeyType: 'RANGE' },
-        ],
-        AttributeDefinitions: [
-          { AttributeName: 'PK', AttributeType: 'S' },
-          { AttributeName: 'SK', AttributeType: 'S' },
-        ],
-        BillingMode: 'PAY_PER_REQUEST',
-      }),
-    );
-  }
+  await ensureTables();
 }
 
 // ---------------------------------------------------------------------------
@@ -111,10 +42,10 @@ function createTestApp() {
       // DynamoDB main table
       const dynStart = Date.now();
       try {
-        await dynamoClient.send(new DescribeTableCommand({ TableName: TABLE_NAME }));
-        checks.dynamodb = { status: 'ok', latencyMs: Date.now() - dynStart };
+        await pool.query(`SELECT 1 FROM "${TABLE_NAME}" LIMIT 1`);
+        checks.database = { status: 'ok', latencyMs: Date.now() - dynStart };
       } catch (err) {
-        checks.dynamodb = {
+        checks.database = {
           status: 'error',
           latencyMs: Date.now() - dynStart,
           error: err instanceof Error ? err.message : String(err),
@@ -124,10 +55,10 @@ function createTestApp() {
       // DynamoDB lookup table
       const lookupStart = Date.now();
       try {
-        await dynamoClient.send(new DescribeTableCommand({ TableName: LOOKUP_TABLE_NAME }));
-        checks.dynamodbLookup = { status: 'ok', latencyMs: Date.now() - lookupStart };
+        await pool.query(`SELECT 1 FROM "${LOOKUP_TABLE_NAME}" LIMIT 1`);
+        checks.databaseLookup = { status: 'ok', latencyMs: Date.now() - lookupStart };
       } catch (err) {
-        checks.dynamodbLookup = {
+        checks.databaseLookup = {
           status: 'error',
           latencyMs: Date.now() - lookupStart,
           error: err instanceof Error ? err.message : String(err),
@@ -136,7 +67,7 @@ function createTestApp() {
 
       // KMS (local mode = always ok)
       const kmsStart = Date.now();
-      checks.kms = { status: 'ok', latencyMs: Date.now() - kmsStart };
+      checks.encryption = { status: 'ok', latencyMs: Date.now() - kmsStart };
 
       const allOk = Object.values(checks).every((c) => c.status === 'ok');
       if (!allOk) {
@@ -206,12 +137,12 @@ describe('health endpoints', () => {
 
       const body = await res.json();
       expect(body.status).toBe('ok');
-      expect(body.checks.dynamodb.status).toBe('ok');
-      expect(typeof body.checks.dynamodb.latencyMs).toBe('number');
-      expect(body.checks.dynamodbLookup.status).toBe('ok');
-      expect(typeof body.checks.dynamodbLookup.latencyMs).toBe('number');
-      expect(body.checks.kms.status).toBe('ok');
-      expect(typeof body.checks.kms.latencyMs).toBe('number');
+      expect(body.checks.database.status).toBe('ok');
+      expect(typeof body.checks.database.latencyMs).toBe('number');
+      expect(body.checks.databaseLookup.status).toBe('ok');
+      expect(typeof body.checks.databaseLookup.latencyMs).toBe('number');
+      expect(body.checks.encryption.status).toBe('ok');
+      expect(typeof body.checks.encryption.latencyMs).toBe('number');
     });
 
     it('returns X-Request-Id header', async () => {

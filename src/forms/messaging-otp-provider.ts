@@ -1,92 +1,37 @@
-import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
-import { SNSClient, PublishCommand } from '@aws-sdk/client-sns';
 import { createChildLogger } from '../logger.js';
+import { sendEmail } from '../messaging/email.js';
+import { sendSms } from '../messaging/sms.js';
 import type { OtpProvider } from './otp-provider.js';
 
-const log = createChildLogger({ module: 'aws-otp-provider' });
-
-const AWS_REGION = process.env.AWS_REGION ?? 'us-east-2';
-const SES_FROM_EMAIL = process.env.SES_FROM_EMAIL ?? 'noreply@reportraven.tech';
-
-const sesClient = new SESClient({ region: AWS_REGION });
-const snsClient = new SNSClient({ region: AWS_REGION });
+const log = createChildLogger({ module: 'messaging-otp-provider' });
 
 /**
- * Production OTP provider using AWS SES (email) and SNS (SMS).
+ * Production OTP provider using Resend (email) and Telnyx (SMS).
  *
- * Prerequisites:
- * - SES: Verify sender domain/email. Request production access to send to unverified recipients.
- * - SNS: SMS sending enabled in the region. Optionally request a dedicated origination number.
- *
- * Env vars:
- * - AWS_REGION (default: us-east-2)
- * - SES_FROM_EMAIL (default: noreply@reportraven.tech)
+ * Env vars: RESEND_API_KEY, EMAIL_FROM, TELNYX_API_KEY, TELNYX_FROM_NUMBER |
+ * TELNYX_MESSAGING_PROFILE_ID.
  */
-export class AwsOtpProvider implements OtpProvider {
+export class MessagingOtpProvider implements OtpProvider {
   async sendOtp(
     channel: 'email' | 'phone',
     destination: string,
     code: string,
   ): Promise<void> {
     if (channel === 'email') {
-      await this.sendEmail(destination, code);
+      const messageId = await sendEmail({
+        to: destination,
+        subject: `${code} is your RAVEN verification code`,
+        html: buildEmailHtml(code),
+        text: `Your RAVEN verification code is: ${code}\n\nThis code expires in 10 minutes. If you didn't request this, please ignore this email.`,
+      });
+      log.info({ email: maskEmail(destination), messageId }, 'OTP email sent');
     } else {
-      await this.sendSms(destination, code);
+      const messageId = await sendSms(
+        destination,
+        `Your RAVEN verification code is: ${code}. Expires in 10 minutes.`,
+      );
+      log.info({ phone: maskPhone(destination), messageId }, 'OTP SMS sent');
     }
-  }
-
-  private async sendEmail(email: string, code: string): Promise<void> {
-    const command = new SendEmailCommand({
-      Source: SES_FROM_EMAIL,
-      Destination: {
-        ToAddresses: [email],
-      },
-      Message: {
-        Subject: {
-          Data: `${code} is your RAVEN verification code`,
-          Charset: 'UTF-8',
-        },
-        Body: {
-          Html: {
-            Data: buildEmailHtml(code),
-            Charset: 'UTF-8',
-          },
-          Text: {
-            Data: `Your RAVEN verification code is: ${code}\n\nThis code expires in 10 minutes. If you didn't request this, please ignore this email.`,
-            Charset: 'UTF-8',
-          },
-        },
-      },
-    });
-
-    const result = await sesClient.send(command);
-    log.info(
-      { email: maskEmail(email), messageId: result.MessageId },
-      'OTP email sent via SES',
-    );
-  }
-
-  private async sendSms(phone: string, code: string): Promise<void> {
-    const command = new PublishCommand({
-      PhoneNumber: phone,
-      Message: `Your RAVEN verification code is: ${code}. Expires in 10 minutes.`,
-      MessageAttributes: {
-        'AWS.SNS.SMS.SMSType': {
-          DataType: 'String',
-          StringValue: 'Transactional',
-        },
-        'AWS.SNS.SMS.SenderID': {
-          DataType: 'String',
-          StringValue: 'RAVEN',
-        },
-      },
-    });
-
-    const result = await snsClient.send(command);
-    log.info(
-      { phone: maskPhone(phone), messageId: result.MessageId },
-      'OTP SMS sent via SNS',
-    );
   }
 }
 

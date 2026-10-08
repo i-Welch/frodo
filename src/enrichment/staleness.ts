@@ -1,8 +1,7 @@
-import { ScanCommand } from '@aws-sdk/lib-dynamodb';
 import { getEventsForModule } from '../store/event-store.js';
 import { resolveFields } from '../events/resolver.js';
 import { getEnrichedModuleNames } from './registry.js';
-import { docClient, TABLE_NAME } from '../store/dynamo-client.js';
+import { pool, TABLE_NAME } from '../store/db.js';
 import { createChildLogger } from '../logger.js';
 import type { DataEvent } from '../events/types.js';
 import type { ResolvedField } from '../events/resolver.js';
@@ -218,42 +217,15 @@ function resolveFieldsIncludingExpired(
 }
 
 /**
- * Scan for distinct user IDs that have module data.
- * Uses a DynamoDB Scan with a FilterExpression to find USER# items with MODULE#identity SK.
+ * Find distinct user IDs that have module data (USER# items with an
+ * MODULE#identity sort key).
  */
 async function scanUserIds(limit?: number): Promise<string[]> {
-  const userIds = new Set<string>();
-  let exclusiveStartKey: Record<string, unknown> | undefined;
-
-  do {
-    const result = await docClient.send(
-      new ScanCommand({
-        TableName: TABLE_NAME,
-        FilterExpression: 'begins_with(#pk, :pkPrefix) AND #sk = :sk',
-        ExpressionAttributeNames: {
-          '#pk': 'PK',
-          '#sk': 'SK',
-        },
-        ExpressionAttributeValues: {
-          ':pkPrefix': 'USER#',
-          ':sk': 'MODULE#identity',
-        },
-        ProjectionExpression: 'PK',
-        ExclusiveStartKey: exclusiveStartKey,
-      }),
-    );
-
-    for (const item of (result.Items ?? [])) {
-      const pk = item.PK as string;
-      const userId = pk.slice(5);
-      userIds.add(userId);
-      if (limit && userIds.size >= limit) {
-        return Array.from(userIds);
-      }
-    }
-
-    exclusiveStartKey = result.LastEvaluatedKey as Record<string, unknown> | undefined;
-  } while (exclusiveStartKey);
-
-  return Array.from(userIds);
+  const r = await pool.query<{ pk: string }>(
+    `SELECT pk FROM "${TABLE_NAME}"
+      WHERE pk LIKE 'USER#%' AND sk = 'MODULE#identity'
+      ORDER BY pk
+      ${limit ? `LIMIT ${Math.floor(limit)}` : ''}`,
+  );
+  return r.rows.map((row) => row.pk.slice(5));
 }

@@ -1,5 +1,5 @@
 /**
- * Seed white-label config + resolution records into DynamoDB.
+ * Seed white-label config + resolution records into Postgres.
  *
  *   bun scripts/seed-whitelabel.ts
  *
@@ -8,7 +8,7 @@
  *   WLSLUG#<slug>      / METADATA     -> { tenantId, mode }
  *   HOST#<hostname>    / METADATA     -> { tenantId, slug, mode }
  *
- * Idempotent (puts overwrite). Requires DYNAMODB_ENDPOINT (local) or AWS creds.
+ * Idempotent (puts overwrite). Requires DATABASE_URL.
  */
 import { putWhiteLabelConfig, putSlugRecord, putHostRecord } from '../src/whitelabel/config-store.js';
 import { arthurStateBank } from '../src/whitelabel/arthur-state-bank.js';

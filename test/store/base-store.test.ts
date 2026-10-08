@@ -1,11 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
-import {
-  CreateTableCommand,
-  DescribeTableCommand,
-  UpdateTimeToLiveCommand,
-  ResourceNotFoundException,
-} from '@aws-sdk/client-dynamodb';
-import { dynamoClient, TABLE_NAME } from '../../src/store/dynamo-client.js';
+import { ensureTables, TABLE_NAME } from '../../src/store/db.js';
 import {
   keys,
   gsiKeys,
@@ -22,65 +16,7 @@ import { createTestContext, type TestContext } from '../setup.js';
 // ---------------------------------------------------------------------------
 
 async function ensureTable(): Promise<void> {
-  try {
-    await dynamoClient.send(
-      new DescribeTableCommand({ TableName: TABLE_NAME }),
-    );
-  } catch (err) {
-    if (!(err instanceof ResourceNotFoundException)) throw err;
-
-    await dynamoClient.send(
-      new CreateTableCommand({
-        TableName: TABLE_NAME,
-        KeySchema: [
-          { AttributeName: 'PK', KeyType: 'HASH' },
-          { AttributeName: 'SK', KeyType: 'RANGE' },
-        ],
-        AttributeDefinitions: [
-          { AttributeName: 'PK', AttributeType: 'S' },
-          { AttributeName: 'SK', AttributeType: 'S' },
-          { AttributeName: 'GSI1PK', AttributeType: 'S' },
-          { AttributeName: 'GSI1SK', AttributeType: 'S' },
-          { AttributeName: 'GSI2PK', AttributeType: 'S' },
-          { AttributeName: 'GSI2SK', AttributeType: 'S' },
-        ],
-        GlobalSecondaryIndexes: [
-          {
-            IndexName: 'GSI1',
-            KeySchema: [
-              { AttributeName: 'GSI1PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI1SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-          {
-            IndexName: 'GSI2',
-            KeySchema: [
-              { AttributeName: 'GSI2PK', KeyType: 'HASH' },
-              { AttributeName: 'GSI2SK', KeyType: 'RANGE' },
-            ],
-            Projection: { ProjectionType: 'ALL' },
-          },
-        ],
-        BillingMode: 'PAY_PER_REQUEST',
-      }),
-    );
-
-    // TTL — ignore errors on local (some DynamoDB Local versions don't support it)
-    try {
-      await dynamoClient.send(
-        new UpdateTimeToLiveCommand({
-          TableName: TABLE_NAME,
-          TimeToLiveSpecification: {
-            AttributeName: 'ttl',
-            Enabled: true,
-          },
-        }),
-      );
-    } catch {
-      // DynamoDB Local may not support TTL — safe to ignore in tests
-    }
-  }
+  await ensureTables();
 }
 
 // ---------------------------------------------------------------------------

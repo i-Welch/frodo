@@ -1,6 +1,5 @@
 import { Elysia } from 'elysia';
 import { cors } from '@elysiajs/cors';
-import { DescribeTableCommand } from '@aws-sdk/client-dynamodb';
 import { config } from './config/app-config.js';
 import { logger } from './logger.js';
 import { requestIdMiddleware } from './api/middleware/request-id.js';
@@ -20,13 +19,12 @@ import { legalRoutes } from './api/routes/legal.js';
 import { plaidLinkRoutes } from './api/routes/plaid-link.js';
 import { onboardRoutes } from './api/routes/onboard.js';
 import { socureVerifyRoutes } from './api/routes/socure-verify.js';
-import { clerkWebhookRoutes } from './api/routes/clerk-webhooks.js';
 import { verificationRoutes } from './api/routes/verifications.js';
 import { reportRoutes } from './api/routes/report.js';
 import { interestRoutes } from './api/routes/interest.js';
 import { whitelabelRoutes } from './api/routes/whitelabel.js';
 import { whitelabelAdminRoutes } from './api/routes/whitelabel-admin.js';
-import { dynamoClient, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/dynamo-client.js';
+import { pool, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/db.js';
 import { kmsService } from './crypto/kms.js';
 // Side-effect import — registers all module schemas
 import './modules/index.js';
@@ -66,10 +64,10 @@ interface HealthCheckResult {
   error?: string;
 }
 
-async function checkDynamoTable(tableName: string): Promise<HealthCheckResult> {
+async function checkTable(tableName: string): Promise<HealthCheckResult> {
   const start = Date.now();
   try {
-    await dynamoClient.send(new DescribeTableCommand({ TableName: tableName }));
+    await pool.query(`SELECT 1 FROM "${tableName}" LIMIT 1`);
     return { status: 'ok', latencyMs: Date.now() - start };
   } catch (err) {
     return {
@@ -80,48 +78,26 @@ async function checkDynamoTable(tableName: string): Promise<HealthCheckResult> {
   }
 }
 
-// Cache KMS health check result for 30 seconds to avoid generating
-// real KMS data keys on every health check call.
-let kmsHealthCache: { result: HealthCheckResult; expiresAt: number } | null = null;
-const KMS_HEALTH_CACHE_TTL = 30_000;
-
-async function checkKms(): Promise<HealthCheckResult> {
+async function checkEncryption(): Promise<HealthCheckResult> {
   const start = Date.now();
-  // In local mode, KMS uses a static key — no real service to check
-  if (config.kmsEndpoint === 'local') {
-    return { status: 'ok', latencyMs: Date.now() - start };
-  }
-
-  // Return cached result if fresh
-  if (kmsHealthCache && kmsHealthCache.expiresAt > Date.now()) {
-    return { ...kmsHealthCache.result, latencyMs: 0 };
-  }
-
   try {
-    // Round-trip: generate a data key and decrypt it
+    // Round-trip: generate a data key and unwrap it
     const { plaintextDek, encryptedDek } = await kmsService.generateDataKey('health-check');
     const decrypted = await kmsService.decryptDataKey(encryptedDek, 'health-check');
-    // Verify round-trip integrity
     if (!plaintextDek.equals(decrypted)) {
-      const result: HealthCheckResult = {
+      return {
         status: 'error',
         latencyMs: Date.now() - start,
-        error: 'KMS round-trip verification failed',
+        error: 'Encryption round-trip verification failed',
       };
-      kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
-      return result;
     }
-    const result: HealthCheckResult = { status: 'ok', latencyMs: Date.now() - start };
-    kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
-    return result;
+    return { status: 'ok', latencyMs: Date.now() - start };
   } catch (err) {
-    const result: HealthCheckResult = {
+    return {
       status: 'error',
       latencyMs: Date.now() - start,
       error: err instanceof Error ? err.message : String(err),
     };
-    kmsHealthCache = { result, expiresAt: Date.now() + KMS_HEALTH_CACHE_TTL };
-    return result;
   }
 }
 
@@ -150,13 +126,13 @@ const app = new Elysia()
     version: '1.0.0',
   }))
   .get('/health/deep', async ({ set }) => {
-    const [dynamodb, dynamodbLookup, kms] = await Promise.all([
-      checkDynamoTable(TABLE_NAME),
-      checkDynamoTable(LOOKUP_TABLE_NAME),
-      checkKms(),
+    const [database, databaseLookup, encryption] = await Promise.all([
+      checkTable(TABLE_NAME),
+      checkTable(LOOKUP_TABLE_NAME),
+      checkEncryption(),
     ]);
 
-    const checks = { dynamodb, dynamodbLookup, kms };
+    const checks = { database, databaseLookup, encryption };
     const allOk = Object.values(checks).every((c) => c.status === 'ok');
 
     if (!allOk) {
@@ -185,7 +161,6 @@ const app = new Elysia()
   .use(plaidLinkRoutes)
   .use(onboardRoutes)
   .use(socureVerifyRoutes)
-  .use(clerkWebhookRoutes)
   .use(verificationRoutes)
   .use(reportRoutes)
   .use(interestRoutes)

@@ -19,13 +19,20 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      dynamodb-local:
-        image: amazon/dynamodb-local
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: frodo_test
         ports:
-          - 8000:8000
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     env:
-      DYNAMODB_ENDPOINT: http://localhost:8000
-      KMS_ENDPOINT: local
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/frodo_test
       NODE_ENV: test
     steps:
       - uses: actions/checkout@v4

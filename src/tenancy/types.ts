@@ -7,7 +7,6 @@ export interface Tenant {
   callbackUrls: string[];
   consentAddendum?: string;
   webhookUrl?: string;
-  clerkOrgId?: string;
   createdAt: string; // ISO date
 
   // ---------------------------------------------------------------------

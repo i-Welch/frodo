@@ -1,9 +1,4 @@
 import {
-  KMSClient,
-  GenerateDataKeyCommand,
-  DecryptCommand,
-} from '@aws-sdk/client-kms';
-import {
   createCipheriv,
   createDecipheriv,
   createHash,
@@ -15,86 +10,59 @@ import { createChildLogger } from '../logger.js';
 const log = createChildLogger({ module: 'kms' });
 
 // ---------------------------------------------------------------------------
-// Local fallback — deterministic static key derived from a fixed seed
+// Envelope encryption: a per-record data key (DEK) is wrapped with an
+// application master key (MASTER_ENCRYPTION_KEY, base64-encoded 32 bytes).
+// The userId + environment are bound as AES-GCM additional authenticated
+// data, so a wrapped DEK only unwraps for the context it was created in.
 // ---------------------------------------------------------------------------
 
-const LOCAL_SEED = 'frodo-local-dev-static-kms-seed-do-not-use-in-prod';
-const LOCAL_STATIC_KEY = createHash('sha256').update(LOCAL_SEED).digest(); // 32 bytes
+const LOCAL_SEED = 'frodo-local-dev-static-master-key-do-not-use-in-prod';
 
-function localEncrypt(plaintext: Buffer): {
-  ciphertext: Buffer;
-  iv: Buffer;
-  authTag: Buffer;
-} {
+function loadMasterKey(): Buffer {
+  const raw = config.masterEncryptionKey;
+  if (raw) {
+    const key = Buffer.from(raw, 'base64');
+    if (key.length !== 32) {
+      throw new Error('MASTER_ENCRYPTION_KEY must be 32 bytes, base64-encoded');
+    }
+    return key;
+  }
+  if (config.nodeEnv === 'production' || config.nodeEnv === 'staging') {
+    throw new Error('MASTER_ENCRYPTION_KEY is required in production and staging');
+  }
+  return createHash('sha256').update(LOCAL_SEED).digest();
+}
+
+let masterKey: Buffer | null = null;
+function getMasterKey(): Buffer {
+  masterKey ??= loadMasterKey();
+  return masterKey;
+}
+
+function aad(userId: string): Buffer {
+  return Buffer.from(JSON.stringify({ userId, environment: config.nodeEnv }));
+}
+
+/** Wrap a DEK: [1 byte ivLen][iv][16 bytes authTag][ciphertext] */
+function wrap(dek: Buffer, userId: string): Buffer {
   const iv = randomBytes(12);
-  const cipher = createCipheriv('aes-256-gcm', LOCAL_STATIC_KEY, iv);
-  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
+  const cipher = createCipheriv('aes-256-gcm', getMasterKey(), iv);
+  cipher.setAAD(aad(userId));
+  const ciphertext = Buffer.concat([cipher.update(dek), cipher.final()]);
   const authTag = cipher.getAuthTag();
-  return { ciphertext, iv, authTag };
+  return Buffer.concat([Buffer.from([iv.length]), iv, authTag, ciphertext]);
 }
 
-function localDecrypt(
-  ciphertext: Buffer,
-  iv: Buffer,
-  authTag: Buffer,
-): Buffer {
-  const decipher = createDecipheriv('aes-256-gcm', LOCAL_STATIC_KEY, iv);
-  decipher.setAuthTag(authTag);
-  return Buffer.concat([decipher.update(ciphertext), decipher.final()]);
-}
-
-/**
- * Pack local-encrypted DEK into a single buffer:
- * [1 byte ivLen][iv][16 bytes authTag][ciphertext]
- */
-function packLocalEncrypted(encrypted: {
-  ciphertext: Buffer;
-  iv: Buffer;
-  authTag: Buffer;
-}): Buffer {
-  const ivLen = Buffer.alloc(1);
-  ivLen.writeUInt8(encrypted.iv.length);
-  return Buffer.concat([
-    ivLen,
-    encrypted.iv,
-    encrypted.authTag,
-    encrypted.ciphertext,
-  ]);
-}
-
-/**
- * Unpack a local-encrypted DEK buffer.
- */
-function unpackLocalEncrypted(packed: Buffer): {
-  ciphertext: Buffer;
-  iv: Buffer;
-  authTag: Buffer;
-} {
+function unwrap(packed: Buffer, userId: string): Buffer {
   const ivLen = packed.readUInt8(0);
   const iv = packed.subarray(1, 1 + ivLen);
   const authTag = packed.subarray(1 + ivLen, 1 + ivLen + 16);
   const ciphertext = packed.subarray(1 + ivLen + 16);
-  return { ciphertext, iv, authTag };
+  const decipher = createDecipheriv('aes-256-gcm', getMasterKey(), iv);
+  decipher.setAAD(aad(userId));
+  decipher.setAuthTag(authTag);
+  return Buffer.concat([decipher.update(ciphertext), decipher.final()]);
 }
-
-// ---------------------------------------------------------------------------
-// Real KMS client
-// ---------------------------------------------------------------------------
-
-function createKmsClient(): KMSClient | null {
-  if (config.kmsEndpoint === 'local') {
-    return null;
-  }
-
-  const clientConfig: ConstructorParameters<typeof KMSClient>[0] = {};
-  if (config.kmsEndpoint) {
-    clientConfig.endpoint = config.kmsEndpoint;
-  }
-
-  return new KMSClient(clientConfig);
-}
-
-const kmsClient = createKmsClient();
 
 // ---------------------------------------------------------------------------
 // DEK cache — in-memory LRU with TTL
@@ -104,8 +72,12 @@ const dekCache = new Map<string, { key: Buffer; expiresAt: number }>();
 const DEK_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const DEK_CACHE_MAX = 1000;
 
-function getCachedDek(encryptedDek: Buffer): Buffer | null {
-  const cacheKey = encryptedDek.toString('base64');
+function cacheKeyFor(encryptedDek: Buffer, userId: string): string {
+  return `${userId}:${encryptedDek.toString('base64')}`;
+}
+
+function getCachedDek(encryptedDek: Buffer, userId: string): Buffer | null {
+  const cacheKey = cacheKeyFor(encryptedDek, userId);
   const entry = dekCache.get(cacheKey);
   if (!entry) return null;
   if (Date.now() > entry.expiresAt) {
@@ -118,14 +90,15 @@ function getCachedDek(encryptedDek: Buffer): Buffer | null {
   return entry.key;
 }
 
-function setCachedDek(encryptedDek: Buffer, plaintextDek: Buffer): void {
-  const cacheKey = encryptedDek.toString('base64');
-  // Evict oldest entries if at capacity
+function setCachedDek(encryptedDek: Buffer, userId: string, plaintextDek: Buffer): void {
   if (dekCache.size >= DEK_CACHE_MAX) {
     const firstKey = dekCache.keys().next().value!;
     dekCache.delete(firstKey);
   }
-  dekCache.set(cacheKey, { key: plaintextDek, expiresAt: Date.now() + DEK_CACHE_TTL });
+  dekCache.set(cacheKeyFor(encryptedDek, userId), {
+    key: plaintextDek,
+    expiresAt: Date.now() + DEK_CACHE_TTL,
+  });
 }
 
 // ---------------------------------------------------------------------------
@@ -138,75 +111,23 @@ export interface KmsGenerateResult {
 }
 
 async function generateDataKey(userId: string): Promise<KmsGenerateResult> {
-  if (!kmsClient) {
-    // Local fallback
-    log.debug('Using local KMS fallback for generateDataKey');
-    const plaintextDek = randomBytes(32);
-    const encrypted = localEncrypt(plaintextDek);
-    const encryptedDek = packLocalEncrypted(encrypted);
-    return { plaintextDek, encryptedDek };
-  }
-
-  log.debug({ userId }, 'Generating data key via KMS');
-  const response = await kmsClient.send(
-    new GenerateDataKeyCommand({
-      KeyId: config.kmsKeyId,
-      KeySpec: 'AES_256',
-      EncryptionContext: {
-        userId,
-        environment: config.nodeEnv,
-      },
-    }),
-  );
-
-  if (!response.Plaintext || !response.CiphertextBlob) {
-    throw new Error('KMS GenerateDataKey returned empty response');
-  }
-
-  return {
-    plaintextDek: Buffer.from(response.Plaintext),
-    encryptedDek: Buffer.from(response.CiphertextBlob),
-  };
+  log.debug({ userId }, 'Generating data key');
+  const plaintextDek = randomBytes(32);
+  return { plaintextDek, encryptedDek: wrap(plaintextDek, userId) };
 }
 
 async function decryptDataKey(
   encryptedDek: Buffer,
   userId: string,
 ): Promise<Buffer> {
-  // Check cache first
-  const cached = getCachedDek(encryptedDek);
+  const cached = getCachedDek(encryptedDek, userId);
   if (cached) {
     log.debug({ userId }, 'DEK cache hit');
     return cached;
   }
 
-  let plaintext: Buffer;
-
-  if (!kmsClient) {
-    // Local fallback
-    log.debug('Using local KMS fallback for decryptDataKey');
-    const unpacked = unpackLocalEncrypted(encryptedDek);
-    plaintext = localDecrypt(unpacked.ciphertext, unpacked.iv, unpacked.authTag);
-  } else {
-    log.debug({ userId }, 'Decrypting data key via KMS');
-    const response = await kmsClient.send(
-      new DecryptCommand({
-        CiphertextBlob: encryptedDek,
-        EncryptionContext: {
-          userId,
-          environment: config.nodeEnv,
-        },
-      }),
-    );
-
-    if (!response.Plaintext) {
-      throw new Error('KMS Decrypt returned empty response');
-    }
-
-    plaintext = Buffer.from(response.Plaintext);
-  }
-
-  setCachedDek(encryptedDek, plaintext);
+  const plaintext = unwrap(encryptedDek, userId);
+  setCachedDek(encryptedDek, userId, plaintext);
   return plaintext;
 }
 

@@ -1,14 +1,12 @@
-import { UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import { docClient, TABLE_NAME } from './dynamo-client.js';
-import { keys, gsiKeys, putItem, getItem, deleteItem } from './base-store.js';
+import { keys, gsiKeys, putItem, getItem, deleteItem, updateItem } from './base-store.js';
 import type { UserSession } from '../sessions/types.js';
 
 // ---------------------------------------------------------------------------
-// Session CRUD (low-level DynamoDB operations)
+// Session CRUD (low-level storage operations)
 // ---------------------------------------------------------------------------
 
 /**
- * Write a session to DynamoDB with TTL and GSI keys.
+ * Write a session to the store with TTL and GSI keys.
  *
  * PK  = SESSION#<sessionId>,  SK  = METADATA
  * GSI1PK = USER#<userId>,  GSI1SK = SESSION#<tenantId>#<createdAt>
@@ -63,21 +61,10 @@ export async function updateSessionExpiry(
 ): Promise<void> {
   const key = keys.session(sessionId);
 
-  await docClient.send(
-    new UpdateCommand({
-      TableName: TABLE_NAME,
-      Key: key,
-      UpdateExpression: 'SET #expiresAt = :expiresAt, #ttl = :ttl',
-      ExpressionAttributeNames: {
-        '#expiresAt': 'expiresAt',
-        '#ttl': 'ttl',
-      },
-      ExpressionAttributeValues: {
-        ':expiresAt': expiresAt,
-        ':ttl': Math.floor(new Date(expiresAt).getTime() / 1000),
-      },
-    }),
-  );
+  await updateItem(key, {
+    expiresAt,
+    ttl: Math.floor(new Date(expiresAt).getTime() / 1000),
+  });
 }
 
 /**

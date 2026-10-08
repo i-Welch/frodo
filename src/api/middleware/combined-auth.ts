@@ -1,7 +1,6 @@
 import { resolveAuth, AuthError } from './api-key-auth.js';
-import { resolveClerkAuth } from './clerk-auth.js';
+import { resolveSessionAuth } from './neon-auth.js';
 import type { AuthContext } from './api-key-auth.js';
-import type { ClerkAuthContext } from './clerk-auth.js';
 import type { Tenant, StoredApiKey } from '../../tenancy/types.js';
 
 // ---------------------------------------------------------------------------
@@ -12,13 +11,12 @@ export interface CombinedAuthContext {
   [key: string]: unknown;
   tenant: Tenant;
   /** Which auth method was used */
-  authMethod: 'api_key' | 'clerk';
+  authMethod: 'api_key' | 'session';
   /** Present when auth method is 'api_key' */
   apiKey?: StoredApiKey;
-  /** Present when auth method is 'clerk' */
-  clerkUserId?: string;
-  clerkOrgId?: string;
-  clerkOrgRole?: string;
+  /** Present when auth method is 'session' (Neon Auth) */
+  authUserId?: string;
+  role?: string;
   environment: 'sandbox' | 'production';
 }
 
@@ -27,13 +25,13 @@ export interface CombinedAuthContext {
 // ---------------------------------------------------------------------------
 
 /**
- * Resolve authentication from either a Clerk JWT or an API key.
+ * Resolve authentication from either a Neon Auth JWT or an API key.
  *
- * - If the Bearer token looks like a JWT (starts with "eyJ"), try Clerk first.
- * - If Clerk fails or the token doesn't look like a JWT, try API key auth.
+ * - If the Bearer token looks like a JWT (starts with "eyJ"), try Neon Auth first.
+ * - If Neon Auth fails or the token doesn't look like a JWT, try API key auth.
  * - If both fail, throw AuthError.
  *
- * This allows the dashboard (Clerk sessions) and programmatic access (API keys)
+ * This allows the dashboard (Neon Auth sessions) and programmatic access (API keys)
  * to use the same endpoints.
  */
 export async function resolveCombinedAuth(
@@ -46,22 +44,21 @@ export async function resolveCombinedAuth(
 
   const token = authHeader.slice('Bearer '.length);
 
-  // Try Clerk JWT first (if it looks like a JWT)
+  // Try Neon Auth JWT first (if it looks like a JWT)
   if (token.startsWith('eyJ')) {
     try {
-      const clerkAuth = await resolveClerkAuth(token);
-      if (clerkAuth) {
+      const sessionAuth = await resolveSessionAuth(token, headers['x-tenant-id']);
+      if (sessionAuth) {
         return {
-          tenant: clerkAuth.tenant,
-          authMethod: 'clerk',
-          clerkUserId: clerkAuth.clerkUserId,
-          clerkOrgId: clerkAuth.clerkOrgId,
-          clerkOrgRole: clerkAuth.clerkOrgRole,
-          environment: clerkAuth.environment,
+          tenant: sessionAuth.tenant,
+          authMethod: 'session',
+          authUserId: sessionAuth.userId,
+          role: sessionAuth.role,
+          environment: sessionAuth.environment,
         };
       }
     } catch (err) {
-      // If it's a Clerk-specific error (no org, not provisioned), throw it
+      // A valid session that cannot be mapped to a tenant is a hard failure
       if (err instanceof Error && !(err instanceof AuthError)) {
         throw new AuthError(err.message);
       }

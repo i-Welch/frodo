@@ -76,11 +76,7 @@ export async function putIntake(intake: StoredIntakeInput): Promise<void> {
   const opts =
     isTerminal
       ? undefined
-      : {
-          conditionExpression: `attribute_not_exists(PK) OR (${TERMINAL.map((_, i) => `#st <> :t${i}`).join(' AND ')})`,
-          expressionAttributeNames: { '#st': 'status' },
-          expressionAttributeValues: Object.fromEntries(TERMINAL.map((s, i) => [`:t${i}`, s])),
-        };
+      : { ifAttrNotIn: { attr: 'status', values: [...TERMINAL] } };
 
   await putItem(item, opts);
   log.debug({ intakeId: intake.intakeId, tenantId: intake.tenantId, flow: intake.flow }, 'Intake stored');
