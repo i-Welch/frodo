@@ -47,7 +47,8 @@ raven-linkedin-banner*
 raven-logo-linkedin*
 
 # local agent / IDE settings
-.claude/
+.claude/*
+!.claude/commands/
 
 # bun
 bun.lockb
