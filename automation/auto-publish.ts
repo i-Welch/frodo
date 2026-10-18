@@ -10,7 +10,8 @@
 //   LINKEDIN_ACCESS_TOKEN=...      (w_organization_social scope)
 //   LINKEDIN_ORG_ID=12345678       (numeric id of the company page)
 //   LINKEDIN_VERSION=202609        (optional, YYYYMM)
-// Without them, step 2 is skipped and queued posts wait.
+// Without them, posts go through the signed-in Edge profile instead
+// (linkedin-browser.ts). With neither, queued posts wait.
 //
 // Usage: bun automation/auto-publish.ts [--dry-run]
 
@@ -18,6 +19,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { browserReady, postViaBrowser } from './linkedin-browser';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -191,8 +193,8 @@ async function postQueued() {
   if (pending.length === 0) return;
 
   const env = loadLinkedInEnv();
-  if (!env) {
-    log(`${pending.length} LinkedIn post(s) queued; no credentials in ${LINKEDIN_ENV}, skipping`);
+  if (!env && !browserReady()) {
+    log(`${pending.length} LinkedIn post(s) queued; no API token or browser setup (see linkedin-browser.ts), skipping`);
     return;
   }
   for (const post of pending) {
@@ -201,11 +203,13 @@ async function postQueued() {
       continue;
     }
     if (DRY_RUN) {
-      log(`${post.slug}: would post to LinkedIn (dry run):\n${toLittleText(post.text)}`);
+      log(`${post.slug}: would post to LinkedIn via ${env ? 'API' : 'browser'} (dry run)`);
       continue;
     }
     try {
-      const id = await postToLinkedIn(env, post);
+      let id = 'browser';
+      if (env) id = await postToLinkedIn(env, post);
+      else await postViaBrowser(post.text, post.url, { submit: true });
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
       log(`${post.slug}: posted to LinkedIn (${id})`);
