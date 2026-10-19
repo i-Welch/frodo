@@ -199,6 +199,22 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
           </div>
         )}
 
+        {r.closestPeers.length > 0 && (
+          <>
+            <h2>Banks closest in size</h2>
+            <ul className="bsn-top" style={{ listStyle: 'disc' }}>
+              {r.closestPeers.map((p) => (
+                <li key={p.CERT}>
+                  <a href={`/bank-snapshot/${p.CERT}-${bankSlug(p.NAME)}`}>{p.NAME}</a>{' '}
+                  <span className="bsn-note">
+                    {p.CITY}, {p.STALP} &middot; {formatAssets(p.ASSET)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+
         <LeadCapture
           variant="audit"
           source={`bank-snapshot-${inst.CERT}`}

@@ -5,6 +5,7 @@ import {
   comparePeers,
   formatMetric,
   median,
+  nearestBySize,
   quarterLabel,
   stateFromSlug,
   stateSlug,
@@ -53,6 +54,11 @@ describe('comparePeers', () => {
 });
 
 describe('helpers', () => {
+  it('picks the peers nearest in assets, excluding the bank', () => {
+    const peers = [{ CERT: 1, ASSET: 500 }, { CERT: 2, ASSET: 900 }, { CERT: 3, ASSET: 480 }, { CERT: 4, ASSET: 100 }];
+    expect(nearestBySize({ CERT: 1, ASSET: 500 }, peers, 2)).toEqual([3, 2]);
+  });
+
   it('median handles even counts and ignores non-numbers', () => {
     expect(median([3, 1, 2, 4])).toBe(2.5);
     expect(median([NaN, 5])).toBe(5);

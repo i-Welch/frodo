@@ -60,6 +60,8 @@ export interface PeerReport {
   metrics: Metric[];
   loanGrowthPct?: number;
   depositGrowthPct?: number;
+  /** Peers nearest in total assets, for the "closest in size" links. */
+  closestPeers: Pick<Institution, 'NAME' | 'CITY' | 'STALP' | 'ASSET' | 'CERT'>[];
 }
 
 const FIN_FIELDS = 'CERT,REPDTE,ASSET,DEP,LNLSNET,ROA,NIMY,EEFFR,NUMEMP';
@@ -141,6 +143,31 @@ export function comparePeers(bank: Financials, peers: Financials[]): Metric[] {
     .filter((m) => Number.isFinite(m.bank) && Number.isFinite(m.peerMedian));
 }
 
+/** The n peers nearest in total assets, nearest first. */
+export function nearestBySize(bank: Pick<Financials, 'CERT' | 'ASSET'>, peers: Pick<Financials, 'CERT' | 'ASSET'>[], n = 6): number[] {
+  return peers
+    .filter((p) => p.CERT !== bank.CERT)
+    .sort((a, b) => Math.abs(a.ASSET - bank.ASSET) - Math.abs(b.ASSET - bank.ASSET))
+    .slice(0, n)
+    .map((p) => p.CERT);
+}
+
+// Names come from the institutions endpoint (financials has them in capitals).
+// Links are a nicety, so an FDIC hiccup here leaves them out instead of failing the page.
+async function institutionsByCert(certs: number[]): Promise<PeerReport['closestPeers']> {
+  if (certs.length === 0) return [];
+  try {
+    const found = await fdic<Institution>('institutions', {
+      filters: `ACTIVE:1 AND CERT:(${certs.join(' OR ')})`,
+      fields: 'NAME,CITY,STALP,ASSET,CERT',
+      limit: String(certs.length),
+    });
+    return certs.map((c) => found.find((i) => i.CERT === c)).filter((i): i is Institution => !!i);
+  } catch {
+    return [];
+  }
+}
+
 function growth(latest: number, prior?: number): number | undefined {
   return prior && prior > 0 ? Math.round(((latest - prior) / prior) * 1000) / 10 : undefined;
 }
@@ -187,6 +214,7 @@ export async function peerReport(cert: number): Promise<PeerReport | undefined> 
     metrics: comparePeers(latest, peers),
     loanGrowthPct: growth(latest.LNLSNET, yearAgo?.LNLSNET),
     depositGrowthPct: growth(latest.DEP, yearAgo?.DEP),
+    closestPeers: await institutionsByCert(nearestBySize(latest, peers)),
   };
 }
 
