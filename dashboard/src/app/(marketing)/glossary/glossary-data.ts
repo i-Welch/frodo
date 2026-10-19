@@ -473,6 +473,9 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+      { slug: 'glades-bank-broward-de-novo', title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind' },
+      { slug: 'portrait-bank-winter-park-de-novo', title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back' },
+      { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },
