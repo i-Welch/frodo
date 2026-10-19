@@ -11,7 +11,9 @@ const log = createChildLogger({ module: 'leads-admin' });
  * the PC automation holds, so it never needs the full admin secret).
  */
 function adminAuth(headers: Record<string, string | undefined>, set: { status?: number | string }) {
-  const secrets = [process.env.RAVEN_ADMIN_SECRET, process.env.RAVEN_AUTOMATION_SECRET].filter(Boolean);
+  const secrets = [process.env.RAVEN_ADMIN_SECRET, process.env.RAVEN_AUTOMATION_SECRET]
+    .map((s) => s?.trim())
+    .filter(Boolean);
   if (secrets.length === 0) {
     if (process.env.NODE_ENV === 'production') {
       set.status = 503;
