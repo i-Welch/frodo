@@ -89,6 +89,19 @@ function pitches(): string[] {
   }
 }
 
+// Tasks that register-tasks.ps1 defines but Windows does not have, e.g. one
+// added in a merged PR before anyone re-ran the script.
+function missingTasks(): string[] {
+  try {
+    const expected = [...readFileSync(join(REPO, 'automation/register-tasks.ps1'), 'utf8').matchAll(/Register-ScheduledTask -TaskName '([^']+)'/g)].map((m) => m[1]);
+    const registered = execFileSync('schtasks', ['/query', '/fo', 'csv', '/nh'], { encoding: 'utf8' });
+    const missing = expected.filter((name) => !registered.includes(`"\\${name}"`));
+    return missing.length ? [`Scheduled tasks not registered (run automation/register-tasks.ps1): ${missing.join(', ')}`] : [];
+  } catch {
+    return [];
+  }
+}
+
 function problems(): string[] {
   if (!existsSync(LOG_DIR)) return [];
   const found: string[] = [];
@@ -113,6 +126,7 @@ const automation = [
   ...(await deNovoChanges(new Date(WEEK_AGO))),
   ...pitches(),
   ...heldDrafts(),
+  ...missingTasks(),
   ...problems(),
 ];
 
