@@ -21,6 +21,7 @@ Check, and note the URL and date of everything you use:
 ## 2. Update the data
 
 - For each existing row: confirm or update `status`, `statusDetail`, `capital`, `leadership`, then set `asOf` to today. If a fact cannot be re-confirmed, keep it and leave `asOf` unchanged rather than inventing a date.
+- Set `statusChanged` to today on every row you add and every row whose `status` changed (never on a re-verification alone). The Friday newsletter reports these rows to subscribers.
 - Add rows for new filings in the tracker's scope (the Southeast first, plus any national filing notable enough for trade coverage). Every new row needs a source you actually read.
 - Add to `CHARTER_MOVES` any bank entering a market by buying or relocating an existing charter.
 - Update `TRACKER_SUMMARY` (`updated`, the national and Florida 2026 application counts, `note`) from the FDIC list.

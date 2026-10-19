@@ -18,6 +18,9 @@ describe('De Novo Watch data', () => {
       expect(r.asOf <= today, `${r.name} asOf ${r.asOf} is in the future`).toBe(true);
     }
     expect(TRACKER_SUMMARY.updated).toMatch(DATE);
+    for (const b of DE_NOVO_BANKS) {
+      if (b.statusChanged) expect(b.statusChanged, b.name).toMatch(DATE);
+    }
   });
 
   it('has unique bank names', () => {
