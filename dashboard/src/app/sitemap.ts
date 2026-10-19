@@ -6,7 +6,7 @@ import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
 import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
-import { bankSlug, sitemapInstitutions } from './(marketing)/bank-snapshot/peer-data';
+import { bankSlug, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
 
 const SITE = 'https://reportraven.tech';
 
@@ -58,6 +58,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     { url: SITE, lastModified: HOME_UPDATED, changeFrequency: 'weekly', priority: 1 },
     { url: `${SITE}/bank-snapshot`, lastModified: new Date('2026-10-19'), changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE}/bank-rankings`, lastModified: new Date('2026-10-19'), changeFrequency: 'monthly', priority: 0.6 },
+    ...Object.keys(STATE_NAMES).map((s) => ({
+      url: `${SITE}/bank-rankings/${stateSlug(s)}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    })),
     { url: `${SITE}/blog`, lastModified: BLOG_INDEX_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
     ...SOLUTIONS.map((s) => ({

@@ -35,6 +35,10 @@ export const snapshotStyles = `
   .bsn-rank-mid { background: rgba(255,255,255,0.08); color: var(--gray-300); }
   .bsn-rank-low { background: rgba(255,196,0,0.14); color: #FFD666; }
   .bsn-note { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; margin-top: 0.35rem; }
+  .bsn-top { list-style: decimal; margin: 0.5rem 0 1rem 1.5rem; padding: 0; color: var(--gray-300); font-size: 0.92rem; line-height: 1.9; }
+  .bsn-top a { color: var(--white); font-weight: 600; text-decoration: none; }
+  .bsn-top a:hover { color: var(--accent); }
+  .bsn-top .bsn-num { color: var(--accent); margin-left: 0.35rem; }
   .bsn-callout { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .bsn-callout strong { color: var(--white); }
 `;

@@ -66,7 +66,7 @@ export default function BankSnapshotPage() {
           How does a bank compare with banks its size in its state? Pick any FDIC-insured bank to see
           its latest call report figures next to the peer median: return on assets, net interest
           margin, efficiency ratio, assets per employee, and loan-to-deposit ratio, with where it
-          ranks among its peers.
+          ranks among its peers. Or browse <a href="/bank-rankings">every bank in a state, ranked</a>.
         </p>
         <BankSearch />
         <p className="bsn-meta">

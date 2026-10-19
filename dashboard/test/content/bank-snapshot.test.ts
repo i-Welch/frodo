@@ -6,6 +6,9 @@ import {
   formatMetric,
   median,
   quarterLabel,
+  stateFromSlug,
+  stateSlug,
+  topBanks,
   type Financials,
 } from '../../src/app/(marketing)/bank-snapshot/peer-data';
 import { auditForCert } from '../../src/app/(whitelabel)/_config/audit-data';
@@ -72,5 +75,23 @@ describe('helpers', () => {
   it('finds a published audit by the FDIC cert its sources cite', () => {
     expect(auditForCert(15085)?.slug).toBe('arthur-state-bank');
     expect(auditForCert(1508)).toBeUndefined();
+  });
+});
+
+describe('state rankings', () => {
+  const bank = (cert: number, assets: number, roa: number, efficiency: number) => ({
+    cert, name: `Bank ${cert}`, city: 'X', assets, roa, nim: 3, efficiency, loanToDeposit: 80,
+  });
+
+  it('ranks ROA high to low and efficiency low to high, skipping tiny banks', () => {
+    const banks = [bank(1, 500_000, 1.1, 60), bank(2, 50_000, 3.0, 20), bank(3, 900_000, 1.4, 70), bank(4, 200_000, 0.9, 0)];
+    expect(topBanks(banks, 'roa').map((b) => b.cert)).toEqual([3, 1, 4]);
+    expect(topBanks(banks, 'efficiency').map((b) => b.cert)).toEqual([1, 3]);
+  });
+
+  it('round-trips state slugs', () => {
+    expect(stateSlug('SC')).toBe('south-carolina');
+    expect(stateFromSlug('district-of-columbia')).toBe('DC');
+    expect(stateFromSlug('narnia')).toBeUndefined();
   });
 });

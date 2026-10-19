@@ -6,7 +6,7 @@ import { LeadCapture } from '../../lead-capture';
 import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import { auditForCert } from '@/app/(whitelabel)/_config/audit-data';
 import { getRoiBank } from '../../roi/roi-data';
-import { bankSlug, certFromParam, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
+import { bankSlug, certFromParam, STATE_NAMES, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
 import { snapshotStyles } from '../styles';
 
 // Pages render on first visit and refresh daily, so a new quarter's call
@@ -216,7 +216,13 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
           </a>
           . Return on assets and net interest margin are annualized year to date. Peers are{' '}
           {r.peerScope} in the same quarter, excluding this bank. The page refreshes daily, so new
-          quarters appear as banks file. <a href="/bank-snapshot">Compare another bank</a>.
+          quarters appear as banks file. <a href="/bank-snapshot">Compare another bank</a>
+          {STATE_NAMES[inst.STALP] && (
+            <>
+              {' '}or see <a href={`/bank-rankings/${stateSlug(inst.STALP)}`}>every {STATE_NAMES[inst.STALP]} bank ranked</a>
+            </>
+          )}
+          .
         </p>
       </div>
     </SiteShell>

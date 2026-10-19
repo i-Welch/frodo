@@ -223,3 +223,91 @@ export function formatMetric(value: number, format: Metric['format']): string {
 export function formatAssets(thousands: number): string {
   return thousands >= 1_000_000 ? `$${(thousands / 1_000_000).toFixed(2)}B` : `$${Math.round(thousands / 1000)}M`;
 }
+
+export const STATE_NAMES: Record<string, string> = {
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California', CO: 'Colorado', CT: 'Connecticut',
+  DE: 'Delaware', DC: 'District of Columbia', FL: 'Florida', GA: 'Georgia', HI: 'Hawaii', ID: 'Idaho', IL: 'Illinois',
+  IN: 'Indiana', IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Louisiana', ME: 'Maine', MD: 'Maryland',
+  MA: 'Massachusetts', MI: 'Michigan', MN: 'Minnesota', MS: 'Mississippi', MO: 'Missouri', MT: 'Montana',
+  NE: 'Nebraska', NV: 'Nevada', NH: 'New Hampshire', NJ: 'New Jersey', NM: 'New Mexico', NY: 'New York',
+  NC: 'North Carolina', ND: 'North Dakota', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregon', PA: 'Pennsylvania',
+  RI: 'Rhode Island', SC: 'South Carolina', SD: 'South Dakota', TN: 'Tennessee', TX: 'Texas', UT: 'Utah',
+  VT: 'Vermont', VA: 'Virginia', WA: 'Washington', WV: 'West Virginia', WI: 'Wisconsin', WY: 'Wyoming',
+};
+
+export const stateSlug = (stalp: string) => bankSlug(STATE_NAMES[stalp] ?? stalp);
+export const stateFromSlug = (slug: string) => Object.keys(STATE_NAMES).find((s) => stateSlug(s) === slug);
+
+export interface RankedBank {
+  cert: number;
+  name: string;
+  city: string;
+  assets: number;
+  roa: number;
+  nim: number;
+  efficiency: number;
+  loanToDeposit: number;
+}
+
+export interface StateRankings {
+  stalp: string;
+  stateName: string;
+  quarter: string;
+  repdte: string;
+  banks: RankedBank[];
+  medians: { roa: number; nim: number; efficiency: number; assets: number };
+}
+
+// Top-ten lists skip the smallest banks, whose ratios swing on one loan.
+export const RANKING_MIN_ASSETS = 100_000;
+
+export function topBanks(banks: RankedBank[], key: 'roa' | 'efficiency', n = 10): RankedBank[] {
+  const eligible = banks.filter((b) => b.assets >= RANKING_MIN_ASSETS && Number.isFinite(b[key]) && b[key] > 0);
+  return eligible.sort((a, b) => (key === 'efficiency' ? a[key] - b[key] : b[key] - a[key])).slice(0, n);
+}
+
+/** Every active bank headquartered in a state, from its latest call report. */
+export async function stateRankings(stalp: string): Promise<StateRankings | undefined> {
+  const stateName = STATE_NAMES[stalp];
+  if (!stateName) return undefined;
+  const [latest] = await fdic<Pick<Financials, 'REPDTE'>>('financials', {
+    filters: `STALP:${stalp}`,
+    fields: 'REPDTE',
+    sort_by: 'REPDTE',
+    sort_order: 'DESC',
+    limit: '1',
+  });
+  if (!latest) return undefined;
+  const [fin, inst] = await Promise.all([
+    fdic<Financials>('financials', { filters: `STALP:${stalp} AND REPDTE:${latest.REPDTE}`, fields: FIN_FIELDS, limit: '2000' }),
+    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT', limit: '2000' }),
+  ]);
+  const byCert = new Map(inst.map((i) => [i.CERT, i]));
+  const banks = fin
+    .filter((f) => byCert.has(f.CERT))
+    .map((f) => ({
+      cert: f.CERT,
+      name: byCert.get(f.CERT)!.NAME,
+      city: byCert.get(f.CERT)!.CITY,
+      assets: f.ASSET,
+      roa: f.ROA,
+      nim: f.NIMY,
+      efficiency: f.EEFFR,
+      loanToDeposit: ratio(f.LNLSNET, f.DEP) * 100,
+    }))
+    .sort((a, b) => b.assets - a.assets);
+  if (banks.length === 0) return undefined;
+  return {
+    stalp,
+    stateName,
+    quarter: quarterLabel(latest.REPDTE),
+    repdte: latest.REPDTE,
+    banks,
+    medians: {
+      roa: median(banks.map((b) => b.roa)),
+      nim: median(banks.map((b) => b.nim)),
+      efficiency: median(banks.map((b) => b.efficiency).filter((v) => v > 0)),
+      assets: median(banks.map((b) => b.assets)),
+    },
+  };
+}
