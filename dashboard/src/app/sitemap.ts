@@ -5,12 +5,14 @@ import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
+import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
 
 const SITE = 'https://reportraven.tech';
 
 // Bump manually when non-blog page content meaningfully changes.
 const SITE_UPDATED = new Date('2026-07-05');
-// About / AI-info / De Novo Watch pages: bump when their content changes.
+// About / AI-info pages: bump when their content changes. De Novo Watch uses
+// the tracker's own updated date, which the weekly /de-novo-update run sets.
 const PAGES_ADDED = new Date('2026-07-18');
 
 const LEGAL_PATHS = [
@@ -47,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
     ...SOLUTIONS.map((s) => ({
       url: `${SITE}/solutions/${s.slug}`,
-      lastModified: SITE_UPDATED,
+      lastModified: s.updated ? new Date(s.updated) : SITE_UPDATED,
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     })),
@@ -60,7 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE}/about`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/ai-info`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${SITE}/de-novo-watch`, lastModified: PAGES_ADDED, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/de-novo-watch`, lastModified: new Date(TRACKER_SUMMARY.updated), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({
       url: `${SITE}/glossary/${t.slug}`,

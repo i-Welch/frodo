@@ -6,6 +6,8 @@ export interface SolutionSection {
 
 export interface Solution {
   slug: string;
+  /** ISO date of last substantive content update; falls back to the site-wide date in sitemap.ts */
+  updated?: string;
   /** Target keyword phrase, used in H1 */
   h1: string;
   /** Title tag, under 60 chars */
@@ -365,6 +367,7 @@ export const SOLUTIONS: Solution[] = [
   },
   {
     slug: 'de-novo-bank-technology',
+    updated: '2026-10-19',
     h1: 'The De Novo Bank Technology Stack: Verified From Day One',
     metaTitle: 'De Novo Bank Technology: The Day-One Verification Stack',
     metaDescription:
