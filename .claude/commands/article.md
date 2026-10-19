@@ -144,7 +144,7 @@ Paths are under `dashboard/src/app/`. Keep title, description, and dates identic
 
 `/audit/<inst-slug>` 404s unless items 6-9 all exist. Check it renders.
 
-**De Novo Watch (type 8):** also set `articleSlug` on the matching row in `(marketing)/de-novo-watch/de-novo-data.ts`, adding a row if needed, and check whether `de-novo-watch/page.tsx` hardcodes a link list that needs the new article.
+**De Novo Watch (type 8):** end the article with an italic line linking [De Novo Watch](/de-novo-watch) and the [day-one stack page](/solutions/de-novo-bank-technology) (see the Glades article). Also set `articleSlug` on the matching row in `(marketing)/de-novo-watch/de-novo-data.ts`, adding a row if needed, and check whether `de-novo-watch/page.tsx` hardcodes a link list that needs the new article.
 
 ## LinkedIn post
 
