@@ -12,6 +12,9 @@ export interface EmailMessage {
   subject: string;
   text: string;
   html?: string;
+  /** Overrides EMAIL_FROM, e.g. a named founder address for lead follow-ups. */
+  from?: string;
+  replyTo?: string;
 }
 
 /** Sends an email and returns the provider message id. */
@@ -26,11 +29,12 @@ export async function sendEmail(msg: EmailMessage): Promise<string | undefined> 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: EMAIL_FROM,
+      from: msg.from ?? EMAIL_FROM,
       to: Array.isArray(msg.to) ? msg.to : [msg.to],
       subject: msg.subject,
       text: msg.text,
       html: msg.html,
+      reply_to: msg.replyTo,
     }),
   });
   if (!res.ok) {

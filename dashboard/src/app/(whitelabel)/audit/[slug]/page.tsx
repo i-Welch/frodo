@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../../(marketing)/calendly-button';
+import { LeadCapture } from '../../../(marketing)/lead-capture';
 import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
 import { AUDITS, getAudit } from '../../_config/audit-data';
@@ -388,6 +389,9 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
               </a>
             </>
           )}
+
+          <LeadCapture variant="audit" source={`audit:${audit.slug}`} />
+          <LeadCapture variant="subscribe" source={`audit:${audit.slug}`} />
 
           <div className="aud-methodology" id="methodology">
             <h2>Methodology &amp; footnotes</h2>
