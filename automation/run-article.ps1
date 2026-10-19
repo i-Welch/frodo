@@ -45,6 +45,7 @@ try {
 }
 catch {
     Write-Output "RUN FAILED ($Prompt): $_"
+    bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" "$Prompt run failed" "$_`n`nTranscript: $Log"
     exit 1
 }
 finally {

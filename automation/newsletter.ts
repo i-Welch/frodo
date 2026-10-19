@@ -5,6 +5,7 @@
 // Usage: bun automation/newsletter.ts [--dry-run] [--test you@example.com] [--date YYYY-MM-DD]
 
 import { ravenApi } from './raven-api';
+import { alertFounder } from './alert';
 
 function arg(name: string): string | undefined {
   const i = process.argv.indexOf(name);
@@ -22,5 +23,6 @@ try {
   console.log(`[${new Date().toISOString()}] newsletter ${body.issueDate}: ${JSON.stringify(result)}`);
 } catch (err) {
   console.log(`[${new Date().toISOString()}] newsletter ${body.issueDate} failed: ${(err as Error).message}`);
+  await alertFounder('newsletter', 'Weekly newsletter did not send', (err as Error).message);
   process.exit(1);
 }

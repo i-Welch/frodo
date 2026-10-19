@@ -29,6 +29,7 @@ import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { pingIndexNow } from './indexnow';
+import { alertFounder } from './alert';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -67,7 +68,13 @@ function checksGreen(pr: PullRequest): boolean {
   });
 }
 
-function mergeDuePullRequests() {
+function checksFailed(pr: PullRequest): boolean {
+  return (pr.statusCheckRollup ?? []).some((c) =>
+    ['FAILURE', 'ERROR', 'TIMED_OUT', 'CANCELLED'].includes((c.conclusion ?? c.state ?? '').toUpperCase()),
+  );
+}
+
+async function mergeDuePullRequests() {
   const prs: PullRequest[] = JSON.parse(
     run('gh', [
       'pr', 'list', '--state', 'open', '--label', LABEL,
@@ -83,8 +90,18 @@ function mergeDuePullRequests() {
       log(`${tag}: ${ageHours.toFixed(1)}h old, merges at ${DELAY_HOURS}h`);
     } else if (pr.mergeable !== 'MERGEABLE') {
       log(`${tag}: not mergeable (${pr.mergeable}), needs attention`);
+      if (pr.mergeable === 'CONFLICTING') {
+        await alertFounder(`pr-${pr.number}-conflict`, `PR #${pr.number} has merge conflicts`,
+          `${pr.title} is past its review window but conflicts with master, so it will not auto-merge.
+https://github.com/i-Welch/frodo/pull/${pr.number}`);
+      }
     } else if (!checksGreen(pr)) {
       log(`${tag}: CI not green, waiting`);
+      if (checksFailed(pr)) {
+        await alertFounder(`pr-${pr.number}-ci`, `CI is failing on PR #${pr.number}`,
+          `${pr.title} is past its review window but CI failed, so it will not auto-merge.
+https://github.com/i-Welch/frodo/pull/${pr.number}/checks`);
+      }
     } else if (DRY_RUN) {
       log(`${tag}: would merge (dry run)`);
     } else {
@@ -234,6 +251,11 @@ async function postQueued() {
       log(`${post.slug}: posted to LinkedIn (${id})`);
     } catch (err) {
       log(`${post.slug}: ${(err as Error).message}`);
+      await alertFounder('linkedin', 'LinkedIn post failed',
+        `Could not post "${post.title}" to the company page: ${(err as Error).message}
+
+If the session expired, sign in again with: bun automation/linkedin-browser.ts login
+The post retries every hour.`);
     }
   }
 }
@@ -309,9 +331,10 @@ async function followUpAudits() {
 
 if (import.meta.main) {
   try {
-    mergeDuePullRequests();
+    await mergeDuePullRequests();
   } catch (err) {
     log(`merge step failed: ${(err as Error).message}`);
+    await alertFounder('merge-step', 'Auto-publish merge step failed', (err as Error).message);
   }
   await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
   await pingNewArticles().catch((err) => log(`IndexNow step failed: ${(err as Error).message}`));
