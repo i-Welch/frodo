@@ -25,17 +25,25 @@ function readLog(path: string): string {
 
 function openPullRequests(): string[] {
   try {
-    const prs: { number: number; title: string; createdAt: string }[] = JSON.parse(
-      execFileSync('gh', ['pr', 'list', '--state', 'open', '--label', 'auto-publish', '--json', 'number,title,createdAt'], {
+    const prs: { number: number; title: string; createdAt: string; labels: { name: string }[] }[] = JSON.parse(
+      execFileSync('gh', ['pr', 'list', '--state', 'open', '--json', 'number,title,createdAt,labels'], {
         cwd: REPO,
         encoding: 'utf8',
       }),
     );
-    if (prs.length === 0) return ['No auto-publish PRs waiting.'];
-    return prs.map((p) => {
-      const hours = Math.round((Date.now() - Date.parse(p.createdAt)) / 3_600_000);
-      return `Waiting to merge: #${p.number} ${p.title} (${hours}h old)`;
-    });
+    const auto = prs.filter((p) => p.labels.some((l) => l.name === 'auto-publish'));
+    // PRs without the label never merge on their own; they wait for Isaac.
+    const manual = prs.filter((p) => !p.labels.some((l) => l.name === 'auto-publish'));
+    const age = (p: { createdAt: string }) => Math.round((Date.now() - Date.parse(p.createdAt)) / 86_400_000);
+    return [
+      ...(auto.length === 0
+        ? ['No auto-publish PRs waiting.']
+        : auto.map((p) => {
+            const hours = Math.round((Date.now() - Date.parse(p.createdAt)) / 3_600_000);
+            return `Waiting to merge: #${p.number} ${p.title} (${hours}h old)`;
+          })),
+      ...manual.map((p) => `Needs your review: #${p.number} ${p.title} (${age(p)}d old) https://github.com/i-Welch/frodo/pull/${p.number}`),
+    ];
   } catch (err) {
     return [`Could not list PRs: ${(err as Error).message.split('\n')[0]}`];
   }
