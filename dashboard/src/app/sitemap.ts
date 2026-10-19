@@ -1,11 +1,12 @@
 import type { MetadataRoute } from 'next';
-import { AUDITS } from './(whitelabel)/_config/audit-data';
+import { AUDITS, AUDIT_HOLD } from './(whitelabel)/_config/audit-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
 import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
+import { bankSlug, sitemapInstitutions } from './(marketing)/bank-snapshot/peer-data';
 
 const SITE = 'https://reportraven.tech';
 
@@ -31,24 +32,32 @@ const LEGAL_PATHS = [
   'terms-of-service',
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Slugs added to the codebase but not yet ready to surface in search.
-  // Remove a slug from this list when it's ready to be indexed.
-  const SITEMAP_HOLD: Set<string> = new Set(['oconee-state-bank', 'ameris-bank', 'united-bank']);
+// Regenerated daily so banks that open or close come and go.
+export const revalidate = 86400;
 
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Audit pages are generated exactly where the route generates them
   // (an audit needs a matching ROI model), so the sitemap never lists a 404
   // and never misses a page as banks are added. Note: /roi/<slug> 301-redirects
   // to /audit/<slug>, so only the canonical /audit URLs belong here.
-  const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug) && !SITEMAP_HOLD.has(a.slug)).map((a) => ({
+  const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug) && !AUDIT_HOLD.has(a.slug)).map((a) => ({
     url: `${SITE}/audit/${a.slug}`,
     lastModified: SITE_UPDATED,
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
+  // Peer snapshot pages for the states RAVEN sells into. Empty (rather than a
+  // failed build) if the FDIC API is unreachable.
+  const bankUrls = (await sitemapInstitutions()).map((i) => ({
+    url: `${SITE}/bank-snapshot/${i.CERT}-${bankSlug(i.NAME)}`,
+    changeFrequency: 'monthly' as const,
+    priority: 0.4,
+  }));
+
   return [
     { url: SITE, lastModified: HOME_UPDATED, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE}/bank-snapshot`, lastModified: new Date('2026-10-19'), changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/blog`, lastModified: BLOG_INDEX_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
     ...SOLUTIONS.map((s) => ({
@@ -81,6 +90,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     })),
     ...auditUrls,
+    ...bankUrls,
     ...LEGAL_PATHS.map((path) => ({
       url: `${SITE}/legal/${path}`,
       lastModified: SITE_UPDATED,
