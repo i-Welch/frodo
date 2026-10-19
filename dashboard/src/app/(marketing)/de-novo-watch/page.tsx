@@ -3,6 +3,8 @@ import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
 import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 import { trackerFaqs } from './tracker-faq';
+import { FDIC_CERTS } from './fdic-certs';
+import { bankSlug } from '../bank-snapshot/peer-data';
 
 export const metadata: Metadata = {
   title: 'De Novo Bank Tracker: 2026 Charters and Applications',
@@ -28,6 +30,18 @@ function isRecent(changed: string | undefined): boolean {
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
 const faqs = trackerFaqs();
+
+function Coverage({ name, articleSlug }: { name: string; articleSlug?: string }) {
+  const cert = FDIC_CERTS[name];
+  if (!articleSlug && !cert) return <>–</>;
+  return (
+    <>
+      {articleSlug && <a href={`/blog/${articleSlug}`}>Deep dive</a>}
+      {articleSlug && cert && <br />}
+      {cert && <a href={`/bank-snapshot/${cert}-${bankSlug(name)}`}>FDIC peer data</a>}
+    </>
+  );
+}
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -161,7 +175,7 @@ export default function DeNovoWatchPage() {
                   <td>{b.capital ?? '–'}</td>
                   <td>{b.techNotes ?? '–'}</td>
                   <td>
-                    {b.articleSlug ? <a href={`/blog/${b.articleSlug}`}>Deep dive</a> : '–'}
+                    <Coverage name={b.name} articleSlug={b.articleSlug} />
                   </td>
                 </tr>
               ))}
@@ -197,7 +211,7 @@ export default function DeNovoWatchPage() {
                     {m.move}
                     <div className="dnw-note">Verified {m.asOf}</div>
                   </td>
-                  <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
+                  <td><Coverage name={m.name} articleSlug={m.articleSlug} /></td>
                 </tr>
               ))}
             </tbody>

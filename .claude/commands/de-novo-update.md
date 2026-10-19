@@ -22,6 +22,7 @@ Check, and note the URL and date of everything you use:
 
 - For each existing row: confirm or update `status`, `statusDetail`, `capital`, `leadership`, then set `asOf` to today. If a fact cannot be re-confirmed, keep it and leave `asOf` unchanged rather than inventing a date.
 - Set `statusChanged` to today on every row you add and every row whose `status` changed (never on a re-verification alone). The Friday newsletter reports these rows to subscribers.
+- FDIC certs: for every chartered or open row (and charter move) missing from `(marketing)/de-novo-watch/fdic-certs.ts`, look up its FDIC cert (`https://api.fdic.gov/banks/institutions?filters=ACTIVE:1 AND NAME:*<word>*&fields=NAME,CITY,STALP,CERT`) and check it has a call report (`https://api.fdic.gov/banks/financials?filters=CERT:<cert>&fields=REPDTE&limit=1` returns a row). Add it, keyed by the row's exact `name`, only when both hold; the tracker then links the row to its peer snapshot. New banks get their first call report a month or two after the quarter they open in, so keep checking each week. Remove an entry if you rename or drop its row.
 - Add rows for new filings in the tracker's scope (the Southeast first, plus any national filing notable enough for trade coverage). Every new row needs a source you actually read.
 - Add to `CHARTER_MOVES` any bank entering a market by buying or relocating an existing charter.
 - Update `TRACKER_SUMMARY` (`updated`, the national and Florida 2026 application counts, `note`) from the FDIC list.
