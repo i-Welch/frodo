@@ -38,6 +38,10 @@ const LINKEDIN_ENV = join(STATE_DIR, 'linkedin.env');
 const INDEXNOW_LOG = join(STATE_DIR, 'indexnow-pinged.json');
 const LABEL = 'auto-publish';
 const DELAY_HOURS = 24;
+// LinkedIn: one post per run, spaced out, during the business day (ET) when
+// bankers are reading. Queued posts wait for the next open slot.
+const POST_GAP_HOURS = 4;
+const POST_WINDOW = { startHour: 8, endHour: 17 };
 const DRY_RUN = process.argv.includes('--dry-run');
 
 function log(msg: string) {
@@ -221,12 +225,31 @@ async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Pr
   return res.headers.get('x-restli-id') ?? 'posted';
 }
 
+export function postingSlotOpen(now: Date, lastPosted: Date | undefined): string | undefined {
+  const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  const day = et.getDay();
+  if (day === 0 || day === 6) return 'weekend';
+  if (et.getHours() < POST_WINDOW.startHour || et.getHours() >= POST_WINDOW.endHour) return 'outside business hours';
+  if (lastPosted && now.getTime() - lastPosted.getTime() < POST_GAP_HOURS * 3_600_000) return 'posted recently';
+  return undefined;
+}
+
 async function postQueued() {
   const queue = readQueue();
   const posted = loadPosted();
   const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
   const pending = queue.filter((p) => !posted[p.slug] && (!p.notBefore || p.notBefore <= today));
   if (pending.length === 0) return;
+
+  const last = Object.values(posted)
+    .map((v) => Date.parse(v.split(' ')[0]))
+    .filter((t) => !Number.isNaN(t))
+    .sort((a, b) => b - a)[0];
+  const closed = postingSlotOpen(new Date(), last ? new Date(last) : undefined);
+  if (closed) {
+    log(`${pending.length} LinkedIn post(s) queued; waiting (${closed})`);
+    return;
+  }
 
   const env = loadLinkedInEnv();
   if (!env && !browserReady()) {
@@ -249,6 +272,7 @@ async function postQueued() {
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
       log(`${post.slug}: posted to LinkedIn (${id})`);
+      break;
     } catch (err) {
       log(`${post.slug}: ${(err as Error).message}`);
       await alertFounder('linkedin', 'LinkedIn post failed',
