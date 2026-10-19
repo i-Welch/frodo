@@ -1,5 +1,6 @@
 import { sendEmail } from './email';
 import { logger } from '../logger';
+import { describeInstitution } from './lead-enrichment';
 
 /**
  * Lead notifications for the marketing site: an alert to the founder and a
@@ -40,7 +41,7 @@ function sourceUrl(source?: string): string | undefined {
   return `${SITE}/${match[1] === 'article' ? 'blog' : 'audit'}/${match[2]}`;
 }
 
-function alertMessage(lead: Lead) {
+function alertMessage(lead: Lead, institution: string[]) {
   const lines = [
     `${KIND_LABEL[lead.kind]} on reportraven.tech`,
     '',
@@ -49,6 +50,7 @@ function alertMessage(lead: Lead) {
     lead.bank ? `Bank:   ${lead.bank}` : null,
     `Source: ${lead.source ?? 'unknown'}`,
     sourceUrl(lead.source) ? `Page:   ${sourceUrl(lead.source)}` : null,
+    ...(institution.length ? ['', ...institution] : []),
     '',
     lead.kind === 'audit'
       ? 'They were told the audit arrives within a few business days.'
@@ -124,8 +126,9 @@ export async function deliverAudit(lead: Lead, auditSlug: string, institutionNam
 /** Sends the founder alert and the lead confirmation. Never throws: a failed
  *  email must not fail the signup, which is already stored. */
 export async function notifyLead(lead: Lead): Promise<void> {
+  const institution = await describeInstitution(lead);
   const results = await Promise.allSettled([
-    sendEmail(alertMessage(lead)),
+    sendEmail(alertMessage(lead, institution)),
     sendEmail(confirmationMessage(lead)),
   ]);
   for (const r of results) {

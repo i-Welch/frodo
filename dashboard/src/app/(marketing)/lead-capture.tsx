@@ -22,7 +22,7 @@ const COPY: Record<Variant, { tag: string; title: string; body: string; button: 
   },
 };
 
-export function LeadCapture({ variant, source }: { variant: Variant; source: string }) {
+export function LeadCapture({ variant, source, title }: { variant: Variant; source: string; title?: string }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bank, setBank] = useState('');
@@ -122,7 +122,7 @@ export function LeadCapture({ variant, source }: { variant: Variant; source: str
         }
       `}</style>
       <span className="lead-tag">{copy.tag}</span>
-      <h2>{copy.title}</h2>
+      <h2>{title ?? copy.title}</h2>
       {status === 'success' ? (
         <p className="lead-done">{copy.done}</p>
       ) : (

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { CalendlyButton } from './calendly-button';
 import { ScrollReveal } from './scroll-reveal';
+import { LeadCapture } from './lead-capture';
 
 export const metadata: Metadata = {
   title: { absolute: 'RAVEN — Borrower Verification Software for Community Banks' },
@@ -1388,6 +1389,11 @@ export default function LandingPage() {
             </p>
           </div>
         </section>
+
+        {/* Lower-commitment path for visitors not ready to book a call. */}
+        <div style={{ maxWidth: 760, margin: '-3rem auto 0', padding: '0 1.5rem 4rem' }}>
+          <LeadCapture variant="audit" source="landing" title="Not ready for a call? Start with a free audit." />
+        </div>
 
         <footer>
           <div>
