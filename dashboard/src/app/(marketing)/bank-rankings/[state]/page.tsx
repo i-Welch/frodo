@@ -113,17 +113,17 @@ export default async function StateRankingsPage({ params }: { params: Promise<{ 
 
         {byRoa.length > 0 && (
           <>
-            <h2>Highest return on assets</h2>
+            <h2>Highest return on assets among community banks</h2>
             <TopList banks={byRoa} metric="roa" />
           </>
         )}
         {byEfficiency.length > 0 && (
           <>
-            <h2>Most efficient (lowest efficiency ratio)</h2>
+            <h2>Most efficient community banks (lowest efficiency ratio)</h2>
             <TopList banks={byEfficiency} metric="efficiency" />
           </>
         )}
-        <p className="bsn-note">Top-ten lists include banks with at least {formatAssets(RANKING_MIN_ASSETS)} in assets.</p>
+        <p className="bsn-note">Top-ten lists include FDIC-designated community banks with at least {formatAssets(RANKING_MIN_ASSETS)} in assets; trust companies and specialty subsidiaries appear in the full table only.</p>
 
         <h2>Every {r.stateName} bank</h2>
         <div className="bsn-table-wrap">

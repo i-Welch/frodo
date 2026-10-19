@@ -2,7 +2,7 @@
 # own clone under ~/projects, updated to origin/master before each run, so they
 # always use the merged scripts and never reset each other's work in progress.
 # Remove with:
-#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check','RAVEN Release Draft' -Confirm:$false
+#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check','RAVEN Release Draft','RAVEN Rankings Post' -Confirm:$false
 
 $Projects = Join-Path $env:USERPROFILE 'projects'
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
@@ -78,6 +78,16 @@ $newsletterAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
 $newsletterTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Friday -At 9:30am
 Register-ScheduledTask -TaskName 'RAVEN Newsletter' -Action $newsletterAction -Trigger $newsletterTrigger `
     -Settings $Settings -Description 'Emails the weekly RAVEN newsletter to subscribers' -Force | Out-Null
+
+# Wednesdays 7:00: queue a LinkedIn post of one Southeast state's bank rankings
+# (an auto-publish PR). No-op until rankings-post.ts is on master.
+$rankingsLog = Join-Path $LogDir 'rankings-post.log'
+$rankingsAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $PublishClone); " +
+        "if (Test-Path '$PublishClone\automation\rankings-post.ts') { bun '$PublishClone\automation\rankings-post.ts' *>> '$rankingsLog' }`"")
+$rankingsTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Wednesday -At 7:00am
+Register-ScheduledTask -TaskName 'RAVEN Rankings Post' -Action $rankingsAction -Trigger $rankingsTrigger `
+    -Settings $Settings -Description 'Queues a weekly LinkedIn post of a state bank ranking as an auto-publish PR' -Force | Out-Null
 
 # Mondays 7:30: weekly digest email to the founder.
 $digestLog = Join-Path $LogDir 'digest.log'

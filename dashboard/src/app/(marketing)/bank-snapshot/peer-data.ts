@@ -24,6 +24,8 @@ export interface Institution {
   WEBADDR?: string;
   ESTYMD?: string;
   OFFICES?: number;
+  /** FDIC community bank designation, "1" or "0". */
+  CB?: string;
 }
 
 export interface Financials {
@@ -247,6 +249,8 @@ export interface RankedBank {
   nim: number;
   efficiency: number;
   loanToDeposit: number;
+  /** FDIC community bank designation; trust companies and specialty subsidiaries are not. */
+  community: boolean;
 }
 
 export interface StateRankings {
@@ -258,11 +262,13 @@ export interface StateRankings {
   medians: { roa: number; nim: number; efficiency: number; assets: number };
 }
 
-// Top-ten lists skip the smallest banks, whose ratios swing on one loan.
+// Top-ten lists cover FDIC-designated community banks (trust companies and
+// card or wholesale subsidiaries post ratios that are not comparable) and skip
+// the smallest banks, whose ratios swing on one loan.
 export const RANKING_MIN_ASSETS = 100_000;
 
 export function topBanks(banks: RankedBank[], key: 'roa' | 'efficiency', n = 10): RankedBank[] {
-  const eligible = banks.filter((b) => b.assets >= RANKING_MIN_ASSETS && Number.isFinite(b[key]) && b[key] > 0);
+  const eligible = banks.filter((b) => b.community && b.assets >= RANKING_MIN_ASSETS && Number.isFinite(b[key]) && b[key] > 0);
   return eligible.sort((a, b) => (key === 'efficiency' ? a[key] - b[key] : b[key] - a[key])).slice(0, n);
 }
 
@@ -280,7 +286,7 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
   if (!latest) return undefined;
   const [fin, inst] = await Promise.all([
     fdic<Financials>('financials', { filters: `STALP:${stalp} AND REPDTE:${latest.REPDTE}`, fields: FIN_FIELDS, limit: '2000' }),
-    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT', limit: '2000' }),
+    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT,CB', limit: '2000' }),
   ]);
   const byCert = new Map(inst.map((i) => [i.CERT, i]));
   const banks = fin
@@ -294,6 +300,7 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
       nim: f.NIMY,
       efficiency: f.EEFFR,
       loanToDeposit: ratio(f.LNLSNET, f.DEP) * 100,
+      community: byCert.get(f.CERT)!.CB === '1',
     }))
     .sort((a, b) => b.assets - a.assets);
   if (banks.length === 0) return undefined;
