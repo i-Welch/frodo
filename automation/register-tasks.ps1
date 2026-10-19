@@ -2,7 +2,7 @@
 # own clone under ~/projects, updated to origin/master before each run, so they
 # always use the merged scripts and never reset each other's work in progress.
 # Remove with:
-#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch' -Confirm:$false
+#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check' -Confirm:$false
 
 $Projects = Join-Path $env:USERPROFILE 'projects'
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
@@ -52,6 +52,15 @@ $deNovoTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 6:00am
 Register-ScheduledTask -TaskName 'RAVEN De Novo Watch' -Action $deNovoAction -Trigger $deNovoTrigger `
     -Settings $Settings -Description 'Re-verifies the De Novo Watch tracker and opens an auto-publish PR' -Force | Out-Null
 
+# Every fourth Monday 8:30: search/AI visibility check that feeds /article topics.
+# Shares the audits clone between the 6:00 De Novo run and the 11:00 audit run.
+$visibilityAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $AuditClone); & '$AuditClone\automation\run-article.ps1' " +
+        "-Prompt '/visibility-check auto' -CloneName 'frodo-audits' -Port 3101 -LogName 'visibility-check'`"")
+$visibilityTrigger = New-ScheduledTaskTrigger -Weekly -WeeksInterval 4 -DaysOfWeek Monday -At 8:30am
+Register-ScheduledTask -TaskName 'RAVEN Visibility Check' -Action $visibilityAction -Trigger $visibilityTrigger `
+    -Settings $Settings -Description 'Monthly search/AI visibility check; writes topic ideas for /article' -Force | Out-Null
+
 # Fridays 9:30: weekly newsletter of the week's articles (skipped when there are none).
 $newsletterLog = Join-Path $LogDir 'newsletter.log'
 $newsletterAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
@@ -77,5 +86,5 @@ $publishTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(
 Register-ScheduledTask -TaskName 'RAVEN Auto-Publish' -Action $publishAction -Trigger $publishTrigger `
     -Settings $Settings -Description 'Merges auto-publish PRs after 24h, posts LinkedIn updates, emails finished audits' -Force | Out-Null
 
-Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch' |
+Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch', 'RAVEN Visibility Check' |
     Select-Object TaskName, State, @{ n = 'NextRun'; e = { ($_ | Get-ScheduledTaskInfo).NextRunTime } }
