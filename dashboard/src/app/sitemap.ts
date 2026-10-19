@@ -6,7 +6,7 @@ import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
 import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
-import { bankSlug, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
+import { bankSlug, financialsUpdated, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
 
 const SITE = 'https://reportraven.tech';
 
@@ -49,8 +49,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Peer snapshot pages for the states RAVEN sells into. Empty (rather than a
   // failed build) if the FDIC API is unreachable.
-  const bankUrls = (await sitemapInstitutions()).map((i) => ({
+  const [institutions, fdicUpdated] = await Promise.all([sitemapInstitutions(), financialsUpdated()]);
+  const bankUrls = institutions.map((i) => ({
     url: `${SITE}/bank-snapshot/${i.CERT}-${bankSlug(i.NAME)}`,
+    ...(fdicUpdated ? { lastModified: fdicUpdated } : {}),
     changeFrequency: 'monthly' as const,
     priority: 0.4,
   }));
@@ -61,6 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/bank-rankings`, lastModified: new Date('2026-10-19'), changeFrequency: 'monthly', priority: 0.6 },
     ...Object.keys(STATE_NAMES).map((s) => ({
       url: `${SITE}/bank-rankings/${stateSlug(s)}`,
+      ...(fdicUpdated ? { lastModified: fdicUpdated } : {}),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     })),

@@ -22,11 +22,17 @@ export async function pingIndexNow(urls: string[]): Promise<void> {
  * (loc -> lastmod from the previous run), plus the map to store for next time.
  */
 export function changedSitemapUrls(xml: string, seen: Record<string, string>): { changed: string[]; next: Record<string, string> } {
-  const next: Record<string, string> = {};
+  // Start from what we have seen: the FDIC-backed bank pages drop out of the
+  // sitemap, or lose their lastmod, while the FDIC API is down, and coming
+  // back should not re-ping hundreds of unchanged URLs.
+  const next: Record<string, string> = { ...seen };
+  const changed: string[] = [];
   for (const block of xml.match(/<url>[\s\S]*?<\/url>/g) ?? []) {
     const loc = block.match(/<loc>([^<]+)<\/loc>/)?.[1]?.trim();
-    if (loc) next[loc] = block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1]?.trim() ?? '';
+    if (!loc) continue;
+    const lastmod = block.match(/<lastmod>([^<]+)<\/lastmod>/)?.[1]?.trim() || seen[loc] || '';
+    if (seen[loc] !== lastmod) changed.push(loc);
+    next[loc] = lastmod;
   }
-  const changed = Object.keys(next).filter((loc) => seen[loc] !== next[loc]);
   return { changed, next };
 }

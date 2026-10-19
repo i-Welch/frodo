@@ -368,3 +368,22 @@ export function stateAwards(r: StateRankings, cert: number): StateAward[] {
 
 export const awardLabel = (a: StateAward) =>
   `#${a.rank} ${a.metric === 'efficiency' ? 'most efficient' : 'highest return on assets'} community bank in ${a.stateName}`;
+
+/**
+ * When FDIC last rebuilt its call report dataset (e.g. Aug 19 for Q2), used as
+ * the sitemap lastmod for the bank and ranking pages so a new quarter reaches
+ * search engines via IndexNow. Undefined if FDIC is unreachable.
+ */
+export async function financialsUpdated(): Promise<Date | undefined> {
+  try {
+    const res = await fetch(`${FDIC}/financials?${new URLSearchParams({ fields: 'REPDTE', limit: '1' })}`, {
+      next: { revalidate: DAY },
+      signal: AbortSignal.timeout(8000),
+    });
+    const body = (await res.json()) as { meta?: { index?: { createTimestamp?: string } } };
+    const stamp = body.meta?.index?.createTimestamp;
+    return stamp && !Number.isNaN(Date.parse(stamp)) ? new Date(stamp) : undefined;
+  } catch {
+    return undefined;
+  }
+}
