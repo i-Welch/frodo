@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import { CalendlyButton } from '../calendly-button';
 import { LeadCapture } from '../lead-capture';
 import { articles, type Article } from './articles-index';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: { absolute: 'RAVEN Blog — Insights for Community Banks' },
   description:
     'Articles on borrower verification, lending automation, compliance, and how community banks can compete with fintechs. Research-backed insights from RAVEN.',
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'RAVEN Blog — Insights for Community Banks',
     description:
       'Research-backed articles on lending speed, compliance costs, and verification automation for community banks.',

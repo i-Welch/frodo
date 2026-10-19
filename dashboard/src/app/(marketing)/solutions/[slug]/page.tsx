@@ -4,6 +4,7 @@ import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { SOLUTIONS, getSolution } from '../solutions-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export function generateStaticParams() {
   return SOLUTIONS.map((s) => ({ slug: s.slug }));
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: solution.metaDescription,
     alternates: { canonical: `https://reportraven.tech/solutions/${slug}` },
     openGraph: {
+      images: DEFAULT_OG_IMAGES,
       title: solution.metaTitle,
       description: solution.metaDescription,
       url: `https://reportraven.tech/solutions/${slug}`,

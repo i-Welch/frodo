@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { CalendlyButton } from './calendly-button';
 import { ScrollReveal } from './scroll-reveal';
 import { LeadCapture } from './lead-capture';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: { absolute: 'RAVEN — Borrower Verification Software for Community Banks' },
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
     'borrower report software',
   ],
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'RAVEN — Borrower Verification for Community Banks',
     description: 'One verification link. Complete borrower report in minutes. Identity, income, credit, employment, and property data — all cross-referenced automatically.',
     url: 'https://reportraven.tech',

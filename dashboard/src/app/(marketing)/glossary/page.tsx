@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { GLOSSARY_TERMS, type GlossaryTerm } from './glossary-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: 'Lending Verification Glossary',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'Plain-English definitions of borrower verification terms: VOD, VOE, VOM, asset verification, income verification, synthetic identity fraud, and more.',
   alternates: { canonical: 'https://reportraven.tech/glossary' },
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'Lending Verification Glossary',
     description:
       'Plain-English definitions of borrower verification terms, from VOD and VOE to synthetic identity fraud.',
