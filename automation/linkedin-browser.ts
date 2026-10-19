@@ -44,56 +44,60 @@ async function launch(headless: boolean): Promise<Browser> {
     userDataDir: PROFILE_DIR,
     headless,
     defaultViewport: null,
-    args: ['--window-size=1280,900', '--no-first-run', '--no-default-browser-check'],
+    // LinkedIn suppresses the composer for browsers flagged as automated.
+    ignoreDefaultArgs: ['--enable-automation'],
+    args: [
+      '--window-size=1280,900',
+      '--no-first-run',
+      '--no-default-browser-check',
+      '--disable-blink-features=AutomationControlled',
+    ],
   });
 }
 
-async function clickByText(page: Page, texts: string[], timeout = 15_000): Promise<void> {
-  const deadline = Date.now() + timeout;
-  while (Date.now() < deadline) {
-    for (const text of texts) {
-      const el = await page.$(`::-p-xpath(//button[normalize-space(.)="${text}"] | //a[normalize-space(.)="${text}"] | //*[@role="button" and normalize-space(.)="${text}"])`);
-      if (el && (await el.isVisible())) {
-        await el.click();
-        return;
-      }
-    }
-    await new Promise((r) => setTimeout(r, 500));
-  }
-  throw new Error(`no visible button with text: ${texts.join(' / ')}`);
+// The feed under the composer has its own comment editors with the same role,
+// so everything is scoped to the composer dialog.
+const DIALOG = '[role="dialog"], .artdeco-modal';
+const COMPOSER_BOX = `:is(${DIALOG}) div[role="textbox"][contenteditable="true"]`;
+
+async function humanClick(page: Page, selector: string): Promise<void> {
+  const el = await page.waitForSelector(selector, { visible: true, timeout: 20_000 });
+  const box = el && (await el.boundingBox());
+  if (!box) throw new Error(`not clickable: ${selector}`);
+  const x = box.x + Math.min(40, box.width / 2);
+  const y = box.y + box.height / 2;
+  await page.mouse.move(x, y, { steps: 12 });
+  await new Promise((r) => setTimeout(r, 300));
+  await page.mouse.click(x, y, { delay: 60 });
 }
 
 async function openComposer(page: Page, adminUrl: string): Promise<void> {
-  await page.goto(adminUrl, { waitUntil: 'domcontentloaded' });
+  // The Page posts tab has a direct "Start a post"; the dashboard only has a "Create" menu.
+  const base = adminUrl.replace(/\/admin\/?.*$/, '/admin/');
+  await page.goto(`${base}page-posts/published/`, { waitUntil: 'networkidle2', timeout: 60_000 }).catch(() => {});
   if (page.url().includes('/login') || page.url().includes('/authwall') || page.url().includes('/checkpoint')) {
     throw new Error('LinkedIn session expired; run: bun automation/linkedin-browser.ts login');
   }
-  // The admin view has either a direct "Start a post" or a "Create" menu.
-  try {
-    await clickByText(page, ['Start a post'], 8_000);
-  } catch {
-    await clickByText(page, ['Create']);
-    await clickByText(page, ['Start a post', 'Post']);
-  }
-  await page.waitForSelector('div[role="textbox"][contenteditable="true"]', { visible: true, timeout: 15_000 });
+  await humanClick(page, '.share-box-feed-entry__top-bar button, button.share-box-feed-entry__trigger');
+  await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 20_000 });
 }
 
 async function typePost(page: Page, text: string): Promise<void> {
-  const box = await page.$('div[role="textbox"][contenteditable="true"]');
-  if (!box) throw new Error('composer text box not found');
-  await box.click();
-  // Type line by line; Shift+Enter keeps hashtag autocomplete from eating newlines.
+  await humanClick(page, COMPOSER_BOX);
+  // Type line by line with Shift+Enter between lines. No Escape: it closes the
+  // composer. Hashtags only appear on the last line, so no suggestion popup is
+  // open when a newline is typed.
   const lines = text.split('\n');
   for (let i = 0; i < lines.length; i++) {
     await page.keyboard.type(lines[i], { delay: 8 });
     if (i < lines.length - 1) {
-      await page.keyboard.press('Escape'); // dismiss any mention/hashtag suggestion
       await page.keyboard.down('Shift');
       await page.keyboard.press('Enter');
       await page.keyboard.up('Shift');
     }
   }
-  await page.keyboard.press('Escape');
+  // Close a trailing hashtag suggestion without leaving the editor.
+  await page.keyboard.type(' ');
 }
 
 /** Builds the browser post body: the post, the article link (LinkedIn renders
@@ -117,12 +121,25 @@ export async function postViaBrowser(text: string, url: string, opts: { submit: 
     // Give LinkedIn time to fetch the link preview card.
     await new Promise((r) => setTimeout(r, 6_000));
     if (!opts.submit) {
-      console.log('Composer filled; not posting (test mode). Close the window when done.');
+      const shot = join(STATE_DIR, 'logs', 'linkedin-test.png');
+      mkdirSync(join(STATE_DIR, 'logs'), { recursive: true });
+      await page.screenshot({ path: shot });
+      console.log(`Composer filled; not posting (test mode). Screenshot: ${shot}. Close the window when done.`);
       await new Promise<void>((r) => browser.on('disconnected', () => r()));
       return;
     }
-    await clickByText(page, ['Post']);
-    await page.waitForSelector('div[role="textbox"][contenteditable="true"]', { hidden: true, timeout: 30_000 });
+    const buttons = await page.$$(`:is(${DIALOG}) button`);
+    let postButton = null;
+    for (const b of buttons) {
+      const [label, disabled] = await b.evaluate((e) => [(e.textContent ?? '').trim(), (e as HTMLButtonElement).disabled]);
+      if (label === 'Post' && !disabled) postButton = b;
+    }
+    if (!postButton) throw new Error('enabled Post button not found in composer');
+    const box = await postButton.boundingBox();
+    if (!box) throw new Error('Post button not visible');
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2, { steps: 10 });
+    await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2, { delay: 60 });
+    await page.waitForSelector(COMPOSER_BOX, { hidden: true, timeout: 30_000 });
   } finally {
     if (opts.submit) await browser.close();
   }
