@@ -10,6 +10,7 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
 import { alertFounder } from './alert';
+import { deNovoChanges } from './de-novo-changes';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -66,7 +67,12 @@ function problems(): string[] {
   return [`Problems in the logs (${found.length}):`, ...found.slice(-15).map((l) => `  - ${l}`)];
 }
 
-const automation = [...openPullRequests(), ...linkedInPosts(), ...problems()];
+const automation = [
+  ...openPullRequests(),
+  ...linkedInPosts(),
+  ...(await deNovoChanges(new Date(WEEK_AGO))),
+  ...problems(),
+];
 
 if (process.argv.includes('--print')) {
   console.log(automation.join('\n'));

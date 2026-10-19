@@ -95,7 +95,7 @@ function articlesSection(): string {
     .filter((a): a is NonNullable<typeof a> => a !== null)
     .sort((a, b) => b.date.localeCompare(a.date));
   const lines = published.map((a) => `- [${a.title}](${SITE}/blog/${a.slug}): ${a.description}`);
-  return `## Research and articles\n\nRAVEN publishes FDIC-data-backed research on community bank performance, de novo banks, fraud, and verification at [${SITE}/blog](${SITE}/blog). The [De Novo Watch tracker](${SITE}/de-novo-watch) follows newly chartered and in-organization banks.\n\n${lines.join('\n')}`;
+  return `## Research and articles\n\nRAVEN publishes FDIC-data-backed research on community bank performance, de novo banks, fraud, and verification at [${SITE}/blog](${SITE}/blog). The [De Novo Watch tracker](${SITE}/de-novo-watch) follows newly chartered and in-organization banks (data as [CSV](${SITE}/de-novo-watch/data.csv), free to cite with attribution).\n\n${lines.join('\n')}`;
 }
 
 export function buildLlmsTxt(): string {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
+import { LeadCapture } from '../lead-capture';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -172,6 +173,8 @@ export default function AboutPage() {
           <p>Phone: <a href="tel:+12293796131">(229) 379-6131</a></p>
           <p>Greenville, South Carolina</p>
         </div>
+
+        <LeadCapture variant="audit" source="about" title="Not ready for a call? Start with a free audit." />
       </div>
     </SiteShell>
   );
