@@ -9,6 +9,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
+import { alertFounder } from './alert';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -75,6 +76,7 @@ if (process.argv.includes('--print')) {
     console.log(`[${new Date().toISOString()}] digest sent: ${JSON.stringify(result)}`);
   } catch (err) {
     console.log(`[${new Date().toISOString()}] digest failed: ${(err as Error).message}`);
+    await alertFounder('digest', 'Weekly digest did not send', (err as Error).message);
     process.exit(1);
   }
 }

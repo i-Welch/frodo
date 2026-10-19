@@ -69,3 +69,23 @@ export const digestAdminRoutes = new Elysia({ prefix: '/api/v1/admin/digest' })
     },
     { body: t.Object({ automation: t.Optional(t.Array(t.String({ maxLength: 500 }), { maxItems: 50 })) }) },
   );
+
+/**
+ * POST /api/v1/admin/alert — emails the founder about an automation failure
+ * on the PC (LinkedIn session expired, a PR that cannot merge, a crashed run).
+ * The PC side rate-limits; this just delivers.
+ */
+export const alertAdminRoutes = new Elysia({ prefix: '/api/v1/admin/alert' })
+  .onBeforeHandle(({ headers, set }) => {
+    const result = adminAuth(headers as Record<string, string | undefined>, set);
+    if (result) return result;
+  })
+  .post(
+    '/',
+    async ({ body }) => {
+      await sendEmail({ to: ALERT_TO, subject: `RAVEN automation: ${body.subject}`, text: body.text });
+      log.warn({ subject: body.subject }, 'Automation alert sent');
+      return { ok: true };
+    },
+    { body: t.Object({ subject: t.String({ maxLength: 200 }), text: t.String({ maxLength: 5000 }) }) },
+  );

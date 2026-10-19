@@ -47,3 +47,22 @@ describe('weekly digest', () => {
     expect(res.status).toBe(401);
   });
 });
+
+describe('automation alerts', async () => {
+  const { alertAdminRoutes } = await import('../../src/server/api/routes/digest');
+  const alertApp = new Elysia().use(alertAdminRoutes);
+
+  it('emails the founder', async () => {
+    process.env.RAVEN_ADMIN_SECRET = 'test-admin-secret';
+    sendEmail.mockClear();
+    const res = await alertApp.handle(
+      new Request('http://localhost/api/v1/admin/alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: 'Bearer test-admin-secret' },
+        body: JSON.stringify({ subject: 'LinkedIn post failed', text: 'session expired' }),
+      }),
+    );
+    expect(res.status).toBe(200);
+    expect(sendEmail.mock.calls[0][0]).toMatchObject({ to: 'isaac@reportraven.tech', subject: 'RAVEN automation: LinkedIn post failed' });
+  });
+});
