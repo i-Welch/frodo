@@ -35,6 +35,11 @@ const jsonLd = {
       isAccessibleForFree: true,
       license: 'https://reportraven.tech/de-novo-watch#citation',
       keywords: ['de novo bank', 'bank charter', 'FDIC application', 'new bank', 'community bank'],
+      distribution: {
+        '@type': 'DataDownload',
+        encodingFormat: 'text/csv',
+        contentUrl: 'https://reportraven.tech/de-novo-watch/data.csv',
+      },
     },
     {
       '@type': 'BreadcrumbList',
@@ -128,6 +133,7 @@ export default function DeNovoWatchPage() {
                   <td>
                     <span className={`dnw-status dnw-status-${b.status}`}>{STATUS_LABELS[b.status]}</span>
                     <div className="dnw-note">{b.statusDetail}</div>
+                    <div className="dnw-note">Verified {b.asOf}</div>
                   </td>
                   <td>{b.capital ?? '–'}</td>
                   <td>{b.techNotes ?? '–'}</td>
@@ -164,7 +170,10 @@ export default function DeNovoWatchPage() {
                 <tr key={m.name}>
                   <td className="dnw-bank">{m.name}</td>
                   <td>{m.charterOrigin}</td>
-                  <td>{m.move}</td>
+                  <td>
+                    {m.move}
+                    <div className="dnw-note">Verified {m.asOf}</div>
+                  </td>
                   <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
                 </tr>
               ))}
@@ -178,7 +187,7 @@ export default function DeNovoWatchPage() {
           filings (for Florida, the Office of Financial Regulation), organizer press releases and
           public statements, and FDIC call reports for market analysis. Each row shows the date it
           was last verified. This tracker is free to cite with attribution to RAVEN
-          (reportraven.tech). Corrections and tips: <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
+          (reportraven.tech). Download the data as <a href="/de-novo-watch/data.csv">CSV</a>. Corrections and tips: <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
         </p>
 
         <h2>Read the analysis</h2>
