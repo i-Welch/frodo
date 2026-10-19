@@ -34,7 +34,7 @@ Types 1 and 6 match numbers used in earlier commit messages; the others were ren
 
 Runs happen Tuesday, Wednesday, Thursday.
 
-- **Tuesday:** an institution deep dive. Alternate between type 2 (bank) and type 6 (credit union) based on whichever was published less recently. Use type 8 instead when a Southeast de novo has a fresh charter or FDIC approval.
+- **Tuesday:** an institution deep dive. Alternate between type 2 (bank) and type 6 (credit union) based on whichever was published less recently. Use type 8 instead when a Southeast de novo has a fresh charter or FDIC approval, or when `marketing/topic-ideas.md` has an unchecked type 8 topic (take the oldest). De novo coverage is the site's strongest search traffic (the tracker and the Glades deep dive led search landings in Sept-Oct 2026), so it wins ties.
 - **Wednesday:** type 3 or 4, whichever was published less recently. **Search-gap override:** if `marketing/topic-ideas.md` has an unchecked topic (written by the monthly `/visibility-check`), write the oldest one instead, whatever its type, aiming the title, description and first section at its target query. Check it off in that file (`- [x]`, add `published <slug>`) in the same PR. Any article whose subject matches an unchecked topic in that file (for example a Tuesday type 8 on a bank `/de-novo-update` queued) checks it off the same way.
 - **Thursday:** type 5 or 7. Use type 7 when a quarterly dataset dropped in the past three weeks (FDIC Quarterly Banking Profile, NCUA quarterly data); otherwise type 5. Use type 1 when research turned up a strong original finding.
 
