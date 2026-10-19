@@ -999,6 +999,8 @@ That is a genuinely differentiated posture for a de novo. Most new banks talk ab
 Portrait gets to skip that mistake. A bank built in 2026 can make source-verified onboarding, where identity, income, employment, and address come from authoritative data sources rather than borrower-typed documents, a day-one architectural decision instead of a retrofit. No public source yet names Portrait's core provider or its AI partner, so the most interesting question about the most interesting de novo in Florida is still open: what, exactly, is under the hood when the doors open in September?
 
 The 256 investors who oversubscribed this bank are betting Orlando wants its hometown bank back. The September opening will start answering whether the technology matches the talk. Given who is building it, the smart money says take them seriously.
+
+*Update: Portrait Bank opened to the public on September 19, 2026. We follow it, and every other new bank, at [De Novo Watch](/de-novo-watch).*
   `,
   },
   'glades-bank-broward-de-novo': {
@@ -1068,6 +1070,8 @@ That is an unusually early commitment, and a revealing one. Choosing the core fi
 Levine has already run that playbook once, wiring Alloy, Numerated, and Marstone into a $10 billion balance sheet. The interesting question for Glades is what the equivalent stack looks like when you get to design it before day one, for a county with 336,000 nonemployer businesses whose owners do not have W-2s.
 
 Broward has been exporting its banks for twenty years. A $45 million filing organized by the executive who digitized Florida's largest community bank, backed by a PE firm headquartered in the same city, is the most credible attempt yet to reverse the flow.
+
+*We track Glades' application, and every other new bank filing, approval and opening, at [De Novo Watch](/de-novo-watch). Organizing a bank yourself? Here is what a [day-one de novo technology stack](/solutions/de-novo-bank-technology) looks like, layer by layer.*
   `,
   },
   'first-party-fraud-community-banks': {
