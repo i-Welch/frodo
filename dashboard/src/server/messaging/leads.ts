@@ -96,6 +96,31 @@ function confirmationMessage(lead: Lead) {
   return { to: lead.email, from: FOUNDER_FROM, replyTo: FOUNDER_EMAIL, ...bodies[lead.kind] };
 }
 
+/** Emails a requester their finished audit, copying the founder. Throws on
+ *  failure so the caller can leave the request undelivered and retry. */
+export async function deliverAudit(lead: Lead, auditSlug: string, institutionName: string): Promise<void> {
+  const first = lead.name?.trim().split(/\s+/)[0];
+  const url = `${SITE}/audit/${auditSlug}`;
+  await sendEmail({
+    to: lead.email,
+    from: FOUNDER_FROM,
+    replyTo: FOUNDER_EMAIL,
+    subject: `Your digital lending audit: ${institutionName}`,
+    text:
+      `${first ? `Hi ${first},` : 'Hi,'}\n\nYour free digital lending audit for ${institutionName} is ready:\n${url}\n\n` +
+      `It walks through your current borrower journey, where applicants drop off or wait, and what source-verified intake would ` +
+      `save across your lending lines, with every figure tied to your public call report and HMDA filings (methodology at the bottom of the page).\n\n` +
+      `If any number looks off against what you see internally, reply and I'll rerun it. Happy to walk through it live, too:\n${CALENDLY_URL}` +
+      `\n\nIsaac Welch\nFounder, RAVEN\n${SITE}`,
+  });
+  await sendEmail({
+    to: ALERT_TO,
+    replyTo: lead.email,
+    subject: `Audit delivered: ${institutionName} to ${lead.name ?? lead.email}`,
+    text: `The audit for ${institutionName} was emailed to ${lead.name ?? ''} <${lead.email}>.\n\n${url}\n\nReply to this email to follow up with them directly.`,
+  });
+}
+
 /** Sends the founder alert and the lead confirmation. Never throws: a failed
  *  email must not fail the signup, which is already stored. */
 export async function notifyLead(lead: Lead): Promise<void> {

@@ -13,6 +13,9 @@
 // Without them, posts go through the signed-in Edge profile instead
 // (linkedin-browser.ts). With neither, queued posts wait.
 //
+// 3. For each claimed free-audit request (see audit-requests.ts), emails the
+//    requester once https://reportraven.tech/audit/<slug> returns 200.
+//
 // Usage: bun automation/auto-publish.ts [--dry-run]
 
 import { execFileSync } from 'node:child_process';
@@ -20,6 +23,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
+import { auditQueueReady, listAuditRequests, setAuditStatus, siteUrl } from './audit-requests';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -219,6 +223,29 @@ async function postQueued() {
   }
 }
 
+/* ---------- Step 3: deliver finished audits ---------- */
+
+async function deliverAudits() {
+  if (!auditQueueReady()) return;
+  const claimed = (await listAuditRequests('in_progress')).filter((r) => r.auditSlug);
+  for (const req of claimed) {
+    const url = `${siteUrl()}/audit/${req.auditSlug}`;
+    const tag = `audit ${req.auditSlug} for ${req.bank ?? req.email}`;
+    if (!(await isLive(url))) {
+      log(`${tag}: ${url} not live yet, will retry`);
+    } else if (DRY_RUN) {
+      log(`${tag}: would email the requester (dry run)`);
+    } else {
+      try {
+        await setAuditStatus({ id: req.id, status: 'delivered' });
+        log(`${tag}: delivered`);
+      } catch (err) {
+        log(`${tag}: ${(err as Error).message}`);
+      }
+    }
+  }
+}
+
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
@@ -228,5 +255,6 @@ if (import.meta.main) {
     log(`merge step failed: ${(err as Error).message}`);
   }
   await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
+  await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
   log('done');
 }
