@@ -4,10 +4,13 @@
 // exactly five hashtags).
 
 import {
+  bankSlug,
   formatAssets,
   formatMetric,
   RANKING_MIN_ASSETS,
   stateSlug,
+  stateAwards,
+  awardLabel,
   topBanks,
   type StateRankings,
 } from '../dashboard/src/app/(marketing)/bank-snapshot/peer-data';
@@ -38,6 +41,40 @@ export function rankingsPost(r: StateRankings): string | undefined {
     `#CommunityBanking #${r.stateName.replace(/\s+/g, '')} #BankPerformance #Banking #FDIC`,
   ];
   return lines.join('\n');
+}
+
+/**
+ * Outreach list for Isaac: the state's top-ten banks, each with the badge they
+ * earned and its embed link. A bank that adds the badge links back to us.
+ */
+export function rankingsPitch(r: StateRankings): string {
+  const rows = r.banks
+    .map((b) => ({ b, awards: stateAwards(r, b.cert) }))
+    .filter((x) => x.awards.length > 0)
+    .sort((x, y) => x.awards[0].rank - y.awards[0].rank)
+    .map(({ b, awards }) => {
+      const page = `https://reportraven.tech/bank-snapshot/${b.cert}-${bankSlug(b.name)}`;
+      const site = b.website ? `, ${b.website.toLowerCase()}` : '';
+      return `- **${b.name}** (${b.city})${site}: ${awards.map(awardLabel).join('; ')}. Badge and embed code: ${page}`;
+    });
+  return [
+    '---',
+    `to: marketing or communications contact at each bank below (find on the bank's site or LinkedIn)`,
+    `subject: ${r.stateName} bank rankings, ${r.quarter}: your bank made the top ten`,
+    '---',
+    'Hi <name>,',
+    '',
+    `<Bank> ranks <award> in our ${r.quarter} ${r.stateName} bank rankings, built from FDIC call report data for all ${r.banks.length} banks headquartered in the state: https://reportraven.tech/bank-rankings/${stateSlug(r.stalp)}`,
+    '',
+    "If it's useful for your site or a press release, there's a free badge and embed code on your bank's page (link below). No strings attached.",
+    '',
+    'Isaac Welch, RAVEN',
+    '',
+    '## Banks to contact',
+    '',
+    ...rows,
+    '',
+  ].join('\n');
 }
 
 export function rankingsQueueFile(r: StateRankings, text: string): string {

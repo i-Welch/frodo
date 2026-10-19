@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { rankingsPost, rankingsQueueFile, rankingsSlug } from '../../../automation/rankings-text';
+import { rankingsPitch, rankingsPost, rankingsQueueFile, rankingsSlug } from '../../../automation/rankings-text';
 import type { StateRankings } from '../../src/app/(marketing)/bank-snapshot/peer-data';
 
 const banks = Array.from({ length: 12 }, (_, i) => ({
@@ -43,5 +43,16 @@ describe('rankings LinkedIn post', () => {
     expect(rankingsSlug(r)).toBe('rankings-sc-2026q2');
     const file = rankingsQueueFile(r, text);
     expect(file).toMatch(/^---\nslug: rankings-sc-2026q2\ntitle: .+\ndescription: .+\nurl: https:\/\/reportraven\.tech\/bank-rankings\/south-carolina\n---\n/);
+  });
+});
+
+describe('rankings pitch', () => {
+  it('lists every top-ten bank, best rank first, with its badge page', () => {
+    const pitch = rankingsPitch(r);
+    const rows = pitch.split('\n').filter((l) => l.startsWith('- **'));
+    expect(rows.length).toBe(12);
+    expect(rows[0]).toMatch(/^- \*\*Bank (1|12)\*\*/);
+    expect(pitch).toContain('https://reportraven.tech/bank-snapshot/1-bank-1');
+    expect(pitch).toContain('https://reportraven.tech/bank-rankings/south-carolina');
   });
 });

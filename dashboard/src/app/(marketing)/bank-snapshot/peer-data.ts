@@ -279,6 +279,7 @@ export interface RankedBank {
   loanToDeposit: number;
   /** FDIC community bank designation; trust companies and specialty subsidiaries are not. */
   community: boolean;
+  website?: string;
 }
 
 export interface StateRankings {
@@ -314,7 +315,7 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
   if (!latest) return undefined;
   const [fin, inst] = await Promise.all([
     fdic<Financials>('financials', { filters: `STALP:${stalp} AND REPDTE:${latest.REPDTE}`, fields: FIN_FIELDS, limit: '2000' }),
-    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT,CB', limit: '2000' }),
+    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT,CB,WEBADDR', limit: '2000' }),
   ]);
   const byCert = new Map(inst.map((i) => [i.CERT, i]));
   const banks = fin
@@ -329,6 +330,7 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
       efficiency: f.EEFFR,
       loanToDeposit: ratio(f.LNLSNET, f.DEP) * 100,
       community: byCert.get(f.CERT)!.CB === '1',
+      website: byCert.get(f.CERT)!.WEBADDR || undefined,
     }))
     .sort((a, b) => b.assets - a.assets);
   if (banks.length === 0) return undefined;

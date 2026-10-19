@@ -10,7 +10,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { SITEMAP_STATES, stateRankings } from '../dashboard/src/app/(marketing)/bank-snapshot/peer-data';
-import { rankingsPost, rankingsQueueFile, rankingsSlug } from './rankings-text';
+import { rankingsPitch, rankingsPost, rankingsQueueFile, rankingsSlug } from './rankings-text';
 import { alertFounder } from './alert';
 
 const REPO = resolve(import.meta.dir, '..');
@@ -40,17 +40,21 @@ try {
     const text = rankingsPost(r);
     if (!text) continue;
     if (DRY_RUN) {
-      log(`would queue ${slug}:\n${rankingsQueueFile(r, text)}`);
+      log(`would queue ${slug}:\n${rankingsQueueFile(r, text)}\npitch:\n${rankingsPitch(r)}`);
       posted = true;
       break;
     }
     const branch = `rankings/${slug}`;
     const file = join('marketing', 'linkedin', 'queue', `${slug}.md`);
+    // Outreach list for the banks that made the top ten (the digest links it).
+    const pitch = join('marketing', 'pitches', `${slug}.md`);
     try {
       run('git', ['checkout', '-q', '-B', branch, 'origin/master']);
       mkdirSync(dirname(join(REPO, file)), { recursive: true });
       writeFileSync(join(REPO, file), rankingsQueueFile(r, text));
-      run('git', ['add', file]);
+      mkdirSync(dirname(join(REPO, pitch)), { recursive: true });
+      writeFileSync(join(REPO, pitch), rankingsPitch(r));
+      run('git', ['add', file, pitch]);
       run('git', ['commit', '-q', '-m', `LinkedIn: ${r.stateName} bank rankings (${r.quarter})`]);
       run('git', ['push', '-q', '-u', 'origin', branch]);
       const url = run('gh', [
