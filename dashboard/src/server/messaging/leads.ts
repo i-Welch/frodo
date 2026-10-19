@@ -1,6 +1,6 @@
 import { sendEmail } from './email';
 import { logger } from '../logger';
-import { describeInstitution } from './lead-enrichment';
+import { describeInstitution, type BankSnapshot } from './lead-enrichment';
 
 /**
  * Lead notifications for the marketing site: an alert to the founder and a
@@ -20,6 +20,8 @@ export interface Lead {
   name?: string;
   bank?: string;
   source?: string;
+  /** Latest call report figures for a confident FDIC match (audit requests). */
+  snapshot?: BankSnapshot;
 }
 
 const ALERT_TO = process.env.LEAD_ALERT_TO ?? 'isaac@reportraven.tech';
@@ -65,6 +67,17 @@ function alertMessage(lead: Lead, institution: string[]) {
   };
 }
 
+function snapshotParagraph(s: BankSnapshot | undefined): string {
+  if (!s) return '';
+  const growth =
+    s.loanGrowthPct === undefined ? '' : ` (${s.loanGrowthPct > 0 ? 'up' : 'down'} ${Math.abs(s.loanGrowthPct)}% over the past year)`;
+  return (
+    `While I work on it, here's where ${s.name} stood in its ${s.quarter} FDIC call report: ${s.assets} in total assets, ` +
+    `${s.loans} in net loans${growth}, and a ${s.roaPct}% return on assets. The audit adds what the call report can't show: ` +
+    `how borrowers apply online today and what's missing from that journey.\n\n`
+  );
+}
+
 function confirmationMessage(lead: Lead) {
   const first = lead.name?.trim().split(/\s+/)[0];
   const greeting = first ? `Hi ${first},` : 'Hi,';
@@ -83,6 +96,7 @@ function confirmationMessage(lead: Lead) {
       text:
         `${greeting}\n\nThanks for requesting a free digital lending audit${lead.bank ? ` of ${lead.bank}` : ''}. ` +
         `I'll build it from your public call report and HMDA data and send it within a few business days.\n\n` +
+        snapshotParagraph(lead.snapshot) +
         `Here's an example of what you'll get:\n${SITE}/audit/robins-financial-credit-union\n\n` +
         `If you'd rather walk through it live, grab 20 minutes here:\n${CALENDLY_URL}` +
         signoff,
@@ -158,7 +172,10 @@ ${SITE}`,
 /** Sends the founder alert and the lead confirmation. Never throws: a failed
  *  email must not fail the signup, which is already stored. */
 export async function notifyLead(lead: Lead): Promise<void> {
-  const institution = await describeInstitution(lead);
+  // A snapshot already identifies the bank; skip the second FDIC lookup.
+  const institution = lead.snapshot
+    ? [`FDIC match: ${lead.snapshot.name}, ${lead.snapshot.city}, ${lead.snapshot.state}: ${lead.snapshot.assets} assets, FDIC cert ${lead.snapshot.cert}`]
+    : await describeInstitution(lead);
   const results = await Promise.allSettled([
     sendEmail(alertMessage(lead, institution)),
     sendEmail(confirmationMessage(lead)),

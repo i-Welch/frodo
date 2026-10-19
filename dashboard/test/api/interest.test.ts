@@ -7,6 +7,7 @@ const sendEmail = vi.fn().mockResolvedValue('msg_123');
 vi.mock('../../src/server/messaging/email', () => ({ sendEmail, EMAIL_FROM: 'noreply@reportraven.tech' }));
 
 const { interestRoutes } = await import('../../src/server/api/routes/interest');
+const { notifyLead } = await import('../../src/server/messaging/leads');
 
 function createTestApp() {
   return new Elysia().use(interestRoutes);
@@ -53,6 +54,17 @@ describe('interest API', () => {
     expect(confirmation.to).toBe(email);
     expect(confirmation.subject).toContain('Example Bank');
     expect(confirmation.text).toMatch(/^Hi Dana,/);
+  });
+
+  it('puts the FDIC snapshot in the audit confirmation and reuses it in the alert', async () => {
+    const snapshot = {
+      name: 'Example Bank', city: 'Mullins', state: 'SC', cert: 9923, quarter: 'Q2 2026',
+      assets: '$2.38B', deposits: '$2.13B', loans: '$1.85B', loanGrowthPct: 13.9, roaPct: 1.52,
+    };
+    await notifyLead({ kind: 'audit', email: 'dana@examplebank.com', name: 'Dana', bank: 'Example Bank', snapshot });
+    const [alert, confirmation] = sendEmail.mock.calls.map((c) => c[0]);
+    expect(alert.text).toContain('FDIC match: Example Bank, Mullins, SC: $2.38B assets, FDIC cert 9923');
+    expect(confirmation.text).toContain('Q2 2026 FDIC call report: $2.38B in total assets, $1.85B in net loans (up 13.9% over the past year), and a 1.52% return on assets');
   });
 
   it('accepts an email-only newsletter signup', async () => {

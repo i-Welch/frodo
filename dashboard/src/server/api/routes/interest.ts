@@ -40,11 +40,9 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
 
     logger.info({ email, kind, source }, 'New interest signup');
     // Audit requesters see their bank's latest call report figures right away
-    // (only for a confident FDIC match); looked up alongside the founder alert.
-    const [, snapshot] = await Promise.all([
-      notifyLead({ kind, email, name, bank, source }),
-      kind === 'audit' ? bankSnapshot({ email, bank }) : Promise.resolve(undefined),
-    ]);
+    // (only for a confident FDIC match), on the page and in the confirmation email.
+    const snapshot = kind === 'audit' ? await bankSnapshot({ email, bank }) : undefined;
+    await notifyLead({ kind, email, name, bank, source, snapshot });
 
     set.status = 201;
     return snapshot ? { ok: true, snapshot } : { ok: true };
