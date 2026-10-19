@@ -54,9 +54,9 @@ const CONTACT = `## Company and contact
 
 ## Legal
 
-- [Security](https://app.reportraven.tech/legal/security)
-- [Privacy Policy](https://app.reportraven.tech/legal/privacy-policy)
-- [Terms of Service](https://app.reportraven.tech/legal/terms-of-service)`;
+- [Security](https://reportraven.tech/legal/security)
+- [Privacy Policy](https://reportraven.tech/legal/privacy-policy)
+- [Terms of Service](https://reportraven.tech/legal/terms-of-service)`;
 
 function solutionsSection(): string {
   const lines = SOLUTIONS.map((s) => `- [${s.metaTitle}](${SITE}/solutions/${s.slug}): ${s.metaDescription}`);

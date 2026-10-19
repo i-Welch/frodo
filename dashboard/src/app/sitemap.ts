@@ -7,7 +7,6 @@ import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
 
 const SITE = 'https://reportraven.tech';
-const APP = 'https://app.reportraven.tech';
 
 // Bump manually when non-blog page content meaningfully changes.
 const SITE_UPDATED = new Date('2026-07-05');
@@ -77,7 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...auditUrls,
     ...LEGAL_PATHS.map((path) => ({
-      url: `${APP}/legal/${path}`,
+      url: `${SITE}/legal/${path}`,
       lastModified: SITE_UPDATED,
       changeFrequency: 'monthly' as const,
       priority: path === 'privacy-policy' || path === 'terms-of-service' ? 0.3 : 0.4,

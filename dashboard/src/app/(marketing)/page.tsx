@@ -1411,9 +1411,9 @@ export default function LandingPage() {
             <a href="/integrations">Integrations</a>
             <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/about">About</a>
-            <a href="https://app.reportraven.tech/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-            <a href="https://app.reportraven.tech/legal/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a>
-            <a href="https://app.reportraven.tech/legal/security" target="_blank" rel="noopener noreferrer">Security</a>
+            <a href="/legal/privacy-policy">Privacy Policy</a>
+            <a href="/legal/terms-of-service">Terms of Service</a>
+            <a href="/legal/security">Security</a>
             <a href="/ai-info">For AI assistants</a>
           </div>
         </footer>

@@ -1127,8 +1127,6 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'oconee-state-bank',
     name: 'Oconee State Bank',
     shortName: 'Oconee State',
-    articleSlug: 'oconee-state-bank-digital-lending-oconee-county',
-    articleTitle: 'Oconee State Bank: Serving the Athens Corridor Since 1954',
     fdicCert: 18143,
     auditDate: 'June 2026',
     stats: [
@@ -1169,8 +1167,6 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'ameris-bank',
     name: 'Ameris Bank',
     shortName: 'Ameris',
-    articleSlug: 'ameris-bank-southeast-regional-digital-gap',
-    articleTitle: 'Ameris Bank: The $25B Southeast Regional With a Third-Party Mortgage Portal',
     fdicCert: 20504,
     auditDate: 'June 2026',
     stats: [
@@ -1211,8 +1207,6 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'united-bank',
     name: 'United Bank',
     shortName: 'United Bank',
-    articleSlug: 'united-bank-mid-atlantic-digital-strategy',
-    articleTitle: 'United Bank: The $30B Mid-Atlantic Regional Expanding South',
     fdicCert: 5672,
     auditDate: 'June 2026',
     stats: [
