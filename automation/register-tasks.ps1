@@ -38,8 +38,9 @@ Register-ScheduledTask -TaskName 'RAVEN Article' -Action $articleAction -Trigger
 # Mon/Fri 10:00: refresh and release one held-back article (/release-draft).
 # Uses the article clone, which is idle outside the Tue/Wed/Thu runs.
 $releaseAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
-    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $ArticleClone); & '$ArticleCloneautomationun-article.ps1' " +
-        "-Prompt '/release-draft auto' -CloneName 'frodo-automation' -Port 3100 -LogName 'release-draft'`"")
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $ArticleClone); " +
+        "if (Test-Path '$ArticleClone\.claude\commands\release-draft.md') { & '$ArticleClone\automation\run-article.ps1' " +
+        "-Prompt '/release-draft auto' -CloneName 'frodo-automation' -Port 3100 -LogName 'release-draft' }`"")
 $releaseTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday, Friday -At 10:00am
 Register-ScheduledTask -TaskName 'RAVEN Release Draft' -Action $releaseAction -Trigger $releaseTrigger `
     -Settings $Settings -Description 'Refreshes one held-back article against current data and opens an auto-publish PR' -Force | Out-Null
@@ -97,3 +98,16 @@ Register-ScheduledTask -TaskName 'RAVEN Auto-Publish' -Action $publishAction -Tr
 
 Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch', 'RAVEN Visibility Check' |
     Select-Object TaskName, State, @{ n = 'NextRun'; e = { ($_ | Get-ScheduledTaskInfo).NextRunTime } }
+
+# New-ScheduledTaskTrigger stores StartBoundary with today's UTC offset, which
+# makes every run shift an hour when daylight saving time changes. Rewrite
+# each trigger in plain local time so 8:00 stays 8:00 all year.
+Get-ScheduledTask -TaskName 'RAVEN *' | ForEach-Object {
+    $task = $_
+    foreach ($t in $task.Triggers) {
+        if ($t.StartBoundary -match '([+-]\d\d:\d\d|Z)$') {
+            $t.StartBoundary = ([datetimeoffset]$t.StartBoundary).DateTime.ToString('s')
+        }
+    }
+    Set-ScheduledTask -TaskName $task.TaskName -Trigger $task.Triggers | Out-Null
+}
