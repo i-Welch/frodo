@@ -328,6 +328,15 @@ export default function BlogIndex() {
         .blog-card-audit-link:hover { opacity: 1; }
 
         /* De novo grid - 3 columns, emerald accent */
+        .blog-denovo-tracker {
+          display: inline-block;
+          margin-top: 1.25rem;
+          font-size: 0.88rem;
+          font-weight: 500;
+          color: var(--accent);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
         .blog-denovo-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -484,6 +493,9 @@ export default function BlogIndex() {
                 <ArticleCard key={a.slug} article={a} />
               ))}
             </div>
+            <a href="/de-novo-watch" className="blog-denovo-tracker">
+              Every filing, approval and opening we track is on the De Novo Watch tracker &rarr;
+            </a>
           </div>
         )}
 
