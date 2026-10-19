@@ -388,6 +388,20 @@ export const SOLUTIONS: Solution[] = [
         ],
       },
       {
+        heading: 'The full de novo stack, layer by layer',
+        paragraphs: [
+          'Organizers usually meet the stack one vendor pitch at a time. It is easier to evaluate as layers, each with a short list of established providers. Most de novos buy the first two layers as a bundle from their core provider and choose the rest individually.',
+        ],
+        bullets: [
+          'Core banking (the ledger): Jack Henry, Fiserv, FIS, and CSI dominate community bank cores; newer cloud cores include Finxact (owned by Fiserv), Thought Machine, and Nymbus',
+          'Digital banking (online and mobile): the core provider’s own platform (for example Jack Henry Banno) or an independent provider such as Q2, Alkami, or Narmi',
+          'Digital account opening: MANTL (now part of Alkami), Narmi, and Apiture, or the core provider’s module',
+          'Loan origination: nCino, MeridianLink, Baker Hill, and Abrigo for commercial and consumer lending; ICE Encompass for mortgage',
+          'BSA/AML monitoring: Verafin (Nasdaq), Abrigo BAM+, and core-provider modules',
+          'Identity and verification: identity and fraud scoring (Socure, among others) plus income, employment, asset, and property verification; RAVEN orchestrates these behind one applicant link',
+        ],
+      },
+      {
         heading: 'Fits beside the core bundle, not inside it',
         paragraphs: [
           'De novos typically sign a core bundle (Jack Henry, Fiserv, FIS, or CSI) that covers ledger, digital banking, and payments. RAVEN is the verification layer in front of that bundle: applicants verify through your branded flow, and your team books complete, source-verified files into whatever core you chose. There is no core dependency, so verification can be live before your core conversion finishes, and it moves with you if the stack changes later.',
@@ -401,6 +415,10 @@ export const SOLUTIONS: Solution[] = [
       },
     ],
     faqs: [
+      {
+        q: 'What technology does a de novo bank need?',
+        a: 'Six layers: a core banking system, digital banking, digital account opening, loan origination, BSA/AML monitoring, and identity and income verification. Most de novos buy the core and digital banking as a bundle and choose the others individually. De Novo Watch (reportraven.tech/de-novo-watch) records the technology choices organizers have announced.',
+      },
       {
         q: 'Can RAVEN be live before the bank opens?',
         a: 'Yes. RAVEN has no core dependency, so the verification flow can be configured and tested during the pre-opening buildout and be operational on day one.',
