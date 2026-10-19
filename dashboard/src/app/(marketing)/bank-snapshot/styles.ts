@@ -40,6 +40,8 @@ export const snapshotStyles = `
   .bsn-top a:hover { color: var(--accent); }
   .bsn-top .bsn-num { color: var(--accent); margin-left: 0.35rem; }
   .bsn-faq-q { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.2rem 0 0.35rem; }
+  .bsn-badge { margin: 1rem 0 0.75rem; }
+  .bsn-embed { width: 100%; font-family: ui-monospace, monospace; font-size: 0.75rem; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: var(--gray-300); resize: none; }
   .bsn-callout { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .bsn-callout strong { color: var(--white); }
 `;

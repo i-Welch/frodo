@@ -5,7 +5,7 @@ import { SiteShell } from '../../site-shell';
 import { LeadCapture } from '../../lead-capture';
 import { auditForCert } from '@/app/(whitelabel)/_config/audit-data';
 import { getRoiBank } from '../../roi/roi-data';
-import { bankSlug, certFromParam, STATE_NAMES, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
+import { awardLabel, bankSlug, certFromParam, STATE_NAMES, stateAwards, stateRankings, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
 import { snapshotStyles } from '../styles';
 import { bankFaqs } from '../bank-faq';
 
@@ -87,6 +87,14 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
   const auditSlug = audit && getRoiBank(audit.slug) ? audit.slug : undefined;
   const ops = operationsNote(r);
   const faqs = bankFaqs(r);
+  // Top-ten places in the state rankings earn an embeddable badge (a backlink).
+  const rankings = await stateRankings(inst.STALP).catch(() => undefined);
+  const awards = rankings ? stateAwards(rankings, inst.CERT) : [];
+  const badgeUrl = `${SITE}${pathFor(r)}/badge.svg`;
+  const rankingsUrl = `${SITE}/bank-rankings/${stateSlug(inst.STALP)}`;
+  const embed = awards[0]
+    ? `<a href="${rankingsUrl}"><img src="${badgeUrl}" alt="${awardLabel(awards[0])}, RAVEN Bank Rankings ${awards[0].quarter}" height="64"></a>`
+    : '';
   const established = inst.ESTYMD?.slice(-4);
   const growth = (v?: number) => (v === undefined ? '–' : `${v > 0 ? '+' : ''}${v.toFixed(1)}%`);
 
@@ -160,6 +168,23 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
             </div>
           )}
         </div>
+
+        {awards.length > 0 && (
+          <div className="bsn-callout">
+            <strong>
+              {awards.map((a) => awardLabel(a)).join(' and ')}, {awards[0].quarter}.
+            </strong>{' '}
+            See the full <a href={`/bank-rankings/${stateSlug(inst.STALP)}`}>{awards[0].stateName} rankings</a>.
+            <div className="bsn-badge">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={`${pathFor(r)}/badge.svg`} alt={awardLabel(awards[0])} height={64} />
+            </div>
+            <label className="bsn-label" htmlFor="bsn-embed">
+              Add the badge to your website
+            </label>
+            <textarea id="bsn-embed" className="bsn-embed" readOnly rows={3} value={embed} />
+          </div>
+        )}
 
         <p>{summary(r)}</p>
 

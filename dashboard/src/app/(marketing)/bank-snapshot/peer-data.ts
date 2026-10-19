@@ -346,3 +346,23 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
     },
   };
 }
+
+export interface StateAward {
+  metric: 'efficiency' | 'roa';
+  rank: number;
+  stalp: string;
+  stateName: string;
+  quarter: string;
+}
+
+/** A bank's places in its state's top-ten lists, best rank first. */
+export function stateAwards(r: StateRankings, cert: number): StateAward[] {
+  return (['efficiency', 'roa'] as const)
+    .map((metric) => ({ metric, rank: topBanks(r.banks, metric).findIndex((b) => b.cert === cert) + 1 }))
+    .filter((a) => a.rank > 0)
+    .map((a) => ({ ...a, stalp: r.stalp, stateName: r.stateName, quarter: r.quarter }))
+    .sort((a, b) => a.rank - b.rank);
+}
+
+export const awardLabel = (a: StateAward) =>
+  `#${a.rank} ${a.metric === 'efficiency' ? 'most efficient' : 'highest return on assets'} community bank in ${a.stateName}`;

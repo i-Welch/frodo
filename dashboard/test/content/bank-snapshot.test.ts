@@ -5,7 +5,9 @@ import {
   comparePeers,
   formatMetric,
   median,
+  awardLabel,
   nearestBySize,
+  stateAwards,
   quarterLabel,
   stateFromSlug,
   stateSlug,
@@ -14,6 +16,7 @@ import {
 } from '../../src/app/(marketing)/bank-snapshot/peer-data';
 import { auditForCert } from '../../src/app/(whitelabel)/_config/audit-data';
 import { bankFaqs } from '../../src/app/(marketing)/bank-snapshot/bank-faq';
+import { badgeSvg } from '../../src/app/(marketing)/bank-snapshot/badge';
 
 const row = (cert: number, over: Partial<Financials> = {}): Financials => ({
   CERT: cert,
@@ -121,5 +124,26 @@ describe('bank FAQs', () => {
     expect(faqs.find((f) => f.q.includes('return on assets'))?.a).toContain('ahead of 100% of them');
     expect(faqs.at(-1)?.a).toBe('Net loans grew 3.6% over the year to Q2 2026, while deposits shrank 1.2%.');
     expect(faqs.map((f) => f.a).join(' ')).not.toContain('—');
+  });
+});
+
+describe('ranking badges', () => {
+  const banks = Array.from({ length: 12 }, (_, i) => ({
+    cert: i + 1, name: `Bank ${i + 1}`, city: 'X', assets: 500_000, roa: 2 - i / 10, nim: 3, efficiency: 70 - i, loanToDeposit: 80, community: true,
+  }));
+  const rankings = { stalp: 'SC', stateName: 'South Carolina', quarter: 'Q2 2026', repdte: '20260630', banks, medians: { roa: 1, nim: 3, efficiency: 60, assets: 500_000 } };
+
+  it('lists top-ten places best first', () => {
+    expect(stateAwards(rankings, 12).map((a) => [a.metric, a.rank])).toEqual([['efficiency', 1]]);
+    expect(stateAwards(rankings, 1).map((a) => [a.metric, a.rank])).toEqual([['roa', 1]]);
+    expect(stateAwards(rankings, 6)).toHaveLength(2);
+    expect(awardLabel(stateAwards(rankings, 12)[0])).toBe('#1 most efficient community bank in South Carolina');
+  });
+
+  it('renders an escaped SVG, neutral when unranked', () => {
+    const svg = badgeSvg({ metric: 'roa', rank: 2, stalp: 'SC', stateName: 'A & B', quarter: 'Q2 2026' });
+    expect(svg).toContain('#2 highest return on assets community bank in A &amp; B');
+    expect(svg).toContain('RAVEN BANK RANKINGS · Q2 2026');
+    expect(badgeSvg(undefined)).toContain('Peer data from FDIC call reports');
   });
 });
