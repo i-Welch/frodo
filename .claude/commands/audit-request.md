@@ -19,7 +19,7 @@ Handle at most **two institutions** per run, oldest first. Requests that name th
 
 ## 2. Triage each request
 
-The `bank` field is free text typed by the requester. Resolve it to one institution:
+When the request has a `cert`, the requester picked their bank from the form's FDIC suggestions: that is the institution, so skip the lookup below (still fetch its record with `filters=CERT:<cert>` for name, city and website). Otherwise the `bank` field is free text typed by the requester. Resolve it to one institution:
 - Banks: FDIC BankFind (`https://banks.data.fdic.gov/api/institutions?filters=ACTIVE:1&search=NAME:<words>&fields=NAME,CERT,CITY,STALP,ASSET,WEBADDR`).
 - Credit unions: NCUA (`https://mapping.ncua.gov/api/Search/GetSearchLocations` or the NCUA Research a Credit Union pages) for the charter number.
 - Use the requester's email domain to break ties (it usually matches the institution's website).
