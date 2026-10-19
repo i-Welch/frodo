@@ -58,6 +58,7 @@ function run(cmd: string, args: string[]): string {
 interface PullRequest {
   number: number;
   title: string;
+  headRefName: string;
   createdAt: string;
   mergeable: string;
   isDraft: boolean;
@@ -79,11 +80,41 @@ function checksFailed(pr: PullRequest): boolean {
   );
 }
 
+// Scheduled PRs that overlap (an article and a draft release, say) conflict on
+// the lists they both insert into. Merge master into the branch with the union
+// driver from .gitattributes and push; CI reruns and gates the result. Returns
+// false when a conflict remains that union cannot settle.
+function resolveConflicts(pr: PullRequest): boolean {
+  const git = (...args: string[]) => run('git', ['-c', 'user.name=RAVEN automation', '-c', 'user.email=isaac@reportraven.tech', ...args]);
+  try {
+    git('fetch', '-q', 'origin', 'master', pr.headRefName);
+    git('checkout', '-q', '-B', 'auto-resolve', `origin/${pr.headRefName}`);
+    try {
+      git('merge', '--no-edit', 'origin/master');
+    } catch {
+      git('merge', '--abort');
+      return false;
+    }
+    git('push', '-q', 'origin', `HEAD:${pr.headRefName}`);
+    return true;
+  } catch (err) {
+    log(`#${pr.number}: conflict resolution failed: ${(err as Error).message.split('\n')[0]}`);
+    return false;
+  } finally {
+    try {
+      git('checkout', '-q', '-f', 'master');
+      git('branch', '-q', '-D', 'auto-resolve');
+    } catch {
+      // The next scheduled run resets the clone anyway.
+    }
+  }
+}
+
 async function mergeDuePullRequests() {
   const prs: PullRequest[] = JSON.parse(
     run('gh', [
       'pr', 'list', '--state', 'open', '--label', LABEL,
-      '--json', 'number,title,createdAt,mergeable,isDraft,statusCheckRollup',
+      '--json', 'number,title,headRefName,createdAt,mergeable,isDraft,statusCheckRollup',
     ]),
   );
   for (const pr of prs) {
@@ -91,6 +122,8 @@ async function mergeDuePullRequests() {
     const tag = `#${pr.number} "${pr.title}"`;
     if (pr.isDraft) {
       log(`${tag}: draft, skipping`);
+    } else if (pr.mergeable === 'CONFLICTING' && !DRY_RUN && resolveConflicts(pr)) {
+      log(`${tag}: merged master in to clear conflicts; waiting for CI`);
     } else if (ageHours < DELAY_HOURS) {
       log(`${tag}: ${ageHours.toFixed(1)}h old, merges at ${DELAY_HOURS}h`);
     } else if (pr.mergeable !== 'MERGEABLE') {
