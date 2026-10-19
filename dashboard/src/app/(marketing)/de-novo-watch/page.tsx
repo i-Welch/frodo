@@ -84,6 +84,7 @@ const styles = `
   .dnw-page p { font-size: 0.95rem; line-height: 1.75; color: var(--gray-300); margin-bottom: 1rem; }
   .dnw-page a { color: var(--accent); text-decoration: none; }
   .dnw-page a:hover { text-decoration: underline; }
+  .dnw-page p a, .dnw-note a { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(108,142,255,0.5); }
   .dnw-updated { font-size: 0.78rem; color: var(--gray-500); margin-bottom: 1.75rem; }
   .dnw-stat { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .dnw-stat strong { color: var(--white); }
