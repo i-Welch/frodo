@@ -10,7 +10,7 @@ const log = createChildLogger({ module: 'leads-admin' });
  * secret is RAVEN_ADMIN_SECRET or RAVEN_AUTOMATION_SECRET (the narrower key
  * the PC automation holds, so it never needs the full admin secret).
  */
-function adminAuth(headers: Record<string, string | undefined>, set: { status?: number | string }) {
+export function adminAuth(headers: Record<string, string | undefined>, set: { status?: number | string }) {
   const secrets = [process.env.RAVEN_ADMIN_SECRET, process.env.RAVEN_AUTOMATION_SECRET]
     .map((s) => s?.trim())
     .filter(Boolean);
