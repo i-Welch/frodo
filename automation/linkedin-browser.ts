@@ -10,7 +10,8 @@
 // %USERPROFILE%\.raven\linkedin.env, e.g.
 //   LINKEDIN_COMPANY_URL=https://www.linkedin.com/company/12345678/admin/
 
-import { existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
@@ -37,8 +38,26 @@ export function browserReady(): boolean {
   return existsSync(PROFILE_DIR) && companyAdminUrl() !== null;
 }
 
+// A crashed or still-open run (e.g. test mode's window) leaves Edge holding the
+// profile, and the next launch fails with "browser is already running". Close
+// any Edge process using this profile and clear its lock first.
+function freeProfile() {
+  if (process.platform !== 'win32') return;
+  try {
+    execFileSync('powershell.exe', [
+      '-NoProfile',
+      '-Command',
+      `Get-CimInstance Win32_Process -Filter "Name='msedge.exe'" | Where-Object { $_.CommandLine -like '*linkedin-browser*' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }`,
+    ], { stdio: 'ignore' });
+  } catch {
+    // Nothing to close.
+  }
+  rmSync(join(PROFILE_DIR, 'lockfile'), { force: true });
+}
+
 async function launch(headless: boolean): Promise<Browser> {
   mkdirSync(PROFILE_DIR, { recursive: true });
+  freeProfile();
   return puppeteer.launch({
     executablePath: EDGE,
     userDataDir: PROFILE_DIR,
