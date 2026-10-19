@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { LeadCapture } from '../../lead-capture';
-import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import { auditForCert } from '@/app/(whitelabel)/_config/audit-data';
 import { getRoiBank } from '../../roi/roi-data';
 import { bankSlug, certFromParam, STATE_NAMES, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
@@ -72,7 +71,7 @@ export async function generateMetadata({ params }: { params: Promise<{ bank: str
     title,
     description,
     alternates: { canonical: `${SITE}${pathFor(r)}` },
-    openGraph: { images: DEFAULT_OG_IMAGES, title, description, url: `${SITE}${pathFor(r)}`, siteName: 'RAVEN', type: 'website' },
+    openGraph: { title, description, url: `${SITE}${pathFor(r)}`, siteName: 'RAVEN', type: 'website' },
   };
 }
 

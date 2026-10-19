@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { LeadCapture } from '../../lead-capture';
-import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import {
   bankSlug,
   formatAssets,
@@ -43,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     title,
     description,
     alternates: { canonical: url },
-    openGraph: { images: DEFAULT_OG_IMAGES, title, description, url, siteName: 'RAVEN', type: 'website' },
+    openGraph: { title, description, url, siteName: 'RAVEN', type: 'website' },
   };
 }
 
