@@ -42,6 +42,8 @@ const jsonLd = {
       creator: { '@id': 'https://reportraven.tech/#organization' },
       dateModified: TRACKER_SUMMARY.updated,
       isAccessibleForFree: true,
+      temporalCoverage: '2025/..',
+      spatialCoverage: { '@type': 'Place', name: 'United States' },
       license: 'https://reportraven.tech/de-novo-watch#citation',
       keywords: ['de novo bank', 'bank charter', 'FDIC application', 'new bank', 'community bank'],
       distribution: {
