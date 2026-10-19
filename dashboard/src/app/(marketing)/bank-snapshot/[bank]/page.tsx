@@ -7,6 +7,7 @@ import { auditForCert } from '@/app/(whitelabel)/_config/audit-data';
 import { getRoiBank } from '../../roi/roi-data';
 import { bankSlug, certFromParam, STATE_NAMES, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
 import { snapshotStyles } from '../styles';
+import { bankFaqs } from '../bank-faq';
 
 // Pages render on first visit and refresh daily, so a new quarter's call
 // reports show up without a deploy.
@@ -85,6 +86,7 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
   const audit = auditForCert(inst.CERT);
   const auditSlug = audit && getRoiBank(audit.slug) ? audit.slug : undefined;
   const ops = operationsNote(r);
+  const faqs = bankFaqs(r);
   const established = inst.ESTYMD?.slice(-4);
   const growth = (v?: number) => (v === undefined ? '–' : `${v > 0 ? '+' : ''}${v.toFixed(1)}%`);
 
@@ -103,6 +105,10 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
           ...(inst.WEBADDR ? { url: `https://${inst.WEBADDR.replace(/^https?:\/\//, '')}` } : {}),
         },
         isPartOf: { '@id': `${SITE}/bank-snapshot#tool` },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
       },
       {
         '@type': 'BreadcrumbList',
@@ -221,6 +227,14 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
           defaultBank={inst.NAME}
           title={auditSlug ? 'Work at this bank? Get the audit updated for your team.' : `Want a free digital lending audit of ${inst.NAME}?`}
         />
+
+        <h2>Questions about {inst.NAME}</h2>
+        {faqs.map((f) => (
+          <div key={f.q}>
+            <h3 className="bsn-faq-q">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
 
         <h2>Sources and method</h2>
         <p>

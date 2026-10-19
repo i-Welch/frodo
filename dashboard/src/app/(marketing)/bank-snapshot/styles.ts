@@ -39,6 +39,7 @@ export const snapshotStyles = `
   .bsn-top a { color: var(--white); font-weight: 600; text-decoration: none; }
   .bsn-top a:hover { color: var(--accent); }
   .bsn-top .bsn-num { color: var(--accent); margin-left: 0.35rem; }
+  .bsn-faq-q { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.2rem 0 0.35rem; }
   .bsn-callout { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .bsn-callout strong { color: var(--white); }
 `;

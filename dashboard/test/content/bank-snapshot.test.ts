@@ -13,6 +13,7 @@ import {
   type Financials,
 } from '../../src/app/(marketing)/bank-snapshot/peer-data';
 import { auditForCert } from '../../src/app/(whitelabel)/_config/audit-data';
+import { bankFaqs } from '../../src/app/(marketing)/bank-snapshot/bank-faq';
 
 const row = (cert: number, over: Partial<Financials> = {}): Financials => ({
   CERT: cert,
@@ -99,5 +100,26 @@ describe('state rankings', () => {
     expect(stateSlug('SC')).toBe('south-carolina');
     expect(stateFromSlug('district-of-columbia')).toBe('DC');
     expect(stateFromSlug('narnia')).toBeUndefined();
+  });
+});
+
+describe('bank FAQs', () => {
+  it('answers from the report figures without em dashes', () => {
+    const report = {
+      institution: { NAME: 'Example Bank', CITY: 'Conway', STALP: 'SC', ASSET: 2_000_000, CERT: 1, OFFICES: 16, ESTYMD: '01/01/1914' },
+      quarter: 'Q2 2026',
+      repdte: '20260630',
+      peerCount: 11,
+      peerScope: 'SC banks with half to twice its assets',
+      metrics: comparePeers(row(1, { ROA: 1.5 }), [row(1), row(2, { ROA: 1 }), row(3, { ROA: 1.2 })]),
+      loanGrowthPct: 3.6,
+      depositGrowthPct: -1.2,
+      closestPeers: [],
+    };
+    const faqs = bankFaqs(report);
+    expect(faqs[0].a).toBe('Example Bank, established in 1914, is headquartered in Conway, SC. It reported $2.00B in total assets in its Q2 2026 FDIC call report and operates 16 offices.');
+    expect(faqs.find((f) => f.q.includes('return on assets'))?.a).toContain('ahead of 100% of them');
+    expect(faqs.at(-1)?.a).toBe('Net loans grew 3.6% over the year to Q2 2026, while deposits shrank 1.2%.');
+    expect(faqs.map((f) => f.a).join(' ')).not.toContain('—');
   });
 });
