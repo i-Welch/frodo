@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
 import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { trackerFaqs } from './tracker-faq';
 
 export const metadata: Metadata = {
   title: 'De Novo Bank Tracker: 2026 Charters and Applications',
@@ -20,6 +21,8 @@ export const metadata: Metadata = {
 
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
+const faqs = trackerFaqs();
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -35,6 +38,11 @@ const jsonLd = {
       isAccessibleForFree: true,
       license: 'https://reportraven.tech/de-novo-watch#citation',
       keywords: ['de novo bank', 'bank charter', 'FDIC application', 'new bank', 'community bank'],
+      distribution: {
+        '@type': 'DataDownload',
+        encodingFormat: 'text/csv',
+        contentUrl: 'https://reportraven.tech/de-novo-watch/data.csv',
+      },
     },
     {
       '@type': 'BreadcrumbList',
@@ -50,6 +58,14 @@ const jsonLd = {
       name: 'De Novo Bank Tracker: 2026 Charters and Applications',
       dateModified: TRACKER_SUMMARY.updated,
       mainEntity: { '@id': 'https://reportraven.tech/de-novo-watch#dataset' },
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
     },
   ],
 };
@@ -76,6 +92,7 @@ const styles = `
   .dnw-status-conditional-approval { background: rgba(255,196,0,0.14); color: #FFD666; }
   .dnw-status-application-pending { background: rgba(255,255,255,0.08); color: var(--gray-300); }
   .dnw-status-open { background: rgba(74,222,128,0.13); color: #86EFAC; }
+  .dnw-faq h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.4rem 0 0.4rem; }
   .dnw-note { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; margin-top: 0.75rem; }
 `;
 
@@ -128,6 +145,7 @@ export default function DeNovoWatchPage() {
                   <td>
                     <span className={`dnw-status dnw-status-${b.status}`}>{STATUS_LABELS[b.status]}</span>
                     <div className="dnw-note">{b.statusDetail}</div>
+                    <div className="dnw-note">Verified {b.asOf}</div>
                   </td>
                   <td>{b.capital ?? '–'}</td>
                   <td>{b.techNotes ?? '–'}</td>
@@ -164,7 +182,10 @@ export default function DeNovoWatchPage() {
                 <tr key={m.name}>
                   <td className="dnw-bank">{m.name}</td>
                   <td>{m.charterOrigin}</td>
-                  <td>{m.move}</td>
+                  <td>
+                    {m.move}
+                    <div className="dnw-note">Verified {m.asOf}</div>
+                  </td>
                   <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
                 </tr>
               ))}
@@ -172,13 +193,23 @@ export default function DeNovoWatchPage() {
           </table>
         </div>
 
+        <section className="dnw-faq">
+          <h2 id="faq">Frequently asked questions</h2>
+          {faqs.map((f) => (
+            <div key={f.q}>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </section>
+
         <h2 id="citation">Methodology and citation</h2>
         <p>
           Sources: the FDIC pending deposit insurance applications list, state banking regulator
           filings (for Florida, the Office of Financial Regulation), organizer press releases and
           public statements, and FDIC call reports for market analysis. Each row shows the date it
           was last verified. This tracker is free to cite with attribution to RAVEN
-          (reportraven.tech). Corrections and tips: <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
+          (reportraven.tech). Download the data as <a href="/de-novo-watch/data.csv">CSV</a>. Corrections and tips: <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
         </p>
 
         <h2>Read the analysis</h2>
