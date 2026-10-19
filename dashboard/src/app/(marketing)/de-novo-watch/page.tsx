@@ -100,7 +100,7 @@ export default function DeNovoWatchPage() {
         </p>
         <div className="dnw-stat">
           <strong>{TRACKER_SUMMARY.nationalApplications2026} deposit insurance applications</strong>{' '}
-          have been filed nationally in 2026 through early July.{' '}
+          have been filed nationally in 2026 through {TRACKER_SUMMARY.countsThrough}.{' '}
           <strong>{TRACKER_SUMMARY.floridaApplications2026} are Florida banks</strong>, the most of
           any state, making Florida the center of the strongest de novo environment in years.
         </div>
