@@ -4,7 +4,9 @@
 //    and the PR is mergeable. Close the PR or remove the label to stop it.
 // 2. For each LinkedIn queue file on master (marketing/linkedin/queue/<slug>.md)
 //    not yet posted, waits until the article URL returns 200, then posts it to
-//    the RAVEN company page and records it in the local posted log.
+//    the RAVEN company page and records it in the local posted log. A queue
+//    file with `notBefore: YYYY-MM-DD` (the follow-up post /article writes)
+//    waits until that date.
 //
 // LinkedIn credentials live outside the repo in %USERPROFILE%\.raven\linkedin.env:
 //   LINKEDIN_ACCESS_TOKEN=...      (w_organization_social scope)
@@ -99,6 +101,7 @@ interface QueuedPost {
   description: string;
   url: string;
   text: string;
+  notBefore?: string;
 }
 
 function readQueue(): QueuedPost[] {
@@ -122,7 +125,14 @@ function readQueue(): QueuedPost[] {
         return [line.slice(0, i).trim(), line.slice(i + 1).trim()];
       }),
     );
-    return { slug: meta.slug, title: meta.title, description: meta.description, url: meta.url, text: match[2].trim() };
+    return {
+      slug: meta.slug,
+      title: meta.title,
+      description: meta.description,
+      url: meta.url,
+      text: match[2].trim(),
+      notBefore: meta.notBefore || undefined,
+    };
   });
 }
 
@@ -196,7 +206,8 @@ async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Pr
 async function postQueued() {
   const queue = readQueue();
   const posted = loadPosted();
-  const pending = queue.filter((p) => !posted[p.slug]);
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
+  const pending = queue.filter((p) => !posted[p.slug] && (!p.notBefore || p.notBefore <= today));
   if (pending.length === 0) return;
 
   const env = loadLinkedInEnv();
@@ -230,7 +241,8 @@ async function postQueued() {
 
 async function pingNewArticles() {
   const pinged: Record<string, string> = existsSync(INDEXNOW_LOG) ? JSON.parse(readFileSync(INDEXNOW_LOG, 'utf8')) : {};
-  for (const post of readQueue().filter((p) => !pinged[p.slug])) {
+  // Follow-up posts (notBefore) reuse an article URL that was already pinged.
+  for (const post of readQueue().filter((p) => !pinged[p.slug] && !p.notBefore)) {
     if (!(await isLive(post.url))) continue;
     if (DRY_RUN) {
       log(`${post.slug}: would ping IndexNow (dry run)`);

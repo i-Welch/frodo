@@ -166,6 +166,8 @@ Post text, for the RAVEN company page, modeled on the variants in `marketing/lin
 - Ends with one question to community bankers, then a blank line and exactly five hashtags (e.g. `#CommunityBanking #CreditUnions #BankingInnovation #Fintech #Lending`), chosen to fit the type.
 - Must not claim anything the article does not support.
 
+**Follow-up post.** Also write `marketing/linkedin/queue/<slug>-followup.md`, posted automatically a week later to bring the article back into the feed. Same front matter, except `slug: <slug>-followup` and an added line `notBefore: <publish date + 7 days, YYYY-MM-DD>`. Same rules as above, but 100-160 words built around a *different* finding from the launch post (a number, comparison or implication the launch post did not use), opening with that finding. Do not refer to the earlier post or say "last week".
+
 ## Verify
 
 From `dashboard/`:
@@ -178,9 +180,9 @@ Fix anything that fails. Do not ship a failing article.
 ## Ship
 
 1. Append a row to `marketing/article-log.md` (create it with a header row if missing): `| <publish date> | <type #> <type name> | <slug> | <subject> |`.
-2. Work on a branch named `article/<slug>` created from an up-to-date `master`. Commit everything (article, companions, LinkedIn queue file, log). Commit message style:
+2. Work on a branch named `article/<slug>` created from an up-to-date `master`. Commit everything (article, companions, both LinkedIn queue files, log). Commit message style:
    - Subject: `Add <Subject> deep dive, ROI audit, and white-label demo` for types 2/6; `Add <short title> analysis` or `Publish <short title> article` otherwise.
    - Body: `Type <n> <type name> on <subject> (<City>, <ST>): ` then what was added, the headline numbers, and the data sources (e.g. "NCUA charter 68670, real 2024 HMDA origination counts"). Note firsts ("First Georgia credit union in the series.").
-3. Push and open a PR against `master` with `gh pr create`. Title: `Article: <title>`. Body: the type and why this subject, the description, word count, the full source list (URL per source), anything estimated, and the LinkedIn post text.
+3. Push and open a PR against `master` with `gh pr create`. Title: `Article: <title>`. Body: the type and why this subject, the description, word count, the full source list (URL per source), anything estimated, and both LinkedIn post texts.
 4. **Auto mode only:** add the `auto-publish` label (`gh pr edit <n> --add-label auto-publish`). The auto-publisher merges labeled PRs about 24 hours after they open if CI is green and nobody closed the PR or removed the label, then posts the LinkedIn queue file to the company page once the article URL is live. When a human is present, leave the label off unless asked.
 5. Report the PR URL, the slug, and one line on the angle.

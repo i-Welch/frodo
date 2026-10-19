@@ -5,6 +5,7 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['test/**/*.test.ts'],
+    env: { LEAD_ENRICHMENT: 'off' },
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov', 'html'],
