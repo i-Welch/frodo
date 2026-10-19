@@ -26,6 +26,8 @@ export interface AuditRequest {
   auditSlug?: string;
   institutionName?: string;
   requestedAt: string;
+  statusUpdatedAt?: string;
+  followUpSentAt?: string;
 }
 
 export const auditQueueReady = ravenApiReady;
@@ -46,6 +48,11 @@ export async function setAuditStatus(body: {
   note?: string;
 }): Promise<{ ok: boolean; alreadyDelivered?: boolean }> {
   return api('/status', { method: 'POST', body: JSON.stringify(body) });
+}
+
+/** Sends the one check-in email; the server refuses until 5 days after delivery. */
+export async function sendAuditFollowUp(id: string): Promise<{ ok: boolean; alreadySent?: boolean }> {
+  return api('/follow-up', { method: 'POST', body: JSON.stringify({ id }) });
 }
 
 if (import.meta.main) {

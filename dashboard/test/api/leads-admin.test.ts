@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest';
 import { Elysia } from 'elysia';
 import { ensureTables } from '../../src/server/store/db';
-import { getItem, queryItems } from '../../src/server/store/base-store';
+import { getItem, queryItems, updateItem } from '../../src/server/store/base-store';
 
 const sendEmail = vi.fn().mockResolvedValue('msg_123');
 vi.mock('../../src/server/messaging/email', () => ({ sendEmail, EMAIL_FROM: 'noreply@reportraven.tech' }));
@@ -135,6 +135,31 @@ describe('audit request admin API', () => {
     } finally {
       delete process.env.RAVEN_AUTOMATION_SECRET;
     }
+  });
+
+  it('sends one follow-up, only after the follow-up window', async () => {
+    const id = await requestAudit(`followup-${Date.now()}@examplebank.com`);
+    const deliver = { id, status: 'delivered', auditSlug: 'example-bank', institutionName: 'Example Bank' };
+    await request('/api/v1/admin/audit-requests/status', { method: 'POST', body: deliver });
+    sendEmail.mockClear();
+
+    const early = await request('/api/v1/admin/audit-requests/follow-up', { method: 'POST', body: { id } });
+    expect(early.status).toBe(409);
+    expect(sendEmail).not.toHaveBeenCalled();
+
+    await updateItem({ PK: 'INTEREST', SK: id }, { statusUpdatedAt: new Date(Date.now() - 6 * 86_400_000).toISOString() });
+    const res = await request('/api/v1/admin/audit-requests/follow-up', { method: 'POST', body: { id } });
+    expect(res.status).toBe(200);
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+    expect(sendEmail.mock.calls[0][0].subject).toBe('Re: Your digital lending audit: Example Bank');
+    expect(sendEmail.mock.calls[0][0].text).toContain('https://reportraven.tech/audit/example-bank');
+
+    const again = await (await request('/api/v1/admin/audit-requests/follow-up', { method: 'POST', body: { id } })).json();
+    expect(again).toMatchObject({ alreadySent: true });
+    expect(sendEmail).toHaveBeenCalledTimes(1);
+
+    const { requests } = await (await request('/api/v1/admin/audit-requests?status=delivered')).json();
+    expect(requests.find((r: { id: string }) => r.id === id).followUpSentAt).toBeTruthy();
   });
 
   it('requires an audit slug to deliver and 404s unknown ids', async () => {
