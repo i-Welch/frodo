@@ -1,37 +1,56 @@
-# Registers the two Windows scheduled tasks for article automation.
-# Both run from the dedicated clone (~/projects/frodo-automation), updated to
-# origin/master before each run, so they always use the merged scripts.
+# Registers the Windows scheduled tasks for RAVEN automation. Each task has its
+# own clone under ~/projects, updated to origin/master before each run, so they
+# always use the merged scripts and never reset each other's work in progress.
 # Remove with:
-#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish' -Confirm:$false
+#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests' -Confirm:$false
 
-$Clone = Join-Path $env:USERPROFILE 'projects\frodo-automation'
+$Projects = Join-Path $env:USERPROFILE 'projects'
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
 
-if (-not (Test-Path $Clone)) {
-    gh repo clone i-Welch/frodo $Clone
-    Push-Location (Join-Path $Clone 'dashboard'); bun install; Pop-Location
+function Initialize-Clone([string]$Name) {
+    $path = Join-Path $Projects $Name
+    if (-not (Test-Path $path)) {
+        gh repo clone i-Welch/frodo $path
+        Push-Location (Join-Path $path 'dashboard'); bun install; Pop-Location
+    }
+    return $path
 }
+
+function Get-UpdateCommand([string]$Clone) {
+    "git -C '$Clone' fetch -q origin master; git -C '$Clone' checkout -q -f master; git -C '$Clone' reset -q --hard origin/master"
+}
+
+$ArticleClone = Initialize-Clone 'frodo-automation'
+$PublishClone = Initialize-Clone 'frodo-publish'
+$AuditClone = Initialize-Clone 'frodo-audits'
 
 $Settings = New-ScheduledTaskSettingsSet -WakeToRun -StartWhenAvailable -AllowStartIfOnBatteries `
     -DontStopIfGoingOnBatteries -ExecutionTimeLimit (New-TimeSpan -Hours 2) -MultipleInstances IgnoreNew
-$Update = "git -C '$Clone' fetch -q origin master; git -C '$Clone' checkout -q -f master; git -C '$Clone' reset -q --hard origin/master"
 
 # Tue/Wed/Thu 8:00 local time (this PC runs Eastern).
 $articleAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$Update; & '$Clone\automation\run-article.ps1'`""
+    -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $ArticleClone); & '$ArticleClone\automation\run-article.ps1'`""
 $articleTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Tuesday, Wednesday, Thursday -At 8:00am
 Register-ScheduledTask -TaskName 'RAVEN Article' -Action $articleAction -Trigger $articleTrigger `
     -Settings $Settings -Description 'Writes one RAVEN blog article and opens an auto-publish PR' -Force | Out-Null
 
-# Hourly: merge PRs past the 24h window, post queued LinkedIn updates.
+# Weekdays 11:00: build audits for free-audit requests from the site.
+$auditAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $AuditClone); & '$AuditClone\automation\run-article.ps1' " +
+        "-Prompt '/audit-request auto' -CloneName 'frodo-audits' -Port 3101 -LogName 'audit-request'`"")
+$auditTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday, Tuesday, Wednesday, Thursday, Friday -At 11:00am
+Register-ScheduledTask -TaskName 'RAVEN Audit Requests' -Action $auditAction -Trigger $auditTrigger `
+    -Settings $Settings -Description 'Builds audit pages for free-audit requests and opens auto-publish PRs' -Force | Out-Null
+
+# Hourly: merge PRs past the 24h window, post queued LinkedIn updates, email finished audits.
 $publishLog = Join-Path $LogDir 'auto-publish.log'
 $publishAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
-    -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$Update; bun '$Clone\automation\auto-publish.ts' *>> '$publishLog'`""
+    -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $PublishClone); bun '$PublishClone\automation\auto-publish.ts' *>> '$publishLog'`""
 $publishTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(5) `
     -RepetitionInterval (New-TimeSpan -Hours 1)
 Register-ScheduledTask -TaskName 'RAVEN Auto-Publish' -Action $publishAction -Trigger $publishTrigger `
-    -Settings $Settings -Description 'Merges auto-publish PRs after 24h and posts LinkedIn updates' -Force | Out-Null
+    -Settings $Settings -Description 'Merges auto-publish PRs after 24h, posts LinkedIn updates, emails finished audits' -Force | Out-Null
 
-Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish' |
+Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests' |
     Select-Object TaskName, State, @{ n = 'NextRun'; e = { ($_ | Get-ScheduledTaskInfo).NextRunTime } }

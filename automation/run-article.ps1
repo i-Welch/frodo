@@ -1,11 +1,20 @@
-# Scheduled /article run (Tue/Wed/Thu, see register-tasks.ps1).
-# Works in a dedicated clone so it never touches the main working copy.
+# Scheduled Claude run (see register-tasks.ps1). Defaults to /article, the
+# Tue/Wed/Thu article; the audit-request task passes its own prompt, clone and port.
+# Each task works in its own clone so runs never touch each other or the main
+# working copy.
+
+param(
+    [string]$Prompt = '/article auto',
+    [string]$CloneName = 'frodo-automation',
+    [int]$Port = 3100,
+    [string]$LogName = 'article'
+)
 
 $ErrorActionPreference = 'Stop'
-$Clone = Join-Path $env:USERPROFILE 'projects\frodo-automation'
+$Clone = Join-Path $env:USERPROFILE "projects\$CloneName"
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
-$Log = Join-Path $LogDir ("article-{0:yyyy-MM-dd-HHmm}.log" -f (Get-Date))
+$Log = Join-Path $LogDir ("$LogName-{0:yyyy-MM-dd-HHmm}.log" -f (Get-Date))
 Start-Transcript -Path $Log | Out-Null
 
 try {
@@ -22,8 +31,8 @@ try {
     bun install
     Set-Location $Clone
 
-    # The article run verifies pages on its own dev server, away from port 3000.
-    $env:ARTICLE_DEV_PORT = '3100'
+    # The run verifies pages on its own dev server, away from port 3000.
+    $env:ARTICLE_DEV_PORT = "$Port"
 
     $allowed = @(
         'Read', 'Edit', 'Write', 'Glob', 'Grep', 'WebSearch', 'WebFetch',
@@ -31,16 +40,16 @@ try {
         'Bash(grep *)', 'Bash(wc *)', 'Bash(cat *)', 'Bash(ls *)', 'Bash(head *)',
         'Bash(tail *)', 'Bash(sed -n *)', 'Bash(sleep *)'
     )
-    claude -p '/article auto' --permission-mode acceptEdits --allowedTools $allowed --output-format text
+    claude -p $Prompt --permission-mode acceptEdits --allowedTools $allowed --output-format text
     if ($LASTEXITCODE -ne 0) { throw "claude exited with $LASTEXITCODE" }
 }
 catch {
-    Write-Output "ARTICLE RUN FAILED: $_"
+    Write-Output "RUN FAILED ($Prompt): $_"
     exit 1
 }
 finally {
-    # Stop any dev server the run left on the automation port.
-    Get-NetTCPConnection -LocalPort 3100 -State Listen -ErrorAction SilentlyContinue |
+    # Stop any dev server the run left on its port.
+    Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue |
         ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }
     Stop-Transcript | Out-Null
 }

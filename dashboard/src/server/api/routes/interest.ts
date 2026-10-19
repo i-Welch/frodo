@@ -30,6 +30,8 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       email,
       bank,
       source,
+      // Audit requests move pending -> in_progress -> delivered (see leads-admin.ts).
+      ...(kind === 'audit' ? { status: 'pending' } : {}),
       timestamp,
       GSI1PK: 'INTEREST',
       GSI1SK: email,
