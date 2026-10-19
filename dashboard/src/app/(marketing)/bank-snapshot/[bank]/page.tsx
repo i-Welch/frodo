@@ -176,7 +176,6 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
             </strong>{' '}
             See the full <a href={`/bank-rankings/${stateSlug(inst.STALP)}`}>{awards[0].stateName} rankings</a>.
             <div className="bsn-badge">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={`${pathFor(r)}/badge.svg`} alt={awardLabel(awards[0])} height={64} />
             </div>
             <label className="bsn-label" htmlFor="bsn-embed">
