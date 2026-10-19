@@ -42,7 +42,7 @@ export function LoPreview({
   return (
     <div className="lo-preview">
       <style>{`
-        .lo-preview { font-family: 'DM Sans', -apple-system, sans-serif; background: #ffffff; color: #171717; border-radius: 14px; border: 1px solid #e5e5e5; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        .lo-preview { font-family: var(--font-dm-sans), 'DM Sans', -apple-system, sans-serif; background: #ffffff; color: #171717; border-radius: 14px; border: 1px solid #e5e5e5; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
         .lo-preview * { box-sizing: border-box; }
         .lo-topbar { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1.25rem; border-bottom: 1px solid #ededed; background: #fafafa; }
         .lo-brand { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; color: #0A0A0A; }

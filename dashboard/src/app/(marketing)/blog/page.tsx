@@ -390,7 +390,7 @@ export default function BlogIndex() {
         }
 
         .blog-index-demo-btn {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.9rem;
           font-weight: 500;
           padding: 0.75rem 1.5rem;

@@ -136,7 +136,6 @@ export default function GlossaryIndex() {
 }
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
 
   .gdx { max-width: 960px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
 
@@ -144,20 +143,20 @@ const styles = `
   .gdx-head { text-align: center; margin-bottom: 3rem; }
   .gdx-kicker { display: inline-flex; align-items: center; gap: 1rem; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.75rem; }
   .gdx-kicker-rule { display: inline-block; width: 42px; height: 1px; background: var(--accent-border); }
-  .gdx-head h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(2.8rem, 7vw, 4.4rem); line-height: 1.04; letter-spacing: -0.02em; }
+  .gdx-head h1 { font-family: var(--font-fraunces), 'Fraunces', serif; font-weight: 400; font-size: clamp(2.8rem, 7vw, 4.4rem); line-height: 1.04; letter-spacing: -0.02em; }
   .gdx-head h1 em { font-style: italic; color: var(--accent); font-weight: 300; }
   .gdx-sub { font-size: 1rem; color: var(--gray-400); line-height: 1.75; max-width: 540px; margin: 1.75rem auto 0; }
 
   /* Two-column layout: sticky letter rail + book */
   .gdx-layout { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 2rem; align-items: start; }
   .gdx-rail { position: sticky; top: 7rem; display: flex; flex-direction: column; align-items: center; gap: 0.1rem; padding: 0.55rem 0; border: 1px solid rgba(255,255,255,0.08); border-radius: 999px; background: rgba(255,255,255,0.02); }
-  .gdx-rail a { font-family: 'Fraunces', serif; font-style: italic; font-size: 0.88rem; color: var(--gray-500); text-decoration: none; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; transition: color 180ms, background 180ms; }
+  .gdx-rail a { font-family: var(--font-fraunces), 'Fraunces', serif; font-style: italic; font-size: 0.88rem; color: var(--gray-500); text-decoration: none; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; transition: color 180ms, background 180ms; }
   .gdx-rail a:hover { color: var(--accent); background: var(--accent-dim); }
 
   /* Groups: ghost letter + entries */
   .gdx-group { position: relative; display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: 1.5rem; padding: 2.25rem 0 1rem; scroll-margin-top: 9rem; }
   .gdx-group + .gdx-group { border-top: 1px solid rgba(255,255,255,0.06); }
-  .gdx-ghost { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 6rem; line-height: 0.9; color: transparent; -webkit-text-stroke: 1px rgba(108,142,255,0.38); position: sticky; top: 9rem; align-self: start; user-select: none; }
+  .gdx-ghost { font-family: var(--font-fraunces), 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 6rem; line-height: 0.9; color: transparent; -webkit-text-stroke: 1px rgba(108,142,255,0.38); position: sticky; top: 9rem; align-self: start; user-select: none; }
 
   /* Entries: typographic rows, not cards */
   .gdx-entries { display: flex; flex-direction: column; }
@@ -171,13 +170,13 @@ const styles = `
 
   .gdx-entry-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.45rem; }
   .gdx-term { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.015em; color: var(--white); }
-  .gdx-abbr { font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 0.95rem; color: var(--accent); margin-left: 0.65rem; }
+  .gdx-abbr { font-family: var(--font-fraunces), 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 0.95rem; color: var(--accent); margin-left: 0.65rem; }
   .gdx-topic { flex-shrink: 0; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; padding: 0.22rem 0.6rem; border-radius: 999px; }
   .gdx-topic-fraud { color: #fca5a5; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.22); }
   .gdx-topic-reg { color: #fcd34d; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.22); }
   .gdx-topic-verif { color: var(--accent); background: var(--accent-dim); border: 1px solid var(--accent-border); }
 
-  .gdx-def { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 1.02rem; line-height: 1.65; color: var(--gray-400); width: 100%; max-width: 620px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: break-word; }
+  .gdx-def { font-family: var(--font-fraunces), 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 1.02rem; line-height: 1.65; color: var(--gray-400); width: 100%; max-width: 620px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: break-word; }
   .gdx-goto { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.7rem; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-600); opacity: 0; transform: translateX(-4px); transition: opacity 220ms, transform 220ms, color 220ms; }
   .gdx-entry:hover .gdx-goto { opacity: 1; transform: none; color: var(--accent); }
 

@@ -10,7 +10,6 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
         :root {
           --black: #0A0A0A;
@@ -30,7 +29,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
         .site-shell *, .site-shell *::before, .site-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .site-shell {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           background: var(--black);
           color: var(--white);
           -webkit-font-smoothing: antialiased;
@@ -65,7 +64,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           transition: opacity 200ms !important;
         }
         .site-nav-cta:hover { opacity: 0.85; }
-        button.site-nav-cta { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; border: none; cursor: pointer; }
+        button.site-nav-cta { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.85rem; border: none; cursor: pointer; }
         .site-nav-mobile-link {
           display: none;
           color: var(--gray-300);
@@ -88,7 +87,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
         .site-cta h2 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
         .site-cta p { font-size: 0.95rem; color: var(--gray-400); line-height: 1.7; margin-bottom: 1.75rem; }
         .site-cta .form-btn {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.95rem;
           font-weight: 500;
           padding: 0.85rem 1.75rem;

@@ -218,7 +218,7 @@ const styles = `
   .glos-solution-cta { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; border: 1px solid var(--accent-border); background: rgba(108,142,255,0.05); border-radius: 14px; padding: 1.5rem 1.75rem; margin: 2.5rem 0; }
   .glos-solution-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-500); margin-bottom: 0.35rem; }
   .glos-solution-cta a { color: var(--accent); font-weight: 600; text-decoration: none; font-size: 1rem; }
-  .glos-cta-btn { font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; padding: 0.7rem 1.3rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .glos-cta-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 500; padding: 0.7rem 1.3rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .glos-cta-btn:hover { opacity: 0.85; }
   .glos-related { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; }
   .glos-related h2 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--gray-500); margin-bottom: 0.85rem; font-weight: 600; }

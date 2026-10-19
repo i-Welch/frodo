@@ -2,8 +2,7 @@ import type { Metadata } from 'next';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
-import '@neondatabase/auth/ui/css';
-import { Providers } from './providers';
+import { dmSans, fraunces } from './fonts';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://reportraven.tech'),
@@ -46,9 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
-        <Providers>{children}</Providers>
+        {/* The Neon Auth provider and its CSS live in the dashboard and sign-in/up
+            layouts, so marketing pages don't download the auth UI bundle. */}
+        {children}
         <Analytics />
         <SpeedInsights />
       </body>

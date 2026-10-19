@@ -40,7 +40,7 @@ export function DemoModal({
     <>
       <style>{`
         .demo-btn {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.9rem;
           font-weight: 500;
           padding: 0.8rem 1.5rem;
@@ -93,7 +93,7 @@ export function DemoModal({
           box-sizing: border-box;
         }
         .demo-modal {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           position: relative;
           width: 100%;
           max-width: 560px;
