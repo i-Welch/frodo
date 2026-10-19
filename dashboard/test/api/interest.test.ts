@@ -67,6 +67,14 @@ describe('interest API', () => {
     expect(confirmation.text).toContain('Q2 2026 FDIC call report: $2.38B in total assets, $1.85B in net loans (up 13.9% over the past year), and a 1.52% return on assets');
   });
 
+  it('tells De Novo Watch subscribers the issue includes tracker updates', async () => {
+    await notifyLead({ kind: 'subscribe', email: 'reader@example.org', source: 'de-novo-watch' });
+    await notifyLead({ kind: 'subscribe', email: 'other@example.org', source: 'article:robins-financial-20-million-rebate' });
+    const confirmations = sendEmail.mock.calls.map((c) => c[0]).filter((m) => m.to !== 'isaac@reportraven.tech');
+    expect(confirmations[0].text).toContain('every new bank filing, approval and opening');
+    expect(confirmations[1].text).not.toContain('De Novo Watch');
+  });
+
   it('accepts an email-only newsletter signup', async () => {
     const email = `sub-${Date.now()}@examplecu.org`;
     const res = await post({ kind: 'subscribe', email, source: 'audit:example-cu' });

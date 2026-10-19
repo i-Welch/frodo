@@ -78,6 +78,11 @@ function snapshotParagraph(s: BankSnapshot | undefined): string {
   );
 }
 
+// Signups from the tracker, de novo articles or the de novo solution page.
+function isDeNovoSource(source: string | undefined): boolean {
+  return !!source && /de-novo|denovo/.test(source);
+}
+
 function confirmationMessage(lead: Lead) {
   const first = lead.name?.trim().split(/\s+/)[0];
   const greeting = first ? `Hi ${first},` : 'Hi,';
@@ -88,6 +93,10 @@ function confirmationMessage(lead: Lead) {
       text:
         `${greeting}\n\nThanks for subscribing. You'll get RAVEN's new analyses of community banks and credit unions by email: ` +
         `deep dives built from FDIC, NCUA, HMDA and SEC filings, plus the occasional market read.\n\n` +
+        (isDeNovoSource(lead.source)
+          ? `Since you signed up from De Novo Watch, the weekly issue also lists every new bank filing, approval and opening we track. ` +
+            `The full tracker lives at ${SITE}/de-novo-watch\n\n`
+          : '') +
         `If there's an institution or question you want us to dig into, just reply. I read every response.` +
         signoff,
     },
