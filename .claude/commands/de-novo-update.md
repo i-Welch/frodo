@@ -27,6 +27,12 @@ Check, and note the URL and date of everything you use:
 - Never contradict a published article; if new facts supersede one, say so in `statusDetail` (e.g. "Opened 2026-10-01, after the article was published").
 - No em dashes. Keep the existing tone: factual, dated, specific.
 
+**Article leads.** Bank-name searches are among the site's best traffic (the Glades and Portrait deep dives), so for each Southeast row (SC, NC, GA, FL, TN, VA, AL) that is new or reached conditional approval, charter or opening in this run and has no `articleSlug`, append a topic to `marketing/topic-ideas.md` (create it with a `# Topic ideas` header if missing) unless one for that bank is already there:
+
+```
+- [ ] <Bank name>: <the angle, e.g. "a $25M Tampa de novo wins FDIC approval"> | type 8 | target query: "<bank name>" | why winnable: new bank, no existing coverage | added <YYYY-MM-DD>
+```
+
 If nothing changed beyond re-verification, still ship the refreshed `asOf` dates (they are what signal freshness), but skip the LinkedIn post.
 
 ## 3. LinkedIn post (only when there is news)
