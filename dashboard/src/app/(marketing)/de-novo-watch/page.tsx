@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   },
 };
 
+// Rows added or with a status change within two weeks of the last update get a badge.
+function isRecent(changed: string | undefined): boolean {
+  if (!changed) return false;
+  return Date.parse(TRACKER_SUMMARY.updated) - Date.parse(changed) <= 14 * 86_400_000;
+}
+
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
 const faqs = trackerFaqs();
@@ -93,6 +99,7 @@ const styles = `
   .dnw-status-application-pending { background: rgba(255,255,255,0.08); color: var(--gray-300); }
   .dnw-status-open { background: rgba(74,222,128,0.13); color: #86EFAC; }
   .dnw-faq h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.4rem 0 0.4rem; }
+  .dnw-new { display: inline-block; margin-left: 0.5rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 999px; background: var(--accent-dim); color: var(--accent); vertical-align: 2px; }
   .dnw-note { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; margin-top: 0.75rem; }
 `;
 
@@ -139,6 +146,7 @@ export default function DeNovoWatchPage() {
                 <tr key={b.name}>
                   <td>
                     <span className="dnw-bank">{b.name}</span>
+                    {isRecent(b.statusChanged) && <span className="dnw-new">Updated</span>}
                     {b.leadership && <div className="dnw-note">{b.leadership}</div>}
                   </td>
                   <td>{b.location}</td>
