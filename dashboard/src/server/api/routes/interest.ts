@@ -2,6 +2,7 @@ import { Elysia, t } from 'elysia';
 import { putItem } from '../../store/base-store';
 import { logger } from '../../logger';
 import { notifyLead } from '../../messaging/leads';
+import { bankSnapshot } from '../../messaging/lead-enrichment';
 
 /**
  * POST /api/v1/interest — Store marketing-site leads (newsletter signups, free
@@ -38,10 +39,15 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
     });
 
     logger.info({ email, kind, source }, 'New interest signup');
-    await notifyLead({ kind, email, name, bank, source });
+    // Audit requesters see their bank's latest call report figures right away
+    // (only for a confident FDIC match); looked up alongside the founder alert.
+    const [, snapshot] = await Promise.all([
+      notifyLead({ kind, email, name, bank, source }),
+      kind === 'audit' ? bankSnapshot({ email, bank }) : Promise.resolve(undefined),
+    ]);
 
     set.status = 201;
-    return { ok: true };
+    return snapshot ? { ok: true, snapshot } : { ok: true };
   },
   {
     body: t.Object({

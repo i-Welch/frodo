@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-import { describeInstitution } from '../../src/server/messaging/lead-enrichment';
+import { bankSnapshot, describeInstitution, toSnapshot } from '../../src/server/messaging/lead-enrichment';
 
 const optimum = { NAME: 'OptimumBank', CITY: 'Fort Lauderdale', STALP: 'FL', ASSET: 1386526, CERT: 35430, WEBADDR: 'www.optimumbank.com' };
 
@@ -51,5 +51,62 @@ describe('lead enrichment', () => {
     process.env.LEAD_ENRICHMENT = 'off';
     expect(await describeInstitution({ email: 'ceo@optimumbank.com' })).toEqual([]);
     expect(fetchMock).not.toHaveBeenCalled();
+  });
+});
+
+describe('bank snapshot', () => {
+  const fetchMock = vi.fn();
+  const report = (REPDTE: string, LNLSNET: number) => ({ REPDTE, ASSET: 1386526, DEP: 1200000, LNLSNET, ROA: 1.234 });
+
+  beforeEach(() => {
+    process.env.LEAD_ENRICHMENT = 'on';
+    fetchMock.mockReset();
+    vi.stubGlobal('fetch', fetchMock);
+  });
+
+  afterEach(() => {
+    process.env.LEAD_ENRICHMENT = 'off';
+    vi.unstubAllGlobals();
+  });
+
+  it('builds the latest quarter with year-over-year loan growth', () => {
+    const snap = toSnapshot(optimum, [report('20260630', 1100000), report('20260331', 1050000), report('20250630', 1000000)]);
+    expect(snap).toEqual({
+      name: 'OptimumBank',
+      city: 'Fort Lauderdale',
+      state: 'FL',
+      cert: 35430,
+      quarter: 'Q2 2026',
+      assets: '$1.39B',
+      deposits: '$1.20B',
+      loans: '$1.10B',
+      loanGrowthPct: 10,
+      roaPct: 1.23,
+    });
+  });
+
+  it('omits loan growth without a year-ago report', () => {
+    expect(toSnapshot(optimum, [report('20260630', 1100000)])?.loanGrowthPct).toBeUndefined();
+  });
+
+  it('only shows an ambiguous name search when there is one match', async () => {
+    fetchMock.mockResolvedValueOnce(fdicResponse([optimum, { ...optimum, NAME: 'Other Bank', CERT: 1 }]));
+    expect(await bankSnapshot({ email: 'someone@gmail.com', bank: 'Optimum' })).toBeUndefined();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('fetches financials for a domain match', async () => {
+    fetchMock.mockResolvedValueOnce(fdicResponse([optimum])).mockResolvedValueOnce(fdicResponse([report('20260630', 1100000)]));
+    const snap = await bankSnapshot({ email: 'ceo@optimumbank.com' });
+    expect(snap?.name).toBe('OptimumBank');
+    expect(decodeURIComponent(fetchMock.mock.calls[1][0])).toContain('CERT:35430');
+  });
+
+  it('is off in tests by default and never throws', async () => {
+    process.env.LEAD_ENRICHMENT = 'off';
+    expect(await bankSnapshot({ email: 'ceo@optimumbank.com' })).toBeUndefined();
+    process.env.LEAD_ENRICHMENT = 'on';
+    fetchMock.mockRejectedValue(new Error('down'));
+    expect(await bankSnapshot({ email: 'ceo@optimumbank.com' })).toBeUndefined();
   });
 });

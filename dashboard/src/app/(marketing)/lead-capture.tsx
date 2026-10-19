@@ -5,6 +5,19 @@ import { track } from '@vercel/analytics';
 
 type Variant = 'subscribe' | 'audit';
 
+// Latest call report figures the API returns for a confident FDIC match.
+interface BankSnapshot {
+  name: string;
+  city: string;
+  state: string;
+  quarter: string;
+  assets: string;
+  deposits: string;
+  loans: string;
+  loanGrowthPct?: number;
+  roaPct: number;
+}
+
 const COPY: Record<Variant, { tag: string; title: string; body: string; button: string; done: string }> = {
   subscribe: {
     tag: 'RAVEN Research',
@@ -28,6 +41,7 @@ export function LeadCapture({ variant, source, title }: { variant: Variant; sour
   const [bank, setBank] = useState('');
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [snapshot, setSnapshot] = useState<BankSnapshot | undefined>();
   const copy = COPY[variant];
 
   async function handleSubmit(e: React.FormEvent) {
@@ -46,6 +60,8 @@ export function LeadCapture({ variant, source, title }: { variant: Variant; sour
         }),
       });
       if (!res.ok) throw new Error();
+      const data = (await res.json().catch(() => ({}))) as { snapshot?: BankSnapshot };
+      setSnapshot(data.snapshot);
       setStatus('success');
       track('lead_submitted', { kind: variant, source });
     } catch {
@@ -115,6 +131,13 @@ export function LeadCapture({ variant, source, title }: { variant: Variant; sour
         .lead-btn:disabled { opacity: 0.6; cursor: default; }
         .lead-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
         .lead-done { font-size: 0.95rem; color: var(--white); margin: 0; }
+        .lead-snap { margin-top: 1.25rem; padding-top: 1.1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .lead-snap-label { font-size: 0.8rem; color: var(--gray-400); margin: 0 0 0.75rem !important; }
+        .lead-snap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+        .lead-snap-grid strong { display: block; font-size: 1.1rem; color: var(--white); font-weight: 600; }
+        .lead-snap-grid span { display: block; font-size: 0.72rem; line-height: 1.35; color: var(--gray-400); }
+        .lead-snap-note { font-size: 0.8rem !important; color: var(--gray-400); margin: 0.9rem 0 0 !important; }
+        @media (max-width: 700px) { .lead-snap-grid { grid-template-columns: repeat(2, 1fr); } }
         .lead-error { font-size: 0.85rem; color: #ff8a8a; margin: 0.75rem 0 0; }
         @media (max-width: 700px) {
           .lead-card { padding: 1.6rem 1.25rem; }
@@ -124,7 +147,29 @@ export function LeadCapture({ variant, source, title }: { variant: Variant; sour
       <span className="lead-tag">{copy.tag}</span>
       <h2>{title ?? copy.title}</h2>
       {status === 'success' ? (
-        <p className="lead-done">{copy.done}</p>
+        <>
+          <p className="lead-done">{copy.done}</p>
+          {snapshot && (
+            <div className="lead-snap">
+              <p className="lead-snap-label">
+                While you wait: {snapshot.name} ({snapshot.city}, {snapshot.state}), {snapshot.quarter} FDIC call report
+              </p>
+              <div className="lead-snap-grid">
+                <div><strong>{snapshot.assets}</strong><span>Total assets</span></div>
+                <div><strong>{snapshot.loans}</strong><span>Net loans</span></div>
+                <div>
+                  <strong>{snapshot.loanGrowthPct === undefined ? '–' : `${snapshot.loanGrowthPct > 0 ? '+' : ''}${snapshot.loanGrowthPct}%`}</strong>
+                  <span>Loan growth, 1 yr</span>
+                </div>
+                <div><strong>{snapshot.roaPct}%</strong><span>Return on assets</span></div>
+              </div>
+              <p className="lead-snap-note">
+                Your audit goes further: the borrower journey on your site today, the gaps, and what
+                source-verified intake would save, from your call report and HMDA data.
+              </p>
+            </div>
+          )}
+        </>
       ) : (
         <>
           <p>{copy.body}</p>
