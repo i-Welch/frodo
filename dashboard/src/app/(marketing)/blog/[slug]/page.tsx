@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getRelatedArticles } from '../articles-index';
+import { articles as ARTICLE_INDEX, getRelatedArticles } from '../articles-index';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
@@ -5467,6 +5467,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const html = convertMarkdown(cleanContent);
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
   const related = getRelatedArticles(slug);
+  // De novo readers are organizers and trackers, not banks with a call report to audit.
+  const isDeNovo = ARTICLE_INDEX.find((a) => a.slug === slug)?.category === 'denovo';
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
   // Articles with fewer than 3 sections render in one piece (no mid CTA).
@@ -5669,6 +5671,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
           {secondHalf && (
             <>
+              {isDeNovo ? (
+              <aside className="article-mid-cta">
+                <h2>Organizing a bank?</h2>
+                <p>
+                  Your business plan promised examiners a fraud program. RAVEN gives de novo banks
+                  source-verified onboarding from one link, live before day one.
+                </p>
+                <a href="/solutions/de-novo-bank-technology" className="article-mid-cta-btn">See the day-one stack</a>
+                <p className="article-mid-cta-alt">
+                  Following new charters? <a href="/de-novo-watch">De Novo Watch</a> tracks every
+                  filing, approval and opening.
+                </p>
+              </aside>
+              ) : (
               <aside className="article-mid-cta">
                 <h2>Verification shouldn&apos;t take weeks</h2>
                 <p>
@@ -5684,6 +5700,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </p>
                 )}
               </aside>
+              )}
               <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
             </>
           )}
@@ -5703,8 +5720,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </a>
             </aside>
           )}
-          <LeadCapture variant="audit" source={`article:${slug}`} />
-          <LeadCapture variant="subscribe" source={`article:${slug}`} />
+          {isDeNovo ? (
+            <LeadCapture variant="subscribe" source={`article:${slug}`} title="Get De Novo Watch updates by email" />
+          ) : (
+            <>
+              <LeadCapture variant="audit" source={`article:${slug}`} />
+              <LeadCapture variant="subscribe" source={`article:${slug}`} />
+            </>
+          )}
           {related.length > 0 && (
             <nav className="article-related" aria-label="Related articles">
               <div className="article-related-label">Related reading</div>

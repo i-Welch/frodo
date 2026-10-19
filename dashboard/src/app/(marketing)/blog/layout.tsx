@@ -332,6 +332,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           transition: opacity 200ms;
           white-space: nowrap;
         }
+        a.article-mid-cta-btn { display: inline-block; color: var(--black); text-decoration: none; }
         .article-mid-cta-btn:hover { opacity: 0.85; }
         .article-mid-cta-alt {
           margin-top: 1.25rem;
