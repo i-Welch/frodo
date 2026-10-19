@@ -123,6 +123,38 @@ export async function deliverAudit(lead: Lead, auditSlug: string, institutionNam
   });
 }
 
+/** One personal check-in a few days after an audit is delivered. Throws on
+ *  failure so the request stays eligible for the next run. */
+export async function auditFollowUp(lead: Lead, auditSlug: string, institutionName: string): Promise<void> {
+  const first = lead.name?.trim().split(/s+/)[0];
+  await sendEmail({
+    to: lead.email,
+    from: FOUNDER_FROM,
+    replyTo: FOUNDER_EMAIL,
+    subject: `Re: Your digital lending audit: ${institutionName}`,
+    text:
+      `${first ? `Hi ${first},` : 'Hi,'}
+
+Checking in on the ${institutionName} audit I sent last week:
+${SITE}/audit/${auditSlug}
+
+` +
+      `Two sections are worth a closer look: the comparison table, which sets each step of today's borrower journey against the same step with verification automated, and the ROI estimate, which runs on your own HMDA and call report volumes.
+
+` +
+      `If it would help to walk through the numbers together, or to see the white-label demo branded for ${institutionName}, here's my calendar:
+${CALENDLY_URL}
+
+` +
+      `And if the timing isn't right, no problem at all. Just reply and let me know.` +
+      `
+
+Isaac Welch
+Founder, RAVEN
+${SITE}`,
+  });
+}
+
 /** Sends the founder alert and the lead confirmation. Never throws: a failed
  *  email must not fail the signup, which is already stored. */
 export async function notifyLead(lead: Lead): Promise<void> {

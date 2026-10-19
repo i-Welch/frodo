@@ -17,7 +17,8 @@
 //
 // 3. Pings IndexNow once for each newly live article (Bing, Yandex, ...).
 // 4. For each claimed free-audit request (see audit-requests.ts), emails the
-//    requester once https://reportraven.tech/audit/<slug> returns 200.
+//    requester once https://reportraven.tech/audit/<slug> returns 200, then
+//    sends one check-in email 5 days after delivery.
 //
 // Usage: bun automation/auto-publish.ts [--dry-run]
 
@@ -26,7 +27,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
-import { auditQueueReady, listAuditRequests, setAuditStatus, siteUrl } from './audit-requests';
+import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { pingIndexNow } from './indexnow';
 
 const REPO = resolve(import.meta.dir, '..');
@@ -284,6 +285,26 @@ async function deliverAudits() {
   }
 }
 
+async function followUpAudits() {
+  if (!auditQueueReady()) return;
+  const due = (await listAuditRequests('delivered')).filter(
+    (r) => !r.followUpSentAt && r.statusUpdatedAt && Date.now() - Date.parse(r.statusUpdatedAt) >= 5 * 86_400_000,
+  );
+  for (const req of due) {
+    const tag = `audit ${req.auditSlug} for ${req.bank ?? req.email}`;
+    if (DRY_RUN) {
+      log(`${tag}: would send the follow-up (dry run)`);
+      continue;
+    }
+    try {
+      await sendAuditFollowUp(req.id);
+      log(`${tag}: follow-up sent`);
+    } catch (err) {
+      log(`${tag}: ${(err as Error).message}`);
+    }
+  }
+}
+
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
@@ -295,5 +316,6 @@ if (import.meta.main) {
   await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
   await pingNewArticles().catch((err) => log(`IndexNow step failed: ${(err as Error).message}`));
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
+  await followUpAudits().catch((err) => log(`audit follow-up step failed: ${(err as Error).message}`));
   log('done');
 }

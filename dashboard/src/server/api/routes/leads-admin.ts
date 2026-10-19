@@ -1,6 +1,6 @@
 import { Elysia, t } from 'elysia';
 import { getItem, queryItems, updateItem } from '../../store/base-store';
-import { deliverAudit } from '../../messaging/leads';
+import { auditFollowUp, deliverAudit } from '../../messaging/leads';
 import { createChildLogger } from '../../logger';
 
 const log = createChildLogger({ module: 'leads-admin' });
@@ -38,6 +38,7 @@ export function adminAuth(headers: Record<string, string | undefined>, set: { st
 }
 
 const STATUSES = ['pending', 'in_progress', 'delivered', 'declined'] as const;
+const FOLLOW_UP_AFTER_DAYS = 5;
 
 /**
  * Admin routes the article automation uses to fulfill free audit requests:
@@ -66,6 +67,8 @@ export const leadsAdminRoutes = new Elysia({ prefix: '/api/v1/admin/audit-reques
           auditSlug: i.auditSlug as string | undefined,
           institutionName: i.institutionName as string | undefined,
           requestedAt: i.timestamp as string,
+          statusUpdatedAt: i.statusUpdatedAt as string | undefined,
+          followUpSentAt: i.followUpSentAt as string | undefined,
         }));
       return { requests };
     },
@@ -119,4 +122,30 @@ export const leadsAdminRoutes = new Elysia({ prefix: '/api/v1/admin/audit-reques
         note: t.Optional(t.String({ maxLength: 500 })),
       }),
     },
+  )
+  .post(
+    '/follow-up',
+    async ({ body, set }) => {
+      const key = { PK: 'INTEREST', SK: body.id };
+      const item = await getItem(key);
+      if (!item || item.kind !== 'audit') {
+        set.status = 404;
+        return { error: 'Audit request not found' };
+      }
+      if (item.followUpSentAt) return { ok: true, alreadySent: true };
+      const deliveredAt = Date.parse((item.statusUpdatedAt as string) ?? '');
+      if (item.status !== 'delivered' || !(Date.now() - deliveredAt >= FOLLOW_UP_AFTER_DAYS * 86_400_000)) {
+        set.status = 409;
+        return { error: `Follow-ups go out ${FOLLOW_UP_AFTER_DAYS} days after delivery` };
+      }
+      await auditFollowUp(
+        { kind: 'audit', email: item.email as string, name: item.name as string | undefined },
+        item.auditSlug as string,
+        item.institutionName as string,
+      );
+      await updateItem(key, { followUpSentAt: new Date().toISOString() });
+      log.info({ id: body.id }, 'Audit follow-up sent');
+      return { ok: true };
+    },
+    { body: t.Object({ id: t.String({ pattern: '^SIGNUP#' }) }) },
   );
