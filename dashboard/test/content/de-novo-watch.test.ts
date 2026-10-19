@@ -51,3 +51,12 @@ describe('tracker CSV', () => {
     expect(lines).toHaveLength(1 + DE_NOVO_BANKS.length + CHARTER_MOVES.length);
   });
 });
+
+describe('tracker FAQ', () => {
+  it('names every bank in exactly one status answer', async () => {
+    const { trackerFaqs } = await import('../../src/app/(marketing)/de-novo-watch/tracker-faq');
+    const text = trackerFaqs().map((f) => f.a).join('\n');
+    for (const b of DE_NOVO_BANKS) expect(text, b.name).toContain(b.name);
+    expect(text).not.toContain('—');
+  });
+});

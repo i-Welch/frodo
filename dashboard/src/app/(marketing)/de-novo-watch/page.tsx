@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
 import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { trackerFaqs } from './tracker-faq';
 
 export const metadata: Metadata = {
   title: 'De Novo Bank Tracker: 2026 Charters and Applications',
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
 };
 
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
+
+const faqs = trackerFaqs();
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -56,6 +59,14 @@ const jsonLd = {
       dateModified: TRACKER_SUMMARY.updated,
       mainEntity: { '@id': 'https://reportraven.tech/de-novo-watch#dataset' },
     },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
   ],
 };
 
@@ -81,6 +92,7 @@ const styles = `
   .dnw-status-conditional-approval { background: rgba(255,196,0,0.14); color: #FFD666; }
   .dnw-status-application-pending { background: rgba(255,255,255,0.08); color: var(--gray-300); }
   .dnw-status-open { background: rgba(74,222,128,0.13); color: #86EFAC; }
+  .dnw-faq h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.4rem 0 0.4rem; }
   .dnw-note { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; margin-top: 0.75rem; }
 `;
 
@@ -180,6 +192,16 @@ export default function DeNovoWatchPage() {
             </tbody>
           </table>
         </div>
+
+        <section className="dnw-faq">
+          <h2 id="faq">Frequently asked questions</h2>
+          {faqs.map((f) => (
+            <div key={f.q}>
+              <h3>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </section>
 
         <h2 id="citation">Methodology and citation</h2>
         <p>
