@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
+import { LeadCapture } from '../../lead-capture';
 import { SOLUTIONS, getSolution } from '../solutions-data';
 
 export function generateStaticParams() {
@@ -117,6 +118,8 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
             </div>
           ))}
         </section>
+
+        <LeadCapture variant="audit" source={`solutions:${slug}`} />
 
         <div className="sol-related">
           <div className="sol-related-col">

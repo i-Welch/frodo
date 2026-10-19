@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { CalendlyButton } from '../calendly-button';
+import { LeadCapture } from '../lead-capture';
 import { articles, type Article } from './articles-index';
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://reportraven.tech/blog',
+    types: { 'application/rss+xml': 'https://reportraven.tech/blog/feed.xml' },
   },
 };
 
@@ -447,6 +449,10 @@ export default function BlogIndex() {
               <FeaturedCard key={a.slug} article={a} />
             ))}
           </div>
+        </div>
+
+        <div className="blog-section">
+          <LeadCapture variant="subscribe" source="blog-index" />
         </div>
 
         {/* Bank Performance Deep Dives */}

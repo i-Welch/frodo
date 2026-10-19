@@ -13,7 +13,8 @@
 // Without them, posts go through the signed-in Edge profile instead
 // (linkedin-browser.ts). With neither, queued posts wait.
 //
-// 3. For each claimed free-audit request (see audit-requests.ts), emails the
+// 3. Pings IndexNow once for each newly live article (Bing, Yandex, ...).
+// 4. For each claimed free-audit request (see audit-requests.ts), emails the
 //    requester once https://reportraven.tech/audit/<slug> returns 200.
 //
 // Usage: bun automation/auto-publish.ts [--dry-run]
@@ -24,11 +25,13 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, setAuditStatus, siteUrl } from './audit-requests';
+import { pingIndexNow } from './indexnow';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
 const POSTED_LOG = join(STATE_DIR, 'linkedin-posted.json');
 const LINKEDIN_ENV = join(STATE_DIR, 'linkedin.env');
+const INDEXNOW_LOG = join(STATE_DIR, 'indexnow-pinged.json');
 const LABEL = 'auto-publish';
 const DELAY_HOURS = 24;
 const DRY_RUN = process.argv.includes('--dry-run');
@@ -223,7 +226,29 @@ async function postQueued() {
   }
 }
 
-/* ---------- Step 3: deliver finished audits ---------- */
+/* ---------- Step 3: IndexNow for newly live articles ---------- */
+
+async function pingNewArticles() {
+  const pinged: Record<string, string> = existsSync(INDEXNOW_LOG) ? JSON.parse(readFileSync(INDEXNOW_LOG, 'utf8')) : {};
+  for (const post of readQueue().filter((p) => !pinged[p.slug])) {
+    if (!(await isLive(post.url))) continue;
+    if (DRY_RUN) {
+      log(`${post.slug}: would ping IndexNow (dry run)`);
+      continue;
+    }
+    try {
+      await pingIndexNow([post.url, `${siteUrl()}/blog`, `${siteUrl()}/blog/feed.xml`]);
+      pinged[post.slug] = new Date().toISOString();
+      mkdirSync(STATE_DIR, { recursive: true });
+      writeFileSync(INDEXNOW_LOG, JSON.stringify(pinged, null, 2));
+      log(`${post.slug}: pinged IndexNow`);
+    } catch (err) {
+      log(`${post.slug}: ${(err as Error).message}`);
+    }
+  }
+}
+
+/* ---------- Step 4: deliver finished audits ---------- */
 
 async function deliverAudits() {
   if (!auditQueueReady()) return;
@@ -239,6 +264,7 @@ async function deliverAudits() {
       try {
         await setAuditStatus({ id: req.id, status: 'delivered' });
         log(`${tag}: delivered`);
+        await pingIndexNow([url]).catch((err) => log(`${tag}: ${(err as Error).message}`));
       } catch (err) {
         log(`${tag}: ${(err as Error).message}`);
       }
@@ -255,6 +281,7 @@ if (import.meta.main) {
     log(`merge step failed: ${(err as Error).message}`);
   }
   await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
+  await pingNewArticles().catch((err) => log(`IndexNow step failed: ${(err as Error).message}`));
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
   log('done');
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
+import { LeadCapture } from '../lead-capture';
 import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 
 export const metadata: Metadata = {
@@ -195,6 +196,8 @@ export default function DeNovoWatchPage() {
           <a href="/solutions/de-novo-bank-technology">day-one verification stack</a> looks like, or
           read the <a href="/glossary/de-novo-bank">de novo bank</a> glossary entry.
         </p>
+
+        <LeadCapture variant="subscribe" source="de-novo-watch" />
       </div>
     </SiteShell>
   );

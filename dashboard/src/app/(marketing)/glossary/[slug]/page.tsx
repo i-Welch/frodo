@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
+import { LeadCapture } from '../../lead-capture';
 import { GLOSSARY_TERMS, getGlossaryTerm } from '../glossary-data';
 
 /** Renders [text](/path) markdown links in body strings as internal <a> elements. */
@@ -156,6 +157,8 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
             <CalendlyButton source={`glossary:${slug}`} label="Book a Demo" buttonClassName="glos-cta-btn" />
           </div>
         )}
+
+        <LeadCapture variant="subscribe" source={`glossary:${slug}`} />
 
         <div className="glos-related">
           {related.length > 0 && (

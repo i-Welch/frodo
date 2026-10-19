@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
+import { LeadCapture } from '../../lead-capture';
 import { INTEGRATIONS, getIntegration } from '../integrations-data';
 
 export function generateStaticParams() {
@@ -121,6 +122,8 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
             </div>
           ))}
         </section>
+
+        <LeadCapture variant="audit" source={`integrations:${slug}`} />
       </div>
     </SiteShell>
   );
