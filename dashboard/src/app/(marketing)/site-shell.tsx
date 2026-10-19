@@ -53,7 +53,10 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
         .site-nav-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--white); }
         .site-nav-wordmark { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; color: var(--white); }
         .site-nav-links { display: flex; gap: 2rem; align-items: center; }
-        .site-nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.85rem; transition: color 200ms; }
+        .site-nav-links a { color: var(--gray-400); text-decoration: none; font-size: 0.85rem; transition: color 200ms; white-space: nowrap; }
+        .site-nav-cta { white-space: nowrap; }
+        @media (max-width: 1100px) { .site-nav-links { gap: 1.1rem; } }
+        @media (max-width: 1000px) { .site-nav-links a[href^="tel:"] { display: none; } }
         .site-nav-links a:hover { color: var(--white); }
         .site-nav-cta {
           background: var(--white) !important;
@@ -136,8 +139,8 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           </a>
           <a href="/blog" className="site-nav-mobile-link">Blog</a>
           <div className="site-nav-links">
-            <a href="/">Home</a>
             <a href="/blog">Blog</a>
+            <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/solutions">Solutions</a>
             <a href="/integrations">Integrations</a>
             <a href="/glossary">Glossary</a>

@@ -270,6 +270,9 @@ export default function LandingPage() {
           transition: color 200ms;
         }
         .nav-links a:hover { color: var(--white); }
+        .nav-links a, .nav-cta { white-space: nowrap; }
+        @media (max-width: 1100px) { .nav-links { gap: 1.25rem; } }
+        @media (max-width: 1000px) { .nav-links a[href^="tel:"] { display: none; } }
         .nav-cta {
           background: var(--white) !important;
           color: var(--black) !important;
@@ -1051,6 +1054,7 @@ export default function LandingPage() {
           <a href="/blog" className="nav-blog-mobile">Blog</a>
           <div className="nav-links">
             <a href="/blog">Blog</a>
+            <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/solutions">Solutions</a>
             <a href="/glossary">Glossary</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
