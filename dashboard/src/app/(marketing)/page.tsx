@@ -206,7 +206,7 @@ export default function LandingPage() {
           --gray-900: #171717;
           --gray-800: #262626;
           --gray-600: #525252;
-          --gray-500: #737373;
+          --gray-500: #808080;
           --gray-400: #A3A3A3;
           --gray-300: #D4D4D4;
           --gray-200: #E5E5E5;
@@ -988,7 +988,7 @@ export default function LandingPage() {
         }
         .landing footer span {
           font-size: 0.75rem;
-          color: var(--gray-600);
+          color: var(--gray-500);
         }
         .footer-links {
           display: flex;
@@ -1397,7 +1397,7 @@ export default function LandingPage() {
         <footer>
           <div>
             <span>&copy; 2026 RAVEN. All rights reserved.</span>
-            <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.65rem', color: 'var(--gray-600)', letterSpacing: '0.05em' }}>A South Carolina company</span>
+            <span style={{ display: 'block', marginTop: '0.35rem', fontSize: '0.65rem', color: 'var(--gray-500)', letterSpacing: '0.05em' }}>A South Carolina company</span>
             <span className="footer-contact">
               <a href="tel:+12293796131">(229) 379-6131</a>
               <span aria-hidden="true"> · </span>

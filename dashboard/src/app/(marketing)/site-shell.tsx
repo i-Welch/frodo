@@ -15,7 +15,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           --black: #0A0A0A;
           --gray-900: #171717;
           --gray-600: #525252;
-          --gray-500: #737373;
+          --gray-500: #808080;
           --gray-400: #A3A3A3;
           --gray-300: #D4D4D4;
           --gray-200: #E5E5E5;
@@ -109,7 +109,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           justify-content: space-between;
           align-items: center;
         }
-        .site-shell footer span { font-size: 0.75rem; color: var(--gray-600); }
+        .site-shell footer span { font-size: 0.75rem; color: var(--gray-500); }
         .site-footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.5rem; }
         .site-footer-links a { font-size: 0.75rem; color: var(--gray-500); text-decoration: none; transition: color 200ms; }
         .site-footer-links a:hover { color: var(--white); }

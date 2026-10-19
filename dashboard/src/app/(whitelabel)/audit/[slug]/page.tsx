@@ -423,8 +423,8 @@ const styles = `
   .aud-shell *, .aud-shell *::before, .aud-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
   .aud-shell {
     --black: #0A0A0A;
-    --g900: #171717; --g800: #262626; --g600: #525252; --g500: #737373; --g400: #A3A3A3; --g300: #D4D4D4; --g200: #E5E5E5;
-    --gray-900: #171717; --gray-800: #262626; --gray-600: #525252; --gray-500: #737373; --gray-400: #A3A3A3; --gray-300: #D4D4D4; --gray-200: #E5E5E5;
+    --g900: #171717; --g800: #262626; --g600: #525252; --g500: #808080; --g400: #A3A3A3; --g300: #D4D4D4; --g200: #E5E5E5;
+    --gray-900: #171717; --gray-800: #262626; --gray-600: #525252; --gray-500: #808080; --gray-400: #A3A3A3; --gray-300: #D4D4D4; --gray-200: #E5E5E5;
     --white: #fff;
     --accent: #6C8EFF;
     --accent-dim: rgba(108,142,255,0.12);
@@ -619,7 +619,7 @@ const styles = `
   .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; }
 
   /* WhiteLabelPrompt modal */
-  .demo-modal-overlay { --black: #0A0A0A; --white: #fff; --g500: #737373; --gray-400: #A3A3A3; --gray-500: #737373; }
+  .demo-modal-overlay { --black: #0A0A0A; --white: #fff; --g500: #808080; --gray-400: #A3A3A3; --gray-500: #808080; }
 
   /* Interest form (used in WhiteLabelPrompt) */
   .interest-form { max-width: 520px; margin: 0 auto; }

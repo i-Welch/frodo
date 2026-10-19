@@ -14,7 +14,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           --gray-900: #171717;
           --gray-800: #262626;
           --gray-600: #525252;
-          --gray-500: #737373;
+          --gray-500: #808080;
           --gray-400: #A3A3A3;
           --gray-300: #D4D4D4;
           --gray-200: #E5E5E5;
@@ -441,7 +441,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         }
         .blog-shell footer span {
           font-size: 0.75rem;
-          color: var(--gray-600);
+          color: var(--gray-500);
         }
         .blog-footer-links {
           display: flex;
