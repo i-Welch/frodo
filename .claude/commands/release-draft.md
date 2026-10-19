@@ -13,7 +13,7 @@ Read `.claude/commands/article.md` first: its voice, data source, markdown, wiri
 
 ## 1. Pick the article
 
-Take the first commented-out slug in `BLOG_SLUGS`, in file order, skipping any marked `retired`. Evergreen guides (AI lending, white-label portal, digital account opening, open banking, Jack Henry, Fiserv, Chime) age best. Bank deep dives need the most refreshing. The two `SEO drafts` at the end were never reviewed: give them a full editorial pass, not just a fact check.
+Release the two `SEO drafts` first (the 2026-10-19 visibility check found their search results the weakest: spam pages and wrong-product "Mantle" listings), then take the first commented-out slug in `BLOG_SLUGS` in file order, skipping any marked `retired`. Evergreen guides (AI lending, white-label portal, digital account opening, open banking, Jack Henry, Fiserv, Chime) age best. Bank deep dives need the most refreshing. The two `SEO drafts` at the end were never reviewed: give them a full editorial pass, not just a fact check.
 
 ## 2. Check it is still true
 
