@@ -51,8 +51,22 @@ url: https://reportraven.tech/de-novo-watch
 
 Post text: 100-170 words, the news in the first line (e.g. "A new bank just filed for deposit insurance in Tampa."), the two or three facts that matter, one question for bankers or organizers, a blank line, then exactly five hashtags (e.g. `#DeNovo #CommunityBanking #BankCharter #Banking #Fintech`). No em dashes, no emoji, no link in the body.
 
+## 3b. Reporter pitch (only when there is news)
+
+Earned media is how the tracker gains authority, and only Isaac can send pitches, so make each one a two-minute job. When the run found a new filing, approval or opening that is newsworthy (first in a county or state in years, unusual capital, a notable founder, a fintech or foreign bank charter), write `marketing/pitches/de-novo-<YYYY-MM-DD>.md`:
+
+```
+---
+to: <reporter and outlet from the earned-media list in marketing/seo-aeo-playbook.md best suited to the story (local business journal for a local bank, The Bank Slate or American Banker for broader news)>
+subject: <specific, under 70 characters>
+---
+<email body, under 150 words: the news in one sentence, two or three data points from the tracker with their sources, one line offering the full data or an exclusive angle, a link to reportraven.tech/de-novo-watch, signed "Isaac Welch, RAVEN">
+```
+
+Plain, specific, no hype; reporters get dozens of these a day. Only facts already in the tracker with sources. Skip the pitch when nothing is newsworthy. The Monday digest links new pitches to Isaac.
+
 ## 4. Verify and ship
 
 From `dashboard/`: `bun run typecheck` and `bun run lint` pass; start the dev server on `$ARTICLE_DEV_PORT` (default 3000) if needed and confirm `/de-novo-watch` returns 200 and shows the changes.
 
-Branch `de-novo/<YYYY-MM-DD>` from an up-to-date `master`, commit (`Update De Novo Watch (<YYYY-MM-DD>)`, body listing each change with its source), push, and `gh pr create` titled `De Novo Watch update: <YYYY-MM-DD>` with the full change list and source URLs. **Auto mode only:** `gh pr edit <n> --add-label auto-publish`. Report the PR URL and a one-line summary of what changed.
+Branch `de-novo/<YYYY-MM-DD>` from an up-to-date `master`, commit (include the pitch file if written) (`Update De Novo Watch (<YYYY-MM-DD>)`, body listing each change with its source), push, and `gh pr create` titled `De Novo Watch update: <YYYY-MM-DD>` with the full change list and source URLs. **Auto mode only:** `gh pr edit <n> --add-label auto-publish`. Report the PR URL and a one-line summary of what changed.

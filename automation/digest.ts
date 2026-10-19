@@ -49,6 +49,25 @@ function linkedInPosts(): string[] {
   return [`LinkedIn posts this week: ${recent.length}`, ...recent.map(([slug]) => `  - ${slug}`)];
 }
 
+// Pitch drafts written by /de-novo-update this week, ready for Isaac to send.
+function pitches(): string[] {
+  try {
+    const out = execFileSync(
+      'git',
+      ['log', `--since=${new Date(WEEK_AGO).toISOString()}`, '--diff-filter=A', '--name-only', '--format=', 'origin/master', '--', 'marketing/pitches/'],
+      { cwd: REPO, encoding: 'utf8' },
+    );
+    const files = [...new Set(out.split('\n').map((l) => l.trim()).filter((l) => l.endsWith('.md')))];
+    if (files.length === 0) return [];
+    return [
+      `Reporter pitches ready to send (${files.length}):`,
+      ...files.map((p) => `  - https://github.com/i-Welch/frodo/blob/master/${p}`),
+    ];
+  } catch {
+    return [];
+  }
+}
+
 function problems(): string[] {
   if (!existsSync(LOG_DIR)) return [];
   const found: string[] = [];
@@ -71,6 +90,7 @@ const automation = [
   ...openPullRequests(),
   ...linkedInPosts(),
   ...(await deNovoChanges(new Date(WEEK_AGO))),
+  ...pitches(),
   ...problems(),
 ];
 
