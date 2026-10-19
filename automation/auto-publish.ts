@@ -28,7 +28,7 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
-import { pingIndexNow } from './indexnow';
+import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
 
 const REPO = resolve(import.meta.dir, '..');
@@ -36,6 +36,7 @@ const STATE_DIR = join(homedir(), '.raven');
 const POSTED_LOG = join(STATE_DIR, 'linkedin-posted.json');
 const LINKEDIN_ENV = join(STATE_DIR, 'linkedin.env');
 const INDEXNOW_LOG = join(STATE_DIR, 'indexnow-pinged.json');
+const SITEMAP_STATE = join(STATE_DIR, 'indexnow-sitemap.json');
 const LABEL = 'auto-publish';
 const DELAY_HOURS = 24;
 // LinkedIn: one post per run, spaced out, during the business day (ET) when
@@ -307,6 +308,28 @@ async function pingNewArticles() {
   }
 }
 
+// Any sitemap URL that is new or has a new lastmod (tracker updates, released
+// drafts, glossary and solution edits) gets pinged once it is live.
+async function pingSitemapChanges() {
+  const res = await fetch(`${siteUrl()}/sitemap.xml`, { signal: AbortSignal.timeout(15_000) });
+  if (!res.ok) throw new Error(`sitemap ${res.status}`);
+  const first = !existsSync(SITEMAP_STATE);
+  const seen: Record<string, string> = first ? {} : JSON.parse(readFileSync(SITEMAP_STATE, 'utf8'));
+  const { changed, next } = changedSitemapUrls(await res.text(), seen);
+  // The first run only records the baseline: every URL was submitted by hand once.
+  if (!first && changed.length > 0) {
+    if (DRY_RUN) {
+      log(`would ping IndexNow for ${changed.length} changed sitemap URL(s) (dry run)`);
+      return;
+    }
+    await pingIndexNow(changed.slice(0, 10_000));
+    log(`pinged IndexNow for ${changed.length} changed sitemap URL(s)`);
+  }
+  if (DRY_RUN) return;
+  mkdirSync(STATE_DIR, { recursive: true });
+  writeFileSync(SITEMAP_STATE, JSON.stringify(next, null, 2));
+}
+
 /* ---------- Step 4: deliver finished audits ---------- */
 
 async function deliverAudits() {
@@ -362,6 +385,7 @@ if (import.meta.main) {
   }
   await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
   await pingNewArticles().catch((err) => log(`IndexNow step failed: ${(err as Error).message}`));
+  await pingSitemapChanges().catch((err) => log(`IndexNow sitemap step failed: ${(err as Error).message}`));
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
   await followUpAudits().catch((err) => log(`audit follow-up step failed: ${(err as Error).message}`));
   log('done');
