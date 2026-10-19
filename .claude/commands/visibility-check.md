@@ -34,6 +34,14 @@ fintech vs community bank personal loans
 credit union digital lending audit
 ```
 
+Data-page queries: make sure these are also in `marketing/visibility-queries.md`, appending any that are missing. They track the free bank data pages (`/bank-snapshot`, `/bank-rankings`), which target questions about specific banks and states rather than software:
+```
+most efficient banks in South Carolina
+Georgia bank rankings ROA
+Conway National Bank return on assets
+community bank peer comparison tool
+```
+
 ## 2. Log it
 
 Append one section to `marketing/visibility-log.md` (create with a short header if missing):
