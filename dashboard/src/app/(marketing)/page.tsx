@@ -200,7 +200,6 @@ export default function LandingPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
 
         :root {
           --black: #0A0A0A;
@@ -222,7 +221,7 @@ export default function LandingPage() {
         .landing *, .landing *::before, .landing *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         .landing {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           background: var(--black);
           color: var(--white);
           -webkit-font-smoothing: antialiased;
@@ -291,7 +290,7 @@ export default function LandingPage() {
           border-radius: 6px;
         }
         button.nav-cta {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.85rem;
           border: none;
           cursor: pointer;
@@ -402,7 +401,7 @@ export default function LandingPage() {
           gap: 0.5rem;
           padding: 0.8rem 1.75rem;
           border-radius: 6px;
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.9rem;
           font-weight: 500;
           text-decoration: none;
@@ -910,7 +909,7 @@ export default function LandingPage() {
           justify-content: center;
         }
         .form-input {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.9rem;
           padding: 0.8rem 1rem;
           border-radius: 8px;
@@ -925,7 +924,7 @@ export default function LandingPage() {
         .form-input::placeholder { color: var(--gray-500); }
         .form-input:focus { border-color: rgba(255,255,255,0.4); }
         .form-btn {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           font-size: 0.9rem;
           font-weight: 500;
           padding: 0.8rem 1.5rem;

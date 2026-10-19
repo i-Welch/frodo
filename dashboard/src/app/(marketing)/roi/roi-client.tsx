@@ -259,7 +259,7 @@ export function WhiteLabelPrompt({ bankName, slug }: { bankName: string; slug: s
           }
         }
         .demo-modal {
-          font-family: 'DM Sans', sans-serif;
+          font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
           position: relative;
           width: 100%;
           max-width: 560px;

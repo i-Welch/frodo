@@ -420,7 +420,6 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
 }
 
 const styles = `
-  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
   .aud-shell *, .aud-shell *::before, .aud-shell *::after { box-sizing: border-box; margin: 0; padding: 0; }
   .aud-shell {
     --black: #0A0A0A;
@@ -430,7 +429,7 @@ const styles = `
     --accent: #6C8EFF;
     --accent-dim: rgba(108,142,255,0.12);
     --accent-border: rgba(108,142,255,0.25);
-    font-family: 'DM Sans', sans-serif;
+    font-family: var(--font-dm-sans), 'DM Sans', sans-serif;
     background: var(--black);
     color: var(--white);
     -webkit-font-smoothing: antialiased;
@@ -445,7 +444,7 @@ const styles = `
   .aud-nav-links a { color: var(--g400); text-decoration: none; font-size: 0.85rem; transition: color 200ms; }
   .aud-nav-links a:hover { color: var(--white); }
   .aud-nav-blog-mobile { display: none; color: var(--g300); text-decoration: none; font-size: 0.85rem; font-weight: 500; padding: 0.5rem 0.9rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; }
-  .aud-btn { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .aud-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .aud-btn:hover { opacity: 0.85; }
 
   /* Main layout */
@@ -614,7 +613,7 @@ const styles = `
   .aud-cta { text-align: center; margin: 4.5rem 0 2rem; padding: 3.5rem 2rem; border: 1px solid var(--accent-border); border-radius: 16px; background: rgba(108,142,255,0.04); }
   .aud-cta h2 { margin: 0 0 0.75rem; }
   .aud-cta p { font-size: 0.95rem; color: var(--g400); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }
-  .aud-cta-btn { font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; padding: 1rem 2rem; border-radius: 10px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .aud-cta-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; padding: 1rem 2rem; border-radius: 10px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .aud-cta-btn:hover { opacity: 0.85; }
 
   .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; }
@@ -625,10 +624,10 @@ const styles = `
   /* Interest form (used in WhiteLabelPrompt) */
   .interest-form { max-width: 520px; margin: 0 auto; }
   .form-row { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center; }
-  .form-input { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: var(--white); outline: none; transition: border-color 200ms; flex: 1; min-width: 160px; }
+  .form-input { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.9rem; padding: 0.8rem 1rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: var(--white); outline: none; transition: border-color 200ms; flex: 1; min-width: 160px; }
   .form-input::placeholder { color: var(--g500); }
   .form-input:focus { border-color: rgba(255,255,255,0.4); }
-  .form-btn { font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
+  .form-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; padding: 0.8rem 1.5rem; border-radius: 8px; border: none; background: var(--white); color: var(--black); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .form-btn:hover { opacity: 0.85; }
   .form-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .form-error { color: #ef4444; font-size: 0.8rem; margin-top: 0.75rem; }
@@ -641,7 +640,7 @@ const styles = `
   @keyframes demoOverlayIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes demoModalIn { from { opacity: 0; transform: translateY(18px) scale(0.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
   .demo-modal-overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(10,10,10,0.45); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); display: flex; align-items: center; justify-content: center; padding: 1.5rem; animation: demoOverlayIn 250ms ease-out both; }
-  .demo-modal { animation: demoModalIn 380ms cubic-bezier(0.22,1,0.36,1) 60ms both; font-family: 'DM Sans', sans-serif; position: relative; width: 100%; max-width: 560px; background: rgba(23,23,23,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 3rem 2.5rem 2.5rem; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
+  .demo-modal { animation: demoModalIn 380ms cubic-bezier(0.22,1,0.36,1) 60ms both; font-family: var(--font-dm-sans), 'DM Sans', sans-serif; position: relative; width: 100%; max-width: 560px; background: rgba(23,23,23,0.85); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 3rem 2.5rem 2.5rem; text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.5); }
   .demo-modal h2 { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; color: #fff; margin-bottom: 0.75rem; }
   .demo-modal > p { font-size: 0.95rem; color: #A3A3A3; line-height: 1.7; margin-bottom: 1.75rem; }
   .demo-modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #737373; cursor: pointer; padding: 0.4rem; line-height: 0; transition: color 200ms; }

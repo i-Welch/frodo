@@ -139,7 +139,7 @@ const styles = `
   .int-page h1 { font-size: clamp(2rem, 4.2vw, 2.8rem); font-weight: 700; letter-spacing: -0.028em; line-height: 1.12; margin-bottom: 1.5rem; }
   .int-intro p { font-size: 1.08rem; line-height: 1.8; color: var(--gray-300); margin-bottom: 1.1rem; }
   .int-hero-cta { display: flex; gap: 1rem; align-items: center; margin: 2rem 0 3rem; flex-wrap: wrap; }
-  .int-btn-primary { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: 8px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; }
+  .int-btn-primary { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: 8px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; }
   .int-btn-primary:hover { opacity: 0.85; }
   .int-btn-secondary { font-size: 0.9rem; color: var(--gray-300); text-decoration: none; padding: 0.85rem 1.4rem; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; transition: border-color 200ms, color 200ms; }
   .int-btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
