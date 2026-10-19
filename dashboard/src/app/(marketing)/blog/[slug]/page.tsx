@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getRelatedArticles } from '../articles-index';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
+import { LeadCapture } from '../../lead-capture';
 import { ROI_BANKS } from '../../roi/roi-data';
 
 /* ---------- Markdown-to-HTML helper ---------- */
@@ -5702,6 +5703,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </a>
             </aside>
           )}
+          <LeadCapture variant="audit" source={`article:${slug}`} />
+          <LeadCapture variant="subscribe" source={`article:${slug}`} />
           {related.length > 0 && (
             <nav className="article-related" aria-label="Related articles">
               <div className="article-related-label">Related reading</div>

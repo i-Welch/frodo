@@ -1,0 +1,109 @@
+import { sendEmail } from './email';
+import { logger } from '../logger';
+
+/**
+ * Lead notifications for the marketing site: an alert to the founder and a
+ * plain-text confirmation to the lead, sent from the founder's address so
+ * replies land in a real inbox.
+ *
+ * Env vars:
+ * - LEAD_ALERT_TO   (default: isaac@reportraven.tech)
+ * - LEAD_REPLY_FROM (default: Isaac Welch <isaac@reportraven.tech>)
+ */
+
+export type LeadKind = 'subscribe' | 'audit' | 'demo';
+
+export interface Lead {
+  kind: LeadKind;
+  email: string;
+  name?: string;
+  bank?: string;
+  source?: string;
+}
+
+const ALERT_TO = process.env.LEAD_ALERT_TO ?? 'isaac@reportraven.tech';
+const FOUNDER_FROM = process.env.LEAD_REPLY_FROM ?? 'Isaac Welch <isaac@reportraven.tech>';
+const FOUNDER_EMAIL = FOUNDER_FROM.match(/<(.+)>/)?.[1] ?? FOUNDER_FROM;
+const SITE = 'https://reportraven.tech';
+const CALENDLY_URL = 'https://calendly.com/welchcisaac/raven-intro';
+
+const KIND_LABEL: Record<LeadKind, string> = {
+  subscribe: 'Newsletter signup',
+  audit: 'Free audit request',
+  demo: 'Demo request',
+};
+
+/** Turns a source like "article:robins-financial-20-million-rebate" into a page URL. */
+function sourceUrl(source?: string): string | undefined {
+  const match = source?.match(/^(article|audit):([a-z0-9-]+)/);
+  if (!match) return undefined;
+  return `${SITE}/${match[1] === 'article' ? 'blog' : 'audit'}/${match[2]}`;
+}
+
+function alertMessage(lead: Lead) {
+  const lines = [
+    `${KIND_LABEL[lead.kind]} on reportraven.tech`,
+    '',
+    `Name:   ${lead.name ?? '(not given)'}`,
+    `Email:  ${lead.email}`,
+    lead.bank ? `Bank:   ${lead.bank}` : null,
+    `Source: ${lead.source ?? 'unknown'}`,
+    sourceUrl(lead.source) ? `Page:   ${sourceUrl(lead.source)}` : null,
+    '',
+    lead.kind === 'audit'
+      ? 'They were told the audit arrives within a few business days.'
+      : 'They received an automatic confirmation from you. Reply to this email to reach them directly.',
+  ].filter((l): l is string => l !== null);
+  const who = lead.bank ? `${lead.name ?? lead.email} (${lead.bank})` : (lead.name ?? lead.email);
+  return {
+    to: ALERT_TO,
+    replyTo: lead.email,
+    subject: `New lead: ${KIND_LABEL[lead.kind].toLowerCase()} from ${who}`,
+    text: lines.join('\n'),
+  };
+}
+
+function confirmationMessage(lead: Lead) {
+  const first = lead.name?.trim().split(/\s+/)[0];
+  const greeting = first ? `Hi ${first},` : 'Hi,';
+  const signoff = `\n\nIsaac Welch\nFounder, RAVEN\n${SITE}`;
+  const bodies: Record<LeadKind, { subject: string; text: string }> = {
+    subscribe: {
+      subject: "You're on the RAVEN list",
+      text:
+        `${greeting}\n\nThanks for subscribing. You'll get RAVEN's new analyses of community banks and credit unions by email: ` +
+        `deep dives built from FDIC, NCUA, HMDA and SEC filings, plus the occasional market read.\n\n` +
+        `If there's an institution or question you want us to dig into, just reply. I read every response.` +
+        signoff,
+    },
+    audit: {
+      subject: `Your digital lending audit${lead.bank ? ` for ${lead.bank}` : ''}`,
+      text:
+        `${greeting}\n\nThanks for requesting a free digital lending audit${lead.bank ? ` of ${lead.bank}` : ''}. ` +
+        `I'll build it from your public call report and HMDA data and send it within a few business days.\n\n` +
+        `Here's an example of what you'll get:\n${SITE}/audit/robins-financial-credit-union\n\n` +
+        `If you'd rather walk through it live, grab 20 minutes here:\n${CALENDLY_URL}` +
+        signoff,
+    },
+    demo: {
+      subject: 'Your RAVEN demo',
+      text:
+        `${greeting}\n\nThanks for your interest in RAVEN. The fastest way to see it is a 20-minute call; pick any time that works:\n${CALENDLY_URL}\n\n` +
+        `Or reply with a couple of times and I'll send an invite.` +
+        signoff,
+    },
+  };
+  return { to: lead.email, from: FOUNDER_FROM, replyTo: FOUNDER_EMAIL, ...bodies[lead.kind] };
+}
+
+/** Sends the founder alert and the lead confirmation. Never throws: a failed
+ *  email must not fail the signup, which is already stored. */
+export async function notifyLead(lead: Lead): Promise<void> {
+  const results = await Promise.allSettled([
+    sendEmail(alertMessage(lead)),
+    sendEmail(confirmationMessage(lead)),
+  ]);
+  for (const r of results) {
+    if (r.status === 'rejected') logger.error({ err: r.reason, kind: lead.kind }, 'Lead email failed');
+  }
+}
