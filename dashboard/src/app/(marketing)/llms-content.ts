@@ -3,6 +3,15 @@ import { SOLUTIONS } from './solutions/solutions-data';
 import { INTEGRATIONS } from './integrations/integrations-data';
 import { articles } from './blog/articles-index';
 import { BLOG_SLUGS, BLOG_DATES } from './blog/published';
+import { DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY } from './de-novo-watch/de-novo-data';
+
+function trackerSection(): string {
+  const rows = DE_NOVO_BANKS.map(
+    (b) =>
+      `- ${b.name} (${b.location}): ${STATUS_LABELS[b.status]}. ${b.statusDetail}${b.capital ? ` Capital: ${b.capital}.` : ''} Verified ${b.asOf}.`,
+  );
+  return `## De Novo Watch data (updated ${TRACKER_SUMMARY.updated})\n\n${TRACKER_SUMMARY.nationalApplications2026} FDIC deposit insurance applications filed nationally in 2026, ${TRACKER_SUMMARY.floridaApplications2026} in Florida. Free to cite with attribution to RAVEN (${SITE}/de-novo-watch); CSV at ${SITE}/de-novo-watch/data.csv.\n\n${rows.join('\n')}`;
+}
 
 // Generates llms.txt / llms-full.txt from the same data files that drive the
 // sitemap and the marketing pages, so they can never drift from what is live.
@@ -123,6 +132,7 @@ RAVEN never uses URL-encoded form submissions; all sensitive PII (SSNs, names, a
     integrationsSection(),
     glossarySection(true),
     articlesSection(),
+    trackerSection(),
     compliance,
     CONTACT,
     `## Canonical URL\n\n${SITE}`,
