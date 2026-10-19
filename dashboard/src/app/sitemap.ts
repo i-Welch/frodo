@@ -11,6 +11,10 @@ const SITE = 'https://reportraven.tech';
 
 // Bump manually when non-blog page content meaningfully changes.
 const SITE_UPDATED = new Date('2026-07-05');
+// Homepage: bump when its content changes (2026-10-19: free-audit card, De Novo Watch nav).
+const HOME_UPDATED = new Date('2026-10-19');
+// The blog index changes whenever an article is published.
+const BLOG_INDEX_UPDATED = new Date(Object.values(BLOG_DATES).sort().at(-1) ?? '2026-07-05');
 // About / AI-info pages: bump when their content changes. De Novo Watch uses
 // the tracker's own updated date, which the weekly /de-novo-update run sets.
 const PAGES_ADDED = new Date('2026-07-18');
@@ -44,8 +48,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   return [
-    { url: SITE, lastModified: SITE_UPDATED, changeFrequency: 'weekly', priority: 1 },
-    { url: `${SITE}/blog`, lastModified: SITE_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
+    { url: SITE, lastModified: HOME_UPDATED, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE}/blog`, lastModified: BLOG_INDEX_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
     ...SOLUTIONS.map((s) => ({
       url: `${SITE}/solutions/${s.slug}`,
