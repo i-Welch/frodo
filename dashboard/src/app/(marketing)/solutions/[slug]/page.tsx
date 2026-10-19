@@ -119,7 +119,12 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           ))}
         </section>
 
-        <LeadCapture variant="audit" source={`solutions:${slug}`} />
+        {/* Banks in organization have no call report to audit yet. */}
+        {slug === 'de-novo-bank-technology' ? (
+          <LeadCapture variant="subscribe" source={`solutions:${slug}`} title="Get De Novo Watch updates by email" />
+        ) : (
+          <LeadCapture variant="audit" source={`solutions:${slug}`} />
+        )}
 
         <div className="sol-related">
           <div className="sol-related-col">
