@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { track } from '@vercel/analytics';
+import { searchBanks, searchUrl, type BankMatch } from './bank-snapshot/fdic-search';
 
 type Variant = 'subscribe' | 'audit';
 
@@ -40,16 +41,39 @@ export function LeadCapture({
   source,
   title,
   defaultBank = '',
+  defaultCert,
 }: {
   variant: Variant;
   source: string;
   title?: string;
   /** Prefills the bank field on pages already about one bank. */
   defaultBank?: string;
+  /** That bank's FDIC cert, when the page knows it. */
+  defaultCert?: number;
 }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [bank, setBank] = useState(defaultBank);
+  // Set when the visitor picks an FDIC suggestion; typing again clears it, and
+  // free text (credit unions, unlisted banks) still submits by name.
+  const [cert, setCert] = useState<number | undefined>(defaultCert);
+  const [suggestions, setSuggestions] = useState<BankMatch[]>([]);
+
+  useEffect(() => {
+    const url = variant === 'audit' && !cert && bank.length >= 3 ? searchUrl(bank, 5) : undefined;
+    if (!url) {
+      setSuggestions([]);
+      return;
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => {
+      searchBanks(url, ctrl.signal).then(setSuggestions, () => {});
+    }, 250);
+    return () => {
+      clearTimeout(timer);
+      ctrl.abort();
+    };
+  }, [bank, cert, variant]);
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [snapshot, setSnapshot] = useState<BankSnapshot | undefined>();
@@ -66,7 +90,7 @@ export function LeadCapture({
           kind: variant,
           email,
           source,
-          ...(variant === 'audit' ? { name, bank } : {}),
+          ...(variant === 'audit' ? { name, bank, ...(cert ? { cert } : {}) } : {}),
           ...(website ? { website } : {}),
         }),
       });
@@ -124,6 +148,12 @@ export function LeadCapture({
           color: var(--white);
         }
         .lead-input::placeholder { color: var(--gray-500); }
+        .lead-bank { flex: 1 1 200px; min-width: 0; position: relative; display: flex; }
+        .lead-bank .lead-input { flex: 1 1 auto; }
+        .lead-suggest { position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 20; list-style: none; margin: 0; padding: 0.25rem 0; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: #111318; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+        .lead-suggest button { display: block; width: 100%; text-align: left; font: inherit; font-size: 0.85rem; padding: 0.5rem 0.9rem; border: none; background: none; color: var(--white); cursor: pointer; }
+        .lead-suggest button:hover, .lead-suggest button:focus { background: rgba(108,142,255,0.15); outline: none; }
+        .lead-suggest span { color: var(--gray-500); font-size: 0.78rem; margin-left: 0.35rem; }
         .lead-input:focus { outline: none; border-color: var(--accent); }
         .lead-btn {
           flex: 0 0 auto;
@@ -189,8 +219,24 @@ export function LeadCapture({
               <>
                 <input className="lead-input" type="text" placeholder="Your name" value={name}
                   onChange={(e) => setName(e.target.value)} required maxLength={120} autoComplete="name" />
-                <input className="lead-input" type="text" placeholder="Bank or credit union" value={bank}
-                  onChange={(e) => setBank(e.target.value)} required maxLength={160} autoComplete="organization" />
+                <div className="lead-bank">
+                  <input className="lead-input" type="text" placeholder="Bank or credit union" value={bank}
+                    onChange={(e) => { setBank(e.target.value); setCert(undefined); }}
+                    onBlur={() => setTimeout(() => setSuggestions([]), 150)}
+                    required maxLength={160} autoComplete="organization" />
+                  {suggestions.length > 0 && (
+                    <ul className="lead-suggest" role="listbox">
+                      {suggestions.map((m) => (
+                        <li key={m.CERT} role="option" aria-selected={false}>
+                          <button type="button" onMouseDown={(e) => e.preventDefault()}
+                            onClick={() => { setBank(m.NAME); setCert(m.CERT); setSuggestions([]); }}>
+                            {m.NAME} <span>{m.CITY}, {m.STALP}</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </>
             )}
             <input className="lead-input" type="email" placeholder="Work email" value={email}

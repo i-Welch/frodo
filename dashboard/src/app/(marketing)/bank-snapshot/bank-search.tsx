@@ -3,27 +3,11 @@
 import { useEffect, useState } from 'react';
 import { track } from '@vercel/analytics';
 import { bankSlug } from './peer-data';
-
-interface Match {
-  NAME: string;
-  CITY: string;
-  STALP: string;
-  CERT: number;
-}
-
-// FDIC BankFind allows cross-origin requests, so the search runs in the browser.
-// Each word becomes a case-insensitive wildcard on the institution name.
-function searchUrl(query: string): string | undefined {
-  const words = query.match(/[a-z0-9]{2,}/gi)?.slice(0, 4);
-  if (!words) return undefined;
-  const filters = ['ACTIVE:1', ...words.map((w) => `NAME:*${w}*`)].join(' AND ');
-  const params = new URLSearchParams({ filters, fields: 'NAME,CITY,STALP,CERT', sort_by: 'ASSET', sort_order: 'DESC', limit: '8' });
-  return `https://api.fdic.gov/banks/institutions?${params}`;
-}
+import { searchBanks, searchUrl, type BankMatch } from './fdic-search';
 
 export function BankSearch() {
   const [query, setQuery] = useState('');
-  const [matches, setMatches] = useState<Match[] | null>(null);
+  const [matches, setMatches] = useState<BankMatch[] | null>(null);
 
   useEffect(() => {
     const url = searchUrl(query);
@@ -34,9 +18,7 @@ export function BankSearch() {
     const ctrl = new AbortController();
     const timer = setTimeout(async () => {
       try {
-        const res = await fetch(url, { signal: ctrl.signal });
-        const body = (await res.json()) as { data?: { data: Match }[] };
-        setMatches((body.data ?? []).map((d) => d.data));
+        setMatches(await searchBanks(url, ctrl.signal));
       } catch {
         // Aborted by the next keystroke, or FDIC is down; keep the last results.
       }

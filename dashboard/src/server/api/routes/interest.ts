@@ -12,7 +12,7 @@ import { bankSnapshot } from '../../messaging/lead-enrichment';
 export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
   '/interest',
   async ({ body, set }) => {
-    const { email, name, bank, source, website } = body;
+    const { email, name, bank, cert, source, website } = body;
     const kind = body.kind ?? 'demo';
 
     // Honeypot: real visitors never see or fill the hidden "website" field.
@@ -30,6 +30,7 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       name,
       email,
       bank,
+      ...(cert ? { cert } : {}),
       source,
       // Audit requests move pending -> in_progress -> delivered (see leads-admin.ts).
       ...(kind === 'audit' ? { status: 'pending' } : {}),
@@ -41,7 +42,7 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
     logger.info({ email, kind, source }, 'New interest signup');
     // Audit requesters see their bank's latest call report figures right away
     // (only for a confident FDIC match), on the page and in the confirmation email.
-    const snapshot = kind === 'audit' ? await bankSnapshot({ email, bank }) : undefined;
+    const snapshot = kind === 'audit' ? await bankSnapshot({ email, bank, cert }) : undefined;
     await notifyLead({ kind, email, name, bank, source, snapshot });
 
     set.status = 201;
@@ -53,6 +54,8 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       name: t.Optional(t.String({ minLength: 1, maxLength: 120 })),
       kind: t.Optional(t.Union([t.Literal('subscribe'), t.Literal('audit'), t.Literal('demo')])),
       bank: t.Optional(t.String({ minLength: 1, maxLength: 160 })),
+      // FDIC cert from the form's bank autocomplete.
+      cert: t.Optional(t.Integer({ minimum: 1, maximum: 9_999_999 })),
       source: t.Optional(t.String({ maxLength: 200 })),
       website: t.Optional(t.String({ maxLength: 200 })),
     }),

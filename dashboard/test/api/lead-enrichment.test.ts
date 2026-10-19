@@ -102,6 +102,13 @@ describe('bank snapshot', () => {
     expect(decodeURIComponent(fetchMock.mock.calls[1][0])).toContain('CERT:35430');
   });
 
+  it('uses the cert picked from the autocomplete before guessing', async () => {
+    fetchMock.mockResolvedValueOnce(fdicResponse([optimum])).mockResolvedValueOnce(fdicResponse([report('20260630', 1100000)]));
+    const snap = await bankSnapshot({ email: 'someone@gmail.com', bank: 'Optimum', cert: 35430 });
+    expect(snap?.cert).toBe(35430);
+    expect(decodeURIComponent(fetchMock.mock.calls[0][0])).toContain('CERT:35430+AND+ACTIVE:1');
+  });
+
   it('is off in tests by default and never throws', async () => {
     process.env.LEAD_ENRICHMENT = 'off';
     expect(await bankSnapshot({ email: 'ceo@optimumbank.com' })).toBeUndefined();

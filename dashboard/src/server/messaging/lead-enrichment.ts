@@ -80,7 +80,12 @@ interface Financials {
   ROA: number;
 }
 
-async function oneInstitution(lead: { email: string; bank?: string }): Promise<Institution | undefined> {
+async function oneInstitution(lead: { email: string; bank?: string; cert?: number }): Promise<Institution | undefined> {
+  // The visitor picked their bank from the FDIC autocomplete: no guessing needed.
+  if (lead.cert) {
+    const [picked] = await fdic({ filters: `CERT:${lead.cert} AND ACTIVE:1`, limit: '1' });
+    if (picked) return picked;
+  }
   const domain = lead.email.split('@')[1]?.toLowerCase() ?? '';
   const root = domain.split('.').slice(-2, -1)[0];
   if (domain && root && root.length >= 4 && !FREE_MAIL.test(domain)) {
@@ -118,7 +123,7 @@ export function toSnapshot(i: Institution, reports: Financials[]): BankSnapshot 
  * Latest call report figures for the lead's bank, shown on the audit form's
  * thank-you state. Only returned for a confident match. Never throws.
  */
-export async function bankSnapshot(lead: { email: string; bank?: string }): Promise<BankSnapshot | undefined> {
+export async function bankSnapshot(lead: { email: string; bank?: string; cert?: number }): Promise<BankSnapshot | undefined> {
   if (process.env.LEAD_ENRICHMENT === 'off') return undefined;
   try {
     const inst = await oneInstitution(lead);

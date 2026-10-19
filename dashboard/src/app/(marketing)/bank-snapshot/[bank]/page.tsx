@@ -249,6 +249,7 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
           variant="audit"
           source={`bank-snapshot-${inst.CERT}`}
           defaultBank={inst.NAME}
+          defaultCert={inst.CERT}
           title={auditSlug ? 'Work at this bank? Get the audit updated for your team.' : `Want a free digital lending audit of ${inst.NAME}?`}
         />
 
