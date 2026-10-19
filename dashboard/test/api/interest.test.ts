@@ -65,6 +65,8 @@ describe('interest API', () => {
     const [alert, confirmation] = sendEmail.mock.calls.map((c) => c[0]);
     expect(alert.text).toContain('FDIC match: Example Bank, Mullins, SC: $2.38B assets, FDIC cert 9923');
     expect(confirmation.text).toContain('Q2 2026 FDIC call report: $2.38B in total assets, $1.85B in net loans (up 13.9% over the past year), and a 1.52% return on assets');
+    expect(confirmation.text).toContain('How it compares with banks its size in SC: https://reportraven.tech/bank-snapshot/9923');
+    expect(alert.text).toContain('Peer snapshot: https://reportraven.tech/bank-snapshot/9923');
   });
 
   it('tells De Novo Watch subscribers the issue includes tracker updates', async () => {

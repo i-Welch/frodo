@@ -67,6 +67,9 @@ function alertMessage(lead: Lead, institution: string[]) {
   };
 }
 
+// The bank's public peer comparison; the bare cert redirects to the named URL.
+const peerUrl = (s: BankSnapshot) => `https://reportraven.tech/bank-snapshot/${s.cert}`;
+
 function snapshotParagraph(s: BankSnapshot | undefined): string {
   if (!s) return '';
   const growth =
@@ -74,7 +77,8 @@ function snapshotParagraph(s: BankSnapshot | undefined): string {
   return (
     `While I work on it, here's where ${s.name} stood in its ${s.quarter} FDIC call report: ${s.assets} in total assets, ` +
     `${s.loans} in net loans${growth}, and a ${s.roaPct}% return on assets. The audit adds what the call report can't show: ` +
-    `how borrowers apply online today and what's missing from that journey.\n\n`
+    `how borrowers apply online today and what's missing from that journey.\n\n` +
+    `How it compares with banks its size in ${s.state}: ${peerUrl(s)}\n\n`
   );
 }
 
@@ -183,7 +187,7 @@ ${SITE}`,
 export async function notifyLead(lead: Lead): Promise<void> {
   // A snapshot already identifies the bank; skip the second FDIC lookup.
   const institution = lead.snapshot
-    ? [`FDIC match: ${lead.snapshot.name}, ${lead.snapshot.city}, ${lead.snapshot.state}: ${lead.snapshot.assets} assets, FDIC cert ${lead.snapshot.cert}`]
+    ? [`FDIC match: ${lead.snapshot.name}, ${lead.snapshot.city}, ${lead.snapshot.state}: ${lead.snapshot.assets} assets, FDIC cert ${lead.snapshot.cert}`, `Peer snapshot: ${peerUrl(lead.snapshot)}`]
     : await describeInstitution(lead);
   const results = await Promise.allSettled([
     sendEmail(alertMessage(lead, institution)),
