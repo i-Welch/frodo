@@ -11,7 +11,7 @@ import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
 import { alertFounder } from './alert';
 import { deNovoChanges } from './de-novo-changes';
-import { warmAccounts } from './warm-accounts';
+import { fetchPageVisits, warmAccounts } from './warm-accounts';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
 const REPO = resolve(import.meta.dir, '..');
@@ -91,16 +91,10 @@ function pitches(): string[] {
   }
 }
 
-// Visits this week to each bank's audit and white-label demo. Those pages are
-// mostly viewed by people at that bank, so this is the warmest sales signal on
-// the site. Uses the Vercel CLI's login on this PC (the analytics MCP gets 403).
+// Visits this week to each bank's audit and white-label demo (warm-accounts.ts).
 function auditVisits(): string[] {
   try {
-    const url = `/v1/query/web-analytics/visits/aggregate?projectId=frodo&teamId=team_Jd74RPAZq8LYaVpzn69Bbb7K&by=requestPath&since=${new Date(WEEK_AGO).toISOString()}&until=${new Date().toISOString()}&limit=100`;
-    // shell: vercel is a .cmd shim on Windows; quote the URL so cmd keeps the &s.
-    const out = execFileSync('vercel', ['api', `"${url}"`, '--method', 'GET'], { cwd: REPO, encoding: 'utf8', shell: true, stdio: ['ignore', 'pipe', 'ignore'] });
-    const rows = (JSON.parse(out) as { data: { requestPath: string; visitors: number }[] }).data;
-    return warmAccounts(rows, (slug) => getAudit(slug)?.bankName ?? slug);
+    return warmAccounts(fetchPageVisits(new Date(WEEK_AGO), REPO), (slug) => getAudit(slug)?.bankName ?? slug);
   } catch {
     return [];
   }

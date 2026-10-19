@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { warmAccounts } from '../../../automation/warm-accounts';
+import { hotAccounts, warmAccounts } from '../../../automation/warm-accounts';
 
 describe('warmAccounts', () => {
   it('sums audit and demo visits per bank, most interested first', () => {
@@ -20,5 +20,16 @@ describe('warmAccounts', () => {
 
   it('says nothing in a quiet week', () => {
     expect(warmAccounts([{ requestPath: '/', visitors: 3 }], (s) => s)).toEqual([]);
+  });
+});
+
+describe('hotAccounts', () => {
+  it('flags banks at or over the threshold across audit and demo', () => {
+    const rows = [
+      { requestPath: '/audit/bank-a', visitors: 1 },
+      { requestPath: '/wl/bank-a/verify', visitors: 2 },
+      { requestPath: '/wl/bank-b', visitors: 2 },
+    ];
+    expect(hotAccounts(rows, 3)).toEqual([{ slug: 'bank-a', audit: 1, demo: 2 }]);
   });
 });

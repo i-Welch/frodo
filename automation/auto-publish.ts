@@ -30,6 +30,8 @@ import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
+import { fetchPageVisits, hotAccounts } from './warm-accounts';
+import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -407,6 +409,30 @@ async function followUpAudits() {
   }
 }
 
+/* ---------- Same-day alert: a bank is looking at its audit or demo ---------- */
+
+// Three or more visitors in a day across one bank's audit and demo usually
+// means it is being passed around inside the bank: worth a same-day call.
+const HOT_VISITORS = 3;
+
+async function warmAccountAlerts() {
+  // Once a day, at the 9:05 ET run; alertFounder also caps each bank to one a day.
+  const hourEt = Number(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+  if (hourEt !== 9 && !DRY_RUN) return;
+  const hot = hotAccounts(fetchPageVisits(new Date(Date.now() - 86_400_000), REPO), HOT_VISITORS);
+  for (const h of hot) {
+    const name = getAudit(h.slug)?.bankName ?? h.slug;
+    const detail = `${h.audit + h.demo} visitors in the past 24h (audit ${h.audit}, demo ${h.demo}).`;
+    if (DRY_RUN) {
+      log(`would alert: ${name} ${detail}`);
+      continue;
+    }
+    await alertFounder(`warm-${h.slug}`, `${name} is looking at its RAVEN audit`,
+      `${detail}\n\nAudit: ${siteUrl()}/audit/${h.slug}\nDemo: ${siteUrl()}/wl/${h.slug}\n\nLikely people at ${name} sharing it internally. A same-day note or call while it is fresh.`);
+    log(`warm account alert: ${name} (${detail})`);
+  }
+}
+
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
@@ -421,5 +447,6 @@ if (import.meta.main) {
   await pingSitemapChanges().catch((err) => log(`IndexNow sitemap step failed: ${(err as Error).message}`));
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
   await followUpAudits().catch((err) => log(`audit follow-up step failed: ${(err as Error).message}`));
+  await warmAccountAlerts().catch((err) => log(`warm account step skipped: ${(err as Error).message.split('\n')[0]}`));
   log('done');
 }
