@@ -57,6 +57,19 @@ function linkedInPosts(): string[] {
   return [`LinkedIn posts this week: ${recent.length}`, ...recent.map(([slug]) => `  - ${slug}`)];
 }
 
+// Finished articles still commented out of BLOG_SLUGS, released twice a week by /release-draft.
+function heldDrafts(): string[] {
+  try {
+    const src = readFileSync(join(REPO, 'dashboard/src/app/(marketing)/blog/published.ts'), 'utf8');
+    const block = src.slice(src.indexOf('export const BLOG_SLUGS'), src.indexOf('export const BLOG_DATES'));
+    const held = block.split('\n').filter((l) => /^\s*\/\/\s*'[a-z0-9-]+',/.test(l)).length;
+    const retired = block.split('\n').filter((l) => /\/\/\s*retired/.test(l)).length;
+    return [`Held drafts left to release: ${held}${retired ? ` (${retired} retired)` : ''}`];
+  } catch {
+    return [];
+  }
+}
+
 // Pitch drafts written by /de-novo-update this week, ready for Isaac to send.
 function pitches(): string[] {
   try {
@@ -99,6 +112,7 @@ const automation = [
   ...linkedInPosts(),
   ...(await deNovoChanges(new Date(WEEK_AGO))),
   ...pitches(),
+  ...heldDrafts(),
   ...problems(),
 ];
 
