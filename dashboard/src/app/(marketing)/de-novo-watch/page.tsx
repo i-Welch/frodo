@@ -213,7 +213,7 @@ export default function DeNovoWatchPage() {
 
         <h2 id="citation">Methodology and citation</h2>
         <p>
-          Sources: the FDIC pending deposit insurance applications list, state banking regulator
+          Sources: the FDIC pending <a href="/glossary/fdic-deposit-insurance-application">deposit insurance applications</a> list, state banking regulator
           filings (for Florida, the Office of Financial Regulation), organizer press releases and
           public statements, and FDIC call reports for market analysis. Each row shows the date it
           was last verified. This tracker is free to cite with attribution to RAVEN
