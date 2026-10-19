@@ -35,10 +35,21 @@ const COPY: Record<Variant, { tag: string; title: string; body: string; button: 
   },
 };
 
-export function LeadCapture({ variant, source, title }: { variant: Variant; source: string; title?: string }) {
+export function LeadCapture({
+  variant,
+  source,
+  title,
+  defaultBank = '',
+}: {
+  variant: Variant;
+  source: string;
+  title?: string;
+  /** Prefills the bank field on pages already about one bank. */
+  defaultBank?: string;
+}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [bank, setBank] = useState('');
+  const [bank, setBank] = useState(defaultBank);
   const [website, setWebsite] = useState('');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [snapshot, setSnapshot] = useState<BankSnapshot | undefined>();

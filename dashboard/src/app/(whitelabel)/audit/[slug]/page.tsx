@@ -391,7 +391,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </>
           )}
 
-          <LeadCapture variant="audit" source={`audit:${audit.slug}`} />
+          <LeadCapture variant="audit" source={`audit:${audit.slug}`} defaultBank={audit.bankName} />
           <LeadCapture variant="subscribe" source={`audit:${audit.slug}`} />
 
           <div className="aud-methodology" id="methodology">
