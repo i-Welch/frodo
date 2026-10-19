@@ -23,6 +23,8 @@ import { verificationRoutes } from './api/routes/verifications';
 import { reportRoutes } from './api/routes/report';
 import { interestRoutes } from './api/routes/interest';
 import { leadsAdminRoutes } from './api/routes/leads-admin';
+import { newsletterAdminRoutes, unsubscribeRoutes } from './api/routes/newsletter';
+import { digestAdminRoutes } from './api/routes/digest';
 import { whitelabelRoutes } from './api/routes/whitelabel';
 import { whitelabelAdminRoutes } from './api/routes/whitelabel-admin';
 import { pool, TABLE_NAME, LOOKUP_TABLE_NAME } from './store/db';
@@ -165,6 +167,9 @@ export const app = new Elysia()
   .use(reportRoutes)
   .use(interestRoutes)
   .use(leadsAdminRoutes)
+  .use(unsubscribeRoutes)
+  .use(newsletterAdminRoutes)
+  .use(digestAdminRoutes)
   .use(whitelabelRoutes)
   .use(whitelabelAdminRoutes)
   ;
