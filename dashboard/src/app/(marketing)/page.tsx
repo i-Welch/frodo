@@ -749,6 +749,17 @@ export default function LandingPage() {
         }
 
         /* --- Core Integration --- */
+        .free-data {
+          padding: 6rem 3rem;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .free-data h2 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 2.5rem; max-width: 640px; }
+        .free-data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        .free-data-card { display: block; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; transition: border-color 0.2s, background 0.2s; }
+        .free-data-card:hover { border-color: rgba(108,142,255,0.35); background: var(--accent-dim); }
+        .free-data-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
+        .free-data-card p { font-size: 0.9rem; color: var(--gray-300); line-height: 1.6; }
         .core-integration {
           padding: 7rem 3rem;
           max-width: 1100px;
@@ -1039,6 +1050,8 @@ export default function LandingPage() {
           .report-section { padding: 4rem 1.5rem; }
           .report-grid { grid-template-columns: 1fr 1fr; }
           .core-integration { padding: 4rem 1.5rem; }
+          .free-data { padding: 4rem 1.5rem; }
+          .free-data-grid { grid-template-columns: 1fr; }
           .core-integration-inner { grid-template-columns: 1fr; gap: 3rem; }
           .cta { padding: 4rem 1.5rem; }
           .landing footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
@@ -1378,6 +1391,27 @@ export default function LandingPage() {
 
         <div className="divider" />
 
+        <section className="free-data reveal">
+          <div className="section-tag">Free bank data</div>
+          <h2>Research we publish from FDIC filings, free to use and cite.</h2>
+          <div className="free-data-grid">
+            <a className="free-data-card" href="/bank-snapshot">
+              <h3>Bank Peer Snapshot</h3>
+              <p>Any FDIC-insured bank against same-size banks in its state: ROA, margin, efficiency, assets per employee.</p>
+            </a>
+            <a className="free-data-card" href="/bank-rankings">
+              <h3>Bank rankings by state</h3>
+              <p>Every bank in a state ranked by return on assets and efficiency ratio, from the latest call reports.</p>
+            </a>
+            <a className="free-data-card" href="/de-novo-watch">
+              <h3>De Novo Watch</h3>
+              <p>Who is starting a bank in 2026: every FDIC filing, approval and opening, with capital and technology.</p>
+            </a>
+          </div>
+        </section>
+
+        <div className="divider" />
+
         <section id="get-started" className="cta reveal">
           <div className="cta-inner">
             <div className="section-tag">Get started</div>
@@ -1416,6 +1450,8 @@ export default function LandingPage() {
             <a href="/glossary">Glossary</a>
             <a href="/integrations">Integrations</a>
             <a href="/de-novo-watch">De Novo Watch</a>
+            <a href="/bank-snapshot">Bank Peer Snapshot</a>
+            <a href="/bank-rankings">Bank Rankings</a>
             <a href="/about">About</a>
             <a href="/legal/privacy-policy">Privacy Policy</a>
             <a href="/legal/terms-of-service">Terms of Service</a>
