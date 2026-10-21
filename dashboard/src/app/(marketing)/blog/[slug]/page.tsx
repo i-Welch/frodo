@@ -1434,90 +1434,85 @@ The 1-in-116 number is going to keep climbing. Fraud rings industrialize; commun
   'jack-henry-symitar-loan-origination': {
     title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
     description:
-      'SilverLake powers 425 banks, Symitar serves 700+ credit unions. Neither ships a native digital LOS. Here is what Jack Henry actually provides for loan origination, what requires a separate license, and how the 950-partner integration ecosystem works in practice.',
+      "SilverLake runs at more than 500 banks and Symitar at more than 700 credit unions, but neither core is a loan origination system. What Jack Henry sells for lending today, what its forthcoming Jack Henry Origination changes, and what to ask any vendor before you buy.",
     publishedDate: 'June 26, 2026',
-    readTime: '6 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
     content: `
-# Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support
+If you run a community bank or credit union on a Jack Henry core, you have plenty of company. Jack Henry's annual report for fiscal 2026, which ended June 30, says SilverLake is used by more than 500 banks and its core systems serve more than 900 banks in total. Symitar runs at more than 700 credit unions, from $21 million to more than $36 billion in assets.
 
-*Published June 26, 2026*
-
-If you are a community bank CEO running a Jack Henry core, you have more company than you might think. SilverLake powers roughly 425 commercial banks, including about one in five U.S. banks in the $1 billion to $30 billion asset range. Symitar, Jack Henry's credit union platform, serves more than 700 credit unions with a 95% retention rate.
-
-That footprint means when you search for Jack Henry Symitar loan origination or SilverLake digital lending, you are not asking a niche question. You are asking the same question hundreds of community banks asked this year. The real question underneath it: what does my core actually support, and what do I need to build or buy separately?
-
-The honest answer: more than most vendors will tell you, and less than the marketing suggests.
-
-## Two Platforms, Two API Layers
-
-SilverLake and Symitar are not two names for the same product. They use completely different integration architectures.
-
-SilverLake connects to third parties via jXchange (SOAP/XML). Symitar uses SymXchange (SOAP/WSDL). A fintech that wants to integrate both platforms must certify on each independently.
-
-This matters for your vendor conversations. When a lending software vendor says "we integrate with Jack Henry," the next question is: which Jack Henry? Certified on SilverLake via jXchange is not the same as certified on Symitar via SymXchange. If you are a community bank on SilverLake evaluating a vendor that built its integration primarily for credit unions on Symitar, you may be looking at a 6-to-12 month certification process before anything goes live.
-
-Ask for the core-specific certification before the demo, not after.
-
-:::pullquote
-Ask for the core-specific certification before the demo, not after.
-:::
-
-## What Jack Henry Ships for Lending
-
-Neither SilverLake nor Symitar bundles a full-featured modern LOS. Both are systems of record. The core handles general ledger, account servicing, and transaction processing. Origination workflow, borrower-facing applications, automated decisioning, and document management all require something separate.
-
-Jack Henry sells several of those separately.
-
-**LoanVantage** is Jack Henry's commercial LOS. It covers C&I, CRE, SBA, construction, and ABL loans. It handles financial spreading across business and personal tax returns, automated decisioning with customizable scorecards, covenant tracking, and document imaging. It integrates with both SilverLake and Symitar.
-
-The results are documented. Independent Financial, an $18.7 billion Texas bank, selected LoanVantage enterprise-wide in 2022. Killbuck Savings Bank, an $800 million institution, grew commercial loan volume 25% after replacing Excel-based manual processes with a Jack Henry lending solution.
-
-**Jack Henry Origination** (formerly branded "Opening Act") handles the consumer side: auto loans, home equity, credit cards, and mortgage. The pre-qualifying engine generates decisions in 10 to 15 seconds. It covers real-time credit and OFAC checks, automated document generation, and same-day funding into new accounts.
-
-The catch on both: LoanVantage and Jack Henry Origination are separately licensed products. They are not features included in your core contract. Pricing and implementation are separate conversations from your SilverLake or Symitar agreement.
-
-## The MeridianLink Deal and What It Reveals
-
-In 2025, Jack Henry and MeridianLink expanded a 15-year partnership into a formal reseller agreement. Jack Henry now officially sells MeridianLink One, MeridianLink Consumer, and MeridianLink Mortgage to its community bank and credit union clients.
-
-More than 500 banks and credit unions across both companies now run this combination.
-
-The practical translation: for many Jack Henry institutions, the right path to modern digital lending is a third-party LOS connected to the core via jXchange or SymXchange, not a Jack Henry native module. The reseller deal acknowledges this openly. For Symitar credit unions specifically, Synergent (Jack Henry's CU services arm) lists MeridianLink Consumer and MeridianLink Mortgage as preferred vendors.
-
-Banno, Jack Henry's digital banking frontend, surfaces a related gap. Banno consolidates online and mobile banking under one codebase but does not originate loans natively. For lending, Banno relies on embedded fintech partners or a connected LOS. The Banno embedded fintech marketplace includes Autobooks, QuickBooks, Atomic (payroll), Array (credit scoring), and Finicity/Plaid (account aggregation). There is no dedicated loan origination engine listed as a native Banno feature.
-
-## The Integration Ecosystem
-
-Jack Henry's Fintech Integration Network (FIN) has more than 950 certified fintech partners. Certification confirms technical soundness, not endorsement. And because each platform uses its own API, FIN membership does not automatically mean the integration works on your specific core.
-
-Notable 2024-2025 additions for lending:
-
-- **Algebrik AI** joined in March 2025, integrating an AI-driven LOS with Symitar via SymXchange
-- **Blend** certified digital account opening with both SilverLake (jXchange) and Symitar (SymXchange) separately, requiring two distinct certification passes
-- **MeridianLink** moved from FIN member to formal reseller partner in 2025
-
-The FIN is open to fintechs competing directly with Jack Henry products. That is a meaningful commitment to open architecture. It is also why "Jack Henry integrates with everyone" is true in principle and sometimes complicated in practice. Any FIN listing requires verifying core-specific certification before assuming a clean integration path.
-
-## What This Means for a Community Bank CEO
-
-Jack Henry's 2025 Strategy Benchmark found that 90% of surveyed institutions plan to enhance lending capabilities in the next 12 to 18 months. The top priorities: automated workflow, financial spreading, and portfolio credit monitoring for commercial banks; AI-assisted underwriting and decision engines for credit unions.
+That makes "what does my core support for digital lending?" a common question. The short answer: the core is a system of record. The borrower-facing application, the decision and the verification come from separately licensed products, either Jack Henry's or a partner's.
 
 :::stat
-**90%**
-Nine in ten Jack Henry institutions surveyed plan to enhance lending capabilities within the next 12 to 18 months.
+**500+**
+Banks running SilverLake, alongside 700+ credit unions on Symitar, per Jack Henry's fiscal 2026 annual report.
 :::
 
-That number confirms where the gap is. It is not in the core. SilverLake and Symitar are reliable systems of record, which is why retention rates run so high. The gap is in the origination layer: the borrower-facing application, the income and employment verification, the automated decision, the document assembly.
+## Two Cores, Two Integration Paths
 
-The standard deployment pattern for a Jack Henry institution that has solved this: SilverLake or Symitar as the system of record, a separate LOS (LoanVantage, MeridianLink, Blend, or Algebrik AI) handling origination workflow, and an open banking layer handling real-time income and employment verification at intake.
+SilverLake and Symitar use different APIs. SilverLake and Jack Henry's other bank cores connect through jXchange, long a SOAP API. Jack Henry's developer site now also lists a REST version of jXchange. Symitar connects through SymXchange, which can also run PowerOn scripts on the core.
 
-The borrower experience is determined by the origination and verification layer, not by the core.
+For a lending vendor, supporting both cores still means building two integrations. When a vendor says "we integrate with Jack Henry," ask three things: which core, which API, and how many institutions on your core are live with it today.
 
 :::pullquote
-The borrower experience is determined by the origination and verification layer, not by the core.
+Ask which core, which API and how many live clients before the demo, not after.
 :::
 
-A community bank on SilverLake with a modern front-end LOS and real-time income verification can close loans as fast as any digital lender. That combination exists today, and the integration paths are well-documented. The core is not the constraint. The integration is.
+## What Jack Henry Sells for Lending
+
+**LoanVantage** is Jack Henry's loan origination system. Its core strength is commercial lending: C&I, commercial real estate, SBA and construction, with financial spreading, credit memos and decisioning. Jack Henry also positions it for consumer origination. It works with both SilverLake and Symitar.
+
+Two documented results:
+
+- **Independent Financial**, an $18.7 billion Texas bank, chose LoanVantage enterprise-wide in February 2022.
+- **Killbuck Savings Bank** in Ohio, with about $827 million in assets, went live on LoanVantage in 2021. Total loan volume grew 25% in 2022, mostly in commercial, after the bank replaced spreadsheet-based processes (Independent Banker, January 2024).
+
+**OpenAnywhere** is Jack Henry's digital account opening product. Consumer and business deposit accounts are live. Jack Henry lists consumer loans as "coming soon."
+
+**Jack Henry Origination** is what comes next. Jack Henry describes it as a forthcoming loan and deposit origination solution, planned for the Jack Henry Platform, the public cloud-native, API-first core platform at the center of its strategy. For now, its features reach clients through OpenAnywhere and LoanVantage as they are delivered. Jack Henry's product page gives no general availability date.
+
+Each of these is licensed separately from the core contract.
+
+## The MeridianLink Option
+
+In August 2025, Jack Henry and MeridianLink expanded their 15-year alliance into a reseller agreement. Jack Henry now sells MeridianLink's consumer and mortgage lending software to its own clients. The two companies said they jointly serve more than 500 banks and credit unions.
+
+The deal says something about the market. For many Jack Henry institutions, modern consumer lending today means a partner's origination system connected to the core, sold by Jack Henry itself, while Jack Henry builds its own.
+
+## The Partner Network Changed in 2025
+
+On July 1, 2025, Jack Henry replaced its Vendor Integration Program with the Fintech Integration Network. Existing members had until July 1, 2026 to move over. Jack Henry says the network includes more than 850 fintechs.
+
+Two lending-related companies joined the old program in early 2025:
+
+- **Blend**, in February, to connect its digital account opening to both SilverLake and Symitar
+- **Algebrik AI**, in March, to connect its AI-driven loan origination platform to Symitar through SymXchange
+
+Network membership gives a vendor access to Jack Henry's APIs and a structured integration review. It is a starting point, not proof that the integration you need is live on your core.
+
+## Where the Gap Actually Is
+
+SilverLake and Symitar do their job as systems of record. For most Jack Henry institutions, the gap sits above the core: the borrower-facing application, income and employment verification, the decision and the documents.
+
+A Jack Henry institution that has closed that gap usually has three layers:
+
+- **The core** as the system of record
+- **An origination system**, such as LoanVantage, MeridianLink or another partner, running the workflow
+- **A verification layer** that pulls income, employment and bank data during the application, so the file reaches the loan officer complete
+
+:::pullquote
+The borrower experience is set by the origination and verification layers, not by the core.
+:::
+
+## Questions to Ask Before You Buy
+
+1. Which core and which API does the integration use, and how many institutions on my core are live with it today?
+2. Is the vendor in the Fintech Integration Network, and did it complete the move from the old program?
+3. What does it write back to the core: the booked loan, the customer record, the documents?
+4. Which Jack Henry Origination features will reach us through our existing LoanVantage or OpenAnywhere license, and when? Would a third-party tool overlap with them?
+5. Where does income verification happen: during the application, or after a loan officer asks for documents?
+
+The core is rarely the constraint. The integration choices around it are.
     `,
   },
   'fiserv-premier-digital-lending': {

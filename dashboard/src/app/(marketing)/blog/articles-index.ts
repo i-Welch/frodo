@@ -196,9 +196,9 @@ export const articles: Article[] = [
     slug: 'jack-henry-symitar-loan-origination',
     title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
     description:
-      'SilverLake powers 425 banks, Symitar serves 700+ credit unions. Neither ships a native digital LOS. Here is what Jack Henry actually provides for loan origination, what requires a separate license, and how the 950-partner integration ecosystem works in practice.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      "SilverLake runs at more than 500 banks and Symitar at more than 700 credit unions, but neither core is a loan origination system. What Jack Henry sells for lending today, what its forthcoming Jack Henry Origination changes, and what to ask any vendor before you buy.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {

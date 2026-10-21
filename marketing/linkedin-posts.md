@@ -751,6 +751,7 @@ I broke down what the deal really signals for community banks: https://reportrav
 ---
 
 ## POST 25 — August 11, 2026 (Tuesday)
+> **Superseded (Oct 2026):** figures below are out of date (SilverLake is 500+ banks, not 425; the partner network is 850+, not 950). Use `marketing/linkedin/queue/jack-henry-symitar-loan-origination*.md`.
 **Article:** Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support
 **URL:** https://reportraven.tech/blog/jack-henry-symitar-loan-origination
 
