@@ -223,9 +223,9 @@ export const articles: Article[] = [
     slug: 'community-bank-ai-lending-guide',
     title: 'How Community Banks Can Use AI in Lending Without the Risk',
     description:
-      'Community bank AI adoption tripled in 2026. Here is what the regulations actually require, where AI fits today, and how to implement it without triggering examiner problems.',
-    readTime: '7 min read',
-    date: 'June 2026',
+      'Bank generative AI adoption tripled going into 2026, and in April regulators replaced SR 11-7 with new model risk guidance that leaves generative AI out of scope. What the rules now say, where AI fits in lending, and how to stay out of exam findings.',
+    readTime: '6 min read',
+    date: 'October 2026',
     category: 'guide',
   },
   {

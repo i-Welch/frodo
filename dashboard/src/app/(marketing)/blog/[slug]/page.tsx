@@ -1694,68 +1694,71 @@ The merger gives Colony and First Reliance the balance sheet. Whether borrowers 
   },
   'community-bank-ai-lending-guide': {
     title: 'How Community Banks Can Use AI in Lending Without the Risk',
-    description: 'Community bank AI adoption tripled in 2026. Here is what the regulations actually require, where AI fits today, and how to implement it without triggering examiner problems.',
+    description: 'Bank generative AI adoption tripled going into 2026, and in April regulators replaced SR 11-7 with new model risk guidance that leaves generative AI out of scope. What the rules now say, where AI fits in lending, and how to stay out of exam findings.',
     publishedDate: 'June 26, 2026',
-    readTime: '7 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '6 min read',
     content: `# How Community Banks Can Use AI in Lending Without the Risk
 
 *Published June 26, 2026*
 
-Forty-nine percent of community banks deployed generative AI in 2026. That is triple the rate from 2025, according to Cornerstone Advisors. In mortgage lending specifically, 38% of lenders were using AI or machine learning in 2024, up from 15% just one year earlier.
+Forty-nine percent of banks had deployed generative AI going into 2026, triple the share a year earlier, according to Cornerstone Advisors' What's Going On in Banking 2026 survey of 416 bank and credit union executives. Credit unions were further along, at 59%. Of the banks that had not deployed it, three in ten planned to invest in 2026.
 
-The adoption wave is not theoretical. It is happening now, and the banks watching from the sidelines are falling behind on speed. Banks with AI underwriting handle three to four times more loan applications with the same staff. Processing times run 30 to 40% faster.
+The adoption wave is not theoretical. The question for a community bank is not whether to use AI. It is how to do it without handing examiners a finding.
 
 :::stat
 **49%**
-The share of community banks that deployed generative AI in 2026 — triple the rate from 2025, according to Cornerstone Advisors.
+The share of banks that had deployed generative AI going into 2026, triple the year before, according to Cornerstone Advisors.
 :::
-
-The question is not whether to use AI. It is how to do it without handing examiners a finding.
 
 ## What the Regulations Actually Say
 
-The governing framework is SR 11-7, issued by the Federal Reserve and OCC in 2011 and adopted by the FDIC in 2017. The core rule has not changed: model risk exists when model outputs are wrong or misused, vendor models count just as much as in-house models, and governance must be documented.
+For fifteen years the governing framework was SR 11-7, issued by the Federal Reserve and OCC in 2011 and adopted by the FDIC in 2017. That changed on April 17, 2026, when the three agencies issued revised interagency guidance on model risk management: SR 26-2 at the Fed, OCC Bulletin 2026-13, and FIL-15-2026 at the FDIC. It supersedes SR 11-7, and the FDIC rescinded its 2017 adoption.
 
-This is where community banks sometimes get a false sense of security. If a fintech built the AI model and you are licensing it, you cannot disclaim responsibility when an examiner asks about model validation. You are the institution. The model is yours to validate.
+Three things in the new guidance matter most to a community bank.
+
+**It is explicitly proportional.** The guidance is risk-based and scaled to a bank's model risk profile, size and complexity, and its most detailed expectations are aimed at the largest institutions. It builds on OCC Bulletin 2025-26, issued in October 2025, which told community banks that OCC guidance does not require annual model validation and that examiners will not criticize a reasonable choice of validation frequency or scope.
+
+**Vendor models are still your models.** Nothing in the revision lets a bank disclaim a model because a fintech built it. If you license it and it influences a decision, you are expected to understand it, monitor it and govern it at a level that fits the risk.
+
+**Generative and agentic AI are outside its scope.** The agencies left those to a separate process, a planned request for information on how banks use AI. For a bank evaluating an AI tool that reads documents or drafts credit memos, that means there is no single checklist to satisfy yet. Examiners will fall back on general safety-and-soundness and third-party risk expectations, which reward documentation.
 
 :::pullquote
 The question is not whether to use AI. It is how to do it without handing examiners a finding.
 :::
 
-Two regulatory updates in 2025 and 2026 add important context. OCC Bulletin 2025-26 clarified that community banks are not required to perform annual model validation. Requirements must be proportionate to the bank's size and complexity. Then on April 17, 2026, the OCC, Federal Reserve, and FDIC issued updated interagency Model Risk Management guidance that explicitly reset expectations for community-bank scale. It is the clearest signal regulators have sent that they understand a $300 million community bank cannot maintain the same MRM apparatus as JPMorgan Chase.
-
-There is one hard floor that does not bend for size: adverse action explainability. The CFPB is explicit that when AI influences a credit denial, lenders must provide specific, accurate reasons. Generic explanations do not satisfy ECOA or Regulation B simply because an algorithm made the call. Black-box models are not just a regulatory risk. They are a compliance liability.
+There is one hard floor that does not bend for size: adverse action. Regulation B requires a creditor to give an applicant the specific principal reasons for a denial. That requirement does not loosen because an algorithm influenced the decision, and "the model scored you low" is not a reason. Black-box models are not just a model risk problem. They are a fair lending and compliance liability.
 
 ## Where AI Actually Fits Today
 
-The three examiner requirements banks need to prepare for, based on OCC Bulletin 2026-13 and the updated interagency SR 26-2 framework: source-page citations on every figure an AI extracts, override history preserved when an underwriter adjusts an AI-generated value, and a named model risk owner inside the bank. These are auditable artifacts. The question every vendor should be able to answer is whether their system generates them automatically.
+Because the new guidance leaves generative AI to a later process, the safest approach is to build the artifacts an examiner would ask for anyway. For any AI that touches a loan file, three are worth requiring from day one: a citation back to the source page for every figure the AI extracts, a preserved history of every override when an underwriter changes an AI-generated value, and a named model risk owner inside the bank. Ask every vendor whether its system produces the first two automatically.
 
-With that framework in mind, the low-risk entry points are narrow.
+With that in mind, the low-risk entry points are narrow.
 
-**Fraud detection** is the fastest-ROI AI application for community banks. AI fraud detection reduces false positives by 50 to 70% while catching more actual fraud. Measurable results typically arrive within 60 to 90 days. Implementation costs for community bank tiers run $2,000 to $15,000 per month plus $15,000 to $80,000 upfront depending on core system complexity. ROI typically arrives within 6 to 12 months. The examiner risk is low because fraud detection models do not trigger adverse action decisions.
+**Fraud detection** is the most common first deployment. Fraud models flag applications and transactions for human review rather than deciding credit, so they do not trigger adverse action notices, and the value shows up in fewer false positives for staff to clear. The model risk questions are about monitoring and drift, not explainability to a declined borrower.
 
-**Document processing and data extraction** is the other clear entry point. One implementation documented in ICBA coverage in 2025 describes an AI agent that monitors a bank's email inbox for customer-submitted financial statements, downloads and extracts the key figures, runs calculations, and routes the summary into underwriting automatically. No human touches the document until the summary is ready for review.
+**Document processing and data extraction** is the other clear entry point. A typical narrow implementation watches an inbox for customer-submitted financial statements, extracts the key figures, runs the spreading calculations, and routes a summary to the underwriter with each number linked to its page in the source document. No credit decision is made until a person reviews it.
 
-This is a deliberately narrow use case. The AI did not make a credit decision. It extracted data from a PDF and did some arithmetic. The underwriter reviewed the output and made the call. That is the architecture examiners can follow.
+That architecture is deliberately boring. The AI did not decide anything. It extracted data from a PDF and did arithmetic, and the underwriter made the call with the evidence in front of them. That is a structure an examiner can follow.
 
-**Credit underwriting support** is where things get more complicated. ICBA's 2026 AI Task Force position is that AI can help community banks meet regulatory burdens and expand credit access, but "cannot replace the personal relationships and local knowledge integral to the community banking model." That framing is not anti-AI. It is a clear description of where AI belongs: supporting the underwriter, not replacing them. Banks that position AI as a recommendation engine with documented human override are in a far better regulatory position than those pitching AI as an autonomous credit decisioning system.
+**Credit underwriting support** is where things get more complicated. ICBA's policy position is that AI can help community banks automate compliance and loan underwriting but "cannot replace the personal relationships and local knowledge integral to the community banking model." That is not anti-AI. It describes where AI belongs: supporting the underwriter, not replacing them. Banks that use AI as a recommendation engine with documented human override are in a far better position than those pitching AI as autonomous credit decisioning.
 
 ## How to Implement Without Getting in Trouble
 
-Start with a use case that does not touch credit decisions. Fraud detection, statement extraction, document classification, and customer routing are all AI applications where the risk framework is simpler and the value is demonstrable within a quarter.
+Start with a use case that does not touch credit decisions. Fraud detection, statement extraction, document classification and customer routing are all AI applications where the risk questions are simpler and the value is visible within a quarter.
 
-When you do move toward underwriting, build the paper trail before you go live. Identify your model risk owner (that person needs to be named, not just implied). Document how you validated the model before deployment. Establish a process for preserving override history when underwriters adjust AI outputs.
+When you move toward underwriting, build the paper trail before you go live. Name your model risk owner. Document how you tested the model before deployment and how you will monitor it after. Preserve override history when underwriters adjust AI outputs. Keep the adverse action reasons traceable to factors a person can explain.
 
-For vendor selection, apply the same standard to AI tools that you would apply to any LOS vendor: ask which community banks in your asset range are running this system, how many examiners have reviewed it, and what the certification path looks like on your core. An AI vendor that cannot produce exam-ready documentation is not ready for community banking.
+For vendor selection, apply the same standard you would apply to any LOS vendor: ask which community banks in your asset range run the system, whether it has been through an exam at a bank like yours, and what documentation it produces for your model inventory. An AI vendor that cannot produce exam-ready documentation is not ready for community banking.
 
-The banks that will benefit most from AI over the next three years are not the ones who adopt it fastest. They are the ones who build a defensible governance structure from day one, then iterate within that framework as the regulatory landscape stabilizes.
+The banks that will benefit most from AI over the next three years are not the ones that adopt it fastest. They are the ones that build a defensible governance structure from day one, then iterate as regulators fill in the generative AI piece.
 
 :::pullquote
-The banks that will benefit most from AI over the next three years are not the ones who adopt it fastest.
+The banks that will benefit most from AI over the next three years are not the ones that adopt it fastest.
 :::
 
-ICBA's formal position to Congress is that AI-specific federal regulation is premature. The OCC, Fed, and FDIC have all signaled proportionality. The window for early adoption, with reasonable regulatory risk, is open. It will not stay this clear for long.
-  `,
+ICBA launched an AI Task Force in 2026, published an AI security readiness guide for community bankers in June, and told the Senate Banking Committee the same month that AI policy should account for community banks. Regulators have signaled proportionality in both the October 2025 OCC bulletin and the April 2026 interagency guidance. The window for careful early adoption is open, and the rules for generative AI are still being written.
+`,
   },
   'white-label-borrower-portal-community-bank': {
     title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
