@@ -2087,12 +2087,12 @@
     "slug": "first-community-bank-sc",
     "bankName": "First Community Bank",
     "shortName": "First Community",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "first-community-bank-sc",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$2.40B"
+        "value": "~$2.38B"
       },
       {
         "label": "Branches",
@@ -2107,36 +2107,36 @@
         "value": "FCCO (Nasdaq)"
       }
     ],
-    "summary": "First Community Bank runs 23 branches across the South Carolina Midlands, Upstate, and greater Augusta and Atlanta markets, built on a relationship-banking model that has grown the bank to $2.40B since its 1995 founding. Mortgage is the only product that can be started online, and it hands the borrower off to a separate third-party domain (firstcommunitysc.mymortgage-online.com, MeridianLink) where all listed rates read 'Call for Rate.' Consumer loans, auto, and home equity have no online application at all: the bank offers a contact/callback form that explicitly tells borrowers not to share confidential information in it. Business lending routes to that same lead-capture form. For a 23-branch bank competing in two metro areas (Columbia/Lexington and Augusta/Atlanta), the gap between its relationship-banking brand promise and a 2026 digital borrower's first click is significant.",
+    "summary": "First Community Bank runs 23 offices across the South Carolina Midlands, Upstate and Piedmont and the Augusta and Atlanta markets of Georgia, built on a relationship-banking model that has grown the bank to $2.38 billion since its 1995 founding, including the January 2026 acquisition of Signature Bank of Georgia. Mortgage is the only product that can be started online, and it hands the borrower off to a separate mortgage portal (firstcommunitysc.mymortgage-online.com) where rates read 'Call for Rates.' Consumer loans, auto and home equity route to a 'Request a Loan' contact form that tells borrowers not to share confidential information in it, and business lending routes to the same form. For a bank entering Sandy Springs and Augusta, where new borrowers compare banks online, the gap between its relationship-banking brand and a borrower's first click matters more than it did at home.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Online 'Apply Online Now' that routes to firstcommunitysc.mymortgage-online.com, a MeridianLink portal on a separate domain. All rates display as 'Call for Rate' rather than published figures.",
+        "detail": "'Apply Online' button routes to firstcommunitysc.mymortgage-online.com, a separate mortgage portal (ICE Encompass) off the bank's domain. Rates display as 'Call for Rates (800) 829-6372' rather than published figures.",
         "status": "weak"
       },
       {
         "channel": "Consumer loans",
-        "detail": "A 'Request a Loan' form at /contact/request-a-loan — a lead-capture page that warns borrowers not to include confidential information and promises a callback within one business day. Not a real application.",
+        "detail": "A 'Request a Loan' form at /contact/request-a-loan: a lead-capture page (name, contact details, loan type, branch, message) that warns borrowers not to include confidential information. Not a real application.",
         "status": "missing"
       },
       {
         "channel": "Home equity / HELOC",
-        "detail": "No apply button. Listed as a product on the personal loans page with no application link, rates, or after-hours capture.",
+        "detail": "No apply button. HELOC is listed on the personal loans page with a 'Connect With Us' button that opens the same request-a-loan form; no rates or application.",
         "status": "missing"
       },
       {
         "channel": "Auto loans",
-        "detail": "Listed as a product but no online application surfaced; customers are directed to call 800.829.6372 or visit a branch.",
+        "detail": "Listed on the personal loans page with a 'Connect With Us' button to the request-a-loan form, or a call to (800) 829-6372. No online application.",
         "status": "missing"
       },
       {
         "channel": "Business lending (all lines)",
-        "detail": "All business loans, lines of credit, and commercial real estate route to the same callback form as consumer loans. No digital intake for any business product.",
+        "detail": "All business loans, lines of credit, and commercial real estate route to the same request-a-loan form as consumer loans. No digital intake for any business product.",
         "status": "missing"
       },
       {
         "channel": "Existing-customer banking",
-        "detail": "Online banking via flex.online-banking-services.com (FIS) for personal and firstcommunitysc.ebanking-services.com for Business+. Mobile app (First Community Bank SC Mobile) available on iOS.",
+        "detail": "Online banking via cibng.ibanking-services.com (FIS) for personal and firstcommunitysc.ebanking-services.com for Business+. Mobile app available on iOS and Android.",
         "status": "ok"
       }
     ],
@@ -2144,12 +2144,12 @@
       {
         "title": "The loan request form is a callback, not an application",
         "severity": "gap",
-        "body": "The primary digital path for consumer and business lending is a five-field form that explicitly tells borrowers not to share confidential information, then promises a reply within one business day. That is a lead-capture widget, not a lending front door. A borrower who finds the bank at 7pm Friday through Google has no way to begin a verified application until Monday. At $2.40B with 23 branches and active metro competition from Augusta and Columbia credit unions and fintechs, every unattended after-hours inquiry is a lost file."
+        "body": "The primary digital path for consumer and business lending is a contact form that explicitly tells borrowers not to share confidential information, with no promised response time. That is a lead-capture widget, not a lending front door. A borrower who finds the bank at 7pm Friday through Google has no way to begin a verified application until Monday. At $2.38B with 23 branches and active metro competition from Augusta and Columbia credit unions and fintechs, every unattended after-hours inquiry is a lost file."
       },
       {
         "title": "The one online application leaves the brand and hides its rates",
         "severity": "friction",
-        "body": "Mortgage is the only product with a true online apply path, and it hands the borrower to firstcommunitysc.mymortgage-online.com, a MeridianLink-hosted portal on a separate domain. Once there, every rate field reads 'Call for Rate,' meaning the borrower who clicked 'Apply Online Now' still cannot find out what their loan might cost. A bank whose tagline is 'See the difference a community banker can make' disappears behind a generic vendor screen at the single highest-stakes conversion moment."
+        "body": "Mortgage is the only product with a true online apply path, and it hands the borrower to firstcommunitysc.mymortgage-online.com, a separate mortgage portal (ICE Encompass) off the bank's domain. Once there, rates read 'Call for Rates,' meaning the borrower who clicked 'Apply Online' still cannot find out what their loan might cost. A bank whose tagline is 'See the difference a community banker can make' disappears behind a generic vendor screen at the single highest-stakes conversion moment."
       },
       {
         "title": "Two metro growth markets, zero digital intake for business borrowers",
@@ -2159,7 +2159,7 @@
       {
         "title": "FIS infrastructure is already in place for a native integration",
         "severity": "note",
-        "body": "First Community Bank's digital banking stack runs on FIS: the consumer online banking portal is hosted on flex.online-banking-services.com and the Remote Deposit Capture product runs on FIS OneTouch (dlmlr5.fisglobal.com). A white-label intake layer that verifies borrowers and syncs applications directly into the FIS core is an incremental addition to infrastructure the bank already operates, not a rip-and-replace. The gap is intake and verification, not the underlying platform."
+        "body": "First Community Bank's digital banking stack runs on FIS: the consumer online banking portal is hosted on cibng.ibanking-services.com and the Remote Deposit Capture product runs on FIS OneTouch (dlmlr5.fisglobal.com). A white-label intake layer that verifies borrowers and syncs applications directly into the FIS core is an incremental addition to infrastructure the bank already operates, not a rip-and-replace. The gap is intake and verification, not the underlying platform."
       }
     ],
     "comparison": [
@@ -2170,12 +2170,12 @@
       },
       {
         "dimension": "Consumer and business intake",
-        "today": "Callback form — no confidential data, reply in 1 business day",
+        "today": "Contact form, no confidential data, no promised response time",
         "withRaven": "Verified application in ~90 seconds, captured 24/7"
       },
       {
         "dimension": "Brand experience",
-        "today": "Mortgage hands off to a MeridianLink domain",
+        "today": "Mortgage hands off to a separate portal domain",
         "withRaven": "First Community branding end to end"
       },
       {
@@ -2194,7 +2194,7 @@
         "withRaven": "Synced to FIS automatically"
       }
     ],
-    "sources": "firstcommunitysc.com (/, /personal, /personal/loans, /personal/mortgages, /personal/mortgages/mortgages-products, /business, /business/business-lending, /contact/request-a-loan, /contact/open-account, /meet-your-team, /about, /locations, /mobile-deposits, /sitemap.xml); firstcommunitysc.mymortgage-online.com (MeridianLink mortgage POS); flex.online-banking-services.com and firstcommunitysc.ebanking-services.com (FIS online banking); dlmlr5.fisglobal.com (FIS OneTouch Remote Deposit Capture — confirms FIS core); FDIC cert #34047. Tagline 'See the difference a community banker can make.' from the live homepage hero. Core system inferred as FIS from FIS OneTouch RDC domain and online-banking-services.com hosting pattern. Founded 1995, HQ Lexington SC; 23 branches across SC/GA; stock ticker FCCO (Nasdaq). Reviewed June 2026."
+    "sources": "firstcommunitybankers.com, formerly firstcommunitysc.com (/, /personal, /personal/loans, /personal/mortgages, /personal/mortgages/mortgages-products, /business, /business/business-lending, /contact/request-a-loan, /contact/open-account, /meet-your-team, /about, /locations, /mobile-deposits, /sitemap.xml); firstcommunitysc.mymortgage-online.com (ICE Encompass mortgage portal); cibng.ibanking-services.com and firstcommunitysc.ebanking-services.com (FIS online banking); dlmlr5.fisglobal.com (FIS OneTouch Remote Deposit Capture — confirms FIS core); FDIC cert #34047. Tagline 'See the difference a community banker can make.' from the live homepage hero. Core system inferred as FIS from FIS OneTouch RDC domain and online-banking-services.com hosting pattern. Founded 1995, HQ Lexington SC; 23 branches across SC/GA; stock ticker FCCO (Nasdaq). Signature Bank of Georgia acquisition closed January 8, 2026. Reviewed October 2026."
   },
   {
     "slug": "countybank",

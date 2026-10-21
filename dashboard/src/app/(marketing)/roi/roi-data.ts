@@ -630,13 +630,13 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'First Community Bank',
     shortName: 'First Community',
     articleSlug: 'first-community-bank-sc-cre-merger-growth',
-    articleTitle: 'First Community Bank: CRE Specialist on a Post-Merger Growth Curve',
+    articleTitle: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO',
     fdicCert: 34047,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$2.40B (Q1 2026, post-Signature Bank of Georgia acquisition)' },
-      { label: 'ROA', value: '0.94% (full year 2025); 1.09% annualized Q1 2026' },
-      { label: 'NIM', value: '3.32% (Q4 2025, tax equivalent); seven consecutive quarters of expansion' },
+      { label: 'Total assets', value: '$2.38B (Q2 2026, post-Signature Bank of Georgia acquisition)' },
+      { label: 'ROA', value: '1.25% (1H 2026, bank level)' },
+      { label: 'NIM', value: '3.51% (Q2 2026, tax equivalent); nine consecutive quarters of expansion' },
       { label: 'Branch count', value: '23' },
     ],
     volumes: {
@@ -660,10 +660,10 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'CRE-Heavy Book Means Manual Spreading Is a Bottleneck',
-        body: "With non-residential CRE at $904M out of a $1.54B total loan book -- nearly 59% of loans -- First Community's commercial underwriting team handles a disproportionate volume of small-business financials, rent rolls, and entity documentation. The FDIC classifies the bank as a \"Commercial Lending Specialization\" institution, and the Q4 2025 earnings showed $202.6M in full-year commercial loan production. At an average deal size around $700K-$1M, that represents 200-300 new commercial credits per year each requiring income verification, business cash flow analysis, and borrower identity confirmation. RAVEN's commercial verification workflows -- pulling bank-permissioned business account data, payroll records, and tax transcripts -- can cut the document-chasing phase of commercial underwriting by several weeks per deal, compressing turn times and allowing the commercial team to handle post-acquisition volume growth without proportional headcount increases.",
+        body: "With nonfarm nonresidential CRE at $906M out of a $1.59B total loan book (57% of loans, Q2 2026), First Community's commercial underwriting team handles a disproportionate volume of small-business financials, rent rolls, and entity documentation. The FDIC classifies the bank as a \"Commercial Lending Specialization\" institution, and the Q4 2025 earnings showed $202.6M in full-year commercial loan production. At an average deal size around $700K-$1M, that represents 200-300 new commercial credits per year each requiring income verification, business cash flow analysis, and borrower identity confirmation. RAVEN's commercial verification workflows -- pulling bank-permissioned business account data, payroll records, and tax transcripts -- can cut the document-chasing phase of commercial underwriting by several weeks per deal, compressing turn times and allowing the commercial team to handle post-acquisition volume growth without proportional headcount increases.",
       },
     ],
-    sources: 'FDIC Institutions API (cert 34047), FDIC Financials API (cert 34047), First Community Corporation Q4 2025 earnings press release (PRNewswire), First Community Corporation 2025 10-K overview (StockTitan/SEC), PRNewswire Signature Bank of Georgia acquisition announcement (July 2025 and January 2026), Columbia Business Monthly acquisition coverage, firstcommunitysc.com website and careers pages, Census QuickFacts Lexington County SC, USAFacts Lexington County population data, MacroTrends Columbia SC MSA population data, OriginationData.com HMDA search',
+    sources: 'FDIC Institutions API (cert 34047), FDIC Financials API (cert 34047), First Community Corporation Q4 2025 earnings press release (PRNewswire), First Community Corporation 2025 10-K overview (StockTitan/SEC), PRNewswire Signature Bank of Georgia acquisition announcement (July 2025 and January 2026), Columbia Business Monthly acquisition coverage, firstcommunitybankers.com (formerly firstcommunitysc.com) website, reviewed October 2026; First Community Corporation Q2 2026 earnings and leadership transition release (July 22, 2026), Census QuickFacts Lexington County SC, USAFacts Lexington County population data, MacroTrends Columbia SC MSA population data, OriginationData.com HMDA search',
   },
   {
     slug: 'countybank',

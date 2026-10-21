@@ -549,6 +549,7 @@ That is not a criticism. It is an observation about what the intake model that g
 ---
 
 ## POST 18 — July 29, 2026 (Tuesday)
+> **Superseded (Oct 2026):** the merger described below is wrong (the deal was Signature Bank of Georgia, closed Jan 8, 2026) and the article was rewritten. Use `marketing/linkedin/queue/first-community-bank-sc-cre-merger-growth.md`.
 **Article:** First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight
 **URL:** https://reportraven.tech/blog/first-community-bank-sc-cre-merger-growth
 

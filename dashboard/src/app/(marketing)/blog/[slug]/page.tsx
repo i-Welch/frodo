@@ -2992,65 +2992,77 @@ The bank that figured out how to pair its local credibility with a borrower inta
 `,
   },
   'first-community-bank-sc-cre-merger-growth': {
-    title: 'First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight',
-    description: 'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
+    title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO',
+    description: "First Community Bank of Lexington, SC closed its acquisition of Signature Bank of Georgia in January 2026, reached $2.38 billion in assets and grew second-quarter earnings 46%. Its bank CEO retires at year-end. What the numbers show, and what the next leadership team inherits.",
     publishedDate: 'April 30, 2026',
-    readTime: '6 min read',
-    content: `# First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
+    content: `
+*Updated October 22, 2026, with second-quarter 2026 results, the completed Signature Bank of Georgia acquisition and the bank's leadership transition. An earlier version of this article misidentified the merger partner and understated the bank's size.*
 
-*Published June 26, 2026*
+First Community Bank of Lexington, South Carolina, has spent 2026 doing three things at once: absorbing an acquisition, posting its best earnings in years and planning a change at the top.
 
-First Community Bank of South Carolina is not a bank most people outside the Midlands would know by name. It does not have a flashy digital presence. It has not announced a fintech partnership. It does not run Super Bowl ads. What it has done is compound quietly from a $200M community bank into a $1.18B institution serving Columbia, Sumter, Orangeburg, and surrounding markets, and then agree to a merger that will create a $2.4B franchise. All while running a commercial real estate concentration that regulators watch closely and competitors rarely match.
+On January 8, 2026, it closed its purchase of Signature Bank of Georgia, a two-office bank in Sandy Springs with about $274 million in assets. In July, it reported second-quarter net income up 46.5% from a year earlier. The same day, it announced that J. Ted Nissen, CEO and president of the bank, will retire on December 31, 2026.
 
-The merger in question is with Palmetto Bancshares, finalized in early 2026. The combined entity operates across the Midlands and Upstate under the First Community Bank brand. The $2.4B asset figure places the merged institution squarely in the mid-tier community bank category where deal economics, efficiency ratios, and technology platforms all come under more scrutiny than they did when the bank was half that size.
+## The Deal
 
-## The Midlands Growth Story That Explains the Numbers
+First Community Corporation (Nasdaq: FCCO) announced the Signature acquisition on July 14, 2025, in an all-stock deal valued at about $41.6 million, or about $50 million at year-end 2025 prices. Signature brought $229.8 million in deposits, $195.7 million in loans, SBA and USDA lending, and a foothold in the Atlanta metro.
 
-Columbia, South Carolina is not a coastal market. It does not have the in-migration story of Myrtle Beach or the aerospace economy of Charleston. What it has is a state government employment base, a large university hospital system, Fort Jackson (one of the largest Army training bases in the country), and a steady, mid-single-digit growth rate that has compounded steadily through multiple rate cycles.
+The systems conversion was completed in mid-March. Merger expenses fell from $1.6 million in the first quarter to $503,000 in the second.
 
-Richland County, home to Columbia, added 6,241 residents between 2020 and 2023. Lexington County next door added 9,421, reflecting the suburban expansion that is reshaping the Columbia MSA. The growth here is different from the coast: it is driven by military families, state government professionals, healthcare workers, and University of South Carolina's administrative and research staff. Stable incomes. Predictable employment verification. Lower documentation complexity than a coastal CRE market full of short-term rental investors and seasonal workers.
+The bank now runs 23 offices. Twenty are in South Carolina: six in Lexington County, four in Richland, three in Greenville, two in Newberry, and one each in Aiken, Anderson, Kershaw, Pickens and York counties. Three are in Georgia: Sandy Springs, Augusta and Columbia County.
 
-:::pullquote
-That is a favorable borrower profile for a community bank running a manual verification workflow. But the CRE book is a different story.
-:::
+## The Numbers
 
-First Community Bank SC's loan portfolio carries a commercial real estate concentration around 46% of total loans. For a $2.4B institution, that is a $1.1B CRE position spanning owner-occupied commercial properties, investor CRE, and construction loans across the Midlands and Upstate. At current collateral values and with the merger integration still ongoing, that concentration is not a risk flag. It is, however, a documentation management challenge.
+From the company's second-quarter release and the bank's June 30 call report:
+
+- **Total assets:** $2.38 billion, up from $2.05 billion a year earlier (bank level, FDIC)
+- **Loans:** $1.58 billion, with organic growth of 11% annualized in the first half
+- **Deposits:** $2.03 billion
+- **Q2 net income:** $7.6 million, up 46.5%; first-half net income $13.1 million, up 42.6%
+- **Net interest margin:** 3.51%, the ninth straight quarter of expansion
+- **Efficiency ratio:** 58.8% in Q2, down from 66.0% in Q1
+- **Nonperforming assets:** 0.04% of total assets
 
 :::stat
-**46%**
-First Community Bank SC's commercial real estate concentration, putting $1.1B in CRE exposure across the Midlands and Upstate on a $2.4B balance sheet.
+**0.04%**
+First Community's nonperforming assets as a share of total assets at June 30, 2026, per the company's second-quarter release.
 :::
 
-## Why CRE at Scale Is a Workflow Problem
+Fee businesses are growing too. Investment advisory revenue rose 30.6% from a year earlier, and assets under management reached $1.38 billion. Mortgage banking income rose 21.7%.
 
-Here is the operational reality of running a $1.1B commercial real estate portfolio through a community bank's back office.
+## A Commercial Real Estate Bank
 
-Every new CRE origination requires: entity documents for the borrowing entity and all guarantors, two to three years of business tax returns, rent rolls for income-producing properties, environmental documentation for applicable property types, appraisals, and personal financial statements for key principals. A typical investor CRE deal might involve five or six document requests per guarantor and three rounds of follow-up before the file is complete enough to underwrite.
+First Community is, by its loan book, a commercial real estate lender. Of $1.59 billion in gross loans at June 30, 2026:
 
-At First Community Bank SC's historical origination pace, which based on loan growth rates implies somewhere between $150M and $200M in new CRE originations per year, the document assembly phase across the full commercial pipeline represents thousands of hours of processor time annually. That time is not billable. It does not generate fee income. It does not strengthen the borrower relationship. It is pure overhead that sits between the signed term sheet and the closed loan.
+- Nonfarm, nonresidential real estate: $906 million (57%), of which $371 million is owner-occupied and $535 million is not
+- One-to-four family residential: $337 million
+- Construction and land: $167 million
+- Commercial and industrial: $90 million
+- Multifamily: $48 million
 
-The merger compounds this problem in the near term. Two origination teams, two document checklists, two sets of processor habits, and two LOS environments running in parallel until the core conversion is complete. Every merged bank goes through this transition. The banks that come out with lower post-merger efficiency ratios are the ones that standardized their document collection workflows before the conversion, not after it.
+Investor real estate, meaning non-owner-occupied commercial property, multifamily and construction, comes to about $750 million, or 47% of loans. That is a concentration regulators watch. So far, credit has been clean: second-quarter net charge-offs were $21,000.
 
-## The Digital Intake Gap at the $2.4B Level
+## The Leadership Change
 
-First Community Bank SC's digital presence reflects a bank that built its franchise on in-person commercial relationships and has not made significant investments in digital origination infrastructure. The public website routes all loan inquiries to branch contact. There is no online commercial loan application. No digital document collection portal. No borrower-facing verification workflow.
+The transition splits one job into two. Effective January 1, 2027, Vaughan R. Dozier becomes CEO of the bank and Joseph A. "Drew" Painter becomes president. Both now serve as co-commercial and retail banking officers, and both join the company and bank boards. Michael Crapps remains CEO and president of the holding company, focused on strategy, capital and investor relations. Nissen will consult through 2027.
 
-For a bank at $500M, that is a defensible model. Branch-based commercial bankers who know their borrowers personally can manage a manual document process without significant throughput loss. At $2.4B post-merger, with a $1.1B CRE portfolio to manage and a pipeline of new originations in multiple markets, the math changes.
+The chairman said Nissen is leaving earlier than planned for personal health reasons.
 
-The post-merger bank will need to process more loans, with more complex documentation requirements, across a larger geographic footprint, with a combined team that is still calibrating its workflows. That is the definition of a situation where automated document collection, automated income and business financial verification, and digital borrower-facing intake deliver the most leverage. Not because the relationship bankers need to be replaced, but because the document-chasing overhead that scales linearly with loan volume is the constraint that limits how much revenue the same team can generate.
+## What the Next Team Inherits
 
-## What Efficiency Looks Like at $2.4B
+A new bank CEO inherits a bank in good shape: a widening margin, clean credit, a finished conversion and two growing fee businesses. The open question is how First Community brings in new borrowers in its newest markets.
 
-The merged entity has disclosed a target efficiency ratio in the low-to-mid 60s. For context, the community bank peer average sits around 60-65%, and top quartile institutions push closer to 55%. Getting to the low 60s from a standing start post-merger requires either revenue growth that outpaces expense growth, or expense reduction in the processing and overhead categories that typically inflate during an integration.
+The bank moved its website to firstcommunitybankers.com this year. Its online lending paths, as of October 2026:
 
-Automated verification is one of the cleanest levers available. The cost per loan of manual income and employment verification, across phone calls, document requests, follow-up emails, and manual keying into the LOS, ranges from $200 to $600 per file depending on complexity. For a bank originating $150M-$200M in loans per year across commercial and residential categories, compressing that per-loan cost by even 50% represents hundreds of thousands of dollars in annual savings. Savings that flow directly to the efficiency ratio without requiring branch closures or headcount reductions.
+- **Mortgage:** an "Apply Online" button that hands off to a separate mortgage portal, with rates listed as "Call for Rates"
+- **Consumer loans, HELOCs and auto loans:** a "Request a Loan" contact form
+- **Business loans and commercial real estate:** the same contact form
 
-The Midlands market will keep delivering borrowers. The Fort Jackson employment base is stable. The University hospital system is growing. Columbia's suburban ring is expanding into Lexington and Richland counties at a pace that will sustain mortgage originations for years. The borrowers are available. The question is how efficiently First Community Bank SC can process them as a $2.4B institution competing against both larger regional banks with modern digital onboarding and smaller community banks with tighter local relationships.
+In Lexington and Columbia, where the bank has three decades of relationships, a contact form works because the borrower often already knows a banker. In Sandy Springs and Augusta, a new borrower comparing banks online sees a form and a wait.
 
-:::pullquote
-Getting the document collection infrastructure right during the merger integration window is the moment where that efficiency gap either closes or compounds.
-:::
-`,
+A commercial book this concentrated in real estate also means heavy files: entity documents, tax returns, rent rolls and personal financial statements for every guarantor. Collecting and checking those documents at the start of the application, rather than through rounds of follow-up, is where the next efficiency gains are. The margin has done most of the work so far. Throughput has to do the rest.
+    `,
   },
   'countybank-greenwood-sc-sba-deep-dive': {
     title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",

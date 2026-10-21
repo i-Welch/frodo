@@ -380,10 +380,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'first-community-bank-sc-cre-merger-growth',
-    title: 'First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight',
+    title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO',
     description:
-      'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
-    readTime: '6 min read',
+      "First Community Bank of Lexington, SC closed its acquisition of Signature Bank of Georgia in January 2026, reached $2.38 billion in assets and grew second-quarter earnings 46%. Its bank CEO retires at year-end. What the numbers show, and what the next leadership team inherits.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'first-community-bank-sc',
