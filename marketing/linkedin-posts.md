@@ -601,6 +601,7 @@ The SBA program works when the document assembly process works. A small business
 ---
 
 ## POST 20 — July 31, 2026 (Thursday)
+> **Superseded (Oct 2026):** the figures below are wrong (Optus had $764M in assets at Q2 2026, not $250M) and the article was rewritten. Use `marketing/linkedin/queue/optus-bank-cdfi-columbia-growth.md`.
 **Article:** Optus Bank: Columbia's CDFI Institution Betting on Scale
 **URL:** https://reportraven.tech/blog/optus-bank-cdfi-columbia-growth
 

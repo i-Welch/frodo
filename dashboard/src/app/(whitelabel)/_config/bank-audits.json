@@ -2313,12 +2313,12 @@
     "slug": "optus-bank",
     "bankName": "Optus Bank",
     "shortName": "Optus Bank",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "optus-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$785M"
+        "value": "~$764M (Q2 2026)"
       },
       {
         "label": "Branches",
@@ -2326,24 +2326,24 @@
       },
       {
         "label": "Online loan products",
-        "value": "2 of 8"
+        "value": "0 of 8"
       },
       {
-        "label": "Core banking",
-        "value": "Smiley Technologies (SIBanking)"
+        "label": "Pending merger",
+        "value": "M&F Bancorp (~$1.27B combined)"
       }
     ],
-    "summary": "Optus Bank is South Carolina's only Black-owned bank and one of roughly 22 majority Black-owned banks in the country, with a mission to close the wealth gap for historically underserved communities across Columbia and beyond. Despite a 2019 rebrand and a recent website relaunch, the public-facing lending experience remains almost entirely call-or-visit: mortgage, residential construction, HELOC, auto, unsecured personal, commercial, and SBA loans all terminate at a phone number or a contact form. Only two online paths exist — an Upstart-powered personal loan portal (optusbank.upstart.com, fully off-brand) and a dedicated solar loan page — leaving high-intent borrowers who arrive at optus.bank after hours with nowhere to go for most of the product lineup. The digital banking infrastructure (SIBanking via xvault.bankoptus.com) serves existing customers well, but the gap between existing-customer experience and new-borrower intake is the defining friction in the lending journey today.",
+    "summary": "Optus Bank is South Carolina's only Black-owned bank and a Treasury-certified CDFI. It grew from $65 million in assets in 2018 to $764 million in mid-2026, and in July 2026 agreed to merge with M&F Bancorp of Durham, NC, creating a $1.27 billion bank with 10 branches across both Carolinas. Its public lending experience is call-or-visit: mortgage, construction, HELOC, auto, personal, commercial and SBA loans all end at a phone number or a contact form. The solar loan portal now returns an error, and the site no longer links to its Upstart personal loan portal. New accounts start with a form and a callback within 24 to 48 hours. The merger is the moment to decide what a combined, two-state CDFI's front door looks like.",
     "currentJourney": [
       {
         "channel": "Personal / Opportunity Loan",
-        "detail": "Online application exists at optusbank.upstart.com — fully Upstart-branded, off-domain, with no Optus Bank visual identity. Borrowers who click 'apply' leave the bank entirely before entering a single field.",
-        "status": "weak"
+        "detail": "The bank's site no longer links to an online application. optusbank.upstart.com still resolves, but only to an Upstart login, so a borrower cannot reach it from optus.bank. Consumer loan pages list products and 803.733.8100.",
+        "status": "missing"
       },
       {
         "channel": "Solar loans",
-        "detail": "Dedicated online portal at solar.optus.bank with stated rates (7.73% APR with autopay) and an application flow for SC residential property owners. The most complete self-serve lending experience on the site.",
-        "status": "weak"
+        "detail": "The former solar loan portal (solar.optus.bank) returns a 404 error, and the renewable-energy page now describes commercial project lending only.",
+        "status": "missing"
       },
       {
         "channel": "Mortgage / Residential construction",
@@ -2351,41 +2351,46 @@
         "status": "missing"
       },
       {
-        "channel": "Auto / Personal loans (non-Upstart)",
+        "channel": "Auto / Personal loans",
         "detail": "Auto and general consumer credit listed on the consumer-loans page with no apply path. Directions: call or visit.",
         "status": "missing"
       },
       {
         "channel": "Business / Commercial / SBA / USDA",
-        "detail": "Eight distinct commercial products listed on the lending-options page — lines of credit, term loans, equipment, real estate, construction, industrial, renewable energy, and SBA/USDA — all pointing to a single 'Contact Us' button and a phone number.",
+        "detail": "Commercial products (lines of credit, term loans, equipment, real estate, construction, renewable energy, SBA/USDA) all point to a Contact Us button and a phone number.",
         "status": "missing"
       },
       {
+        "channel": "Deposit account opening",
+        "detail": "\"Open an Optus Account\" at optus.bank/sign-up is a form; a team member follows up within 24 to 48 hours to recommend an account. No self-serve opening.",
+        "status": "weak"
+      },
+      {
         "channel": "Existing-customer digital banking",
-        "detail": "Full-featured online and mobile banking via xvault.bankoptus.com (SIBanking platform) plus a branded iOS/Android app with mobile deposit, transfers, and bill pay.",
+        "detail": "Online and mobile banking for existing customers through the Smiley Technologies (STI) platform at secure.optus.stiapp.com.",
         "status": "ok"
       }
     ],
     "findings": [
       {
-        "title": "Seven of eight loan types have no digital intake",
+        "title": "Eight loan types, no online application",
         "severity": "gap",
-        "body": "Optus Bank markets a broad product suite — mortgage, construction, auto, HELOC, personal, solar, multiple commercial types, and SBA/USDA — but only solar and one personal loan product have any online path. The remaining seven categories, which represent the majority of loan volume, end at a phone number. A borrower who arrives at 9 pm on a Saturday with intent to buy a home or start a business has no way to raise their hand. That demand either goes to a competitor or disappears."
+        "body": "Optus markets mortgage, construction, auto, HELOC, personal, commercial and SBA/USDA lending, and none of them can be started online from optus.bank. The solar portal is gone and the Upstart portal is no longer linked. A borrower who arrives at 9 p.m. with intent to buy a home or start a business has no way to raise their hand."
       },
       {
-        "title": "The Upstart portal breaks trust at the highest-stakes moment",
-        "severity": "friction",
-        "body": "The personal Opportunity Loan application routes borrowers off optus.bank entirely to optusbank.upstart.com. The page carries Upstart's brand, not Optus Bank's. For a CDFI whose mission is building trust with communities that have historically been underserved by financial institutions, handing the borrower to a fintech-branded screen at the moment they decide to apply is a brand and trust problem, not just a UX problem. A white-label, bank-branded intake preserves the relationship Optus worked to build."
+        "title": "The M&F merger sets the front door for a two-state bank",
+        "severity": "gap",
+        "body": "The combined bank will run 10 branches across both Carolinas, eight of them in North Carolina, with headquarters in Columbia. System and brand decisions made during the conversion will set the borrower experience for years. A bank-branded, verify-as-you-go intake lets borrowers in Durham and Columbia start the same application the same way."
       },
       {
-        "title": "The CDFI and MDI mission creates a distinctive verification challenge",
+        "title": "CDFI borrowers are the hardest files to document",
         "severity": "note",
-        "body": "Optus Bank's borrowers frequently have non-traditional income — gig work, informal employment, seasonal wages, and thin credit files. Standard income and identity verification pipelines built for W-2 employees produce high false-negative rates on exactly these borrowers. A verify-as-you-go intake that layers bank account cash-flow analysis, alternative data, and alternative credit scoring alongside traditional bureau pulls closes files that a call-and-document workflow would decline or lose to frustration."
+        "body": "Optus's borrowers often have non-traditional income: small business revenue that varies month to month, self-employment alongside a part-time W-2 job, thin credit files. A verify-as-you-go intake that layers bank-account cash flow and payroll data alongside traditional bureau pulls closes files that a call-and-document workflow loses to delay."
       },
       {
-        "title": "Commercial lending growth is outpacing the intake capacity",
+        "title": "46 employees, $764M in assets, commercial-heavy growth",
         "severity": "gap",
-        "body": "Optus Bank has grown rapidly — from under $200M to $785M in assets in a few years — largely through mission-aligned commercial and community lending. Eight commercial product categories with a single 'Contact Us' button means every new commercial inquiry starts as an unstructured phone call. Capturing business name, EIN, purpose, and financial verification at intake converts that call into a structured lead the relationship manager can work from day one rather than spending the first conversation gathering basics."
+        "body": "Optus grew twelvefold since 2018, mostly in commercial real estate and C&I lending, with 46 full-time-equivalent staff. Every commercial inquiry starts as an unstructured phone call. Capturing business name, EIN, purpose and financial verification at intake gives the relationship manager a structured file from day one."
       }
     ],
     "comparison": [
@@ -2420,7 +2425,7 @@
         "withRaven": "Verified file delivered to SIBanking via API, no double entry"
       }
     ],
-    "sources": "optus.bank (homepage, /consumer-loans, /lending-options, /faqs, /locations, /about-us, /contact-us), optusbank.upstart.com (personal Opportunity Loan portal), solar.optus.bank (solar loan page), xvault.bankoptus.com (SIBanking digital banking login), sibanking.com (Smiley Technologies SIBanking core banking confirmation + Optus Bank case study), play.google.com (Optus Bank Mobile Banking app listing), LinkedIn company profile (48 employees; tagline 'Banking on Communities'), FDIC BankFind cert #35241. Total assets $785M from task brief; FDIC call report data corroborated ~$757M as of Oct 2025. Founded 1921 as Victory Savings Bank; rebranded Optus Bank 2019. Two branches, both Columbia SC. Tagline 'Banking on Communities' confirmed on homepage and LinkedIn. Core banking: Smiley Technologies (SIBanking) confirmed via sibanking.com/post/optus-bank-launches-voice-enabled-banking. Reviewed June 2026."
+    "sources": "optus.bank (homepage, /consumer-loans, /lending-options, /sign-up, /renewable-energy-lending), solar.optus.bank (404), optusbank.upstart.com (login only), secure.optus.stiapp.com (digital banking login), FDIC BankFind and API cert #35241 (year-end 2018 to Q2 2026), American Banker and The Charlotte Post on the M&F Bancorp merger (July 2026). Founded 1921 as Victory Savings Bank. Two branches, both Columbia SC. Reviewed October 2026."
   },
   {
     "slug": "oconee-state-bank",

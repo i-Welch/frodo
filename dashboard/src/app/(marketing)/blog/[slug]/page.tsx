@@ -3120,71 +3120,92 @@ For a bank in a market that is not going to grow its way to higher loan volume, 
 `,
   },
   'optus-bank-cdfi-columbia-growth': {
-    title: "Optus Bank: Columbia's CDFI Institution Betting on Scale",
-    description: "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
+    title: 'Optus Bank Grew From $65 Million to $764 Million. Now Comes M&F',
+    description: "Optus Bank grew from $65 million in assets in 2018 to $764 million in mid-2026, and in July agreed to merge with Durham's M&F Bank to form a $1.27 billion CDFI. What drove the growth, what the bank actually lends, and what the merger has to get right.",
     publishedDate: 'April 16, 2026',
-    readTime: '6 min read',
-    content: `# Optus Bank: Columbia's CDFI Institution Betting on Scale
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
+    content: `
+*Updated October 22, 2026, with second-quarter 2026 call report data and the M&F Bancorp merger. An earlier version of this article understated Optus Bank's size.*
 
-*Published June 26, 2026*
+At the end of 2018, Optus Bank had $65 million in assets. On June 30, 2026, it had $764 million. Few banks in the country have grown that fast without buying another bank.
 
-Optus Bank is not a bank most people in the financial industry have heard of. It does not have branches in major metros. It does not issue press releases about fintech partnerships. It is a $250M community development financial institution headquartered in Columbia, South Carolina, and it is the only Black-owned bank in the state.
+Now Optus is buying one. In July 2026, Optus Financial Corporation agreed to acquire M&F Bancorp, the Durham, North Carolina parent of M&F Bank, in a deal valued at more than $105 million. The combined bank would have about $1.27 billion in assets, and its owners describe it as the largest African American-owned financial institution in the country.
 
-Those two facts together, the CDFI certification and the ownership structure, tell you nearly everything you need to know about who the bank serves and what the operational challenges of serving them actually look like.
+## From Victory Savings to $764 Million
 
-## The Columbia Market and Who Gets Left Out
+Optus traces its roots to Victory Savings Bank, founded in Columbia in 1921 by African American community leaders. It is South Carolina's only Black-owned bank and a Treasury-certified community development financial institution (CDFI).
 
-Columbia is South Carolina's capital and its largest city, with a metro population around 840,000. The University of South Carolina, Fort Jackson, and a large state government employment base make it a stable, mid-growth market with a diverse income distribution. Richland County, where Columbia sits, added 6,241 residents between 2020 and 2023. The growth is real, and it includes a significant population of LMI households, federal workers, healthcare employees, and small business owners who make up exactly the borrower base that CDFI banks are chartered to serve.
+Year-end total assets, from FDIC call reports:
 
-Optus Bank holds a CDFI certification from the US Treasury, which means a substantial portion of its lending must go to LMI borrowers, LMI communities, or borrowers who would not qualify for conventional credit on standard terms. That mission focus shapes everything about the bank's operations, the borrower profile it serves, the documentation complexity of those loans, and the financial economics of running the institution profitably enough to sustain the mission.
-
-The asset growth from $130M to $250M over three years is meaningful. In absolute terms, it is a small bank. In mission terms, it represents a doubling of the lending capacity directed at underserved Columbia-area borrowers. Getting to $500M, which appears to be the bank's medium-term target based on its strategic communications, would require sustaining that growth rate while managing the operational complexity that comes with scale.
-
-:::pullquote
-In mission terms, it represents a doubling of the lending capacity directed at underserved Columbia-area borrowers.
-:::
+- 2018: $65 million
+- 2019: $78 million
+- 2020: $187 million
+- 2021: $315 million
+- 2022: $405 million
+- 2023: $525 million
+- 2024: $663 million
+- 2025: $778 million
 
 :::stat
-**$250M**
-Optus Bank's current asset size after doubling from $130M in three years, making it South Carolina's only Black-owned CDFI bank at this scale.
+**$65M to $764M**
+Optus Bank's total assets, year-end 2018 to June 30, 2026, per FDIC call reports.
 :::
 
-## The CDFI Borrower Documentation Problem
+The jump started in 2020, when large companies moved deposits and capital into Black-owned banks. Optus was the first bank to receive funds from PayPal's $530 million commitment to Black and minority-owned businesses: a $50 million deposit. About $10 million of it went straight into Paycheck Protection Program loans. Bank of America was already a depositor. In 2021, seven outside investors, including Citigroup, Wells Fargo, JPMorgan Chase and Bank of America, put more than $20 million of capital into the bank.
 
-Here is the operational reality that most CDFI bank commentary overlooks.
+Capital kept pace with the deposits. Equity grew from $6.5 million at the end of 2018 to $98 million in mid-2026, and the Tier 1 risk-based capital ratio stood at 19.5%.
 
-The borrowers Optus serves are not harder to credit-decision because they are less creditworthy in some abstract sense. They are harder to document because their income sources are more varied, their employment histories more complex, and their financial institutions more fragmented.
+## What Optus Actually Lends
 
-A household earning $52,000 per year from a combination of a part-time W-2 position, Medicaid reimbursements from informal caregiving, and a small business with annual revenues under $80,000 is not an unusual CDFI borrower profile. Verifying that income manually requires: an employer verification call for the part-time job, documentation of the Medicaid payments from the state agency, and two years of Schedule C tax returns plus a year-to-date profit and loss for the small business. Each of those three income streams requires a different verification approach. None of them appear on a standard credit report.
+Optus is a commercial lender. Of $456 million in gross loans at June 30, 2026:
 
-A first-time homebuyer in the Eau Claire neighborhood of Columbia who receives down payment assistance through the SC Housing program, has a thin credit file, and has banked at a regional credit union for three years is a creditworthy borrower for a CDFI lender with the right underwriting model. But pulling together that complete file manually takes time, often weeks, because the documentation sources are not consolidated anywhere.
+- Nonfarm, nonresidential real estate: $198 million
+- Commercial and industrial: $147 million
+- Construction and land: $53 million
+- Consumer: $24 million
+- Multifamily: $19 million
+- One-to-four family residential: $14 million
 
-Manual verification of complex, multi-source income is where CDFI lenders spend a disproportionate amount of processing capacity. It is also where the risk of error is highest, because income figures that are calculated manually from multiple sources are more likely to contain transcription errors that trigger re-underwriting cycles.
+Residential mortgages are about 3% of the book, and Optus does not appear on the federal HMDA filer lists for 2024 or 2025. The growth went into small business and commercial real estate lending, the core of its CDFI mission.
 
-## The Scale Tension
+The bank runs lean: 46 full-time-equivalent employees for $764 million in assets, about $16.6 million per employee.
 
-Optus Bank's growth trajectory creates a tension that is familiar to any CDFI institution that has tried to scale. The mission requires serving borrowers with complex documentation needs. The economics of serving those borrowers profitably require processing efficiency. Processing efficiency historically has required either simplified borrower profiles (which limits mission fidelity) or significant back-office headcount (which limits profitability).
+## The 2026 Numbers
 
-The banks that have resolved this tension successfully are the ones that adopted digital income and asset verification early, before the throughput problem became a headcount problem. Not because digital verification makes the credit decision easier, but because it makes the document collection step dramatically faster and less prone to the errors and delays that come from manual aggregation.
+First half of 2026, from the June 30 call report:
 
-For a CDFI bank, there is an additional equity argument for digital verification. A borrower applying at Optus Bank for a mortgage on a $175,000 home in Eau Claire should not have to wait five weeks for document collection when a borrower applying at a conventional lender for a $450,000 home in Forest Acres gets a digital income pull in two days. The speed disparity is not the borrower's fault. It is a function of the verification infrastructure available to the lender. CDFI banks that deploy the same verification tools that conventional lenders use eliminate that disparity without compromising the underwriting rigor that protects the bank's credit quality.
+- Net income: $3.7 million, up from $3.6 million a year earlier
+- Return on assets: 0.95%; return on equity: 7.6%
+- Efficiency ratio: 55.8%
+- Net interest margin: 2.71%, down from 3.64% for 2023
+- Net charge-offs: 0.94% of loans, annualized
 
-:::pullquote
-CDFI banks that deploy the same verification tools that conventional lenders use eliminate that disparity without compromising the underwriting rigor that protects the bank's credit quality.
-:::
+The margin is the pressure point. Deposits that arrived on mission grounds still have to be paid market rates, and the margin has narrowed each year since 2023. That is one reason scale matters to the merger.
 
-## What Getting to $500M Requires
+## The M&F Deal
 
-Optus Bank's path to $500M in assets runs through Columbia's LMI and first-time buyer markets, small business lending in underserved commercial corridors, and potentially geographic expansion into other South Carolina markets with significant CDFI-eligible borrower populations.
+M&F Bank, one of the oldest Black-owned banks in the country, had about $518 million in assets at March 31, 2026, according to American Banker. Under the agreement announced July 22, 2026:
 
-None of those growth paths can be executed efficiently on a manual document collection model at scale. Not because the bank lacks capable people, but because the document complexity of CDFI borrowers is high enough that manual processing becomes a hard ceiling on throughput before the bank reaches the size it needs to operate with sustainable economics.
+- M&F Bancorp merges into Optus Financial, and M&F Bank into Optus Bank
+- The combined bank operates 10 branches, eight of them current M&F branches in North Carolina
+- James H. Sills III, M&F's president and CEO, becomes CEO of the combined company and bank; Optus chairman Paul Mitchell remains chairman
+- Headquarters stay in Columbia, and the bank keeps its CDFI designation
+- The M&F name phases out in favor of Optus over about two years
+- Closing is expected in the fourth quarter of 2026, subject to M&F shareholder and regulatory approval
 
-Digital verification in the CDFI context means connecting to payroll systems that serve gig workers and part-time employees, not just large-employer Workday instances. It means pulling Medicaid payment records and public benefit income data through authorized channels. It means reading Schedule C data from tax transcripts and reconciling it against business bank accounts in real time. The technology exists for all of these use cases. It is deployed in various configurations at mission-driven lenders that are larger and better-resourced than Optus. Bringing it to a $250M South Carolina CDFI bank is a matter of integration priority and partner selection.
+Sills put the logic plainly: "We'll be able to do larger loans. We'll be able to accept larger deposits."
 
-The case for moving now, rather than after the next growth milestone, is straightforward. Verification infrastructure is easier to implement at $250M than at $500M. Workflows scale with the institution when they are established early. And the borrowers Optus serves, the ones who have been waiting the longest for a lender that understands their income complexity, deserve the same speed of response that their wealthier neighbors get from conventional lenders.
+## What the Merger Has to Get Right
 
-The CDFI mission and operational excellence are not in tension. They are aligned when the right tools make it possible to serve complex borrowers faster and more accurately than any manual process can.
-`,
+Bank mergers are where technology decisions get made for the next decade. Two banks with different systems have to become one, and the borrower-facing pieces are usually decided last.
+
+Today, almost all of Optus's lending starts with a conversation. Its consumer and business loan pages list products and a phone number, 803.733.8100, with no online application. New accounts start with a form and a follow-up call within 24 to 48 hours.
+
+That model built a $764 million bank with 46 people. Spread across two states and 10 branches, it gets harder. A CDFI's borrowers are also the hardest files to document: a small business owner with uneven revenue, a household with a part-time W-2 job and self-employment income, a first-time borrower with a thin credit file. Each takes several documents from several sources, and collecting them by hand is where loan officers' time goes.
+
+The merger gives the combined bank the size to make larger loans. A loan application that collects and verifies income and business data at the start would let the same team handle more of them.
+    `,
   },
   'beacon-community-bank-charleston-growth-capacity': {
     title: 'Beacon Community Bank: Growth at the Edge of Capacity',

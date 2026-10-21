@@ -400,10 +400,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'optus-bank-cdfi-columbia-growth',
-    title: "Optus Bank: Columbia's CDFI Institution Betting on Scale",
+    title: 'Optus Bank Grew From $65 Million to $764 Million. Now Comes M&F',
     description:
-      "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
-    readTime: '6 min read',
+      "Optus Bank grew from $65 million in assets in 2018 to $764 million in mid-2026, and in July agreed to merge with Durham's M&F Bank to form a $1.27 billion CDFI. What drove the growth, what the bank actually lends, and what the merger has to get right.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'optus-bank',
