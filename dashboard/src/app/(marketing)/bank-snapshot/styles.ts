@@ -44,4 +44,9 @@ export const snapshotStyles = `
   .bsn-embed { width: 100%; font-family: ui-monospace, monospace; font-size: 0.75rem; padding: 0.6rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.3); color: var(--gray-300); resize: none; }
   .bsn-callout { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .bsn-callout strong { color: var(--white); }
+  .bsn-track { position: relative; }
+  .bsn-track-row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+  .bsn-track-row .bsn-input { flex: 1 1 220px; padding: 0.65rem 0.9rem; font-size: 0.95rem; }
+  .bsn-track-btn { flex: 0 0 auto; padding: 0.65rem 1.2rem; border: 0; border-radius: 10px; background: var(--accent); color: var(--white); font-weight: 600; font-size: 0.95rem; cursor: pointer; }
+  .bsn-track-btn:disabled { opacity: 0.6; cursor: default; }
 `;

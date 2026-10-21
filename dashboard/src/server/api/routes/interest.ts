@@ -6,7 +6,7 @@ import { bankSnapshot } from '../../messaging/lead-enrichment';
 
 /**
  * POST /api/v1/interest — Store marketing-site leads (newsletter signups, free
- * audit requests, demo requests) and notify the founder.
+ * audit requests, demo requests, bank tracker signups) and notify the founder.
  * No auth required (public endpoint).
  */
 export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
@@ -14,6 +14,11 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
   async ({ body, set }) => {
     const { email, name, bank, cert, source, website } = body;
     const kind = body.kind ?? 'demo';
+    // Tracking a bank means emailing about one specific FDIC institution.
+    if (kind === 'track' && !cert) {
+      set.status = 400;
+      return { error: 'cert is required to track a bank' };
+    }
 
     // Honeypot: real visitors never see or fill the hidden "website" field.
     if (website) {
@@ -21,6 +26,11 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       set.status = 201;
       return { ok: true };
     }
+
+    // Audit requesters see their bank's latest call report figures right away
+    // (only for a confident FDIC match), on the page and in the confirmation email.
+    // Trackers store the quarter they saw so the first update is the next one.
+    const snapshot = kind === 'audit' || kind === 'track' ? await bankSnapshot({ email, bank, cert }) : undefined;
 
     const timestamp = new Date().toISOString();
     await putItem({
@@ -31,6 +41,7 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       email,
       bank,
       ...(cert ? { cert } : {}),
+      ...(kind === 'track' && snapshot ? { seenQuarter: snapshot.quarter } : {}),
       source,
       // Audit requests move pending -> in_progress -> delivered (see leads-admin.ts).
       ...(kind === 'audit' ? { status: 'pending' } : {}),
@@ -40,9 +51,6 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
     });
 
     logger.info({ email, kind, source }, 'New interest signup');
-    // Audit requesters see their bank's latest call report figures right away
-    // (only for a confident FDIC match), on the page and in the confirmation email.
-    const snapshot = kind === 'audit' ? await bankSnapshot({ email, bank, cert }) : undefined;
     await notifyLead({ kind, email, name, bank, source, snapshot });
 
     set.status = 201;
@@ -52,7 +60,7 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
     body: t.Object({
       email: t.String({ format: 'email', maxLength: 254 }),
       name: t.Optional(t.String({ minLength: 1, maxLength: 120 })),
-      kind: t.Optional(t.Union([t.Literal('subscribe'), t.Literal('audit'), t.Literal('demo')])),
+      kind: t.Optional(t.Union([t.Literal('subscribe'), t.Literal('audit'), t.Literal('demo'), t.Literal('track')])),
       bank: t.Optional(t.String({ minLength: 1, maxLength: 160 })),
       // FDIC cert from the form's bank autocomplete.
       cert: t.Optional(t.Integer({ minimum: 1, maximum: 9_999_999 })),

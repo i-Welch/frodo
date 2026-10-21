@@ -30,6 +30,7 @@ import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
+import { ravenApi } from './raven-api';
 import { fetchPageVisits, hotAccounts } from './warm-accounts';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
@@ -433,6 +434,21 @@ async function warmAccountAlerts() {
   }
 }
 
+// Bank tracker: emails visitors who asked to follow a bank once its next call
+// report posts. The server skips quarters already sent, so daily is safe.
+async function bankTrackerUpdates() {
+  const hourEt = Number(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+  if (hourEt !== 10 && !DRY_RUN) return;
+  try {
+    const result = await ravenApi('/bank-tracker/send', { method: 'POST', body: JSON.stringify(DRY_RUN ? { dryRun: true } : {}) });
+    log(`bank tracker: ${JSON.stringify(result)}`);
+  } catch (err) {
+    const msg = (err as Error).message;
+    log(`bank tracker step failed: ${msg.split('\n')[0]}`);
+    await alertFounder('bank-tracker', 'Bank tracker emails did not send', msg);
+  }
+}
+
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
@@ -448,5 +464,6 @@ if (import.meta.main) {
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));
   await followUpAudits().catch((err) => log(`audit follow-up step failed: ${(err as Error).message}`));
   await warmAccountAlerts().catch((err) => log(`warm account step skipped: ${(err as Error).message.split('\n')[0]}`));
+  await bankTrackerUpdates();
   log('done');
 }

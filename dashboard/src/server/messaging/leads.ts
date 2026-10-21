@@ -12,7 +12,7 @@ import { describeInstitution, type BankSnapshot } from './lead-enrichment';
  * - LEAD_REPLY_FROM (default: Isaac Welch <isaac@reportraven.tech>)
  */
 
-export type LeadKind = 'subscribe' | 'audit' | 'demo';
+export type LeadKind = 'subscribe' | 'audit' | 'demo' | 'track';
 
 export interface Lead {
   kind: LeadKind;
@@ -34,6 +34,7 @@ const KIND_LABEL: Record<LeadKind, string> = {
   subscribe: 'Newsletter signup',
   audit: 'Free audit request',
   demo: 'Demo request',
+  track: 'Bank tracker signup',
 };
 
 /** Turns a source like "article:robins-financial-20-million-rebate" into a page URL. */
@@ -56,7 +57,9 @@ function alertMessage(lead: Lead, institution: string[]) {
     '',
     lead.kind === 'audit'
       ? 'They were told the audit arrives within a few business days.'
-      : 'They received an automatic confirmation from you. Reply to this email to reach them directly.',
+      : lead.kind === 'track'
+        ? 'They get an email when this bank files its next call report. Someone tracking one bank is usually on its staff or board: a warm lead.'
+        : 'They received an automatic confirmation from you. Reply to this email to reach them directly.',
   ].filter((l): l is string => l !== null);
   const who = lead.bank ? `${lead.name ?? lead.email} (${lead.bank})` : (lead.name ?? lead.email);
   return {
@@ -112,6 +115,21 @@ function confirmationMessage(lead: Lead) {
         snapshotParagraph(lead.snapshot) +
         `Here's an example of what you'll get:\n${SITE}/audit/robins-financial-credit-union\n\n` +
         `If you'd rather walk through it live, grab 20 minutes here:\n${CALENDLY_URL}` +
+        signoff,
+    },
+    track: {
+      subject: `You're tracking ${lead.snapshot?.name ?? lead.bank ?? 'your bank'}`,
+      text:
+        `${greeting}
+
+You're set. When ${lead.snapshot?.name ?? lead.bank ?? 'the bank'} files its next quarterly call report with the FDIC, ` +
+        `I'll email you the headline numbers and how they compare with peers its size.
+
+` +
+        (lead.snapshot ? `Current snapshot (${lead.snapshot.quarter}): ${peerUrl(lead.snapshot)}
+
+` : '') +
+        `If you'd also like a free digital lending audit, built from the same call report plus HMDA data, just reply.` +
         signoff,
     },
     demo: {

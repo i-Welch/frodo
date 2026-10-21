@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { SiteShell } from '../../site-shell';
 import { LeadCapture } from '../../lead-capture';
+import { TrackBank } from '../track-bank';
 import { auditForCert } from '@/app/(whitelabel)/_config/audit-data';
 import { getRoiBank } from '../../roi/roi-data';
 import { awardLabel, bankSlug, certFromParam, STATE_NAMES, stateAwards, stateRankings, stateSlug, formatAssets, formatMetric, peerReport, type Metric, type PeerReport } from '../peer-data';
@@ -212,6 +213,8 @@ export default async function BankPeerPage({ params }: { params: Promise<{ bank:
             </tbody>
           </table>
         </div>
+
+        <TrackBank name={inst.NAME} cert={inst.CERT} quarter={r.quarter} />
 
         {ops && (
           <>
