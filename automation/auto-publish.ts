@@ -446,6 +446,8 @@ async function bankTrackerUpdates() {
   } catch (err) {
     const msg = (err as Error).message;
     log(`bank tracker step failed: ${msg.split('\n')[0]}`);
+    // 404: this clone's code is ahead of the deployed site (the route ships in the same merge).
+    if (DRY_RUN || / 404: /.test(msg)) return;
     await alertFounder('bank-tracker', 'Bank tracker emails did not send', msg);
   }
 }
