@@ -31,6 +31,16 @@ try {
     bun install
     Set-Location $Clone
 
+    # Most days the audit queue is empty; skip the Claude session (and its usage)
+    # unless something is pending. If the check itself fails, run as before.
+    if ($Prompt -like '/audit-request*') {
+        $pending = (bun automation\audit-requests.ts list pending | Out-String).Trim()
+        if ($LASTEXITCODE -eq 0 -and $pending -eq '[]') {
+            Write-Output 'No pending audit requests; skipping the Claude run.'
+            return
+        }
+    }
+
     # The run verifies pages on its own dev server, away from port 3000.
     $env:ARTICLE_DEV_PORT = "$Port"
 
