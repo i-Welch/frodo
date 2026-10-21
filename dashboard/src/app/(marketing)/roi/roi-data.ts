@@ -255,7 +255,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: "The Website Says 'Traditional In-Person Banking.' The Balance Sheet Says Otherwise.",
-        body: "The title tag on optimumbank.com reads \"Traditional in-person banking for businesses and consumers residing in South Florida.\" The SBA page, advertising loans up to $5 million, ends at \"Schedule an Appointment Now.\" There is no online loan application for any product, no digital deposit account opening, and the online banking links serve existing customers only. That was a coherent posture for a $154.5 million bank. It is a strange one for a $1.4 billion bank adding $126 million of loans per quarter with four offices. Every dollar of that growth currently arrives through a lender's relationships and a calendar invitation. A branded digital intake layer does not replace the relationship model that built this bank; it stops the bank from losing the deals that arrive at 9pm from a sponsor who found them through a broker and wants to move this week.",
+        body: "The title tag on optimumbank.com reads \"Traditional in-person banking for businesses and consumers residing in South Florida.\" Small business financing now hands off to a third party, \"OptimumBank Business Finance, Powered by Newtek Lending,\" on Newtek's own site. None of the bank's own lending products has an online application, there is no digital deposit account opening, and the online banking links serve existing customers only. That was a coherent posture for a $154.5 million bank. It is a strange one for a $1.4 billion bank adding $126 million of loans per quarter with four offices. Every dollar of that growth currently arrives through a lender's relationships and a calendar invitation. A branded digital intake layer does not replace the relationship model that built this bank; it stops the bank from losing the deals that arrive at 9pm from a sponsor who found them through a broker and wants to move this week.",
       },
       {
         title: 'Growth Is Outrunning the Cost Base, and Verification Is Where That Shows Up First',
@@ -1132,7 +1132,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     stats: [
       { label: 'Total assets', value: '~$640M' },
       { label: 'FDIC cert', value: '18143' },
-      { label: 'Online loan products', value: '0 of 6' },
+      { label: 'Online loan products', value: '1 of 6 (mortgage pre-qualification)' },
       { label: 'Market', value: 'Oconee County, GA (Athens MSA)' },
     ],
     volumes: {
@@ -1152,12 +1152,12 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: 'Oconee County added more than 10,000 residents in the 2020s, nearly all from in-migration. These borrowers arrive with existing banking relationships in other markets and choose their new bank based on digital experience first. A bank with no apply button loses the first-touch comparison to any lender that has one, including national brands with zero local presence.',
       },
       {
-        title: 'EVP Innovation hire signals the board sees the gap',
-        body: "The bank created an EVP Chief Innovation and Technology Officer role specifically to modernize the lending stack. That mandate requires a front-end verification layer before it can deliver on the digital promise. Without an intake that verifies income, identity, and employment at first touch, a new CTO just has a modern website pointed at a phone number.",
+        title: 'An innovation executive is already in place',
+        body: "In April 2023 the bank named John Davis EVP, Chief Innovation and Technology Officer, and account opening has since moved online to a bank-branded subdomain. Lending is the next step: outside the Remarkable Mortgage pre-qualification page, no loan product can be started online. A verify-as-you-go intake is the most measurable project that role can deliver for lending.",
       },
       {
         title: 'University and tech workforce means complex income profiles',
-        body: "Borrowers in the Athens corridor include UGA faculty on 9-month contracts, startup founders with equity comp, and Rivian (the nearby electric vehicle manufacturer) employees with RSU income. These profiles fail manual document chasing and are exactly the applicants RAVEN's automated Truework and Plaid verification resolves quickly.",
+        body: "Borrowers in the Athens corridor include UGA faculty on 9-month contracts, self-employed professionals, and commuters with income from more than one source. These profiles fail manual document chasing and are exactly the applicants RAVEN's automated income and employment verification resolves quickly.",
       },
     ],
     sources:
@@ -1192,8 +1192,8 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: 'At 2,450 estimated annual mortgage originations, manual document collection is the single largest per-file labor sink in the bank. Automated income, employment, and identity verification at intake converts each file from a 10-hour staff project into a 90-second process, recovering an estimated 3.5 FTEs of underwriter capacity without a hire.',
       },
       {
-        title: 'Retail Delivery & Innovation mandate requires a front-end layer',
-        body: 'The SVP of Retail Delivery and Innovation role exists specifically to modernize how borrowers enter the lending process. The current state, a third-party mortgage portal plus no digital intake for any other product, is the problem that role was hired to solve. The verification layer is typically the first high-visibility win: measurable before/after, no core replacement required, visible in the efficiency ratio within two quarters.',
+        title: 'The intake gap is the fastest win available',
+        body: 'The current state, a third-party mortgage portal plus no digital intake for any other product, is the kind of gap a verification layer closes first. The verification layer is typically the first high-visibility win: measurable before/after, no core replacement required, visible in the efficiency ratio within two quarters.',
       },
       {
         title: 'Five-state footprint, one intake standard',
@@ -1208,15 +1208,15 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'United Bank',
     shortName: 'United Bank',
     fdicCert: 22858,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '~$30B' },
+      { label: 'Total assets', value: '~$33.6B (Q2 2026)' },
       { label: 'States', value: 'WV, VA, OH, MD, PA, NC, SC' },
       { label: 'Online loan products', value: '2 of 6 (partial)' },
       { label: 'HQ', value: 'Charleston, WV' },
     ],
     volumes: {
-      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 22858 (~$30B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
+      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 22858 (~$33.6B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
       commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 22858', estimated: true },
       consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 22858', estimated: true },
     },
@@ -1225,7 +1225,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       source: 'United Bank footprint includes Charlotte MSA (fast-growing), Richmond VA MSA, and expanding NC/SC markets. Estimated 15,000 net new households in primary growth markets annually (ACS 2019-2023, Census population estimates).',
     },
     intro:
-      "United Bank is the primary subsidiary of United Bankshares, one of the largest bank holding companies headquartered in West Virginia with roughly $30 billion in total assets across seven states. The Charlotte, NC office reflects the bank's southward growth push into the fastest-expanding markets in the Mid-Atlantic. The bank has an online mortgage application but no automated income or property verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal lending is partially digital, HELOC has no standalone path, and commercial is entirely relationship-based. At $30B, the friction cost of manual verification is measured in weeks of underwriter time per quarter.",
+      "United Bank is the primary subsidiary of United Bankshares, one of the largest bank holding companies headquartered in West Virginia with about $33.6 billion in bank assets across eight states, including Georgia after its January 2025 acquisition of Piedmont Bancorp. The Charlotte, NC office reflects the bank's southward growth push into the fastest-expanding markets in the Mid-Atlantic. The bank has an online mortgage application but no automated income or property verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal and auto lending have no online application, HELOC has no standalone path, and commercial is entirely relationship-based. At $33.6B, the friction cost of manual verification is measured in weeks of underwriter time per quarter.",
     strategic: [
       {
         title: 'Mortgage volume without embedded verification is a capacity trap',
@@ -1236,8 +1236,8 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: "United Bank's Charlotte office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline. In-migrants choosing a bank in the Charlotte MSA make that choice on digital experience before they ever visit a branch. A bank that offers an apply button that still requires a follow-up document email is not competing with Rocket Mortgage or Better.com for that borrower.",
       },
       {
-        title: 'SVP Digital Strategy hire signals the inflection point',
-        body: 'The Director of Digital Strategy role is the bank\'s signal that leadership understands the problem. Converting that mandate into a measurable outcome means automating the borrower verification workflow: income, identity, employment, and assets captured in 90 seconds at intake, verified file synced to the core on submission. That is the deliverable a digital strategy mandate requires, and it is the first place the efficiency ratio improves.',
+        title: 'A digital strategy team is already in place',
+        body: 'United has had an SVP and Director of Digital Strategy since 2020 and a Charlotte-based digital strategy team. Converting that mandate into a measurable outcome means automating the borrower verification workflow: income, identity, employment, and assets captured in 90 seconds at intake, verified file synced to the core on submission. That is the deliverable a digital strategy mandate requires, and it is the first place the efficiency ratio improves.',
       },
     ],
     sources:
