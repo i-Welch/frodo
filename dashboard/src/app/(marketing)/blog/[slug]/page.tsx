@@ -3065,71 +3065,71 @@ A commercial book this concentrated in real estate also means heavy files: entit
     `,
   },
   'countybank-greenwood-sc-sba-deep-dive': {
-    title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",
-    description: "Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.",
+    title: 'Countybank Is From Greenwood. Its Mortgage Business Lives in Greenville',
+    description: "Countybank has banked Greenwood, SC since 1933, but its 2025 HMDA data shows more home loans in Greenville County than at home, and mortgage sale gains are its biggest fee line. A look at a $733 million bank that earns like a mortgage company, and what that means for its other loans.",
     publishedDate: 'April 23, 2026',
-    readTime: '6 min read',
-    content: `# Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
+    content: `
+*Updated October 22, 2026, with second-quarter 2026 call report and 2025 HMDA data. An earlier version of this article overstated Countybank's size and efficiency and described an SBA focus that public data does not support.*
 
-*Published June 26, 2026*
+Countybank has been in Greenwood, South Carolina since 1933. Seven of its 13 offices are in Greenwood County.
 
-Greenwood, South Carolina is not where you would expect to find one of the state's more sophisticated small business lending operations. The city of 23,000 sits in the Piedmont region, two hours from Charlotte and ninety minutes from Columbia, with an economy anchored in manufacturing, healthcare, and agriculture. It is not a high-growth coastal market. It is not a college-town economy with venture-backed startups. It is a steady, relationship-driven Midlands market that has been doing the same things for decades.
+Its mortgage business tells a different story. In 2025, Countybank originated 196 home loans in Greenville County, 74 in Greenwood County and 53 in Anderson County, according to its HMDA filing. The bank's growth market is an hour up the road.
 
-Countybank has been doing them for more than a century. Founded in 1934 as Greenwood County Bank, the institution now holds approximately $900M in assets, operates 14 branches across five Upstate and Midlands counties, and posts performance metrics that most banks its size would be proud to claim: a return on equity of 17.6%, an efficiency ratio of 55%, and a net interest margin above 4% in a rate environment where most community banks are fighting for every basis point.
+## A Bank That Earns Like a Mortgage Company
+
+Countybank held $733 million in assets and $623 million in deposits at June 30, 2026, with 169 full-time-equivalent employees. Its first half of 2026, from the FDIC call report:
+
+- **Net income:** $5.4 million, up 30% from $4.1 million a year earlier
+- **Return on assets:** 1.45%
+- **Return on equity:** 23.1%
+- **Net interest margin:** 3.85%, up from 3.59%
+- **Efficiency ratio:** 75.9%, down from 78.3%
+
+Those last two lines look like they disagree. A 75.9% efficiency ratio usually means a bank is struggling. Here it doesn't, because of where the revenue comes from.
+
+In the first half of 2026, Countybank earned $13.3 million in net interest income and $10.1 million in noninterest income. Fees made up 43% of revenue, far more than at most community banks. The largest single piece was $3.9 million in gains on loan sales, up 47% from a year earlier. Trust and fiduciary income added $1.1 million.
 
 :::stat
-**55%**
-Countybank's efficiency ratio, a level most community banks its size would struggle to match, achieved in a declining-population market.
+**43%**
+Share of Countybank's first-half 2026 revenue that came from noninterest income, led by $3.9 million in gains on loan sales.
 :::
 
-The SBA lending program is the part of the story that most people outside the Upstate SC banking market do not know about.
+A mortgage operation runs on people: loan officers, processors and underwriters. Salaries and benefits were $11.6 million of $17.8 million in noninterest expense. That is why the efficiency ratio is high and returns are still strong. The 23% return on equity also reflects a thin equity base, at 6.2% of assets, though the bank's Tier 1 risk-based capital ratio is a solid 14.8%.
 
-## The SBA Advantage in a Shrinking Market
+## What 2025 HMDA Shows
 
-Greenwood County has been losing population. The 2020 Census counted roughly 71,600 residents, and estimates through 2023 show continued slow decline as younger workers leave for the Charlotte and Columbia metros. Self-Regional Healthcare is the county's largest employer, followed by manufacturing plants in the textile remnant and automotive supply chain industries. The agricultural base is real but shrinking.
+Countybank originated 642 home loans totaling $215.9 million in 2025:
 
-For a bank in a market like this, the traditional community bank playbook, grow deposits, grow consumer loans, grow residential mortgage volume, is difficult to execute when the population base is contracting. Countybank's response has been to double down on small business lending, where the bank's local knowledge and speed advantage over regional competitors creates durable relationships that are stickier than rate-sensitive consumer deposits.
+- **Purchase:** 489 loans, $166.4 million, averaging about $340,000
+- **Refinance:** 78 loans, plus 53 cash-out refinances
+- **Home improvement and other:** 22 loans
 
-The SBA program is the cornerstone of that strategy.
+By loan type: 537 conventional, 73 FHA, 26 VA and 6 USDA. A bank that makes FHA and VA loans at that volume is serving first-time and military buyers, not just existing customers.
 
-:::pullquote
-The SBA program is the cornerstone of that strategy.
-:::
+On the balance sheet, one-to-four family residential loans are $191 million, 46% of the $411 million loan book. Nonfarm, nonresidential real estate is $160 million. Commercial and industrial loans are $25 million.
 
-Countybank is not the largest SBA lender in South Carolina, but it punches well above its weight class relative to asset size. SBA 7(a) loans, the program's workhorse, are particularly attractive for small business borrowers in markets like Greenwood because they allow longer amortization periods and lower down payments than conventional commercial loans, making capital more accessible for businesses that might not qualify for standard CRE or C&I terms. For the bank, the government guarantee on the guaranteed portion reduces credit risk while the fee income from originating and servicing SBA loans adds a meaningful noninterest income line.
+## The Front Door
 
-The mechanics of SBA lending are also where the document problem is most acute.
+Countybank Mortgage is the most developed part of the bank's digital presence. It has an on-domain "Apply Now" path and its own mobile app, and underwriting is in-house.
 
-## Why SBA Files Are the Hardest to Assemble
+The rest of the lending menu, as of October 2026:
 
-A conventional commercial loan for an existing customer is relatively straightforward from a documentation standpoint. The bank already has the entity documents, prior tax returns are on file, and the relationship officer knows the business well enough to pre-screen the application before it enters the pipeline.
+- **Auto loans:** an "Apply Now" button that opens a multi-tab application (employment, marital status, assets and debts). Nothing is verified. A representative follows up within one business day.
+- **HELOC and the Instant Cash Line of Credit:** product pages with "Contact Us" and "Questions" links
+- **Business loans and lines of credit:** an inquiry form, with a callback promised within one business day
 
-SBA loans for new or growing businesses look nothing like that. The documentation requirements include: two to three years of business tax returns, year-to-date profit and loss statements, personal tax returns for all principals with 20% or more ownership, personal financial statements, business licenses and organizational documents, evidence of equity injection for 7(a) loans requiring it, and for real estate projects, appraisals, environmental studies, and title work. For a manufacturing or food-service business, there may be additional licensing or regulatory documentation.
+The auto application already collects employment and asset information. It just doesn't verify any of it. The borrower types it in, and a representative calls to start collecting the documents that prove it.
 
-Gathering that packet manually, through email requests, PDF uploads, and physical delivery, is a multi-week process for a complex borrower. And complex borrowers are the ones most likely to be using SBA programs in the first place. A well-capitalized business with clean financials and multiple banking relationships can usually get a conventional commercial loan without the government guarantee. The SBA borrower is often newer, smaller, or less capitalized, which makes their documentation more complicated, not less.
+## What the Mortgage Model Proves
 
-Countybank's 55% efficiency ratio suggests the bank is running a lean operation that is managing this document complexity without excessive overhead. But as the SBA program grows, the linear scaling of manual document collection becomes a constraint. More SBA loans means more processors chasing more documents across more applications simultaneously. At some point, adding SBA loan volume without improving the intake workflow requires adding headcount, which pressures the efficiency ratio, which limits the program's profitability.
+Countybank has already shown it can win borrowers outside its home county when it gives them a real application. Its mortgage team does it every year in Greenville and Anderson.
 
-## What Digital Intake Changes for SBA
+The question is whether its other loans can travel the same way. A Greenville homeowner who got a mortgage from Countybank and later wants a home equity line or an auto loan meets a contact form. A Greenville business owner meets an inquiry form.
 
-The specific bottleneck in SBA document collection is income verification and financial statement confirmation. A processor who can pull two years of business bank statements, verify business income against IRS tax transcript data, and confirm personal financial information automatically, using borrower-authorized data connections rather than manual document requests, compresses what used to be a two-week chase into a process that can be initiated and substantially completed in a single borrower session.
-
-For Countybank, the operational leverage of faster document collection on SBA loans is significant. Each file the bank closes generates origination fee income (typically 2-3% on the guaranteed portion), plus servicing income over the life of the loan. The faster the bank can close, the more of that fee income it generates per year. In a market where SBA loan demand from small businesses is steady but not explosive, throughput improvement delivers more revenue per processor than adding origination volume.
-
-The borrower experience improvement matters too. A small business owner in Greenwood who is applying for an SBA loan to buy equipment or expand a location is comparing Countybank's timeline against whatever the nearest regional bank or SBA-specialized non-bank lender is offering. If the regional competitor can get to conditional approval in two weeks and Countybank takes four, the relationship advantage starts to erode. If Countybank can get there in ten days using a digital document collection workflow, it has turned operational speed into a durable competitive differentiator in a market where the bank already has the local knowledge advantage.
-
-## The Greenwood Model and What It Proves
-
-Here is the underappreciated insight from Countybank's performance numbers. A 17.6% ROE and 55% efficiency ratio in a declining-population market is not an accident. It is the result of a bank that has found the borrower segments where it can win on local knowledge and relationship depth, built a lending program around those segments (SBA small business in this case), and executed with enough discipline to maintain strong credit quality while generating above-average fee income.
-
-:::pullquote
-A 17.6% ROE and 55% efficiency ratio in a declining-population market is not an accident.
-:::
-
-That model scales better with digital document infrastructure than without it. The relationship and local knowledge advantages that Countybank has built over 90 years do not go away when a borrower submits documents digitally rather than by fax. The credit judgment that protects the bank's credit quality does not get replaced by automation. What automation replaces is the weeks of document chasing that sit between a signed term sheet and a complete credit file.
-
-For a bank in a market that is not going to grow its way to higher loan volume, squeezing more throughput out of the existing SBA pipeline through faster document collection is the most direct path to maintaining the performance metrics that define the franchise. The $900M mark is not the ceiling. Getting past it in a flat-population market requires doing more with the same team, and that is precisely where verified income, employment, and financial data delivered digitally changes the arithmetic.
-`,
+The mortgage operation shows the formula: an application a borrower can finish without a phone call, and a team that can process the result. Extending that to home equity and consumer lending, with income and assets verified as the borrower applies, is how a Greenwood bank keeps the Greenville customers its mortgage team already found.
+    `,
   },
   'optus-bank-cdfi-columbia-growth': {
     title: 'Optus Bank Grew From $65 Million to $764 Million. Now Comes M&F',

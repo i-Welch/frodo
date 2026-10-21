@@ -390,10 +390,10 @@ export const articles: Article[] = [
   },
   {
     slug: 'countybank-greenwood-sc-sba-deep-dive',
-    title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",
+    title: 'Countybank Is From Greenwood. Its Mortgage Business Lives in Greenville',
     description:
-      'Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.',
-    readTime: '6 min read',
+      "Countybank has banked Greenwood, SC since 1933, but its 2025 HMDA data shows more home loans in Greenville County than at home, and mortgage sale gains are its biggest fee line. A look at a $733 million bank that earns like a mortgage company, and what that means for its other loans.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'countybank',

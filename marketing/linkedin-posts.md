@@ -576,6 +576,7 @@ Fort Jackson. University of South Carolina hospital system. State government. Th
 ---
 
 ## POST 19 — July 30, 2026 (Wednesday)
+> **Superseded (Oct 2026):** the figures below are wrong (efficiency ratio is 75.9%, not 55%; assets $733M, not $900M) and the article was rewritten. Use `marketing/linkedin/queue/countybank-greenwood-sc-sba-deep-dive.md`.
 **Article:** Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business
 **URL:** https://reportraven.tech/blog/countybank-greenwood-sc-sba-deep-dive
 

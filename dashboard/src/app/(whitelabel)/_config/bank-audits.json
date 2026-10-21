@@ -2200,12 +2200,12 @@
     "slug": "countybank",
     "bankName": "Countybank",
     "shortName": "Countybank",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "countybank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$748M"
+        "value": "~$733M"
       },
       {
         "label": "Financial centers",
@@ -2220,11 +2220,11 @@
         "value": "1933, Greenwood SC"
       }
     ],
-    "summary": "Countybank is a $748M independent community bank serving Upstate South Carolina from nine financial centers, with roots in Greenwood since 1933 and a footprint stretching to Greenville, Greer, Anderson, and Simpsonville. The bank has a 'YOU CAN BANK ON US.' brand identity built around local decision-making and relationship lending, which is genuine — but it means almost no self-serve digital capture exists for borrowers. The lone exception is auto loans, which have an 'Apply Now' button that resolves to a lead-capture form where a rep promises to call back within one business day. Every other consumer and commercial lending product — HELOC, Instant Cash Line of Credit, custom business loans, SBA, and business lines of credit — ends at a 'Questions' contact link or a branch visit. Mortgage is the partial bright spot: a dedicated mobile app and an 'Apply Now' path exist, but the depth of that flow could not be confirmed from public pages, and no published rates are shown anywhere.",
+    "summary": "Countybank is a $733M independent community bank serving Upstate South Carolina from nine financial centers, with roots in Greenwood since 1933 and a footprint stretching to Greenville, Greer, Anderson, and Simpsonville. The bank has a 'YOU CAN BANK ON US.' brand identity built around local decision-making and relationship lending, which is genuine — but it means almost no self-serve digital capture exists for borrowers. The lone consumer exception is auto loans, whose 'Apply Now' button opens a multi-tab application that collects employment, asset and debt details without verifying any of them; a rep follows up within one business day. Every other consumer and commercial lending product — HELOC, Instant Cash Line of Credit, custom business loans, SBA, and business lines of credit — ends at a 'Questions' contact link or a branch visit. Mortgage is the partial bright spot: a dedicated mobile app and an 'Apply Now' path exist, but the depth of that flow could not be confirmed from public pages, and no published rates are shown anywhere.",
     "currentJourney": [
       {
         "channel": "Auto loans",
-        "detail": "Apply Now button exists on-domain but resolves to a multi-tab lead form — a rep contacts the borrower within one business day to complete the process. No instant decisioning or verified data capture.",
+        "detail": "Apply Now button opens an on-domain, multi-tab application (employment, marital status, assets and debts). Nothing is verified; a rep contacts the borrower within one business day to complete the process. No instant decisioning.",
         "status": "weak"
       },
       {
@@ -2249,7 +2249,7 @@
       },
       {
         "channel": "Digital banking",
-        "detail": "Online banking at secure.ecountybank.com and a mobile app with bill pay, transfers, remote deposit, and Kasasa reward checking. Functional and on-branded subdomain.",
+        "detail": "Online banking at secure.ecountybank.com and a mobile app with bill pay, transfers and remote deposit. Functional and on a branded subdomain.",
         "status": "ok"
       }
     ],
@@ -2307,7 +2307,7 @@
         "withRaven": "Business financials, owner identity, and bank account verification captured before first call"
       }
     ],
-    "sources": "ecountybank.com (/, /personal/personal-loans, /personal/personal-loans/auto-loans.html, /personal/personal-loans/home-equity-line-of-credit-heloc.html, /personal/personal-loans/instant-cash-line-of-credit.html, /business/business-loans, /mortgage/mortgage-home.html, /applications/loan-application.html, /applications/commercial-application.html, /personal/personal-services/digital-banking.html, /about-us/locations-hours.html, /about-us/about-countybank.html, sitemap.xml). FDIC cert #9155. Tagline 'YOU CAN BANK ON US.' from homepage hero. Kasasa products and secure.ecountybank.com/countybankonlinebanking/ login URL pattern observed; Jack Henry inferred at moderate confidence based on Kasasa association. Reviewed June 2026."
+    "sources": "ecountybank.com (/, /personal/personal-loans, /personal/personal-loans/auto-loans.html, /personal/personal-loans/home-equity-line-of-credit-heloc.html, /personal/personal-loans/instant-cash-line-of-credit.html, /business/business-loans, /mortgage/mortgage-home.html, /applications/loan-application.html, /applications/commercial-application.html, /personal/personal-services/digital-banking.html, /about-us/locations-hours.html, /about-us/about-countybank.html, sitemap.xml). FDIC cert #9155. Tagline 'YOU CAN BANK ON US.' from homepage hero. Kasasa products and secure.ecountybank.com/countybankonlinebanking/ login URL pattern observed; Jack Henry inferred at moderate confidence based on Kasasa association. Reviewed October 2026. HMDA 2025 via FFIEC data browser (LEI 549300III1DMY3SLAW56); FDIC call report Q2 2026."
   },
   {
     "slug": "optus-bank",
