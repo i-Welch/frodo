@@ -341,7 +341,7 @@
         "withRaven": "Synced to Jack Henry automatically"
       }
     ],
-    "sources": "firstreliance.com (/, /personal/personal-borrowing, /personal/personal-borrowing/home-equity-line-of-credit-heloc, /mortgages, /login), apply.firstreliance.com and app.prod.digitallending.online application portals, First Reliance App on the Apple App Store, research.jackhenry.com Jack Henry Lending bank scorecard, FDIC BankFind cert #76181, First Reliance Bancshares Q1 2026 disclosures. Brand colors (#0e2a59 navy, #001a91 royal blue, #ffdd00 gold) extracted from the live homepage CSS; tagline 'There's More to Banking Than Money' from the site. Reviewed June 2026."
+    "sources": "firstreliance.com (/, /personal/personal-borrowing, /personal/personal-borrowing/home-equity-line-of-credit-heloc, /mortgages, /login), apply.firstreliance.com and app.prod.digitallending.online application portals, First Reliance App on the Apple App Store, research.jackhenry.com Jack Henry Lending bank scorecard, FDIC BankFind cert #35214, First Reliance Bancshares Q1 2026 disclosures. Brand colors (#0e2a59 navy, #001a91 royal blue, #ffdd00 gold) extracted from the live homepage CSS; tagline 'There's More to Banking Than Money' from the site. Reviewed June 2026."
   },
   {
     "slug": "colony-bankcorp",
@@ -1064,7 +1064,7 @@
         "withRaven": "Banker gets a verified, complete file by name"
       }
     ],
-    "sources": "southernfirst.com (/, /personal/mortgages, /personal/loans, /business/loans, /about), mortgageapp.southernfirst.com (online mortgage application), southernfirstpersonal.com (online banking), FDIC BankFind cert #35179, Southern First Bancshares (NASDAQ: SFST) filings. Brand colors approximated from the live site's navy/accent-blue palette. Core system not publicly disclosed; Fiserv inferred at low confidence. Reviewed June 2026."
+    "sources": "southernfirst.com (/, /personal/mortgages, /personal/loans, /business/loans, /about), mortgageapp.southernfirst.com (online mortgage application), southernfirstpersonal.com (online banking), FDIC BankFind cert #35295, Southern First Bancshares (NASDAQ: SFST) filings. Brand colors approximated from the live site's navy/accent-blue palette. Core system not publicly disclosed; Fiserv inferred at low confidence. Reviewed June 2026."
   },
   {
     "slug": "south-atlantic-bank",
@@ -2759,7 +2759,7 @@
         "withRaven": "Borrower verified and file queued regardless of time"
       }
     ],
-    "sources": "bankwithunited.com (homepage, /mortgage, /personal-banking, /business-banking, /about), FDIC BankFind cert #5672, United Bankshares 10-K (FY2025), HMDA 2024 public data, MBA Quarterly Mortgage Bankers Performance Report (2025). Reviewed June 2026."
+    "sources": "bankwithunited.com (homepage, /mortgage, /personal-banking, /business-banking, /about), FDIC BankFind cert #22858, United Bankshares 10-K (FY2025), HMDA 2024 public data, MBA Quarterly Mortgage Bankers Performance Report (2025). Reviewed June 2026."
   },
   {
     "slug": "rev-federal-credit-union",

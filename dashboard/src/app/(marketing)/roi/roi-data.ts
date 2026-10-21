@@ -793,7 +793,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     shortName: 'First Reliance',
     articleSlug: 'first-reliance-sells-at-the-top',
     articleTitle: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
-    fdicCert: 76181,
+    fdicCert: 35214,
     auditDate: 'June 2026',
     stats: [
       { label: 'Total assets', value: '$1.12B' },
@@ -827,7 +827,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'FDIC BankFind (Cert #76181); First Reliance Bancshares Q1 2026 earnings release; Visbanking call report data; Florence County Economic Development (AESC project status); Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind (Cert #35214); First Reliance Bancshares Q1 2026 earnings release; Visbanking call report data; Florence County Economic Development (AESC project status); Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'colony-bankcorp',
@@ -1087,7 +1087,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     shortName: 'Southern First',
     articleSlug: 'southern-first-bank-upstate-sc-bet',
     articleTitle: 'The Upstate SC Bet',
-    fdicCert: 35179,
+    fdicCert: 35295,
     auditDate: 'May 2026',
     stats: [
       { label: 'Total assets', value: '$4.4B' },
@@ -1207,7 +1207,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'united-bank',
     name: 'United Bank',
     shortName: 'United Bank',
-    fdicCert: 5672,
+    fdicCert: 22858,
     auditDate: 'June 2026',
     stats: [
       { label: 'Total assets', value: '~$30B' },
@@ -1216,9 +1216,9 @@ export const ROI_BANKS: BankRoiInput[] = [
       { label: 'HQ', value: 'Charleston, WV' },
     ],
     volumes: {
-      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 5672 (~$30B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
-      commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 5672', estimated: true },
-      consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 5672', estimated: true },
+      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 22858 (~$30B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
+      commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 22858', estimated: true },
+      consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 22858', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 15000,
@@ -1241,7 +1241,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind cert #22858; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'robins-financial-credit-union',
