@@ -250,9 +250,9 @@ export const articles: Article[] = [
     slug: 'open-banking-community-bank-guide',
     title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support',
     description:
-      'Section 1033 is enjoined, but open banking is already deployed at community banks. Here is what Plaid, Fiserv, and Jack Henry actually offer, what works, and what still requires custom integration.',
-    readTime: '7 min read',
-    date: 'June 2026',
+      'Section 1033 is enjoined and being rewritten, with data access fees back on the table. Open banking is already live at community banks anyway. What Plaid, Fiserv and Jack Henry actually offer, and where it pays off now.',
+    readTime: '6 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {

@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'open-banking-community-bank-guide',
   'chime-account-opening-deposit-war',
   'white-label-borrower-portal-community-bank',
   'community-bank-ai-lending-guide',
@@ -81,7 +82,6 @@ export const BLOG_SLUGS = [
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
   // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
   // retired 2026-10-21: superseded by best-digital-account-opening-software-community-banks (same MANTL/Narmi ground, refreshed) and chime-account-opening-deposit-war; its figures were stale or unsourced — 'digital-account-opening-community-bank'
-  // 'open-banking-community-bank-guide',
   // — Phase 5: add Jul 21 (remaining June bank deep dives) —
   // 'bank-travelers-rest-greenville-growth-engine',
   // 'conway-national-bank-grand-strand-dominance',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'open-banking-community-bank-guide': '2026-10-22',
   'chime-account-opening-deposit-war': '2026-10-22',
   'white-label-borrower-portal-community-bank': '2026-10-22',
   'community-bank-ai-lending-guide': '2026-10-22',
@@ -133,7 +134,6 @@ export const BLOG_DATES: Record<string, string> = {
   'fiserv-premier-digital-lending': '2026-06-26',
   'first-reliance-sells-at-the-top': '2026-06-21',
   'digital-account-opening-community-bank': '2026-06-26',
-  'open-banking-community-bank-guide': '2026-06-26',
   'fintech-grade-loan-application-community-bank': '2026-06-16',
   'what-neobanks-get-right-community-banks': '2026-06-09',
   'community-bank-borrower-experience-roi': '2026-06-02',

@@ -420,6 +420,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
+      { slug: 'open-banking-community-bank-guide', title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },

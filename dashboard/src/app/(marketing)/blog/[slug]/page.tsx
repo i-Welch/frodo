@@ -1911,75 +1911,78 @@ The deposit franchise is the community bank's core asset. A branch network build
   },
   'open-banking-community-bank-guide': {
     title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support',
-    description: 'Section 1033 is enjoined, but open banking is already deployed at community banks. Here is what Plaid, Fiserv, and Jack Henry actually offer, what works, and what still requires custom integration.',
+    description: 'Section 1033 is enjoined and being rewritten, with data access fees back on the table. Open banking is already live at community banks anyway. What Plaid, Fiserv and Jack Henry actually offer, and where it pays off now.',
     publishedDate: 'June 26, 2026',
-    readTime: '7 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '6 min read',
     content: `# Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support
 
 *Published June 26, 2026*
 
-The CFPB's Section 1033 open banking rule was issued on October 22, 2024. A federal district court enjoined enforcement. The Trump administration initiated reconsideration. The CFPB released an Advance Notice of Proposed Rulemaking on August 22, 2025. A new proposed rule is forthcoming. No compliance dates are currently active.
+The CFPB finalized its Section 1033 open banking rule in October 2024. A year later, a federal court in Kentucky barred the agency from enforcing it, and the case on appeal is on hold while the CFPB rewrites the rule. The agency opened that reconsideration with an advance notice in August 2025. As of October 2026, no revised proposal has been published, and none of the original compliance dates are being enforced.
 
-For community banks, the temptation is to treat open banking as a regulatory problem that has been postponed. That reading is wrong.
+The biggest reported change in the rewrite is fees. The 2024 rule barred banks from charging for data access. According to news reports cited by Ballard Spahr in June 2026, the CFPB intends to drop that outright ban and let data providers charge after a set number of free requests.
 
-Open banking is already deployed at community banks. Plaid processes income verification for community lenders through MeridianLink. Jack Henry has certified integrations with every major U.S. data exchange platform. Fiserv has an open API gateway, though it requires deliberate adoption. The question is not whether open banking is coming. It is which of your institution's workflows would benefit from connecting to it now.
+For community banks, the temptation is to treat open banking as a regulatory problem that has been postponed. That reading is wrong. Open banking is already running at community banks, through their cores, their digital banking platforms and their loan origination systems. The question is not whether it is coming. It is which of your workflows would benefit from it now.
 
 :::pullquote
-Open banking is already deployed at community banks.
+Open banking is already running at community banks. The question is which workflows would benefit from it now.
 :::
 
 ## What the Regulation Actually Says
 
-Section 1033 of the Dodd-Frank Act requires covered financial institutions to make consumer-permissioned data available to authorized third parties. The CFPB's 2024 rule would have implemented that mandate through a standardized developer interface requirement.
+Section 1033 of the Dodd-Frank Act gives consumers the right to access their financial data, subject to rules the CFPB writes. The 2024 rule would have required covered institutions to stand up a standardized developer interface for authorized third parties, on a schedule that started with the largest institutions.
 
-Two things matter for community banks in the current state. First, the third-party developer interface mandate in the 2024 rule exempted institutions below $850 million in assets. ICBA has formally asked the CFPB to raise that threshold to $10 billion under any new rule, and to exempt all community banks from the mandate to build and maintain a third-party developer interface. Second, even with the rule enjoined, the underlying statutory obligation has not changed. If a consumer asks for their data, the institution still has to provide it. The regulatory uncertainty is about the technical standards and compliance timelines. The directional obligation is settled law.
+Two things matter for community banks. First, the 2024 rule exempted depository institutions at or below $850 million in assets from the developer interface requirement. In October 2025, ICBA asked the CFPB to raise that exemption to every community bank with $10 billion or less in assets, and to let banks charge a reasonable fee for interface access. Other banking groups have opposed a broader exemption, so the final threshold is genuinely open.
 
-The practical effect for most community banks right now: you are not required to build an API. You are still required to participate in consumer-permissioned data sharing in some form. And the lenders who have implemented open banking connectivity are not waiting for the rule.
+Second, the federal pause is not the only front. New York lawmakers introduced bills in March 2026 that would require financial institutions to build a developer interface and bar them from charging for data access. Both were still in committee as of June.
+
+The practical effect for most community banks right now: no rule requires you to build an API this year. But your customers are already sharing their data with fintechs through aggregators, and your vendors are already building for it.
 
 ## What Plaid Actually Supports for Community Banks
 
-Plaid's network covers more than 12,000 financial institutions. The coverage is not uniform. Smaller community banks are often reached via screen-scraping fallbacks rather than direct API connections, which is less reliable and creates liability questions when account credentials are involved.
+Plaid says its network covers more than 12,000 financial institutions. The quality of those connections is not uniform. Where an institution has no API connection, aggregators have historically fallen back on credential-based access, which is less reliable and puts the customer's online banking password in a third party's hands.
 
-In November 2025, Plaid expanded its Data Partner Dashboard to let community banks and credit unions self-manage their Plaid presence: fix connection issues, update branding, enable the Auth product. This was a direct response to the connectivity gap for smaller institutions.
+In November 2025, Plaid expanded its Data Partner Dashboard to community banks and credit unions, letting them see and fix their own connection issues, monitor connection health and update how their brand appears in Plaid Link. It is a free, practical first step for any bank that has never looked at how its customers connect to fintech apps.
 
-The most concrete deployment in community bank lending happened in April 2026, when MeridianLink announced an expanded Plaid partnership embedding Plaid Income directly into MeridianLink Consumer. The integration drives 80% conversion in lending flows by replacing manual document uploads with real-time income verification. A borrower connects their bank account once; Plaid pulls income and asset data automatically. Plans to expand to cash flow underwriting are on the roadmap for later 2026.
+The most concrete lending deployment came on April 28, 2026, when MeridianLink announced an expanded partnership embedding Plaid Income in MeridianLink Consumer. A borrower connects a bank account, and income is verified from deposit data instead of uploaded pay stubs. The companies cite 80% conversion in lending flows, which is a vendor figure, and plan to add cash flow underwriting data later in 2026.
 
 :::stat
 **80%**
-Conversion rate in lending flows when Plaid Income replaces manual document uploads in MeridianLink Consumer.
+Conversion in lending flows that MeridianLink and Plaid cite for Plaid Income, which went live inside MeridianLink Consumer in April 2026. A vendor figure.
 :::
 
-For a community lender running MeridianLink, this is not a future capability. It is available today. The income verification step that used to take days now takes minutes.
+For a community lender already running MeridianLink Consumer, this is not a future capability. It is a configuration conversation.
 
 ## What Fiserv and Jack Henry Actually Offer
 
-The core platforms differ significantly in how they approach open banking connectivity.
+The two largest community bank core providers approach open banking differently.
 
-**Fiserv.** Open banking runs through Communicator Open, described as an enterprise services framework and a prerequisite for deploying pre-integrated apps or building custom applications. API usage is free up to a defined threshold, then shifts to consumption-based pricing. Fiserv serves community banks on Portico, Precision, and Premier. The important caveat: Communicator Open access is not automatic. Banks have to activate the framework deliberately. If your bank is on Fiserv and you have not had a conversation with your rep about Communicator Open, you probably do not have it turned on.
+**Fiserv.** Open banking runs through Communicator Open, which Fiserv describes as a way for institutions on its account processing platforms to reach third-party fintech capabilities and pursue open finance strategies, delivered as RESTful APIs. Integration partners list support for Premier, Signature and Precision. Access is not automatic: PortX, an integration vendor, notes that banks typically need to re-license for API-first contracts and plan for integration work and middleware. If your bank is on Fiserv and has not discussed Communicator Open with its account team, start there.
 
-**Jack Henry.** The most fintech-integrated of the three platforms for community banks. Jack Henry announced integrations with Plaid, Akoya, Finicity, and Yodlee, making it the first core processor to have certified relationships with all major U.S. financial data-exchange platforms. Its Fintech Integration Network (FIN) gives fintechs direct access to Jack Henry's core technical resources, which meaningfully reduces time-to-deployment for community bank clients. A fintech that wants to integrate with a Jack Henry bank does not have to build a custom connection: they use the FIN.
+**Jack Henry.** Jack Henry built its open banking connections early, through its Banno digital platform. In 2020 and 2021 it signed API-based data access agreements with Plaid, Finicity and Envestnet Yodlee, and in May 2021 it became the first core provider to join Akoya's data access network. Those connections replace credential-based screen scraping for Banno users with token-based access.
 
-The practical difference: a community bank on Jack Henry that wants to enable Plaid income verification for loan applications has a shorter path to implementation than one on Fiserv, primarily because the certification work is already done.
+The practical difference: a bank on Jack Henry's digital platform likely already has API-based connections to the major aggregators. A bank on Fiserv may need to make a deliberate licensing and integration decision first.
 
 ## Where Open Banking Adds Value Right Now
 
-Three use cases are documented and live at community banks today.
+Three use cases are live at community banks today.
 
-**Income and employment verification.** This is the highest-ROI entry point. Replacing manual document collection with Plaid Income or similar tools cuts the verification step from days to minutes and eliminates the single most common point of abandonment in digital loan applications. The MeridianLink/Plaid deployment is the clearest community bank case study in the current data.
+**Income verification.** Replacing manual document collection with deposit-based income verification cuts a step that can take days down to minutes, and removes a document request that borrowers often abandon over. The MeridianLink and Plaid integration is the clearest community lending example.
 
-**Deposit opening and funding.** Open banking connections allow instant bank verification during account opening, replacing the micro-deposit verification flow that adds two to three days to the new account timeline. For community banks trying to close the account opening speed gap against Chime's two-minute flow, removing the micro-deposit wait is a direct conversion improvement.
+**Account opening and funding.** Instant account verification lets a new customer fund an account during opening, instead of waiting days for micro-deposits to post. For a bank trying to close the account opening gap with fintechs, that wait is a direct conversion cost.
 
-**Cash flow underwriting.** Using transaction data from a borrower's connected accounts to supplement or replace traditional income documentation is a growing use case for thin-file borrowers and small business applicants who have revenue but limited W-2 history. Jack Henry's roadmap and MeridianLink's announced plans both point to cash flow underwriting as a near-term capability.
+**Cash flow underwriting.** Transaction data from a borrower's connected accounts can supplement traditional documentation for thin-file consumers and small businesses with revenue but little W-2 history. It is the use case most vendors, including MeridianLink, have named as next.
 
-Only about 11% of U.S. consumers used open banking payments as of 2025, according to Plaid's own consumer research. Seventy percent said they were comfortable sharing financial data with tools they trust, but 56% of non-adopters cited security and trust concerns. The infrastructure is ahead of consumer behavior.
+## Why Not Wait for the Rule
 
-For community banks, this asymmetry is an advantage. The friction is not technical anymore. It is trust. And trust is the one thing community banks have spent decades building that fintech competitors cannot replicate at scale.
+The rewrite will settle the threshold, the fee question and the timeline. It will not change the direction. Customers already connect their accounts to apps, and lenders already verify income from bank data.
 
 :::pullquote
-Trust is the one thing community banks have spent decades building that fintech competitors cannot replicate at scale.
+The banks waiting for the final rule will be building under a deadline.
 :::
 
-The regulatory uncertainty around Section 1033 will resolve. The direction is not in doubt. The banks that have built operational experience with open banking while compliance timelines are soft will implement faster when the timelines harden. The ones waiting for the final rule will be building under a deadline.
+For community banks, there is an advantage hiding in the delay. The friction left in open banking is mostly trust: customers deciding whether to connect an account, and to whom. Community banks have more of that than any fintech. The banks that build operational experience while the timelines are soft will move faster when they harden. The banks waiting for the final rule will be building under a deadline.
   `,
   },
   'fintech-grade-loan-application-community-bank': {
