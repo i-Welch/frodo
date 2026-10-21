@@ -40,12 +40,18 @@ try {
         'Bash(grep *)', 'Bash(wc *)', 'Bash(cat *)', 'Bash(ls *)', 'Bash(head *)',
         'Bash(tail *)', 'Bash(sed -n *)', 'Bash(sleep *)'
     )
-    claude -p $Prompt --permission-mode acceptEdits --allowedTools $allowed --output-format text
-    if ($LASTEXITCODE -ne 0) { throw "claude exited with $LASTEXITCODE" }
+    claude -p $Prompt --permission-mode acceptEdits --allowedTools $allowed --output-format text | Tee-Object -Variable claudeOut
+    if ($LASTEXITCODE -ne 0) {
+        # A usage limit is not a bug: say so, with the reset time, so the alert is actionable.
+        $limit = $claudeOut | Where-Object { $_ -match 'hit your .*limit' } | Select-Object -First 1
+        if ($limit) { throw "Claude usage limit, run skipped: $limit" }
+        throw "claude exited with $LASTEXITCODE"
+    }
 }
 catch {
     Write-Output "RUN FAILED ($Prompt): $_"
-    bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" "$Prompt run failed" "$_`n`nTranscript: $Log"
+    $subject = if ("$_" -match 'usage limit') { "$Prompt skipped (Claude usage limit)" } else { "$Prompt run failed" }
+    bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" $subject "$_`n`nTranscript: $Log"
     exit 1
 }
 finally {
