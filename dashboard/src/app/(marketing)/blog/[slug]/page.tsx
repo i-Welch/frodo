@@ -3195,8 +3195,11 @@ The CDFI mission and operational excellence are not in tension. They are aligned
     title: 'Beacon Community Bank: Growth at the Edge of Capacity',
     description: "Beacon Community Bank grew from $36M to $972M in assets in seven years without building a digital front door. In a market adding 8,500 households a year, a 404 mortgage page is a strategy problem, not a website bug.",
     publishedDate: 'April 9, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Update, October 22, 2026: Beacon is no longer independent. Beacon Holding Company closed a merger of equals with Coastal Carolina National Bank (CCNB) on October 1, 2026. The combined bank has about $2.3 billion in assets across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of CCNB. Core systems convert in early 2027, and the combined bank takes the name Beacon Bank, N.A. in mid-March 2027. [Our analysis of the merger](/blog/ccnb-myrtle-beach-merger-growth-2026) covers what comes next. The figures below are as of the original April 2026 publication.*
+
 Beacon Community Bank started 2018 with $36 million in assets. Seven years later it sits at $972 million, and its mortgage application page returns a 404 error.
 
 That single fact explains more about where this bank is headed than any line on the balance sheet.
