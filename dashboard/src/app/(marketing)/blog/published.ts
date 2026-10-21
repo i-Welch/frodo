@@ -79,7 +79,7 @@ export const BLOG_SLUGS = [
   'first-community-bank-sc-cre-merger-growth',
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
   // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
-  // 'digital-account-opening-community-bank',
+  // retired 2026-10-21: superseded by best-digital-account-opening-software-community-banks (same MANTL/Narmi ground, refreshed) and chime-account-opening-deposit-war; its figures were stale or unsourced — 'digital-account-opening-community-bank'
   // 'open-banking-community-bank-guide',
   // — Phase 5: add Jul 21 (remaining June bank deep dives) —
   // 'bank-travelers-rest-greenville-growth-engine',

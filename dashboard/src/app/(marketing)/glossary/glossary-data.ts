@@ -419,7 +419,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedTerms: ['verification-of-deposit', 'asset-verification', 'synthetic-identity-fraud'],
     relatedArticles: [
       { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },

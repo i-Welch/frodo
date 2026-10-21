@@ -140,7 +140,7 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
     ],
     relatedArticles: [
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
       { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
     ],
   },
@@ -196,7 +196,7 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
     ],
     relatedArticles: [
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
       { slug: 'what-neobanks-get-right-community-banks', title: 'What Neobanks Get Right (and What Community Banks Already Have)' },
     ],
   },
