@@ -422,7 +422,7 @@ export const articles: Article[] = [
     slug: 'first-palmetto-bank-sc-performance-deep-dive',
     title: 'First Palmetto Bank: 120 Years Old, $1B in Assets, Zero Excuses',
     description:
-      'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
+      'First Palmetto Bank earned a 1.36% ROA with a 54.8% efficiency ratio in the first half of 2026 across 22 South Carolina offices, while its four Grand Strand branches sit in one of the fastest-growing counties in the state. The performance is real. The manual mortgage workflow is a risk.',
     readTime: '6 min read',
     date: 'April 2026',
     category: 'bank',
@@ -432,7 +432,7 @@ export const articles: Article[] = [
     slug: 'queensborough-national-bank-trust-deep-dive',
     title: "Queensborough's Long Runway: A $2.3B Georgia Bank Built to Last",
     description:
-      "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
+      "Queensborough National Bank & Trust has grown to $2.34B in assets across a 25-office corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
     readTime: '6 min read',
     date: 'March 2026',
     category: 'bank',

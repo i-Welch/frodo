@@ -3308,29 +3308,32 @@ The $972 million loan book is the easy part. The next $400 million is where veri
   },
   'first-palmetto-bank-sc-performance-deep-dive': {
     title: 'First Palmetto Bank: 120 Years Old, $1B in Assets, Zero Excuses',
-    description: 'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
+    description: 'First Palmetto Bank earned a 1.36% ROA with a 54.8% efficiency ratio in the first half of 2026 across 22 South Carolina offices, while its four Grand Strand branches sit in one of the fastest-growing counties in the state. The performance is real. The manual mortgage workflow is a risk.',
     publishedDate: 'April 2, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026. An earlier version of this article paired the bank's 2025 return on assets with a single quarter's margin and efficiency ratio, overstated its independence, and cited growth figures we could not source. Figures below are corrected and updated through June 30, 2026.*
+
 First Palmetto Bank was founded in 1904. The Wright Brothers had just flown at Kitty Hawk. The Federal Reserve didn't exist yet. And the bank still doesn't have an online mortgage application.
 
-That last fact is the most interesting thing about a $1.08 billion institution that has survived every rate cycle, economic crisis, and competitive wave since Theodore Roosevelt was president.
+That last fact is the most interesting thing about a $1.10 billion institution that has survived every rate cycle, economic crisis, and competitive wave since Theodore Roosevelt was president.
 
 ## A Balance Sheet That Earns Respect
 
 Start with the numbers, because they're genuinely good.
 
-ROA of 1.07% for fiscal year 2025. Net interest margin of 3.54%. Efficiency ratio of 53%. Twenty-two offices across 12 South Carolina counties. Named America's Best Bank by Newsweek three consecutive years: 2021, 2022, and 2023.
+For full-year 2025: return on assets of 1.07%, net interest margin of 3.42%, efficiency ratio of 62.4%. The first half of 2026 was better: ROA of 1.36%, margin of 3.59%, efficiency ratio of 54.8%. Twenty-two offices across 12 South Carolina counties. Named America's Best Bank by Newsweek three consecutive years: 2021, 2022, and 2023.
 
-The efficiency ratio is worth sitting with. The community bank average runs around 60-65%. First Palmetto is spending 53 cents to make every revenue dollar, a full dime cheaper per dollar than the typical peer. That's not a fluke. It reflects disciplined staffing, a clean loan book, and a management culture that doesn't chase growth it can't underwrite.
+The efficiency ratio is worth sitting with. In 2025, at 62.4%, First Palmetto sat close to the community bank average. In the first half of 2026 it spent about 55 cents to earn each revenue dollar, a sharp improvement in a single year. That reflects a wider margin, disciplined staffing, a clean loan book, and a management culture that doesn't chase growth it can't underwrite.
 
 :::pullquote
-First Palmetto is spending 53 cents to make every revenue dollar, a full dime cheaper per dollar than the typical peer.
+In the first half of 2026, First Palmetto spent about 55 cents to earn each revenue dollar, down from 62 cents in 2025.
 :::
 
 The footprint is genuinely diverse. First Palmetto's 22 offices span the Midlands (Camden, Columbia, Lugoff, Lexington), the Lowcountry (Mount Pleasant, Summerville), the Pee Dee (Darlington, Manning, Bishopville), four Grand Strand locations (Myrtle Beach, Surfside Beach, Little River, Loris), and Upstate markets including Greenville. That's five distinct South Carolina economies under one charter. Camden, where the bank is headquartered, is a quiet Midlands city with a manufacturing and agricultural base. Myrtle Beach is a different story entirely.
 
-**The bank has been independent since 1904.** No holding company. No M&A activity. No private equity backstory. Just 120 years of relationship banking from the same city.
+**The bank has been independent since 1904.** It is owned by a holding company, First Palmetto Financial Corp., and its acquisitions have been small: branches bought from Wachovia and First Union in 1994 and 1995. No private equity backstory. Just 120 years of relationship banking from the same city.
 
 ## 511 Mortgages, No Digital Front Door
 
@@ -3340,42 +3343,41 @@ First Palmetto originated 511 residential mortgage loans in 2024. Roughly 78% of
 
 Go to firstpalmetto.com right now. Click on mortgage. You will find a list of Mortgage Bankers and a form to contact one. There is no self-service application portal. There is no fintech partnership disclosed anywhere on the site. The digital offering (mobile deposit, Zelle, Apple Pay, Google Pay) is transactional only.
 
-This is a deliberate model. First Palmetto built its franchise on knowing borrowers personally, making relationship-based credit decisions, and keeping an examiner-clean audit trail. The approach works: that 53% efficiency ratio is the evidence.
+This is a deliberate model. First Palmetto built its franchise on knowing borrowers personally, making relationship-based credit decisions, and keeping an examiner-clean audit trail. The approach works: the bank's returns are the evidence.
 
 The problem is what the approach costs in competitive markets at volume.
 
-Each of those 511 files required someone on staff to chase pay stubs, W-2s, bank statements, employer confirmations, and IRS transcripts. At the industry average of 10-14 staff hours per mortgage file for document collection and income verification, that's somewhere between 5,100 and 7,100 staff hours a year spent gathering information that already exists in the borrower's bank accounts and payroll records. The information problem is solved. The connection to it isn't.
+Each of those 511 files required someone on staff to chase pay stubs, W-2s, bank statements, employer confirmations, and IRS transcripts. Across a year, that is thousands of staff hours spent gathering information that already exists in the borrower's bank accounts and payroll records. The information problem is solved. The connection to it isn't.
 
 :::stat
-**5,100 to 7,100**
-Staff hours First Palmetto spends annually on mortgage document collection and income verification across its 511-loan pipeline.
+**511**
+Residential mortgage loans First Palmetto originated in 2024, per HMDA data, about 78% of them purchase loans.
 :::
 
 ## The Grand Strand Volume Problem
 
 Four of First Palmetto's 22 offices sit in Horry County.
 
-Horry County added roughly 7,000 net new households in 2024 alone. The Myrtle Beach metro ranked among the top three fastest-growing population centers in the country that year. Median property values in the county jumped 13% year-over-year. That's not a coastal market gently appreciating. That's a market under sustained demographic pressure from people moving in, equity building, and demand for purchase mortgages, HELOCs, and vacation property financing running consistently above what any manual workflow can absorb efficiently.
+Horry County had 413,391 residents in 2024, up 17.8% since 2020, according to Census Bureau estimates. That's not a coastal market gently appreciating. That's a market under sustained demographic pressure from people moving in, equity building, and demand for purchase mortgages, HELOCs, and vacation property financing running consistently above what any manual workflow can absorb efficiently.
 
 The inland markets, Kershaw County, Lee County, Darlington, are slower and more stable. Borrowers there skew toward owner-occupied residential, small business, and agricultural. The verification complexity per file is real but manageable at the volume those markets produce.
 
-The Grand Strand is different. Purchase mortgage demand from new residents. HELOC demand from existing homeowners sitting on 13% appreciation. Short-term rental investors financing vacation properties with income that comes from Airbnb rather than a W-2. Each file type requires a different verification approach. All of them are arriving at the same four offices inside a growth market that doesn't slow down to let the paperwork catch up.
+The Grand Strand is different. Purchase mortgage demand from new residents. HELOC demand from existing homeowners sitting on years of appreciation. Short-term rental investors financing vacation properties with income that comes from Airbnb rather than a W-2. Each file type requires a different verification approach. All of them are arriving at the same four offices inside a growth market that doesn't slow down to let the paperwork catch up.
 
 Scaling that intake with the same manual document-collection process that works fine in Camden creates two problems. First, staffing pressure: you need more people to process more files. Second, turn-time risk: the buyer with a competing offer doesn't wait for HR to call back.
 
 ## Small Business Is the Hidden Complexity
 
-First Palmetto is explicitly recognized for a higher-than-peer concentration of small business and commercial real estate loans. The bank also partnered with the CLIMB Fund to support SBA microlending, a program that serves exactly the borrowers that standard underwriting processes handle worst.
-
+First Palmetto is explicitly recognized for a higher-than-peer concentration of small business and commercial real estate loans. 
 Small business borrowers don't have W-2s. Income comes from K-1s, Schedule C filings, business bank statements, and profit-and-loss summaries that tell different stories depending on the tax year, the entity structure, and whether the owner runs payroll through the business. Employment verification is self-referential: the owner is the employer.
 
-Commercial loan officers at every bank spend disproportionate time assembling and validating financial documentation before they can credit-decision a file. At a bank whose commercial pipeline is central to its competitive identity (and to the community investment record that earned it three Newsweek awards), that document chase is happening at volume, on files that are legitimately complicated, with staff time that costs $38-50 an hour in loaded terms.
+Commercial loan officers at every bank spend disproportionate time assembling and validating financial documentation before they can credit-decision a file. At a bank whose commercial pipeline is central to its competitive identity (and to the community investment record that earned it three Newsweek awards), that document chase is happening at volume, on files that are legitimately complicated.
 
 Bank-level asset verification and business income confirmation that runs in minutes, rather than the days it takes to manually pull business tax transcripts and reconcile them against bank statements, doesn't change the credit decision. It changes when the credit decision gets made. For a small business owner waiting on a line of credit, that timing difference is the whole experience.
 
 ## What 120 Years Earns You, and What It Doesn't
 
-The Camden headquarters, the Newsweek recognition, the CLIMB Fund partnership, the pristine efficiency ratio: all of it reflects an institution that has made thoughtful decisions for a long time.
+The Camden headquarters, the Newsweek recognition, the improving efficiency ratio: all of it reflects an institution that has made thoughtful decisions for a long time.
 
 The absence of a digital mortgage application in 2026 is also a decision. It's defensible from a relationship-banking philosophy. It's expensive from an operational standpoint. And it's a real risk in the four counties where First Palmetto's growth opportunity is largest.
 
@@ -3387,7 +3389,7 @@ No job postings for technology or digital roles appear on the bank's site as of 
 
 Banks that close this gap tend to do it in phases: automate income and employment verification first, because it's a single-point integration that doesn't require replacing the core system, the loan origination system, or the branch model. The Mortgage Bankers keep their relationships. The files just stop requiring days of document collection.
 
-The balance sheet First Palmetto has built over 120 years is a real asset. A 1.07% ROA and a 53% efficiency ratio in a rate environment that humbled most community banks is not luck. It's execution. The question heading into the next decade is whether the Myrtle Beach office can absorb 7,000 new Horry County households a year on the same intake workflow that served Camden in 1985.
+The balance sheet First Palmetto has built over 120 years is a real asset. A 1.36% ROA and a 54.8% efficiency ratio in the first half of 2026, in a rate environment that humbled most community banks, is not luck. It's execution. The question heading into the next decade is whether the Grand Strand offices can keep up with a county that has grown 17.8% since 2020 on the same intake workflow that served Camden in 1985.
 
 The banks that answer that question fastest, without sacrificing the relationship model or the credit discipline that built the franchise, are the ones that enter their second century with the same independence they started with.
 
@@ -3396,27 +3398,30 @@ First Palmetto has earned the right to make that choice on its own terms. The bo
   },
   'queensborough-national-bank-trust-deep-dive': {
     title: "Queensborough's Long Runway: A $2.3B Georgia Bank Built to Last",
-    description: "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. The bank carries a $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper. Here is the story behind the numbers.",
+    description: "Queensborough National Bank & Trust has grown to $2.34B in assets across a 25-office corridor from Louisville to Savannah without a single acquisition. The bank carries a $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper. Here is the story behind the numbers.",
     publishedDate: 'March 26, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the office count, the period and value of the net interest margin, and the size of the residential book, and removed market-share and growth figures we could not source.*
+
 Queensborough National Bank & Trust has never made an acquisition. Not one. Every dollar of its $2.34 billion in assets was built the old-fashioned way: one relationship at a time, in markets that most bank strategists would have passed on.
 
 That is either the most disciplined growth story in Georgia community banking or the most stubborn one, depending on your vantage point. Maybe both.
 
 ## Louisville to Savannah: The 150-Mile Franchise
 
-Founded in 1902 in Louisville, Georgia, the seat of Jefferson County, Queensborough has grown into a 27-branch institution that runs roughly 150 miles from its rural middle-Georgia home base through the Augusta MSA and on into the Savannah market. The holding company, The Queensborough Co., has kept the bank independent through 124 years of rate cycles, farm credit collapses, and now the fastest digital disruption in lending history.
+Founded in 1902 in Louisville, Georgia, the seat of Jefferson County, Queensborough has grown into a 25-office institution that runs roughly 150 miles from its rural middle-Georgia home base through the Augusta MSA and on into the Savannah market. The holding company, The Queensborough Co., has kept the bank independent through 124 years of rate cycles, farm credit collapses, and now the fastest digital disruption in lending history.
 
-The footprint is deliberate and unusual. Eight branches serve the Augusta area. Six cover Savannah. The rest connect rural communities: Sandersville, Wadley, Sylvania, Waynesboro, Wrens, Millen, Midville, Metter, Statesboro. These are agricultural towns, timber markets, and small manufacturing communities. Not exactly the zip codes that attract venture-backed digital lenders.
+The footprint is deliberate and unusual. Eight branches serve the Augusta area. Four are in the Savannah metro, with another in Hinesville. The rest connect rural communities: Sandersville, Wadley, Sylvania, Waynesboro, Wrens, Millen, Midville, Metter, Statesboro. These are agricultural towns, timber markets, and small manufacturing communities. Not exactly the zip codes that attract venture-backed digital lenders.
 
-But the Augusta anchor is meaningful. The metro is growing at 1.1% annually, with Fort Eisenhower (formerly Fort Gordon) and the U.S. Army Cyber Command providing a durable institutional employment base. Columbia County, on Augusta's western side, is one of the fastest-growing counties in Georgia. That is where the mortgage volume is, and that is where Queensborough's brand recognition is strongest.
+But the Augusta anchor is meaningful. Fort Eisenhower (formerly Fort Gordon) and the U.S. Army Cyber Command provide a durable institutional employment base. Columbia County, on Augusta's western side, is one of the fastest-growing counties in Georgia. That is where the mortgage volume is, and that is where Queensborough's brand recognition is strongest.
 
-The numbers behind the operation are solid. A 1.06% ROA. Net interest margin of 3.5%. Efficiency ratio of 65.8%, which is respectable for a 27-branch institution operating across this geography. The FDIC classifies them as Specialty Group 4: Commercial Lending Specialization. CEO William Easterlin and CFO Jeffrey Karafa have run a clean ship.
+The numbers behind the operation are solid. In the first quarter of 2026: a 1.06% ROA, a 3.83% net interest margin and a 65.8% efficiency ratio, which is respectable for a 25-office institution operating across this geography. The FDIC classifies them as Specialty Group 4: Commercial Lending Specialization. CEO William Easterlin and CFO Jeffrey Karafa have run a clean ship.
 
-## The Verification Problem Hidden Inside a $520M Mortgage Book
+## The Verification Problem Hidden Inside the Mortgage Book
 
-Queensborough originated 453 residential mortgages in 2024. The residential real estate book, construction plus permanent, is approaching $520 million. That is a serious mortgage operation for a $2.3 billion bank.
+Queensborough originated 453 residential mortgages in 2024. One-to-four family residential loans were $319 million at the end of the first quarter of 2026. That is a serious mortgage operation for a $2.3 billion bank.
 
 Here is the problem. The mortgage page on qnbtrust.bank says borrowers can "apply online, upload documents, and sign electronically," guided by a "dedicated local lender." There is no mention of automated income verification, open-banking data pulls, or any of the verification infrastructure that determines how fast a file actually moves from application to close.
 
@@ -3424,7 +3429,7 @@ No public reference to Plaid, Finicity, Truework, or The Work Number appears any
 
 Which means 453 mortgage files a year are moving through a process that involves local lenders collecting paper pay stubs and bank statements, processing them manually, and chasing borrowers by email when something is missing. In Sylvania. In Midville. In Wadley. Places where the nearest branch competitor is 20 minutes away but the nearest digital mortgage lender is one app download away.
 
-Fifty-seven of those 2024 originations were VA loans. About 12.6% of the mortgage mix. Fort Eisenhower's military population generates that demand, and it is the segment national digital lenders target most aggressively. Rocket Mortgage held 5.8% market share in the Augusta footprint last year versus Queensborough's 3.6%. Military households move frequently. They decide fast. A VA borrower hunting for LES statements and DD-214s while waiting on a local lender callback will choose the lender who can do it in a single digital step.
+Fifty-seven of those 2024 originations were VA loans. About 12.6% of the mortgage mix. Fort Eisenhower's military population generates that demand, and it is the segment national digital lenders target most aggressively. Military households move frequently. They decide fast. A VA borrower hunting for LES statements and DD-214s while waiting on a local lender callback will choose the lender who can do it in a single digital step.
 
 :::pullquote
 Speed is the competitive variable in VA lending. A borrower who can complete income and service verification in minutes rather than days will choose the faster lender, regardless of which bank has the better relationship story.
@@ -3451,7 +3456,7 @@ The rural borrower piece is real. Queensborough's branch towns serve agricultura
 
 ## What Digital Intake Could Mean for the Next Phase
 
-Queensborough has built a franchise that most community banks cannot replicate: 124 years in the same markets, 27 branches across an agricultural spine and two growing MSAs, a $2.34 billion balance sheet grown entirely organically. That is a competitive moat.
+Queensborough has built a franchise that most community banks cannot replicate: 124 years in the same markets, 25 offices across an agricultural spine and two growing MSAs, a $2.34 billion balance sheet grown entirely organically. That is a competitive moat.
 
 The question now is whether the lending intake process can keep pace with two converging pressures: a Fort Eisenhower military population that is accustomed to digital everything, and a Columbia County growth story that is attracting exactly the high-income borrowers that national lenders prioritize.
 
@@ -4006,8 +4011,11 @@ Q1 gave a cleanly positive read: $6.3 million in net income, core deposit growth
     title: 'The Quiet Comeback at Oconee Federal',
     description: 'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
     publishedDate: 'June 10, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the year of the Stephens Federal acquisition, the office count and the date of the buyback, and removed housing and migration figures we could not source.*
+
 Three years ago, Oconee Federal looked like a cautionary tale. The 102-year-old Seneca thrift earned a 0.30% return on assets in 2023, spent 83 cents to make every dollar of revenue, and watched its long-duration mortgage book get steamrolled by the fastest rate-hiking cycle in four decades.
 
 Today it's quietly putting up some of the best core numbers in its modern history. Almost nobody noticed, partly because the bank made itself harder to watch on purpose.
@@ -4047,15 +4055,15 @@ In August 2023, Oconee Federal voluntarily delisted from NASDAQ and deregistered
 
 That move fits a pattern worth watching among sub-$1 billion banks: shed the compliance overhead that exists for institutional investors who were never going to show up anyway, and redeploy the savings.
 
-What the bank did with its newfound quiet is the interesting part. It didn't hunker down. It bought Mutual Savings Bank, its second whole-bank acquisition since 2018 (Stephens Federal in Georgia was the first), extending its footprint to nine branches across Upstate South Carolina, two Georgia counties, and now Hartsville. It launched a 50,000-share buyback in April 2025. The supposedly sleepy thrift has been the most acquisitive bank in its weight class in the region.
+What the bank did with its newfound quiet is the interesting part. It didn't hunker down. It bought Mutual Savings Bank, its second whole-bank acquisition (Stephens Federal in Georgia, in 2014, was the first), extending its footprint to eight offices across Upstate South Carolina, two Georgia counties, and now Hartsville. It announced a 50,000-share buyback in April 2026. The supposedly sleepy thrift has been the most acquisitive bank in its weight class in the region.
 
 ## The Lake Keowee question
 
-Oconee Federal's geography has been a gift. South Carolina led the nation in net migration of residents 65 and older, adding 5,427 in 2025 alone, and Oconee County, home to Lake Keowee and Lake Hartwell, is precisely where a lot of them land. The county's population grew 1.44% last year. Waterfront homes on Keowee carry a median sale price around $1.8 million and have appreciated 7% or more annually for a decade.
+Oconee Federal's geography has been a gift. Retirees have been moving to South Carolina in large numbers, and Oconee County, home to Lake Keowee and Lake Hartwell, is precisely where a lot of them land.
 
 For a residential mortgage lender, that's about as good as local conditions get. And the bank has been leaning in: total loans grew from $478.7 million last June to $491.8 million by March, brisk movement for an institution this conservative.
 
-But the tide may be turning just as the bank speeds up. Lake Keowee inventory has climbed to 7.8 months of supply, the highest in years and firmly buyer's-market territory. Countywide median sale prices went slightly negative year over year this spring even as price per square foot kept rising. Seneca's typical home value sits at a modest $273,146, up 3.7%, so the core market is fine. The froth, though, is coming off the waterfront.
+But the tide may be turning just as the bank speeds up. Countywide median sale prices went slightly negative year over year this spring even as price per square foot kept rising. Seneca's typical home value sits at a modest $273,146, up 3.7%, so the core market is fine. The froth, though, is coming off the waterfront.
 
 None of this threatens a bank with 12.4% capital. It does mean the next leg of growth gets harder. Margin recovery from repricing is a finite resource; once the back book catches up to market rates, growth has to come from volume. And volume in a cooling, migration-dependent housing market is exactly where speed and borrower experience start to decide who wins the loan.
 
@@ -4077,13 +4085,16 @@ The banks that hold positions like Oconee Federal's have already won the hard pa
     title: 'The Bank That Depression Built',
     description: 'Arthur State Bank has run a 4.44% net interest margin and 16% ROE out of a declining South Carolina county for 93 years. The secret is portfolio lending, a booming Upstate geography, and a family that has never needed to sell.',
     publishedDate: 'June 6, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
-In 1933, Harry Arthur watched every bank in Union County fail. So he built one. Ninety-three years later, it's still in the family, and it's posting numbers that would make most regional bank CFOs uncomfortable.
+*Updated October 22, 2026: corrected the month of the 1933 bank holiday, the Texas ratio and reserve coverage, and BMW's investment, and removed economic figures we could not source.*
+
+In 1933, Harry Arthur watched the banks in Union, South Carolina fail to reopen. So he built one. Ninety-three years later, it's still in the family, and it's posting numbers that would make most regional bank CFOs uncomfortable.
 
 Arthur State Bank is not a name that shows up in earnings coverage or fintech conference panels. It has 18 branches, 152 employees, and $825 million in assets. It is, by almost any measure, a small community bank in a part of South Carolina that has seen better decades.
 
-And yet: a 4.44% net interest margin. A 16% return on equity. A Texas Ratio of 5.9%. A Tier 1 capital ratio of 12.17%.
+And yet: a 4.44% net interest margin. A 16% return on equity. A Texas Ratio around 6%. A Tier 1 capital ratio of 12.17%.
 
 Those are not small bank numbers. Those are the numbers of an institution that has figured something out.
 
@@ -4091,11 +4102,11 @@ Those are not small bank numbers. Those are the numbers of an institution that h
 
 The origin story matters here.
 
-It's April 1933. Franklin Roosevelt has just ordered every bank in America closed for a four-day "bank holiday." When the dust settles in Union County, South Carolina, only one bank is deemed sound enough to reopen, and it's in Jonesville, not Union itself. The county seat has no functioning bank.
+It's March 1933. Franklin Roosevelt has just ordered every bank in America closed for a "bank holiday." When the dust settles in Union County, South Carolina, only one bank is deemed sound enough to reopen, and it's in Jonesville, not Union itself. The county seat has no functioning bank.
 
 Harry Arthur, 33 years old, owned department stores, hosiery mills, and cattle herds. He had deposits to protect and a town to keep liquid. So he and his father and two brothers started the Arthur Depository. It became a full bank two years later. The family has run it ever since.
 
-That founding context is not incidental. Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it. Arthur State Bank's Texas Ratio of 5.9% and non-current loan ratio under 0.6% are not accidents. They are the institutional expression of a family that watched the alternative play out in real time.
+That founding context is not incidental. Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it. Arthur State Bank's Texas Ratio around 6% and non-current loan ratio of about 0.6% are not accidents. They are the institutional expression of a family that watched the alternative play out in real time.
 
 :::pullquote
 Banks born in crises tend to develop a constitutional aversion to risk that outlasts the people who lived through it.
@@ -4103,7 +4114,7 @@ Banks born in crises tend to develop a constitutional aversion to risk that outl
 
 ## The Numbers That Don't Fit the Zip Code
 
-Union County is not a growth market. Population is declining at roughly 0.93% annually. Unemployment sits at 6.4%, well above the state average. Median household income is $41,200, nearly 45% below the national median. The town where Arthur State Bank was founded is, by most economic metrics, struggling.
+Union County is not a growth market. The town where Arthur State Bank was founded is, by most economic metrics, struggling.
 
 Banks headquartered in markets like this are supposed to struggle too. Deposit pressure, thin loan demand, margin compression. That's the playbook.
 
@@ -4124,9 +4135,7 @@ Second, their geography is more interesting than their headquarters suggests.
 
 Arthur State Bank's 18 branches don't cluster around Union. They spread across Spartanburg, Greenville, Lexington, Rock Hill, and Columbia. That geographic footprint tells the real story.
 
-Greenville-Spartanburg is one of the ten fastest-growing metro areas in the country for the second consecutive year. The region added more than 10,500 residents between July 2023 and July 2024 alone. BMW's Spartanburg plant employs 11,000 people and is opening a $1.7 billion EV battery facility in 2026. Woodward just committed $200 million to a new aerospace components plant in Spartanburg. Michelin, Boeing, GE, and Lockheed Martin all have significant operations in the corridor.
-
-South Carolina's GDP grew at 3.5% year-over-year in Q3 2025, the fastest rate in the nation. The Upstate is driving most of that.
+Greenville-Spartanburg is one of the ten fastest-growing metro areas in the country for the second consecutive year. The region added more than 10,500 residents between July 2023 and July 2024 alone. BMW's Spartanburg plant employs 11,000 people, and the company's $1.7 billion South Carolina EV investment includes a battery assembly plant in nearby Woodruff. Michelin, Boeing, GE, and Lockheed Martin all have significant operations in the corridor.
 
 :::stat
 **10,500**
@@ -4159,7 +4168,7 @@ The Union County exposure is real. The bank's headquarters market is economicall
 
 And the interest rate environment is changing. A 4.44% NIM is partly a function of a higher-rate world. As the Fed's projected path brings rates to 3.125% by end of 2026, the funding cost relief will help borrowers but compress asset yields. Banks that built their margin on rate positioning will need the volume to compensate.
 
-Arthur State has the capital to absorb that transition. Tier 1 at 12.17%, loan loss reserves covering non-current loans at 183%, essentially no owned real estate on the books. The balance sheet is clean.
+Arthur State has the capital to absorb that transition. Tier 1 at 12.17%, loan loss reserves covering non-current loans at about 173%, essentially no owned real estate on the books. The balance sheet is clean.
 
 ## What 93 Years Buys You
 
@@ -4167,7 +4176,7 @@ The thing about a bank that has been family-owned for 93 years is that it doesn'
 
 That institutional patience shows up in the portfolio lending strategy, in the long-tenured executives, in the decision to promote from within rather than sell out when the CFO retired. It shows up in a Texas Ratio that would be the envy of banks twice their size.
 
-The Upstate South Carolina economy is in the middle of a genuine industrial renaissance. BMW's battery plant opens this year. The population keeps coming. The loan demand follows. Arthur State Bank has 18 branches sitting in the path of that growth, a clean balance sheet, and a management team that has been preparing for this moment for a long time.
+The Upstate South Carolina economy is in the middle of a genuine industrial renaissance. BMW is building its electric future here. The population keeps coming. The loan demand follows. Arthur State Bank has 18 branches sitting in the path of that growth, a clean balance sheet, and a management team that has been preparing for this moment for a long time.
 
 They're not moving fast. They don't need to. The market is coming to them.
 

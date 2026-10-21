@@ -515,8 +515,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     auditDate: 'June 2026',
     stats: [
       { label: 'Total assets', value: '$1.08B' },
-      { label: 'ROA', value: '1.07% (FY2025)' },
-      { label: 'NIM', value: '3.54%' },
+      { label: 'ROA', value: '1.36% (1H 2026); 1.07% (FY2025)' },
+      { label: 'NIM', value: '3.59% (1H 2026)' },
       { label: 'Branch count', value: '22' },
     ],
     volumes: {
@@ -540,7 +540,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'A Small Business Specialty Deserves a Faster File',
-        body: "First Palmetto is explicitly recognized for having a higher-than-peer concentration of small business and commercial real estate loans on its balance sheet, and it made a notable investment in CLIMB Fund's SBA microlending program. Small business borrowers are notoriously hard to verify: income comes from K-1s, business bank statements, and Schedule C filings rather than W-2s, and employment verification is self-referential. Commercial loan officers spend disproportionate time assembling and validating financial documentation before they can credit-decistion a file. RAVEN's business owner verification layer, including bank-level asset verification and business income confirmation, accelerates commercial and SBA loan underwriting at a bank whose commercial pipeline is central to its competitive identity.",
+        body: "First Palmetto is explicitly recognized for having a higher-than-peer concentration of small business and commercial real estate loans on its balance sheet. Small business borrowers are notoriously hard to verify: income comes from K-1s, business bank statements, and Schedule C filings rather than W-2s, and employment verification is self-referential. Commercial loan officers spend disproportionate time assembling and validating financial documentation before they can credit-decistion a file. RAVEN's business owner verification layer, including bank-level asset verification and business income confirmation, accelerates commercial and SBA loan underwriting at a bank whose commercial pipeline is central to its competitive identity.",
       },
     ],
     sources: 'FDIC Institutions API (api.fdic.gov, CERT 28396), FDIC Financials API (api.fdic.gov, CERT 28396), HMDA 2024 via originationdata.com (LEI 549300Z7EP1HO5CH1C36), Visbanking call report summary (visbanking.com/call-report/first-palmetto-bank-reports-586072), firstpalmetto.com/mortgage, firstpalmetto.com/about, firstpalmetto.com/locations, worldpopulationreview.com Kershaw County, datausa.io Kershaw County SC, heremyrtlebeach.com Horry County growth, CLIMB Fund press release (climbfund.org)',
