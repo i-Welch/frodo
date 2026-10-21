@@ -232,9 +232,9 @@ export const articles: Article[] = [
     slug: 'white-label-borrower-portal-community-bank',
     title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
     description:
-      'Only 24% of small banks accepted small business loan applications online in 2024. Here is what a white-label borrower portal is, what it costs, and why it is the fastest path to closing the digital gap.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      'Only 24% of small banks took small business loan applications through an online portal in the FDIC\'s latest survey, and just 6% of banks ran the whole process online. What a white-label borrower portal is, when it pays off, and how to evaluate one.',
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {

@@ -1762,76 +1762,81 @@ ICBA launched an AI Task Force in 2026, published an AI security readiness guide
   },
   'white-label-borrower-portal-community-bank': {
     title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
-    description: 'Only 24% of small banks accepted small business loan applications online in 2024. Here is what a white-label borrower portal is, what it costs, and why it is the fastest path to closing the digital gap.',
+    description: 'Only 24% of small banks took small business loan applications through an online portal in the FDIC\'s latest survey, and just 6% of banks ran the whole process online. What a white-label borrower portal is, when it pays off, and how to evaluate one.',
     publishedDate: 'June 26, 2026',
-    readTime: '6 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
     content: `# The White-Label Borrower Portal: What It Is and Why Community Banks Need One
 
 *Published June 26, 2026*
 
 Twenty-four percent.
 
-That is the share of small banks that accepted small business loan applications online in 2024, according to the FDIC's Small Business Lending Survey. And of those that did, fewer than half could handle the process digitally end to end. The application might start online, but somewhere before approval, the borrower was handed a PDF or asked to come into a branch.
+That is the share of small banks that accepted small business loan applications through an online portal in 2022, according to the FDIC's Small Business Lending Survey, the agency's most recent, published in October 2024. Large banks were at 42%. Across all banks, only 6% let a borrower complete every step of the process online, and 60% offered no online steps at all.
 
-Meanwhile, Chime opened checking accounts in two minutes. Rocket Mortgage collected income data without a single uploaded document. The experience gap is not a data point anymore. It is the reason 44% of new checking accounts went to neobanks in 2024.
+The trend is moving. In the FDIC's previous survey, covering 2016, only 11% of small banks took applications online. But the last step is still the hardest: only 13% of banks could have an approved loan's closing documents signed online.
 
-The most common response from community bank leadership is: "We would love to fix it, but we cannot afford to build something from scratch." That is correct. You should not. There is already a product for this.
+:::stat
+**24%**
+The share of small banks that accepted small business loan applications through an online portal, versus 42% of large banks, in the FDIC's 2022 Small Business Lending Survey.
+:::
+
+The most common response from community bank leadership is: "We would love to fix it, but we cannot afford to build something from scratch." That is correct. You should not. There is already a product category for this.
 
 ## What a White-Label Portal Actually Is
 
-A white-label borrower portal is a ready-made lending platform that the bank deploys under its own brand. The bank's logo, colors, and domain sit on top of a third-party technology stack that handles loan application intake, document collection, credit decisioning support, e-signatures, and a borrower self-service dashboard.
+A white-label borrower portal is a ready-made lending front end that the bank deploys under its own brand. The bank's logo, colors and domain sit on top of a vendor's technology that handles application intake, document collection, status updates and e-signatures, and passes the file to the bank's loan origination system.
 
-The vendor is invisible. The borrower applies, gets a status update, receives a proposal, signs, and accesses servicing all inside a branded interface that looks like the bank built it. The bank owns the customer relationship and the data. The vendor owns the infrastructure and the maintenance burden.
+The vendor is invisible. The borrower applies, uploads documents, checks status and signs inside an interface that looks like the bank built it. The bank owns the customer relationship and the data. The vendor owns the infrastructure and the maintenance.
+
+The lending software vendors that already serve community banks sell this layer. Baker Hill's online application is configured to the bank's brand and feeds its NextGen origination platform, and its client portal lets borrowers upload documents and track a request through closing. Abrigo's small business lending platform gives business owners an online application that flows into automated underwriting. MeridianLink Consumer takes consumer loan applications across online, mobile and branch channels. Most core providers have their own digital lending options as well. The question for most banks is not whether a product exists. It is which one fits their core, their lending mix and their staff.
+
+## The Case Against, and Why It Is Incomplete
+
+The FDIC's own survey makes the skeptic's argument. Only 36% of banks rated online portals very or extremely valuable for small business lending, against 94% for branches and 89% for on-site visits. Even among banks that offered a portal, only 38% valued it highly. The FDIC concluded that banks without a portal "are not at a significant disadvantage" to those with one.
+
+That is a fair reading of how relationship lending works. A portal does not replace a banker who knows the business.
 
 :::pullquote
-The experience gap is not a data point anymore. It is the reason 44% of new checking accounts went to neobanks in 2024.
+A portal does not replace the banker. It removes the paperwork from the relationship.
 :::
 
-This is not a new concept in software. It is how most industries operate. What has changed is that the fintech vendors serving community banks have matured to the point where the integration story is credible. Q2, MeridianLink, Baker Hill, Abrigo, Jifiti, and Hawthorn River all offer white-labeled front ends that sit on top of the bank's existing core without requiring a full replatform. Banks on Fiserv and Jack Henry have multiple certified options.
+But it frames the choice wrongly. The value of a portal is not as a substitute for the relationship. It is the part of the relationship nobody enjoys: chasing a missing tax return, re-sending a document request, asking whether the file is complete. A borrower who can upload a statement at 9 p.m. and see what is still outstanding does not need a phone call to find out. The lender who used to make that call has the time back for the conversations that do require a banker.
 
-## The Cost Case
+And the comparison in the survey is between banks, not borrowers. The FDIC asked banks how much they valued each channel. It did not ask the business owner who started an application on a competitor's website because yours required a branch visit.
 
-Building a branded digital lending platform from scratch costs north of $5 million before compliance. That is just development. Add integration, testing, security audits, and ongoing maintenance and you are looking at an annual cost structure that exceeds most community bank IT budgets entirely.
+## Buy, Do Not Build
 
-White-label deployments run $50,000 to $600,000 depending on customization level and integrations, based on published ranges from SDK.finance. That is a 10x to 100x cost difference for a bank that needs a functioning product, not a custom one.
+Building a branded lending front end means owning everything a vendor amortizes across hundreds of banks: integration with your core and LOS, security testing, accessibility, e-signature and document handling, and every change when a regulation or a browser does. For a bank with a small IT team, that is a permanent maintenance commitment, not a project.
 
-:::stat
-**$5M+**
-What building a branded digital lending platform from scratch costs before compliance — before integration, testing, security audits, or ongoing maintenance.
-:::
-
-Time is the other number that matters. A custom build takes 12 to 24 months before a borrower can use it. White-label solutions shorten time-to-market to weeks. A bank that commits to a white-label deployment in Q1 can have a branded borrower portal live before Q2 earnings.
-
-The global digital banking market sits at $22.4 billion in 2026 and is growing at 18.6% annually. The white-label banking segment alone is projected to reach $5.1 billion by 2028. This market exists because community banks and credit unions figured out it was cheaper to buy than build.
+Buying moves the bank's work to configuration, integration and process change, which is where the real implementation risk lives anyway. Vendors rarely publish pricing, so get quotes from at least three, and ask each one for the full first-year cost including implementation, core integration and training, not just the license.
 
 ## What Branded Means in Practice
 
-The customer experience matters as much as the economics. One pattern that matters operationally: the borrower never leaves the bank's branded environment during the application.
+One detail matters more than it looks: the borrower should never leave the bank's branded environment during the application.
 
-This sounds obvious. It is not. Many community banks send borrowers to a third-party URL during the application process, either for identity verification or document upload. Every time a borrower sees a different domain, trust erodes. Conversion falls. In cases where a borrower abandons mid-application, they often do not know whether to contact the bank or the vendor.
+Many lending flows hand the borrower to a third-party URL for identity verification, document upload or signing. Every unfamiliar domain is a moment where a cautious borrower stops to wonder whether this is a phishing page. When a borrower abandons mid-application, they often do not know whether to call the bank or the vendor.
 
 :::pullquote
-Every time a borrower sees a different domain, trust erodes.
+Every unfamiliar domain is a moment where a cautious borrower stops.
 :::
 
-A properly implemented white-label portal keeps the borrower inside one branded experience from start to funded. The bank's domain, the bank's logo, the bank's communication templates. DocuSign or a similar e-signature layer gets embedded; it does not redirect. Plaid income verification happens inline. The borrower never sees the infrastructure.
-
-Banks that go further and tailor the portal to a specific niche see meaningful conversion gains over generic deployments. When the borrower experience is built specifically for the institution's target customer, rather than configured for generic use, trust and completion metrics both improve.
+A properly implemented portal keeps the borrower inside one branded experience from application to closing: the bank's domain, the bank's logo, the bank's email templates. E-signature is embedded rather than redirected, and any income or account verification happens inline.
 
 ## What to Look for When Evaluating Vendors
 
-Four questions that reveal whether a white-label vendor is ready for community banking:
+Four questions that show whether a white-label vendor is ready for community banking:
 
-**Core certification.** Is the integration with your specific core (Fiserv Precision, Jack Henry Silverlake, etc.) a certified integration with community bank references, or is it a custom build they will maintain as one-off code? The distinction matters for implementation timelines and long-term support.
+**Core and LOS integration.** Is the integration with your specific core and origination system a production integration with community bank references, or a custom build the vendor will maintain as one-off code? The difference shows up in the implementation timeline and every upgrade after.
 
-**Regulatory audit trail.** Does the system generate the document artifacts required for BSA/AML and fair lending compliance automatically, or does the bank have to configure that separately? Ask to see an example audit log.
+**Audit trail.** Does the system keep a record of what the borrower submitted, when, and what changed, in a form your compliance team and examiners can use? Ask to see an example.
 
-**Abandonment recovery.** Can the portal save partial applications and resume them? Email or SMS outreach to borrowers who abandon is the single fastest way to improve pull-through rates. Ask for the vendor's documented abandonment recovery rate.
+**Abandonment recovery.** Can the portal save partial applications and let the borrower resume? Does it follow up automatically by email or text with borrowers who stop partway? Ask for the vendor's completion rate and how it is measured.
 
-**Timeline.** Get a reference from a community bank in your asset range that launched in the last 12 months. Ask them how long it actually took. Ask what went wrong. The vendor's sales timeline and the implementation reality are often different numbers.
+**Timeline.** Get a reference from a community bank in your asset range that launched in the last 12 months. Ask how long it actually took, and what went wrong. The sales timeline and the implementation reality are often different numbers.
 
-A 2024 Digital Banking Report survey found 90% of institutions let consumers apply online for consumer credit. The gap is not whether the channel exists. It is whether the experience inside that channel is good enough to compete. A white-label portal built to the right standard closes that gap in a quarter, not a decade.
-  `,
+The FDIC survey shows community banks moving online slowly, and many of them comfortable with that. The banks that move first will not win because they have a portal. They will win because their bankers spend their time on borrowers instead of on paperwork.
+`,
   },
   'digital-account-opening-community-bank': {
     title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap',

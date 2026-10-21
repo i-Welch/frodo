@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'white-label-borrower-portal-community-bank',
   'community-bank-ai-lending-guide',
   'security-federal-bank-cdfi-rate-rebound-aiken',
   'ccnb-myrtle-beach-merger-growth-2026',
@@ -77,7 +78,6 @@ export const BLOG_SLUGS = [
   'countybank-greenwood-sc-sba-deep-dive',
   'first-community-bank-sc-cre-merger-growth',
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
-  // 'white-label-borrower-portal-community-bank',
   // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
   // 'digital-account-opening-community-bank',
   // 'open-banking-community-bank-guide',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'white-label-borrower-portal-community-bank': '2026-10-22',
   'community-bank-ai-lending-guide': '2026-10-22',
   'security-federal-bank-cdfi-rate-rebound-aiken': '2026-10-22',
   'ccnb-myrtle-beach-merger-growth-2026': '2026-10-22',
@@ -130,7 +131,6 @@ export const BLOG_DATES: Record<string, string> = {
   'jack-henry-symitar-loan-origination': '2026-06-26',
   'fiserv-premier-digital-lending': '2026-06-26',
   'first-reliance-sells-at-the-top': '2026-06-21',
-  'white-label-borrower-portal-community-bank': '2026-06-26',
   'digital-account-opening-community-bank': '2026-06-26',
   'open-banking-community-bank-guide': '2026-06-26',
   'fintech-grade-loan-application-community-bank': '2026-06-16',
