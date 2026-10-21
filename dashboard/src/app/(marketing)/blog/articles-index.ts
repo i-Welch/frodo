@@ -372,9 +372,9 @@ export const articles: Article[] = [
     slug: 'first-capital-bank-charleston-growth-digital-gap',
     title: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
     description:
-      "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
+      "First Capital Bank grew from $1.05 billion to $1.32 billion in assets in the year to June 2026, in a metro adding 17,500 residents a year, with no online loan application. Why its phone-and-email intake is a bet that gets harder to win as Charleston grows.",
     readTime: '6 min read',
-    date: 'May 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'first-capital-bank-charleston',
   },

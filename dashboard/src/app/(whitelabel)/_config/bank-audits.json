@@ -1640,16 +1640,16 @@
     "slug": "first-capital-bank-charleston",
     "bankName": "First Capital Bank",
     "shortName": "First Capital",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "first-capital-bank-charleston",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.24B"
+        "value": "~$1.32B"
       },
       {
         "label": "Branches",
-        "value": "5 across SC and NC"
+        "value": "4 (3 Charleston area, 1 Pinehurst NC)"
       },
       {
         "label": "Online loan products",
@@ -1660,7 +1660,7 @@
         "value": "FCPB (est. 1997)"
       }
     ],
-    "summary": "First Capital Bank is a $1.24B Charleston-based community bank with five branches spanning the Lowcountry, Summerville, and Pinehurst, NC. Its lending lineup covers every major category: vehicle, boat, RV, construction, HELOC, residential mortgage, and a full commercial suite. Not one of those products has a digital apply button. Every consumer and commercial loan page ends at the same two CTAs: email ConsumerLending@bankwithfirstcapital.com or call (843) 990-7770. The Fiserv digital banking stack (secureinternetbank.com) is already in place for existing customers, and the FCB Carolinas Smart Branch mobile app is well-reviewed; what is missing is a single branded, verify-as-you-go intake that converts high-intent borrowers before they call a competitor.",
+    "summary": "First Capital Bank is a $1.32B Charleston-based community bank (Q2 2026 call report) with four branches: downtown Charleston, Mount Pleasant, Summerville, and Pinehurst, NC. Its lending lineup covers every major category: vehicle, boat, RV, construction, HELOC, residential mortgage, and a full commercial suite. Not one of those products has a digital apply button. Every consumer and commercial loan page ends at the same two CTAs: email ConsumerLending@bankwithfirstcapital.com or call (843) 990-7770. The Fiserv digital banking stack (secureinternetbank.com) is already in place for existing customers, and the FCB Carolinas Smart Branch mobile app is well-reviewed; what is missing is a single branded, verify-as-you-go intake that converts high-intent borrowers before they call a competitor.",
     "currentJourney": [
       {
         "channel": "Consumer loans (vehicle, boat, RV, construction, HELOC)",

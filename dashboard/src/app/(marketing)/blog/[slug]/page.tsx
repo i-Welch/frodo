@@ -2879,14 +2879,15 @@ The banks that are winning in high-growth coastal markets in 2026 are not winnin
   },
   'first-capital-bank-charleston-growth-digital-gap': {
     title: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
-    description: "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
+    description: "First Capital Bank grew from $1.05 billion to $1.32 billion in assets in the year to June 2026, in a metro adding 17,500 residents a year, with no online loan application. Why its phone-and-email intake is a bet that gets harder to win as Charleston grows.",
     publishedDate: 'May 7, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `# First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?
 
-*Published June 26, 2026*
+*Published May 7, 2026*
 
-Here is the surprising part: First Capital Bank operates four branches, crossed $1 billion in assets in Q1 2025, and reached $1.24 billion by Q1 2026. That is $240 million in organic growth in roughly twelve months. In one of the hottest real estate markets on the East Coast. With no online loan application on its public website.
+Here is the surprising part: First Capital Bank operates four branches, crossed $1 billion in assets in Q1 2025, and reached $1.32 billion by June 30, 2026. That is $266 million of growth, 25%, in the twelve months to Q2 2026. In one of the hottest real estate markets on the East Coast. With no online loan application on its public website.
 
 Not a limited one. Not a soft-launch beta. None. Every mortgage inquiry routes to an email address or a phone number.
 
@@ -2894,32 +2895,32 @@ That tells you something important about how Charleston, South Carolina's commun
 
 ---
 
-## A $1.24B Bank in a Market That Added 70,000 People
+## A $1.32B Bank in a Market That Added 70,000 People
 
 The Charleston-North Charleston MSA is not a sleepy Southern coastal market anymore. The tri-county area covering Charleston, Berkeley, and Dorchester counties has grown nearly 9% since 2020. Berkeley County alone grew 3.2% in 2024, ranking 61st nationally among all US counties by growth rate. The region is projected to reach 1 million residents by 2032. That is roughly 17,500 new arrivals per year, sustained, for the better part of a decade.
 
-First Capital Bank is headquartered at 304 Meeting St in downtown Charleston, founded in September 1999, and structured as a wholly owned subsidiary of First Capital Bancshares, Inc. (OTCQX: FCPB). The bank's loan portfolio reflects exactly what you would expect in this market: $466 million in commercial real estate, $338 million in residential real estate, and another $80 million in C&I. Commercial credits alone represent over 55% of the $973 million loan book.
+First Capital Bank is headquartered at 304 Meeting St in downtown Charleston, founded in September 1999, and structured as a wholly owned subsidiary of First Capital Bancshares, Inc. (OTCQX: FCPB). The bank's loan portfolio reflects exactly what you would expect in this market. At June 30, 2026 it held $461 million in one-to-four family residential loans, $356 million in nonfarm commercial real estate, $95 million in construction, $82 million in multifamily, and $92 million in C&I. Commercial credits together are about 58% of $1.08 billion in net loans.
 
-The bank has made smart strategic moves recently. It divested its Laurinburg, NC branch in May 2025 via a Purchase and Assumption Agreement with Citizens Bank, sharpening focus exclusively on the South Carolina Lowcountry. It added a Lowcountry Market President, Andy Thomas, in February 2025. Joseph Kassim was appointed CEO in 2024, and Tradd Rodenberg was promoted to President in November 2025. New leadership, tighter geographic focus, $1.24B in assets, and a 1.12% ROA that most community banks would be envious of.
+The bank has made smart strategic moves recently. It agreed in May 2025 to sell its Laurinburg, NC branch to The Citizens Bank, leaving three offices in the Charleston area (downtown, Mount Pleasant and Summerville) and one in Pinehurst, NC. It added a Lowcountry Market President, Andy Thomas, in February 2025. Joseph Kassim was appointed CEO in 2024, and Tradd Rodenberg was promoted to President in November 2025. New leadership, tighter geographic focus, $1.32B in assets, and a 1.14% ROA that most community banks would be envious of, up from 0.88% a year earlier.
 
-The financials are genuinely strong. A net interest margin of 3.49% is healthy in the current rate environment. An efficiency ratio of 53.63% means the bank is keeping operating costs at roughly 54 cents for every dollar of revenue, which is well below the 60-plus percent that many peers are running. Four branches serving a metro area of nearly 900,000 people means this bank is doing a lot with a little.
+The financials are genuinely strong. A net interest margin of 3.47% is healthy in the current rate environment. An efficiency ratio of 53.34% means the bank is keeping operating costs at roughly 53 cents for every dollar of revenue, down from nearly 60 cents a year earlier and well below the 60-plus percent that many peers are running. Three Charleston-area branches serving a metro of nearly 900,000 people means this bank is doing a lot with a little.
 
 :::stat
-**53.63%**
-First Capital Bank's efficiency ratio — keeping operating costs at roughly 54 cents per dollar of revenue, well below the 60-plus percent that many peers are running, across just four branches serving a metro of nearly 900,000 people.
+**53.34%**
+First Capital Bank's Q2 2026 efficiency ratio: roughly 53 cents of operating cost per dollar of revenue, down from 59.8% a year earlier, with three branches serving a metro of nearly 900,000 people.
 :::
 
-So the question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.24B is the same one that gets it to $2B.
+So the question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.32B is the same one that gets it to $2B.
 
 :::pullquote
-The question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.24B is the same one that gets it to $2B.
+The question is not whether First Capital Bank is well-run. It clearly is. The question is whether the intake model that got it to $1.32B is the same one that gets it to $2B.
 :::
 
 ---
 
 ## Every Loan Starts With a Phone Call
 
-Mortgage applicants visiting bankwithfirstcapital.com are directed to email ConsumerLending@bankwithfirstcapital.com or call (843) 990-7770. There is no digital document upload. No e-signature workflow. No borrower portal. The site uses BankSITE Services for hosting and MainStreet Inc. for check ordering. Open job postings are Branch Manager, Loan Processor (entry-level), and Assistant Branch Manager. No technology, digital transformation, or data roles are listed anywhere.
+Mortgage applicants visiting bankwithfirstcapital.com are directed to email ConsumerLending@bankwithfirstcapital.com or call (843) 990-7770. There is no digital document upload. No e-signature workflow. No borrower portal. As of October 2026 the loans page still tells mortgage applicants to contact a lender at that address or number to apply.
 
 This is a traditional staffing model operating in a high-velocity market. That combination creates friction at exactly the wrong moment.
 
@@ -2927,9 +2928,9 @@ Charleston's growth is not driven by locals trading up. It is driven by in-migra
 
 A loan processor manually chasing paystubs from Workday or ADP instances they have never seen, calling out-of-state HR departments, and waiting on paper bank statements from distant depositories can easily burn two to three weeks just on document assembly. That is not a staffing problem. It is a structural limitation of the intake model.
 
-Commercial lending has the same issue, amplified. A $3 million CRE deal requires business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from every guarantor. When all of that flows through email and courier, the diligence phase alone can take three weeks. For a bank with $466 million already on the CRE book and a market that is actively building, faster diligence is not a nice-to-have. It is how you close more deals per lender per quarter.
+Commercial lending has the same issue, amplified. A $3 million CRE deal requires business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from every guarantor. When all of that flows through email and courier, the diligence phase alone can take three weeks. For a bank with $356 million in nonfarm commercial real estate and $95 million in construction loans already on the book and a market that is actively building, faster diligence is not a nice-to-have. It is how you close more deals per lender per quarter.
 
-The bank's 53.63% efficiency ratio shows it is running lean. The risk is that lean headcount plus manual intake creates a ceiling on origination volume that looks fine until the market accelerates past it.
+The bank's 53.34% efficiency ratio shows it is running lean. The risk is that lean headcount plus manual intake creates a ceiling on origination volume that looks fine until the market accelerates past it.
 
 ---
 
@@ -2943,7 +2944,7 @@ For commercial deals, automated business financial pulls from accounting integra
 
 First Capital's four-branch model is actually well-suited for this kind of upgrade. The bank is not trying to integrate digital intake across 40 locations with inconsistent workflows. It has a small, coherent operation with new leadership that has already shown willingness to make structural changes: divesting a branch, adding a market president, sharpening the geographic focus. Those are not the moves of an institution opposed to change.
 
-The 3.49% NIM and 1.12% ROA give the bank financial room to invest. The 53.63% efficiency ratio means it is not under cost pressure that would crowd out any new spend. And the market is handing it a growth opportunity that most community banks would not encounter in a generation: a metro adding nearly 70,000 residents over five years, with a loan book already weighted toward exactly the asset classes that market demands.
+The 3.47% NIM and 1.14% ROA give the bank financial room to invest. The 53.34% efficiency ratio means it is not under cost pressure that would crowd out any new spend. And the market is handing it a growth opportunity that most community banks would not encounter in a generation: a metro adding nearly 70,000 residents over five years, with a loan book already weighted toward exactly the asset classes that market demands.
 
 ---
 

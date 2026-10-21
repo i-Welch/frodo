@@ -472,15 +472,15 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'first-capital-bank-charleston-growth-digital-gap',
     articleTitle: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
     fdicCert: 34966,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.24B' },
-      { label: 'ROA', value: '1.12%' },
-      { label: 'NIM', value: '3.49%' },
+      { label: 'Total assets', value: '$1.32B' },
+      { label: 'ROA', value: '1.14%' },
+      { label: 'NIM', value: '3.47%' },
       { label: 'Branch count', value: '4' },
     ],
     volumes: {
-      mortgage: { count: 300, source: 'Estimated from residential RE book ($338.4M) plus construction loans ($105M); assumed ~$300K average loan size and ~5-year portfolio duration implies roughly 300 originations per year. HMDA disclosure report exists at FFIEC (LEI 7DMUJTL9FFTVIAG9H788) but data tables require JS rendering not accessible via API.', estimated: true },
+      mortgage: { count: 370, source: 'Estimated from the one-to-four family residential book ($460.8M, Q2 2026) plus construction loans ($95.4M); assumed ~$300K average loan size and ~5-year portfolio duration implies roughly 370 originations per year. HMDA disclosure report exists at FFIEC (LEI 7DMUJTL9FFTVIAG9H788) but data tables require JS rendering not accessible via API.', estimated: true },
       commercial: { count: 729, source: 'FDIC Call Report via api.fdic.gov (CERT 34966), Q1 2026 (REPDTE 2026-03-31). Loan category detail fields: LNRENRES, LNRERES, LNRECONS, LNREMULT, LNCI, LNCON.', estimated: true },
       consumer: { count: 220, source: 'FDIC Call Report via api.fdic.gov (CERT 34966), Q1 2026 (REPDTE 2026-03-31). Loan category detail fields: LNRENRES, LNRERES, LNRECONS, LNREMULT, LNCI, LNCON.', estimated: true },
     },
@@ -488,7 +488,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       newHouseholdsPerYear: 7000,
       source: 'Charleston MSA (Berkeley, Charleston, Dorchester counties) added 70,000+ residents 2020-2024, averaging ~17,500/year. At 2.5 persons per household, approximately 7,000 new households per year across the tri-county market. Source: Charleston Regional Development Alliance / SC DEW 2024 population estimates.',
     },
-    intro: "First Capital Bank operates four branches in the Charleston-North Charleston MSA, one of the fastest-growing metros in the Southeast. The tri-county area (Charleston, Berkeley, Dorchester) has grown nearly 9% since 2020, adding 70,000+ residents and is projected to reach 1 million residents by 2032. Berkeley County grew 3.2% in 2024 alone, ranking 61st nationally. The borrower base skews toward new-resident homebuyers, military-affiliated households (Joint Base Charleston), and a growing professional class attracted by tech and aerospace employers. The bank's loan book is dominated by CRE ($466M) and residential RE ($338M), reflecting Charleston's robust construction and real estate activity.",
+    intro: "First Capital Bank operates three branches in the Charleston-North Charleston MSA (plus one in Pinehurst, NC), one of the fastest-growing metros in the Southeast. The tri-county area (Charleston, Berkeley, Dorchester) has grown nearly 9% since 2020, adding 70,000+ residents and is projected to reach 1 million residents by 2032. Berkeley County grew 3.2% in 2024 alone, ranking 61st nationally. The borrower base skews toward new-resident homebuyers, military-affiliated households (Joint Base Charleston), and a growing professional class attracted by tech and aerospace employers. The bank's loan book is dominated by one-to-four family residential ($461M) and nonfarm commercial real estate ($356M) at Q2 2026, reflecting Charleston's robust construction and real estate activity.",
     strategic: [
       {
         title: 'No Online Application Means Every Mortgage Starts with a Phone Call',
@@ -496,7 +496,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'CRE Concentration Demands Faster Commercial Underwriting',
-        body: "Commercial real estate represents $466M of First Capital's $973M loan portfolio, making it by far the bank's largest exposure category. C&I adds another $80M, meaning commercial credits account for over 55% of the book. Commercial underwriting is document-intensive: business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from guarantors all flow through email and courier in a traditional workflow. RAVEN automates income verification via direct IRS transcript retrieval, pulls business financials from accounting integrations, and verifies identity for all guarantors in parallel, cutting the document assembly phase that typically consumes two to three weeks in community bank commercial deals. For a bank growing its CRE book aggressively in a hot market, faster diligence means more closed deals per lender per quarter.",
+        body: "Nonfarm commercial real estate ($356M), construction ($95M), multifamily ($82M) and C&I ($92M) together make up about 58% of First Capital's $1.08B in net loans at Q2 2026. Commercial underwriting is document-intensive: business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from guarantors all flow through email and courier in a traditional workflow. RAVEN automates income verification via direct IRS transcript retrieval, pulls business financials from accounting integrations, and verifies identity for all guarantors in parallel, cutting the document assembly phase that typically consumes two to three weeks in community bank commercial deals. For a bank growing its CRE book aggressively in a hot market, faster diligence means more closed deals per lender per quarter.",
       },
       {
         title: 'New-Resident Borrowers Are Hard to Verify Manually',
