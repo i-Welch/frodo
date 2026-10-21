@@ -877,33 +877,33 @@ export const ROI_BANKS: BankRoiInput[] = [
     shortName: 'Carolina Bank',
     articleSlug: 'carolina-bank-between-two-economies',
     articleTitle: 'The Bank Between Two Economies',
-    fdicCert: 355120,
-    auditDate: 'June 2026',
+    fdicCert: 16723,
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$830M' },
-      { label: 'ROA', value: '1.68%' },
-      { label: 'Efficiency ratio', value: '44.86%' },
-      { label: 'Tier 1 capital ratio', value: '20.23%' },
+      { label: 'Total assets', value: '$845M' },
+      { label: 'ROA', value: '1.85% (1H 2026)' },
+      { label: 'Efficiency ratio', value: '43.2% (1H 2026)' },
+      { label: 'Tier 1 capital ratio', value: '20.14%' },
     ],
     volumes: {
-      mortgage: { count: 160, source: 'FDIC call report loan mix, estimated from $588M net loan book and 6-county footprint', estimated: true },
+      mortgage: { count: 160, source: 'FDIC call report loan mix, estimated from $599M net loan book (Q2 2026) and 6-county footprint', estimated: true },
       commercial: { count: 80, source: 'FDIC call report loan mix, estimated', estimated: true },
       consumer: { count: 120, source: 'Estimated from 14-branch footprint and rural SC consumer mix', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 1200,
-      source: 'Darlington, Florence, and 4 adjacent Pee Dee counties; anchored by AESC EV plant (1,620 jobs) and Census county in-migration estimates',
+      source: 'Darlington, Florence, and 4 adjacent counties; Census county in-migration estimates. The AESC EV plant (about 1,600 jobs promised) has been paused since June 2025 and is not counted as near-term demand.',
     },
     intro:
-      'Carolina Bank & Trust sits at the intersection of two economic stories: Darlington County shedding old-economy manufacturing jobs and Florence County absorbing a $1.62 billion EV battery plant. A 20.23% Tier 1 capital ratio means the capital to chase that Florence growth is already on the balance sheet. The constraint is throughput.',
+      'Carolina Bank & Trust sits at the intersection of two economic stories: Darlington County losing its Canfor sawmill in 2025 and Florence County waiting on a $1.6 billion EV battery plant that has been paused since June 2025. A 20.14% Tier 1 capital ratio means the capital to chase Florence growth, whenever it comes, is already on the balance sheet. The constraint is throughput.',
     strategic: [
       {
-        title: 'The EV economy brings complex borrowers first',
-        body: 'AESC construction workers, relocating contractors, and skilled tradespeople arriving for the Florence plant carry the verification profiles that slow manual processing most: recent job starts, multiple W-2s, high hourly wages without long employment history. Automated income and employment verification handles exactly these borrowers faster than document collection.',
+        title: 'If the EV plant restarts, complex borrowers arrive first',
+        body: 'If AESC resumes construction, the construction workers, relocating contractors, and skilled tradespeople arriving for the Florence plant will carry the verification profiles that slow manual processing most: recent job starts, multiple W-2s, high hourly wages without long employment history. Automated income and employment verification handles exactly these borrowers faster than document collection.',
       },
       {
         title: 'A fortress capital ratio is optionality, not a trophy',
-        body: 'At 20.23% Tier 1, Carolina Bank can move fast when Florence loan demand accelerates without asking regulators for permission. The binding constraint on capturing that demand is not capital: it is how many files the team can process in a week.',
+        body: 'At 20.14% Tier 1, Carolina Bank can move fast when Florence loan demand accelerates without asking regulators for permission. The binding constraint on capturing that demand is not capital: it is how many files the team can process in a week.',
       },
       {
         title: 'The Darlington stress test is still running',
@@ -911,7 +911,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'FDIC BankFind (Cert #355120); Visbanking call report data; Florence County Economic Development (AESC announcement); Canfor 2024 Annual Report; Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind and API (Cert #16723; financials and locations, Q2 2026); Canfor closure announcement (June 26, 2025) and 2024 results; SC Daily Gazette and Post and Courier on the AESC Florence pause (June 2025 to July 2026); MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'coastal-states-bank',

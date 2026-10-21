@@ -465,12 +465,12 @@
     "slug": "carolina-bank-trust",
     "bankName": "Carolina Bank & Trust Co.",
     "shortName": "Carolina Bank",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "carolina-bank-trust",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$830M"
+        "value": "~$845M"
       },
       {
         "label": "Branches",
@@ -582,7 +582,7 @@
         "withRaven": "Synced to Jack Henry automatically"
       }
     ],
-    "sources": "carolinabank.net (/, /about/about-us, /lending/home-loans/home-equity-loans, /lending/home-loans/mortgages, /lending/personal-lending/auto-loans, /lending/personal-lending/personal-loans, /new-online-banking); my.carolinabank.net (Banno); carolinabanktrust.mymortgage-online.com; FDIC BankFind cert #355120. Brand colors #1c4493 / #0b2545 / #c41137 and the Lato typeface were extracted from the site stylesheet. Reviewed June 2026."
+    "sources": "carolinabank.net (/, /about/about-us, /lending/home-loans/home-equity-loans, /lending/home-loans/mortgages, /lending/personal-lending/auto-loans, /lending/personal-lending/personal-loans, /new-online-banking); my.carolinabank.net (Banno); carolinabanktrust.mymortgage-online.com; FDIC BankFind cert #16723. Brand colors #1c4493 / #0b2545 / #c41137 and the Lato typeface were extracted from the site stylesheet. Reviewed June 2026."
   },
   {
     "slug": "coastal-states-bank",

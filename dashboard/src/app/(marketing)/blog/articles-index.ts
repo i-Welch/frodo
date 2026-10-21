@@ -481,9 +481,9 @@ export const articles: Article[] = [
     slug: 'carolina-bank-between-two-economies',
     title: 'The Bank Between Two Economies',
     description:
-      'Carolina Bank & Trust runs a 1.68% ROA, a 44.86% efficiency ratio, and zero foreclosed real estate out of Lamar, SC — right between a county shedding timber jobs and a county landing a $1.62 billion EV battery plant. Here is how a 90-year-old family bank navigates the gap.',
+      'Carolina Bank & Trust earned a 1.85% ROA with a 43.2% efficiency ratio in the first half of 2026, out of Lamar, SC, between a county that lost its sawmill and a county whose $1.6 billion battery plant is on pause. How a 90-year-old family bank thrives while both economies wait.',
     readTime: '5 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'carolina-bank-trust',
   },
