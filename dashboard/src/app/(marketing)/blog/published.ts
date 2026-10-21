@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Released from drafts (Oct 2026) —
+  'the-work-number-alternatives-community-banks',
   // — Credit Union Deep Dives (Aug 2026) —
   'robins-financial-20-million-rebate',
   'founders-credit-union-mill-town',
@@ -94,7 +96,6 @@ export const BLOG_SLUGS = [
   // 'jack-henry-symitar-loan-origination',
   // 'fiserv-premier-digital-lending',
   // — SEO drafts (Jul 18): review before publishing, then also add to articles-index.ts —
-  // 'the-work-number-alternatives-community-banks',
   // 'best-digital-account-opening-software-community-banks',
 ];
 
@@ -103,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'the-work-number-alternatives-community-banks': '2026-10-22',
   'robins-financial-20-million-rebate': '2026-08-17',
   'founders-credit-union-mill-town': '2026-08-17',
   'champions-first-fsu-rebrand': '2026-08-12',
@@ -167,6 +169,5 @@ export const BLOG_DATES: Record<string, string> = {
   '59-billion-compliance-burden': '2026-03-03',
   'how-figure-closes-heloc-in-5-days': '2026-02-24',
   'one-link-complete-verification': '2026-02-17',
-  'the-work-number-alternatives-community-banks': '2026-07-18',
   'best-digital-account-opening-software-community-banks': '2026-07-18',
 };

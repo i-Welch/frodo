@@ -193,6 +193,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
       { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
+      { slug: 'the-work-number-alternatives-community-banks', title: 'The Work Number Alternatives for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'instant-employment-verification', label: 'Instant employment verification' },
   },
@@ -640,6 +641,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'first-party-fraud-community-banks', title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.' },
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
+      { slug: 'the-work-number-alternatives-community-banks', title: 'The Work Number Alternatives for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'bank-verification-software', label: 'Bank verification software' },
   },

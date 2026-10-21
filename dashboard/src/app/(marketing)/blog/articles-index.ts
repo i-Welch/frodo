@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'the-work-number-alternatives-community-banks',
+    title: 'The Work Number Alternatives for Community Banks (2026)',
+    description:
+      'Equifax raised The Work Number’s prices again in January 2026, and one mortgage with two borrowers can cost $280 to verify. A community bank buyer’s guide to the alternatives: Truework (now Checkr), Truv, Argyle, Experian Verify after Workday, and the verbal VOE.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'guide',
+  },
+  {
     slug: 'robins-financial-20-million-rebate',
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:

@@ -784,9 +784,10 @@ Someone should fix that.
   'the-work-number-alternatives-community-banks': {
     title: 'The Work Number Alternatives for Community Banks (2026)',
     description:
-      'The Work Number is instant when it works, and expensive always. A community bank buyer’s guide to the alternatives: Truework, Truv, Argyle, Experian Verify, the verbal VOE, and where a multi-source verification layer fits.',
+      'Equifax raised The Work Number’s prices again in January 2026, and one mortgage with two borrowers can cost $280 to verify. A community bank buyer’s guide to the alternatives: Truework (now Checkr), Truv, Argyle, Experian Verify after Workday, and the verbal VOE.',
     publishedDate: 'July 18, 2026',
-    readTime: '7 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '6 min read',
     content: `
 # The Work Number Alternatives for Community Banks (2026)
 
@@ -794,7 +795,9 @@ Someone should fix that.
 
 Disclosure up front: RAVEN, which publishes this site, sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
 
-The Work Number, owned by Equifax, is the default answer to employment verification in US lending. It is a database of payroll records contributed by employers and payroll providers, and when a borrower's employer is in it, a verification that used to take three phone calls comes back in seconds. Two things push lenders to look for alternatives anyway: per-report pricing that has risen steeply year over year, and coverage gaps exactly where community banks lend, at small employers, farms, municipalities, and self-employed borrowers who are in nobody's payroll database.
+The Work Number, owned by Equifax, is the default answer to employment verification in US lending. It is a database of payroll records contributed by employers and payroll providers, and when a borrower's employer is in it, a verification that used to take three phone calls comes back in seconds. Two things push lenders to look for alternatives anyway. The first is price: Equifax raised the cost of Work Number employment verifications again effective January 1, 2026, on top of increases the Community Home Lenders of America was already protesting in 2024, when it put a single verification at $55 to $70 and a mortgage with two borrowers at as much as $280. The second is coverage, which runs thinnest exactly where community banks lend: small employers, farms, municipalities, and self-employed borrowers who are in nobody's payroll database.
+
+The alternatives also got more serious in the past year. Checkr, the background check company, agreed to buy Truework in April 2025, and in September 2026 Experian connected Workday's payroll data to its own verification network.
 
 For a community bank, the question is not "what replaces The Work Number." It is "what mix of verification methods covers my borrower base at a cost that works on a $250,000 loan, and satisfies my examiner and the GSEs." Here are the realistic options.
 
@@ -812,7 +815,7 @@ Employment and income verification tools differ on five axes:
 
 ### Truework
 
-Truework is an orchestration layer: it tries an instant database match, then a borrower-permissioned payroll login, then, if both miss, its own team completes a manual verification with the employer. That waterfall is the honest response to the real world, where no single method covers everyone. It is strongest for mortgage lenders that need a completed verification on every file, not just the easy ones. Truework publishes its pricing, which is worth something by itself in this category.
+Truework is an orchestration layer: it tries an instant database match, then a borrower-permissioned payroll login, then, if both miss, its own team completes a manual verification with the employer. That waterfall is the honest response to the real world, where no single method covers everyone. It is strongest for mortgage lenders that need a completed verification on every file, not just the easy ones. Checkr agreed to acquire Truework in April 2025 and has kept it running as its own product; Truework says its customers include eight of the ten largest US lenders by origination volume. Ask any vendor in this category for per-completed-verification pricing in writing, since list prices are rarely the whole story.
 
 ### Truv
 
@@ -824,7 +827,7 @@ Argyle sells the same consumer-permissioned model as Truv, with direct payroll c
 
 ### Experian Verify
 
-Experian built its own employer records network as a second database option. Coverage is smaller than The Work Number's but growing, and for lenders that already buy Experian data, it can be an easy add-on lookup before paying for a premium report elsewhere.
+Experian built its own employer records network as a second database option. In September 2026 it added an integration with Workday, the payroll and HR system behind many of the largest US employers, and said the expansion gives Experian Verify a path to more than 80 million records, over half of US payroll employees. "Path to" is a projection, not a current count, so test hit rates on your own recent files. For lenders that already buy Experian data, it is an easy lookup to run before paying for a premium report elsewhere.
 
 ### The verbal VOE, still
 
@@ -850,7 +853,7 @@ Yes, when it comes through a vendor on the agencies' current eligible-supplier l
 No single tool matches its instant-hit rate on large-employer borrowers. Realistic strategies either orchestrate multiple methods or accept a manual fallback for the misses. The decision is about cost and coverage on your borrower base, not about a one-for-one swap.
 
 **What does employment verification cost in 2026?**
-Database reports are typically priced per pull and have risen steeply; permissioned and orchestrated vendors generally price lower per completed verification and publish pricing more readily. Manual verification costs staff time, roughly an hour per file across the callbacks. Get current quotes; published numbers age fast.
+Database reports are priced per pull, and The Work Number's prices rose again on January 1, 2026. The most recent public lender figure, from the Community Home Lenders of America in 2024, was $55 to $70 per verification, and a two-borrower mortgage verified during underwriting and again shortly before closing can reach $280. Permissioned and orchestrated vendors generally price per completed verification and compete on that number. Manual verification costs staff time, roughly an hour per file across the callbacks. Get current quotes in writing; published numbers age fast.
 `,
   },
   'best-digital-account-opening-software-community-banks': {
