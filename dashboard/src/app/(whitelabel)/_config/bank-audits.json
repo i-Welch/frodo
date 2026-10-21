@@ -1414,12 +1414,12 @@
     "slug": "security-federal-bank",
     "bankName": "Security Federal Bank",
     "shortName": "Security Federal",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "security-federal-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.56B"
+        "value": "~$1.54B"
       },
       {
         "label": "Branches",
@@ -1434,7 +1434,7 @@
         "value": "SFDL / 1922"
       }
     ],
-    "summary": "Security Federal Bank offers a genuinely split digital lending experience: consumer products (auto, boat, RV, personal, personal line of credit, HELOC) each have an online apply button, but every one of them hands the borrower off to a different off-brand vendor domain (LoansPQ for vehicle and personal lending, MeridianLink for HELOC). Mortgage runs on a bank-branded subdomain (sfb-mortgage.securityfederalbank.com) powered by ICE Mortgage Technology, which is the closest thing to a cohesive digital experience on the site. Business lending is an entirely different story: term loans, lines of credit, commercial real estate, equipment, medical, and SBA products all end at 'Reach out to a lender,' with zero digital intake. With 19 branches across the Aiken/Augusta corridor and $1.56B in assets, the consumer front door is functional but fragmented, and the commercial front door does not exist.",
+    "summary": "Security Federal Bank offers a genuinely split digital lending experience: consumer products (auto, boat, RV, personal, personal line of credit, HELOC) each have an online apply button, but every one of them hands the borrower off to a different off-brand vendor domain (LoansPQ for vehicle and personal lending, MeridianLink for HELOC). Mortgage runs on a bank-branded subdomain (sfb-mortgage.securityfederalbank.com) powered by ICE Mortgage Technology, which is the closest thing to a cohesive digital experience on the site. Business lending is an entirely different story: term loans, lines of credit, commercial real estate, equipment, medical, and SBA products all end at 'Reach out to a lender,' with zero digital intake. With 19 branches across the Aiken/Augusta corridor and $1.54B in assets (June 30, 2026), the consumer front door is functional but fragmented, and the commercial front door does not exist.",
     "currentJourney": [
       {
         "channel": "Auto / Boat / RV loans",

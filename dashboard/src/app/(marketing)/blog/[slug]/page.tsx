@@ -2739,14 +2739,15 @@ For Bank of Travelers Rest, which already has the market position, the profitabi
   },
   'security-federal-bank-cdfi-rate-rebound-aiken': {
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
-    description: "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
+    description: "Security Federal, the Aiken CDFI bank with 19 branches and an ICE-powered mortgage stack, cut its efficiency ratio from 75.35% to 70.44% in a year. Still above 70%, and the missing piece is automated verification for its hardest borrower files.",
     publishedDate: 'May 21, 2026',
-    readTime: '6 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '7 min read',
     content: `# Security Federal Bank: CDFI Giant Navigating the Rate Rebound
 
-*Published June 26, 2026*
+*Published May 21, 2026*
 
-South Carolina's largest CDFI-certified bank isn't in Charlotte. It isn't in Columbia. It's in Aiken, a small city most people associate with horse farms and the Masters, and it's sitting on $1.56 billion in assets with 19 branches spanning two states.
+The bank that calls itself South Carolina's largest certified bank CDFI isn't in Charleston. It isn't in Columbia. It's in Aiken, a small city most people associate with horse farms and the Masters, and it's sitting on $1.54 billion in assets with 19 branches spanning two states.
 
 That's the part that surprises people. Security Federal Bank has been operating since 1922, longer than most community banks still standing, and it earned its CDFI certification from the US Treasury back in 2010. It has been quietly building a franchise across one of the Southeast's more interesting demographic corridors while the industry chases fintech partnerships and digital-first branding. The bank's mission statement is four words: "Helping People...Changing Lives." It's not catchy. It is, however, accurate.
 
@@ -2756,15 +2757,15 @@ Understanding why this bank is positioned the way it is requires understanding t
 
 People outside the Southeast tend to underestimate this geography. Aiken County added 7,962 residents between 2020 and 2023, a 4.71% gain that runs at nearly five times the national average. The in-migration is not random. Retirees are coming from the Northeast and mid-Atlantic, drawn by home prices that still make financial sense. In 2024, the median home sale price in Aiken was $289,900, with 3,321 total transactions, up 9.5% year over year.
 
-But retirees are only part of the story. Augusta, just across the Georgia line, is anchored by Savannah River Site, a federal nuclear complex that employs more than 10,000 workers directly. Fort Gordon hosts US Army Cyber Command. Augusta University Medical Center is a major regional employer. These are stable, salaried, federal and quasi-federal jobs, exactly the kind of borrower base that a community bank loves to underwrite.
+But retirees are only part of the story. Augusta, just across the Georgia line, is anchored by Savannah River Site, a federal nuclear complex that employs more than 10,000 workers directly. Fort Eisenhower, renamed from Fort Gordon in 2023, hosts the headquarters of US Army Cyber Command. Augusta University Medical Center is a major regional employer. These are stable, salaried, federal and quasi-federal jobs, exactly the kind of borrower base that a community bank loves to underwrite.
 
-Security Federal operates across Aiken, Lexington, and Richland counties in South Carolina and into Columbia and Richmond counties in the Augusta metro. That footprint puts the bank directly in the path of population growth on both sides of the state line. Branch expansion is planned through 2027. The strategic logic is clear: the bank is growing because its market is growing.
+Security Federal operates across Aiken, Lexington, Richland, and Saluda counties in South Carolina and into Columbia and Richmond counties in the Augusta metro. That footprint puts the bank directly in the path of population growth on both sides of the state line. Its newest offices are in Augusta (2019 and 2023) and Columbia (2022). The strategic logic is clear: the bank is growing because its market is growing.
 
-The current numbers reflect a bank performing steadily but not spectacularly. Return on assets sits at 0.79%, net interest margin at 3.03%, and the efficiency ratio at 71.77%. For context, community banks with efficiency ratios below 60% are generally considered well-run on the cost side. At 71.77%, Security Federal is leaving margin on the table somewhere in its operations. Finding where is the interesting question.
+The numbers are improving. In the first half of 2026, the bank's FDIC call report shows a 0.86% return on assets, up from 0.65% a year earlier, a 3.30% net interest margin, up from 3.02%, and an efficiency ratio of 70.44%, down from 75.35%. The holding company's second-quarter earnings were up about 55% year over year. That is real progress, mostly from the rate rebound in the title. But community banks with efficiency ratios below 60% are generally considered well-run on the cost side. At 70.44%, Security Federal is still leaving margin on the table somewhere in its operations. Finding where is the interesting question.
 
 :::stat
-**71.77%**
-Security Federal's efficiency ratio, against a community bank benchmark of below 60% for well-run operations on the cost side.
+**70.44%**
+Security Federal's efficiency ratio in the first half of 2026, down from 75.35% a year earlier but still above the community bank benchmark of below 60% for well-run operations on the cost side.
 :::
 
 ## The CDFI Charter Creates a Document Problem Nobody Talks About
@@ -2781,7 +2782,7 @@ For these files, manual document collection can run two to three times longer th
 
 A processor chasing a self-employed borrower's bank statements across three institutions, waiting on employer callbacks, and manually keying income figures into the LOS is burning hours that do not show up in a single line item on the income statement. They show up as a collectively elevated efficiency ratio.
 
-Security Federal's mortgage portal runs on ICE Mortgage Technology. That is a meaningful fact. ICE is a modern, integration-ready platform. Borrowers can apply online. The front-end infrastructure works. What the portal does not show is any open banking income or asset verification, no Plaid, no Finicity, no Day 1 Certainty or equivalent program, no automated verification of income, employment, or assets at the point of application. None of it.
+Security Federal's mortgage portal runs on ICE Mortgage Technology's Encompass Consumer Connect. That is a meaningful fact. ICE is a modern, integration-ready platform. Borrowers can apply online. The front-end infrastructure works. What the portal's public pages did not show as of October 2026 is any open banking income or asset verification, no Plaid, no Finicity, no Day 1 Certainty or equivalent program, no automated verification of income, employment, or assets at the point of application. None of it.
 
 That gap means the back half of every mortgage file is still manual. The borrower submits an application digitally, and then a human processor begins making calls and sending document requests. For a conventional borrower, that friction is an annoyance. For the CDFI borrower with complex income, it can add one to three weeks to the closing timeline and occasionally costs the bank the deal when a seller accepts a competing offer from a buyer with a faster lender.
 
@@ -2793,7 +2794,7 @@ What sits between that investment and a meaningfully better efficiency ratio is 
 
 Consider the math at a high level. If Security Federal's loan processors average even 30 minutes per file on manual verification tasks for straightforward borrowers, and two to four hours on complex CDFI files that represent a significant share of their volume, and if automated verification eliminates 80% of that time: the same team handles meaningfully more files per month. No new hires. No expanded branches ahead of the market demand.
 
-For a bank planning branch expansion through 2027, processing capacity is a real constraint. More branches generate more applications. If the back-office staffing model does not scale with origination volume, cycle times lengthen, loan officers get frustrated, and borrowers go elsewhere. A 71.77% efficiency ratio does not give the bank much cushion to hire its way out of that problem.
+For a bank that keeps adding offices in Augusta and Columbia, processing capacity is a real constraint. More branches generate more applications. If the back-office staffing model does not scale with origination volume, cycle times lengthen, loan officers get frustrated, and borrowers go elsewhere. A 70.44% efficiency ratio does not give the bank much cushion to hire its way out of that problem.
 
 The borrower profile makes this even more important. Security Federal's LMI and first-time buyer customers are often choosing between multiple lenders, not because they have great credit and lots of options, but because mission-driven lenders like credit unions and CDFIs are all competing for the same customer segment. Speed of closing is a real competitive factor. A borrower who gets to clear-to-close in 18 days wins the house. A borrower whose file sits in manual review for 35 days often does not.
 
@@ -2807,9 +2808,9 @@ Security Federal is not a bank that needs a strategy reset. The market is right,
 Security Federal is not a bank that needs a strategy reset. The opportunity sitting in front of this bank is operational, not strategic.
 :::
 
-Banks that close the verification gap in complex borrower segments tend to see efficiency ratios compress 300 to 600 basis points within 12 to 18 months of full deployment, based on industry data from similar community bank implementations. For Security Federal, moving from 71.77% to something closer to 66% would represent real earnings capacity, either returned to shareholders or reinvested in the branch expansion the bank has already signaled.
+The rate rebound has already taken the efficiency ratio from 75% to 70%. The next five points have to come from operations, and the processing hours spent on complex files are the most obvious place to look. Every point of efficiency ratio is real earnings capacity, either returned to shareholders or reinvested in the branch growth the bank is already pursuing.
 
-The Aiken-Augusta-Columbia corridor is going to keep growing. Federal employment at Savannah River Site is stable. Fort Gordon's Cyber Command mission is expanding. Remote workers and retirees are not stopping their migration southward. The bank that builds the fastest, most reliable borrower intake process in this market, one that handles the complexity of a CDFI borrower file without making the borrower wait four extra weeks, will compound the referral advantages that community banks live on.
+The Aiken-Augusta-Columbia corridor is going to keep growing. Federal employment at Savannah River Site is stable. Army Cyber Command is headquartered at Fort Eisenhower. Remote workers and retirees are not stopping their migration southward. The bank that builds the fastest, most reliable borrower intake process in this market, one that handles the complexity of a CDFI borrower file without making the borrower wait four extra weeks, will compound the referral advantages that community banks live on.
 
 Open banking verification infrastructure is no longer experimental. It is production-grade, it connects to the income and asset sources that CDFI borrowers actually use, and it fits inside the LOS workflows that Security Federal already operates. The question is not whether this technology works. The question is which lender in the Aiken-Augusta corridor gets there first.
 `,

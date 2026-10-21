@@ -392,11 +392,11 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'security-federal-bank-cdfi-rate-rebound-aiken',
     articleTitle: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     fdicCert: 31100,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.56B' },
-      { label: 'ROA', value: '0.79%' },
-      { label: 'NIM', value: '3.03%' },
+      { label: 'Total assets', value: '$1.54B' },
+      { label: 'ROA', value: '0.86%' },
+      { label: 'NIM', value: '3.30%' },
       { label: 'Branch count', value: '19' },
     ],
     volumes: {
@@ -408,15 +408,15 @@ export const ROI_BANKS: BankRoiInput[] = [
       newHouseholdsPerYear: 1200,
       source: 'Aiken County net population growth of ~2,200 residents/year (2023-2024 Census estimates) at 2.5 persons per household = ~880 new households in Aiken County. Adding partial coverage of Richmond County GA (Augusta metro) and Lexington/Richland Counties SC (Columbia metro) where bank has branches, total footprint estimated at 1,200 new households/year.',
     },
-    intro: 'Security Federal serves a three-city corridor: Aiken SC (retirement/quality-of-life destination with 1.67% annual population growth), Augusta GA (anchored by Savannah River Site nuclear complex employing 10,000+, Fort Gordon/Cyber Command, and Augusta University Medical Center), and greater Columbia SC suburbs. The Aiken-Augusta market is a steady in-migration destination attracting retirees, federal workers, and defense contractors. Aiken County grew by 7,962 residents (4.71%) between 2020-2023, outpacing the national average. Home sales totaled 3,321 in 2024 with median price $289,900. The borrower base skews toward first-time buyers, LMI households, and federal/government employees - all groups who benefit from CDFI-flexible underwriting but who also take longer to document through manual processes.',
+    intro: 'Security Federal serves a three-city corridor: Aiken SC (retirement/quality-of-life destination with 1.67% annual population growth), Augusta GA (anchored by Savannah River Site nuclear complex employing 10,000+, Fort Eisenhower (formerly Fort Gordon) and Army Cyber Command, and Augusta University Medical Center), and greater Columbia SC suburbs. The Aiken-Augusta market is a steady in-migration destination attracting retirees, federal workers, and defense contractors. Aiken County grew by 7,962 residents (4.71%) between 2020-2023, outpacing the national average. Home sales totaled 3,321 in 2024 with median price $289,900. The borrower base skews toward first-time buyers, LMI households, and federal/government employees - all groups who benefit from CDFI-flexible underwriting but who also take longer to document through manual processes.',
     strategic: [
       {
         title: 'CDFI Mission Means Complex Borrowers - and Mountains of Paper',
-        body: "As South Carolina's largest CDFI-certified bank, Security Federal is explicitly chartered to serve LMI borrowers, first-time homebuyers, and underbanked households across the Aiken-Augusta corridor. These borrowers often have non-standard income sources: gig work, seasonal employment, multiple part-time jobs, or self-employment income that requires more documentation than a W-2 employee. Manual document collection for these files can run two to three times longer than a conventional loan file, adding days or weeks to closing timelines. RAVEN's automated income and employment verification pulls directly from payroll providers and financial institutions, cutting verification time from weeks to minutes regardless of income complexity. For a mission-driven lender competing on personalized service, faster closings mean more borrowers served with the same loan officer headcount.",
+        body: "As what it calls South Carolina's largest certified bank CDFI, Security Federal is explicitly chartered to serve LMI borrowers, first-time homebuyers, and underbanked households across the Aiken-Augusta corridor. These borrowers often have non-standard income sources: gig work, seasonal employment, multiple part-time jobs, or self-employment income that requires more documentation than a W-2 employee. Manual document collection for these files can run two to three times longer than a conventional loan file, adding days or weeks to closing timelines. RAVEN's automated income and employment verification pulls directly from payroll providers and financial institutions, cutting verification time from weeks to minutes regardless of income complexity. For a mission-driven lender competing on personalized service, faster closings mean more borrowers served with the same loan officer headcount.",
       },
       {
         title: 'A Growing Market Demands Faster Throughput Without More Headcount',
-        body: 'Aiken County added over 7,900 residents between 2020 and 2023, growing at nearly five times the national rate, driven by retirees from the Northeast and mid-Atlantic, federal workers at Savannah River Site, and remote workers drawn by home prices well below major metros. That growth translated to 3,321 home sales in 2024, up 9.5% year over year, putting steady pressure on Security Federal\'s mortgage team across all 19 branches. With an efficiency ratio still running above 71%, the bank cannot simply hire its way to faster throughput without further compressing returns. RAVEN\'s verification layer reduces the manual document-chasing work that consumes loan processor time, allowing the existing team to handle higher origination volume in the same number of hours. For a community bank with expansion plans through 2027, that capacity headroom matters.',
+        body: 'Aiken County added over 7,900 residents between 2020 and 2023, growing at nearly five times the national rate, driven by retirees from the Northeast and mid-Atlantic, federal workers at Savannah River Site, and remote workers drawn by home prices well below major metros. That growth translated to 3,321 home sales in 2024, up 9.5% year over year, putting steady pressure on Security Federal\'s mortgage team across all 19 branches. With an efficiency ratio still running above 71%, the bank cannot simply hire its way to faster throughput without further compressing returns. RAVEN\'s verification layer reduces the manual document-chasing work that consumes loan processor time, allowing the existing team to handle higher origination volume in the same number of hours. For a community bank still adding offices in Augusta and Columbia, that capacity headroom matters.',
       },
       {
         title: 'ICE LOS Is In Place - The Verification Layer Is the Missing Piece',

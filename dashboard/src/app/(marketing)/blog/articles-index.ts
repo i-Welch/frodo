@@ -352,9 +352,9 @@ export const articles: Article[] = [
     slug: 'security-federal-bank-cdfi-rate-rebound-aiken',
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     description:
-      "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
-    readTime: '6 min read',
-    date: 'May 2026',
+      "Security Federal, the Aiken CDFI bank with 19 branches and an ICE-powered mortgage stack, cut its efficiency ratio from 75.35% to 70.44% in a year. Still above 70%, and the missing piece is automated verification for its hardest borrower files.",
+    readTime: '7 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'security-federal-bank',
   },
