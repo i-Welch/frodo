@@ -325,8 +325,9 @@ The post retries every hour.`);
 
 async function pingNewArticles() {
   const pinged: Record<string, string> = existsSync(INDEXNOW_LOG) ? JSON.parse(readFileSync(INDEXNOW_LOG, 'utf8')) : {};
-  // Follow-up posts (notBefore) reuse an article URL that was already pinged.
-  for (const post of readQueue().filter((p) => !pinged[p.slug] && !p.notBefore)) {
+  // Follow-up posts reuse an article URL that was already pinged. A launch post
+  // can carry notBefore too (staggered releases) and still needs its ping.
+  for (const post of readQueue().filter((p) => !pinged[p.slug] && !p.slug.endsWith('-followup'))) {
     if (!(await isLive(post.url))) continue;
     if (DRY_RUN) {
       log(`${post.slug}: would ping IndexNow (dry run)`);
