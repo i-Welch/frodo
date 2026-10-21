@@ -737,6 +737,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
       { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },

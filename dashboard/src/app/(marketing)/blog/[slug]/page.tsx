@@ -859,9 +859,10 @@ Database reports are priced per pull, and The Work Number's prices rose again on
   'best-digital-account-opening-software-community-banks': {
     title: 'Best Digital Account Opening Software for Community Banks (2026)',
     description:
-      'An honest comparison of digital account opening platforms for community banks: MANTL (Alkami), Narmi, Apiture, core-attached options from Jack Henry, Fiserv, and CSI, and verification-first intake. Written by a vendor, with the disclosure to match.',
+      'An honest comparison of digital account opening platforms for community banks: MANTL (Alkami, $40 billion in deposits raised), Narmi, Apiture (now CSI), core-attached options from Jack Henry and Fiserv, and verification-first intake. Written by a vendor, with the disclosure.',
     publishedDate: 'July 18, 2026',
-    readTime: '8 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '6 min read',
     content: `
 # Best Digital Account Opening Software for Community Banks (2026)
 
@@ -869,7 +870,7 @@ Database reports are priced per pull, and The Work Number's prices rose again on
 
 Disclosure: RAVEN, which publishes this guide, is one of the vendors below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
 
-The benchmark numbers in this market are public and brutal. The best community-bank platforms open a funded account in two to three minutes. Megabank and neobank onboarding set borrower expectations, and an application that takes twenty minutes and ends with "visit a branch to fund your account" loses most of its applicants before the finish line. Meanwhile the banks that moved fast without verification learned the other lesson: an account-opening flow that accepts whatever the applicant types is a fraud vector, and more than one bank has [turned online account opening off entirely](/blog/account-opening-fraud-prevention) after a fraud wave.
+The benchmark numbers in this market are public and brutal. MANTL, the category's best-known platform, reports an average under five minutes to open a retail deposit account across online and in-branch channels. Megabank and neobank onboarding set borrower expectations, and an application that takes twenty minutes and ends with "visit a branch to fund your account" loses most of its applicants before the finish line. Meanwhile the banks that moved fast without verification learned the other lesson: an account-opening flow that accepts whatever the applicant types is a fraud vector, and more than one bank has [turned online account opening off entirely](/blog/account-opening-fraud-prevention) after a fraud wave.
 
 So the honest selection criteria are speed to funded account, fraud controls at the front door, core compatibility, implementation weight, and what it costs at your asset size. Here is how the field actually breaks down.
 
@@ -877,23 +878,23 @@ So the honest selection criteria are speed to funded account, fraud controls at 
 
 ### MANTL (now part of Alkami)
 
-MANTL built its reputation on deposit origination for community banks and credit unions and was acquired by Alkami in March 2025. The performance numbers are the category benchmark: account opening in under three minutes, roughly a million applications processed in 2024 across about 150 institutions, and close to $10 billion in deposits raised. It is a strong choice for deposit-growth-driven banks that want a proven engine and are comfortable buying from a larger digital-banking company post-acquisition. Pricing is not published.
+MANTL built its reputation on deposit origination for community banks and credit unions and was acquired by Alkami in March 2025. Its numbers are the category benchmark: in June 2026 Alkami reported that MANTL customers have raised more than $40 billion in deposits on the platform, with an average under five minutes to open a retail account and about ten minutes for a business account, across channels. The branch is now its fastest-growing channel; more than a million in-branch applications have been booked through MANTL. It is a strong choice for deposit-growth-driven banks that want a proven engine and are comfortable buying from a larger digital-banking company post-acquisition. Pricing is not published.
 
 ### Narmi
 
-Narmi sells digital banking and account opening built specifically for community banks and credit unions, and documents a consumer account opening time of two minutes and thirteen seconds. Its case studies name real community institutions with real numbers, which is rarer in this market than it should be. Narmi fits banks that want a modern digital banking front end and account opening from one vendor. Most pricing is not published.
+Narmi sells digital banking and consumer and business account opening built specifically for community banks and credit unions. Its case studies name real community institutions with real numbers, which is rarer in this market than it should be. Narmi fits banks that want a modern digital banking front end and account opening from one vendor. Most pricing is not published.
 
 ### Apiture
 
-Apiture provides digital banking with account opening for US banks and credit unions, and is a common shortlist entry for community institutions that want a full digital banking suite from a bank-focused vendor rather than a core provider.
+Apiture provides digital banking with account opening for US banks and credit unions. It used to be the shortlist entry for institutions that wanted a full digital banking suite from a vendor that was not a core provider; that changed when CSI completed its acquisition of Apiture in October 2025. For CSI core banks it is now close to a core-attached option. For banks on other cores, ask how the roadmap and integration priorities have changed under a core owner.
 
 ## The core-attached options
 
-If you run a Jack Henry, Fiserv, or CSI core, each will sell you account opening that is already integrated: Banno for Jack Henry shops, Fiserv's digital origination products, and CSI's digital account opening for its core customers. The integration is the point; the tradeoff is that your account-opening roadmap moves at the core vendor's pace, and switching cores later means switching this too. See our notes on [Jack Henry](/integrations/jack-henry), [Fiserv](/integrations/fiserv), and [CSI](/integrations/csi) for how third-party tools coexist with each.
+If you run a Jack Henry, Fiserv, or CSI core, each will sell you account opening that is already integrated: Banno for Jack Henry shops, Fiserv's digital origination products, and CSI's account opening, which now includes Apiture. The integration is the point; the tradeoff is that your account-opening roadmap moves at the core vendor's pace, and switching cores later means switching this too. See our notes on [Jack Henry](/integrations/jack-henry), [Fiserv](/integrations/fiserv), and [CSI](/integrations/csi) for how third-party tools coexist with each.
 
 ### Candescent
 
-Candescent (the former NCR Voyix digital banking business) serves a large installed base of financial institutions and partners with fintech vendors for capabilities like direct deposit switching. Banks already on Candescent digital banking typically evaluate its native flows first.
+Candescent (the former NCR Voyix digital banking business) serves more than 1,300 banks and credit unions and partners with fintech vendors for capabilities like direct deposit switching. It launched a rebuilt mobile experience, Votiv, in April 2026. Banks already on Candescent digital banking typically evaluate its native flows first.
 
 ### nCino
 
@@ -917,7 +918,7 @@ Where it fits: banks that turned digital account opening off after fraud losses,
 ## FAQ
 
 **How fast should digital account opening be in 2026?**
-Two to five minutes from start to funded account is the competitive benchmark; the best community-bank implementations document times near two minutes.
+Under five minutes for a retail account is the competitive benchmark: MANTL reports an average under five minutes across online and in-branch channels, and about ten minutes for business accounts. If your flow takes twenty minutes or ends with a branch visit to fund, that is the gap to close.
 
 **Why do community banks turn off online account opening?**
 Fraud, almost always: flows that accepted typed, unverified data at internet speed attracted first-party fraud, synthetic identities, and [new account fraud](/glossary/new-account-fraud) faster than back offices could review it. The fix is verification at the source, not abandoning the channel.

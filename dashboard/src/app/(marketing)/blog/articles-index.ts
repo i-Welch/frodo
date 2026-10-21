@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'best-digital-account-opening-software-community-banks',
+    title: 'Best Digital Account Opening Software for Community Banks (2026)',
+    description:
+      'An honest comparison of digital account opening platforms for community banks: MANTL (Alkami, $40 billion in deposits raised), Narmi, Apiture (now CSI), core-attached options from Jack Henry and Fiserv, and verification-first intake. Written by a vendor, with the disclosure.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'guide',
+  },
+  {
     slug: 'the-work-number-alternatives-community-banks',
     title: 'The Work Number Alternatives for Community Banks (2026)',
     description:
