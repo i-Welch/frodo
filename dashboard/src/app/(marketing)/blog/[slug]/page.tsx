@@ -2620,83 +2620,83 @@ South Atlantic Bank has built something genuinely impressive in under two decade
   },
   'conway-national-bank-grand-strand-dominance': {
     title: "Conway National Bank's Quiet Dominance on the Grand Strand",
-    description: 'Conway National Bank runs a sub-48% efficiency ratio and holds the top deposit share in one of America\'s fastest-growing counties. Here\'s what their numbers reveal about scaling a lean community bank into a surging coastal market.',
+    description: 'Conway National Bank has held the top deposit share in Horry County every year since at least 2021, and ran a 47.9% efficiency ratio in the first half of 2026. What its numbers reveal about scaling a lean community bank into a surging coastal market.',
     publishedDate: 'June 13, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `# Conway National Bank's Quiet Dominance on the Grand Strand
 
-*Published June 26, 2026*
+*Published June 13, 2026*
 
-Here is the number that stops you cold: Conway National Bank has held the number one deposit market share position in Horry County for at least four consecutive years, beating out 20 competing institutions, while running an efficiency ratio below 48%. That combination is rare. Most banks that dominate a market do it by spending their way there. CNB does it by being genuinely disciplined.
+Here is the number that stops you cold: Conway National Bank holds the largest deposit share in Horry County, South Carolina, ahead of 20 other institutions including Truist, Wells Fargo and Bank of America, and has every year since at least 2021. In the first half of 2026 it did that while running a 47.9% efficiency ratio. That combination is rare. Most banks that dominate a market spend their way there. CNB does it by being disciplined.
 
-This is a $1.94 billion bank based in Conway, South Carolina. Founded in 1903. Sixteen branches. No flashy fintech partnerships, no press releases about AI, no splashy acquisitions. Just 120-plus years of compounding community relationships in a county that is now one of the fastest-growing in the entire country.
+This is a $2.0 billion bank based in Conway, in business since 1903, with 16 offices across Horry and Georgetown counties. No flashy fintech partnerships, no press releases about AI, no acquisitions. Just more than 120 years of compounding community relationships in a county that keeps growing around it.
 
-The question worth asking: how long does that formula hold as the county transforms underneath them?
+The question worth asking: how long does that formula hold as the county transforms underneath it?
 
-## The Market That Moved In Overnight
-
-Horry County added 7,331 new housing units in 2024 alone. The county is projected to absorb 216,000 additional residents by 2042. The people arriving are not just retirees looking for warm weather (though there are plenty of those, many from New York, New Jersey, Pennsylvania, and the DC metro). Remote workers. Families chasing coastal affordability. Second-home buyers from the Mid-Atlantic who found they could work from Pawleys Island just as well as from Bethesda.
-
-:::pullquote
-Most banks that dominate a market do it by spending their way there. CNB does it by being genuinely disciplined.
+:::stat
+**12.41%**
+Conway National Bank's share of Horry County deposits in June 2026, the largest of 21 institutions, per the FDIC's Summary of Deposits.
 :::
 
-CNB's 2024 HMDA data captures this shift. The bank originated 309 mortgages last year, with 159 of those being conventional purchase loans. That purchase-heavy mix reflects a market driven by new arrivals, not just existing homeowners refinancing. And the Georgetown County footprint tells an even more interesting story: 41 originations there, with an average loan size around $352,000, well above the Horry County average. The Waccamaw Neck corridor (Pawleys Island, Murrells Inlet, Litchfield Beach) is a high-income second-home and retirement market, and CNB is already in it.
+## The Market That Moved In
 
-The bank's messaging leans heavily on community rootedness. "Our lenders live here too." That positioning works exceptionally well for the long-tenured local customer who wants to call someone they recognize. It works less well for the retired couple from Northern Virginia who is buying a $450,000 home in Murrells Inlet, has a pension plus brokerage income, and has never been inside a Conway branch.
+Horry County had an estimated 413,391 residents in July 2024, up 17.8% from the 2020 census, according to the Census Bureau. Builders pulled permits for 7,331 new housing units in the county in 2024 alone. The people arriving are not just retirees looking for warm weather, though there are plenty of those. Remote workers, families chasing coastal affordability, and second-home buyers who found they could work from Pawleys Island as easily as from a city office.
 
-That borrower is arriving in volume. The question is whether the bank's intake process is ready for them.
+:::pullquote
+Most banks that dominate a market spend their way there. CNB does it by being disciplined.
+:::
+
+CNB's mortgage data captures the shift. HMDA filings show the bank originated 329 home loans in 2025, up from 309 in 2024, for $82.1 million. Of those, 161 were purchase loans and 131 were refinances. Every one was conventional: no FHA, VA or USDA loans in either year.
+
+The Georgetown County footprint tells a more interesting story. CNB made 27 loans there in 2025, at an average of about $599,000, nearly three times its Horry County average of about $205,000. In 2024 it made 41 loans there at about $352,000. Fewer loans, much larger ones. The Waccamaw Neck corridor (Pawleys Island, Murrells Inlet, Litchfield Beach) is a high-income second-home and retirement market, and CNB already has branches in it.
+
+The bank's messaging leans on community roots, and that works well for the long-tenured customer who wants to call someone they recognize. It works less well for a retired couple from out of state buying a $600,000 home in Pawleys Island, with pension and brokerage income, who has never been inside a Conway branch.
 
 ## The Efficiency Machine and Its Limits
 
-CNB reported net income of $23.1 million in FY2025, up 26.6% from the prior year. Return on assets came in at 1.23% for the full year and accelerated to 1.40% annualized in Q1 2026. The net interest margin for Q1 2026 was approximately 3.10% annualized, with $15.2 million in quarterly net interest income on a $1.94 billion asset base.
+CNB earned $23.2 million in 2025, up 26.5% from 2024, for a 1.23% return on assets. The first half of 2026 was stronger, from the FDIC call report:
 
-The efficiency ratio tells the real story of how they get there. 51.76% for full-year 2025. 47.38% in Q1 2026. For context, the average community bank runs somewhere in the low-to-mid 60s. Getting below 50% with a growing loan portfolio and only 16 branches requires relentless cost control on every line item.
+- Net income of $13.9 million, up 34.7% from a year earlier
+- Return on assets of 1.42%, up from 1.11%
+- Net interest margin of 3.31%, up from 2.98%
+- Efficiency ratio of 47.9%, down from 52.9%
+- Noncurrent loans at 0.02% of the book
 
-:::stat
-**47.38%**
-CNB's efficiency ratio in Q1 2026, well below the low-to-mid 60s average for community banks, achieved with only 16 branches and a loan portfolio near $850 million.
-:::
+The efficiency ratio is the real story. It was 57.0% in 2024, 51.8% in 2025, and 47.9% in the first half of 2026. Most of that came from revenue: net interest income rose while noninterest expense grew about 5%. Getting below 50% with 16 offices and a growing loan book takes relentless cost control on every line.
 
-The loan portfolio stood at $845 million net at the end of Q1 2026. Total noninterest expense for 2025 was $34.6 million. Think about that ratio: nearly a billion dollars in loans managed on a cost base that most banks that size would consider lean to the point of stress. Every dollar of operational friction matters.
+Net loans stood at $856 million in June, up 3.6% in a year: $296 million in nonfarm commercial real estate, $259 million in 1-4 family mortgages, $125 million in construction, $97 million in C&I and $59 million in consumer loans. Noninterest expense for all of 2025 was $34.5 million. That is a lean cost base for a $2 billion bank, and it means every hour of operational friction shows up in the ratio.
 
-That is where the math gets complicated as growth continues. Scaling from 309 mortgage originations to 450 or 500 annually does not happen by building another branch. It happens by compressing the time and labor cost per loan. A processor chasing pay stubs, making employer phone calls, waiting on bank statement PDFs, and manually keying income figures into the LOS is a fixed-cost drag that scales linearly with volume. The efficiency ratio discipline that defines CNB's financial profile depends on breaking that linear relationship.
+That is where growth gets complicated. Scaling from about 330 mortgage originations a year to 450 or 500 will not come from another branch. It comes from compressing the time and labor per loan. A processor chasing pay stubs, calling employers, waiting on bank statement PDFs and keying income into the loan system is a cost that rises in step with volume. CNB's efficiency depends on breaking that link.
 
 ## What the In-Migrant Borrower Actually Looks Like
 
-The profile of a Conway National borrower in 2026 is more complex than it was in 2006. Or even 2016.
+The Conway National borrower in 2026 is more complex than in 2006, or even 2016.
 
-A retiree from New Jersey who closed on a primary residence in Little River last month might have Social Security income, a pension from a former employer, a Vanguard brokerage account generating qualified dividends, and a small rental property in another state. No W-2. Multiple income streams. Documentation spread across several institutions. Manual verification for that file means weeks, not days.
+Picture a retiree who just bought a primary residence in Little River: Social Security, a pension from a former employer, a brokerage account paying dividends, and a small rental property in another state. No W-2. Several income streams, documented across several institutions. Verifying that by hand takes weeks, not days.
 
-A remote software engineer who relocated from Northern Virginia brings a current W-2 but may have started the job six months ago, still owns a condo in Arlington, and is buying a home in the Forest Brook area of Conway. Recent employment, multi-property obligations, and a digital-first expectation built from a decade of using neobanks and mortgage apps.
+Or a remote software engineer who relocated from the Mid-Atlantic, started the current job six months ago, still owns a condo back home, and expects the digital experience of a national lender.
 
-These borrowers are not rare edge cases. They are a growing share of the purchase-mortgage pipeline in a county adding thousands of new housing units per year. And the branch-centric model that serves a multi-generational Conway family beautifully creates real friction for someone who moved here from 700 miles away and needs to close in 30 days.
+These borrowers are not edge cases. They are a growing share of purchase mortgages in a county adding thousands of housing units a year. The branch-centric model that serves a multigenerational Conway family well creates friction for someone who moved from 700 miles away and needs to close in 30 days.
 
-CNB's digital infrastructure today reflects its community bank roots. The website routes all product inquiries to branch contact or "learn more" pages. Mobile banking exists through CNB2GO, but credit card management redirects to a third-party portal. There is no online mortgage application, no digital document collection, no e-signature workflow mentioned anywhere in their public presence. Those are not criticisms of a bank that has compounded impressively for 120 years. They are observations about where friction accumulates as the borrower profile evolves.
+CNB's website reflects its roots. As of October 2026, its mortgage and construction page offers a payment calculator but no online application, its home equity page asks borrowers to stop by an office, and its business loan page has a contact form rather than an application. The CNB2GO mobile app serves existing customers well. Those are not criticisms of a bank that has compounded impressively for 120 years. They are observations about where friction builds as the borrower changes.
 
 ## The Waccamaw Neck Opportunity
 
-The Georgetown County numbers deserve more attention than they usually get.
-
-Forty-one originations at a $352,000 average loan size. That is a high-balance, high-income borrower segment that skews toward second homes and retirement relocations. A buyer purchasing a $400,000 property on the Waccamaw Neck is often comparing CNB against a regional bank with a robust digital application portal, or against a national lender offering a guaranteed 21-day close.
-
-CNB's competitive advantage in that market is its local knowledge, its relationships with the real estate community along the Grand Strand, and the trust it has built over decades. Those matter enormously. But a buyer from Connecticut who is purchasing remotely, coordinating through a local agent, and trying to close before the school year starts in September is also paying attention to how quickly the bank can verify their assets and income.
-
-The faster that verification happens, the more of that segment CNB can capture without adding a single underwriter.
+A buyer purchasing a $600,000 property on the Waccamaw Neck is often comparing CNB with a regional bank that has a digital application, or a national lender promising a fast close. CNB's advantages there are local knowledge, relationships with the Grand Strand real estate community, and decades of trust. Those matter. But a buyer purchasing remotely, coordinating through a local agent and trying to close before the school year starts also notices how quickly a bank can verify their assets and income.
 
 :::pullquote
-The faster that verification happens, the more of that segment CNB can capture without adding a single underwriter.
+The faster that verification happens, the more of that segment CNB can capture without adding an underwriter.
 :::
 
-A 20% increase in Georgetown County originations (about 8 additional loans per year) at the current average loan size would represent roughly $2.8 million in additional origination volume. Compounded across improved pull-through on the full pipeline, the revenue impact of cutting document collection time in half is not trivial for a bank managing a sub-50% efficiency ratio.
+The faster that verification happens, the more of that segment CNB can capture without adding an underwriter. At an average loan near $600,000, each additional Georgetown County purchase is worth roughly three Horry County loans in volume.
 
 ## Where the Trajectory Points
 
-Conway National has built something genuinely difficult to replicate: 12.48% deposit market share in a high-growth coastal market, a loan portfolio near $850 million, and profitability metrics that most community banks only read about in peer group reports. The foundation is strong.
+Conway National has built something hard to replicate: the top deposit share in a fast-growing coastal market for six straight Summary of Deposits reports, $856 million in loans, and profitability most community banks only read about in peer reports. The foundation is strong.
 
-The next phase of growth will stress-test whether a relationship-first, branch-anchored model can absorb the complexity of a borrower population that looks less and less like it did ten years ago. Horry County is not slowing down. The 216,000 projected new residents represent hundreds of thousands of purchase, refinance, and home-equity transactions over the next 15 years, a significant portion of them arriving from states where digital-first lending is the baseline expectation.
-
-The banks that capture the most of that volume will be the ones that can verify a retiree's pension income, a remote worker's employment, and a second-home buyer's asset reserves in hours rather than days. Frictionless borrower intake is not a differentiator anymore in most coastal markets. It is the price of admission for the high-value in-migrant segment that will define Horry County's mortgage market for the next decade. For a bank already running a 47% efficiency ratio on a growing book, the operational leverage in getting there is substantial.`,
+The next phase will test whether a relationship-first, branch-anchored model can absorb a borrower population that looks less and less like it did ten years ago. The banks that capture the most of Horry County's growth will be the ones that can verify a retiree's pension, a remote worker's employment and a second-home buyer's reserves in hours rather than days. For a bank already running below a 48% efficiency ratio, the operational leverage in getting there is substantial.
+`,
   },
   'bank-travelers-rest-greenville-growth-engine': {
     title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",

@@ -1188,12 +1188,12 @@
     "slug": "conway-national-bank",
     "bankName": "The Conway National Bank",
     "shortName": "Conway National",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "conway-national-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.94B"
+        "value": "$2.00B"
       },
       {
         "label": "Branch coverage",

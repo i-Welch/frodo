@@ -332,9 +332,9 @@ export const articles: Article[] = [
     slug: 'conway-national-bank-grand-strand-dominance',
     title: "Conway National Bank's Quiet Dominance on the Grand Strand",
     description:
-      "Conway National Bank runs a sub-48% efficiency ratio and holds the top deposit share in one of America's fastest-growing counties. What their numbers reveal about scaling a lean community bank into a surging coastal market.",
+      "Conway National Bank has held the top deposit share in Horry County every year since at least 2021, and ran a 47.9% efficiency ratio in the first half of 2026. What its numbers reveal about scaling a lean community bank into a surging coastal market.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'conway-national-bank',
   },
