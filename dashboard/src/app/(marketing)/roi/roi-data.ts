@@ -791,8 +791,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'first-reliance-bank',
     name: 'First Reliance Bancshares',
     shortName: 'First Reliance',
-    articleSlug: 'first-reliance-outgrew-florence',
-    articleTitle: "The Bank That Didn't Wait for the Battery Plant",
+    articleSlug: 'first-reliance-sells-at-the-top',
+    articleTitle: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
     fdicCert: 76181,
     auditDate: 'June 2026',
     stats: [
@@ -833,8 +833,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'colony-bankcorp',
     name: 'Colony Bankcorp',
     shortName: 'Colony',
-    articleSlug: 'colony-bankcorp-farm-to-fees',
-    articleTitle: 'Built on Peanuts, Betting on Fees',
+    articleSlug: 'first-reliance-sells-at-the-top',
+    articleTitle: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
     fdicCert: 22257,
     auditDate: 'June 2026',
     stats: [

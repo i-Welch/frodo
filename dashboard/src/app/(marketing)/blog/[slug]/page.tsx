@@ -1621,7 +1621,8 @@ The community banks moving fastest stopped treating "we are on Fiserv" as a cons
     title: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
     description:
       'First Reliance Bancshares just posted record growth, then agreed to sell to Colony Bankcorp for $163 million. Why a winning $1 billion bank chose to partner up, and what the four-state, $5 billion result says about Southeast consolidation.',
-    publishedDate: 'June 21, 2026',
+    publishedDate: 'June 26, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `# First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.
 
@@ -1637,6 +1638,8 @@ Net income growth year over year at First Reliance — the best numbers in the b
 Colony Bankcorp, the $3.7 billion Georgia bank out of Fitzgerald, is buying First Reliance in a cash-and-stock deal worth about $163 million. The combined company will run roughly $5 billion in assets, $4 billion in deposits, and $3.2 billion in loans across four states: Alabama, Florida, Georgia, and South Carolina. Both boards approved it unanimously. It is expected to close in the fourth quarter.
 
 Here is the part worth sitting with. Most community banks sell because they are stuck. First Reliance sold because it was flying.
+
+*Update, October 22, 2026: Regulators approved the merger on September 17, and shareholders of both companies approved it on October 15. The companies expect to close in the fourth quarter of 2026.*
 
 ## The terms
 

@@ -88,9 +88,9 @@ export const BLOG_SLUGS = [
   // — Phase 5: add Jul 21 (remaining June bank deep dives) —
   'first-reliance-sells-at-the-top',
   // — Phase 6: add Jul 28 —
-  // 'first-reliance-outgrew-florence',
+  // retired 2026-10-21: overtaken by the Colony Bankcorp sale (shareholders approved Oct 15, closing Q4 2026), covered in first-reliance-sells-at-the-top — 'first-reliance-outgrew-florence'
   // 'carolina-bank-between-two-economies',
-  // 'colony-bankcorp-farm-to-fees',
+  // retired 2026-10-21: predates the First Reliance deal (Colony's largest, closing Q4 2026) and its Q1 2026 figures are stale; the deal is covered in first-reliance-sells-at-the-top. Write a fresh Colony piece after the merger closes — 'colony-bankcorp-farm-to-fees'
   // — Phase 7: add Aug 4 —
   // 'southern-bank-nc-digital-bet',
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
@@ -135,7 +135,7 @@ export const BLOG_DATES: Record<string, string> = {
   'one-in-116-mortgage-fraud': '2026-07-04',
   'jack-henry-symitar-loan-origination': '2026-06-26',
   'fiserv-premier-digital-lending': '2026-06-26',
-  'first-reliance-sells-at-the-top': '2026-06-21',
+  'first-reliance-sells-at-the-top': '2026-06-26',
   'digital-account-opening-community-bank': '2026-06-26',
   'fintech-grade-loan-application-community-bank': '2026-06-16',
   'what-neobanks-get-right-community-banks': '2026-06-09',
