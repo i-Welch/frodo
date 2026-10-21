@@ -2815,15 +2815,16 @@ Open banking verification infrastructure is no longer experimental. It is produc
 `,
   },
   'ccnb-myrtle-beach-merger-growth-2026': {
-    title: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
-    description: "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion, and the clock is ticking.",
+    title: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
+    description: "CCNB grew from a 2009 de novo to a $1.35B bank on one of the fastest-growing coasts in the US. On October 1 it closed a merger of equals with Beacon, creating a $2.3B franchise that converts systems and rebrands in March 2027. The clock is running.",
     publishedDate: 'May 14, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
-    content: `# CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast
+    content: `# CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast
 
-*June 26, 2026*
+*Published May 14, 2026*
 
-Here is the counterintuitive fact about Coastal Carolina National Bank: it was founded in June 2009, right in the teeth of the financial crisis, in a coastal resort market that was getting crushed by falling vacation-property values and tourist spending collapse. Most community banking veterans would have called that timing suicidal. Fifteen years later, CCNB sits at $1.28 billion in assets, just announced a merger of equals with Beacon Holding Company that will create a $2.2 billion SC franchise, and posted $10.94 million in net income for FY2025, up 29% year over year. Bad timing turned out to be very good timing.
+Here is the counterintuitive fact about Coastal Carolina National Bank: it was founded in June 2009, right in the teeth of the financial crisis, in a coastal resort market that was getting crushed by falling vacation-property values and tourist spending collapse. Most community banking veterans would have called that timing suicidal. Seventeen years later, CCNB had grown to $1.35 billion in assets by June 30, 2026, and on October 1 it closed a merger of equals with Beacon Holding Company that created a roughly $2.3 billion South Carolina franchise. Bad timing turned out to be very good timing.
 
 :::pullquote
 Bad timing turned out to be very good timing.
@@ -2833,24 +2834,24 @@ The market context matters here. Myrtle Beach is not a typical community bank te
 
 ## How a De Novo Becomes a Regional Franchise
 
-CCNB did not stay put on the strand. The bank now holds branches across Horry, Georgetown, Richland, Aiken, Greenville, Spartanburg, and Brunswick (NC) counties, 10 branches in total, expanding deliberately into SC's interior population-growth corridors rather than just stacking up presence along the coast. The inland pivot into Columbia, Aiken, Greenville, and Spartanburg gives the bank exposure to markets that are less weather-dependent and less seasonal than a pure coastal book.
+CCNB did not stay put on the strand. Before the merger it held 10 branches across Horry, Georgetown, Richland, Aiken, Orangeburg, Greenville, Spartanburg, and Brunswick (NC) counties, expanding deliberately into SC's interior population-growth corridors rather than just stacking up presence along the coast. The inland pivot into Columbia, Aiken, Greenville, and Spartanburg gives the bank exposure to markets that are less weather-dependent and less seasonal than a pure coastal book.
 
-The financials back the strategy. Net interest margin held at 3.54% in FY2025. Return on assets came in at 0.93% for the full year, with the trailing Q4 figure clocking 1.03%, suggesting momentum heading into 2026. The efficiency ratio improved materially, from 66.24% in FY2024 to 61.78% in FY2025. That is real operating leverage. The loan book grew 13% to $945 million, concentrated in non-owner occupied commercial real estate and 1-4 family residential. Zero non-performing assets as of Q4 2024. For a bank that originated through a credit crisis and scaled through a pandemic, the credit quality is notable.
+The financials back the strategy. In the first half of 2026, the bank's FDIC call report shows a 3.60% net interest margin, a 1.05% return on assets, and a 59.17% efficiency ratio, down from 61.78% a year earlier. That is real operating leverage. Net income for the half was $6.82 million, up 26% from $5.41 million. Net loans grew 12% in the year to $977 million, concentrated in non-owner occupied commercial real estate and 1-4 family residential, and noncurrent loans stood at zero on June 30. For a bank that originated through a credit crisis and scaled through a pandemic, the credit quality is notable.
 
 :::stat
-**$10.94 million**
-CCNB's net income for FY2025, up 29% year over year from a bank founded during the worst financial crisis in a generation.
+**$6.82 million**
+CCNB's net income for the first half of 2026, up 26% year over year, from a bank founded during the worst financial crisis in a generation.
 :::
 
 The mortgage product mix tells you something about positioning. CCNB markets condotel loans, bridge loans, lot loans, and portfolio ARM structures. These are loan types that the big banks either won't touch or make borrowers fight for. The "We Can Do That" tagline is not just marketing copy; it reflects a deliberate credit philosophy. Condotel and portfolio ARM borrowers in coastal SC frequently have self-employment income, rental income streams, or asset-heavy financial profiles that do not fit cleanly into agency underwriting boxes. That complexity is a feature of the franchise, not a bug. It is also operationally demanding.
 
 ## The Merger Window Is the Moment That Matters
 
-Now comes the interesting part. In May 2026, CCNB announced a merger of equals with Beacon Holding Company (OTCQB: BCON). The combined entity will operate under the Beacon Bank, N.A. brand, with a systems conversion expected in early 2027. The transaction creates a 16-branch, $2.2 billion franchise.
+Now comes the interesting part. CCNB announced a merger of equals with Beacon Holding Company on May 29, 2026 and closed it on October 1. The combined company reports about $2.3 billion in assets, $2.0 billion in deposits and $1.8 billion in loans across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of Coastal Carolina National Bank. Core systems convert in early 2027, and the whole bank rebrands as Beacon Bank, N.A. in mid-March 2027.
 
-Every bank executive who has lived through a merger of equals knows what the next 18 months look like. Two loan origination environments. Two sets of workflows. Two underwriting teams with different document checklists and process habits. The compliance and integration workload is enormous, and the temptation is to defer process rationalization until after conversion. That is exactly the wrong approach.
+Every bank executive who has lived through a merger of equals knows what the months between legal close and conversion look like. Two loan origination environments. Two sets of workflows. Two underwriting teams with different document checklists and process habits. The compliance and integration workload is enormous, and the temptation is to defer process rationalization until after conversion. That is exactly the wrong approach.
 
-The banks that come out of a merger conversion in good shape are the ones that standardized their critical workflows before the new core went live, not after. Verification is the highest-friction point in any residential mortgage workflow: income verification, employment confirmation, asset documentation. Getting those steps consistent across both legacy environments before the 2027 cutover is not a nice-to-have. It is the difference between a smooth go-live and a retraining cycle that costs money and borrower goodwill simultaneously. CCNB's noninterest expense grew to $25.3 million in 2025, driven partly by data processing costs that have risen across both the 2024 and 2025 earnings releases. Rising data processing spend without corresponding efficiency gains in that cost line points toward a stack of point solutions rather than an integrated workflow. The merger window is the right moment to fix that.
+The banks that come out of a merger conversion in good shape are the ones that standardized their critical workflows before the new core went live, not after. Verification is the highest-friction point in any residential mortgage workflow: income verification, employment confirmation, asset documentation. Getting those steps consistent across both legacy environments before the 2027 cutover is not a nice-to-have. It is the difference between a smooth go-live and a retraining cycle that costs money and borrower goodwill simultaneously. With roughly five months between legal close and the March rebrand, the merger window is the right moment to fix that.
 
 ## Serving 7,000 New Households a Year
 
@@ -2866,15 +2867,15 @@ Speed is not just a customer service issue in a 3.8%-growth market. It is a comp
 
 CCNB competes with regional banks, credit unions, and mortgage companies that all want the same high-income relocating buyer. The bank has already differentiated on product flexibility. Operational speed is the logical next layer. A lender that can confirm income and employment in hours instead of days, and hand the borrower a clear-to-close without a document chase, wins repeat business and referrals from the real estate community in a market that runs on relationships.
 
-The digital picture today shows room to grow. CCNB's online mortgage application routes to a third-party portal at myccnb.mymortgage-online.com. The website discloses no automated income or asset verification capability, no digital appraisal ordering, no eClosing integration. No technology or digital lending roles are visible on the careers page. The bank has Zelle and IntraFi. That is a reasonable fintech footprint for a community bank, but it stops well short of a modern origination workflow.
+The digital picture today shows room to grow. As of October 2026, CCNB's online mortgage application routes to a third-party portal at myccnb.mymortgage-online.com. The website discloses no automated income or asset verification capability, no digital appraisal ordering, no eClosing integration. The bank has Zelle and IntraFi. That is a reasonable fintech footprint for a community bank, but it stops well short of a modern origination workflow.
 
-None of that is unusual for a $1.28 billion community bank that built its franchise on credit judgment and product flexibility rather than technology investment. The question going into 2026 and 2027 is whether the merger context changes the calculus. Standardizing workflows before a core conversion is expensive and disruptive if done wrong. It is a clean implementation win if done right, at the right moment, with the right partner.
+None of that is unusual for a community bank that reached $1.35 billion on credit judgment and product flexibility rather than technology investment. The question for the months before the 2027 conversion is whether the merger changes the calculus. Standardizing workflows before a core conversion is expensive and disruptive if done wrong. It is a clean implementation win if done right, at the right moment, with the right partner.
 
 ## What Digital Borrower Intake Could Mean for This Franchise
 
 CCNB's core competitive advantage is saying yes to borrowers that larger institutions turn away, condotel buyers, bridge borrowers, self-employed coastal investors. That credit flexibility is valuable. But flexibility without speed leaves money on the table in a market adding thousands of households per year. A borrower who qualifies for a condotel loan and a conventional purchase simultaneously will sign with the lender that delivers the clear-to-close first.
 
-The banks that are winning in high-growth coastal markets in 2026 are not winning on rate alone. Rate is visible to every borrower who has ever typed into a mortgage comparison site. They are winning on certainty and speed: the borrower knows quickly whether they are approved, what the terms are, and when they can close. Automated income, employment, and asset verification is the infrastructure layer that makes that certainty possible at scale. For a franchise that will be processing applications across two legacy systems through a merger transition, getting verification right before the 2027 conversion is not just an efficiency question. It is a question of whether CCNB can carry the "We Can Do That" brand promise into a $2.2 billion institution without operational drag slowing it down at the exact moment the market is accelerating around it.
+The banks that are winning in high-growth coastal markets in 2026 are not winning on rate alone. Rate is visible to every borrower who has ever typed into a mortgage comparison site. They are winning on certainty and speed: the borrower knows quickly whether they are approved, what the terms are, and when they can close. Automated income, employment, and asset verification is the infrastructure layer that makes that certainty possible at scale. For a franchise that will be processing applications across two legacy systems through a merger transition, getting verification right before the 2027 conversion is not just an efficiency question. It is a question of whether CCNB can carry the "We Can Do That" brand promise into a $2.3 billion institution without operational drag slowing it down at the exact moment the market is accelerating around it.
 `,
   },
   'first-capital-bank-charleston-growth-digital-gap': {

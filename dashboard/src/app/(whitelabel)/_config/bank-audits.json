@@ -1527,16 +1527,16 @@
     "slug": "coastal-carolina-national-bank",
     "bankName": "Coastal Carolina National Bank",
     "shortName": "CCNB",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "coastal-carolina-national-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.28B"
+        "value": "~$2.3B combined ($1.35B CCNB, Q2 2026)"
       },
       {
         "label": "Branches",
-        "value": "10 (SC & coastal NC)"
+        "value": "16 + 1 LPO after the Oct 2026 Beacon merger"
       },
       {
         "label": "Online loan products",
@@ -1547,7 +1547,7 @@
         "value": "2009"
       }
     ],
-    "summary": "Coastal Carolina National Bank runs a $1.28B balance sheet across 10 branches from Columbia and the Upstate to Myrtle Beach and Ocean Isle Beach, NC, anchored by a wide mortgage lineup (conventional, jumbo, condotel, construction, portfolio, and bridge loans). Only mortgages can be started online, and that application routes borrowers off-brand to a third-party portal on myccnb.mymortgage-online.com. Personal loans (HELOC, auto, boat, personal, overdraft) and all commercial lending have no digital intake whatsoever: the site directs prospects to call (866) 418-9219 or walk into a branch. CCNB also announced in May 2026 a merger with Beacon Holding Company that will combine 16 branches into a new entity called Beacon Bank, N.A., with a core system conversion expected in early 2027 -- a timeline that makes a unified, verified-intake front door both urgent and feasible before the conversion window closes.",
+    "summary": "Coastal Carolina National Bank ran a $1.35B balance sheet (June 30, 2026) across 10 branches from Columbia and the Upstate to Myrtle Beach and Ocean Isle Beach, NC, before its merger with Beacon added six Charleston-area branches, anchored by a wide mortgage lineup (conventional, jumbo, condotel, construction, portfolio, and bridge loans). Only mortgages can be started online, and that application routes borrowers off-brand to a third-party portal on myccnb.mymortgage-online.com. Personal loans (HELOC, auto, boat, personal, overdraft) and all commercial lending have no digital intake whatsoever: the site directs prospects to call (866) 418-9219 or walk into a branch. CCNB closed its merger of equals with Beacon Holding Company on October 1, 2026 (about $2.3B in assets, 16 branches); core systems convert in early 2027 and the bank rebrands as Beacon Bank, N.A. in mid-March 2027 -- a timeline that makes a unified, verified-intake front door both urgent and feasible before the conversion window closes.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -1584,7 +1584,7 @@
       {
         "title": "A merger and a core conversion make this the right window to fix intake",
         "severity": "gap",
-        "body": "CCNB announced in May 2026 that it is merging with Beacon Holding Company to form Beacon Bank, N.A., with a core system conversion planned for early 2027. A bank about to convert its core and rebrand across 16 branches is exactly the right moment to stand up a unified, branded, verify-as-you-go intake layer: it ships before the conversion, survives it (intake is above-core), and gives the new entity a modern front door from day one rather than inheriting two legacy loan-capture workflows. The alternative is managing two disconnected intake experiences through a conversion and a merger simultaneously."
+        "body": "CCNB closed its merger with Beacon Holding Company on October 1, 2026; core systems convert in early 2027 and the bank rebrands as Beacon Bank, N.A. in mid-March 2027. A bank about to convert its core and rebrand across 16 branches is exactly the right moment to stand up a unified, branded, verify-as-you-go intake layer: it ships before the conversion, survives it (intake is above-core), and gives the new entity a modern front door from day one rather than inheriting two legacy loan-capture workflows. The alternative is managing two disconnected intake experiences through a conversion and a merger simultaneously."
       },
       {
         "title": "Five personal loan products, zero online applications",
@@ -1634,7 +1634,7 @@
         "withRaven": "One above-core intake layer that survives the conversion and names the new brand"
       }
     ],
-    "sources": "myccnb.com (/, /personal-banking/personal-loans/, /personal-banking/home-equity-lines/, /mortgage/, /apply-now/, /mortgage/the-ccnb-difference/, /mortgage/mortgage-team/, /business-banking/, /business-banking/commercial-lending/, /locations/, /let-ccnb-help-grow-business/); myccnb.mymortgage-online.com (mortgage POS vendor portal); secure.myccnb.com/myccnbonline/ (FIS online banking, uux.aspx URL pattern consistent with FIS Digital One/Mobiliti); FDIC BankFind cert #58864 (established 2009, Myrtle Beach SC, 10 offices, $1.28B assets); merger announcement May 29, 2026 (Coastal Carolina Bancshares + Beacon Holding, future entity Beacon Bank N.A., 16 branches, conversion early 2027). Core inferred as FIS from the uux.aspx online banking URL pattern (low-to-medium confidence). Brand 'Green Wave' color scheme noted; primary green approximate from CCNB logo palette. Tagline 'We Can Do That' and secondary 'Life is complicated, but your banking doesn't need to be' from the live homepage. Reviewed June 2026."
+    "sources": "myccnb.com (/, /personal-banking/personal-loans/, /personal-banking/home-equity-lines/, /mortgage/, /apply-now/, /mortgage/the-ccnb-difference/, /mortgage/mortgage-team/, /business-banking/, /business-banking/commercial-lending/, /locations/, /let-ccnb-help-grow-business/); myccnb.mymortgage-online.com (mortgage POS vendor portal); secure.myccnb.com/myccnbonline/ (FIS online banking, uux.aspx URL pattern consistent with FIS Digital One/Mobiliti); FDIC BankFind cert #58864 (established 2009, Myrtle Beach SC, 16 offices after the merger; $1.35B assets at 2026-06-30); merger announced May 29, 2026 and completed October 1, 2026 (myccnb.com/merger: ~$2.3B assets, 16 branches + 1 LPO, conversion early 2027, Beacon Bank N.A. rebrand mid-March 2027). Core inferred as FIS from the uux.aspx online banking URL pattern (low-to-medium confidence). Brand 'Green Wave' color scheme noted; primary green approximate from CCNB logo palette. Tagline 'We Can Do That' and secondary 'Life is complicated, but your banking doesn't need to be' from the live homepage. Reviewed June 2026."
   },
   {
     "slug": "first-capital-bank-charleston",

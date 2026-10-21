@@ -360,11 +360,11 @@ export const articles: Article[] = [
   },
   {
     slug: 'ccnb-myrtle-beach-merger-growth-2026',
-    title: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
+    title: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
     description:
-      "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion.",
+      "CCNB grew from a 2009 de novo to a $1.35B bank on one of the fastest-growing coasts in the US. On October 1 it closed a merger of equals with Beacon, creating a $2.3B franchise that converts systems and rebrands in March 2027. The clock is running.",
     readTime: '6 min read',
-    date: 'May 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'coastal-carolina-national-bank',
   },

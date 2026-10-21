@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'ccnb-myrtle-beach-merger-growth-2026',
   'first-capital-bank-charleston-growth-digital-gap',
   'best-digital-account-opening-software-community-banks',
   'the-work-number-alternatives-community-banks',
@@ -74,7 +75,6 @@ export const BLOG_SLUGS = [
   'countybank-greenwood-sc-sba-deep-dive',
   'first-community-bank-sc-cre-merger-growth',
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
-  // 'ccnb-myrtle-beach-merger-growth-2026',
   // 'security-federal-bank-cdfi-rate-rebound-aiken',
   // 'community-bank-ai-lending-guide',
   // 'white-label-borrower-portal-community-bank',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'ccnb-myrtle-beach-merger-growth-2026': '2026-10-22',
   'first-capital-bank-charleston-growth-digital-gap': '2026-10-22',
   'best-digital-account-opening-software-community-banks': '2026-10-22',
   'the-work-number-alternatives-community-banks': '2026-10-22',
@@ -142,7 +143,6 @@ export const BLOG_DATES: Record<string, string> = {
   'conway-national-bank-grand-strand-dominance': '2026-06-13',
   'bank-travelers-rest-greenville-growth-engine': '2026-06-11',
   'security-federal-bank-cdfi-rate-rebound-aiken': '2026-05-21',
-  'ccnb-myrtle-beach-merger-growth-2026': '2026-05-14',
   'first-community-bank-sc-cre-merger-growth': '2026-04-30',
   'countybank-greenwood-sc-sba-deep-dive': '2026-04-23',
   'optus-bank-cdfi-columbia-growth': '2026-04-16',
