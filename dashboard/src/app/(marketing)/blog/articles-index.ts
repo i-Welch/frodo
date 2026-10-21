@@ -322,9 +322,9 @@ export const articles: Article[] = [
     slug: 'south-atlantic-bank-coastal-growth-engine',
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description:
-      "South Atlantic Bank turned a 2007 startup in Myrtle Beach into a $1.93B coastal lending machine in under 17 years. How in-migration math, a 53% CRE concentration, and 13% loan growth are forcing a digital reckoning.",
+      "South Atlantic Bank turned a 2007 Myrtle Beach startup into a $1.98B coastal lender with branches from Myrtle Beach to Hilton Head. How in-migration, a 56% CRE and construction concentration and a $1M-plus Lowcountry mortgage book are forcing a digital reckoning.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'south-atlantic-bank',
   },

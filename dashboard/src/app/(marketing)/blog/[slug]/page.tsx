@@ -2530,33 +2530,42 @@ The banks that figure this out won't be the ones who spent five years on a core 
   },
   'south-atlantic-bank-coastal-growth-engine': {
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
-    description: 'South Atlantic Bank turned a 2007 startup in Myrtle Beach into a $1.93B coastal lending machine in under 17 years. Here\'s how in-migration math, a 53% CRE concentration, and 13% loan growth are forcing a digital reckoning.',
+    description: 'South Atlantic Bank turned a 2007 Myrtle Beach startup into a $1.98B coastal lender with branches from Myrtle Beach to Hilton Head. How in-migration, a 56% CRE and construction concentration and a $1M-plus Lowcountry mortgage book are forcing a digital reckoning.',
     publishedDate: 'June 20, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `# South Atlantic Bank: The $2B Coastal Lender Built on In-Migration
 
-*Published June 26, 2026*
+*Published June 20, 2026*
 
-South Atlantic Bank opened its doors in November 2007. Two months later, the financial crisis started pulling apart the banking industry. Most startups launched into that environment did not survive the decade. South Atlantic Bank is now approaching $2 billion in assets.
+South Atlantic Bank opened its doors in Myrtle Beach on November 28, 2007. Within months, the financial crisis was pulling the banking industry apart. Many banks chartered in that window did not survive the decade. South Atlantic Bank is now a $1.98 billion institution.
 
-That detail alone tells you something about the market they picked and how they operate.
+That detail alone tells you something about the market it picked and how it operates.
 
 ## A Startup That Outlasted the Crash
 
-Founded in Myrtle Beach under holding company South Atlantic Bancshares (OTCQX: SABK), the bank has compounded from zero to $1.93B in assets in under 17 years. Net income hit $16.17M in 2025, up 60.8% year-over-year. The efficiency ratio sits at 59.99%. Return on assets is 1.05%, respectable for any community bank and genuinely impressive for one still in aggressive growth mode.
+The bank, owned by South Atlantic Bancshares (OTCQX: SABK), has grown to 12 offices along the South Carolina coast: Myrtle Beach, North Myrtle Beach, Murrells Inlet, Pawleys Island and Georgetown on the Grand Strand; Charleston, Mount Pleasant and Summerville around Charleston; and Bluffton, Hilton Head Island and Beaufort in the Lowcountry. The Summerville office, at Carnes Crossroads, opened in 2024.
+
+Its first half of 2026, from the FDIC call report:
+
+- Net income of $10.4 million, up 30% from a year earlier
+- Return on assets of 1.07%, up from 0.87%
+- Net interest margin of 3.30%, up from 3.12%
+- Efficiency ratio of 59.2%, down from 63.8%
+- Noncurrent loans at 0.01% of the book
+
+For full-year 2025, the bank earned $17.3 million, up 47% from 2024, and its efficiency ratio fell from 68.4% to 61.4%. At the holding company, consolidated net income was $9.2 million for the first half of 2026, or $1.18 per diluted share.
 
 :::stat
-**$16.17M**
-Net income in 2025, up 60.8% year-over-year, for a bank launched two months before the financial crisis.
+**59.2%**
+South Atlantic Bank's efficiency ratio in the first half of 2026, down from 68.4% for full-year 2024, per its FDIC call reports.
 :::
 
-The numbers look even better when you consider the headcount. South Atlantic runs 12 branches and 159 full-time employees. That is a lean operation for a book this size. Net interest margin holds at 3.06%, and nonperforming assets are essentially zero. CEO K. Wayne Wicker was elected to the American Bankers Association board, which is not something that happens to banks just treading water.
+The bank does it with 175 full-time-equivalent employees. Chairman and CEO K. Wayne Wicker has served on the American Bankers Association board since 2022 and as its treasurer since 2024, which is not a seat that goes to banks treading water.
 
-What's powering it? The zip codes.
+What is powering it? The zip codes.
 
-Horry County, home to Myrtle Beach, Conway, and North Myrtle Beach, is growing at 3.8% annually. That is not organic birth-rate growth. Every percentage point of it is in-migration. Retirees from Ohio and Pennsylvania relocating to the Grand Strand. Remote workers from the Northeast choosing Myrtle Beach over Miami. Second-home buyers who looked at Florida prices and turned north on I-95. The bank's footprint also reaches into Georgetown County and the Beaufort/Jasper MSA covering Hilton Head and Bluffton, all of which are running similar in-migration dynamics. Horry County alone is projected to add 216,000 residents by 2042.
-
-Roughly 15,000 new residents arrive each year. That translates to approximately 7,500 net new households entering the footprint annually, all of them shopping for mortgages, HELOCs, and auto loans with no existing relationship at a local bank.
+Horry County, home to Myrtle Beach, grew 17.8% from 2020 to 2024, to an estimated 413,391 residents, according to the Census Bureau. Retirees relocating to the Grand Strand, remote workers, and second-home buyers who looked at Florida prices and turned north on I-95. The Charleston and Lowcountry markets the bank has expanded into run on the same kind of in-migration, at higher price points.
 
 :::pullquote
 South Atlantic Bank is positioned exactly where the people are going.
@@ -2564,58 +2573,56 @@ South Atlantic Bank is positioned exactly where the people are going.
 
 South Atlantic Bank is positioned exactly where the people are going.
 
-## The Loan Book That 159 People Are Running
+## The Loan Book That 175 People Are Running
 
-The real story in the financials is what's happening to the balance sheet.
+The real story is the balance sheet.
 
-Total loans grew 13.1% in 2024 and another 9.5% in 2025. Real estate loans are now approaching $1.4B across residential, construction, and commercial categories. The construction and land development portfolio alone sits at $241M. Nonfarm nonresidential CRE adds another $559M. Together those two categories represent more than 53% of total loans, and they are concentrated in one of the most active coastal construction markets in the Southeast.
+Gross loans reached $1.54 billion in June 2026, up 7.6% in a year, after 10.0% growth in 2025. Construction and land development loans alone are $266 million, up 40% from $190 million a year earlier. Nonfarm commercial real estate adds $592 million. Together those two categories are about 56% of the loan book, concentrated in some of the most active coastal construction markets in the Southeast. Another $548 million is 1-4 family residential mortgages.
 
-That is a lot of deal flow for 12 branches.
+That is a lot of deal flow for 12 offices.
 
-Secondary mortgage income jumped 80% in 2024, driven by increased origination commissions. The bank is writing more loans, faster. The pipeline is clearly moving. But nothing in the publicly available technology stack suggests the processing infrastructure has scaled at the same pace.
+The mortgage side is growing too. HMDA data shows the bank originated 252 home loans in 2025, up from 225, and the dollar volume rose from $113.5 million to $148.4 million. Of those, 174 were purchase loans averaging about $527,000. Every one of the 477 loans across both years was conventional. And the geography is striking: the bank's 2025 loans in Charleston County averaged about $1.09 million, and in Beaufort County about $1.19 million, against about $394,000 in Horry County.
 
 :::stat
-**80%**
-Secondary mortgage income growth in 2024, driven by origination commissions, while the manual processing infrastructure remained unchanged.
+**$1.19M**
+South Atlantic Bank's average 2025 mortgage in Beaufort County (Hilton Head, Bluffton), per HMDA data, about three times its Horry County average.
 :::
 
-The digital banking page covers bill pay, transfers, and account viewing. There is no mention of online loan applications, document upload portals, income verification integrations, or any automated workflow tools for the lending side. Job postings for a Digital Banking Specialist I and a Systems Administrator III suggest they are building out IT capacity, but those roles are foundational hires, not fintech integrations.
+The digital front door has improved. As of October 2026, the bank's mortgage page links each loan officer's online application, and deposit accounts can be opened online on a bank-branded subdomain. But the mortgage application runs on a third-party ICE portal on a separate domain, and HELOCs, personal and auto loans, and every commercial product still begin with a contact form or a phone call.
 
-A loan officer closing a residential mortgage on an in-migrant retiree from New Jersey is currently doing some version of the same manual document shuffle that every other community bank does: emailing requests for pay stubs, waiting for bank statements to come back via PDF, chasing down the second piece of ID. Multiply that by a pipeline growing at double-digit annual rates and you have a meaningful drag on throughput.
+A loan officer closing a mortgage for a retiree relocating from New Jersey is still doing some version of the manual document shuffle every community bank does: emailing for pay stubs, waiting on bank statement PDFs, chasing a second piece of ID. Multiply that across a pipeline growing at high single digits a year and the drag on throughput is real.
 
 ## The Competitive Problem Nobody's Talking About
 
-Here's the uncomfortable part for any community bank in this market.
+Here is the uncomfortable part for any community bank in this market.
 
-The borrowers arriving in Horry County from the Northeast and Midwest are not loyal to South Atlantic Bank. They have no prior relationship. They are transaction shoppers, often comparing rates across multiple lenders simultaneously. And many of them have recent experience applying for a mortgage with Rocket Mortgage, Better.com, or a regional lender that offered a fully digital application with near-instant income and asset verification.
+Borrowers arriving on the coast are not loyal to South Atlantic Bank. They have no prior relationship. They compare lenders at once, and many have recently applied with a national lender that offered a fully digital application with near-instant income and asset verification.
 
 :::pullquote
 Closing speed matters enormously in a market with active construction and high CRE transaction volume.
 :::
 
-Closing speed matters enormously in a market with active construction and high CRE transaction volume. A developer building a 40-unit condominium complex on Ocean Boulevard is not going to wait three extra days for a term sheet while a loan officer manually requests two years of business tax returns and entity documents. They will call the next bank.
+Closing speed matters enormously in a market with active construction and high CRE transaction volume. A developer building a condominium project on the Grand Strand will not wait three extra days for a term sheet while a loan officer manually requests two years of business tax returns and entity documents. They will call the next bank.
 
-That is not a hypothetical. It is basic pipeline math.
+That is basic pipeline math.
 
-South Atlantic Bank's 1.05% ROA is a function of disciplined underwriting and a favorable market, not operational inefficiency in the lending workflow specifically. But efficiency ratios only stay below 60% if the revenue side grows faster than the cost side, and the cost side includes underwriter hours spent on file cleanup, document chasing, and borrower follow-up that should not require a human at all.
+South Atlantic Bank's improving returns come from disciplined underwriting, a widening margin and a favorable market. But an efficiency ratio only keeps falling if revenue grows faster than costs, and costs include underwriter hours spent on file cleanup, document chasing and borrower follow-up that should not require a person at all.
 
-The commercial book is where this gets most acute. CRE and construction borrowers, developers and resort operators and commercial investors, expect a different level of transactional responsiveness than a first-time homebuyer does. When a bank can verify income, employment, and assets in minutes rather than days, it changes the relationship dynamic. The bank becomes the one issuing the fast term sheet backed by verified financials instead of a pending checklist. That is a competitive differentiator that shows up directly in pipeline close rates and relationship retention.
+The commercial book is where this gets most acute. Developers, resort operators and commercial investors expect a different level of responsiveness than a first-time homebuyer does. When a bank can verify income, employment and assets in minutes rather than days, it becomes the one issuing the fast term sheet backed by verified financials instead of a pending checklist.
 
-The residential mortgage side has its own version of the same problem. In-migrant borrowers who are shopping between South Atlantic and a national direct lender are making a decision partly on service experience. If the national lender returns a verification decision in four minutes and South Atlantic is still waiting on the borrower's third-party W-2, the comparison has already started to tilt.
+The residential side has its own version. A buyer choosing between South Atlantic and a national direct lender is deciding partly on service. If the national lender returns a verification decision in minutes and South Atlantic is still waiting on a W-2, the comparison has already started to tilt. At a $1 million average loan in the Lowcountry, each one of those decisions matters.
 
 ## What the Growth Trajectory Demands
 
-Newsweek named South Atlantic Bank one of the best regional banks in 2024. The OTCQX listing and the ABA board seat signal real ambitions. The bank is not trying to stay at $1.93B. The footprint additions into Beaufort and Jasper counties, the construction lending concentration, the secondary mortgage commission growth: all of it points toward a bank trying to ride the South Carolina coastal growth wave to $3B and beyond.
+The OTCQX listing, the ABA leadership role, the expansion into Charleston and the Lowcountry, the growing construction book: all of it points to a bank aiming well past $2 billion.
 
-That scale changes what the operational stack needs to do.
+That scale changes what the operating stack needs to do. Every point of efficiency improvement requires growing revenue faster than costs, or reducing the labor in processing the volume the bank already has. Probably both. In-migration delivers a steady supply of new borrowers who need mortgages, HELOCs and commercial lines. The construction market delivers large CRE transactions with complex documentation. Running both through a manual verification workflow caps throughput at the pace of human document review.
 
-At $1.93B with 159 employees, every basis point of efficiency ratio improvement requires either growing the revenue line faster than costs or reducing the labor intensity of processing the existing volume. Probably both. The in-migration wave delivers a steady supply of new borrowers who need mortgages and HELOCs and commercial credit lines. The construction market delivers large CRE transactions with complex documentation requirements. Running both categories through a manual verification workflow caps throughput at the pace of human document review.
+The banks that will own coastal South Carolina lending over the next decade are the ones that can close a mortgage for a relocating retiree as fast as a national lender, issue a term sheet for a developer before the competing bank returns a call, and do both while keeping the efficiency ratio falling.
 
-The banks that will own the coastal South Carolina market over the next decade are the ones that can close a mortgage for a Pennsylvania retiree as fast as a national lender, issue a term sheet for a Grand Strand developer before the competing bank returns a call, and do both while keeping the efficiency ratio below where it is today.
+Real-time income and employment verification, automated asset confirmation and digital identity checks at the front of the application are what make that possible at scale. Not because technology is better than people, but because the volume math stops working when every file requires manual intervention. A bank growing its loan book 8% to 10% a year cannot add headcount at the same rate and keep its efficiency gains.
 
-Real-time income and employment verification, automated asset confirmation, and digital borrower identity checks at the front of the application funnel are what make that possible at scale. Not because technology is inherently better than people, but because the volume math no longer works when every file requires manual intervention. A bank at $1.93B growing at 10% per year cannot add headcount at the same rate and maintain a sub-60% efficiency ratio. The math does not work.
-
-South Atlantic Bank has built something genuinely impressive in under two decades. The in-migration tailwind is real and it is durable. The question now is whether the origination infrastructure catches up to the growth rate before the competitive gap on digital borrower experience becomes a relationship-retention problem. Banks that solve the intake bottleneck first will write the next chapter of coastal South Carolina lending.
+South Atlantic Bank has built something impressive in under two decades. The in-migration tailwind is real and durable. The question is whether origination catches up to the growth rate before the gap in digital borrower experience becomes a relationship problem. Banks that solve the intake bottleneck first will write the next chapter of coastal South Carolina lending.
 `,
   },
   'conway-national-bank-grand-strand-dominance': {

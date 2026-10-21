@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'south-atlantic-bank-coastal-growth-engine',
   'conway-national-bank-grand-strand-dominance',
   'bank-travelers-rest-greenville-growth-engine',
   'open-banking-community-bank-guide',
@@ -85,7 +86,6 @@ export const BLOG_SLUGS = [
   // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
   // retired 2026-10-21: superseded by best-digital-account-opening-software-community-banks (same MANTL/Narmi ground, refreshed) and chime-account-opening-deposit-war; its figures were stale or unsourced — 'digital-account-opening-community-bank'
   // — Phase 5: add Jul 21 (remaining June bank deep dives) —
-  // 'south-atlantic-bank-coastal-growth-engine',
   'first-reliance-sells-at-the-top',
   // — Phase 6: add Jul 28 —
   // 'first-reliance-outgrew-florence',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'south-atlantic-bank-coastal-growth-engine': '2026-10-22',
   'conway-national-bank-grand-strand-dominance': '2026-10-22',
   'bank-travelers-rest-greenville-growth-engine': '2026-10-22',
   'open-banking-community-bank-guide': '2026-10-22',
@@ -143,7 +144,6 @@ export const BLOG_DATES: Record<string, string> = {
   'community-bank-ceo-digital-lending-2026': '2026-05-19',
   'community-banks-lose-loans-fintechs': '2026-05-12',
   'community-bank-compete-neobank-core': '2026-05-05',
-  'south-atlantic-bank-coastal-growth-engine': '2026-06-20',
   'first-community-bank-sc-cre-merger-growth': '2026-04-30',
   'countybank-greenwood-sc-sba-deep-dive': '2026-04-23',
   'optus-bank-cdfi-columbia-growth': '2026-04-16',

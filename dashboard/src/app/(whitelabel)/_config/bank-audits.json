@@ -1070,12 +1070,12 @@
     "slug": "south-atlantic-bank",
     "bankName": "South Atlantic Bank",
     "shortName": "South Atlantic Bank",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "south-atlantic-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.93B"
+        "value": "$1.98B"
       },
       {
         "label": "Branches",
@@ -1083,14 +1083,14 @@
       },
       {
         "label": "Online loan products",
-        "value": "0 of 8"
+        "value": "1 of 8"
       },
       {
         "label": "Core system",
         "value": "Jack Henry (Banno)"
       }
     ],
-    "summary": "South Atlantic Bank is a well-run $1.93B community bank serving the Carolina coast from Myrtle Beach to Hilton Head, and every single loan product on their site ends with a contact form or a phone call. Personal loans, auto, HELOC, mortgage, and all business lending categories have no online apply button at all. The bank runs Jack Henry's Banno platform for digital banking (confirmed by the OAuth flow at my.southatlantic.bank) and has a branded goMobile app, so the digital infrastructure exists. What's missing is a borrower intake layer: a new customer who finds South Atlantic Bank at 9 PM, wants to apply for a coastal vacation home mortgage or a commercial expansion loan, has no path forward until business hours.",
+    "summary": "South Atlantic Bank is a well-run $1.98B community bank serving the Carolina coast from Myrtle Beach to Hilton Head, and every loan product on its site except mortgage ends with a contact form or a phone call. Mortgage now links each loan officer's application on a third-party ICE portal (sab.mymortgage-online.com), off the bank's domain. Personal loans, auto, HELOC, and all business lending categories have no online apply button at all. The bank runs Jack Henry's Banno platform for digital banking (confirmed by the OAuth flow at my.southatlantic.bank) and has a branded goMobile app, so the digital infrastructure exists. What's missing is a borrower intake layer: a new customer who finds South Atlantic Bank at 9 PM, wants a HELOC on a coastal vacation home or a commercial expansion loan, has no path forward until business hours.",
     "currentJourney": [
       {
         "channel": "Personal loans",
@@ -1109,8 +1109,8 @@
       },
       {
         "channel": "Mortgage",
-        "detail": "Dedicated mortgage center page with a local lending team, but no online application. Primary CTA is 'Contact a loan officer and prequalify now,' linking to the team page.",
-        "status": "missing"
+        "detail": "As of October 2026 the mortgage page links each loan officer's online application, hosted on a third-party ICE portal (sab.mymortgage-online.com) on a separate domain. A digital path exists, but it leaves the bank's brand at the highest-stakes step and has no verification at intake.",
+        "status": "weak"
       },
       {
         "channel": "Business / Commercial lending",
@@ -1130,9 +1130,9 @@
     ],
     "findings": [
       {
-        "title": "Zero loan products have a digital intake path",
+        "title": "Only mortgage has a digital intake path, and it is off-brand",
         "severity": "gap",
-        "body": "Every loan product — personal, auto, HELOC, mortgage, and the full commercial portfolio — requires a phone call or branch visit to begin. The bank serves a coastal market where a large share of borrowers are purchasing vacation properties, relocating from out-of-state, or running seasonal businesses. All of these buyers apply outside normal hours and compare multiple lenders at once. With no digital intake, South Atlantic Bank is invisible at the moment of highest intent."
+        "body": "Personal, auto, HELOC, and the full commercial portfolio require a phone call or branch visit to begin. Mortgage is the exception: each loan officer's application now opens on a third-party ICE portal on a separate domain. The bank serves a coastal market where a large share of borrowers are purchasing vacation properties, relocating from out-of-state, or running seasonal businesses. All of these buyers apply outside normal hours and compare multiple lenders at once. Outside mortgage, South Atlantic Bank is invisible at the moment of highest intent."
       },
       {
         "title": "The Jack Henry stack is already in place; the intake layer is missing",
@@ -1153,12 +1153,12 @@
     "comparison": [
       {
         "dimension": "Products you can start online",
-        "today": "0 of 8 loan products",
+        "today": "1 of 8 loan products (mortgage, on a third-party portal)",
         "withRaven": "Every product, one branded front door"
       },
       {
         "dimension": "Mortgage / HELOC capture",
-        "today": "No digital path; call or visit required",
+        "today": "Mortgage via off-brand ICE portal; HELOC requires a call or visit",
         "withRaven": "Coastal buyers captured and verified at any hour"
       },
       {
@@ -1182,7 +1182,7 @@
         "withRaven": "Synced directly into Jack Henry at submission"
       }
     ],
-    "sources": "southatlantic.bank (/, /personal/loans-lines-of-credit/, /personal/loans-lines-of-credit/personal-loans/, /personal/loans-lines-of-credit/home-equity-line-of-credit/, /mortgage-loans/, /mortgage-loans/mortgage-products/, /business/loans-lines-of-credit/loans-lines-of-credit/, /digital-banking/online-banking/, /digital-banking/mobile-banking/, /about-us/, /locations/), my.southatlantic.bank (Banno digital banking portal — Jack Henry core confirmed by api.banno.com OAuth URL in redirect chain from netteller.com/southatlanticbank), onlineaccounts.southatlantic.bank (deposit account opening), southatlantic.bank/wp-content/themes/sab/style.css (brand colors extracted: primary #1E417C, navy #001D47, gold #AC893F), FDIC cert #58689. Reviewed June 2026."
+    "sources": "southatlantic.bank (/, /personal/loans-lines-of-credit/, /personal/loans-lines-of-credit/personal-loans/, /personal/loans-lines-of-credit/home-equity-line-of-credit/, /mortgage-loans/, /mortgage-loans/mortgage-products/, /business/loans-lines-of-credit/loans-lines-of-credit/, /digital-banking/online-banking/, /digital-banking/mobile-banking/, /about-us/, /locations/), my.southatlantic.bank (Banno digital banking portal — Jack Henry core confirmed by api.banno.com OAuth URL in redirect chain from netteller.com/southatlanticbank), onlineaccounts.southatlantic.bank (deposit account opening), southatlantic.bank/wp-content/themes/sab/style.css (brand colors extracted: primary #1E417C, navy #001D47, gold #AC893F), FDIC cert #58689. Reviewed June 2026; /mortgage/ re-checked October 21, 2026 (loan officer applications on sab.mymortgage-online.com)."
   },
   {
     "slug": "conway-national-bank",
