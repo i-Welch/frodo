@@ -13,6 +13,8 @@ Read `.claude/commands/article.md` first: its voice, data source, markdown, wiri
 
 ## 1. Pick the article
 
+Skip any slug that an open PR already releases: check `gh pr list --state open --json number,title,headRefName` and the `published.ts` diff of any `release/*` branch (a run can start before an earlier release PR has auto-merged).
+
 Release the two `SEO drafts` first (the 2026-10-19 visibility check found their search results the weakest: spam pages and wrong-product "Mantle" listings), then take the first commented-out slug in `BLOG_SLUGS` in file order, skipping any marked `retired`. Evergreen guides (AI lending, white-label portal, digital account opening, open banking, Jack Henry, Fiserv, Chime) age best. Bank deep dives need the most refreshing. The two `SEO drafts` at the end were never reviewed: give them a full editorial pass, not just a fact check.
 
 ## 2. Check it is still true
@@ -21,6 +23,8 @@ Read the article's `content` in `blog/[slug]/page.tsx` and list every dated clai
 
 - **Overtaken by events?** Check `articles-index.ts` for a published article on the same institution (for example `first-reliance-sells-at-the-top` vs `first-reliance-outgrew-florence`) and search for news since the article's date: mergers, sales, failures, leadership changes, enforcement actions. If the article's thesis no longer holds and a refresh would mean a new article, **retire it**: change its comment to `// retired <YYYY-MM-DD>: <reason> — '<slug>'`, leave the page entry alone, and ship only that change (step 5, no LinkedIn files). Then stop.
 - **Refresh the numbers.** Re-pull each figure from its primary source (FDIC BankFind `financials` for the latest call report quarter, NCUA 5300, HMDA, SEC filings, vendor documentation for the platform guides). Update figures, quarter labels and any sentence whose meaning changes, keeping the article's structure and voice. If a number cannot be re-sourced, cut the sentence. Never present an old quarter as current.
+- **Distrust the draft itself, not just its dates.** The first six releases (October 2026) turned up a superseded regulation presented as current (SR 11-7 after SR 26-2), "examiner requirements" attributed to guidance that does not contain them, FDIC loan categories swapped (LNRERES vs LNRENRES), a renamed Army base (Fort Gordon is Fort Eisenhower), a closed merger described as pending, and industry statistics with no source. Check every regulatory citation against the primary text, every call report figure against its field name, every "largest/first/only" claim against an independent source (or attribute it to the bank), and cut any statistic introduced with "industry data" or no citation.
+- **Check the FDIC records, not just news.** `api.fdic.gov/banks/institutions` (`ACTIVE`, `ENDEFYMD`) and `/locations` (offices, `ACQDATE`) show closed mergers, branch sales and new offices before the press does.
 - For bank deep dives with an ROI entry or audit record, update the matching stats in `roi-data.ts` / `bank-audits.json` so the article and its audit agree.
 - Keep the original `publishedDate`. Set `updatedDate` to the release date (tomorrow in auto mode, since the PR merges about 24 hours after it opens). In `BLOG_DATES`, set the slug's date to that same release date.
 
