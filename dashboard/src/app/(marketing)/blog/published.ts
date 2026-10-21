@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'southern-bank-nc-digital-bet',
   'carolina-bank-between-two-economies',
   'south-atlantic-bank-coastal-growth-engine',
   'conway-national-bank-grand-strand-dominance',
@@ -92,7 +93,6 @@ export const BLOG_SLUGS = [
   // retired 2026-10-21: overtaken by the Colony Bankcorp sale (shareholders approved Oct 15, closing Q4 2026), covered in first-reliance-sells-at-the-top — 'first-reliance-outgrew-florence'
   // retired 2026-10-21: predates the First Reliance deal (Colony's largest, closing Q4 2026) and its Q1 2026 figures are stale; the deal is covered in first-reliance-sells-at-the-top. Write a fresh Colony piece after the merger closes — 'colony-bankcorp-farm-to-fees'
   // — Phase 7: add Aug 4 —
-  // 'southern-bank-nc-digital-bet',
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
   // 'jack-henry-symitar-loan-origination',
   // 'fiserv-premier-digital-lending',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'southern-bank-nc-digital-bet': '2026-10-22',
   'carolina-bank-between-two-economies': '2026-10-22',
   'south-atlantic-bank-coastal-growth-engine': '2026-10-22',
   'conway-national-bank-grand-strand-dominance': '2026-10-22',
@@ -151,7 +152,6 @@ export const BLOG_DATES: Record<string, string> = {
   'beacon-community-bank-charleston-growth-capacity': '2026-04-09',
   'first-palmetto-bank-sc-performance-deep-dive': '2026-04-02',
   'queensborough-national-bank-trust-deep-dive': '2026-03-26',
-  'southern-bank-nc-digital-bet': '2026-06-25',
   'first-reliance-outgrew-florence': '2026-06-22',
   'colony-bankcorp-farm-to-fees': '2026-06-17',
   'rocket-mortgage-22-days-how': '2026-06-15',

@@ -440,11 +440,11 @@ export const articles: Article[] = [
   },
   {
     slug: 'southern-bank-nc-digital-bet',
-    title: 'The Century Bank That Hired a Chief Digital Officer',
+    title: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     description:
-      "Southern Bank and Trust has run $5 billion across 57 eastern North Carolina branches for over a century. In 2024, they hired a Chief Digital Officer from First Citizens Bank. What that hire means for borrowers from the tobacco belt to the Outer Banks.",
-    readTime: '6 min read',
-    date: 'June 2026',
+      "Southern Bank and Trust, chartered in Mount Olive, NC in 1901, cut its efficiency ratio from 69.4% to 52.6% in two years and switched on a new digital banking platform on October 19, 2026. What drove the turnaround, what its 2025 mortgage data shows, and where the next efficiency gain has to come from.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'southern-bank-trust',
   },

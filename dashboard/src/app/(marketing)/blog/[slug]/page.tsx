@@ -3436,85 +3436,96 @@ Queensborough has been built to last. The next phase is built to move.
     `,
   },
   'southern-bank-nc-digital-bet': {
-    title: 'The Century Bank That Hired a Chief Digital Officer',
-    description: "Southern Bank and Trust has run $5 billion across 57 eastern North Carolina branches for over a century. In 2024, they hired a Chief Digital Officer from First Citizens Bank. What that hire means for borrowers from the tobacco belt to the Outer Banks.",
+    title: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
+    description: "Southern Bank and Trust, chartered in Mount Olive, NC in 1901, cut its efficiency ratio from 69.4% to 52.6% in two years and switched on a new digital banking platform on October 19, 2026. What drove the turnaround, what its 2025 mortgage data shows, and where the next efficiency gain has to come from.",
     publishedDate: 'June 25, 2026',
-    readTime: '6 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
     content: `
-Southern Bank and Trust has been in Mount Olive, North Carolina since 1901. That is twenty-two years before the Federal Reserve opened, twelve years before the income tax, and one year after Mount Olive itself was incorporated. The Wright Brothers flew at Kitty Hawk two years later.
+On Monday, October 19, 2026, Southern Bank and Trust switched its customers to a new digital banking platform. Personal users got an update prompt, business users got a new app, and everyone got a new login. A bank chartered in Mount Olive, North Carolina, on January 29, 1901, rebuilt its online front door.
 
-In late 2024, the bank that survived the Depression, the farm credit collapse of the 1980s, and every interest rate cycle since hired a Chief Digital Officer.
+The conversion is the visible part. The numbers behind it are the better story.
 
-That is the story worth following.
+## A Two-Year Turnaround
 
-## The Balance Sheet
+Southern Bank is the banking subsidiary of Southern BancShares (N.C.), Inc., which trades over the counter as SBNC. As of June 30, 2026, the bank held $5.30 billion in assets and $4.83 billion in deposits, with 603 full-time-equivalent employees and 57 offices: 47 in eastern North Carolina and 10 in Hampton Roads and the Richmond area.
 
-Southern Bank and Trust Company is the banking subsidiary of Southern BancShares (N.C.), Inc., traded OTC as SBNC. Total assets as of Q1 2026: $5.25 billion. Fifty-seven branches across eastern North Carolina and southeastern Virginia. Headquartered in Mount Olive, Wayne County.
+Here is what its FDIC call reports show over two years:
 
-The Q1 2026 numbers: ROA of 0.89% on $11.7 million in quarterly net income. Efficiency ratio of 53.23%. Net loans of $3.44 billion. Those are solid numbers for a bank operating in one of the less economically dynamic corners of the American Southeast.
+- **Efficiency ratio:** 69.4% in Q1 2024, 65.2% for full-year 2024, 56.6% for 2025, and 52.6% for the first half of 2026
+- **Net interest margin:** 2.68% in Q1 2024, 3.70% in the first half of 2026
+- **First-half net income:** $36.8 million in 2026, up 57% from $23.5 million in 2025
+- **Return on assets:** 1.40% for the first half of 2026, return on equity 17.1%
 
 :::stat
-**53.23%**
-Southern Bank's Q1 2026 efficiency ratio, trending down from the mid-50s, on a 57-branch footprint spanning three distinct borrower economies.
+**69.4% to 52.6%**
+Southern Bank's efficiency ratio, Q1 2024 to the first half of 2026, per FDIC call reports. Seventeen points in two years.
 :::
 
-Full year 2025 was stronger: ROA of approximately 1.17%, full-year net income approaching $60 million, and an efficiency ratio trending from the mid-50s toward the low 50s. The fourth quarter of 2025 showed ROA of 1.19%, consistent with a well-run institution operating near the top of its performance range. For a bank this size, in this geography, those numbers represent genuine execution.
+Most of that came from the margin. First-half interest expense fell from $30.3 million in 2025 to $24.6 million in 2026, while interest income rose 12%. Net interest income grew 24%. Noninterest expense rose about 7%. When revenue outruns expenses by that much, the efficiency ratio falls on its own.
 
-## Eastern Carolina
+One quarter muddies the trend. Q1 2026 included a $9.2 million loss on securities sales, which pulled that quarter's ROA down to 0.89%. By midyear, cumulative securities losses were down to $2.7 million, and the half-year ROA was 1.40%. Repositioning a bond portfolio like that trades a one-time loss for higher yields later.
 
-Wayne County, North Carolina, where Southern Bank is headquartered, is one of the state's more complicated economic stories.
+Credit stayed clean throughout: net charge-offs ran 0.12% of loans, annualized, in the first half of 2026.
 
-Seymour Johnson Air Force Base sits in Goldsboro, the county seat. It employs thousands of active-duty personnel, defense contractors, and civilian workers and has anchored the regional economy for decades. In 2024, the Air Force announced plans to divest 26 aircraft from the base, eliminating an estimated 520 Wayne County jobs. Congressman Don Davis has been pushing back publicly. The situation remains unresolved as of mid-2026.
+## What the Loan Book Actually Holds
 
-Wayne County is also classified as one of North Carolina's most economically distressed counties. Tobacco country, historically. The decades-long shift away from tobacco farming reshaped the county's agricultural economy, and the replacement industries (poultry, food processing, distribution) pay materially less. Unemployment runs above the state average.
+Eastern North Carolina is farm country, but Southern Bank's balance sheet is mostly commercial real estate and homes. Of $3.60 billion in gross loans at midyear:
 
-But Southern Bank's footprint is not just Wayne County. Their branches run from the tobacco-and-hog-farming interior (Duplin County, Lenoir County, Wilson County) to the coast. The Kill Devil Hills branch sits in Dare County, home of the Outer Banks. These are markets with entirely different borrower profiles: agricultural businesses with seasonal income cycles in the west, military families rotating through Goldsboro in the center, vacation property investors and hospitality workers on the coast.
+- Nonfarm, nonresidential real estate: $1.50 billion (42%)
+- One-to-four family residential: $1.29 billion (36%)
+- Commercial and industrial: $259 million
+- Construction and land: $197 million
+- Multifamily: $121 million
+- Farmland and agricultural production combined: $165 million (about 5%)
 
-That geographic complexity is not a liability if you can price and verify it correctly. It becomes a liability when your verification stack treats a crop-year-end payment from a Duplin County pork farmer the same as a Dare County beach house mortgage.
+The footprint is wider than "eastern North Carolina" suggests. Wayne, Nash, and Pitt counties each have five offices. Dare County, home of the Outer Banks, has three. Across the state line, there are three in Virginia Beach, two each in Norfolk and Chesapeake, and offices in Suffolk, Newport News, and Henrico County.
+
+## What 2025 Mortgage Data Shows
+
+Southern Bank's 2025 HMDA filing shows 1,557 originated home loans totaling $440.7 million. Purchase loans made up 678 of them, at $267.5 million and an average of about $395,000. The rest were refinances, home improvement, and other purposes.
+
+Three markets show how different the borrowers are:
+
+- **Dare County (Outer Banks):** 99 loans, $36.9 million, averaging about $372,000
+- **Virginia Beach:** 65 loans, $23.1 million, averaging about $356,000
+- **Wayne County (headquarters):** 49 loans, $7.8 million, averaging about $159,000
+
+A second-home buyer in Kill Devil Hills, a Navy family in Virginia Beach, and a first-time buyer in Goldsboro are three different files. Rental income, military pay, and a single W-2 each need different documents to verify.
+
+The military piece stands out. Southern Bank has offices near Seymour Johnson Air Force Base in Goldsboro and throughout Hampton Roads, home to Naval Station Norfolk. Yet of its 1,557 loans in 2025, 1,547 were conventional. It made 8 VA loans, 2 USDA loans, and no FHA loans.
 
 :::pullquote
-That geographic complexity is not a liability if you can price and verify it correctly.
+Of 1,557 home loans in 2025, Southern Bank made 8 VA loans, in a footprint built around an Air Force base and the largest naval station in the world.
 :::
 
-## What 57 Branches Means in Practice
+That is a choice many community banks make: VA lending has its own rules and servicing work. But military borrowers who don't use VA loans still bring the same income questions. Base pay, housing allowance, and special pays all show up on a Leave and Earnings Statement, not a standard pay stub.
 
-Southern Bank operates across three distinct economies connected geographically but not economically.
+## The Base Is Staying
 
-An agricultural borrower in Lenoir County has income that does not look like a W-2. A sergeant at Seymour Johnson AFB has base pay plus housing allowance (BAH) plus subsistence allowance (BAS) plus possible special duty pay. An Outer Banks vacation rental property owner has short-term rental income from Airbnb that does not appear on a standard pay stub.
+The military customer base looks more secure now than it did a year ago. In 2024, the Air Force proposed retiring F-15E Strike Eagles at Seymour Johnson, and Congress blocked the move in the 2025 defense bill. In August 2026, Air Force Secretary Troy Meink wrote to Senator Ted Budd that Seymour Johnson will replace its F-15Es with new F-15EX Eagle IIs, subject to Congress funding them in the fiscal 2027 budget. He also said the Air Force has no plans to cut the base's F-15 missions until replacement aircraft are in place.
 
-Each borrower type requires a different verification approach if you want to close the loan at speed. Most community banks operating across footprints this diverse end up with a patchwork: different processors handling different income types with different document requests, different turnaround times, and no consistent audit trail across the portfolio.
+For a bank headquartered about 15 miles from the flight line, that removes a large unknown.
 
-A bank that closes a tobacco country commercial loan in 45 days and a Kill Devil Hills vacation property in 21 days is not operating consistently. It is accumulating risk in the form of process variance that does not show up on the efficiency ratio until it suddenly does.
+## The Next Front Door
 
-The C&I book runs at $246 million. Agricultural loans are $39.6 million, less than 1% of total assets. The residential real estate and consumer book makes up the bulk of the $3.44 billion loan portfolio. That mix, across 57 branches and three borrower economies, is the operational challenge that a 53.23% efficiency ratio is hiding or solving depending on which direction it is moving.
+Southern Bank has been building digital pieces for some time. It lists an Executive Vice President and Chief Digital Officer, Sondra McCorquodale, among its ten executive officers. That title is uncommon at a $5 billion bank.
 
-## The Digital Officer
+Here is where its digital entry points stand as of October 2026:
 
-Sondra McCorquodale joined Southern Bank as Executive Vice President and Chief Digital Officer. She came from First Citizens Bank, where she built digital experience as that institution grew into a $220 billion bank after its Silicon Valley Bank acquisition. Before First Citizens, she was at RBC Bank. She completed the LSU Graduate School of Banking program in 2016.
+- **Deposit accounts:** online, on a bank-branded site at openaccount.southernbank.com
+- **HELOC:** an "Apply in Minutes" button for its home equity line special
+- **Mortgage:** an online application through a separate mortgage portal
+- **Personal, auto, boat, and RV loans:** a phone number and a contact form
+- **Business and agricultural loans:** a contact form
 
-The CDO title at a $5 billion eastern North Carolina bank is not a vanity appointment. Southern Bank is not a startup looking for a press release. The hire signals a specific thesis: that the next phase of growth at a 125-year-old institution requires a systematic upgrade to how borrowers move through the lending process, not just a better mobile app.
+That is a split many community banks have. Deposits and mortgages, the products with off-the-shelf software, went online first. Consumer and business loans still start with a phone call.
 
-:::pullquote
-The CDO title at a $5 billion eastern North Carolina bank is not a vanity appointment.
-:::
+The efficiency gains so far came mostly from margin. Margin gains don't repeat forever. Rates move, and deposit costs follow. Once the margin stops widening, the next efficiency gains come from processing more loans with the same 603 people.
 
-The question McCorquodale is working through is how to modernize the intake layer across 57 branches serving three distinct borrower economies without dismantling what has worked for 125 years. That is a harder problem than the hire makes it sound.
+That is the case for the loan application being next. A borrower who can apply at 9 p.m., with income verified during the application, arrives at the loan officer as a complete file instead of a voicemail.
 
-## The Verification Layer
-
-At 65% loan-to-asset ratio, Southern Bank has room to grow loans. The question is whether they can grow them efficiently without adding proportional verification overhead.
-
-With a 57-branch footprint spanning agricultural, military, and coastal markets, the income verification complexity per file runs above the community bank average. Farm income, military compensation structures, and vacation rental cash flow all require different data sources and produce different document types. Manual collection processes that work adequately at low volume become the binding constraint as the pipeline scales.
-
-The efficiency ratio trending from the mid-50s toward 53% suggests management is already working the problem from the expense side. The other side of that ratio is fee income and origination throughput, both of which respond directly to how fast files move from application to close.
-
-Banks at $5 billion in assets with a named Chief Digital Officer and a century-long franchise are typically at the moment where the next operational investment either compounds the advantage or gets absorbed by the complexity of the existing footprint. The verification layer is usually where that decision becomes visible first.
-
-Eastern North Carolina is not the highest-growth market in the Southeast. Wayne County is working through a military base employment uncertainty. The tobacco economy finished its long decline years ago. But a bank running 1.17% ROA with 57 branches and a CDO making deliberate choices about digital infrastructure is building something that outlasts the current rate environment.
-
-The Outer Banks will still need mortgages. The pork farmers in Duplin County will still need working capital lines. The sergeants cycling through Seymour Johnson will still need to close on a house in 30 days.
-
-The question is who closes it for them.
+Southern Bank just showed it can move a whole customer base to a new digital platform. The new platform serves the customers it already has. The loan application is what brings in new ones.
     `,
   },
   'chime-account-opening-deposit-war': {

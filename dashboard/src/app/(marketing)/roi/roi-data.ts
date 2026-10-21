@@ -750,42 +750,42 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'Southern Bank and Trust Company',
     shortName: 'Southern Bank',
     articleSlug: 'southern-bank-nc-digital-bet',
-    articleTitle: 'The Century Bank That Hired a Chief Digital Officer',
+    articleTitle: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     fdicCert: 15359,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$5.25B' },
-      { label: 'ROA (Q4 2025)', value: '1.19%' },
-      { label: 'Efficiency ratio', value: '53.23%' },
+      { label: 'Total assets', value: '$5.30B' },
+      { label: 'ROA', value: '1.40% (1H 2026)' },
+      { label: 'Efficiency ratio', value: '52.6% (1H 2026)' },
       { label: 'Branch count', value: '57' },
     ],
     volumes: {
-      mortgage: { count: 500, source: 'Estimated from 57-branch eastern NC + southeastern VA footprint and residential real estate concentration in $3.44B loan book; HMDA data pending', estimated: true },
-      commercial: { count: 300, source: 'FDIC call report: C&I $246M, CRE and construction segments across 57 locations; estimated from loan mix', estimated: true },
+      mortgage: { count: 1557, source: 'HMDA 2025: 1,557 originated loans ($440.7M), including 678 purchase loans ($267.5M); 1,547 conventional, 8 VA, 2 USDA', estimated: false },
+      commercial: { count: 300, source: 'FDIC call report: C&I $259M, nonfarm nonresidential CRE $1.50B and construction $197M (Q2 2026) across 57 locations; estimated from loan mix', estimated: true },
       consumer: { count: 200, source: 'Estimated from branch footprint and consumer segment of loan portfolio', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 10000,
-      source: '57-branch eastern NC + southeastern VA footprint spanning Wayne, Dare, Duplin, Lenoir, Wilson, Nash, Johnston, Pitt, and Onslow counties plus southeastern Virginia; Census county in-migration estimates',
+      source: '57-branch eastern NC + southeastern VA footprint spanning Wayne, Nash, Pitt, Dare, Sampson, Duplin, Lenoir, Wilson, Johnston and other eastern NC counties plus Virginia Beach, Norfolk, Chesapeake, Suffolk, Newport News and Henrico; Census county in-migration estimates',
     },
     intro:
-      "Southern Bank and Trust operates $5.25 billion across three distinct borrower economies: tobacco and agricultural country in the interior, military communities around Seymour Johnson AFB, and coastal vacation markets on the Outer Banks. A 57-branch footprint with that kind of income complexity creates above-average verification load per file. The Chief Digital Officer hire signals the bank is working the problem from the top down.",
+      "Southern Bank and Trust cut its efficiency ratio from 69.4% to 52.6% between Q1 2024 and the first half of 2026, mostly on a wider margin, and moved its customers to a new digital banking platform on October 19, 2026. Deposits, HELOCs and mortgages can start online. Personal, auto and business loans still start with a phone call or a contact form, across a 57-office footprint that runs from Goldsboro to the Outer Banks to Hampton Roads.",
     strategic: [
       {
         title: 'Three borrower economies, one verification standard',
-        body: "Farm operators carry seasonal income that looks nothing like a W-2. Military personnel at Seymour Johnson have base pay plus housing allowance (BAH) plus subsistence pay plus special duty pay. Outer Banks vacation property buyers show Airbnb income that standard pay stub pulls miss. Three income types, three verification workflows, thirty-seven extra days per file that shouldn't exist. A single bank-level integration eliminates the per-borrower-type patchwork.",
+        body: "Farm operators carry seasonal income that looks nothing like a W-2. Military personnel at Seymour Johnson have base pay plus housing allowance (BAH) plus subsistence pay plus special duty pay. Outer Banks vacation property buyers show Airbnb income that standard pay stub pulls miss. Three income types, three verification workflows. A single bank-level integration replaces the per-borrower-type patchwork.",
       },
       {
-        title: "The CDO hire is the telling signal",
-        body: "Sondra McCorquodale joined as EVP and Chief Digital Officer after years at First Citizens Bank, one of the most aggressive acquirers and technology integrators in the community bank space. Banks hire CDOs when the digital upgrade agenda has reached the CEO level. The verification layer is typically the first problem a CDO can close in a 6-month window: it has a measurable before and after, it does not require replacing core systems, and the efficiency ratio effect is visible in the next quarter.",
+        title: "The margin did the first 17 points",
+        body: "Net interest income grew 24% in the first half of 2026 while noninterest expense grew about 7%. That is how the efficiency ratio fell from 69.4% to 52.6%. Margin gains stop when rates and deposit costs move. The next points have to come from throughput: more loans closed by the same 603 people. Intake and income verification are where a loan officer's hours go before underwriting starts.",
       },
       {
         title: 'Military borrowers are the highest-complexity files in the portfolio',
-        body: 'Active duty and veteran borrowers near Seymour Johnson AFB represent exactly the income profile that manual verification handles worst: non-standard pay components, frequent PCS moves that create employment gaps, and VA loan requirements layered on top. Automated military income verification through open banking connections closes files that manual VOE calls miss entirely, and does it in hours instead of days.',
+        body: 'Active duty and veteran borrowers near Seymour Johnson AFB and Naval Station Norfolk represent exactly the income profile that manual verification handles worst: non-standard pay components, frequent PCS moves that create employment gaps, and VA loan requirements layered on top. Southern Bank made 8 VA loans out of 1,557 home loans in 2025. Automated military income verification through open banking connections closes files that manual VOE calls miss entirely, and does it in hours instead of days.',
       },
     ],
     sources:
-      'FDIC BankFind (Cert #15359); Southern BancShares Q4 2025 and Q1 2026 FDIC call report data; Sahm Capital SBNC analysis (Feb 2026); Seymour Johnson AFB economic impact data; NC Office of State Budget and Management 2026 Economic Outlook; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind and API (Cert #15359; financials Q1 2024 to Q2 2026, locations); HMDA 2025 via FFIEC data browser (LEI 5493000XJFWT2H46HI07); southernbank.com (executive officers page, Southern Bank Digital launch notice, HELOC and personal loan pages, openaccount.southernbank.com), reviewed October 2026; Air Force Secretary letter to Sen. Ted Budd on Seymour Johnson F-15EX (August 2026); MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'first-reliance-bank',
