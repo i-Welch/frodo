@@ -2700,52 +2700,64 @@ The banks that capture the most of that volume will be the ones that can verify 
   },
   'bank-travelers-rest-greenville-growth-engine': {
     title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
-    description: 'Bank of Travelers Rest is posting 1.44% ROA and 21.82% ROE from a single county in South Carolina. Here is how a 10-branch community bank became the quiet growth engine of one of the fastest-moving metros in the Southeast.',
+    description: 'Bank of Travelers Rest earned a 1.60% ROA in the first half of 2026 from a single South Carolina county, and just opened its 11th branch. How an 80-year-old community bank became the quiet growth engine of Greenville, and where its loan intake still lags.',
     publishedDate: 'June 11, 2026',
-    readTime: '6 min read',
+    updatedDate: 'October 22, 2026',
+    readTime: '5 min read',
     content: `# Bank of Travelers Rest: Greenville's $1.6B Growth Engine
 
-*Published June 26, 2026*
+*Published June 11, 2026*
 
-Here is the surprising part: Bank of Travelers Rest, a 10-branch community bank anchored in a town of fewer than 5,000 people, is now the 8th largest bank in South Carolina by deposit size. At $1.60 billion in assets, it sits comfortably above hundreds of institutions with twice the branch count. That kind of efficiency does not happen by accident.
+Bank of Travelers Rest has never had a branch outside Greenville County. Founded in 1946 in Travelers Rest, at the county's northern edge, it has spent 80 years doing something most community banks struggle with: staying focused. Disciplined commercial real estate and residential lending in one county, executed well enough to earn a 1.60% annualized return on assets in the first half of 2026.
 
-Founded in 1946 in Travelers Rest, SC (a suburb sitting at the northern edge of Greenville County), the bank has spent 80 years doing something most community banks struggle with: staying focused. No branches outside Greenville County. No sprawling product lines. Just disciplined commercial and residential lending in one of the fastest-growing metros in the Southeast, executed well enough to post a 21.82% return on equity in fiscal 2025.
+The bank reached $1.60 billion in assets at the end of June, up 5.8% from a year earlier, with $1.42 billion in deposits. In July it opened its 11th branch, in Simpsonville, its first new office in a decade.
 
-The numbers are worth sitting with. ROA of 1.44%. Net interest margin of 2.97% annualized. Efficiency ratio of 59.9%. Those are real results in an environment where most community banks are fighting margin compression and watching deposit costs eat their lunch. BTR is doing fine.
+The first-half numbers are worth sitting with, from the FDIC call report:
+
+- Net income of $12.7 million, up 18.5% from $10.7 million a year earlier
+- Net interest margin of 3.27%, up from 3.12%
+- Return on equity of 17.99%
+- Efficiency ratio of 59.0%
+- Noncurrent loans at 0.12% of the book
+
+For full-year 2025, the bank earned $21.9 million, a 1.44% ROA and an 18.28% ROE. The first quarter of 2026 was stronger still, at a 21.82% annualized ROE, before settling back in the second quarter. In an environment where many community banks are still fighting deposit costs, BTR's margin has widened for two straight years.
+
+:::stat
+**1.60%**
+Bank of Travelers Rest's annualized return on assets in the first half of 2026, up from 1.42% a year earlier, per its FDIC call report.
+:::
 
 ## A County That Keeps Growing
 
-Greenville County added over 11,000 net new residents between 2023 and 2024. That is not a blip. The Greenville-Anderson MSA has been absorbing in-migration from higher cost-of-living states for years, with manufacturing and technology employers pulling transplants from the Northeast, Midwest, and West Coast. The county now holds 548,000 residents and counting, making it the most populous in South Carolina.
+Greenville County is the most populous county in South Carolina, with an estimated 583,125 residents in July 2025, according to the Census Bureau. That is about 11% more than the 2020 census counted. The Greenville-Anderson metro has been absorbing in-migration for years, with manufacturing, automotive supply chain and technology employers pulling transplants from other states.
 
-Bank of Travelers Rest is sitting in the middle of all of it. With $1.43 billion in deposits and $903 million in net loans as of Q1 2026, the bank's geographic concentration means it captures both the long-established community relationships of the Upstate and a steady wave of new arrivals who need mortgages, checking accounts, and business lines of credit.
+Bank of Travelers Rest sits in the middle of it. Its $911 million in net loans grew 5.0% over the year to June. The mix is commercial-led: $422 million in nonfarm commercial real estate and $264 million in 1-4 family residential mortgages, plus $82 million in construction, $73 million in C&I and $40 million in consumer loans. Residential mortgages grew fastest, up 12.7% in a year.
 
-The mortgage book tells the story clearly. Of the 170 mortgage originations BTR closed in 2024, 107 were purchase loans. Not refinances chasing rate windows. Actual home purchases, which means actual new borrowers entering the market, many of them relocating from out of state. The average loan size is running around $347,000, tracking with Greenville's steadily rising home prices. And the bank writes zero FHA, VA, or USDA volume. This is a conventional purchase shop serving buyers who, on paper at least, look like solid credits.
+The mortgage book tells the story. HMDA data shows BTR originated 170 home loans in 2025, the same count as 2024, but the dollars rose from $59.1 million to $68.4 million. Of those 170, 108 were purchase loans, averaging about $494,000. Not refinances chasing rate windows. Actual home purchases, meaning new borrowers entering the market. And every one of the 340 loans across both years was conventional: no FHA, VA or USDA volume at all.
 
-Net loans in residential real estate grew 4.3% year-over-year through Q1 2026. The pipeline is not slowing down.
+:::pullquote
+Every one of the 340 home loans across 2024 and 2025 was conventional. No FHA, VA or USDA volume at all.
+:::
 
 ## The Friction Hidden Inside a Smooth-Running Machine
 
-The efficiency ratio of 59.9% is good. It is not great. Top-quartile community banks are pushing closer to 55%, and the difference matters on a $1.6 billion balance sheet where noninterest expense has nowhere to hide. BTR runs lean, but there is a cost structure that does not yet reflect what modern loan file assembly could look like.
+An efficiency ratio of 59% is good. It has also barely moved: 61% at the end of 2024, 60% in 2025, 59% now, while margin and earnings climbed. The revenue side is doing the work. The cost side is where the next gains are.
 
-The current mortgage intake flow routes applicants through mymortgage-online.com, a third-party portal that handles the front end but does not appear to include any real-time income, asset, or employment verification. Consumer and commercial applications direct borrowers to call or visit a branch. The May 2025 website rebuild (done by OMNICOMMANDER, which added ADA compliance and mobile responsiveness) improved the borrower experience at the surface. But there is no visible integration with open banking platforms, payroll data networks, or automated underwriting tools.
+The bank's website, rebuilt in 2025, shows where. Consumer loans (vehicle, personal and the RediReserv line) have an online application on the bank's own site, which is more than many banks its size offer, and personal checking and savings accounts can now be opened online. But the consumer application asks the borrower to type in their income, with nothing verified at intake. Mortgage applicants are sent to bankoftravelersrest.mymortgage-online.com, a third-party ICE portal on a separate domain. Construction and commercial loans route to a relationship banker.
 
-That matters because of who is now applying. An in-migrant buyer from Columbus, Ohio with a W-2 from a Midwest employer, a gig side income, and bank accounts at a credit union back home is not a hard credit. But manually verifying that file takes time. Loan officers chase pay stubs. They call employers. They wait on bank statement PDFs that arrive in batches, sometimes three days after the initial request. For a 10-branch bank with limited back-office headcount, that manual labor is a hidden tax that compounds across 170 mortgage files per year, plus hundreds of HELOC and consumer loan applications.
+That matters because of who is applying. Picture an in-migrant buyer with a W-2 from an employer in Ohio, some side income, and bank accounts at a credit union back home. Not a hard credit. But verifying that file by hand takes time: chasing pay stubs, calling an employer, waiting for statement PDFs that arrive in batches. For a bank writing 108 purchase mortgages a year, mostly to borrowers on a contract deadline, every day spent chasing a document is a day the closing date gets closer.
 
-The math is not complicated. If each file adds two days of document-chasing time, a branch network this size is burning weeks of loan officer capacity per month on tasks that automated verification could handle in minutes with a borrower consent flow.
-
-BTR's wealth management arm (run through Raymond James under the Gateway Wealth Strategies banner) shows the bank knows how to partner externally when the product requires it. The digital lending infrastructure has not seen the same investment yet.
+BTR's wealth management arm, Gateway Wealth Strategies, offered through Raymond James, shows the bank knows how to partner when a product requires it. The digital lending intake has not seen the same investment yet.
 
 ## What the Next Chapter Could Look Like
 
-Greenville is not slowing down. The economic base, manufacturing, automotive supply chain, technology back-office operations, is diversified enough to hold through a rate cycle. Home prices have compressed affordability at the margins but have not stopped the in-migration wave. The pipeline of buyers moving into Greenville County from out of state is not going to shrink, and Bank of Travelers Rest's geographic concentration means it will keep seeing those applications.
+Greenville is not slowing down, and a new Simpsonville branch puts BTR closer to the county's growing southern suburbs. The bank's profitability gives it room to invest: a 1.60% ROA builds capital quickly, and equity rose from $117 million to $147 million in a year.
 
-The bank's current profitability metrics give it real capacity to invest. A 21.82% ROE and 1.44% ROA generate retained earnings that can fund operational improvements without diluting capital. The question is where to direct that capital to get the most leverage on the expense base.
+Faster loan file assembly is one clear place to spend it. In purchase mortgage markets, a borrower under contract with a 30-day close does not compare rates once they have chosen a lender. They notice whether the lender closes on time.
 
-Faster loan file assembly is one clear answer. The banks that are pulling ahead in purchase mortgage markets right now are not necessarily the ones with the lowest rates. They are the ones that can turn a complete application in eight business days instead of eighteen. For a borrower under contract on a Greenville home with a 30-day close window, that speed difference is the product. The mortgage does not exist unless it closes on time.
+The broader shift in community banking is toward verification that happens before underwriting begins, not during it. Income confirmed from payroll or bank data with the borrower's consent. Balances confirmed against what the borrower reported. Employment verified without a phone call to HR. That kind of intake does not require replacing a core system or a loan origination platform. It layers on top of the workflow BTR already has, starting with the consumer form that already exists.
 
-The broader shift in community banking is toward verification that happens before underwriting begins, not during it. Income pulled directly from payroll systems. Bank balances confirmed in real time against borrower-reported assets. Employment status verified without a phone call to an HR department. That kind of intake process does not require ripping out a core system or rebuilding a loan origination platform from scratch. It layers on top of existing workflows, replacing the document-chase step with a single borrower-authorized data pull.
-
-For Bank of Travelers Rest, which already has the market position, the profitability, and the growth tailwind, the next competitive edge is operational. A $1.6 billion bank writing conventional purchase loans in a county growing by thousands of residents per year has every reason to close faster, document cleaner, and underwrite with less manual friction than it does today. The financial performance is already there. The intake infrastructure is where the gap lives, and closing it is how a community bank turns a favorable market into a durable lead.
+For a bank that already has the market, the profitability and a new branch in its fastest-growing corridor, the next competitive edge is operational. Bank of Travelers Rest's financial performance is already there. The intake layer is where the gap lives, and closing it is how a community bank turns a favorable market into a durable lead.
 `,
   },
   'security-federal-bank-cdfi-rate-rebound-aiken': {

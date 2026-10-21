@@ -342,9 +342,9 @@ export const articles: Article[] = [
     slug: 'bank-travelers-rest-greenville-growth-engine',
     title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
     description:
-      'Bank of Travelers Rest is posting 1.44% ROA and 21.82% ROE from a single county in South Carolina. How a 10-branch community bank became the quiet growth engine of one of the fastest-moving metros in the Southeast.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      'Bank of Travelers Rest earned a 1.60% ROA in the first half of 2026 from a single South Carolina county, and just opened its 11th branch. How an 80-year-old community bank became the quiet growth engine of Greenville, and where its loan intake still lags.',
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'bank-of-travelers-rest',
   },

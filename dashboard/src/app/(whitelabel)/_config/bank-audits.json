@@ -1301,7 +1301,7 @@
     "slug": "bank-of-travelers-rest",
     "bankName": "Bank of Travelers Rest",
     "shortName": "BTR",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "bank-of-travelers-rest",
     "stats": [
       {
@@ -1310,7 +1310,7 @@
       },
       {
         "label": "Branches",
-        "value": "10 in Travelers Rest & Greenville, SC"
+        "value": "11, all in Greenville County, SC"
       },
       {
         "label": "Online loan products",
@@ -1321,7 +1321,7 @@
         "value": "1946 (oldest bank chartered in Greenville County)"
       }
     ],
-    "summary": "Bank of Travelers Rest is an 80-year-old community bank with 10 branches across the Greenville, SC metro and $1.6B in assets. Standard consumer loans (vehicle, personal, RediReserv) have an online application path at /loan-applications-rates with published rates, which is better than most community banks its size. But mortgage hands the borrower off to a separate Ellie Mae portal on a different domain, construction loans require a relationship banker call, the RediLine HELOC has no clear apply button, and every commercial and business lending product (CRE, equipment, line of credit) routes to a phone call. The bank built a decent digital foundation with the myBTRmoney app and a live rates page, but the intake layer is fragmented and leaves the highest-stakes products without a digital front door.",
+    "summary": "Bank of Travelers Rest is an 80-year-old community bank with 11 branches across Greenville County, SC and $1.6B in assets. Standard consumer loans (vehicle, personal, RediReserv) have an online application path at /loan-applications-rates with published rates, which is better than most community banks its size. But mortgage hands the borrower off to a separate Ellie Mae portal on a different domain, construction loans require a relationship banker call, the RediLine HELOC has no clear apply button, and every commercial and business lending product (CRE, equipment, line of credit) routes to a phone call. The bank built a decent digital foundation with the myBTRmoney app and a live rates page, but the intake layer is fragmented and leaves the highest-stakes products without a digital front door.",
     "currentJourney": [
       {
         "channel": "Vehicle / personal / RediReserv loans",
@@ -1371,7 +1371,7 @@
         "body": "Commercial real estate, equipment loans, and commercial lines of credit all route to a relationship banker phone call. In a Greenville metro growing rapidly with relocated employers and new-to-market businesses, that means a potential commercial borrower who finds BTR online at night has no way to express interest, get pre-qualified, or submit financials. The demand lands in a voicemail and competes with regional banks that have digital intake."
       },
       {
-        "title": "A 10-branch Greenville-area bank, one digital lending portal — no shared record",
+        "title": "An 11-branch Greenville-area bank, one digital lending portal — no shared record",
         "severity": "note",
         "body": "A borrower who opens a personal loan application, a mortgage, and a business line of credit hits three separate intake paths with no shared identity, income, or property record between them. BTR already has the customer relationship; what it lacks is a single intake layer that recognizes the same borrower across products and builds a verified file once."
       }
@@ -1408,7 +1408,7 @@
         "withRaven": "Synced to Jack Henry automatically"
       }
     ],
-    "sources": "bankoftravelersrest.com (home, /personal, /consumer-lending-services, /commercial-loans, /loan-applications-rates, /mobile-banking, /online-banking, /our-history, /locations-hours); bankoftravelersrest.mymortgage-online.com (Ellie Mae/ICE mortgage POS, confirmed); bankoftravelersrest.onlinebank.com (online banking portal, Jack Henry NetTeller pattern inferred from onlinebank.com domain); FDIC cert #16389; bank reports total assets $1.60B. Rates from the live /loan-applications-rates page (effective May 20, 2026). OMNICOMMANDER confirmed as website platform from footer. Core system Jack Henry inferred at medium confidence from the onlinebank.com subdomain pattern. Founded 1946, 10 branches. Reviewed June 2026."
+    "sources": "bankoftravelersrest.com (home, /personal, /consumer-lending-services, /commercial-loans, /loan-applications-rates, /mobile-banking, /online-banking, /our-history, /locations-hours); bankoftravelersrest.mymortgage-online.com (Ellie Mae/ICE mortgage POS, confirmed); bankoftravelersrest.onlinebank.com (online banking portal, Jack Henry NetTeller pattern inferred from onlinebank.com domain); FDIC cert #16389; bank reports total assets $1.60B. Rates from the live /loan-applications-rates page (effective May 20, 2026). OMNICOMMANDER confirmed as website platform from footer. Core system Jack Henry inferred at medium confidence from the onlinebank.com subdomain pattern. Founded 1946, 11 branches (Simpsonville opened July 2026, per FDIC). Reviewed June 2026; branch count and site re-checked October 21, 2026."
   },
   {
     "slug": "security-federal-bank",
