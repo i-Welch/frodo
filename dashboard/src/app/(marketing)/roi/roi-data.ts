@@ -1299,7 +1299,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'A 30.9% Share-Draft Mix Is Worth Defending Like an Asset',
-        body: 'Robins funds itself at roughly 1.15% because nearly a third of its shares are primary-relationship checking balances, while peers pay north of 2% for certificate money. Every fintech and neobank onboarding flow is aimed at exactly these balances, and the industry lost 44% of new checking accounts to digital-first competitors last year on speed of account opening alone. Matching that opening speed, with verification rigor a 16.1%-capitalized institution expects, is the cheapest defense of the funding advantage that makes the whole model work.',
+        body: 'Robins funds itself at roughly 1.15% because nearly a third of its shares are primary-relationship checking balances, while peers pay north of 2% for certificate money. Every fintech and neobank onboarding flow is aimed at exactly these balances, and digital banks and fintechs took 44% of new checking accounts opened in 2024, per Cornerstone Advisors. Matching that opening speed, with verification rigor a 16.1%-capitalized institution expects, is the cheapest defense of the funding advantage that makes the whole model work.',
       },
     ],
     sources:

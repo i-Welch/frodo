@@ -418,7 +418,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['verification-of-deposit', 'asset-verification', 'synthetic-identity-fraud'],
     relatedArticles: [
-      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
@@ -736,7 +736,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedTerms: ['synthetic-identity-fraud', 'ecbsv', 'bank-account-verification', 'first-party-fraud'],
     relatedArticles: [
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
-      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },

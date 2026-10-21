@@ -177,7 +177,7 @@ comes from the author identification line, and editors reject anything promotion
 
 ### The Financial Brand
 - Go to: https://thefinancialbrand.com → "Write for Us"/contributor guidelines
-- Pitch: neobank vs. community bank account-opening data (92% abandonment, 44% share)
+- Pitch: neobank vs. community bank account opening (Chime 10.4M members with no branches; J.D. Power 2026: 20% of customers moved money from their primary bank in three months). Do not use the old 92% abandonment / 44% share figures: unsourced.
 
 ### MortgageNewsDaily
 - Truv earned 51 links here; entry point is data-driven commentary

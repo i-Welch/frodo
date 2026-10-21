@@ -450,11 +450,11 @@ export const articles: Article[] = [
   },
   {
     slug: 'chime-account-opening-deposit-war',
-    title: 'The 92% Problem',
+    title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy',
     description:
-      'Community banks built digital account opening. Then 92% of customers abandoned it on mobile. Chime does it in two minutes, added 700,000 members last quarter, and went public on NASDAQ. A step-by-step look at what each side actually does.',
+      'Chime reached 10.4 million active members in mid-2026 without a branch, a signature card or a ChexSystems check. A side-by-side look at its account opening and a community bank\'s, what Chime gave up to be fast, and which parts a community bank can copy.',
     readTime: '5 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'fintech',
   },
   {

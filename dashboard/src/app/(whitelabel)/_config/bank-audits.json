@@ -183,7 +183,7 @@
       {
         "title": "The account-opening portal is driving abandonment before the form starts",
         "severity": "friction",
-        "body": "The deposit account opening link resolves to a 32-character subdomain on online-banking-services.com. No borrower who arrived via Google on a phone will trust that URL. Mobile banking abandonment at community banks runs 92% under the best conditions; an off-brand domain with a machine-generated subdomain makes that worse before a single field is filled in."
+        "body": "The deposit account opening link resolves to a 32-character subdomain on online-banking-services.com. No borrower who arrived via Google on a phone will trust that URL. An off-brand domain with a machine-generated subdomain costs trust before a single field is filled in."
       },
       {
         "title": "Military income verification is the highest-complexity gap in the portfolio",
@@ -3284,7 +3284,7 @@
       {
         "title": "A 30.9% share-draft mix is the series-best asset, and the most attackable",
         "severity": "note",
-        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Neobanks took 44% of new checking accounts industry-wide last year on account-opening speed. Defending this mix means matching that speed with the verification rigor a 16.1%-capitalized institution expects, inside the first-party flow Robins already owns."
+        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Digital banks and fintechs took 44% of new checking accounts opened in 2024 (Cornerstone Advisors), on account-opening speed. Defending this mix means matching that speed with the verification rigor a 16.1%-capitalized institution expects, inside the first-party flow Robins already owns."
       },
       {
         "title": "The architecture is right; the depth is the question",

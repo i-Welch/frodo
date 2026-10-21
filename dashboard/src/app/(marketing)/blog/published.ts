@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'chime-account-opening-deposit-war',
   'white-label-borrower-portal-community-bank',
   'community-bank-ai-lending-guide',
   'security-federal-bank-cdfi-rate-rebound-aiken',
@@ -91,7 +92,6 @@ export const BLOG_SLUGS = [
   // 'carolina-bank-between-two-economies',
   // 'colony-bankcorp-farm-to-fees',
   // — Phase 7: add Aug 4 —
-  // 'chime-account-opening-deposit-war',
   // 'southern-bank-nc-digital-bet',
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
   // 'jack-henry-symitar-loan-origination',
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'chime-account-opening-deposit-war': '2026-10-22',
   'white-label-borrower-portal-community-bank': '2026-10-22',
   'community-bank-ai-lending-guide': '2026-10-22',
   'security-federal-bank-cdfi-rate-rebound-aiken': '2026-10-22',
@@ -150,7 +151,6 @@ export const BLOG_DATES: Record<string, string> = {
   'first-palmetto-bank-sc-performance-deep-dive': '2026-04-02',
   'queensborough-national-bank-trust-deep-dive': '2026-03-26',
   'southern-bank-nc-digital-bet': '2026-06-25',
-  'chime-account-opening-deposit-war': '2026-06-24',
   'first-reliance-outgrew-florence': '2026-06-22',
   'colony-bankcorp-farm-to-fees': '2026-06-17',
   'carolina-bank-between-two-economies': '2026-06-17',
