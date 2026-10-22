@@ -29,6 +29,18 @@ export function trackerFaqs(): TrackerFaq[] {
   }
   const pending = list('application-pending');
   if (pending) faqs.push({ q: 'Which de novo bank applications are still pending?', a: `Pending applications on the tracker: ${pending}.` });
+  const fintechs = DE_NOVO_BANKS.filter(
+    (b) =>
+      b.status === 'application-pending' &&
+      b.articleSlug === 'fintech-bank-charter-rush-2026' &&
+      /OCC (preliminary )?conditional approval/.test(b.statusDetail),
+  );
+  if (fintechs.length) {
+    faqs.push({
+      q: 'Which fintechs have OCC approval for a bank charter?',
+      a: `Fintech applicants on the tracker with OCC conditional approval that are still waiting on FDIC deposit insurance: ${fintechs.map((b) => `${b.name} (${b.location})`).join('; ')}. None can open until the FDIC approves deposit insurance.`,
+    });
+  }
   if (FDIC_PENDING.rows.length) {
     faqs.push({
       q: 'Which companies have pending FDIC deposit insurance applications?',
