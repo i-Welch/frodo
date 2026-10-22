@@ -792,6 +792,8 @@ We mapped the full stack: https://reportraven.tech/blog/jack-henry-symitar-loan-
 **Article:** Digital Lending on Fiserv: What Premier and Portico Actually Support
 **URL:** https://reportraven.tech/blog/fiserv-premier-digital-lending
 
+> **Superseded (Oct 2026):** the client counts and vendor results below could not be verified and were removed when the article was refreshed. Use `marketing/linkedin/queue/fiserv-premier-digital-lending*.md`.
+
 ### Variant A (Data hook)
 300+ financial institutions use Fiserv's Communicator Open API layer. The reason is that Premier, Portico, and Precision do not ship a native digital LOS.
 

@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — Released from drafts (Oct 2026) —
+  'fiserv-premier-digital-lending',
   'jack-henry-symitar-loan-origination',
   'southern-bank-nc-digital-bet',
   'carolina-bank-between-two-economies',
@@ -95,7 +96,6 @@ export const BLOG_SLUGS = [
   // retired 2026-10-21: predates the First Reliance deal (Colony's largest, closing Q4 2026) and its Q1 2026 figures are stale; the deal is covered in first-reliance-sells-at-the-top. Write a fresh Colony piece after the merger closes — 'colony-bankcorp-farm-to-fees'
   // — Phase 7: add Aug 4 —
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
-  // 'fiserv-premier-digital-lending',
   // — SEO drafts (Jul 18): review before publishing, then also add to articles-index.ts —
 ];
 
@@ -104,6 +104,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'fiserv-premier-digital-lending': '2026-10-22',
   'jack-henry-symitar-loan-origination': '2026-10-22',
   'southern-bank-nc-digital-bet': '2026-10-22',
   'carolina-bank-between-two-economies': '2026-10-22',
@@ -136,7 +137,6 @@ export const BLOG_DATES: Record<string, string> = {
   'how-to-start-a-bank': '2026-07-10',
   'de-novo-bank-day-one-fraud-program': '2026-07-10',
   'one-in-116-mortgage-fraud': '2026-07-04',
-  'fiserv-premier-digital-lending': '2026-06-26',
   'first-reliance-sells-at-the-top': '2026-06-26',
   'digital-account-opening-community-bank': '2026-06-26',
   'fintech-grade-loan-application-community-bank': '2026-06-16',

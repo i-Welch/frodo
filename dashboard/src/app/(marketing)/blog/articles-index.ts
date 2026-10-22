@@ -203,11 +203,11 @@ export const articles: Article[] = [
   },
   {
     slug: 'fiserv-premier-digital-lending',
-    title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support',
+    title: 'Digital Lending on Fiserv in 2026: What Premier, Precision and Portico Support',
     description:
-      'Premier serves 194 community banks. Portico serves nearly 500 credit unions. None of the three Fiserv legacy cores ships with a native digital LOS. Here is what Communicator Open actually costs, which AppMarket vendors have delivered results, and where the Portico gap is.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      "Fiserv changed CEOs and cut guidance, but it says it is not consolidating its cores. None of Premier, Precision or Portico ships with a digital loan application. How Communicator Open, the AppMarket and Loan Director fit together, and where the Portico gap is.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {

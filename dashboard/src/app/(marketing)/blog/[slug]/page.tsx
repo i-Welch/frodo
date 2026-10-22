@@ -1546,99 +1546,87 @@ The core is rarely the constraint. The integration choices around it are.
     `,
   },
   'fiserv-premier-digital-lending': {
-    title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support',
-    description:
-      'Premier serves 194 community banks. Portico serves nearly 500 credit unions. None of the three Fiserv legacy cores ships with a native digital LOS. Here is what Communicator Open actually costs, which AppMarket vendors have delivered results, and where the Portico gap is.',
-    publishedDate: 'June 26, 2026',
-    readTime: '6 min read',
+    title: 'Digital Lending on Fiserv in 2026: What Premier, Precision and Portico Support',
+    description: "Fiserv changed CEOs and cut guidance, but it says it is not consolidating its cores. None of Premier, Precision or Portico ships with a digital loan application. How Communicator Open, the AppMarket and Loan Director fit together, and where the Portico gap is.",
+    publishedDate: 'October 22, 2026',
+    readTime: '5 min read',
     content: `
-# Digital Lending on Fiserv: What Premier and Portico Actually Support
+Fiserv has had a hard year. On October 29, 2025, it cut its full-year guidance and its stock fell 44% in a day. On June 15, 2026, chief executive Mike Lyons left to run Truist, and Takis Georgakopoulos took over. In between, at its May 14, 2026 investor day, the company spent most of its time on Clover and merchant payments.
 
-*Published June 26, 2026*
+Banks and credit unions running Premier, Portico or Precision mostly want to know one thing: what changes for them. The answer, for now, is not much. Fiserv has said it is not consolidating its cores. That makes the practical question the same one it was a year ago: how do you run modern digital lending on a Fiserv core you are going to keep?
 
-Fiserv runs more than 2,600 financial institutions. None of its three legacy community bank and credit union core platforms, Premier, Portico, and Precision, ships with a modern digital loan origination system.
+## Three Cores, No Built-In Digital Application
 
-That is not a knock on Fiserv. It is a structural fact about how community bank technology stacks work, and it has direct implications for any bank or credit union planning its digital lending roadmap.
+**Premier** is Fiserv's core for commercial banks, mostly community banks.
 
-## The Three Platforms
+**Precision** is a second bank core, common at smaller institutions.
 
-**Premier** is Fiserv's commercial bank core, with roughly 194 documented customers. Most are community banks in the $500 million to $5 billion asset range.
+**Portico** is the credit union core.
 
-**Portico** serves nearly 500 credit unions. It uses a different integration architecture than Premier, and fewer AppMarket vendors have validated Portico support.
-
-**Precision** is a third commercial bank platform, used by approximately 329 institutions, often smaller community banks.
-
-All three handle account processing, general ledger, transaction management, and core servicing functions. None includes a fully built-in modern LOS.
+All three handle account processing, the general ledger and loan servicing. None of them includes a consumer-facing digital loan application. That part always comes from a separate product, Fiserv's or someone else's.
 
 ## What Fiserv Sells for Lending
 
-Fiserv offers two proprietary lending products: **Loan Director** (consumer and commercial) and **Mortgage Director** (mortgage origination). Both are described as open-architecture systems that work with Fiserv and non-Fiserv cores.
+Fiserv's own origination products are **Loan Director** for consumer and commercial lending, **Loan Director Flex**, a newer configurable version, and **Mortgage Director** for mortgages. Fiserv positions them as open systems that work with its cores and with others.
 
-The important distinction: neither is a bundled module included in a Premier or Portico contract. Both require separate licensing and implementation. Neither is listed with a standard 30-day deployment path, which is the timeline Fiserv markets for AppMarket integrations.
-
-A community bank evaluating digital lending on Fiserv is making at least two procurement decisions: the core contract and the LOS.
+They are separate products with separate contracts and implementations. A bank planning digital lending on Fiserv is really making two decisions: the core it already has, and the origination system that sits in front of it.
 
 :::pullquote
-A community bank evaluating digital lending on Fiserv is making at least two procurement decisions: the core contract and the LOS.
+A bank planning digital lending on Fiserv is really making two decisions: the core it already has, and the origination system that sits in front of it.
 :::
 
 ## Communicator Open: The Integration Layer
 
-Communicator Open is the API middleware that makes third-party LOS integrations possible on Premier, Signature, and Precision. It exposes RESTful JSON and FDX-compliant APIs, replacing older SOAP and APEX interfaces. More than 300 financial institutions actively use it.
+Communicator Open is Fiserv's API layer for Premier, Signature and Precision. It exposes REST and FDX-aligned APIs in place of older interfaces, and it is how third-party lending systems read customer data and book loans to the core without rekeying.
 
-The access model depends on how you run your core.
+How you reach it depends on how you run the core. Cloud-hosted clients have the most direct path. Institutions running the core in their own data center should expect connectivity work and a statement of work before a vendor connection goes live.
 
-Cloud-hosted Premier clients get Communicator Open with no additional Fiserv implementation fee. On-premises Premier clients pay connectivity fees and require network SOWs (statements of work). Portico uses a different integration architecture, and the AppMarket vendor set for Portico is smaller than for Premier.
+That difference is worth settling before you believe any vendor timeline. Fiserv markets a 30-day implementation window for AppMarket apps on cloud-hosted Premier. If you are not cloud-hosted, ask the vendor what the timeline looks like for you specifically.
 
-This distinction matters practically. A bank considering an AppMarket vendor's 30-day implementation claim should ask: am I on cloud-hosted Premier? If the answer is no, the timeline estimate likely does not apply.
+## The AppMarket
 
-## The AppMarket and What Actually Works
+Fiserv's AppMarket is its storefront for pre-integrated fintech apps. Origination options listed for Fiserv cores include:
 
-Fiserv's AppMarket is a curated fintech storefront for pre-integrated apps, marketed with a 30-calendar-day implementation window for cloud-hosted Premier clients. Current loan and deposit origination vendors include:
+- **Baker Hill NextGen** for commercial and small business lending, connected through Communicator Open
+- **MeridianLink** consumer and account opening products
+- **Epic LOS** from Integra Loan Tech, with two-way core integration and Fiserv Director imaging
+- **MANTL** for account opening, now owned by Alkami after its March 2025 acquisition
+- **Narmi** for account opening and digital banking
 
-- **Baker Hill NextGen LOS** (Communicator Open-connected): First State Bank of the Florida Keys reported a 30% loan volume increase after deployment. Mechanics Bank reported a 200% production increase.
-- **MANTL** (Premier-validated): Claims up to 60% reduction in account opening times. Portico, Precision, and others are listed as on inquiry, not validated.
-- **MeridianLink One** (Premier-validated via Communicator Open)
-- **Epic LOS by Integra Loan Tech** (Premier-native, with two-way core integration and native Fiserv Director imaging)
-- **Narmi** (Premier)
+The integration is what matters most here. A pre-built Communicator Open connector means a decision in the origination system becomes a booked loan on the core without someone retyping it. Manual rekeying is where most community bank lending integrations break down.
 
-Baker Hill is the clearest documented case of the pattern working at scale. The pre-built Communicator Open connector eliminates manual rekeying between origination and core booking, which is where most community bank LOS integrations break down.
-
-:::stat
-**200%**
-Production increase reported by Mechanics Bank after deploying Baker Hill NextGen LOS on a Communicator Open-connected Premier core.
-:::
-
-The 30-day timeline applies to cloud-hosted Premier clients. For on-premises clients, additional connectivity setup and network SOWs add time and cost that the AppMarket listing does not mention.
+Validation is per core. A vendor validated on Premier is not automatically validated on Portico or Precision. Ask which core a vendor has live clients on, not whether it "works with Fiserv."
 
 ## The Portico Gap
 
-Portico's native lending covers consumer installment loans, mortgage servicing, lines of credit, and credit cards. For modern digital commercial loan origination, Portico credit unions must integrate externally.
+Portico's native lending covers consumer installment loans, lines of credit, credit cards and mortgage servicing. Commercial origination has to come from outside.
 
-The most documented path is BAFS BLAST, integrated with Portico to handle commercial lending from origination through servicing and compliance. The integration is explicitly positioned as a gap-fill: Portico handles account processing, BLAST handles the origination workflow.
+The clearest example: on December 2, 2025, BAFS announced an integration of its BLAST commercial lending platform with Portico, covering origination through servicing. Portico handles the accounts. BLAST handles the commercial workflow.
 
-If you are a Portico credit union evaluating digital commercial lending, the pre-integrated vendor universe is smaller than the AppMarket homepage implies. Verify Portico validation specifically, not generic Fiserv support.
+For a Portico credit union, the list of pre-integrated vendors is shorter than the AppMarket homepage suggests. Check Portico validation specifically.
 
 ## Where Fiserv Is Heading
 
-Fiserv acquired Finxact, an API-first cloud-native core, in 2022. Thread Bank selected Finxact in August 2025 to run embedded banking strategies, explicitly positioning it as a model for community bank digital transformation. Fiserv is integrating its existing digital banking and payments solutions with Finxact, which signals that Premier's architecture is being gradually superseded for institutions that need a modern origination-first stack.
+Fiserv bought Finxact, a cloud-native core, in 2022. On August 26, 2025, Thread Bank said it would run its embedded banking business on Finxact. Fiserv has said it is not consolidating its legacy cores into Finxact, so a Premier bank is not being pushed off its platform.
 
-For a community bank on a multi-year Premier contract, the practical implication: AppMarket integrations and Communicator Open are well-supported and worth investing in now. The Finxact question becomes relevant when your next core evaluation window opens.
+The new leadership could change priorities. For a bank in the middle of a multi-year Premier contract, though, the practical answer stays the same. Communicator Open and AppMarket integrations are the supported path, and they are worth investing in now. Finxact becomes a real question when your next core evaluation comes around.
 
-PortX joined the AppMarket in September 2024 specifically to provide pre-built connectors and advisory services for institutions that find Communicator Open implementation complexity a barrier. That business exists because the complexity is real enough to support an advisory market around it.
+One sign of how much work the integration takes: PortX joined the AppMarket on September 4, 2024, to sell pre-built connectors and advisory help for institutions that find Communicator Open hard to implement. A business like that exists because the work is real.
 
-## What This Means If You Are Running Fiserv
+## What This Means If You Run Fiserv
 
-Digital lending on Fiserv is an integration story. Communicator Open is the API layer. The AppMarket is the vendor marketplace. Third parties (Baker Hill, MANTL, MeridianLink, Epic LOS) are the actual origination engines.
+Digital lending on Fiserv is an integration project:
 
-Community banks that have solved this are seeing measurable results: 30% loan volume increases, 200% production gains. The question is not whether the integrations work. The question is whether your institution has clarity on its specific deployment (cloud vs. on-premises, Premier vs. Portico vs. Precision) to use the right vendor path.
+- **Communicator Open** is the API layer.
+- **The AppMarket** is where you find vendors.
+- **The origination system**, Fiserv's or a third party's, is where the borrower actually applies.
 
-A cloud-hosted Premier bank with a validated AppMarket LOS and a modern open banking layer for real-time income verification can close loans as fast as any fintech. That combination takes three vendors, two integration agreements, and a clear understanding of your own infrastructure.
+Before you pick a vendor, know your own setup: cloud or on-premises, and Premier, Precision or Portico. A cloud-hosted Premier bank can stand up a validated origination system with automated income and asset verification and close loans about as fast as a fintech. An on-premises Portico credit union can get there too, but it will need more of the integration work done for it, and it should budget time for that.
 
-The community banks moving fastest stopped treating "we are on Fiserv" as a constraint. They started treating it as a starting point.
+The banks moving fastest stopped treating "we are on Fiserv" as a constraint. They treat it as the starting point.
 
 :::pullquote
-The community banks moving fastest stopped treating "we are on Fiserv" as a constraint. They started treating it as a starting point.
+The banks moving fastest stopped treating "we are on Fiserv" as a constraint. They treat it as the starting point.
 :::
     `,
   },
