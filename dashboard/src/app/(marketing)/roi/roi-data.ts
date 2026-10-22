@@ -634,7 +634,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 34047,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$2.38B (Q2 2026, post-Signature Bank of Georgia acquisition)' },
+      { label: 'Total assets', value: '$2.36B (Q3 2026, post-Signature Bank of Georgia acquisition)' },
       { label: 'ROA', value: '1.25% (1H 2026, bank level)' },
       { label: 'NIM', value: '3.51% (Q2 2026, tax equivalent); nine consecutive quarters of expansion' },
       { label: 'Branch count', value: '23' },
