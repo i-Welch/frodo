@@ -1,4 +1,7 @@
 import { GLOSSARY_TERMS } from './glossary/glossary-data';
+import { trackerFaqs } from './de-novo-watch/tracker-faq';
+import { STACK_UPDATED, stackFaqs } from './bank-tech-stack/stack-data';
+import { TRACKER_SUMMARY } from './de-novo-watch/de-novo-data';
 import { SOLUTIONS } from './solutions/solutions-data';
 import { INTEGRATIONS } from './integrations/integrations-data';
 import { articles } from './blog/articles-index';
@@ -98,6 +101,12 @@ function articlesSection(): string {
   return `## Research and articles\n\nRAVEN publishes FDIC-data-backed research on community bank performance, de novo banks, fraud, and verification at [${SITE}/blog](${SITE}/blog). The [De Novo Watch tracker](${SITE}/de-novo-watch) follows newly chartered and in-organization banks, and the [Bank Tech Stack Tracker](${SITE}/bank-tech-stack) lists the digital banking, lending and account-opening vendors Southeast banks and credit unions run.\n\n${lines.join('\n')}`;
 }
 
+// Tracker answers in Q&A form, generated from the same data as the pages.
+function trackersSection(): string {
+  const qa = (faqs: { q: string; a: string }[]) => faqs.map((f) => `**${f.q}**\n${f.a}`).join('\n\n');
+  return `## Tracker data\n\n### De Novo Watch (${SITE}/de-novo-watch, updated ${TRACKER_SUMMARY.updated})\n\n${qa(trackerFaqs())}\n\n### Bank Tech Stack Tracker (${SITE}/bank-tech-stack, updated ${STACK_UPDATED})\n\n${qa(stackFaqs())}`;
+}
+
 export function buildLlmsTxt(): string {
   return [
     INTRO,
@@ -123,6 +132,7 @@ RAVEN never uses URL-encoded form submissions; all sensitive PII (SSNs, names, a
     integrationsSection(),
     glossarySection(true),
     articlesSection(),
+    trackersSection(),
     compliance,
     CONTACT,
     `## Canonical URL\n\n${SITE}`,
