@@ -161,6 +161,62 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     asOf: '2026-10-19',
   },
   {
+    name: 'Upstart Bank, National Association',
+    location: 'Wilmington, DE',
+    status: 'application-pending',
+    statusDetail:
+      'FDIC deposit insurance application received Mar 25, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval July 23, 2026 (Corporate Decision #1382). A fully digital consumer lender making unsecured personal, house-secured and auto-secured loans, funded at first through brokered and placement-network deposits.',
+    capital: 'OCC requires at least $404.1M, a 12% tier 1 leverage ratio and a 15% total risk-based ratio for three years',
+    leadership: 'Proposed CEO Annie Delgado, Upstart chief risk officer',
+    techNotes: 'Fintech parent: Upstart Network moves its existing lending operations into the bank.',
+    articleSlug: 'fintech-bank-charter-rush-2026',
+    asOf: '2026-10-22',
+  },
+  {
+    name: 'Revolut Bank US, N.A.',
+    location: 'Stamford, CT',
+    status: 'application-pending',
+    statusDetail:
+      'FDIC deposit insurance application received Mar 5, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval Sept 2, 2026 (Corporate Decision #1390), excluding the retail foreign exchange business, which needs separate sign-off. Revolut targets a 2027 launch.',
+    capital: 'OCC requires at least $95M and a 10% tier 1 leverage ratio for three years',
+    techNotes: 'Fintech parent: Revolut serves U.S. customers through partner banks today.',
+    articleSlug: 'fintech-bank-charter-rush-2026',
+    asOf: '2026-10-22',
+  },
+  {
+    name: 'OpenReserve Bank, National Association',
+    location: 'Salt Lake City, UT',
+    status: 'application-pending',
+    statusDetail:
+      'FDIC deposit insurance application received Apr 13, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval Sept 2, 2026 (Corporate Decision #1389). Deposit and lending products with tokenized deposits, payments, treasury, digital asset services and a banking-as-a-service platform; no branches.',
+    capital: 'OCC requires at least $210M and a 12% tier 1 leverage ratio',
+    techNotes: 'Plans a stablecoin-issuing subsidiary; that application had not been filed as of the OCC decision.',
+    articleSlug: 'fintech-bank-charter-rush-2026',
+    asOf: '2026-10-22',
+  },
+  {
+    name: 'Mission Lane Bank, National Association',
+    location: 'Richmond, VA',
+    status: 'application-pending',
+    statusDetail:
+      'FDIC deposit insurance application received Apr 20, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval Sept 25, 2026 (Corporate Decision #1394) for a credit card bank under the Competitive Equality Banking Act, focused on subprime credit cards. Mission Lane will move its card program to the bank over three years.',
+    capital: 'OCC requires at least $35M and an 11% tier 1 leverage ratio for three years',
+    techNotes: 'Fintech parent: card programs currently issued through partner banks TAB Bank and WebBank (Banking Dive, Sept 28, 2026).',
+    articleSlug: 'fintech-bank-charter-rush-2026',
+    asOf: '2026-10-22',
+  },
+  {
+    name: 'Nubank, National Association',
+    location: 'McLean, VA',
+    status: 'application-pending',
+    statusDetail:
+      'FDIC deposit insurance application received Oct 29, 2025; pending as of Oct 20, 2026. OCC conditional approval announced Jan 29, 2026, 121 days after the Sept 30, 2025 application. Planned deposit accounts, credit cards, lending and digital asset custody.',
+    leadership: 'Co-founder Cristina Junqueira leads the U.S. bank; former Central Bank of Brazil president Roberto Campos Neto to chair the board',
+    techNotes: 'Fintech parent: Nu Holdings, about 127M customers in Brazil, Mexico and Colombia.',
+    articleSlug: 'fintech-bank-charter-rush-2026',
+    asOf: '2026-10-22',
+  },
+  {
     name: 'Tidestone Bank',
     location: 'Coral Gables, FL',
     status: 'application-pending',
