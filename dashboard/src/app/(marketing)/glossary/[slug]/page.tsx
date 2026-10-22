@@ -55,7 +55,7 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
         url: `https://reportraven.tech/glossary/${slug}`,
         inDefinedTermSet: {
           '@type': 'DefinedTermSet',
-          name: 'RAVEN Lending Verification Glossary',
+          name: 'RAVEN Community Banking and Lending Glossary',
           url: 'https://reportraven.tech/glossary',
         },
       },

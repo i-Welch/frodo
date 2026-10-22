@@ -3,14 +3,14 @@ import { SiteShell } from '../site-shell';
 import { GLOSSARY_TERMS, type GlossaryTerm } from './glossary-data';
 
 export const metadata: Metadata = {
-  title: 'Lending Verification Glossary',
+  title: 'Community Banking and Lending Glossary',
   description:
-    'Plain-English definitions of borrower verification terms: VOD, VOE, VOM, asset verification, income verification, synthetic identity fraud, and more.',
+    'Plain-English definitions of community banking and lending terms: VOD, VOE, KYC, synthetic identity fraud, loan origination systems, ROA, net interest margin, ILCs and more.',
   alternates: { canonical: 'https://reportraven.tech/glossary' },
   openGraph: {
-    title: 'Lending Verification Glossary',
+    title: 'Community Banking and Lending Glossary',
     description:
-      'Plain-English definitions of borrower verification terms, from VOD and VOE to synthetic identity fraud.',
+      'Plain-English definitions of community banking and lending terms, from VOD and KYC to net interest margin and industrial loan companies.',
     url: 'https://reportraven.tech/glossary',
     siteName: 'RAVEN',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'DefinedTermSet',
-  name: 'RAVEN Lending Verification Glossary',
+  name: 'RAVEN Community Banking and Lending Glossary',
   url: 'https://reportraven.tech/glossary',
   hasDefinedTerm: GLOSSARY_TERMS.map((t) => ({
     '@type': 'DefinedTerm',
@@ -91,7 +91,7 @@ export default function GlossaryIndex() {
             <em>Lexicon</em>
           </h1>
           <p className="gdx-sub">
-            Every term that shows up in a loan file or an exam, defined in plain English:
+            Every term that shows up in a loan file, an exam or a call report, defined in plain English:
             what it means, how the traditional process works, and what the modern version
             looks like. {GLOSSARY_TERMS.length} entries and counting.
           </p>
