@@ -49,10 +49,10 @@ export interface CharterMove {
 export const CHARTER_MOVES: CharterMove[] = [
   {
     name: 'Southern Bank',
-    charterOrigin: 'Chartered July 2, 1945 in Sardis, GA (Bank of Sardis, later Bank of Burke County)',
-    move: 'Recapitalized starting 2021 (equity $9.5M to $31.4M); relaunched as Southern Bank; headquarters redomiciled to Spartanburg, SC on April 14, 2026. $400M assets at Q1 2026, with branches in Greenville, Aiken, and Myrtle Beach.',
+    charterOrigin: 'Chartered July 2, 1945 in Sardis, GA (Bank of Sardis; Bank of Burke County from 1987; Southern Bank since 2001)',
+    move: 'Recapitalized starting 2021 (equity $9.5M to $31.4M); opened in Spartanburg in 2023; headquarters redomiciled to Spartanburg, SC on April 14, 2026. $400M assets at Q1 2026. Its four Georgia branches went to Palmetto Citizens FCU on Aug 1, 2026, leaving four South Carolina offices.',
     articleSlug: 'southern-bank-spartanburg-side-door',
-    asOf: '2026-07-22',
+    asOf: '2026-10-21',
   },
   {
     name: 'First City Bank',
