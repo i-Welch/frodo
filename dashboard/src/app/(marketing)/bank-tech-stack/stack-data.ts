@@ -19,6 +19,8 @@ export interface StackRow {
   audit: boolean;
 }
 
+import { csvCell } from '../de-novo-watch/tracker-csv';
+
 export const STACK_UPDATED = '2026-10-21';
 
 export const CATEGORIES: { key: StackKey; label: string }[] = [
@@ -453,4 +455,18 @@ export function stackFaqs(): StackFaq[] {
         .map((x) => `${x.name} (${x.layers.join(', ')})`)
         .join('; ')}. Verified ${STACK_UPDATED}.`,
     }));
+}
+
+export function stackCsv(): string {
+  const header = ['institution', 'type', 'states', 'assets', ...CATEGORIES.map((c) => c.key), 'audit_url', 'verified'];
+  const rows = STACK_ROWS.map((r) => [
+    r.name,
+    r.type,
+    r.states.join(' '),
+    r.assets,
+    ...CATEGORIES.map((c) => r[c.key] ?? ''),
+    `https://reportraven.tech/audit/${r.slug}`,
+    STACK_UPDATED,
+  ]);
+  return `${[header, ...rows].map((r) => r.map(csvCell).join(',')).join('\n')}\n`;
 }

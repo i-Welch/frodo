@@ -39,6 +39,7 @@ const jsonLd = {
       dateModified: STACK_UPDATED,
       isAccessibleForFree: true,
       license: `${URL}#citation`,
+      distribution: { '@type': 'DataDownload', encodingFormat: 'text/csv', contentUrl: `${URL}/data.csv` },
       keywords: ['bank technology', 'digital banking vendor', 'loan origination system', 'community bank', 'credit union', 'Banno', 'Q2', 'MeridianLink', 'ICE Encompass'],
     },
     {
@@ -183,7 +184,7 @@ export default function BankTechStackPage() {
           mortgagewebcenter.com and loanwebcenter.com for Finastra&rsquo;s Mortgagebot) and the online
           banking login host. A vendor is listed only when that evidence identifies it; inferred or
           likely vendors are left as &ldquo;Not identified.&rdquo; Core processors are not listed because
-          they are rarely visible from outside. Free to cite with attribution to RAVEN (reportraven.tech).
+          they are rarely visible from outside. Free to cite with attribution to RAVEN (reportraven.tech). Download the data as <a href="/bank-tech-stack/data.csv">CSV</a>.
         </p>
         <p>
           See also the <a href="/de-novo-watch">De Novo Watch</a> tracker and our{' '}
