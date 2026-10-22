@@ -91,10 +91,13 @@ const articles: Record<string, Article> = {
   'robins-financial-20-million-rebate': {
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:
-      'Robins Financial runs a 16.1% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
+      'Robins Financial runs a 17% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
     publishedDate: 'August 17, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the net worth ratio (17.3% in the first quarter of 2026, not 16.1%), the branch count, the base payroll figure and the history of the credit union's field of membership.*
+
 # The Credit Union That Can't Spend Its Money Fast Enough
 
 *Published August 17, 2026*
@@ -108,15 +111,15 @@ On December 9, Robins Financial Credit Union deposited $20 million into its memb
 What Robins Financial has handed back to members through annual rebates since 2017, including $20 million this past December. A bank would call it a special dividend. Robins calls it Tuesday.
 :::
 
-The institution doing this started on April 1, 1954, when 13 civilian and military personnel at Robins Air Force Base signed a charter application. Seventy-two years later it holds $4.91 billion in assets, serves 272,542 members from 24 branches, and runs a 16.1% net worth ratio while earning a return on assets that annualized to roughly 1.8% in the first quarter of 2026, about two and a half times the industry's recent run rate.
+The institution doing this started on April 1, 1954, when 13 civilian and military personnel at Robins Air Force Base signed a charter application. Seventy-two years later it holds $4.91 billion in assets, serves 272,542 members from 23 branches, and ran a 17.3% net worth ratio in the first quarter of 2026 while earning a return on assets that annualized to roughly 1.8% in the first quarter of 2026, about two and a half times the industry's recent run rate.
 
 Every other credit union in this series strains against a capital ceiling. Robins lives so far above its own that it gives the excess away, and the pile keeps growing anyway.
 
 ## The Membership Math
 
-The charter tells you how they got here. For 62 years this was Robins Federal Credit Union, an Air Force base credit union with a base credit union's boundaries. In January 2016 it converted to a Georgia state charter, dropped "Federal" from its name, and unlocked a field of membership covering roughly 43 middle Georgia counties plus family of members.
+The charter tells you how they got here. For 62 years this was Robins Federal Credit Union, which took a community charter in 2000 that opened membership well beyond the base. In January 2016 it converted to a Georgia state charter, dropped "Federal" from its name, and unlocked a field of membership covering roughly 43 middle Georgia counties plus family of members.
 
-The sponsor, meanwhile, did something sponsors in this series haven't done: it thrived. [Founders'](/blog/founders-credit-union-mill-town) textile mill closed in 2007. [Champions First](/blog/champions-first-fsu-rebrand) spent three years researching its way out of its sponsor's name. Robins Air Force Base grew 11% in two years to more than 21,000 workers, generates a $4.48 billion annual economic impact, and stands as Georgia's largest single-site industrial complex. Its payroll alone runs about $2.89 billion a year, and its employees live in 110 of Georgia's 159 counties.
+The sponsor, meanwhile, did something sponsors in this series haven't done: it thrived. [Founders'](/blog/founders-credit-union-mill-town) textile mill closed in 2007. [Champions First](/blog/champions-first-fsu-rebrand) spent three years researching its way out of its sponsor's name. Robins Air Force Base grew 11% in two years to more than 21,000 workers, generates a $4.48 billion annual economic impact, and stands as Georgia's largest single-site industrial complex. Its payroll alone runs about $1.7 billion a year, and its employees live in 110 of Georgia's 159 counties.
 
 :::pullquote
 Founders' sponsor died. Champions First renamed its way around its sponsor. Robins' sponsor grew 11% in two years, and the credit union compounds on top of it.
@@ -141,7 +144,7 @@ First-quarter net income: $21.9 million. In three months.
 
 ## The Capital Ceiling
 
-Here's where Robins becomes the mirror image of everyone we've covered. A credit union can't issue stock, so retained earnings normally act as a speed limit: grow faster than earnings can support and the net worth ratio compresses. Champions First lives right at that limit. Robins has the opposite condition. At a 1.8% return on a 16.1% ratio, it could fund roughly 11% annual growth from earnings alone. It's actually growing at about 5%. The capital pile rises every year it doesn't find something to do with the money.
+Here's where Robins becomes the mirror image of everyone we've covered. A credit union can't issue stock, so retained earnings normally act as a speed limit: grow faster than earnings can support and the net worth ratio compresses. Champions First lives right at that limit. Robins has the opposite condition. At a 1.8% return on a 17.3% ratio, it could fund roughly 10% annual growth from earnings alone. It's actually growing at about 5%. The capital pile rises every year it doesn't find something to do with the money.
 
 The rebate is the release valve, and it's the purest expression of the cooperative structure you'll find. A bank in this position would announce a buyback and watch the stock pop. Robins computes each member's share of the surplus and wires it back. $20 million this year. $151 million and counting.
 
@@ -155,7 +158,7 @@ The 2016 charter conversion bought one more thing worth naming: disclosure. As a
 
 The digital setup is solid and conventional. Online banking runs on Q2. Account opening lives at newaccount.robinsfcu.org, a first-party subdomain, and loan applications route through the Q2 shell rather than a third-party portal. No Floridascu-style ghosts in the URLs, no handoff to a vendor domain at the moment of conversion.
 
-The strategic question is hiding in that base statistic: Robins AFB employees live in 110 of Georgia's 159 counties. Robins has 24 branches. For most of the people with the strongest possible reason to join, the nearest branch is an hour away or more, and the digital front door isn't a convenience channel. It is the branch network.
+The strategic question is hiding in that base statistic: Robins AFB employees live in 110 of Georgia's 159 counties. Robins has 23 branches. For most of the people with the strongest possible reason to join, the nearest branch is an hour away or more, and the digital front door isn't a convenience channel. It is the branch network.
 
 That matters because the rebate, the thing that makes Robins famous, pays on relationship depth. A member who borrows, keeps a share draft, and runs their financial life through the credit union gets a real check in December. A member who parked a certificate gets a rounding error. The whole model compounds when a new member lands with a verified identity, a linked funding account, and a share draft on day one, and stalls when joining takes a branch visit that 110 counties' worth of eligible people will never make. Verification-first onboarding isn't a member-experience nicety for an institution like this. It's how the flywheel gets fed.
 
@@ -167,8 +170,11 @@ Robins is what the end state of the cooperative model looks like: a sponsor that
     description:
       "Springs Mills left South Carolina in 2007. The credit union its workers founded in 1950 now holds $5.18 billion, serves 2.5 members for every resident of its home county, and just lived through a succession reversal you'd need an 8-K to see at a bank.",
     publishedDate: 'August 17, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the timing of the Grace plant closings and the period of the net worth ratio, removed an unsupported growth ranking and a mortgage origination count we could not confirm, and noted the VITAL Federal Credit Union merger.*
+
 # The Mill Closed. The Credit Union Didn't.
 
 *Published August 17, 2026*
@@ -177,7 +183,7 @@ Robins is what the end state of the cooperative model looks like: a sponsor that
 
 In 1950, a group of Springs Mills employees in Lancaster, South Carolina started a credit union to keep their coworkers away from loan sharks. They named it Springmaid, after the company's bedsheet brand. Springs wasn't just the sponsor; it was the town. At its peak, the company's original plant employed nearly a third of Lancaster County.
 
-The mill side of that story ended in June 2007, when Springs closed the Grace plants in Lancaster, its last manufacturing operations in South Carolina after 120 years, and moved production to Brazil. Five hundred forty workers lost their jobs on the way out.
+The mill side of that story ended in the summer of 2007, when Springs closed the Grace plants in Lancaster, its last manufacturing operations in South Carolina after 120 years, and moved production to Brazil. Five hundred forty workers lost their jobs on the way out.
 
 The credit union side kept going. Founders Federal Credit Union, as Springmaid has been called since 1980, holds $5.18 billion in assets as of March 31, 2026. It runs 49 branches across the Carolinas, employs 890 people, and serves 290,408 members from a headquarters in a county of 114,300 residents.
 
@@ -204,11 +210,11 @@ And the funnel works. Founders added roughly 4,600 net members in the first quar
 Founders' sponsor company has been gone for nineteen years. The credit union built on its payroll deduction now signs up more members in a quarter than some community charters add in two decades.
 :::
 
-Geography helps. Lancaster County grew 2.7% last year, roughly 3,000 new residents, the fastest-growing county in the Charlotte metro, driven by the Indian Land panhandle where Charlotte spills across the state line. Billion-dollar Sharonview Federal moved its own headquarters to Indian Land, in the same county. The mill town is now a boomtown, and Founders was already standing there when the growth arrived.
+Geography helps. Lancaster County grew 2.7% last year, roughly 3,000 new residents, driven by the Indian Land panhandle where Charlotte spills across the state line. Billion-dollar Sharonview Federal moved its own headquarters to Indian Land, in the same county. The mill town is now a boomtown, and Founders was already standing there when the growth arrived.
 
 ## The Balance Sheet
 
-The loan book is where Founders stops looking like everyone else. Of $4.07 billion in total loans, real estate accounts for $2.30 billion, vehicles and other secured lending about $1.16 billion, and unsecured credit $605.8 million. That last figure is the tell: roughly one loan dollar in seven at Founders is unsecured, personal loans, express loans, and credit cards extended to ordinary members on signature. The mortgage operation is big enough that Founders actually files HMDA, a rarity in this series: 2,139 originations for $332.8 million in 2024, a real reported number rather than an estimate.
+The loan book is where Founders stops looking like everyone else. Of $4.07 billion in total loans, real estate accounts for $2.30 billion, vehicles and other secured lending about $1.16 billion, and unsecured credit $605.8 million. That last figure is the tell: roughly one loan dollar in seven at Founders is unsecured, personal loans, express loans, and credit cards extended to ordinary members on signature. The mortgage operation is big enough that Founders actually files HMDA, a rarity in this series.
 
 Lending deep pays. Loan income annualizes to a yield of about 7.1%. Cost of funds runs about 2.2% of shares. The spread between those two numbers is the engine.
 
@@ -225,7 +231,7 @@ One familiar wrinkle hides in the funding. Share drafts, the primary-relationshi
 
 ## The Capital Ceiling
 
-Net worth stands at $684.7 million, 13.2% of assets, against the 7% well-capitalized floor and an industry aggregate around 11.3% at the end of 2025. No subordinated debt. Every dollar of it retained since 1950. At a 1.29% return on a 13.2% ratio, Founders can fund roughly 10% annual asset growth from earnings alone, faster than it's actually growing. Most institutions in this series are capital-constrained or funnel-constrained. Founders is neither.
+Net worth stood at $684.7 million at the end of 2025, 13.2% of assets, against the 7% well-capitalized floor and an industry aggregate around 11.3% at the end of 2025. No subordinated debt. Every dollar of it retained since 1950. At a 1.29% return on a 13.2% ratio, Founders can fund roughly 10% annual asset growth from earnings alone, faster than it's actually growing. Most institutions in this series are capital-constrained or funnel-constrained. Founders is neither, and it has been adding members by merger too: VITAL Federal Credit Union joined in September 2025.
 
 Which is why its 2026 story is about the one thing retained earnings can't buy: a succession.
 
@@ -255,8 +261,11 @@ And that's the real lesson of both stories in Lancaster. Springmaid outlived the
     description:
       "Champions First Credit Union grew assets 34% since 2022 through two mergers and a rebrand. It added roughly 900 members. Inside a $535 million Tallahassee credit union whose new name still hasn't reached its application layer.",
     publishedDate: 'August 12, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the net worth ratio and the year of the 0.6% return on assets, and removed claims about a 2018 expansion, a state membership cap, a CDFI grant and an indirect lending channel that we could not source.*
+
 # The Credit Union Formerly Known as FSU
 
 *Published August 12, 2026*
@@ -274,7 +283,7 @@ Membership didn't. The FDOT merger created a credit union with about 32,000 memb
 Net new members Champions First has added since January 1, 2022, a stretch in which total assets grew roughly 34%. That works out to about 220 net members a year.
 :::
 
-That's the number that doesn't fit. Two mergers, a seven-county charter expansion, a full rebrand, and a balance sheet a third bigger. Everything grew except the number of member-owners.
+That's the number that doesn't fit. Two mergers, a full rebrand, and a balance sheet a third bigger. Everything grew except the number of member-owners.
 
 ## The Membership Math
 
@@ -282,10 +291,8 @@ The legal ceiling here is generous. Champions First's field of membership covers
 
 For context, the two credit unions we profiled earlier this month, [REV Federal](/blog/rev-credit-union-west-virginia-bet) and [Palmetto Citizens](/blog/palmetto-citizens-90-year-wait), each penetrate their fields of membership at just under 9%. Champions First is working with a fraction of that, in a footprint that includes some of the fastest-growing counties in Florida.
 
-There's a sharper version of this number in the regulatory record. When the credit union expanded west in 2018, adding Escambia, Santa Rosa, Okaloosa, Walton, Holmes, Washington, and Jefferson counties, Florida's Office of Financial Regulation approved the expansion with a condition attached: no more than 2,500 new members a year from the new territory.
-
 :::pullquote
-The state capped Champions First at 2,500 new members a year from its western expansion. The entire credit union is netting about 220.
+Champions First's field of membership covers roughly 1.6 million people. The entire credit union is netting about 220 new members a year.
 :::
 
 Net numbers hide churn, to be fair. The credit union signs up far more than 220 people a year and loses most of the gain to attrition. But that is the point. For a cooperative, net member growth is the growth rate that matters, because members are the customer base and the funding base at the same time.
@@ -298,11 +305,11 @@ One structural note. For a bank, we'd check county deposit share from the FDIC S
 
 Inside the $413.6 million loan book, the engine has been swapped mid-flight. Real estate lending grew 22% in 2024, from $113.4 million to $138.4 million, and stands at $162.4 million as of March 2026. Real estate went from under a third of the loan book two years ago to nearly 40% today.
 
-The bucket that used to define this credit union is moving the other way. Autos and other consumer loans, $235.1 million at the end of 2023, slipped to $231.1 million in 2024. Credit cards fell 4%. About $42 million of 2024's auto volume came through the iDrive CUSO, an indirect lending pipeline that puts Champions First financing on dealership desks in Leon and Bay counties. Indirect paper keeps a loan book full, but a dealership-sourced borrower gets you a loan, not necessarily a member. Indirect members are notoriously single-product.
+The bucket that used to define this credit union is moving the other way. Autos and other consumer loans, $235.1 million at the end of 2023, slipped to $231.1 million in 2024. Credit cards fell 4%.
 
 The funding side tells you what flat membership costs. Of $476.2 million in total shares, just $79.8 million, under 17%, sits in share drafts, the checking-equivalent balances that mark a member's primary financial relationship. Certificates and money market balances make up 54.5% of shares. That money is loyal to a rate, not to an institution.
 
-And the rate got paid. Dividends on shares jumped 49% in 2024, to $8.0 million, while interest income grew 20%. Provision expense rose 24%. Net income fell 12%, to $3.0 million, a return on assets of about 0.6%.
+And the rate got paid. Dividends on shares jumped 49% in 2024, to $8.0 million, while interest income grew 20%. Provision expense rose 24%. Net income fell 12%, to $3.0 million, a 2024 return on assets of about 0.6%.
 
 :::stat
 **49%**
@@ -311,11 +318,11 @@ The one-year increase in dividends Champions First paid on shares in 2024, again
 
 ## The Capital Ceiling
 
-None of this is a solvency story. Net worth stands at roughly $54.2 million, 10.1% of assets, comfortably clear of the 7% floor that defines a well-capitalized credit union. Asset quality looks tame, with the allowance at 0.73% of loans.
+None of this is a solvency story. Net worth stood at 10.85% of assets at the end of 2025 and 10.52% in the first quarter of 2026, comfortably clear of the 7% floor that defines a well-capitalized credit union. Asset quality looks tame, with the allowance at 0.73% of loans.
 
-The ceiling is arithmetic. A credit union cannot issue stock, and Champions First carries no subordinated debt, so every dollar of future capital has to come from retained earnings. An institution earning 0.6% on assets while holding a 10% net worth ratio can grow about 6% a year before the ratio starts to slide. Champions First grew 6.5% in 2024. It is running at almost exactly the speed its earnings allow, with nothing in reserve.
+The ceiling is arithmetic. A credit union cannot issue stock, and Champions First carries no subordinated debt, so every dollar of future capital has to come from retained earnings. An institution earning 0.6% on assets, as Champions First did in 2024, while holding a net worth ratio near 10% can grow about 6% a year before the ratio starts to slide. Champions First grew 6.5% in 2024. It is running at almost exactly the speed its earnings allow, with nothing in reserve.
 
-That's what makes the funding math risky to extrapolate. Flat membership means growth gets bought with certificate rates. Bought funding compresses earnings. Compressed earnings lower the speed limit. A $900,000 CDFI grant in 2024, nearly a third of that year's net income, helped the earnings line once. The flagship branch planned for Pensacola, on property purchased in 2024, adds fixed cost pointed at the market the GPCE members came from.
+That's what makes the funding math risky to extrapolate. Flat membership means growth gets bought with certificate rates. Bought funding compresses earnings. Compressed earnings lower the speed limit. The flagship branch planned for Pensacola, on property purchased in 2024, adds fixed cost pointed at the market the GPCE members came from.
 
 :::pullquote
 Flat membership never shows up on a cooperative's income statement as a missing line. It shows up as a 49% jump in the price of funding.
@@ -329,7 +336,7 @@ Online banking at my.championsfirst.org runs on Jack Henry's Banno platform, a c
 
 This month, that's changing. Champions First has been preparing members since January for an August 2026 rollout of a new online banking platform and mobile app, alongside a new chatbot and phone system. It's the first major infrastructure decision of the Champions First era.
 
-The replatform will fix how the front door looks. Whether it fixes the funnel depends on what happens after someone taps "apply": whether identity, income, and a funding account get verified in one sitting, or whether the new brand still hands its most important moment to a third-party domain that remembers the old name. Champions First is allowed 2,500 new members a year from its western counties alone and is netting about 220 across the whole institution. In a footprint growing as fast as the Florida Panhandle, that gap isn't a demand problem. It's a funnel problem, and funnel problems, unlike charters and names, don't take three years of research to fix.
+The replatform will fix how the front door looks. Whether it fixes the funnel depends on what happens after someone taps "apply": whether identity, income, and a funding account get verified in one sitting, or whether the new brand still hands its most important moment to a third-party domain that remembers the old name. Champions First's field of membership holds roughly 1.6 million people, and it is netting about 220 new members a year. In a footprint growing as fast as the Florida Panhandle, that gap isn't a demand problem. It's a funnel problem, and funnel problems, unlike charters and names, don't take three years of research to fix.
     `,
   },
   'palmetto-citizens-90-year-wait': {
@@ -337,8 +344,11 @@ The replatform will fix how the front door looks. Whether it fixes the funnel de
     description:
       "Palmetto Citizens Federal Credit Union's own charter has let Georgia residents join for years. It still took a struggling bank's branch sale, and the same Sardis, Georgia institution RAVEN already profiled, to actually show up there.",
     publishedDate: 'August 3, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the number of customers in the acquired branches, Glascock County's population rank, the largest of the four Georgia towns and the size of the loan portfolio, and removed an asset target we could not source.*
+
 # Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.
 
 *Published August 3, 2026*
@@ -347,7 +357,7 @@ The replatform will fix how the front door looks. Whether it fixes the funnel de
 
 Palmetto Citizens Federal Credit Union didn't need anyone's permission to serve a member in Georgia. Its charter has allowed that for years, through a partnership with the Carolina Consumer Council that opens membership to residents of South Carolina, North Carolina, Georgia, Tennessee, and Virginia. Nobody had to file anything. Nobody had to wait on the NCUA.
 
-And yet the Columbia, South Carolina credit union didn't put a branch in Georgia until August 1, 2026, when it closed on four branches bought from Southern Bank in Waynesboro, Sardis, Gibson, and Hephzibah. It started serving those roughly 7,000 customers as members two days later. Ninety years after its 1936 charter, this is Palmetto Citizens' first physical presence outside South Carolina.
+And yet the Columbia, South Carolina credit union didn't put a branch in Georgia until August 1, 2026, when it closed on four branches bought from Southern Bank in Waynesboro, Sardis, Gibson, and Hephzibah. It started serving those roughly 3,000 customers as members two days later. Ninety years after its 1936 charter, this is Palmetto Citizens' first physical presence outside South Carolina.
 
 The seller has its own story, and it's one we've told before. [Southern Bank is the 1945-chartered Georgia bank](/blog/southern-bank-spartanburg-side-door) that recapitalized, moved its headquarters to Spartanburg, and grew from $93 million to $400 million by planting itself squarely in South Carolina's growth corridor. This deal is Southern Bank finishing that job: selling off the Georgia branches it grew out of, the town of Sardis among them, to a South Carolina credit union that was legally free to serve those same Georgia customers the whole time and simply never had a reason to show up until the bank that started there decided to leave.
 
@@ -366,19 +376,19 @@ Palmetto Citizens' core field of membership runs through eight counties in the S
 Palmetto Citizens' approximate membership penetration across its eight-county South Carolina field of membership, before counting the Carolina Consumer Council states. The Georgia acquisition adds members faster than years of eligible-but-unconverted South Carolinians would.
 :::
 
-The Georgia side of the math looks nothing like the Midlands. Waynesboro, the biggest of the four new towns and the seat of Burke County, has 5,439 people and is shrinking at roughly 1% a year. Median household income sits at $41,620, with more than a quarter of residents below the poverty line. Sardis has 995 people. Gibson is the seat of Glascock County, the fourth-least-populous county in the entire state of Georgia, at 2,884 residents. Hephzibah, the largest by population at 3,830, at least sits inside the Augusta metro.
+The Georgia side of the math looks nothing like the Midlands. Waynesboro, the seat of Burke County, has 5,439 people and is shrinking at roughly 1% a year. Median household income sits at $41,620, with more than a quarter of residents below the poverty line. Sardis has 995 people. Gibson is the seat of Glascock County, the fifth-least-populous county in the entire state of Georgia, at 2,884 residents. Hephzibah, at 3,830 people, at least sits inside the Augusta metro.
 
 None of that is a knock on the deal. Palmetto Citizens has held CDFI certification since April 2023, one of only 20 credit unions in South Carolina to earn it, a designation that exists specifically to reward lenders serving low-income and underserved communities. A shrinking Georgia county with a 26% poverty rate is exactly the kind of market that certification is built around. It's just a very different member than the one Palmetto Citizens has spent 90 years signing up in growing, affluent Lexington County.
 
 ## The Balance Sheet
 
-The acquisition itself barely moves Palmetto Citizens' numbers. The credit union carries roughly $1.44 billion in assets, $192.9 million in net worth, and a net worth ratio of 13.34%, comfortably above the 7% regulatory floor and ahead of the roughly 11.3% the credit union industry ran in aggregate at the end of 2025. Chief Lending Officer Robert Terrell oversees a loan portfolio of about $734 million. Palmetto Citizens doesn't publish category-level loan mix the way a bank's 10-Q footnotes would, and no CRA performance evaluation exists for a credit union at all, so the auto-versus-mortgage-versus-business split behind that $734 million stays private.
+The acquisition itself barely moves Palmetto Citizens' numbers. The credit union carries roughly $1.44 billion in assets, $192.9 million in net worth, and a net worth ratio of 13.34%, comfortably above the 7% regulatory floor and ahead of the roughly 11.3% the credit union industry ran in aggregate at the end of 2025. Chief Lending Officer Robert Terrell oversees a loan portfolio of about $830 million as of mid-2026. Palmetto Citizens doesn't publish category-level loan mix the way a bank's 10-Q footnotes would, and no CRA performance evaluation exists for a credit union at all, so the auto-versus-mortgage-versus-business split behind that $830 million stays private.
 
 Against that balance sheet, the Georgia branches bring roughly $83 million in shares and $20 million in loans onto the books, per the terms disclosed when the deal was announced in November 2025. That's about 5.8% of Palmetto Citizens' total assets and less than 3% of its loan book. This is not a balance sheet-altering transaction. It's a rounding error with a press release attached, which is exactly why a credit union with no stock to issue and no equity market to tap could absorb it without much strain.
 
 ## The Capital Ceiling
 
-Here's where the real constraint shows up, and it isn't this deal. CEO Robert Dozier has said he wants Palmetto Citizens above $2 billion in assets by 2028 or 2029. That's roughly 39% growth from today's $1.44 billion in three to four years, funded entirely by retained earnings the credit union kept instead of paying out as member dividends, tax-free, the tradeoff for a structure with no shareholders and no stock offering waiting in reserve if growth outpaces capital.
+Here's where the real constraint shows up, and it isn't this deal. Any growth plan from today's $1.44 billion has to be funded entirely by retained earnings the credit union kept instead of paying out as member dividends, tax-free, the tradeoff for a structure with no shareholders and no stock offering waiting in reserve if growth outpaces capital.
 
 A $20 million loan book from four small-town Georgia branches doesn't test that math. A repeat of this deal, five or six times the size, would. Dozier's own target implies exactly that kind of repeat performance: either faster organic growth than a 13.34%-net-worth-ratio institution typically produces on its own, or more acquisitions like this one, each a little bigger, each drawing the same capital cushion down a little further.
 
@@ -396,10 +406,13 @@ Then there's business lending. Lines of credit, term loans, commercial real esta
   'rev-credit-union-west-virginia-bet': {
     title: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
     description:
-      "A Charleston-area credit union is buying a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its own charter doesn't reach anywhere near there.",
+      "A Charleston-area credit union bought a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its home turf is 520 miles away.",
     publishedDate: 'August 2, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected the deal timeline (it closed July 1, 2026; May 1, 2027 is the systems conversion target), REV's field of membership, First Bancorp's home state and deal status, and Roane County's income and unemployment figures.*
+
 # REV Federal Credit Union's 520-Mile Bet on West Virginia
 
 *Published August 2, 2026*
@@ -408,12 +421,12 @@ Then there's business lending. Lines of credit, term loans, commercial real esta
 
 Spencer, West Virginia sits 520 miles from Summerville, South Carolina. Nine hours by car, most of it through mountains that eat cell signal. REV Federal Credit Union has never had a member in Spencer. It's about to own the town's only bank.
 
-The target is First Neighborhood Bank, a 114-year-old institution with roughly $150 million in assets, five branches, and 39 employees spread across Spencer, Ripley, and Parkersburg. REV announced the deal in 2024. West Virginia's Division of Financial Institutions, the FDIC, and the NCUA signed off on May 27, 2026, clearing the way for a close targeted for May 1, 2027. Lawyers on the transaction called it the first time a credit union has ever bought a bank in West Virginia. Nobody in that state had a form for this, which is a decent explanation for why approval took the better part of two years.
+The target is First Neighborhood Bank, a 114-year-old institution with roughly $150 million in assets, five branches, and 39 employees spread across Spencer, Ripley, and Parkersburg. REV announced the deal in 2024. West Virginia's Division of Financial Institutions, the FDIC, and the NCUA signed off on May 27, 2026, and the deal closed on July 1, 2026, with the systems conversion targeted for May 1, 2027. Lawyers on the transaction called it the first time a credit union has ever bought a bank in West Virginia. Nobody in that state had a form for this, which is a decent explanation for why approval took the better part of two years.
 
 REV isn't some scrappy startup punching above its weight. It's a $1.15 billion federal credit union with 67,000 members and 17 branches around Charleston, and this is its third expansion in five years, after 2021 mergers with two small North Carolina credit unions, Riegelwood and Hamlet. CEO Jason Lee calls the strategy "Growth with Purpose," part of a five-year plan he's named VISION2030, and he's been explicit about the destination: he wants REV to "operate as a multi-billion financial institution."
 
 :::pullquote
-A credit union chartered around Charleston's harbor just became the presumptive owner of a bank in a county most of its own members couldn't find on a map.
+A credit union chartered around Charleston's harbor just became the owner of a bank in a county most of its own members couldn't find on a map.
 :::
 
 That's the number that doesn't fit. Not the price tag, which is small change against REV's balance sheet. It's the 520 miles, and everything they imply about why a growing institution goes looking for growth somewhere its own charter doesn't reach.
@@ -424,7 +437,7 @@ Here's what REV's federal charter actually authorizes. Anyone who lives, works, 
 
 Not one line of that list touches West Virginia.
 
-Which raises the obvious question: how does a customer of First Neighborhood Bank in Spencer become a member of REV once the deal closes? The honest answer, based on how the NCUA has handled prior credit-union-buys-bank deals, is that the agency effectively folds the acquired customer base into membership as a condition of approving the transaction. It's a workaround, not a charter expansion, and West Virginia had never seen the workaround applied before this deal.
+Which raises the obvious question: how does a customer of First Neighborhood Bank in Spencer become a member of REV? Part of the answer is a charter expansion: REV's field of membership now also includes Wirt and Wood counties in West Virginia and Washington County, Ohio. The rest comes with the deal itself, which brings the bank's existing customers along, and West Virginia had never seen that done before.
 
 Meanwhile, REV's actual home turf is nowhere near full. Charleston, Berkeley, and Dorchester counties alone hold something north of 840,000 people, and Colleton adds another 39,000. REV's 67,000 members work out to somewhere under 8% of that population, before anyone counts the North Carolina counties or the base affiliation. This is a credit union with a nine-figure runway of unconverted eligible members sitting inside its own charter, choosing to spend capital chasing 7,000 new members two states and a mountain range away instead.
 
@@ -443,7 +456,7 @@ What the public numbers don't show is loan mix. REV doesn't publish the kind of 
 
 ## The Capital Ceiling
 
-This is where the structural difference between a credit union and a bank actually bites. First Bancorp, a public South Carolina bank holding company, financed its own acquisition of Carolina Bank & Trust this year with a mix of stock and cash: roughly $126 million in shares and $40 million in cash. REV doesn't have that option. It can't issue stock to anyone, member or outside investor. Every dollar it spends on First Neighborhood has to come from capital it already earned and kept, tax-free, over years of member dividends the credit union chose not to pay out.
+This is where the structural difference between a credit union and a bank actually bites. First Bancorp, a public North Carolina bank holding company, agreed this year to buy Carolina Bank & Trust with a mix of stock and cash: roughly $126 million in shares and $40 million in cash. REV doesn't have that option. It can't issue stock to anyone, member or outside investor. Every dollar it spends on First Neighborhood has to come from capital it already earned and kept, tax-free, over years of member dividends the credit union chose not to pay out.
 
 That's not a knock on the model. It's the tradeoff for the exemption: no shareholders to answer to, and no equity market to tap when a deal gets expensive.
 
@@ -457,7 +470,7 @@ Run the arithmetic. First Neighborhood carries roughly $150 million in assets ag
 
 REV is also mid-rebuild on the technology side. It relaunched its digital banking platform over the past year and has a new, in-house loan origination and application system targeted for a 2026 launch, a build decision rather than a buy decision, which is the harder and slower path but the one that gives REV control over how a Charleston-area member and a Mid-Ohio Valley member experience the same institution.
 
-That gap is about to get tested for real. A retiree in Summerville and a borrower in Roane County, where median household income runs around $37,000 and unemployment sits near 11%, are not the same member, and REV's new intake system will need to verify both without REV doubling its back office to do it. Every credit union crossing into a market its charter never anticipated hits the same day-one decision: whether the stack was built for the members it has, or for the members it's about to inherit from somewhere the charter never reached.
+That gap is about to get tested for real. A retiree in Summerville and a borrower in Roane County, where median household income runs in the mid-$40,000s and unemployment was recently near 5%, are not the same member, and REV's new intake system will need to verify both without REV doubling its back office to do it. Every credit union crossing into a market its charter never anticipated hits the same day-one decision: whether the stack was built for the members it has, or for the members it's about to inherit from somewhere the charter never reached.
     `,
   },
   'optimumbank-98-percent-cre-growth': {

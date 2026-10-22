@@ -2837,7 +2837,7 @@
       {
         "title": "Commercial lending is the least digital, right as it becomes the priority",
         "severity": "gap",
-        "body": "REV just promoted its business-solutions director to Vice President of Commercial Banking, signaling a real strategic push into commercial lending. But commercial real estate has no online application at all, and the business credit card requires a branch visit. REV is about to absorb First Neighborhood Bank's commercial customers in Roane County, West Virginia, a rural, commercial-dependent market 520 miles from the nearest REV branch. Email and branch visits do not scale across that distance."
+        "body": "REV just promoted its business-solutions director to Vice President of Commercial Banking, signaling a real strategic push into commercial lending. But commercial real estate has no online application at all, and the business credit card requires a branch visit. REV has absorbed First Neighborhood Bank's commercial customers in Roane County, West Virginia, a rural, commercial-dependent market 520 miles from the nearest REV branch. Email and branch visits do not scale across that distance."
       },
       {
         "title": "REV already knows this needs fixing",
@@ -3071,11 +3071,6 @@
         "body": "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But the account-opening URL still identifies the institution as “Floridascu,” the App Store listing still says FSU Credit Union Mobility, and every loan application leaves the brand for a generic MeridianLink portal. The brand investment stops at exactly the moment a prospect decides whether to become a member."
       },
       {
-        "title": "Allowed 2,500 new members a year from the western counties; netting about 220 total",
-        "severity": "gap",
-        "body": "Florida's Office of Financial Regulation capped the 2018 seven-county western expansion at 2,500 new members a year. The whole credit union has netted roughly 900 members since January 2022, about 220 a year, against a 1.6-million-person field of membership that includes some of Florida's fastest-growing counties. Penetration sits near 2% while comparable Southeast credit unions run near 9%. That is a conversion problem, not a demand problem."
-      },
-      {
         "title": "Funding costs rose 49% because new members did not show up",
         "severity": "friction",
         "body": "Only 17% of shares sit in share drafts, the primary-relationship balances that arrive with new members. Growth got bought instead: dividends on shares jumped 49% in 2024 to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares. Rate-bought money leaves with the rate. Members do not."
@@ -3103,17 +3098,12 @@
         "withRaven": "Automated verification in minutes, in-flow"
       },
       {
-        "dimension": "Indirect auto borrowers (iDrive CUSO)",
-        "today": "A loan on the books, rarely a primary member",
-        "withRaven": "Verified membership and share draft opened at loan intake"
-      },
-      {
         "dimension": "Business lending",
         "today": "No dedicated online application",
         "withRaven": "Digital business intake with entity and owner verification"
       }
     ],
-    "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; Florida OFR field-of-membership record (2018 expansion, 2,500 members/year condition); American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
+    "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
   },
   {
     "slug": "founders-federal-credit-union",
@@ -3221,7 +3211,7 @@
         "withRaven": "Digital intake with entity and owner verification"
       }
     ],
-    "sources": "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, business and membership pages, reviewed August 2026); apply.foundersfcu.com and mortgage.foundersfcu.com (application domains); Q2 external-link whitelist in foundersfcu.com page source; info.q2.com published Founders FCU customer story; fitcuso.com (FIT CUSO KeyStone-specific product line); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 5493001AGQGPJ3N3YL33 (2,139 originations, $332.8M); CUToday, CU Times, WRHI, and Tyfone coverage of the 2025-2026 leadership transition; Home Textiles Today for Springs Industries plant closure history."
+    "sources": "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, business and membership pages, reviewed August 2026); apply.foundersfcu.com and mortgage.foundersfcu.com (application domains); Q2 external-link whitelist in foundersfcu.com page source; info.q2.com published Founders FCU customer story; fitcuso.com (FIT CUSO KeyStone-specific product line); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 5493001AGQGPJ3N3YL33; CUToday, CU Times, WRHI, and Tyfone coverage of the 2025-2026 leadership transition; Home Textiles Today for Springs Industries plant closure history."
   },
   {
     "slug": "robins-financial-credit-union",
@@ -3240,14 +3230,14 @@
       },
       {
         "label": "Net worth ratio",
-        "value": "16.1% (Mar 2026)"
+        "value": "17.3% (Mar 2026)"
       },
       {
         "label": "Returned to members since 2017",
         "value": "$151M in annual rebates"
       }
     ],
-    "summary": "Robins Financial is the healthiest institution in this series: a 16.1% net worth ratio, a ~1.8% annualized ROA built on a 1.15% cost of funds, and a $20 million December member rebate ($151 million since 2017). Its digital architecture is sound: Q2 online banking and first-party account opening at newaccount.robinsfcu.org, with no third-party domain handoffs. The strategic gap is between eligibility and reach. Robins AFB employees live in 110 of Georgia's 159 counties and the 2016 state charter opened roughly 43 counties, but the branch network is 24 locations, so for most eligible members the digital front door is the only door. The rebate flywheel pays on relationship depth, which makes conversion quality at intake (verified identity, linked funding account, share draft on day one) the highest-leverage variable in the model.",
+    "summary": "Robins Financial is the healthiest institution in this series: a 17.3% net worth ratio, a ~1.8% annualized ROA built on a 1.15% cost of funds, and a $20 million December member rebate ($151 million since 2017). Its digital architecture is sound: Q2 online banking and first-party account opening at newaccount.robinsfcu.org, with no third-party domain handoffs. The strategic gap is between eligibility and reach. Robins AFB employees live in 110 of Georgia's 159 counties and the 2016 state charter opened roughly 43 counties, but the branch network is 24 locations, so for most eligible members the digital front door is the only door. The rebate flywheel pays on relationship depth, which makes conversion quality at intake (verified identity, linked funding account, share draft on day one) the highest-leverage variable in the model.",
     "currentJourney": [
       {
         "channel": "Online banking",
@@ -3282,14 +3272,14 @@
         "body": "Robins' December rebate pays on relationship depth: loans held, dividends earned, accounts used. A new member who joins with a verified identity, a linked funding account, and an open share draft starts feeding that flywheel immediately; one who abandons a flow that defers verification to a branch visit never enters it. For an institution whose 30.9% share-draft mix is the foundation of a 1.15% cost of funds, intake conversion quality is not a UX metric. It is the funding strategy."
       },
       {
-        "title": "110 counties of eligible members, 24 branches",
+        "title": "110 counties of eligible members, 23 branches",
         "severity": "gap",
         "body": "Robins AFB's 21,000+ workers live in 110 of Georgia's 159 counties, and the 2016 charter conversion opened roughly 43 counties of eligibility. The branch network covers a fraction of that geography, so for the majority of people with the strongest reason to join, Robins is digital or nothing. Remote identity, income, and funding-account verification is what makes a Valdosta base contractor or a member's daughter in Savannah servable at all."
       },
       {
         "title": "A 30.9% share-draft mix is the series-best asset, and the most attackable",
         "severity": "note",
-        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Digital banks and fintechs took 44% of new checking accounts opened in 2024 (Cornerstone Advisors), on account-opening speed. Defending this mix means matching that speed with the verification rigor a 16.1%-capitalized institution expects, inside the first-party flow Robins already owns."
+        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Digital banks and fintechs took 44% of new checking accounts opened in 2024 (Cornerstone Advisors), on account-opening speed. Defending this mix means matching that speed with the verification rigor a 17%-capitalized institution expects, inside the first-party flow Robins already owns."
       },
       {
         "title": "The architecture is right; the depth is the question",

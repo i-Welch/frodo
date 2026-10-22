@@ -37,7 +37,7 @@ export const articles: Article[] = [
     slug: 'robins-financial-20-million-rebate',
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:
-      'Robins Financial runs a 16.1% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
+      'Robins Financial runs a 17% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
     readTime: '6 min read',
     date: 'August 2026',
     category: 'creditunion',
@@ -77,7 +77,7 @@ export const articles: Article[] = [
     slug: 'rev-credit-union-west-virginia-bet',
     title: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
     description:
-      "A Charleston-area credit union is buying a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its own charter doesn't reach anywhere near there.",
+      "A Charleston-area credit union bought a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its home turf is 520 miles away.",
     readTime: '6 min read',
     date: 'August 2026',
     category: 'creditunion',
