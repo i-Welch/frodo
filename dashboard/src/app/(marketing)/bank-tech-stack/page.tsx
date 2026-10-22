@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
-import { CATEGORIES, STACK_ROWS, STACK_UPDATED, stackFaqs, vendorCounts } from './stack-data';
+import { CATEGORIES, STACK_ROWS, STACK_UPDATED, distinctVendors, stackFaqs, vendorCounts } from './stack-data';
 
 const URL = 'https://reportraven.tech/bank-tech-stack';
 
@@ -24,6 +24,7 @@ const faqs = stackFaqs();
 const rows = [...STACK_ROWS].sort((a, b) => a.name.localeCompare(b.name));
 const banks = STACK_ROWS.filter((r) => r.type === 'bank').length;
 const cus = STACK_ROWS.length - banks;
+const fragmented = rows.filter((r) => distinctVendors(r) >= 4);
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -124,6 +125,12 @@ export default function BankTechStackPage() {
             </div>
           ))}
         </div>
+        {fragmented.length > 0 && (
+          <p>
+            The most fragmented stacks belong to {fragmented.map((r) => r.name).join(', ')}: each runs at
+            least four different identified vendors across these four layers, before counting the core.
+          </p>
+        )}
         <p className="bts-note">
           Counts are institutions where the vendor was positively identified. &ldquo;Not identified&rdquo;
           means the flow was checked but did not reveal a vendor, or the product has no online application.

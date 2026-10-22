@@ -417,6 +417,12 @@ export const STACK_ROWS: StackRow[] = [
   },
 ];
 
+/** Distinct identified vendors across the four layers ("Maxwell and ICE Encompass" counts as two). */
+export function distinctVendors(r: StackRow): number {
+  const names = CATEGORIES.flatMap((c) => (r[c.key] ?? '').split(' and ')).filter(Boolean);
+  return new Set(names).size;
+}
+
 export function vendorCounts(key: StackKey): [string, number][] {
   const counts = new Map<string, number>();
   for (const r of STACK_ROWS) {
