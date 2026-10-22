@@ -253,6 +253,36 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           }
         }
 
+        /* --- Tables --- */
+        .article-body div.table-wrap {
+          margin: 2rem 0;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+        .article-body table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.88rem;
+          line-height: 1.5;
+        }
+        .article-body th,
+        .article-body td {
+          padding: 0.6rem 0.75rem;
+          text-align: left;
+          vertical-align: top;
+          border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .article-body th {
+          font-size: 0.72rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--gray-400);
+          border-bottom-color: rgba(255,255,255,0.18);
+          white-space: nowrap;
+        }
+        .article-body td { color: var(--gray-200); }
+
         /* --- Article meta --- */
         .article-meta {
           display: flex;

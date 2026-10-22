@@ -3,14 +3,14 @@ import { SiteShell } from '../site-shell';
 import { GLOSSARY_TERMS, type GlossaryTerm } from './glossary-data';
 
 export const metadata: Metadata = {
-  title: 'Lending Verification Glossary',
+  title: 'Community Banking and Lending Glossary',
   description:
-    'Plain-English definitions of borrower verification terms: VOD, VOE, VOM, asset verification, income verification, synthetic identity fraud, and more.',
+    'Plain-English definitions of community banking and lending terms: VOD, VOE, KYC, synthetic identity fraud, loan origination systems, ROA, net interest margin, ILCs and more.',
   alternates: { canonical: 'https://reportraven.tech/glossary' },
   openGraph: {
-    title: 'Lending Verification Glossary',
+    title: 'Community Banking and Lending Glossary',
     description:
-      'Plain-English definitions of borrower verification terms, from VOD and VOE to synthetic identity fraud.',
+      'Plain-English definitions of community banking and lending terms, from VOD and KYC to net interest margin and industrial loan companies.',
     url: 'https://reportraven.tech/glossary',
     siteName: 'RAVEN',
     type: 'website',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'DefinedTermSet',
-  name: 'RAVEN Lending Verification Glossary',
+  name: 'RAVEN Community Banking and Lending Glossary',
   url: 'https://reportraven.tech/glossary',
   hasDefinedTerm: GLOSSARY_TERMS.map((t) => ({
     '@type': 'DefinedTerm',
@@ -38,7 +38,17 @@ const TOPICS: Record<string, { label: string; tone: 'fraud' | 'reg' | 'verif' }>
   'synthetic-identity-fraud': { label: 'Fraud', tone: 'fraud' },
   'customer-identification-program': { label: 'Regulatory', tone: 'reg' },
   'ecbsv': { label: 'Regulatory', tone: 'reg' },
+  'know-your-customer': { label: 'Regulatory', tone: 'reg' },
+  'cre-concentration': { label: 'Regulatory', tone: 'reg' },
+  'call-report': { label: 'Bank metrics', tone: 'reg' },
+  'hmda': { label: 'Regulatory', tone: 'reg' },
+  'return-on-assets': { label: 'Bank metrics', tone: 'reg' },
+  'net-interest-margin': { label: 'Bank metrics', tone: 'reg' },
+  'efficiency-ratio': { label: 'Bank metrics', tone: 'reg' },
+  'loan-to-deposit-ratio': { label: 'Bank metrics', tone: 'reg' },
   'de-novo-bank': { label: 'Regulatory', tone: 'reg' },
+  'industrial-loan-company': { label: 'Regulatory', tone: 'reg' },
+  'banking-as-a-service': { label: 'Regulatory', tone: 'reg' },
   'verification-of-deposit': { label: 'Verification', tone: 'verif' },
   'verification-of-employment': { label: 'Verification', tone: 'verif' },
   'verification-of-mortgage': { label: 'Verification', tone: 'verif' },
@@ -46,6 +56,8 @@ const TOPICS: Record<string, { label: string; tone: 'fraud' | 'reg' | 'verif' }>
   'asset-verification': { label: 'Verification', tone: 'verif' },
   'income-verification': { label: 'Verification', tone: 'verif' },
   'bank-account-verification': { label: 'Verification', tone: 'verif' },
+  'loan-origination-system': { label: 'Verification', tone: 'verif' },
+  'digital-banking-platform': { label: 'Verification', tone: 'verif' },
 };
 
 function firstSentence(text: string): string {
@@ -82,7 +94,7 @@ export default function GlossaryIndex() {
             <em>Lexicon</em>
           </h1>
           <p className="gdx-sub">
-            Every term that shows up in a loan file or an exam, defined in plain English:
+            Every term that shows up in a loan file, an exam or a call report, defined in plain English:
             what it means, how the traditional process works, and what the modern version
             looks like. {GLOSSARY_TERMS.length} entries and counting.
           </p>

@@ -4,6 +4,7 @@ import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { INTEGRATIONS, getIntegration } from '../integrations-data';
+import { STACK_ROWS, stackUsage } from '../../bank-tech-stack/stack-data';
 
 export function generateStaticParams() {
   return INTEGRATIONS.map((i) => ({ slug: i.slug }));
@@ -31,6 +32,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
   const { slug } = await params;
   const integration = getIntegration(slug);
   if (!integration) notFound();
+  const usage = stackUsage(slug);
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -112,6 +114,17 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
             )}
           </section>
         ))}
+
+        {usage.length > 0 && (
+          <section>
+            <h2>Who runs {integration.name} in the Southeast</h2>
+            <p>
+              In our <a href="/bank-tech-stack">Bank Tech Stack Tracker</a>, {usage.length} of the {STACK_ROWS.length}{' '}
+              Southeast banks and credit unions we have audited {usage.length === 1 ? 'runs' : 'run'} {integration.name}:{' '}
+              {usage.map((u) => `${u.name} (${u.layers.join(', ')})`).join('; ')}.
+            </p>
+          </section>
+        )}
 
         <section className="int-faq">
           <h2>Frequently asked questions</h2>

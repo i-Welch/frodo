@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { articles } from '../../src/app/(marketing)/blog/articles-index';
-import { BLOG_DATES, BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
+import { BLOG_DATES, BLOG_SLUGS, BLOG_UPDATED } from '../../src/app/(marketing)/blog/published';
 import { ROI_BANKS, getRoiBank } from '../../src/app/(marketing)/roi/roi-data';
 import { getAudit } from '../../src/app/(whitelabel)/_config/audit-data';
 import { getWlConfig } from '../../src/app/(whitelabel)/_config/registry';
@@ -27,6 +27,20 @@ describe('content integrity', () => {
       expect(BLOG_DATES[slug], `${slug}: missing BLOG_DATES entry`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
       expect(indexed.has(slug), `${slug}: missing from articles-index.ts`).toBe(true);
       expect(articleKeys.has(slug), `${slug}: missing from blog/[slug]/page.tsx`).toBe(true);
+    }
+  });
+
+  it('corrected articles carry their correction date into the sitemap', () => {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const page = readFileSync(ARTICLE_PAGE, 'utf8').replace(/\r\n/g, '\n');
+    for (const m of page.matchAll(/^ {2}'([a-z0-9-]+)': \{\n([\s\S]*?)\n {4}content: `/gm)) {
+      const [, slug, head] = m;
+      const u = head.match(/updatedDate: '(\w+) (\d+), (\d{4})'/);
+      if (!u || !BLOG_SLUGS.includes(slug)) continue;
+      const iso = `${u[3]}-${String(months.indexOf(u[1]) + 1).padStart(2, '0')}-${u[2].padStart(2, '0')}`;
+      if (iso > BLOG_DATES[slug]) {
+        expect(BLOG_UPDATED[slug], `${slug}: add '${iso}' to BLOG_UPDATED in published.ts`).toBe(iso);
+      }
     }
   });
 
@@ -63,7 +77,7 @@ describe('content integrity', () => {
       const body = match![2].trim();
       expect(meta.slug, `${file}: slug must match the file name`).toBe(file.replace(/\.md$/, ''));
       expect(meta.title && meta.description, `${file}: title and description are required`).toBeTruthy();
-      expect(meta.url, `${file}: url`).toMatch(/^https:\/\/reportraven\.tech\/(blog\/[a-z0-9-]+|de-novo-watch)$/);
+      expect(meta.url, `${file}: url`).toMatch(/^https:\/\/reportraven\.tech\/(blog\/[a-z0-9-]+|de-novo-watch|bank-tech-stack)$/);
       const blogSlug = meta.url.match(/\/blog\/([a-z0-9-]+)$/)?.[1];
       if (blogSlug) expect(articleKeys.has(blogSlug), `${file}: links to unknown article ${blogSlug}`).toBe(true);
       if (meta.notBefore) expect(meta.notBefore, `${file}: notBefore`).toMatch(/^\d{4}-\d{2}-\d{2}$/);

@@ -247,15 +247,15 @@ export const ROI_BANKS: BankRoiInput[] = [
         'Broward County has roughly 1.99 million residents and approximately 740,000 households. Population growth has slowed sharply on affordability and domestic out-migration, so this uses a conservative ~0.5% annual household formation rate. OptimumBank operates 3 of Broward\'s 369 branches plus one Miami-Dade office, so only a fraction of county household formation is addressable.',
     },
     intro:
-      "OptimumBank is the largest bank still headquartered in Broward County, holding $865.3 million of local deposits across three branches as of the FDIC's June 2025 survey. That is more than half of all deposits held by the five remaining Broward-headquartered institutions combined, in a $69.69 billion market dominated by Bank of America, Chase, and Wells Fargo. The bank grew total assets 40.2% in the twelve months ending June 30, 2026, to $1.40 billion, and 98.7% of its $432.5 million in loan growth was commercial real estate. The borrower base is South Florida commercial: investors and operators in CRE, HOA and property management relationships, SBA-eligible small businesses, and, through the new OptimumFunding subsidiary, skilled nursing, senior housing, and multifamily sponsors seeking bridge-to-HUD financing. This is a commercial verification problem, not a retail mortgage one.",
+      "OptimumBank is the largest bank still headquartered in Broward County, holding $865.3 million of local deposits across three branches as of the FDIC's June 2025 survey. That is more than half of all deposits held by the five remaining Broward-headquartered institutions combined, in a $69.46 billion market dominated by Bank of America, Chase, and Wells Fargo. The bank grew total assets 40.2% in the twelve months ending June 30, 2026, to $1.40 billion, and 98.7% of its $432.5 million in loan growth was commercial real estate. The borrower base is South Florida commercial: investors and operators in CRE, HOA and property management relationships, SBA-eligible small businesses, and, through the new OptimumFunding subsidiary, skilled nursing, senior housing, and multifamily sponsors seeking bridge-to-HUD financing. This is a commercial verification problem, not a retail mortgage one.",
     strategic: [
       {
         title: 'A CRE Book That Nearly Doubled in a Year Has to Prove Its File Quality',
-        body: "Commercial real estate went from $478.2 million to $905.2 million in four quarters, and now represents 74.4% of gross loans. Against Tier 1 capital plus reserves of roughly $158.7 million, that is about 570% of capital, well past the 300% level at which interagency guidance directs examiners to take a closer look, and the 50%-over-36-months growth criterion was met in a single year. Nothing about that is disqualifying on its own. What it does guarantee is that the next safety-and-soundness exam will test whether underwriting discipline held while the book doubled: global cash flow on sponsors, verified rent rolls, entity documentation, and consistent income and asset support on guarantors. Files assembled by email and PDF do not produce that evidence on demand. RAVEN captures borrower and guarantor income, assets, and entity data from source at intake, with a timestamped audit trail per file, which is precisely the artifact an examiner asks for when the concentration ratio is the first thing on the scoping memo.",
+        body: "Commercial real estate went from $478.2 million to $905.2 million in four quarters, and now represents 74.4% of gross loans. Against Tier 1 capital plus reserves of roughly $148.6 million, that is about 609% of capital, well past the 300% level at which interagency guidance directs examiners to take a closer look, and the 50%-over-36-months growth criterion was met in a single year. Nothing about that is disqualifying on its own. What it does guarantee is that the next safety-and-soundness exam will test whether underwriting discipline held while the book doubled: global cash flow on sponsors, verified rent rolls, entity documentation, and consistent income and asset support on guarantors. Files assembled by email and PDF do not produce that evidence on demand. RAVEN captures borrower and guarantor income, assets, and entity data from source at intake, with a timestamped audit trail per file, which is precisely the artifact an examiner asks for when the concentration ratio is the first thing on the scoping memo.",
       },
       {
         title: "The Website Says 'Traditional In-Person Banking.' The Balance Sheet Says Otherwise.",
-        body: "The title tag on optimumbank.com reads \"Traditional in-person banking for businesses and consumers residing in South Florida.\" The SBA page, advertising loans up to $5 million, ends at \"Schedule an Appointment Now.\" There is no online loan application for any product, no digital deposit account opening, and the online banking links serve existing customers only. That was a coherent posture for a $154.5 million bank. It is a strange one for a $1.4 billion bank adding $126 million of loans per quarter with four offices. Every dollar of that growth currently arrives through a lender's relationships and a calendar invitation. A branded digital intake layer does not replace the relationship model that built this bank; it stops the bank from losing the deals that arrive at 9pm from a sponsor who found them through a broker and wants to move this week.",
+        body: "The title tag on optimumbank.com reads \"Traditional in-person banking for businesses and consumers residing in South Florida.\" Small business financing now hands off to a third party, \"OptimumBank Business Finance, Powered by Newtek Lending,\" on Newtek's own site. None of the bank's own lending products has an online application, there is no digital deposit account opening, and the online banking links serve existing customers only. That was a coherent posture for a $190 million bank. It is a strange one for a $1.4 billion bank adding $126 million of loans per quarter with four offices. Every dollar of that growth currently arrives through a lender's relationships and a calendar invitation. A branded digital intake layer does not replace the relationship model that built this bank; it stops the bank from losing the deals that arrive at 9pm from a sponsor who found them through a broker and wants to move this week.",
       },
       {
         title: 'Growth Is Outrunning the Cost Base, and Verification Is Where That Shows Up First',
@@ -272,38 +272,38 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'south-atlantic-bank-coastal-growth-engine',
     articleTitle: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     fdicCert: 58689,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.93B' },
-      { label: 'ROA', value: '1.05%' },
-      { label: 'NIM', value: '3.06%' },
+      { label: 'Total assets', value: '$1.98B' },
+      { label: 'ROA', value: '1.07% (1H 2026, annualized)' },
+      { label: 'NIM', value: '3.30% (1H 2026)' },
       { label: 'Branch count', value: '12' },
     ],
     volumes: {
-      mortgage: { count: 415, source: 'HMDA 2024 originations per CRA public file / search data: 415 loans totaling $196.4M', estimated: false },
-      commercial: { count: 900, source: 'FDIC call report LNRERES $543M, LNRENRES $559M, LNRECONS $241M, LNCI $80M, LNCON $5M as of Q1 2026 (CERT 58689)', estimated: true },
-      consumer: { count: 200, source: 'FDIC call report LNRERES $543M, LNRENRES $559M, LNRECONS $241M, LNCI $80M, LNCON $5M as of Q1 2026 (CERT 58689)', estimated: true },
+      mortgage: { count: 252, source: 'HMDA 2025 originations (FFIEC data browser, LEI 5493003I223S7AP6XL58): 252 loans totaling $148.4M; 174 purchase, 52 refi, 21 cash-out refi, 5 other; all conventional. 2024: 225 loans, $113.5M.', estimated: false },
+      commercial: { count: 900, source: 'FDIC call report LNRERES $548M, LNRENRES $592M, LNRECONS $266M, LNCI $82M as of Q2 2026 (CERT 58689)', estimated: true },
+      consumer: { count: 200, source: 'FDIC call report LNRERES $548M, LNRENRES $592M, LNRECONS $266M, LNCI $82M as of Q2 2026 (CERT 58689)', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 7500,
-      source: 'Horry County ~155,909 households growing 3.8% annually (all in-migration) = ~5,924 net new; Georgetown County and Beaufort County footprint adds ~1,500-2,000 additional. Combined estimate ~7,500/year across assessment area (ACS 2019-2023, Census population estimates).',
+      source: 'Horry County grew from 351,038 (2020 base) to 413,391 (July 2024, Census V2024), ~14,700 residents a year, ~6,400 households at 2.3 per household; Georgetown, Charleston-area and Beaufort County offices add ~1,000+. Combined estimate ~7,500/year across the footprint (estimated).',
     },
-    intro: "South Atlantic Bank's footprint spans the fastest-growing coastal corridor in the Southeast: Horry County (Myrtle Beach, Conway, North Myrtle Beach) plus assessment areas in Georgetown County and the Beaufort/Jasper MSA (Hilton Head/Bluffton). Horry County's 3.8% annual population growth is driven almost entirely by in-migration, with projections of 216,000 additional residents by 2042. The bank serves a borrower base that skews toward retirees relocating from northern states, tourism-driven commercial borrowers, second-home buyers, and resort-area construction developers. The combination of high in-migration rates, active vacation home and CRE construction, and a relatively affluent transplant demographic creates strong ongoing demand for mortgage, HELOC, and commercial real estate financing.",
+    intro: "South Atlantic Bank's 12 offices span the South Carolina coast: Horry County (Myrtle Beach, North Myrtle Beach, Murrells Inlet), Georgetown County, the Charleston area (Charleston, Mount Pleasant, Summerville) and the Lowcountry (Bluffton, Hilton Head Island, Beaufort). Horry County grew 17.8% from 2020 to 2024 (Census Bureau), driven by in-migration. The bank serves a borrower base that skews toward retirees relocating from northern states, tourism-driven commercial borrowers, second-home buyers, and resort-area construction developers. The combination of high in-migration rates, active vacation home and CRE construction, and a relatively affluent transplant demographic creates strong ongoing demand for mortgage, HELOC, and commercial real estate financing.",
     strategic: [
       {
-        title: 'A $1.4B RE Book Growing at 13% Needs Verification That Keeps Pace',
-        body: 'South Atlantic Bank grew its loan book 13.1% in 2024 and another 9.5% in 2025, with real estate loans now approaching $1.4B across residential, construction, and commercial categories. That growth is being processed by 159 employees across 12 branches, a ratio that leaves little slack for manual document chasing. Secondary mortgage income surged 80% in 2024 driven by increased origination commissions, meaning the bank is writing more loans faster without any visible investment in automated verification to handle the throughput. RAVEN replaces the income-stub shuffle and borrower follow-up that eat underwriter hours at precisely the loan volume where friction compounds: when every basis point of efficiency ratio matters and you are trying to close more files without adding headcount. At South Atlantic\'s current growth trajectory, the cost of not automating borrower verification is measured in delayed closings, missed rate locks, and loan officers spending afternoons on file cleanup instead of production.',
+        title: 'A $1.5B Loan Book Growing 8-10% a Year Needs Verification That Keeps Pace',
+        body: 'South Atlantic Bank grew gross loans 10.0% in 2025 and 7.6% in the year to June 2026, to $1.54B, with real estate loans now about $1.4B across residential, construction, and commercial categories. That growth is being processed by 175 FTEs across 12 offices, a ratio that leaves little slack for manual document chasing. HMDA mortgage originations rose from 225 to 252 in 2025 ($113.5M to $148.4M), meaning the bank is writing more loans without visible investment in automated verification to handle the throughput. RAVEN replaces the income-stub shuffle and borrower follow-up that eat underwriter hours at precisely the loan volume where friction compounds: when every basis point of efficiency ratio matters and you are trying to close more files without adding headcount. At South Atlantic\'s current growth trajectory, the cost of not automating borrower verification is measured in delayed closings, missed rate locks, and loan officers spending afternoons on file cleanup instead of production.',
       },
       {
         title: "Horry County's In-Migration Wave Is a New-Borrower Acquisition Machine",
-        body: "Horry County adds roughly 15,000 new residents per year and all of it is in-migration, retirees from Ohio and Pennsylvania, remote workers from the Northeast, and second-home buyers choosing the Grand Strand over Florida. These borrowers do not have existing banking relationships in South Carolina and are actively shopping for mortgages, HELOCs, and auto loans. South Atlantic Bank is competing for these borrowers against national lenders who offer fully digital applications with instant income verification. RAVEN lets a community bank match the digital experience of Rocket Mortgage or Better.com at application intake, verifying identity, income, employment, and assets in minutes rather than days, which is exactly the differentiation a $1.9B bank needs to win a transaction borrower who has no loyalty anchor. The bank's 3.8% annual county growth rate means roughly 7,500 net new households per year enter the footprint as potential first-time customers, and the bank that closes fastest captures the relationship.",
+        body: "Horry County grew 17.8% from 2020 to 2024, driven by in-migration: retirees, remote workers, and second-home buyers choosing the Grand Strand over Florida. These borrowers do not have existing banking relationships in South Carolina and are actively shopping for mortgages, HELOCs, and auto loans. South Atlantic Bank is competing for these borrowers against national lenders who offer fully digital applications with instant income verification. RAVEN lets a community bank match the digital experience of Rocket Mortgage or Better.com at application intake, verifying identity, income, employment, and assets in minutes rather than days, which is exactly the differentiation a $1.9B bank needs to win a transaction borrower who has no loyalty anchor. The bank's 3.8% annual county growth rate means roughly 7,500 net new households per year enter the footprint as potential first-time customers, and the bank that closes fastest captures the relationship.",
       },
       {
         title: 'Construction and CRE Concentration Demands Faster Commercial Borrower Underwriting',
-        body: "South Atlantic Bank carries $241M in construction and land development loans and $559M in nonfarm nonresidential CRE, together representing over 53% of its total loan book. These borrowers are developers, resort operators, and commercial real estate investors who expect transactional speed and view document-collection delays as a relationship risk. Commercial loan officers who manually request two years of business tax returns, bank statements, and entity documents from a developer building a 40-unit condominium complex on Ocean Boulevard are leaving the door open for a more responsive competitor. RAVEN's commercial income and asset verification closes that gap by letting the bank issue a faster term sheet backed by verified financials, not a pending checklist. For a bank growing C&I and CRE in a hot coastal construction market, verification speed is a competitive differentiator that shows up directly in relationship retention and pipeline close rates.",
+        body: "South Atlantic Bank carries $266M in construction and land development loans (up 40% in a year) and $592M in nonfarm nonresidential CRE, together about 56% of its loan book. These borrowers are developers, resort operators, and commercial real estate investors who expect transactional speed and view document-collection delays as a relationship risk. Commercial loan officers who manually request two years of business tax returns, bank statements, and entity documents from a developer building a condominium project on the Grand Strand are leaving the door open for a more responsive competitor. RAVEN's commercial income and asset verification closes that gap by letting the bank issue a faster term sheet backed by verified financials, not a pending checklist. For a bank growing C&I and CRE in a hot coastal construction market, verification speed is a competitive differentiator that shows up directly in relationship retention and pipeline close rates.",
       },
     ],
-    sources: 'FDIC API institutions endpoint CERT 58689, FDIC API financials endpoint CERT 58689, southatlantic.bank/digital-banking/online-banking, southatlantic.bank/news, southatlantic.bank/about-us/investor-relations, prnewswire.com SABK FY2024 earnings release, stocktitan.net/news/SABK (Q1 2026 earnings), census.gov QuickFacts Horry County SC, neilsberg.com Horry County population by year, southatlantic.bank CRA Public File April 2025 (PDF), worldpopulationreview.com Horry County, southcarolina-demographics.com Horry County demographics, wbtw.com Horry County population projections, talents.vaia.com Digital Banking Specialist I job posting, ziprecruiter.com South Atlantic Bank jobs, leadiq.com South Atlantic Bank tech stack',
+    sources: 'FDIC API institutions, financials and locations endpoints CERT 58689 (Q2 2026), FFIEC HMDA data browser 2024 and 2025 (LEI 5493003I223S7AP6XL58), southatlantic.bank (/mortgage/, loan pages, re-checked 2026-10-21), stocktitan.net/news/SABK (Q2 2026 earnings; Wicker ABA treasurer), census.gov QuickFacts Horry County SC (V2024)',
   },
   {
     slug: 'conway-national-bank',
@@ -312,38 +312,38 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'conway-national-bank-grand-strand-dominance',
     articleTitle: "Conway National Bank's Quiet Dominance on the Grand Strand",
     fdicCert: 2102,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.94B' },
-      { label: 'ROA', value: '1.23% (FY2025); 1.40% annualized (Q1 2026)' },
-      { label: 'NIM', value: '~3.10% annualized (Q1 2026 NIM: $15.2M quarterly on $1.94B assets)' },
-      { label: 'Branch count', value: '16' },
+      { label: 'Total assets', value: '$2.00B' },
+      { label: 'ROA', value: '1.23% (FY2025); 1.42% annualized (1H 2026)' },
+      { label: 'NIM', value: '3.31% (1H 2026)' },
+      { label: 'Branch count', value: '16 offices (FDIC)' },
     ],
     volumes: {
-      mortgage: { count: 309, source: 'HMDA 2024 originations via OriginationData.com (LEI: 2549008EFPQHWHJ5MO60): 309 total originations, $77.5M volume. Breakdown: 159 purchase, 108 refi, 28 home improvement, 14 other. All conventional loans.', estimated: false },
-      commercial: { count: 195, source: 'HMDA 2024 data via OriginationData.com: $77.5M mortgage origination volume. Residential RE book: $255.6M (FDIC call report Q1 2026). C&I book: $97.4M. Consumer loan book: $59.3M.', estimated: true },
-      consumer: { count: 2372, source: 'HMDA 2024 data via OriginationData.com: $77.5M mortgage origination volume. Residential RE book: $255.6M (FDIC call report Q1 2026). C&I book: $97.4M. Consumer loan book: $59.3M.', estimated: true },
+      mortgage: { count: 329, source: 'HMDA 2025 originations (FFIEC data browser, LEI 2549008EFPQHWHJ5MO60): 329 total, $82.1M. Breakdown: 161 purchase, 131 refi, 29 home improvement, 8 other. All conventional. 2024: 309, $77.5M.', estimated: false },
+      commercial: { count: 195, source: 'HMDA 2025 (FFIEC): $82.1M mortgage origination volume. FDIC call report Q2 2026: 1-4 family book $259.0M, C&I $96.7M, consumer $58.6M, nonfarm CRE $296.3M, construction $125.1M.', estimated: true },
+      consumer: { count: 2372, source: 'HMDA 2025 (FFIEC): $82.1M mortgage origination volume. FDIC call report Q2 2026: 1-4 family book $259.0M, C&I $96.7M, consumer $58.6M, nonfarm CRE $296.3M, construction $125.1M.', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 1100,
-      source: 'Horry County: 7,331 residential building permits issued in 2024 (Census/FRED BPPRIV045051). CNB holds 12.48% deposit market share in Horry County (4 consecutive years as #1). Applying ~12.5% share to 7,331 permits yields ~916 net-new owner-occupied households in footprint. Adding Georgetown County footprint (41 HMDA originations there in 2024) adds approximately 150-200 more. Total estimated ~1,100 new households per year in CNB\'s primary service area.',
+      source: 'Horry County: 7,331 residential building permits issued in 2024 (Census/FRED BPPRIV045051). CNB holds 12.41% of Horry County deposits (FDIC Summary of Deposits, June 2026; #1 every year 2021-2026). Applying ~12.5% share to 7,331 permits yields ~916 net-new owner-occupied households in footprint. Adding the Georgetown County footprint (27 HMDA originations there in 2025, 41 in 2024) adds approximately 150-200 more. Total estimated ~1,100 new households per year in CNB\'s primary service area.',
     },
-    intro: "CNB's primary market is Horry County, the fastest-growing county in South Carolina, anchored by Myrtle Beach and Conway. The county added 7,331 new housing units in 2024 alone and is projected to grow by 216,000+ residents by 2042. In-migration is driven by retirees from the Northeast (NY, NJ, PA, DC metro), remote workers, and families seeking coastal affordability. The Georgetown County footprint adds the Waccamaw Neck corridor (Pawleys Island, Murrells Inlet) - an affluent second-home and retirement market. The borrower base skews toward conventional purchase loans (159 of 309 HMDA originations in 2024), with meaningful refi and home-improvement volume from existing residents and retirees.",
+    intro: "CNB's primary market is Horry County, anchored by Myrtle Beach and Conway, which grew 17.8% from 2020 to 2024 (413,391 residents, Census Bureau) and issued permits for 7,331 new housing units in 2024 alone. In-migration is driven by retirees, remote workers, and families seeking coastal affordability. The Georgetown County footprint adds the Waccamaw Neck corridor (Pawleys Island, Murrells Inlet) - an affluent second-home and retirement market. The borrower base is all conventional, with purchase loans the largest share (161 of 329 HMDA originations in 2025) and meaningful refi and home-improvement volume from existing residents and retirees.",
     strategic: [
       {
         title: 'The In-Migration Borrower Problem: Verifying People Who Just Arrived',
-        body: "Horry County added over 7,300 new housing units in 2024, with the majority of CNB's purchase-mortgage borrowers originating from the Northeast and Mid-Atlantic. These in-migrants often have complex income profiles: recent job changes, remote-work arrangements, multi-state pay stubs, or newly retired status with investment income replacing W-2 wages. Manual document collection for these borrowers is slow and error-prone, and branch-centric processes that work fine for long-tenured local residents create friction for buyers who may never set foot in a Conway branch. RAVEN's automated income, employment, and asset verification resolves the file within hours regardless of where the borrower is calling from, giving CNB a competitive edge in the market it dominates.",
+        body: "Horry County issued permits for more than 7,300 new housing units in 2024, and much of the demand comes from buyers moving in from other states. These in-migrants often have complex income profiles: recent job changes, remote-work arrangements, multi-state pay stubs, or newly retired status with investment income replacing W-2 wages. Manual document collection for these borrowers is slow and error-prone, and branch-centric processes that work fine for long-tenured local residents create friction for buyers who may never set foot in a Conway branch. RAVEN's automated income, employment, and asset verification resolves the file within hours regardless of where the borrower is calling from, giving CNB a competitive edge in the market it dominates.",
       },
       {
         title: 'Efficiency Ratio Discipline Meets Loan Volume Growth',
-        body: 'CNB runs one of the most efficient community banks in South Carolina, with a sub-48% efficiency ratio in Q1 2026 - a metric that requires relentless cost discipline as the loan book grows. The bank originated 309 mortgages in 2024 and holds an $845M net loan portfolio against only 16 branches and a lean noninterest expense base of $34.6M. Scaling further without proportionally adding underwriting staff is the central operational challenge. RAVEN replaces the hours a loan processor spends chasing pay stubs, bank statements, and employer phone verifications with a single API-triggered workflow, compressing per-loan labor cost precisely where the efficiency-ratio math is most sensitive.',
+        body: 'CNB runs one of the most efficient community banks in South Carolina, with a 47.9% efficiency ratio in 1H 2026 (57.0% in 2024) - a metric that requires relentless cost discipline as the loan book grows. The bank originated 329 mortgages in 2025 and holds an $856M net loan portfolio against only 16 offices and a lean noninterest expense base of $34.5M (FY2025). Scaling further without proportionally adding underwriting staff is the central operational challenge. RAVEN replaces the hours a loan processor spends chasing pay stubs, bank statements, and employer phone verifications with a single API-triggered workflow, compressing per-loan labor cost precisely where the efficiency-ratio math is most sensitive.',
       },
       {
         title: 'Winning the Waccamaw Neck: Digital Reach Into an Affluent Second-Home Market',
-        body: "CNB's Georgetown County footprint covers Pawleys Island, Murrells Inlet, and the Waccamaw Neck corridor - a high-income coastal strip where the typical buyer may be a second-home purchaser or retiree from another state with complex asset structures (brokerage accounts, trust income, rental property cash flow). These borrowers expect the closing speed they associate with larger digital lenders, not a week of back-and-forth document requests. CNB generated 41 HMDA originations in Georgetown County in 2024 at an average loan size of $352K, well above the Horry County average, suggesting significant upside if turnaround times improve. RAVEN's asset and identity verification layers make it possible for CNB to compete for this higher-balance segment without adding specialized staff.",
+        body: "CNB's Georgetown County footprint covers Pawleys Island, Murrells Inlet, and the Waccamaw Neck corridor - a high-income coastal strip where the typical buyer may be a second-home purchaser or retiree from another state with complex asset structures (brokerage accounts, trust income, rental property cash flow). These borrowers expect the closing speed they associate with larger digital lenders, not a week of back-and-forth document requests. CNB made 27 HMDA originations in Georgetown County in 2025 at an average loan size of about $599K (41 at $352K in 2024), nearly three times its Horry County average, suggesting significant upside if turnaround times improve. RAVEN's asset and identity verification layers make it possible for CNB to compete for this higher-balance segment without adding specialized staff.",
       },
     ],
-    sources: 'FDIC API (institutions endpoint CERT:2102, financials endpoint), OriginationData.com HMDA 2024 (LEI: 2549008EFPQHWHJ5MO60), conwaynationalbank.com, Census Reporter Horry County SC profile, FRED BPPRIV045051 (Horry County building permits), Carolina Crafted Homes 2025 Myrtle Beach in-migration data, SEC EDGAR CNB Corp. filings, WBTW Horry County population projections',
+    sources: 'FDIC API (institutions, financials and locations, CERT:2102; Summary of Deposits, Horry County 2021-2026), FFIEC HMDA data browser 2024 and 2025 (LEI 2549008EFPQHWHJ5MO60), conwaynationalbank.com (re-checked 2026-10-21), Census QuickFacts Horry County SC (V2024), FRED BPPRIV045051 (Horry County building permits), SEC EDGAR CNB Corp. filings',
   },
   {
     slug: 'bank-of-travelers-rest',
@@ -352,38 +352,38 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'bank-travelers-rest-greenville-growth-engine',
     articleTitle: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
     fdicCert: 16389,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
       { label: 'Total assets', value: '$1.60B' },
-      { label: 'ROA', value: '1.44% (FY2025)' },
-      { label: 'NIM', value: '2.97% (FY2025 annualized)' },
-      { label: 'Branch count', value: '10' },
+      { label: 'ROA', value: '1.60% (1H 2026, annualized)' },
+      { label: 'NIM', value: '3.27% (1H 2026)' },
+      { label: 'Branch count', value: '11' },
     ],
     volumes: {
-      mortgage: { count: 170, source: 'HMDA 2024 origination data via originationdata.com (LEI 2549000A72B92T5BS479): 170 conventional loan originations totaling $59.09M, avg loan size $347K, 107 purchase / 33 refi / 18 home improvement / 12 other', estimated: false },
-      commercial: { count: 75, source: 'FDIC call report Q1 2026: LNRE $766M (residential RE), LNCI $76M (C&I), LNCON $40M (consumer). Commercial count: $76M C&I book at $1M avg loan = ~76 active credits, estimated 75 annual originations at ~100% turnover on shorter-term lines. Consumer: $40M book at $25K avg = ~1,600 outstanding, ~35% annual turnover = ~560 new originations/year.', estimated: true },
-      consumer: { count: 560, source: 'FDIC call report Q1 2026: LNRE $766M (residential RE), LNCI $76M (C&I), LNCON $40M (consumer). Commercial count: $76M C&I book at $1M avg loan = ~76 active credits, estimated 75 annual originations at ~100% turnover on shorter-term lines. Consumer: $40M book at $25K avg = ~1,600 outstanding, ~35% annual turnover = ~560 new originations/year.', estimated: true },
+      mortgage: { count: 170, source: 'HMDA 2025 (FFIEC data browser, LEI 2549000A72B92T5BS479): 170 conventional originations totaling $68.44M, avg $403K; 108 purchase ($53.3M) / 25 refi / 22 home improvement / 15 other. 2024 was also 170 ($59.09M).', estimated: false },
+      commercial: { count: 75, source: 'FDIC call report Q2 2026: real estate loans incl. nonfarm CRE $422M, 1-4 family $264M, construction $82M, LNCI $73M (C&I), LNCON $40M (consumer). Commercial count: $73M C&I book at ~$1M avg loan = ~73 active credits, estimated 75 annual originations at ~100% turnover on shorter-term lines. Consumer: $40M book at $25K avg = ~1,600 outstanding, ~35% annual turnover = ~560 new originations/year.', estimated: true },
+      consumer: { count: 560, source: 'FDIC call report Q2 2026: real estate loans incl. nonfarm CRE $422M, 1-4 family $264M, construction $82M, LNCI $73M (C&I), LNCON $40M (consumer). Commercial count: $73M C&I book at ~$1M avg loan = ~73 active credits, estimated 75 annual originations at ~100% turnover on shorter-term lines. Consumer: $40M book at $25K avg = ~1,600 outstanding, ~35% annual turnover = ~560 new originations/year.', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 460,
-      source: 'Greenville County net population growth of ~11,000 in 2023-2024 (USAFacts/Census), divided by avg household size of 2.4 = ~4,580 net new households countywide. BTR operates 10 branches exclusively in Greenville County and is the 8th largest bank in SC, estimated 8-10% addressable share of new household formation = ~370-460 new households/year entering BTR\'s market.',
+      source: 'Greenville County grew from 525,549 (Apr 2020 base) to 583,125 (Jul 2025, Census V2025), ~11,000 residents a year; divided by avg household size of 2.4 = ~4,570 net new households countywide. BTR operates 11 branches, all in Greenville County; estimated 8-10% addressable share of new household formation = ~370-460 new households/year entering BTR\'s market.',
     },
-    intro: "Greenville County, SC is the most populous county in South Carolina (548,000+ residents) and one of the fastest-growing metros in the Southeast. Upstate SC added ~11,000 net new residents in 2023-2024, driven heavily by domestic in-migration from other states. The Greenville-Anderson MSA is a manufacturing and technology hub attracting transplants from higher cost-of-living states. BTR's borrower base skews toward conventional purchase buyers (107 of 170 2024 mortgage originations were purchases) in a market where median home prices have risen steadily, pushing average loan sizes to $347K. The bank's geographic concentration in Greenville County means it captures both the established community banking relationships of the Upstate and a growing wave of in-migrant borrowers unfamiliar with local institutions.",
+    intro: "Greenville County, SC is the most populous county in South Carolina (583,000+ residents in July 2025, per the Census Bureau) and one of the fastest-growing metros in the Southeast, up about 11% since 2020, driven heavily by domestic in-migration from other states. The Greenville-Anderson MSA is a manufacturing and technology hub attracting transplants from higher cost-of-living states. BTR's borrower base skews toward conventional purchase buyers (108 of 170 mortgage originations in 2025 were purchases, averaging about $494K). The bank's geographic concentration in Greenville County means it captures both the established community banking relationships of the Upstate and a growing wave of in-migrant borrowers unfamiliar with local institutions.",
     strategic: [
       {
         title: "Serving Greenville's In-Migration Wave Without a Digital Intake Problem",
-        body: "Greenville County added over 11,000 net new residents in 2023-2024, many of them out-of-state transplants with pay stubs from employers in other states, gig income, or self-employment arrangements that don't fit neatly into manual document checklists. Bank of Travelers Rest's purchase mortgage volume (107 of 170 originations in 2024) puts it squarely in the path of this in-migration demand, but its current intake process relies on a basic third-party mortgage portal with no income or asset verification automation. RAVEN's real-time payroll, bank account, and employment verification closes this gap without requiring a new LOS, letting BTR process more purchase loans faster in a competitive market where home-buying timelines are compressing. For a bank whose primary growth lever is geography, frictionless onboarding of new-to-market borrowers is a meaningful competitive moat.",
+        body: "Greenville County has added about 11,000 residents a year since 2020, many of them out-of-state transplants with pay stubs from employers in other states, gig income, or self-employment arrangements that don't fit neatly into manual document checklists. Bank of Travelers Rest's purchase mortgage volume (108 of 170 originations in 2025) puts it squarely in the path of this in-migration demand, but its mortgage intake runs through a third-party ICE portal on a separate domain, and its consumer loan form takes income as typed, with nothing verified at intake. RAVEN's real-time payroll, bank account, and employment verification closes this gap without requiring a new LOS, letting BTR process more purchase loans faster in a competitive market where home-buying timelines are compressing. For a bank whose primary growth lever is geography, frictionless onboarding of new-to-market borrowers is a meaningful competitive moat.",
       },
       {
-        title: '$766M Residential RE Book Concentrated in Conventional Product Needs Clean Files',
-        body: "With 95% of its loan book in residential real estate and C&I lending, and zero FHA/VA/USDA volume in 2024, Bank of Travelers Rest is underwriting conventional borrowers where the margin for error on income and asset documentation is thin. Every stale pay stub or mismatched bank statement that makes it into underwriting costs hours of loan officer time and risks fallout at the closing table. RAVEN's automated verification of income (payroll + bank data), assets (real-time account balances), and employment status replaces the manual chase for documents with a single borrower consent flow, reducing underwriting cycle time by days on a file that already takes weeks through the current mymortgage-online portal. For a 10-branch bank with limited back-office headcount, that time savings compounds across 170 mortgage files per year and hundreds of HELOC and consumer loan applications.",
+        title: 'An All-Conventional Mortgage Book Needs Clean Files',
+        body: "With a $264M 1-4 family mortgage book growing 12.7% a year, and zero FHA/VA/USDA volume across 340 originations in 2024 and 2025, Bank of Travelers Rest is underwriting conventional borrowers where the margin for error on income and asset documentation is thin. Every stale pay stub or mismatched bank statement that makes it into underwriting costs hours of loan officer time and risks fallout at the closing table. RAVEN's automated verification of income (payroll + bank data), assets (real-time account balances), and employment status replaces the manual chase for documents with a single borrower consent flow, reducing underwriting cycle time by days on a file that already takes weeks through the current mymortgage-online portal. For an 11-branch bank with limited back-office headcount, that time savings compounds across 170 mortgage files per year and hundreds of HELOC and consumer loan applications.",
       },
       {
         title: 'Community Bank Efficiency at 60% Leaves No Room for Manual Document Processing',
-        body: "Bank of Travelers Rest runs a 59.9% efficiency ratio, meaningfully above the top-quartile community bank benchmark of 55%, on a $1.6B balance sheet where every basis point of cost matters. Manual document collection for mortgage and consumer loan files is a hidden labor tax: loan officers spend hours chasing applicants for bank statements, pay stubs, and employer contacts that could be verified in minutes through open banking APIs. RAVEN replaces that labor with automated verification reports that are faster, more accurate, and audit-ready, directly reducing the per-loan cost that flows into noninterest expense. As BTR continues growing its loan book (LNRE up 4.3% year-over-year through Q1 2026), keeping headcount flat while volume grows requires the kind of workflow automation that community banks have traditionally left to the largest players, and RAVEN is built specifically for institutions of this size.",
+        body: "Bank of Travelers Rest runs a 59.0% efficiency ratio (1H 2026), barely changed from 61% at the end of 2024 even as its margin widened, on a $1.6B balance sheet where every basis point of cost matters. Manual document collection for mortgage and consumer loan files is a hidden labor tax: loan officers spend hours chasing applicants for bank statements, pay stubs, and employer contacts that could be verified in minutes through open banking APIs. RAVEN replaces that labor with automated verification reports that are faster, more accurate, and audit-ready, directly reducing the per-loan cost that flows into noninterest expense. As BTR continues growing its loan book (net loans up 5.0% and 1-4 family mortgages up 12.7% in the year to June 2026), keeping headcount flat while volume grows requires the kind of workflow automation that community banks have traditionally left to the largest players, and RAVEN is built specifically for institutions of this size.",
       },
     ],
-    sources: 'FDIC API (api.fdic.gov/banks/institutions?filters=CERT:16389, api.fdic.gov/banks/financials?filters=CERT:16389), originationdata.com HMDA 2024 (LEI 2549000A72B92T5BS479), bankoftravelersrest.com, omnicommander.com press release (May 28 2025), censusreporter.org Greenville County SC profile, usafacts.org Greenville County population, dew.sc.gov 2024 population estimates blog',
+    sources: 'FDIC API (api.fdic.gov/banks/institutions?filters=CERT:16389, api.fdic.gov/banks/financials?filters=CERT:16389), FFIEC HMDA data browser 2024 and 2025 (LEI 2549000A72B92T5BS479), FDIC locations (Simpsonville branch opened 2026-07-20), bankoftravelersrest.com (checked 2026-10-21), omnicommander.com press release (May 28 2025), census.gov QuickFacts Greenville County SC (V2025)',
   },
   {
     slug: 'security-federal-bank',
@@ -392,11 +392,11 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'security-federal-bank-cdfi-rate-rebound-aiken',
     articleTitle: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     fdicCert: 31100,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.56B' },
-      { label: 'ROA', value: '0.79%' },
-      { label: 'NIM', value: '3.03%' },
+      { label: 'Total assets', value: '$1.54B' },
+      { label: 'ROA', value: '0.86%' },
+      { label: 'NIM', value: '3.30%' },
       { label: 'Branch count', value: '19' },
     ],
     volumes: {
@@ -408,15 +408,15 @@ export const ROI_BANKS: BankRoiInput[] = [
       newHouseholdsPerYear: 1200,
       source: 'Aiken County net population growth of ~2,200 residents/year (2023-2024 Census estimates) at 2.5 persons per household = ~880 new households in Aiken County. Adding partial coverage of Richmond County GA (Augusta metro) and Lexington/Richland Counties SC (Columbia metro) where bank has branches, total footprint estimated at 1,200 new households/year.',
     },
-    intro: 'Security Federal serves a three-city corridor: Aiken SC (retirement/quality-of-life destination with 1.67% annual population growth), Augusta GA (anchored by Savannah River Site nuclear complex employing 10,000+, Fort Gordon/Cyber Command, and Augusta University Medical Center), and greater Columbia SC suburbs. The Aiken-Augusta market is a steady in-migration destination attracting retirees, federal workers, and defense contractors. Aiken County grew by 7,962 residents (4.71%) between 2020-2023, outpacing the national average. Home sales totaled 3,321 in 2024 with median price $289,900. The borrower base skews toward first-time buyers, LMI households, and federal/government employees - all groups who benefit from CDFI-flexible underwriting but who also take longer to document through manual processes.',
+    intro: 'Security Federal serves a three-city corridor: Aiken SC (retirement/quality-of-life destination with 1.67% annual population growth), Augusta GA (anchored by Savannah River Site nuclear complex employing 10,000+, Fort Eisenhower (formerly Fort Gordon) and Army Cyber Command, and Augusta University Medical Center), and greater Columbia SC suburbs. The Aiken-Augusta market is a steady in-migration destination attracting retirees, federal workers, and defense contractors. Aiken County grew by 7,962 residents (4.71%) between 2020-2023, outpacing the national average. Home sales totaled 3,321 in 2024 with median price $289,900. The borrower base skews toward first-time buyers, LMI households, and federal/government employees - all groups who benefit from CDFI-flexible underwriting but who also take longer to document through manual processes.',
     strategic: [
       {
         title: 'CDFI Mission Means Complex Borrowers - and Mountains of Paper',
-        body: "As South Carolina's largest CDFI-certified bank, Security Federal is explicitly chartered to serve LMI borrowers, first-time homebuyers, and underbanked households across the Aiken-Augusta corridor. These borrowers often have non-standard income sources: gig work, seasonal employment, multiple part-time jobs, or self-employment income that requires more documentation than a W-2 employee. Manual document collection for these files can run two to three times longer than a conventional loan file, adding days or weeks to closing timelines. RAVEN's automated income and employment verification pulls directly from payroll providers and financial institutions, cutting verification time from weeks to minutes regardless of income complexity. For a mission-driven lender competing on personalized service, faster closings mean more borrowers served with the same loan officer headcount.",
+        body: "As what it calls South Carolina's largest certified bank CDFI, Security Federal is explicitly chartered to serve LMI borrowers, first-time homebuyers, and underbanked households across the Aiken-Augusta corridor. These borrowers often have non-standard income sources: gig work, seasonal employment, multiple part-time jobs, or self-employment income that requires more documentation than a W-2 employee. Manual document collection for these files can run two to three times longer than a conventional loan file, adding days or weeks to closing timelines. RAVEN's automated income and employment verification pulls directly from payroll providers and financial institutions, cutting verification time from weeks to minutes regardless of income complexity. For a mission-driven lender competing on personalized service, faster closings mean more borrowers served with the same loan officer headcount.",
       },
       {
         title: 'A Growing Market Demands Faster Throughput Without More Headcount',
-        body: 'Aiken County added over 7,900 residents between 2020 and 2023, growing at nearly five times the national rate, driven by retirees from the Northeast and mid-Atlantic, federal workers at Savannah River Site, and remote workers drawn by home prices well below major metros. That growth translated to 3,321 home sales in 2024, up 9.5% year over year, putting steady pressure on Security Federal\'s mortgage team across all 19 branches. With an efficiency ratio still running above 71%, the bank cannot simply hire its way to faster throughput without further compressing returns. RAVEN\'s verification layer reduces the manual document-chasing work that consumes loan processor time, allowing the existing team to handle higher origination volume in the same number of hours. For a community bank with expansion plans through 2027, that capacity headroom matters.',
+        body: 'Aiken County added over 7,900 residents between 2020 and 2023, growing at nearly five times the national rate, driven by retirees from the Northeast and mid-Atlantic, federal workers at Savannah River Site, and remote workers drawn by home prices well below major metros. That growth translated to 3,321 home sales in 2024, up 9.5% year over year, putting steady pressure on Security Federal\'s mortgage team across all 19 branches. With an efficiency ratio still running above 71%, the bank cannot simply hire its way to faster throughput without further compressing returns. RAVEN\'s verification layer reduces the manual document-chasing work that consumes loan processor time, allowing the existing team to handle higher origination volume in the same number of hours. For a community bank still adding offices in Augusta and Columbia, that capacity headroom matters.',
       },
       {
         title: 'ICE LOS Is In Place - The Verification Layer Is the Missing Piece',
@@ -430,14 +430,14 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'Coastal Carolina National Bank',
     shortName: 'CCNB',
     articleSlug: 'ccnb-myrtle-beach-merger-growth-2026',
-    articleTitle: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
+    articleTitle: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
     fdicCert: 58864,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.28B (Q1 2026)' },
-      { label: 'ROA', value: '0.93% (FY2025); 1.03% trailing Q4 2025' },
-      { label: 'NIM', value: '3.54% (FY2025)' },
-      { label: 'Branch count', value: '10' },
+      { label: 'Total assets', value: '$1.35B (Q2 2026); ~$2.3B combined with Beacon' },
+      { label: 'ROA', value: '1.05% (1H 2026)' },
+      { label: 'NIM', value: '3.60% (1H 2026)' },
+      { label: 'Branch count', value: '16 after the Oct 2026 Beacon merger' },
     ],
     volumes: {
       mortgage: { count: 324, source: 'HMDA 2024 originations via originationdata.com (FFIEC LEI 54930004SDYVHYN4M716): 324 conventional originations, 292 home purchase + 17 cash-out refi + 14 rate/term refi + 1 home improvement', estimated: false },
@@ -472,15 +472,15 @@ export const ROI_BANKS: BankRoiInput[] = [
     articleSlug: 'first-capital-bank-charleston-growth-digital-gap',
     articleTitle: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
     fdicCert: 34966,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.24B' },
-      { label: 'ROA', value: '1.12%' },
-      { label: 'NIM', value: '3.49%' },
+      { label: 'Total assets', value: '$1.32B' },
+      { label: 'ROA', value: '1.14%' },
+      { label: 'NIM', value: '3.47%' },
       { label: 'Branch count', value: '4' },
     ],
     volumes: {
-      mortgage: { count: 300, source: 'Estimated from residential RE book ($338.4M) plus construction loans ($105M); assumed ~$300K average loan size and ~5-year portfolio duration implies roughly 300 originations per year. HMDA disclosure report exists at FFIEC (LEI 7DMUJTL9FFTVIAG9H788) but data tables require JS rendering not accessible via API.', estimated: true },
+      mortgage: { count: 370, source: 'Estimated from the one-to-four family residential book ($460.8M, Q2 2026) plus construction loans ($95.4M); assumed ~$300K average loan size and ~5-year portfolio duration implies roughly 370 originations per year. HMDA disclosure report exists at FFIEC (LEI 7DMUJTL9FFTVIAG9H788) but data tables require JS rendering not accessible via API.', estimated: true },
       commercial: { count: 729, source: 'FDIC Call Report via api.fdic.gov (CERT 34966), Q1 2026 (REPDTE 2026-03-31). Loan category detail fields: LNRENRES, LNRERES, LNRECONS, LNREMULT, LNCI, LNCON.', estimated: true },
       consumer: { count: 220, source: 'FDIC Call Report via api.fdic.gov (CERT 34966), Q1 2026 (REPDTE 2026-03-31). Loan category detail fields: LNRENRES, LNRERES, LNRECONS, LNREMULT, LNCI, LNCON.', estimated: true },
     },
@@ -488,7 +488,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       newHouseholdsPerYear: 7000,
       source: 'Charleston MSA (Berkeley, Charleston, Dorchester counties) added 70,000+ residents 2020-2024, averaging ~17,500/year. At 2.5 persons per household, approximately 7,000 new households per year across the tri-county market. Source: Charleston Regional Development Alliance / SC DEW 2024 population estimates.',
     },
-    intro: "First Capital Bank operates four branches in the Charleston-North Charleston MSA, one of the fastest-growing metros in the Southeast. The tri-county area (Charleston, Berkeley, Dorchester) has grown nearly 9% since 2020, adding 70,000+ residents and is projected to reach 1 million residents by 2032. Berkeley County grew 3.2% in 2024 alone, ranking 61st nationally. The borrower base skews toward new-resident homebuyers, military-affiliated households (Joint Base Charleston), and a growing professional class attracted by tech and aerospace employers. The bank's loan book is dominated by CRE ($466M) and residential RE ($338M), reflecting Charleston's robust construction and real estate activity.",
+    intro: "First Capital Bank operates three branches in the Charleston-North Charleston MSA (plus one in Pinehurst, NC), one of the fastest-growing metros in the Southeast. The tri-county area (Charleston, Berkeley, Dorchester) has grown nearly 9% since 2020, adding 70,000+ residents and is projected to reach 1 million residents by 2032. Berkeley County grew 3.2% in 2024 alone, ranking 61st nationally. The borrower base skews toward new-resident homebuyers, military-affiliated households (Joint Base Charleston), and a growing professional class attracted by tech and aerospace employers. The bank's loan book is dominated by one-to-four family residential ($461M) and nonfarm commercial real estate ($356M) at Q2 2026, reflecting Charleston's robust construction and real estate activity.",
     strategic: [
       {
         title: 'No Online Application Means Every Mortgage Starts with a Phone Call',
@@ -496,7 +496,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'CRE Concentration Demands Faster Commercial Underwriting',
-        body: "Commercial real estate represents $466M of First Capital's $973M loan portfolio, making it by far the bank's largest exposure category. C&I adds another $80M, meaning commercial credits account for over 55% of the book. Commercial underwriting is document-intensive: business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from guarantors all flow through email and courier in a traditional workflow. RAVEN automates income verification via direct IRS transcript retrieval, pulls business financials from accounting integrations, and verifies identity for all guarantors in parallel, cutting the document assembly phase that typically consumes two to three weeks in community bank commercial deals. For a bank growing its CRE book aggressively in a hot market, faster diligence means more closed deals per lender per quarter.",
+        body: "Nonfarm commercial real estate ($356M), construction ($95M), multifamily ($82M) and C&I ($92M) together make up about 58% of First Capital's $1.08B in net loans at Q2 2026. Commercial underwriting is document-intensive: business tax returns, rent rolls, entity verification, bank statements, and personal financial statements from guarantors all flow through email and courier in a traditional workflow. RAVEN automates income verification via direct IRS transcript retrieval, pulls business financials from accounting integrations, and verifies identity for all guarantors in parallel, cutting the document assembly phase that typically consumes two to three weeks in community bank commercial deals. For a bank growing its CRE book aggressively in a hot market, faster diligence means more closed deals per lender per quarter.",
       },
       {
         title: 'New-Resident Borrowers Are Hard to Verify Manually',
@@ -514,9 +514,9 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 28396,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$1.08B' },
-      { label: 'ROA', value: '1.07% (FY2025)' },
-      { label: 'NIM', value: '3.54%' },
+      { label: 'Total assets', value: '$1.10B (Q2 2026)' },
+      { label: 'ROA', value: '1.36% (1H 2026); 1.07% (FY2025)' },
+      { label: 'NIM', value: '3.59% (1H 2026)' },
       { label: 'Branch count', value: '22' },
     ],
     volumes: {
@@ -540,7 +540,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'A Small Business Specialty Deserves a Faster File',
-        body: "First Palmetto is explicitly recognized for having a higher-than-peer concentration of small business and commercial real estate loans on its balance sheet, and it made a notable investment in CLIMB Fund's SBA microlending program. Small business borrowers are notoriously hard to verify: income comes from K-1s, business bank statements, and Schedule C filings rather than W-2s, and employment verification is self-referential. Commercial loan officers spend disproportionate time assembling and validating financial documentation before they can credit-decistion a file. RAVEN's business owner verification layer, including bank-level asset verification and business income confirmation, accelerates commercial and SBA loan underwriting at a bank whose commercial pipeline is central to its competitive identity.",
+        body: "First Palmetto is explicitly recognized for having a higher-than-peer concentration of small business and commercial real estate loans on its balance sheet. Small business borrowers are notoriously hard to verify: income comes from K-1s, business bank statements, and Schedule C filings rather than W-2s, and employment verification is self-referential. Commercial loan officers spend disproportionate time assembling and validating financial documentation before they can credit-decistion a file. RAVEN's business owner verification layer, including bank-level asset verification and business income confirmation, accelerates commercial and SBA loan underwriting at a bank whose commercial pipeline is central to its competitive identity.",
       },
     ],
     sources: 'FDIC Institutions API (api.fdic.gov, CERT 28396), FDIC Financials API (api.fdic.gov, CERT 28396), HMDA 2024 via originationdata.com (LEI 549300Z7EP1HO5CH1C36), Visbanking call report summary (visbanking.com/call-report/first-palmetto-bank-reports-586072), firstpalmetto.com/mortgage, firstpalmetto.com/about, firstpalmetto.com/locations, worldpopulationreview.com Kershaw County, datausa.io Kershaw County SC, heremyrtlebeach.com Horry County growth, CLIMB Fund press release (climbfund.org)',
@@ -554,9 +554,9 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 59106,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$972M' },
+      { label: 'Total assets', value: '$982M (Q2 2026)' },
       { label: 'ROA', value: '0.38% (FY2025); 0.52% annualized Q1 2026' },
-      { label: 'NIM', value: '2.28% (FY2025); 2.42% annualized Q1 2026' },
+      { label: 'NIM', value: '2.58% (FY2025); 2.52% annualized Q1 2026' },
       { label: 'Branch count', value: '6' },
     ],
     volumes: {
@@ -568,11 +568,11 @@ export const ROI_BANKS: BankRoiInput[] = [
       newHouseholdsPerYear: 8500,
       source: 'Charleston MSA (Berkeley, Charleston, Dorchester counties) adds roughly 40 new residents per day per CRDA (Charleston Regional Development Alliance), equating to ~14,600 new residents/year. At 2.5 persons per household, that implies ~5,800 new households/year. Additionally, IRS migration data shows Charleston County alone received 16,757 net in-migrants in the 2023-2024 period. MSA-wide new household formation is estimated at 8,000-9,000/year; 8,500 used as midpoint.',
     },
-    intro: "Mount Pleasant is the fourth-largest city in South Carolina and part of the Charleston-North Charleston MSA, one of the fastest-growing metros in the country. The MSA (Berkeley, Charleston, Dorchester counties) grew nearly 9% from 2020-2024, adding 70,000+ residents. The borrower base skews toward higher-income professionals, military personnel (Joint Base Charleston), retirees relocating from the Northeast, and small-business owners in the Lowcountry economy. Home prices are well above state averages, making the $375K+ average mortgage size realistic. Beacon competes against First Citizens, South State Bank, and national lenders while deliberately positioning as a local alternative.",
+    intro: "Update, October 2026: Beacon merged with Coastal Carolina National Bank on October 1, 2026, and the combined bank takes the name Beacon Bank, N.A. in March 2027. The figures below are as of June 2026, before the merger. Mount Pleasant is the fourth-largest city in South Carolina and part of the Charleston-North Charleston MSA, one of the fastest-growing metros in the country. The MSA (Berkeley, Charleston, Dorchester counties) grew nearly 9% from 2020-2024, adding 70,000+ residents. The borrower base skews toward higher-income professionals, military personnel (Joint Base Charleston), retirees relocating from the Northeast, and small-business owners in the Lowcountry economy. Home prices are well above state averages, making the $375K+ average mortgage size realistic. Beacon competes against First Citizens, South State Bank, and national lenders while deliberately positioning as a local alternative.",
     strategic: [
       {
-        title: 'A $972M Loan Book Growing 10% Annually With No Digital Verification Stack',
-        body: "Beacon grew its net loan portfolio from $788M to $848M in three quarters of 2025, a pace that implies loan officers are processing a rising volume of mortgage and commercial files without automated income, employment, or asset verification. At that origination velocity, document collection and manual review are almost certainly the throughput bottleneck. RAVEN's API-first verification stack plugs directly into community bank workflows, eliminating the paper-chase that slows closings without requiring a full LOS replacement. For a bank with six relationship bankers handling a $972M book, cutting borrower verification time from days to minutes frees capacity for the next tranche of growth. Beacon's COO background in financial technology suggests there is a champion in the C-suite who already understands why this matters.",
+        title: 'An $848M Loan Book Growing 14% a Year With No Digital Verification Stack',
+        body: "Beacon grew its net loan portfolio from $788M in mid-2025 to $848M by March 2026, a pace that implies loan officers are processing a rising volume of mortgage and commercial files without automated income, employment, or asset verification. At that origination velocity, document collection and manual review are almost certainly the throughput bottleneck. RAVEN's API-first verification stack plugs directly into community bank workflows, eliminating the paper-chase that slows closings without requiring a full LOS replacement. For a bank with six relationship bankers handling a $972M book, cutting borrower verification time from days to minutes frees capacity for the next tranche of growth. Beacon's COO background in financial technology suggests there is a champion in the C-suite who already understands why this matters.",
       },
       {
         title: 'The Charleston Migration Wave Is Creating a Verification Problem, Not Just an Opportunity',
@@ -594,7 +594,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 2138,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$2.34B' },
+      { label: 'Total assets', value: '$2.28B (Q2 2026)' },
       { label: 'ROA', value: '1.06%' },
       { label: 'NIM', value: '3.5%' },
       { label: 'Branch count', value: '27' },
@@ -630,13 +630,13 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'First Community Bank',
     shortName: 'First Community',
     articleSlug: 'first-community-bank-sc-cre-merger-growth',
-    articleTitle: 'First Community Bank: CRE Specialist on a Post-Merger Growth Curve',
+    articleTitle: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO',
     fdicCert: 34047,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$2.40B (Q1 2026, post-Signature Bank of Georgia acquisition)' },
-      { label: 'ROA', value: '0.94% (full year 2025); 1.09% annualized Q1 2026' },
-      { label: 'NIM', value: '3.32% (Q4 2025, tax equivalent); seven consecutive quarters of expansion' },
+      { label: 'Total assets', value: '$2.36B (Q3 2026, post-Signature Bank of Georgia acquisition)' },
+      { label: 'ROA', value: '1.25% (1H 2026, bank level)' },
+      { label: 'NIM', value: '3.51% (Q2 2026, tax equivalent); nine consecutive quarters of expansion' },
       { label: 'Branch count', value: '23' },
     ],
     volumes: {
@@ -660,29 +660,29 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'CRE-Heavy Book Means Manual Spreading Is a Bottleneck',
-        body: "With non-residential CRE at $904M out of a $1.54B total loan book -- nearly 59% of loans -- First Community's commercial underwriting team handles a disproportionate volume of small-business financials, rent rolls, and entity documentation. The FDIC classifies the bank as a \"Commercial Lending Specialization\" institution, and the Q4 2025 earnings showed $202.6M in full-year commercial loan production. At an average deal size around $700K-$1M, that represents 200-300 new commercial credits per year each requiring income verification, business cash flow analysis, and borrower identity confirmation. RAVEN's commercial verification workflows -- pulling bank-permissioned business account data, payroll records, and tax transcripts -- can cut the document-chasing phase of commercial underwriting by several weeks per deal, compressing turn times and allowing the commercial team to handle post-acquisition volume growth without proportional headcount increases.",
+        body: "With nonfarm nonresidential CRE at $906M out of a $1.59B total loan book (57% of loans, Q2 2026), First Community's commercial underwriting team handles a disproportionate volume of small-business financials, rent rolls, and entity documentation. The FDIC classifies the bank as a \"Commercial Lending Specialization\" institution, and the Q4 2025 earnings showed $202.6M in full-year commercial loan production. At an average deal size around $700K-$1M, that represents 200-300 new commercial credits per year each requiring income verification, business cash flow analysis, and borrower identity confirmation. RAVEN's commercial verification workflows -- pulling bank-permissioned business account data, payroll records, and tax transcripts -- can cut the document-chasing phase of commercial underwriting by several weeks per deal, compressing turn times and allowing the commercial team to handle post-acquisition volume growth without proportional headcount increases.",
       },
     ],
-    sources: 'FDIC Institutions API (cert 34047), FDIC Financials API (cert 34047), First Community Corporation Q4 2025 earnings press release (PRNewswire), First Community Corporation 2025 10-K overview (StockTitan/SEC), PRNewswire Signature Bank of Georgia acquisition announcement (July 2025 and January 2026), Columbia Business Monthly acquisition coverage, firstcommunitysc.com website and careers pages, Census QuickFacts Lexington County SC, USAFacts Lexington County population data, MacroTrends Columbia SC MSA population data, OriginationData.com HMDA search',
+    sources: 'FDIC Institutions API (cert 34047), FDIC Financials API (cert 34047), First Community Corporation Q4 2025 earnings press release (PRNewswire), First Community Corporation 2025 10-K overview (StockTitan/SEC), PRNewswire Signature Bank of Georgia acquisition announcement (July 2025 and January 2026), Columbia Business Monthly acquisition coverage, firstcommunitybankers.com (formerly firstcommunitysc.com) website, reviewed October 2026; First Community Corporation Q2 2026 earnings and leadership transition release (July 22, 2026), Census QuickFacts Lexington County SC, USAFacts Lexington County population data, MacroTrends Columbia SC MSA population data, OriginationData.com HMDA search',
   },
   {
     slug: 'countybank',
     name: 'Countybank',
     shortName: 'Countybank',
     articleSlug: 'countybank-greenwood-sc-sba-deep-dive',
-    articleTitle: 'Countybank: The $748M SBA Leader Betting on Relationships',
+    articleTitle: 'Countybank Is From Greenwood. Its Mortgage Business Lives in Greenville',
     fdicCert: 9155,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$748M' },
-      { label: 'ROA', value: '1.22% (FY2025); 1.50% annualized Q1 2026' },
-      { label: 'NIM', value: '3.44% (FY2025 estimated from reported NIM income / avg assets)' },
+      { label: 'Total assets', value: '$733M (Q2 2026)' },
+      { label: 'ROA', value: '1.45% (1H 2026); 1.22% (FY2025)' },
+      { label: 'NIM', value: '3.85% (1H 2026)' },
       { label: 'Branch count', value: '13' },
     ],
     volumes: {
-      mortgage: { count: 275, source: "Estimated from $187.6M residential RE book at $200K avg loan size and ~30% annual portfolio turnover, consistent with Countybank Mortgage's stated $3B cumulative / 15,000+ transactions since inception (avg $200K). Peak year 2021 was $525M; normalized 2023-2024 volumes estimated at $50-60M or ~250-300 originations/year. LEI 7DMUJTL9FFTVIAG9H788 confirmed in FFIEC HMDA system but disclosure table data unavailable via API.", estimated: true },
-      commercial: { count: 366, source: 'FDIC Call Report via api.fdic.gov CERT 9155, Q1 2026 and FY2025 financials', estimated: true },
-      consumer: { count: 444, source: 'FDIC Call Report via api.fdic.gov CERT 9155, Q1 2026 and FY2025 financials', estimated: true },
+      mortgage: { count: 642, source: 'HMDA 2025 (LEI 549300III1DMY3SLAW56): 642 originated loans ($215.9M), including 489 purchase loans ($166.4M); 537 conventional, 73 FHA, 26 VA, 6 USDA. Greenville County 196, Greenwood County 74, Anderson County 53.', estimated: false },
+      commercial: { count: 366, source: 'FDIC Call Report via api.fdic.gov CERT 9155, Q2 2026 and FY2025 financials', estimated: true },
+      consumer: { count: 444, source: 'FDIC Call Report via api.fdic.gov CERT 9155, Q2 2026 and FY2025 financials', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 1300,
@@ -710,90 +710,90 @@ export const ROI_BANKS: BankRoiInput[] = [
     name: 'Optus Bank',
     shortName: 'Optus',
     articleSlug: 'optus-bank-cdfi-columbia-growth',
-    articleTitle: 'Optus Bank at $785M: Mission Bank, Market Discipline',
+    articleTitle: 'Optus Bank Grew From $65 Million to $764 Million. Now Comes M&F',
     fdicCert: 35241,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$785M (Q1 2026)' },
-      { label: 'ROA', value: '1.11% (FY2025); 1.32% annualized (Q1 2026)' },
-      { label: 'NIM', value: '2.80% (FY2025, computed: $21.5M net interest income / ~$765M avg assets)' },
+      { label: 'Total assets', value: '$764M (Q2 2026)' },
+      { label: 'ROA', value: '0.95% (1H 2026); 1.11% (FY2025)' },
+      { label: 'NIM', value: '2.71% (1H 2026)' },
       { label: 'Branch count', value: '2' },
     ],
     volumes: {
-      mortgage: { count: 160, source: 'Estimated from FDIC LNRE (residential real estate book $260M at Q1 2026) divided by estimated $200K avg loan size and 7-8 year weighted avg life for a growing CDFI portfolio, yielding ~160-185 annual originations. No HMDA file was directly accessible for Optus Bank via FFIEC data browser API queries.', estimated: true },
-      commercial: { count: 130, source: 'FDIC Call Report CERT 35241, Q1 2026 and FY2025 via api.fdic.gov/banks/financials', estimated: true },
-      consumer: { count: 520, source: 'FDIC Call Report CERT 35241, Q1 2026 and FY2025 via api.fdic.gov/banks/financials', estimated: true },
+      mortgage: { count: 15, source: 'Optus does not appear on the HMDA filer lists for 2024 or 2025, and its one-to-four family residential book was $14.0M at Q2 2026 (FDIC call report), so annual mortgage originations are small; estimated', estimated: true },
+      commercial: { count: 130, source: 'FDIC Call Report CERT 35241, Q2 2026: C&I $147M, nonfarm nonresidential CRE $198M, construction $53M; estimated from loan mix', estimated: true },
+      consumer: { count: 520, source: 'FDIC Call Report CERT 35241, Q2 2026: consumer loans $23.6M; estimated from balance and typical consumer loan size and life', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 1600,
       source: 'Richland County SC total population ~422K (2024 Census/ACS), ~168K households at 2.48 persons/household avg, annual population growth rate 0.96% per World Population Review 2026. New residents ~4,050/yr at 2.48/household = ~1,630 new households/year. Rounded to 1,600 reflecting Optus\'s 2-branch footprint concentrated in Columbia/Richland County.',
     },
-    intro: "Optus operates two branches in Columbia, SC (Richland County), the state capital and second-most-populated county in South Carolina with ~422K residents. The Columbia MSA (766K population in 2024, growing 1.46%/yr) is a mid-sized university and government hub anchored by the University of South Carolina and Fort Jackson, the largest U.S. Army training installation. Optus serves a predominantly African American and low-to-moderate income borrower base across Columbia and statewide via relationships with CDFI networks. The bank's loan book skews heavily toward commercial real estate and C&I ($360M combined), with a growing residential mortgage portfolio ($260M). South Carolina continues to net domestic in-migration, supporting steady new-borrower demand.",
+    intro: "Optus Bank grew from $65M in assets at year-end 2018 to $764M at June 30, 2026, with two branches in Columbia, SC and 46 employees. It is a commercial lender: nonfarm nonresidential CRE ($198M) and C&I ($147M) dominate a $456M loan book, and one-to-four family residential is just $14M. In July 2026 it agreed to merge with M&F Bancorp of Durham, NC, creating a $1.27B CDFI with 10 branches across both Carolinas, expected to close in Q4 2026.",
     strategic: [
       {
         title: 'Verification Friction Is the Bottleneck for LMI Borrowers',
-        body: "Optus Bank's core borrowers, low-to-moderate income and minority households in the Columbia metro, are exactly the population most likely to have non-traditional income documentation: gig work, cash wages, multiple part-time jobs, or SSI. Manual document collection for these borrowers is slower, more error-prone, and more likely to cause application abandonment than for conventional wage earners. RAVEN's permissioned open-banking income and employment verification pulls payroll and bank-transaction data directly from the source, eliminating the back-and-forth phone calls and fax requests that drive up loan officer hours on files that are already complex. For a two-branch bank doing 160 mortgages and 130 commercial loans per year with a lean staff, shaving even two hours of manual verification per file translates directly into capacity for more loans and better service to the underserved borrowers Optus was built to help.",
+        body: "Optus Bank's core borrowers, low-to-moderate income and minority households in the Columbia metro, are exactly the population most likely to have non-traditional income documentation: gig work, cash wages, multiple part-time jobs, or SSI. Manual document collection for these borrowers is slower, more error-prone, and more likely to cause application abandonment than for conventional wage earners. RAVEN's permissioned open-banking income and employment verification pulls payroll and bank-transaction data directly from the source, eliminating the back-and-forth phone calls and fax requests that drive up loan officer hours on files that are already complex. For a two-branch bank with 46 employees and a commercial-heavy book, shaving even two hours of manual verification per file translates directly into capacity for more loans and better service to the underserved borrowers Optus was built to help.",
       },
       {
-        title: '$785M in Assets, Two Branches: RAVEN Extends the Reach',
-        body: "Optus has grown from near-failure to $785M in assets with only two physical locations in Columbia, meaning its loan officers already serve borrowers across the state through CDFI network relationships, referrals, and online inquiries. Without a digital verification workflow, every out-of-branch loan still requires borrowers to drive in, fax documents, or email sensitive files in uncontrolled formats. RAVEN enables a fully remote borrower experience where income, employment, and asset verification happens in minutes through a mobile-first consent flow, not a trip to Gervais Street. This matters especially as Optus scales toward the $1B threshold: the bank needs operational leverage, not just more headcount, to maintain its efficiency ratio (52% in FY2025) while growing its footprint statewide.",
+        title: '$764M in Assets, Two Branches, Two States Next: RAVEN Extends the Reach',
+        body: "Optus has grown from $65M to $764M in assets with only two physical locations in Columbia, meaning its loan officers already serve borrowers across the state through CDFI network relationships, referrals, and online inquiries. Without a digital verification workflow, every out-of-branch loan still requires borrowers to drive in, fax documents, or email sensitive files in uncontrolled formats. RAVEN enables a fully remote borrower experience where income, employment, and asset verification happens in minutes through a mobile-first consent flow, not a trip to Gervais Street. This matters more after the M&F merger takes the bank past $1.2B and into North Carolina: it needs operational leverage, not just more headcount, to hold its efficiency ratio (55.8% in 1H 2026) across 10 branches in two states.",
       },
       {
         title: 'Mission-Aligned Data: CDFI Reporting Needs Richer Loan-File Inputs',
         body: "As a Treasury-certified CDFI and MDI, Optus Bank must demonstrate community impact in its grant reporting, ECIP compliance disclosures, and CRA exam documentation. Richer verified data at origination (income levels, employment sectors, asset levels of underserved borrowers) feeds directly into that impact narrative and makes regulatory exams smoother. RAVEN's verification reports produce structured, auditable outputs that document borrower financial profiles at the time of application, exactly the kind of granular evidence CDFI funders and bank examiners want to see. For a bank whose entire funding model depends on maintaining credible impact metrics for PayPal, Citi, and Treasury, clean borrower-level data is not just an operational convenience but a strategic asset.",
       },
     ],
-    sources: 'FDIC Institutions API (api.fdic.gov/banks/institutions, CERT 35241), FDIC Financials API (api.fdic.gov/banks/financials, CERT 35241), optus.bank (homepage, about page), American Banker (Optus Bank explosive growth article), Columbia Metropolitan Magazine (104 years article), CDFI.org Optus Bank profile, National Community Investment Fund (ncif.org), Community Development Bankers Association (cdbanks.org), World Population Review (Richland County 2026), datausa.io Richland County SC, southcarolina-demographics.com, SC Department of Employment and Workforce (2024 population estimates), ibanknet.com OPTUS Bank financial reports, ZoomInfo/LinkedIn (Jamel Roberts title confirmation), Optus Bank Impact Report 2023 (optus.bank/wp-content/uploads/2024/04/Impact-Report-2023.pdf)',
+    sources: 'FDIC Institutions and Financials APIs (CERT 35241; year-end 2018 to Q2 2026); FFIEC HMDA filer lists 2024 and 2025 (no Optus filing); optus.bank (consumer-loans, lending-options, sign-up), reviewed October 2026; American Banker and The Charlotte Post on the Optus Financial and M&F Bancorp merger (July 2026); Post and Courier and Columbia Business Report on the PayPal deposit (August 2020) and 2021 investments; World Population Review (Richland County 2026); Optus Bank Impact Report 2023',
   },
   {
     slug: 'southern-bank-trust',
     name: 'Southern Bank and Trust Company',
     shortName: 'Southern Bank',
     articleSlug: 'southern-bank-nc-digital-bet',
-    articleTitle: 'The Century Bank That Hired a Chief Digital Officer',
+    articleTitle: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     fdicCert: 15359,
-    auditDate: 'June 2026',
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$5.25B' },
-      { label: 'ROA (Q4 2025)', value: '1.19%' },
-      { label: 'Efficiency ratio', value: '53.23%' },
+      { label: 'Total assets', value: '$5.30B' },
+      { label: 'ROA', value: '1.40% (1H 2026)' },
+      { label: 'Efficiency ratio', value: '52.6% (1H 2026)' },
       { label: 'Branch count', value: '57' },
     ],
     volumes: {
-      mortgage: { count: 500, source: 'Estimated from 57-branch eastern NC + southeastern VA footprint and residential real estate concentration in $3.44B loan book; HMDA data pending', estimated: true },
-      commercial: { count: 300, source: 'FDIC call report: C&I $246M, CRE and construction segments across 57 locations; estimated from loan mix', estimated: true },
+      mortgage: { count: 1557, source: 'HMDA 2025: 1,557 originated loans ($440.7M), including 678 purchase loans ($267.5M); 1,547 conventional, 8 VA, 2 USDA', estimated: false },
+      commercial: { count: 300, source: 'FDIC call report: C&I $259M, nonfarm nonresidential CRE $1.50B and construction $197M (Q2 2026) across 57 locations; estimated from loan mix', estimated: true },
       consumer: { count: 200, source: 'Estimated from branch footprint and consumer segment of loan portfolio', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 10000,
-      source: '57-branch eastern NC + southeastern VA footprint spanning Wayne, Dare, Duplin, Lenoir, Wilson, Nash, Johnston, Pitt, and Onslow counties plus southeastern Virginia; Census county in-migration estimates',
+      source: '57-branch eastern NC + southeastern VA footprint spanning Wayne, Nash, Pitt, Dare, Sampson, Duplin, Lenoir, Wilson, Johnston and other eastern NC counties plus Virginia Beach, Norfolk, Chesapeake, Suffolk, Newport News and Henrico; Census county in-migration estimates',
     },
     intro:
-      "Southern Bank and Trust operates $5.25 billion across three distinct borrower economies: tobacco and agricultural country in the interior, military communities around Seymour Johnson AFB, and coastal vacation markets on the Outer Banks. A 57-branch footprint with that kind of income complexity creates above-average verification load per file. The Chief Digital Officer hire signals the bank is working the problem from the top down.",
+      "Southern Bank and Trust cut its efficiency ratio from 69.4% to 52.6% between Q1 2024 and the first half of 2026, mostly on a wider margin, and moved its customers to a new digital banking platform on October 19, 2026. Deposits, HELOCs and mortgages can start online. Personal, auto and business loans still start with a phone call or a contact form, across a 57-office footprint that runs from Goldsboro to the Outer Banks to Hampton Roads.",
     strategic: [
       {
         title: 'Three borrower economies, one verification standard',
-        body: "Farm operators carry seasonal income that looks nothing like a W-2. Military personnel at Seymour Johnson have base pay plus housing allowance (BAH) plus subsistence pay plus special duty pay. Outer Banks vacation property buyers show Airbnb income that standard pay stub pulls miss. Three income types, three verification workflows, thirty-seven extra days per file that shouldn't exist. A single bank-level integration eliminates the per-borrower-type patchwork.",
+        body: "Farm operators carry seasonal income that looks nothing like a W-2. Military personnel at Seymour Johnson have base pay plus housing allowance (BAH) plus subsistence pay plus special duty pay. Outer Banks vacation property buyers show Airbnb income that standard pay stub pulls miss. Three income types, three verification workflows. A single bank-level integration replaces the per-borrower-type patchwork.",
       },
       {
-        title: "The CDO hire is the telling signal",
-        body: "Sondra McCorquodale joined as EVP and Chief Digital Officer after years at First Citizens Bank, one of the most aggressive acquirers and technology integrators in the community bank space. Banks hire CDOs when the digital upgrade agenda has reached the CEO level. The verification layer is typically the first problem a CDO can close in a 6-month window: it has a measurable before and after, it does not require replacing core systems, and the efficiency ratio effect is visible in the next quarter.",
+        title: "The margin did the first 17 points",
+        body: "Net interest income grew 24% in the first half of 2026 while noninterest expense grew about 7%. That is how the efficiency ratio fell from 69.4% to 52.6%. Margin gains stop when rates and deposit costs move. The next points have to come from throughput: more loans closed by the same 603 people. Intake and income verification are where a loan officer's hours go before underwriting starts.",
       },
       {
         title: 'Military borrowers are the highest-complexity files in the portfolio',
-        body: 'Active duty and veteran borrowers near Seymour Johnson AFB represent exactly the income profile that manual verification handles worst: non-standard pay components, frequent PCS moves that create employment gaps, and VA loan requirements layered on top. Automated military income verification through open banking connections closes files that manual VOE calls miss entirely, and does it in hours instead of days.',
+        body: 'Active duty and veteran borrowers near Seymour Johnson AFB and Naval Station Norfolk represent exactly the income profile that manual verification handles worst: non-standard pay components, frequent PCS moves that create employment gaps, and VA loan requirements layered on top. Southern Bank made 8 VA loans out of 1,557 home loans in 2025. Automated military income verification through open banking connections closes files that manual VOE calls miss entirely, and does it in hours instead of days.',
       },
     ],
     sources:
-      'FDIC BankFind (Cert #15359); Southern BancShares Q4 2025 and Q1 2026 FDIC call report data; Sahm Capital SBNC analysis (Feb 2026); Seymour Johnson AFB economic impact data; NC Office of State Budget and Management 2026 Economic Outlook; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind and API (Cert #15359; financials Q1 2024 to Q2 2026, locations); HMDA 2025 via FFIEC data browser (LEI 5493000XJFWT2H46HI07); southernbank.com (executive officers page, Southern Bank Digital launch notice, HELOC and personal loan pages, openaccount.southernbank.com), reviewed October 2026; Air Force Secretary letter to Sen. Ted Budd on Seymour Johnson F-15EX (August 2026); MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'first-reliance-bank',
     name: 'First Reliance Bancshares',
     shortName: 'First Reliance',
-    articleSlug: 'first-reliance-outgrew-florence',
-    articleTitle: "The Bank That Didn't Wait for the Battery Plant",
-    fdicCert: 76181,
+    articleSlug: 'first-reliance-sells-at-the-top',
+    articleTitle: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
+    fdicCert: 35214,
     auditDate: 'June 2026',
     stats: [
       { label: 'Total assets', value: '$1.12B' },
@@ -827,14 +827,14 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'FDIC BankFind (Cert #76181); First Reliance Bancshares Q1 2026 earnings release; Visbanking call report data; Florence County Economic Development (AESC project status); Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind (Cert #35214); First Reliance Bancshares Q1 2026 earnings release; Visbanking call report data; Florence County Economic Development (AESC project status); Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'colony-bankcorp',
     name: 'Colony Bankcorp',
     shortName: 'Colony',
-    articleSlug: 'colony-bankcorp-farm-to-fees',
-    articleTitle: 'Built on Peanuts, Betting on Fees',
+    articleSlug: 'first-reliance-sells-at-the-top',
+    articleTitle: 'First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.',
     fdicCert: 22257,
     auditDate: 'June 2026',
     stats: [
@@ -877,33 +877,33 @@ export const ROI_BANKS: BankRoiInput[] = [
     shortName: 'Carolina Bank',
     articleSlug: 'carolina-bank-between-two-economies',
     articleTitle: 'The Bank Between Two Economies',
-    fdicCert: 355120,
-    auditDate: 'June 2026',
+    fdicCert: 16723,
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$830M' },
-      { label: 'ROA', value: '1.68%' },
-      { label: 'Efficiency ratio', value: '44.86%' },
-      { label: 'Tier 1 capital ratio', value: '20.23%' },
+      { label: 'Total assets', value: '$845M' },
+      { label: 'ROA', value: '1.85% (1H 2026)' },
+      { label: 'Efficiency ratio', value: '43.2% (1H 2026)' },
+      { label: 'Tier 1 capital ratio', value: '20.14%' },
     ],
     volumes: {
-      mortgage: { count: 160, source: 'FDIC call report loan mix, estimated from $588M net loan book and 6-county footprint', estimated: true },
+      mortgage: { count: 160, source: 'FDIC call report loan mix, estimated from $599M net loan book (Q2 2026) and 6-county footprint', estimated: true },
       commercial: { count: 80, source: 'FDIC call report loan mix, estimated', estimated: true },
       consumer: { count: 120, source: 'Estimated from 14-branch footprint and rural SC consumer mix', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 1200,
-      source: 'Darlington, Florence, and 4 adjacent Pee Dee counties; anchored by AESC EV plant (1,620 jobs) and Census county in-migration estimates',
+      source: 'Darlington, Florence, and 4 adjacent counties; Census county in-migration estimates. The AESC EV plant (about 1,600 jobs promised) has been paused since June 2025 and is not counted as near-term demand.',
     },
     intro:
-      'Carolina Bank & Trust sits at the intersection of two economic stories: Darlington County shedding old-economy manufacturing jobs and Florence County absorbing a $1.62 billion EV battery plant. A 20.23% Tier 1 capital ratio means the capital to chase that Florence growth is already on the balance sheet. The constraint is throughput.',
+      'Carolina Bank & Trust sits at the intersection of two economic stories: Darlington County losing its Canfor sawmill in 2025 and Florence County waiting on a $1.6 billion EV battery plant that has been paused since June 2025. A 20.14% Tier 1 capital ratio means the capital to chase Florence growth, whenever it comes, is already on the balance sheet. The constraint is throughput.',
     strategic: [
       {
-        title: 'The EV economy brings complex borrowers first',
-        body: 'AESC construction workers, relocating contractors, and skilled tradespeople arriving for the Florence plant carry the verification profiles that slow manual processing most: recent job starts, multiple W-2s, high hourly wages without long employment history. Automated income and employment verification handles exactly these borrowers faster than document collection.',
+        title: 'If the EV plant restarts, complex borrowers arrive first',
+        body: 'If AESC resumes construction, the construction workers, relocating contractors, and skilled tradespeople arriving for the Florence plant will carry the verification profiles that slow manual processing most: recent job starts, multiple W-2s, high hourly wages without long employment history. Automated income and employment verification handles exactly these borrowers faster than document collection.',
       },
       {
         title: 'A fortress capital ratio is optionality, not a trophy',
-        body: 'At 20.23% Tier 1, Carolina Bank can move fast when Florence loan demand accelerates without asking regulators for permission. The binding constraint on capturing that demand is not capital: it is how many files the team can process in a week.',
+        body: 'At 20.14% Tier 1, Carolina Bank can move fast when Florence loan demand accelerates without asking regulators for permission. The binding constraint on capturing that demand is not capital: it is how many files the team can process in a week.',
       },
       {
         title: 'The Darlington stress test is still running',
@@ -911,7 +911,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'FDIC BankFind (Cert #355120); Visbanking call report data; Florence County Economic Development (AESC announcement); Canfor 2024 Annual Report; Zillow Florence SC market data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind and API (Cert #16723; financials and locations, Q2 2026); Canfor closure announcement (June 26, 2025) and 2024 results; SC Daily Gazette and Post and Courier on the AESC Florence pause (June 2025 to July 2026); MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'coastal-states-bank',
@@ -1048,8 +1048,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 9923,
     auditDate: 'May 2026',
     stats: [
-      { label: 'Total assets', value: '$1.78B' },
-      { label: 'ROA / ROE', value: '1.46% / 17.7%' },
+      { label: 'Total assets', value: '$2.28B (Q1 2026)' },
+      { label: 'ROA', value: '1.38% (FY2025); 1.48% annualized Q1 2026' },
       { label: 'Branches', value: '25+ across coastal SC' },
       { label: 'Mortgage originations', value: '~250/yr' },
     ],
@@ -1063,7 +1063,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       source: 'Horry County among fastest-growing US metros (~3%/yr on ~390K), Census estimates',
     },
     intro:
-      'Anderson Brothers runs one of the highest-velocity lending operations among SC community banks: a 1.46% ROA, a 25-branch coastal footprint, and a consumer loan channel that processes serious volume. Velocity is exactly where per-file verification time compounds fastest.',
+      'Anderson Brothers runs one of the highest-velocity lending operations among SC community banks: a 1.38% ROA in 2025, a 25-branch coastal footprint, and a consumer loan channel that processes serious volume. Velocity is exactly where per-file verification time compounds fastest.',
     strategic: [
       {
         title: 'Volume is the multiplier',
@@ -1087,10 +1087,10 @@ export const ROI_BANKS: BankRoiInput[] = [
     shortName: 'Southern First',
     articleSlug: 'southern-first-bank-upstate-sc-bet',
     articleTitle: 'The Upstate SC Bet',
-    fdicCert: 35179,
+    fdicCert: 35295,
     auditDate: 'May 2026',
     stats: [
-      { label: 'Total assets', value: '$4.4B' },
+      { label: 'Total assets', value: '$4.88B (Q3 2026)' },
       { label: 'Total loans', value: '$3.9B' },
       { label: '2024 HMDA originations', value: '1,119' },
       { label: 'Branches', value: '12 across SC, NC, GA' },
@@ -1132,7 +1132,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     stats: [
       { label: 'Total assets', value: '~$640M' },
       { label: 'FDIC cert', value: '18143' },
-      { label: 'Online loan products', value: '0 of 6' },
+      { label: 'Online loan products', value: '1 of 6 (mortgage pre-qualification)' },
       { label: 'Market', value: 'Oconee County, GA (Athens MSA)' },
     ],
     volumes: {
@@ -1152,12 +1152,12 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: 'Oconee County added more than 10,000 residents in the 2020s, nearly all from in-migration. These borrowers arrive with existing banking relationships in other markets and choose their new bank based on digital experience first. A bank with no apply button loses the first-touch comparison to any lender that has one, including national brands with zero local presence.',
       },
       {
-        title: 'EVP Innovation hire signals the board sees the gap',
-        body: "The bank created an EVP Chief Innovation and Technology Officer role specifically to modernize the lending stack. That mandate requires a front-end verification layer before it can deliver on the digital promise. Without an intake that verifies income, identity, and employment at first touch, a new CTO just has a modern website pointed at a phone number.",
+        title: 'An innovation executive is already in place',
+        body: "In April 2023 the bank named John Davis EVP, Chief Innovation and Technology Officer, and account opening has since moved online to a bank-branded subdomain. Lending is the next step: outside the Remarkable Mortgage pre-qualification page, no loan product can be started online. A verify-as-you-go intake is the most measurable project that role can deliver for lending.",
       },
       {
         title: 'University and tech workforce means complex income profiles',
-        body: "Borrowers in the Athens corridor include UGA faculty on 9-month contracts, startup founders with equity comp, and Rivian (the nearby electric vehicle manufacturer) employees with RSU income. These profiles fail manual document chasing and are exactly the applicants RAVEN's automated Truework and Plaid verification resolves quickly.",
+        body: "Borrowers in the Athens corridor include UGA faculty on 9-month contracts, self-employed professionals, and commuters with income from more than one source. These profiles fail manual document chasing and are exactly the applicants RAVEN's automated income and employment verification resolves quickly.",
       },
     ],
     sources:
@@ -1170,7 +1170,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 20504,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '~$25.6B' },
+      { label: 'Total assets', value: '~$28.4B (Q2 2026)' },
       { label: 'States', value: 'GA, AL, FL, SC, NC' },
       { label: 'Online loan products', value: '1 of 6 (partial)' },
       { label: 'Mortgage', value: 'Third-party portal' },
@@ -1185,15 +1185,15 @@ export const ROI_BANKS: BankRoiInput[] = [
       source: "Ameris Bank footprint spans high-growth metros: Atlanta MSA (~50,000 net new households/year), Jacksonville FL MSA, Columbia SC MSA, and coastal GA/FL markets. Estimated 25,000 net new households in primary service areas annually (ACS 2019-2023, Census population estimates).",
     },
     intro:
-      "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across Georgia, Alabama, Florida, South Carolina, and North Carolina. The mortgage operation is substantial, but mortgage applications route to a third-party subdomain (mymortgage-online.com), breaking the brand at the highest-stakes conversion step. Personal loans have no digital application path. HELOC and home equity require a branch visit. Commercial is relationship-only. For a bank this size, automated borrower verification at intake is the infrastructure that makes the mortgage volume sustainable without proportional staffing.",
+      "Ameris Bank is the dominant Southeast-focused regional with $28.4 billion in assets across Georgia, Alabama, Florida, South Carolina, and North Carolina. The mortgage operation is substantial, but mortgage applications route to a third-party subdomain (mymortgage-online.com), breaking the brand at the highest-stakes conversion step. Personal loans have no digital application path. HELOC and home equity require a branch visit. Commercial is relationship-only. For a bank this size, automated borrower verification at intake is the infrastructure that makes the mortgage volume sustainable without proportional staffing.",
     strategic: [
       {
         title: '$25B mortgage operation running on a third-party portal',
         body: 'At 2,450 estimated annual mortgage originations, manual document collection is the single largest per-file labor sink in the bank. Automated income, employment, and identity verification at intake converts each file from a 10-hour staff project into a 90-second process, recovering an estimated 3.5 FTEs of underwriter capacity without a hire.',
       },
       {
-        title: 'Retail Delivery & Innovation mandate requires a front-end layer',
-        body: 'The SVP of Retail Delivery and Innovation role exists specifically to modernize how borrowers enter the lending process. The current state, a third-party mortgage portal plus no digital intake for any other product, is the problem that role was hired to solve. The verification layer is typically the first high-visibility win: measurable before/after, no core replacement required, visible in the efficiency ratio within two quarters.',
+        title: 'The intake gap is the fastest win available',
+        body: 'The current state, a third-party mortgage portal plus no digital intake for any other product, is the kind of gap a verification layer closes first. The verification layer is typically the first high-visibility win: measurable before/after, no core replacement required, visible in the efficiency ratio within two quarters.',
       },
       {
         title: 'Five-state footprint, one intake standard',
@@ -1207,25 +1207,25 @@ export const ROI_BANKS: BankRoiInput[] = [
     slug: 'united-bank',
     name: 'United Bank',
     shortName: 'United Bank',
-    fdicCert: 5672,
-    auditDate: 'June 2026',
+    fdicCert: 22858,
+    auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '~$30B' },
+      { label: 'Total assets', value: '~$33.6B (Q2 2026)' },
       { label: 'States', value: 'WV, VA, OH, MD, PA, NC, SC' },
       { label: 'Online loan products', value: '2 of 6 (partial)' },
       { label: 'HQ', value: 'Charleston, WV' },
     ],
     volumes: {
-      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 5672 (~$30B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
-      commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 5672', estimated: true },
-      consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 5672', estimated: true },
+      mortgage: { count: 2900, source: 'Estimated from HMDA 2024 public data and FDIC call report for CERT 22858 (~$33.6B total assets, substantial mortgage origination across multi-state footprint)', estimated: true },
+      commercial: { count: 1700, source: 'Estimated from FDIC call report CRE and C&I balances for CERT 22858', estimated: true },
+      consumer: { count: 1100, source: 'Estimated from FDIC call report consumer loan balances for CERT 22858', estimated: true },
     },
     market: {
       newHouseholdsPerYear: 15000,
       source: 'United Bank footprint includes Charlotte MSA (fast-growing), Richmond VA MSA, and expanding NC/SC markets. Estimated 15,000 net new households in primary growth markets annually (ACS 2019-2023, Census population estimates).',
     },
     intro:
-      "United Bank is the primary subsidiary of United Bankshares, one of the largest bank holding companies headquartered in West Virginia with roughly $30 billion in total assets across seven states. The Charlotte, NC office reflects the bank's southward growth push into the fastest-expanding markets in the Mid-Atlantic. The bank has an online mortgage application but no automated income or property verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal lending is partially digital, HELOC has no standalone path, and commercial is entirely relationship-based. At $30B, the friction cost of manual verification is measured in weeks of underwriter time per quarter.",
+      "United Bank is the primary subsidiary of United Bankshares, one of the largest bank holding companies headquartered in West Virginia with about $33.6 billion in bank assets across eight states, including Georgia after its January 2025 acquisition of Piedmont Bancorp. The Charlotte, NC office reflects the bank's southward growth push into the fastest-expanding markets in the Mid-Atlantic. The bank has an online mortgage application but no automated income or property verification embedded in the flow: borrowers submit and then wait for manual document collection to begin. Personal and auto lending have no online application, HELOC has no standalone path, and commercial is entirely relationship-based. At $33.6B, the friction cost of manual verification is measured in weeks of underwriter time per quarter.",
     strategic: [
       {
         title: 'Mortgage volume without embedded verification is a capacity trap',
@@ -1236,12 +1236,12 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: "United Bank's Charlotte office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline. In-migrants choosing a bank in the Charlotte MSA make that choice on digital experience before they ever visit a branch. A bank that offers an apply button that still requires a follow-up document email is not competing with Rocket Mortgage or Better.com for that borrower.",
       },
       {
-        title: 'SVP Digital Strategy hire signals the inflection point',
-        body: 'The Director of Digital Strategy role is the bank\'s signal that leadership understands the problem. Converting that mandate into a measurable outcome means automating the borrower verification workflow: income, identity, employment, and assets captured in 90 seconds at intake, verified file synced to the core on submission. That is the deliverable a digital strategy mandate requires, and it is the first place the efficiency ratio improves.',
+        title: 'A digital strategy team is already in place',
+        body: 'United has had an SVP and Director of Digital Strategy since 2020 and a Charlotte-based digital strategy team. Converting that mandate into a measurable outcome means automating the borrower verification workflow: income, identity, employment, and assets captured in 90 seconds at intake, verified file synced to the core on submission. That is the deliverable a digital strategy mandate requires, and it is the first place the efficiency ratio improves.',
       },
     ],
     sources:
-      'FDIC BankFind cert #5672; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+      'FDIC BankFind cert #22858; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
     slug: 'robins-financial-credit-union',
@@ -1257,7 +1257,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     auditDate: 'August 2026',
     stats: [
       { label: 'Total assets', value: '$4.91B (Mar 2026)' },
-      { label: 'Net worth ratio', value: '16.1% (Mar 2026)' },
+      { label: 'Net worth ratio', value: '17.3% (Mar 2026)' },
       { label: 'Members', value: '272,542' },
       { label: 'Branch count', value: '24 across middle Georgia' },
     ],
@@ -1287,7 +1287,7 @@ export const ROI_BANKS: BankRoiInput[] = [
         "Robins Financial's Georgia state charter (converted from federal in January 2016) covers roughly 43 middle Georgia counties plus family of members. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to the field of membership. Houston County (~170,000) and Bibb County (Macon, ~157,000) anchor the footprint; Robins AFB grew 11% in two years to 21,000+ workers whose homes span 110 of Georgia's 159 counties. Middle Georgia growth is slower than coastal or Atlanta-metro Georgia; at 2.5 persons per household, a conservative estimate nets roughly 4,500 new households a year across the 43-county footprint.",
     },
     intro:
-      "Robins Financial is the end state the rest of this series is chasing: a 16.1% net worth ratio, a roughly 1.8% ROA earned on a 1.15% cost of funds, and so much structural surplus that it rebated $20 million to members in December ($151 million since 2017). The engine is relationship depth: 30.9% of shares sit in share drafts, the best primary-relationship funding mix we have measured. The strategic exposure is geographic: Robins AFB employees live in 110 of Georgia's 159 counties while the credit union operates 24 branches, so for most eligible members the digital front door is the branch network, and every step of friction in joining or borrowing is a member the rebate flywheel never gets to feed.",
+      "Robins Financial is the end state the rest of this series is chasing: a 17.3% net worth ratio, a roughly 1.8% ROA earned on a 1.15% cost of funds, and so much structural surplus that it rebated $20 million to members in December ($151 million since 2017). The engine is relationship depth: 30.9% of shares sit in share drafts, the best primary-relationship funding mix we have measured. The strategic exposure is geographic: Robins AFB employees live in 110 of Georgia's 159 counties while the credit union operates 23 branches, so for most eligible members the digital front door is the branch network, and every step of friction in joining or borrowing is a member the rebate flywheel never gets to feed.",
     strategic: [
       {
         title: 'The Rebate Flywheel Only Compounds on Members the Funnel Actually Converts',
@@ -1299,7 +1299,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
       {
         title: 'A 30.9% Share-Draft Mix Is Worth Defending Like an Asset',
-        body: 'Robins funds itself at roughly 1.15% because nearly a third of its shares are primary-relationship checking balances, while peers pay north of 2% for certificate money. Every fintech and neobank onboarding flow is aimed at exactly these balances, and the industry lost 44% of new checking accounts to digital-first competitors last year on speed of account opening alone. Matching that opening speed, with verification rigor a 16.1%-capitalized institution expects, is the cheapest defense of the funding advantage that makes the whole model work.',
+        body: 'Robins funds itself at roughly 1.15% because nearly a third of its shares are primary-relationship checking balances, while peers pay north of 2% for certificate money. Every fintech and neobank onboarding flow is aimed at exactly these balances, and digital banks and fintechs took 44% of new checking accounts opened in 2024, per Cornerstone Advisors. Matching that opening speed, with verification rigor a 17%-capitalized institution expects, is the cheapest defense of the funding advantage that makes the whole model work.',
       },
     ],
     sources:
@@ -1365,7 +1365,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, membership pages, reviewed August 2026); apply.foundersfcu.com (first-party account opening and lending subdomain) and mortgage.foundersfcu.com (mortgage application, vendor-powered on a Founders subdomain); Q2 external-link whitelist in foundersfcu.com page source and Q2 published customer story (info.q2.com); fitcuso.com (FIT CUSO, Founders Innovative Technology: KeyStone-specific products); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026: assets, loans, loan mix, shares, share mix, equity, members, branches, income statement); FFIEC HMDA data browser API, 2024, LEI 5493001AGQGPJ3N3YL33 (2,139 originations, $332.8M); WalletHub and foundersfcu.com membership eligibility; CUToday, CU Times, WRHI, and Tyfone news coverage of the 2025-2026 leadership transition; Home Textiles Today and SC Encyclopedia for Springs Industries history; USAFacts/Census for Lancaster County population. fdicCert field holds Founders' NCUA charter number, not an FDIC certificate; Founders is a federally insured credit union with no FDIC cert. Federal charter: no IRS Form 990 exists (unlike state-chartered credit unions).",
+      "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, membership pages, reviewed August 2026); apply.foundersfcu.com (first-party account opening and lending subdomain) and mortgage.foundersfcu.com (mortgage application, vendor-powered on a Founders subdomain); Q2 external-link whitelist in foundersfcu.com page source and Q2 published customer story (info.q2.com); fitcuso.com (FIT CUSO, Founders Innovative Technology: KeyStone-specific products); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026: assets, loans, loan mix, shares, share mix, equity, members, branches, income statement); FFIEC HMDA data browser API, 2024, LEI 5493001AGQGPJ3N3YL33; WalletHub and foundersfcu.com membership eligibility; CUToday, CU Times, WRHI, and Tyfone news coverage of the 2025-2026 leadership transition; Home Textiles Today and SC Encyclopedia for Springs Industries history; USAFacts/Census for Lancaster County population. fdicCert field holds Founders' NCUA charter number, not an FDIC certificate; Founders is a federally insured credit union with no FDIC cert. Federal charter: no IRS Form 990 exists (unlike state-chartered credit unions).",
   },
   {
     slug: 'champions-first-credit-union',
@@ -1401,7 +1401,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       consumer: {
         count: 2400,
         source:
-          'Auto is the volume product: roughly $42M of 2024 originations came through the iDrive CUSO indirect dealer channel alone (2024 annual report), which implies about 1,500 dealership-sourced loans at typical used-auto balances, before counting direct auto, personal, and credit rebuilder volume from $151M in total 2024 loan production. Not an NCUA-reported figure.',
+          'Auto is the volume product. Estimated from $151M in total 2024 loan production across auto, personal, and credit rebuilder lending at typical consumer balances. Not an NCUA-reported figure.',
         estimated: true,
       },
     },
@@ -1418,16 +1418,16 @@ export const ROI_BANKS: BankRoiInput[] = [
         body: "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But a prospective member who clicks 'join' today is handed to app.consumer.meridianlink.com, a third-party domain whose URL still carries the FSU-era lender reference 'Floridascu,' and every loan product routes to MeridianLink's generic app.loanspq.com portal. The brand investment stops at exactly the moment a prospect decides whether to become a member. RAVEN's white-label intake keeps the entire join-and-apply experience on Champions First's own domain, with identity, income, and funding-account verification built into the flow instead of bolted on after the handoff.",
       },
       {
-        title: 'Allowed 2,500 New Members a Year. Netting About 220.',
-        body: "Florida's Office of Financial Regulation capped Champions First's 2018 western expansion at 2,500 new members a year, a ceiling the credit union has never approached: net membership growth since January 2022 is roughly 900 total, about 220 a year, across a field of membership of 1.6 million people growing as fast as anywhere in Florida. That is a conversion problem, not a demand problem. Verification-first account opening, where a new member proves identity and links a funding account in minutes instead of abandoning a third-party form, is the single highest-leverage fix for an institution whose penetration sits near 2% while comparable Southeast credit unions run near 9%.",
+        title: 'A Field of 1.6 Million People. Netting About 220 Members a Year.',
+        body: "Net membership growth at Champions First since January 2022 is roughly 900 total, about 220 a year, across a field of membership of 1.6 million people growing as fast as anywhere in Florida. That is a conversion problem, not a demand problem. Verification-first account opening, where a new member proves identity and links a funding account in minutes instead of abandoning a third-party form, is the single highest-leverage fix for an institution whose penetration sits near 2% while comparable Southeast credit unions run near 9%.",
       },
       {
         title: 'Funding Costs Rose 49% Because New Members Did Not Show Up',
-        body: 'Only 17% of Champions First shares sit in share drafts, the primary-relationship balances that come with new members. So 2024 growth was bought instead: dividends on shares jumped 49% to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares, money loyal to a rate rather than the institution. The indirect auto channel (roughly $42M through the iDrive CUSO in 2024) compounds this, because dealership-sourced borrowers are notoriously single-product. A digital front door that converts an indirect borrower into a verified, share-draft-holding primary member at the moment of loan intake attacks the cost-of-funds problem at its source.',
+        body: 'Only 17% of Champions First shares sit in share drafts, the primary-relationship balances that come with new members. So 2024 growth was bought instead: dividends on shares jumped 49% to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares, money loyal to a rate rather than the institution. A digital front door that converts an indirect borrower into a verified, share-draft-holding primary member at the moment of loan intake attacks the cost-of-funds problem at its source.',
       },
     ],
     sources:
-      "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com (application domains; lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno online banking, fingerprinted August 2026); Champions First 2024 Annual Report (assets, loan mix, dividends, net income, iDrive CUSO volume, CDFI grant, Pensacola property); NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026: assets, loans, shares, share mix, equity, members, branches); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer (state-chartered 501(c)(14)); Florida OFR field-of-membership record (2018 seven-county expansion, 2,500 members/year condition); American Banker and cucentral.the-league.coop coverage of the FDOT CU merger (Jan 1, 2022) and GPCE CU merger (Oct 1, 2020); FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates for the 18-county field of membership. fdicCert field holds the NCUA charter number, not an FDIC certificate; Champions First is a federally insured credit union with no FDIC cert.",
+      "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com (application domains; lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno online banking, fingerprinted August 2026); Champions First 2024 Annual Report (assets, loan mix, dividends, net income, Pensacola property); NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026: assets, loans, shares, share mix, equity, members, branches); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer (state-chartered 501(c)(14)); American Banker and cucentral.the-league.coop coverage of the FDOT CU merger (Jan 1, 2022) and GPCE CU merger (Oct 1, 2020); FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates for the 18-county field of membership. fdicCert field holds the NCUA charter number, not an FDIC certificate; Champions First is a federally insured credit union with no FDIC cert.",
   },
   {
     slug: 'rev-federal-credit-union',
@@ -1469,10 +1469,10 @@ export const ROI_BANKS: BankRoiInput[] = [
     market: {
       newHouseholdsPerYear: 7200,
       source:
-        "REV's federal charter covers Berkeley, Charleston, Colleton, and Dorchester counties (SC), Brunswick and Columbus counties (NC), and Joint Base Charleston, a materially larger addressable area than a single county. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to field of membership, the actual legal ceiling on who REV can serve, rather than a county deposit market. The Charleston Regional Development Alliance estimates the Berkeley-Charleston-Dorchester tri-county area (the bulk of REV's SC footprint) adds roughly 17,500 residents/year, about 7,000 households at 2.5 persons/household; Colleton County and the two North Carolina counties add modest additional growth, netting to roughly 7,200/year.",
+        "REV's federal charter covers Berkeley, Charleston, Colleton, and Dorchester counties (SC), Brunswick and Columbus counties (NC), Joint Base Charleston, and, since the First Neighborhood deal, Wirt and Wood counties (WV) and Washington County (OH), a materially larger addressable area than a single county. No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to field of membership, the actual legal ceiling on who REV can serve, rather than a county deposit market. The Charleston Regional Development Alliance estimates the Berkeley-Charleston-Dorchester tri-county area (the bulk of REV's SC footprint) adds roughly 17,500 residents/year, about 7,000 households at 2.5 persons/household; Colleton County and the two North Carolina counties add modest additional growth, netting to roughly 7,200/year.",
     },
     intro:
-      "REV Federal Credit Union is buying a bank 520 miles outside its own field of membership: First Neighborhood Bank in Spencer, West Virginia, the first-ever credit union purchase of a bank in that state's history. REV brings real strengths to that expansion. Net worth sits at 14.16% of assets, more than double the 7% regulatory floor, funded entirely from retained member dividends since credit unions cannot issue stock. What it does not yet bring is a consistent digital front door: auto, personal, and REVline loans apply directly on REV's own domain, but mortgage and commercial lending each hand off to a different third-party portal, and commercial real estate has no online path at all. That gap is a member-experience problem today. It becomes a member-acquisition problem the moment REV starts serving members two states away with no nearby branch.",
+      "REV Federal Credit Union bought a bank 520 miles from its home market: First Neighborhood Bank in Spencer, West Virginia (closed July 1, 2026), the first-ever credit union purchase of a bank in that state's history. REV brings real strengths to that expansion. Net worth sits at 14.16% of assets, more than double the 7% regulatory floor, funded entirely from retained member dividends since credit unions cannot issue stock. What it does not yet bring is a consistent digital front door: auto, personal, and REVline loans apply directly on REV's own domain, but mortgage and commercial lending each hand off to a different third-party portal, and commercial real estate has no online path at all. That gap is a member-experience problem today. It becomes a member-acquisition problem the moment REV starts serving members two states away with no nearby branch.",
     strategic: [
       {
         title: 'Three Lending Portals for One Credit Union, Right Before the Member Base Spreads Across Two States',
@@ -1488,7 +1488,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       },
     ],
     sources:
-      'revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026); join.revfcu.com, revfcu3333.mymortgage-online.com, and revfcu.onlineportalnow.com (REV\'s three lending application domains); NCUA charter #9986 via bestcashcow.com and ncuso.org call-report aggregation (net worth, net worth ratio, non-current loans, loan loss reserves, Texas ratio; Dec 2025); revfcu.com press release "South Carolina CU Expands With Planned Bank Acquisition in West Virginia"; S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition (approved May 27, 2026); Charleston Regional Development Alliance population data; Census QuickFacts Berkeley/Charleston/Colleton/Dorchester Counties SC; e-WV / Roane County WV economic data. fdicCert field holds REV\'s NCUA charter number, not an FDIC certificate; REV is a federally insured credit union with no FDIC cert.',
+      'revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026); join.revfcu.com, revfcu3333.mymortgage-online.com, and revfcu.onlineportalnow.com (REV\'s three lending application domains); NCUA charter #9986 via bestcashcow.com and ncuso.org call-report aggregation (net worth, net worth ratio, non-current loans, loan loss reserves, Texas ratio; Dec 2025); revfcu.com press release "South Carolina CU Expands With Planned Bank Acquisition in West Virginia"; S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition (approved May 27, 2026; closed July 1, 2026); Charleston Regional Development Alliance population data; Census QuickFacts Berkeley/Charleston/Colleton/Dorchester Counties SC; e-WV / Roane County WV economic data. fdicCert field holds REV\'s NCUA charter number, not an FDIC certificate; REV is a federally insured credit union with no FDIC cert.',
   },
   {
     slug: 'palmetto-citizens-federal-credit-union',
@@ -1511,7 +1511,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       mortgage: {
         count: 310,
         source:
-          'Palmetto Citizens consolidates vehicle, mortgage, home equity, and credit card applications into one first-party flow (applynow.palmettocitizens.org) but does not publish category-level NCUA 5300 loan detail publicly. Estimate derived from Chief Lending Officer Robert Terrell\'s disclosed ~$734M loan portfolio at a typical credit-union residential-real-estate share of the book.',
+          'Palmetto Citizens consolidates vehicle, mortgage, home equity, and credit card applications into one first-party flow (applynow.palmettocitizens.org) but does not publish category-level NCUA 5300 loan detail publicly. Estimate derived from the credit union\'s ~$830M loan portfolio (mid-2026) at a typical credit-union residential-real-estate share of the book.',
         estimated: true,
       },
       commercial: {
