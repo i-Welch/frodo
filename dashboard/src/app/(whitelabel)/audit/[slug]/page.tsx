@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../../(marketing)/calendly-button';
 import { LeadCapture } from '../../../(marketing)/lead-capture';
+import { STACK_ROWS } from '../../../(marketing)/bank-tech-stack/stack-data';
 import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
 import { AUDITS, getAudit } from '../../_config/audit-data';
@@ -385,6 +386,18 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
               </p>
               <a href={`/blog/${bank.articleSlug}`} className="aud-article-link">
                 Read: {bank.articleTitle}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </>
+          )}
+
+          {STACK_ROWS.some((r) => r.slug === audit.slug) && (
+            <>
+              <p className="aud-sub" style={{ marginTop: '2.5rem' }}>
+                See how {audit.shortName}&apos;s vendors compare with {STACK_ROWS.length - 1} other Southeast banks and credit unions:
+              </p>
+              <a href="/bank-tech-stack" className="aud-article-link">
+                Bank Tech Stack Tracker
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </a>
             </>
