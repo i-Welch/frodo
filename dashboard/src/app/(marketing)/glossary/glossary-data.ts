@@ -598,6 +598,67 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
   },
   {
+    slug: 'loan-origination-system',
+    term: 'Loan Origination System',
+    abbreviation: 'LOS',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Loan Origination System (LOS)?',
+    metaDescription:
+      'A loan origination system runs a loan from application to closing. What an LOS does, mortgage vs. consumer vs. commercial systems, and which ones Southeast banks use.',
+    definition:
+      'A loan origination system (LOS) is the software a lender uses to move a loan from application through underwriting, approval and closing. It holds the application data, orders verifications and disclosures, routes the file to underwriters, and hands the closed loan to the core banking system for servicing.',
+    sections: [
+      {
+        heading: 'What an LOS does',
+        paragraphs: [
+          'The LOS is the system of record for a loan while it is being made. A borrower usually starts in a point-of-sale (POS) front end, the online application, which feeds the LOS. From there the LOS manages the file: collecting income, employment and asset documentation, pulling credit, running decision rules, generating the disclosures the loan type requires, producing closing documents, and finally booking the loan to the core.',
+          'Most of the time a loan spends in origination is spent waiting on evidence. The LOS can track that a pay stub or bank statement is missing, but it cannot make the borrower upload it faster or confirm it is real. That is why [income verification](/glossary/income-verification) and [asset verification](/glossary/asset-verification) are where applications tend to stall.',
+        ],
+      },
+      {
+        heading: 'Mortgage, consumer and commercial systems',
+        paragraphs: [
+          'Few banks run one LOS for everything. Mortgage origination, with its TRID disclosures and investor delivery requirements, usually runs on a dedicated mortgage LOS such as [ICE Encompass](/integrations/ice-encompass). Consumer loans and credit cards often run on a separate consumer platform such as [MeridianLink](/integrations/meridianlink). Commercial and small-business lending frequently uses a third system, such as [nCino](/integrations/ncino) or [Baker Hill](/integrations/baker-hill).',
+          'The result is that one bank can present a borrower with two or three different application experiences, each with its own login, document upload and status page.',
+        ],
+      },
+      {
+        heading: 'What Southeast banks run',
+        paragraphs: [
+          'RAVEN’s [Bank Tech Stack](/bank-tech-stack) tracker identifies the vendors behind 32 Southeast banks and credit unions from their public application flows. As of October 2026:',
+        ],
+        bullets: [
+          'Mortgage: ICE Encompass appears in 16 of the 22 mortgage stacks we could identify, and Finastra Mortgagebot in 4.',
+          'Consumer lending: no vendor dominates. Of 11 identified consumer loan applications, MeridianLink and Finastra Mortgagebot run 3 each, four other vendors run one each, and one bank built its own.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between an LOS and a POS?',
+        a: 'The point-of-sale (POS) system is the borrower-facing application. The loan origination system (LOS) is the lender’s back office that manages the file from that application through closing. Some vendors sell both, and many banks pair one vendor’s POS with another’s LOS.',
+      },
+      {
+        q: 'What is the most common mortgage LOS?',
+        a: 'ICE Encompass is the most widely used mortgage LOS in RAVEN’s Southeast tracker, appearing in 16 of the 22 mortgage stacks identified as of October 2026.',
+      },
+      {
+        q: 'Does an LOS replace the core banking system?',
+        a: 'No. The LOS handles a loan until it closes, then books it to the core banking system, which services it for the rest of its life.',
+      },
+      {
+        q: 'Why do loans still take weeks with an LOS?',
+        a: 'The LOS organizes the file but depends on the borrower and third parties for evidence: pay stubs, employment confirmations and bank statements. Waiting on and reviewing those documents is where most of the time goes.',
+      },
+    ],
+    relatedTerms: ['income-verification', 'verification-of-employment', 'asset-verification'],
+    relatedArticles: [
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+      { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
+    ],
+    relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',

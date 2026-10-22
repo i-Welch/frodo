@@ -52,4 +52,17 @@ describe('Bank Tech Stack data', () => {
     expect(JSON.stringify(STACK_ROWS)).not.toContain('—');
     expect(stackFaqs().length).toBeGreaterThan(0);
   });
+  it('keeps the loan origination system glossary counts in sync with the tracker', async () => {
+    const { GLOSSARY_TERMS } = await import('../../src/app/(marketing)/glossary/glossary-data');
+    const term = GLOSSARY_TERMS.find((t) => t.slug === 'loan-origination-system');
+    expect(term).toBeDefined();
+    const text = JSON.stringify(term);
+    const mort = STACK_ROWS.filter((r) => r.mortgage);
+    const enc = mort.filter((r) => /Encompass/.test(r.mortgage!)).length;
+    const mbot = mort.filter((r) => /Mortgagebot/.test(r.mortgage!)).length;
+    expect(text).toContain(`${enc} of the ${mort.length} mortgage stacks`);
+    expect(text).toContain(`Finastra Mortgagebot in ${mbot}`);
+    expect(text).toContain(`Of ${STACK_ROWS.filter((r) => r.consumerLending).length} identified consumer loan applications`);
+    expect(text).toContain(`behind ${STACK_ROWS.length} Southeast banks`);
+  });
 });

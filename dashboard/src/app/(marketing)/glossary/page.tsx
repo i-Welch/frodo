@@ -48,6 +48,7 @@ const TOPICS: Record<string, { label: string; tone: 'fraud' | 'reg' | 'verif' }>
   'asset-verification': { label: 'Verification', tone: 'verif' },
   'income-verification': { label: 'Verification', tone: 'verif' },
   'bank-account-verification': { label: 'Verification', tone: 'verif' },
+  'loan-origination-system': { label: 'Verification', tone: 'verif' },
 };
 
 function firstSentence(text: string): string {
