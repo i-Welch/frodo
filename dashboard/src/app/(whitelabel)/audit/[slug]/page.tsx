@@ -629,7 +629,7 @@ const styles = `
   .aud-cta-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; padding: 1rem 2rem; border-radius: 10px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .aud-cta-btn:hover { opacity: 0.85; }
 
-  .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; }
+  .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; overflow-wrap: anywhere; }
 
   /* WhiteLabelPrompt modal */
   .demo-modal-overlay { --black: #0A0A0A; --white: #fff; --g500: #808080; --gray-400: #A3A3A3; --gray-500: #808080; }
