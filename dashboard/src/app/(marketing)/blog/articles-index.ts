@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'southeast-bank-earnings-q3-2026',
+    title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
+    description:
+      "Truist, United Community and First Horizon booked big losses selling low-yield assets on purpose. The community banks widened margins instead: Southern First from 2.62% to 3.02%, ServisFirst from 3.09% to 3.63%. What 18 Southeast Q3 releases show.",
+    readTime: '5 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
     slug: 'fintech-bank-charter-rush-2026',
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:
