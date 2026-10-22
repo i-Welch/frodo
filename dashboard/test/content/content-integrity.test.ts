@@ -77,7 +77,7 @@ describe('content integrity', () => {
       const body = match![2].trim();
       expect(meta.slug, `${file}: slug must match the file name`).toBe(file.replace(/\.md$/, ''));
       expect(meta.title && meta.description, `${file}: title and description are required`).toBeTruthy();
-      expect(meta.url, `${file}: url`).toMatch(/^https:\/\/reportraven\.tech\/(blog\/[a-z0-9-]+|de-novo-watch)$/);
+      expect(meta.url, `${file}: url`).toMatch(/^https:\/\/reportraven\.tech\/(blog\/[a-z0-9-]+|de-novo-watch|bank-tech-stack)$/);
       const blogSlug = meta.url.match(/\/blog\/([a-z0-9-]+)$/)?.[1];
       if (blogSlug) expect(articleKeys.has(blogSlug), `${file}: links to unknown article ${blogSlug}`).toBe(true);
       if (meta.notBefore) expect(meta.notBefore, `${file}: notBefore`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
