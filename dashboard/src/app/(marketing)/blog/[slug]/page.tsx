@@ -3027,7 +3027,7 @@ The bank that figured out how to pair its local credibility with a borrower inta
     updatedDate: 'October 22, 2026',
     readTime: '5 min read',
     content: `
-*Updated October 22, 2026, with second-quarter 2026 results, the completed Signature Bank of Georgia acquisition and the bank's leadership transition. An earlier version of this article misidentified the merger partner and understated the bank's size.*
+*Updated October 22, 2026, with second- and third-quarter 2026 results, the completed Signature Bank of Georgia acquisition and the bank's leadership transition. An earlier version of this article misidentified the merger partner and understated the bank's size.*
 
 *Q3 2026 update: First Community reported third-quarter net income of $8.0 million, or $0.85 per diluted share, on October 21, 2026. Total assets were $2.36 billion at September 30, with $1.61 billion in loans and $2.01 billion in deposits. The net interest margin was 3.59% (tax-equivalent), return on average assets 1.34%, and nonperforming assets just 0.04% of total assets. The Signature acquisition accounts for $195.7 million of the year's loan growth (company release).*
 
