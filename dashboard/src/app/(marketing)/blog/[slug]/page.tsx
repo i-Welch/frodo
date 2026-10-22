@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { ROI_BANKS } from '../../roi/roi-data';
+import { linkGlossaryTerms } from '../glossary-autolink';
 
 /* ---------- Markdown-to-HTML helper ---------- */
 
@@ -5714,7 +5715,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const cleanContent = article.content
     .replace(/^[\s]*# [^\n]+\n+/, '')
     .replace(/^\*Published[^\n]+\*\n+/, '');
-  const html = convertMarkdown(cleanContent);
+  const html = linkGlossaryTerms(convertMarkdown(cleanContent));
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
   const related = getRelatedArticles(slug);
 
