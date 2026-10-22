@@ -2,7 +2,7 @@
 # own clone under ~/projects, updated to origin/master before each run, so they
 # always use the merged scripts and never reset each other's work in progress.
 # Remove with:
-#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check','RAVEN Release Draft','RAVEN Rankings Post' -Confirm:$false
+#   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check','RAVEN Release Draft','RAVEN Rankings Post','RAVEN Earnings Refresh' -Confirm:$false
 
 $Projects = Join-Path $env:USERPROFILE 'projects'
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
@@ -61,6 +61,15 @@ $deNovoAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
 $deNovoTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 6:00am
 Register-ScheduledTask -TaskName 'RAVEN De Novo Watch' -Action $deNovoAction -Trigger $deNovoTrigger `
     -Settings $Settings -Description 'Re-verifies the De Novo Watch tracker and opens an auto-publish PR' -Force | Out-Null
+
+# Saturdays 9:00: add each covered bank's newest quarterly results (/earnings-refresh).
+# The audits clone is idle on weekends.
+$earningsAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $AuditClone); if (Test-Path '$AuditClone\.claude\commands\earnings-refresh.md') { & '$AuditClone\automation\run-article.ps1' " +
+        "-Prompt '/earnings-refresh auto' -CloneName 'frodo-audits' -Port 3101 -LogName 'earnings-refresh' }`"")
+$earningsTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Saturday -At 9:00am
+Register-ScheduledTask -TaskName 'RAVEN Earnings Refresh' -Action $earningsAction -Trigger $earningsTrigger `
+    -Settings $Settings -Description 'Adds the newest quarterly results for covered banks to their pages and opens an auto-publish PR' -Force | Out-Null
 
 # Every fourth Monday 8:30: search/AI visibility check that feeds /article topics.
 # Shares the audits clone between the 6:00 De Novo run and the 11:00 audit run.
