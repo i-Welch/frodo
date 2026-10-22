@@ -193,6 +193,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
       { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
+      { slug: 'the-work-number-alternatives-community-banks', title: 'The Work Number Alternatives for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'instant-employment-verification', label: 'Instant employment verification' },
   },
@@ -417,8 +418,9 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['verification-of-deposit', 'asset-verification', 'synthetic-identity-fraud'],
     relatedArticles: [
-      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
+      { slug: 'open-banking-community-bank-guide', title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },
@@ -533,7 +535,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'Working versions of everything the business plan promised: capital at the committed level, staffed compliance and BSA functions, and operating fraud and identity verification controls, not roadmap items.',
       },
     ],
-    relatedTerms: ['fdic-deposit-insurance-application', 'synthetic-identity-fraud', 'bank-account-verification', 'income-verification'],
+    relatedTerms: ['fdic-deposit-insurance-application', 'industrial-loan-company', 'banking-as-a-service', 'synthetic-identity-fraud'],
     relatedArticles: [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
@@ -542,6 +544,657 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
+  },
+  {
+    slug: 'industrial-loan-company',
+    term: 'Industrial Loan Company',
+    abbreviation: 'ILC',
+    updated: '2026-10-22',
+    metaTitle: 'What Is an Industrial Loan Company (ILC)?',
+    metaDescription:
+      'An industrial loan company is an FDIC-insured, state-chartered bank a commercial company can own. How the ILC exemption works, who is applying, and the debate.',
+    definition:
+      'An industrial loan company (ILC), also called an industrial bank, is a state-chartered, FDIC-insured bank that a commercial company can own without becoming a bank holding company supervised by the Federal Reserve. Most are chartered in Utah, with a smaller number in Nevada.',
+    sections: [
+      {
+        heading: 'How the ILC exemption works',
+        paragraphs: [
+          'The Competitive Equality Banking Act of 1987 excluded qualifying industrial loan companies from the Bank Holding Company Act’s definition of “bank.” The ILC itself is a real bank: it makes loans, takes FDIC-insured deposits, and is examined by its state regulator and the FDIC. Its parent, though, can be an automaker, a retailer or a fintech, and it does not face the consolidated Federal Reserve supervision that applies to a bank holding company.',
+          'The exemption comes with limits. An ILC with more than $100 million in assets generally cannot offer demand deposits such as checking accounts unless it qualifies under a grandfather provision. Since 2021, FDIC rules (12 CFR Part 354) also require a parent company to sign written commitments with the FDIC covering capital and liquidity support for the bank, reporting, and examination of the parent’s relationship with the ILC.',
+        ],
+      },
+      {
+        heading: 'Who is applying now',
+        paragraphs: [
+          'ILCs have become the charter of choice for consumer fintechs and commercial companies that want insured deposits without holding company supervision. As of October 20, 2026, the FDIC’s list of pending deposit insurance applications included five proposed Utah ILCs and two in Nevada. [De Novo Watch](/de-novo-watch) tracks the full list:',
+        ],
+        bullets: [
+          'Utah: PayPal Bank, OneMain Bank, Klarna Bank USA, Albert Bank and Flex Bank',
+          'Nevada: Affirm Bank and Upgrade Bank',
+        ],
+      },
+      {
+        heading: 'Recent approvals',
+        paragraphs: [
+          'On January 22, 2026, the FDIC approved deposit insurance for Ford Credit Bank and GM Financial Bank, two Utah ILCs owned by automakers. Each must maintain a 15% tier 1 leverage ratio, well above the 8% the FDIC typically expects of a community de novo, along with capital and liquidity support from its parent. None of the fintech ILC applicants had received a decision as of October 2026, and OneMain’s application had been pending since March 2025.',
+        ],
+      },
+      {
+        heading: 'The debate',
+        paragraphs: [
+          'Critics call the exemption the ILC loophole, arguing it mixes banking and commerce and leaves the parent outside bank-level supervision. In August 2026, the Bank Policy Institute and the Independent Community Bankers of America urged the FDIC not to insure Albert, or any ILC applicant, until Congress closes it. A bill introduced in January 2026 to close the gap is pending in the Senate Banking Committee. The FDIC opened a review of its ILC policy in July 2025.',
+          'For community banks the practical concern is deposits. An ILC owned by a payments app or retailer can put an insured savings account one screen away from millions of existing customers, with no branch network to fund.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is an industrial loan company FDIC insured?',
+        a: 'Yes. An ILC cannot operate without FDIC deposit insurance, and the FDIC examines it alongside the state regulator. What differs is the parent: it is not supervised as a bank holding company.',
+      },
+      {
+        q: 'Which states charter industrial loan companies?',
+        a: 'Utah charters most of them, and Nevada charters a smaller number. Of the seven fintech and consumer lender ILC applications pending with the FDIC in October 2026, five were in Utah and two in Nevada.',
+      },
+      {
+        q: 'Why do fintechs want ILC charters?',
+        a: 'An ILC lets a fintech fund loans with its own insured deposits instead of renting a partner bank, and keep the economics it now shares with that partner, without the parent becoming a bank holding company.',
+      },
+      {
+        q: 'How long does ILC approval take?',
+        a: 'It varies widely and can take years. OneMain’s Utah ILC application was received by the FDIC in March 2025 and was still pending in October 2026. Track every pending application on RAVEN’s De Novo Watch.',
+      },
+    ],
+    relatedTerms: ['de-novo-bank', 'banking-as-a-service', 'bank-account-verification'],
+    relatedArticles: [
+      { slug: 'fintech-bank-charter-rush-2026', title: 'PayPal, Klarna and Revolut Want Bank Charters. Here’s the Full List' },
+      { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+    ],
+    relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
+  },
+  {
+    slug: 'banking-as-a-service',
+    term: 'Banking-as-a-Service',
+    abbreviation: 'BaaS',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Banking-as-a-Service (BaaS)?',
+    metaDescription:
+      'Banking-as-a-service lets a fintech offer accounts, cards or loans through a chartered sponsor bank. How BaaS works, the regulatory crackdown, and why fintechs now want charters.',
+    definition:
+      'Banking-as-a-service (BaaS) is an arrangement in which a chartered bank, called the sponsor or partner bank, lets a non-bank company offer deposit accounts, cards or loans under its own brand. The bank holds the deposits or originates the loans and remains responsible to its regulators for the program.',
+    sections: [
+      {
+        heading: 'How BaaS works',
+        paragraphs: [
+          'The fintech owns the app, the brand and the customer relationship. The sponsor bank holds the charter: deposits sit at the bank, usually in pooled accounts eligible for pass-through FDIC insurance, and loans are originated on the bank’s books before many are sold back to the fintech or investors. Some programs add a middleware company between the two that handles ledgers and connections. The bank earns fees and deposits; the fintech gets to market without a charter.',
+          'Many of the best-known consumer fintechs run this way. Affirm works with Celtic Bank and Lead Bank, Upgrade with Cross River and Celtic, Flex with Lead Bank and Column, and Mission Lane with TAB Bank and WebBank.',
+        ],
+      },
+      {
+        heading: 'The regulatory crackdown',
+        paragraphs: [
+          'The model drew heavy scrutiny after 2022. Federal regulators issued final interagency guidance on third-party risk management in June 2023, and several sponsor banks entered enforcement actions over BSA/AML, consumer compliance and oversight of fintech partners, including Cross River (FDIC, 2023) and Evolve Bank & Trust (Federal Reserve, 2024).',
+          'The April 2024 bankruptcy of middleware provider Synapse showed the risk to consumers: when the ledger between fintech apps and their partner banks broke down, end users lost access to funds for months. Pass-through deposit insurance only protects a customer if the bank or its agents keep records that show who owns each dollar.',
+        ],
+      },
+      {
+        heading: 'From renting a bank to becoming one',
+        paragraphs: [
+          'Higher compliance costs at sponsor banks, and a friendlier charter environment, have pushed fintechs toward charters of their own. As of October 2026, at least 14 of the 27 pending FDIC deposit insurance applications [came from fintechs and consumer lenders](/blog/fintech-bank-charter-rush-2026). Mission Lane, for example, plans to move its card program to its own bank over three years. For a community bank with a sponsor business, that is fee income and deposits that can leave when the partner gets a charter.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a sponsor bank?',
+        a: 'The chartered, FDIC-insured bank behind a fintech’s accounts, cards or loans. It holds the deposits or originates the loans and answers to regulators for the program’s compliance.',
+      },
+      {
+        q: 'Is money in a fintech app FDIC insured?',
+        a: 'Only the portion held at an insured bank, and only if the records show which customer owns which funds. FDIC insurance does not cover the failure of the fintech or a middleware provider, which is what the Synapse bankruptcy exposed.',
+      },
+      {
+        q: 'Why are fintechs applying for their own charters?',
+        a: 'A charter lets them fund loans with their own insured deposits and keep the economics they share with a partner bank. Regulators have also been approving more charters since 2025.',
+      },
+    ],
+    relatedTerms: ['industrial-loan-company', 'de-novo-bank', 'new-account-fraud'],
+    relatedArticles: [
+      { slug: 'fintech-bank-charter-rush-2026', title: 'PayPal, Klarna and Revolut Want Bank Charters. Here’s the Full List' },
+      { slug: 'community-banks-lose-loans-fintechs', title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)' },
+    ],
+  },
+  {
+    slug: 'loan-origination-system',
+    term: 'Loan Origination System',
+    abbreviation: 'LOS',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Loan Origination System (LOS)?',
+    metaDescription:
+      'A loan origination system runs a loan from application to closing. What an LOS does, mortgage vs. consumer vs. commercial systems, and which ones Southeast banks use.',
+    definition:
+      'A loan origination system (LOS) is the software a lender uses to move a loan from application through underwriting, approval and closing. It holds the application data, orders verifications and disclosures, routes the file to underwriters, and hands the closed loan to the core banking system for servicing.',
+    sections: [
+      {
+        heading: 'What an LOS does',
+        paragraphs: [
+          'The LOS is the system of record for a loan while it is being made. A borrower usually starts in a point-of-sale (POS) front end, the online application, which feeds the LOS. From there the LOS manages the file: collecting income, employment and asset documentation, pulling credit, running decision rules, generating the disclosures the loan type requires, producing closing documents, and finally booking the loan to the core.',
+          'Most of the time a loan spends in origination is spent waiting on evidence. The LOS can track that a pay stub or bank statement is missing, but it cannot make the borrower upload it faster or confirm it is real. That is why [income verification](/glossary/income-verification) and [asset verification](/glossary/asset-verification) are where applications tend to stall.',
+        ],
+      },
+      {
+        heading: 'Mortgage, consumer and commercial systems',
+        paragraphs: [
+          'Few banks run one LOS for everything. Mortgage origination, with its TRID disclosures and investor delivery requirements, usually runs on a dedicated mortgage LOS such as [ICE Encompass](/integrations/ice-encompass). Consumer loans and credit cards often run on a separate consumer platform such as [MeridianLink](/integrations/meridianlink). Commercial and small-business lending frequently uses a third system, such as [nCino](/integrations/ncino) or [Baker Hill](/integrations/baker-hill).',
+          'The result is that one bank can present a borrower with two or three different application experiences, each with its own login, document upload and status page.',
+        ],
+      },
+      {
+        heading: 'What Southeast banks run',
+        paragraphs: [
+          'RAVEN’s [Bank Tech Stack](/bank-tech-stack) tracker identifies the vendors behind 32 Southeast banks and credit unions from their public application flows. As of October 2026:',
+        ],
+        bullets: [
+          'Mortgage: ICE Encompass appears in 16 of the 22 mortgage stacks we could identify, and Finastra Mortgagebot in 4.',
+          'Consumer lending: no vendor dominates. Of 11 identified consumer loan applications, MeridianLink and Finastra Mortgagebot run 3 each, four other vendors run one each, and one bank built its own.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between an LOS and a POS?',
+        a: 'The point-of-sale (POS) system is the borrower-facing application. The loan origination system (LOS) is the lender’s back office that manages the file from that application through closing. Some vendors sell both, and many banks pair one vendor’s POS with another’s LOS.',
+      },
+      {
+        q: 'What is the most common mortgage LOS?',
+        a: 'ICE Encompass is the most widely used mortgage LOS in RAVEN’s Southeast tracker, appearing in 16 of the 22 mortgage stacks identified as of October 2026.',
+      },
+      {
+        q: 'Does an LOS replace the core banking system?',
+        a: 'No. The LOS handles a loan until it closes, then books it to the core banking system, which services it for the rest of its life.',
+      },
+      {
+        q: 'Why do loans still take weeks with an LOS?',
+        a: 'The LOS organizes the file but depends on the borrower and third parties for evidence: pay stubs, employment confirmations and bank statements. Waiting on and reviewing those documents is where most of the time goes.',
+      },
+    ],
+    relatedTerms: ['income-verification', 'verification-of-employment', 'asset-verification'],
+    relatedArticles: [
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+      { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
+    ],
+    relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
+  },
+  {
+    slug: 'digital-banking-platform',
+    term: 'Digital Banking Platform',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Digital Banking Platform?',
+    metaDescription:
+      'A digital banking platform powers a bank’s online and mobile banking. How it relates to the core, who the vendors are, and which ones Southeast banks run.',
+    definition:
+      'A digital banking platform is the software behind a bank’s online banking website and mobile app: balances, transfers, bill pay, mobile check deposit and alerts. It sits on top of the core banking system, which keeps the actual account records.',
+    sections: [
+      {
+        heading: 'How it fits with the core',
+        paragraphs: [
+          'The core banking system is the ledger: it holds accounts, posts transactions and calculates interest. The digital banking platform is the customer-facing layer that reads from and writes to the core. Banks either buy the platform from their core provider, such as Jack Henry’s Banno or Fiserv’s digital banking products, or from an independent vendor such as Q2 or Apiture that connects to many cores.',
+          'Switching cores is a multi-year project, so the digital banking platform is often where a bank changes the customer experience without touching the ledger.',
+        ],
+      },
+      {
+        heading: 'What Southeast banks run',
+        paragraphs: [
+          'RAVEN’s [Bank Tech Stack](/bank-tech-stack) tracker identifies the vendors behind 32 Southeast banks and credit unions. Of the 17 where we could identify the digital banking platform as of October 2026:',
+        ],
+        bullets: [
+          'Banno (Jack Henry): 7',
+          'Fiserv: 5',
+          'Q2: 2',
+          'Apiture, FIS and Smiley Technologies: 1 each',
+        ],
+      },
+      {
+        heading: 'Where the platform stops',
+        paragraphs: [
+          'A digital banking platform serves people who are already customers. Opening an account or applying for a loan usually happens somewhere else. In all 5 institutions where we identified both vendors, account opening ran on a different vendor than digital banking, so a new customer’s first experience with the bank is a different product, often with a different look, login and document upload, from the app they will use afterward.',
+          'That gap matters because the application is where most prospects drop out. A polished mobile app does not help a customer who abandoned the [account opening](/solutions/digital-account-opening) form before they ever got to it.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between a digital banking platform and a core banking system?',
+        a: 'The core banking system keeps the account records and posts transactions. The digital banking platform is the website and mobile app customers use to see and move their money, connected to the core.',
+      },
+      {
+        q: 'What is Banno?',
+        a: 'Banno is Jack Henry’s digital banking platform for banks and credit unions. It is the most common digital banking platform in RAVEN’s Southeast tracker, used by 7 of the 17 institutions where the platform was identified as of October 2026.',
+      },
+      {
+        q: 'Does the digital banking platform handle account opening?',
+        a: 'Often not. In RAVEN’s Southeast tracker, every institution where both vendors were identified used a different vendor for account opening than for digital banking.',
+      },
+    ],
+    relatedTerms: ['loan-origination-system', 'bank-account-verification', 'customer-identification-program'],
+    relatedArticles: [
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+    ],
+    relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
+  },
+  {
+    slug: 'know-your-customer',
+    term: 'Know Your Customer',
+    abbreviation: 'KYC',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Know Your Customer (KYC) in Banking?',
+    metaDescription:
+      'KYC is how banks verify who a customer is and understand the risk they pose. The parts of a KYC program, how it differs from CIP, and what it means for account opening.',
+    definition:
+      'Know Your Customer (KYC) is the set of processes a bank uses to verify a customer’s identity, understand the nature of the relationship, and monitor it over time for suspicious activity. In the US it is not one rule but the combination of the Customer Identification Program, customer due diligence and ongoing monitoring requirements under the Bank Secrecy Act.',
+    sections: [
+      {
+        heading: 'The parts of a KYC program',
+        paragraphs: [
+          'KYC is usually described in layers, each building on the last:',
+        ],
+        bullets: [
+          '[Customer Identification Program](/glossary/customer-identification-program) (CIP): collect and verify name, date of birth, address and identification number before opening the account, and check government lists.',
+          'Customer due diligence (CDD): understand what the account is for and what activity to expect, so the bank can build a risk profile. For legal entities, FinCEN’s CDD Rule, in effect since May 11, 2018, also requires identifying and verifying the beneficial owners.',
+          'Enhanced due diligence (EDD): more scrutiny for higher-risk customers, such as cash-intensive businesses or politically exposed persons.',
+          'Ongoing monitoring: watching activity against the expected profile, updating customer information when risk changes, and filing suspicious activity reports when warranted.',
+        ],
+      },
+      {
+        heading: 'KYC vs. CIP',
+        paragraphs: [
+          'CIP is the identity piece of KYC: the specific, rule-defined steps to confirm a person is who they claim to be. KYC is broader. A bank can pass CIP on an applicant whose identity is real and still miss what KYC is meant to catch: that the account will be used for something other than what was described, or that the applicant’s stated income and employment do not hold up.',
+        ],
+      },
+      {
+        heading: 'Where KYC meets account opening',
+        paragraphs: [
+          'For a digital applicant, every KYC question has to be answered inside the application. Each manual step, such as a document upload, a branch visit to show ID, or a callback to confirm employment, is a point where real customers abandon the form. The banks that open accounts quickly answer the same questions from authoritative sources instead: identity data verified against issuers and services like [eCBSV](/glossary/ecbsv), and the funding account and income confirmed directly with the customer’s bank or payroll provider.',
+          'Speed is not the only reason. Fraud that walks through CIP, such as [synthetic identities](/glossary/synthetic-identity-fraud) and [first-party fraud](/glossary/first-party-fraud), is caught by checking the facts on the application against data the applicant cannot edit.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between KYC and CIP?',
+        a: 'CIP is the identity verification requirement: collect and verify four data points and check government lists. KYC is the wider program that also includes customer due diligence, enhanced due diligence for higher-risk customers, and ongoing monitoring.',
+      },
+      {
+        q: 'Is KYC a legal requirement for banks?',
+        a: 'Yes. US banks must maintain a Customer Identification Program, perform customer due diligence including beneficial ownership for legal entity customers, and monitor accounts for suspicious activity under the Bank Secrecy Act and its implementing rules.',
+      },
+      {
+        q: 'Can KYC be done fully online?',
+        a: 'Yes. The CIP rule allows non-documentary verification, so identity, due diligence and funding checks can all be completed digitally when the bank verifies the information against reliable independent sources.',
+      },
+    ],
+    relatedTerms: ['customer-identification-program', 'ecbsv', 'synthetic-identity-fraud'],
+    relatedArticles: [
+      { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
+      { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
+    ],
+    relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
+  },
+  {
+    slug: 'return-on-assets',
+    term: 'Return on Assets',
+    abbreviation: 'ROA',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Return on Assets (ROA) for a Bank?',
+    metaDescription:
+      'Return on assets measures how much profit a bank earns on its balance sheet. The formula, what counts as a good ROA for a community bank, and what moves it.',
+    definition:
+      'Return on assets (ROA) is a bank’s net income divided by its average total assets, usually annualized. It shows how much profit the bank earns for every dollar on its balance sheet, and it is the most common single measure of bank profitability.',
+    sections: [
+      {
+        heading: 'How ROA is calculated',
+        paragraphs: [
+          'ROA = net income ÷ average total assets. Quarterly figures are annualized, so a bank that earns $5 million in a quarter on $2 billion of average assets reports an ROA of about 1.0% ($20 million a year ÷ $2 billion). Using average rather than period-end assets keeps a large deposit inflow on the last day of the quarter from distorting the ratio.',
+        ],
+      },
+      {
+        heading: 'What counts as a good ROA',
+        paragraphs: [
+          'Banks have thin margins by design: they are highly leveraged, so a small return on assets becomes a much larger return on equity. For community banks, an ROA around 1% is the long-standing rule of thumb for solid performance, and sustained results well above that usually reflect a low-cost deposit base, a lean expense structure, or both.',
+          'For example, First Community Bank in South Carolina reported a 1.34% return on average assets for the third quarter of 2026, according to its earnings release (see our [First Community profile](/blog/first-community-bank-sc-cre-merger-growth)).',
+        ],
+      },
+      {
+        heading: 'What moves it',
+        paragraphs: [
+          'ROA is the product of everything else on the income statement: the [net interest margin](/glossary/net-interest-margin) earned on loans and securities, fee income, operating expenses (captured in the [efficiency ratio](/glossary/efficiency-ratio)), credit losses and taxes. One-time items, such as a securities sale or a gain on a branch sale, can swing a single quarter, which is why analysts look at several quarters or a core ROA that strips them out.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good ROA for a bank?',
+        a: 'Around 1% is the common benchmark for a well-run community bank. Results consistently above that point to strong margins or low costs; results well below it usually mean thin margins, high expenses or elevated credit losses.',
+      },
+      {
+        q: 'What is the difference between ROA and ROE?',
+        a: 'ROA divides net income by assets; return on equity (ROE) divides it by shareholders’ equity. Because banks fund most assets with deposits, ROE is typically around ten times ROA.',
+      },
+      {
+        q: 'Where can I find a bank’s ROA?',
+        a: 'In its quarterly earnings release, or for any FDIC-insured bank in the call report data published by the FDIC.',
+      },
+    ],
+    relatedTerms: ['net-interest-margin', 'efficiency-ratio', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+  },
+  {
+    slug: 'net-interest-margin',
+    term: 'Net Interest Margin',
+    abbreviation: 'NIM',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Net Interest Margin (NIM) for a Bank?',
+    metaDescription:
+      'Net interest margin is the spread a bank earns between what loans and securities yield and what deposits cost. The formula, what drives it, and why deposits matter most.',
+    definition:
+      'Net interest margin (NIM) is a bank’s net interest income (interest earned on loans and securities minus interest paid on deposits and borrowings) divided by its average earning assets. It is the core spread that pays for a bank’s operations.',
+    sections: [
+      {
+        heading: 'How NIM is calculated',
+        paragraphs: [
+          'NIM = net interest income ÷ average earning assets, annualized. Earning assets are the loans, securities and interest-bearing balances that generate interest; cash in the vault and premises do not count. Banks often report NIM on a tax-equivalent basis, grossing up tax-exempt municipal income so it compares fairly with taxable income.',
+        ],
+      },
+      {
+        heading: 'What drives it',
+        paragraphs: [
+          'Two sides move the margin. On the asset side: loan mix and pricing, how fast loans and securities reprice, and how much of the balance sheet sits in low-yielding securities. On the funding side: how much of the bank is funded by noninterest-bearing checking accounts versus CDs, money market accounts and wholesale borrowings.',
+          'Two South Carolina banks reporting the same week show the range. First Community reported a 3.59% tax-equivalent margin for the third quarter of 2026, and Southern First reported 3.02% according to their earnings releases (see our profiles of [First Community](/blog/first-community-bank-sc-cre-merger-growth) and [Southern First](/blog/southern-first-bank-upstate-sc-bet)).',
+        ],
+      },
+      {
+        heading: 'Why deposits decide it',
+        paragraphs: [
+          'Loan yields are set largely by the market. Deposit costs are where a community bank has an edge or loses one. Every operating checking account a bank opens replaces higher-cost funding, which is why account opening conversion is a margin question, not just a marketing one. A bank that loses the primary checking relationship to an app keeps paying for the deposits it has to buy instead.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good net interest margin?',
+        a: 'It depends on the business model and the rate environment. Community banks with strong core deposit bases and loan-heavy balance sheets typically run higher margins than banks funded by CDs or holding large securities portfolios.',
+      },
+      {
+        q: 'What is the difference between net interest margin and net interest spread?',
+        a: 'Spread is the yield on earning assets minus the rate paid on interest-bearing liabilities. NIM divides net interest income by all earning assets, so it also credits the value of free funding such as noninterest-bearing deposits and equity.',
+      },
+      {
+        q: 'How do rate cuts affect NIM?',
+        a: 'It depends on what reprices first. Banks whose loans reset quickly while deposit costs lag can see margins compress; banks with high deposit costs that can lower them quickly can see margins expand.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'efficiency-ratio', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+    relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
+  },
+  {
+    slug: 'efficiency-ratio',
+    term: 'Efficiency Ratio',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Bank Efficiency Ratio?',
+    metaDescription:
+      'The efficiency ratio shows how many cents a bank spends to earn a dollar of revenue. The formula, what counts as efficient, and where community bank costs go.',
+    definition:
+      'A bank’s efficiency ratio is its noninterest expense divided by its revenue (net interest income plus noninterest income). It shows how many cents the bank spends to earn each dollar of revenue, so lower is better.',
+    sections: [
+      {
+        heading: 'How it is calculated',
+        paragraphs: [
+          'Efficiency ratio = noninterest expense ÷ (net interest income + noninterest income). A bank with $60 million in operating expenses and $100 million in revenue has an efficiency ratio of 60%: it spends 60 cents to earn each dollar. Many banks also report an adjusted ratio that excludes one-time items such as merger costs or securities losses.',
+        ],
+      },
+      {
+        heading: 'What counts as efficient',
+        paragraphs: [
+          'Below 60% is a common benchmark for an efficient community bank, and the best performers run in the low 50s or below. Ratios in the 70s or higher leave little room for credit losses or investment. Scale helps, which is one reason smaller banks pursue mergers, but business model matters more than size: a branch-light commercial bank and a branch-heavy retail bank of the same size can land far apart.',
+        ],
+      },
+      {
+        heading: 'Where the costs go',
+        paragraphs: [
+          'Salaries and benefits are the largest line at most community banks, followed by occupancy and technology. Manual work in lending and account opening shows up here directly: every application that needs someone to chase a pay stub, call an employer or review an uploaded bank statement adds staff time per loan. Automating verification is one of the few ways to grow volume without growing that line in step.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good efficiency ratio for a bank?',
+        a: 'Below 60% is generally considered efficient for a community bank, and top performers run near or below 50%. Lower means the bank spends less to earn each dollar of revenue.',
+      },
+      {
+        q: 'Is a lower efficiency ratio always better?',
+        a: 'Usually, but not always. A bank can cut its ratio by underinvesting in technology, compliance or staff, which tends to cost it later. The trend over several years says more than a single quarter.',
+      },
+      {
+        q: 'Does the efficiency ratio include loan loss provisions?',
+        a: 'No. Provisions for credit losses are excluded, so the ratio measures operating cost against revenue before credit costs.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
+    relatedArticles: [
+      { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+    ],
+    relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
+  },
+  {
+    slug: 'loan-to-deposit-ratio',
+    term: 'Loan-to-Deposit Ratio',
+    abbreviation: 'LDR',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Loan-to-Deposit Ratio (LDR)?',
+    metaDescription:
+      'The loan-to-deposit ratio compares a bank’s loans with its deposits. The formula, what a high or low ratio signals, and why deposit growth limits loan growth.',
+    definition:
+      'The loan-to-deposit ratio (LDR) is a bank’s total loans divided by its total deposits. It shows how much of the money customers have deposited the bank has lent out, and it is a quick read on both liquidity and how hard the balance sheet is working.',
+    sections: [
+      {
+        heading: 'How it is calculated',
+        paragraphs: [
+          'LDR = total loans ÷ total deposits. First Community Bank in South Carolina, for example, reported $1.61 billion in loans and $2.01 billion in deposits at September 30, 2026, a loan-to-deposit ratio of about 80%, according to its earnings release (see our [First Community profile](/blog/first-community-bank-sc-cre-merger-growth)).',
+        ],
+      },
+      {
+        heading: 'What high and low ratios signal',
+        paragraphs: [
+          'A low ratio, say under 70%, means much of the deposit base sits in securities or cash, which is safe but earns less. A ratio near or above 100% means the bank is lending out more than it gathers in deposits and relies on borrowings, brokered deposits or other wholesale funding to fill the gap, which costs more and can be less stable. Many community banks aim for somewhere in the 80% to 90% range.',
+        ],
+      },
+      {
+        heading: 'Why deposits limit loan growth',
+        paragraphs: [
+          'For a bank near the top of its range, the constraint on new lending is not demand, it is funding. Each new loan has to be matched by a new deposit or by more expensive borrowed money. That makes deposit gathering, and how easily a new customer can open and fund an account, a direct input into how much a bank can lend.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good loan-to-deposit ratio?',
+        a: 'Many community banks target roughly 80% to 90%. Lower ratios leave earnings on the table; ratios near or above 100% mean the bank depends on more expensive, less stable funding.',
+      },
+      {
+        q: 'Can a loan-to-deposit ratio be over 100%?',
+        a: 'Yes. It means the bank has lent more than its deposits and funds the difference with borrowings or other wholesale sources.',
+      },
+    ],
+    relatedTerms: ['net-interest-margin', 'return-on-assets', 'digital-banking-platform'],
+    relatedArticles: [
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+    ],
+    relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
+  },
+  {
+    slug: 'cre-concentration',
+    term: 'CRE Concentration',
+    updated: '2026-10-22',
+    metaTitle: 'CRE Concentration: The 100% and 300% Tests',
+    metaDescription:
+      'How regulators measure commercial real estate concentration at banks: the 100% construction test, the 300% total CRE test, and what happens when a bank crosses them.',
+    definition:
+      'CRE concentration is the size of a bank’s commercial real estate loan book relative to its capital. Under interagency guidance from the FDIC, Federal Reserve and OCC, banks whose CRE lending crosses set thresholds draw closer supervisory review of how they manage that risk.',
+    sections: [
+      {
+        heading: 'The two thresholds',
+        paragraphs: [
+          'The 2006 interagency guidance on concentrations in commercial real estate lending names two screens, measured against the bank’s total capital (in call report analysis, commonly tier 1 capital plus the allowance for credit losses). A bank may be identified for further supervisory analysis if:',
+        ],
+        bullets: [
+          'Construction, land development and other land loans are 100% or more of total capital, or',
+          'Total CRE loans are 300% or more of total capital, and the CRE portfolio has grown 50% or more over the prior 36 months.',
+        ],
+      },
+      {
+        heading: 'What crossing them means',
+        paragraphs: [
+          'The thresholds are not limits. A bank above them is not breaking a rule, and many well-run community banks operate there for years. What changes is the scrutiny: examiners expect board-approved concentration limits, stress testing of the CRE book, strong appraisal and underwriting standards, and capital that reflects the risk. Banks that cannot show those controls can face pressure to slow CRE growth or hold more capital.',
+          'Owner-occupied commercial property is excluded from the total CRE measure, because repayment depends on the occupant’s business rather than rents or a sale. Multifamily, non-owner-occupied office, retail and industrial property, and construction loans all count.',
+        ],
+      },
+      {
+        heading: 'Why community banks run close to the line',
+        paragraphs: [
+          'CRE is where many community banks have a real advantage: local knowledge of properties, developers and markets that national lenders do not have. It is also where consumer and small business lending has drifted away to fintechs and larger banks, leaving CRE as a larger share of what remains. RAVEN’s analysis of [OptimumBank](/blog/optimumbank-98-percent-cre-growth) walks through the 300% test using a real call report.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the 300% CRE concentration test?',
+        a: 'Under 2006 interagency guidance, a bank whose total commercial real estate loans are 300% or more of total capital, with CRE growth of 50% or more over the prior 36 months, may be identified for closer supervisory review.',
+      },
+      {
+        q: 'Is it illegal for a bank to exceed 300% CRE concentration?',
+        a: 'No. The thresholds are screening tools, not limits. Banks above them are expected to show stronger risk management, including concentration limits, stress testing and adequate capital.',
+      },
+      {
+        q: 'Do owner-occupied commercial loans count toward CRE concentration?',
+        a: 'No. Loans secured by owner-occupied commercial property are excluded from the total CRE measure, because repayment comes from the operating business rather than the property.',
+      },
+    ],
+    relatedTerms: ['call-report', 'return-on-assets', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'optimumbank-98-percent-cre-growth', title: 'The 98.7% Bank' },
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+    ],
+  },
+  {
+    slug: 'call-report',
+    term: 'Call Report',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Bank Call Report?',
+    metaDescription:
+      'The call report is the quarterly financial filing every FDIC-insured bank submits. What it contains, when it is due, where to find it, and the credit union equivalent.',
+    definition:
+      'A call report, formally the Consolidated Reports of Condition and Income, is the quarterly financial filing every FDIC-insured bank submits to its federal regulator. It contains the bank’s balance sheet, income statement and detailed schedules on loans, deposits, capital and asset quality, and almost all of it is public.',
+    sections: [
+      {
+        heading: 'What it contains',
+        paragraphs: [
+          'Banks file one of three FFIEC forms depending on size and whether they have foreign offices (FFIEC 031, 041 or the streamlined 051 for smaller banks). Each covers the same core: assets and liabilities, income and expense, loans by type, past-due and nonaccrual loans, charge-offs, deposits by type, and regulatory capital. From those schedules come the ratios analysts use, such as [return on assets](/glossary/return-on-assets), [net interest margin](/glossary/net-interest-margin), the [efficiency ratio](/glossary/efficiency-ratio) and the [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio).',
+        ],
+      },
+      {
+        heading: 'When it is filed and where to find it',
+        paragraphs: [
+          'Call reports are as of the last day of each calendar quarter and generally due 30 days later. The data is published through the FFIEC Central Data Repository and the FDIC’s BankFind Suite, which makes it the most complete public picture of any bank, including the many community banks that are not publicly traded and publish no earnings release.',
+          'Credit unions file their own quarterly equivalent, the NCUA 5300 Call Report, which the NCUA publishes for every federally insured credit union.',
+        ],
+      },
+      {
+        heading: 'Why it matters',
+        paragraphs: [
+          'For a private community bank, the call report is often the only financial disclosure there is. RAVEN’s bank deep dives and audits start from it, alongside [HMDA](/glossary/hmda) mortgage data, to measure lending mix, growth and efficiency against peers.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How often do banks file call reports?',
+        a: 'Quarterly. Each report is as of the last day of the quarter and is generally due 30 days after quarter end.',
+      },
+      {
+        q: 'Are bank call reports public?',
+        a: 'Yes, almost entirely. Call report data for every FDIC-insured bank is available through the FFIEC Central Data Repository and the FDIC’s BankFind Suite.',
+      },
+      {
+        q: 'Do credit unions file call reports?',
+        a: 'Yes. Federally insured credit unions file the NCUA 5300 Call Report each quarter, and the NCUA publishes the data.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'net-interest-margin', 'hmda'],
+    relatedArticles: [
+      { slug: 'optimumbank-98-percent-cre-growth', title: 'The 98.7% Bank' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+  },
+  {
+    slug: 'hmda',
+    term: 'HMDA',
+    abbreviation: 'HMDA',
+    updated: '2026-10-22',
+    metaTitle: 'What Is HMDA Data? Home Mortgage Disclosure Act',
+    metaDescription:
+      'HMDA requires mortgage lenders to report every application they receive. Who must report, what the data includes, and how it shows a bank’s real mortgage volume.',
+    definition:
+      'The Home Mortgage Disclosure Act (HMDA), enacted in 1975 and implemented by Regulation C, requires most mortgage lenders to report data on every home loan application they receive. The resulting public dataset shows each lender’s applications, originations and denials by loan type, geography and borrower characteristics.',
+    sections: [
+      {
+        heading: 'Who must report',
+        paragraphs: [
+          'Coverage depends on an institution’s size, location and volume. Depository institutions above an annual asset threshold with a branch in a metropolitan area generally report if they originated at least 25 closed-end mortgages in each of the two preceding calendar years, or at least 200 open-end lines of credit such as HELOCs. Many small rural banks and credit unions fall below the thresholds and do not report.',
+        ],
+      },
+      {
+        heading: 'What the data shows',
+        paragraphs: [
+          'Each reported application records the loan type and purpose, amount, property location, action taken (originated, denied, withdrawn and so on), and, for most lenders, pricing and borrower demographics. Lenders submit a Loan/Application Register each year, and the CFPB and FFIEC publish the combined data, with some fields modified to protect borrower privacy.',
+          'For anyone studying a bank, HMDA is the best public measure of real mortgage activity: how many loans it actually closed, in which counties, and how often applications ended in denial or withdrawal.',
+        ],
+      },
+      {
+        heading: 'How RAVEN uses it',
+        paragraphs: [
+          'Every RAVEN audit sizes a bank’s mortgage volume from its HMDA filings rather than estimates. Combined with the [call report](/glossary/call-report), it gives a grounded picture of how much verification work a lending team actually does.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What does HMDA stand for?',
+        a: 'The Home Mortgage Disclosure Act, a 1975 federal law implemented by the CFPB’s Regulation C.',
+      },
+      {
+        q: 'Which lenders have to report HMDA data?',
+        a: 'Most mortgage lenders above the coverage thresholds: generally those with a metropolitan-area branch that originated at least 25 closed-end mortgages in each of the two prior years, or at least 200 open-end lines of credit, plus asset-size tests for banks and credit unions.',
+      },
+      {
+        q: 'Is HMDA data public?',
+        a: 'Yes. The CFPB and FFIEC publish it annually, with some fields modified or removed to protect borrower privacy.',
+      },
+    ],
+    relatedTerms: ['call-report', 'income-verification', 'loan-origination-system'],
+    relatedArticles: [
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
   },
   {
     slug: 'synthetic-identity-fraud',
@@ -707,6 +1360,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'first-party-fraud-community-banks', title: 'First-Party Fraud: The Applicant Is Real. The Application Isn’t.' },
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
+      { slug: 'the-work-number-alternatives-community-banks', title: 'The Work Number Alternatives for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'bank-verification-software', label: 'Bank verification software' },
   },
@@ -801,7 +1455,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedTerms: ['synthetic-identity-fraud', 'ecbsv', 'bank-account-verification', 'first-party-fraud'],
     relatedArticles: [
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
-      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
     ],
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },
@@ -892,7 +1547,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'That the written program is risk-based and board-approved, that actual practice matches it, and that the bank can produce verification records showing what was checked, when, and against what source for any given customer.',
       },
     ],
-    relatedTerms: ['ecbsv', 'synthetic-identity-fraud', 'bank-account-verification'],
+    relatedTerms: ['ecbsv', 'synthetic-identity-fraud', 'know-your-customer'],
     relatedArticles: [
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },

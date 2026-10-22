@@ -26,6 +26,7 @@ Check, and note the URL and date of everything you use:
 - Add rows for new filings in the tracker's scope (the Southeast first, plus any national filing notable enough for trade coverage). Every new row needs a source you actually read.
 - Add to `CHARTER_MOVES` any bank entering a market by buying or relocating an existing charter.
 - Update `TRACKER_SUMMARY` (`updated`, the national and Florida 2026 application counts, `note`) from the FDIC list.
+- Replace `FDIC_PENDING.rows` with the FDIC pending list exactly as published (every state) and set `FDIC_PENDING.asOf` to the list's "data as of" date. An applicant that drops off the list was approved or withdrawn: find out which and reflect it in its tracker row if it has one.
 - Never contradict a published article; if new facts supersede one, say so in `statusDetail` (e.g. "Opened 2026-10-01, after the article was published").
 - No em dashes. Keep the existing tone: factual, dated, specific.
 

@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../../(marketing)/calendly-button';
 import { LeadCapture } from '../../../(marketing)/lead-capture';
+import { STACK_ROWS } from '../../../(marketing)/bank-tech-stack/stack-data';
 import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
 import { AUDITS, certForAudit, getAudit } from '../../_config/audit-data';
@@ -108,9 +109,35 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
     },
   ];
 
+  const url = `https://reportraven.tech/audit/${audit.slug}`;
+  const audited = new Date(`1 ${audit.auditDate}`);
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: `Digital Lending Audit: ${audit.bankName}`,
+      description: audit.summary,
+      url,
+      mainEntityOfPage: url,
+      ...(Number.isNaN(audited.getTime()) ? {} : { datePublished: `${audited.getFullYear()}-${String(audited.getMonth() + 1).padStart(2, '0')}-01` }),
+      about: { '@type': 'BankOrCreditUnion', name: audit.bankName },
+      author: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+      publisher: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'RAVEN', item: 'https://reportraven.tech' },
+        { '@type': 'ListItem', position: 2, name: `${audit.bankName} audit`, item: url },
+      ],
+    },
+  ];
+
   return (
     <>
       <style>{styles}</style>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="aud-shell">
         <nav>
           <a href="/" className="aud-nav-logo">
@@ -391,6 +418,18 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </>
           )}
 
+          {STACK_ROWS.some((r) => r.slug === audit.slug) && (
+            <>
+              <p className="aud-sub" style={{ marginTop: '2.5rem' }}>
+                See how {audit.shortName}&apos;s vendors compare with {STACK_ROWS.length - 1} other Southeast banks and credit unions:
+              </p>
+              <a href="/bank-tech-stack" className="aud-article-link">
+                Bank Tech Stack Tracker
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+            </>
+          )}
+
           <LeadCapture variant="audit" source={`audit:${audit.slug}`} defaultBank={audit.bankName} />
           <LeadCapture variant="subscribe" source={`audit:${audit.slug}`} />
 
@@ -623,7 +662,7 @@ const styles = `
   .aud-cta-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 1rem; font-weight: 600; padding: 1rem 2rem; border-radius: 10px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; white-space: nowrap; }
   .aud-cta-btn:hover { opacity: 0.85; }
 
-  .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; }
+  .aud-sources { font-size: 0.75rem; color: var(--g600); line-height: 1.7; margin-top: 1.25rem; font-style: italic; overflow-wrap: anywhere; }
 
   /* WhiteLabelPrompt modal */
   .demo-modal-overlay { --black: #0A0A0A; --white: #fff; --g500: #808080; --gray-400: #A3A3A3; --gray-500: #808080; }

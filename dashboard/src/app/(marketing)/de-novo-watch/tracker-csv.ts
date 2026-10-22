@@ -1,6 +1,7 @@
-import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS } from './de-novo-data';
+import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, STATUS_LABELS } from './de-novo-data';
 
-// CSV export of the tracker (served at /de-novo-watch/data.csv). Same rows as the page.
+// CSV export of the tracker (served at /de-novo-watch/data.csv). Same rows as the page,
+// including the full FDIC pending list.
 
 const SITE = 'https://reportraven.tech';
 
@@ -35,6 +36,18 @@ export function trackerCsv(): string {
       '',
       m.articleSlug ? `${SITE}/blog/${m.articleSlug}` : '',
       m.asOf,
+    ]),
+    ...FDIC_PENDING.rows.map((r) => [
+      'fdic pending',
+      r.name,
+      `${r.city}, ${r.state}`,
+      STATUS_LABELS['application-pending'],
+      `FDIC deposit insurance application received ${r.received}`,
+      '',
+      '',
+      '',
+      FDIC_PENDING.source,
+      FDIC_PENDING.asOf,
     ]),
   ];
   const lines = [header, ...rows].map((r) => r.map(csvCell).join(','));

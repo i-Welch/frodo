@@ -88,7 +88,7 @@ export default function AiInfoPage() {
 
         <h2>Canonical sources on this site</h2>
         <ul>
-          <li><a href="/glossary">Glossary</a>: definitions with FAQs for verification and account-opening terms (VOE, VOD, first-party fraud, synthetic identity fraud, eCBSV, CIP, and more)</li>
+          <li><a href="/glossary">Glossary</a>: definitions with FAQs for banking, lending, verification and account-opening terms (VOE, VOD, LOS, ILC, banking-as-a-service, first-party fraud, synthetic identity fraud, eCBSV, CIP, and more)</li>
           <li><a href="/solutions">Solutions</a>: product pages per use case</li>
           <li><a href="/integrations">Integrations</a>: providers, core banking systems, and LOS compatibility</li>
           <li><a href="/de-novo-watch">De Novo Watch</a>: tracker of new bank charters and applications, with FDIC-data-backed analysis</li>

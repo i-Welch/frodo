@@ -112,7 +112,7 @@ A sentence from the article, usually verbatim, that carries the argument.
 
 ### Markdown limits (`convertMarkdown`)
 
-Supported: `#`/`##`/`###`, `**bold**`, `*italic*`, `[text](url)`, `- ` lists, `1. ` lists, `---`, `:::stat`, `:::pullquote`. **No tables, no images, no HTML.** The content is a JS template literal: escape backticks and `${`. Avoid stray asterisks (they become italics) and `)` inside link URLs. Use straight quotes in content; curly apostrophes are fine in descriptions.
+Supported: `#`/`##`/`###`, `**bold**`, `*italic*`, `[text](url)`, `- ` lists, `1. ` lists, `---`, `:::stat`, `:::pullquote`, and pipe tables (`| A | B |` header, then a `|---|---|` separator row; keep them to 5 columns or fewer so they read on a phone). **No images, no HTML.** The content is a JS template literal: escape backticks and `${`. Avoid stray asterisks (they become italics) and `)` inside link URLs. Use straight quotes in content; curly apostrophes are fine in descriptions.
 
 ### Metadata
 

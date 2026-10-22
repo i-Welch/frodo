@@ -15,6 +15,25 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Fintech (Oct 2026) —
+  'fintech-bank-charter-rush-2026',
+  // — Released from drafts (Oct 2026) —
+  'fiserv-premier-digital-lending',
+  'jack-henry-symitar-loan-origination',
+  'southern-bank-nc-digital-bet',
+  'carolina-bank-between-two-economies',
+  'south-atlantic-bank-coastal-growth-engine',
+  'conway-national-bank-grand-strand-dominance',
+  'bank-travelers-rest-greenville-growth-engine',
+  'open-banking-community-bank-guide',
+  'chime-account-opening-deposit-war',
+  'white-label-borrower-portal-community-bank',
+  'community-bank-ai-lending-guide',
+  'security-federal-bank-cdfi-rate-rebound-aiken',
+  'ccnb-myrtle-beach-merger-growth-2026',
+  'first-capital-bank-charleston-growth-digital-gap',
+  'best-digital-account-opening-software-community-banks',
+  'the-work-number-alternatives-community-banks',
   // — Credit Union Deep Dives (Aug 2026) —
   'robins-financial-20-million-rebate',
   'founders-credit-union-mill-town',
@@ -70,32 +89,16 @@ export const BLOG_SLUGS = [
   'countybank-greenwood-sc-sba-deep-dive',
   'first-community-bank-sc-cre-merger-growth',
   // — Phase 3: add Jul 14 (+ promote community-bank-ai + white-label via LinkedIn) —
-  // 'first-capital-bank-charleston-growth-digital-gap',
-  // 'ccnb-myrtle-beach-merger-growth-2026',
-  // 'security-federal-bank-cdfi-rate-rebound-aiken',
-  // 'community-bank-ai-lending-guide',
-  // 'white-label-borrower-portal-community-bank',
   // — Phase 4: add Jul 16 (promote digital-account + open-banking via LinkedIn posts 10–11) —
-  // 'digital-account-opening-community-bank',
-  // 'open-banking-community-bank-guide',
+  // retired 2026-10-21: superseded by best-digital-account-opening-software-community-banks (same MANTL/Narmi ground, refreshed) and chime-account-opening-deposit-war; its figures were stale or unsourced — 'digital-account-opening-community-bank'
   // — Phase 5: add Jul 21 (remaining June bank deep dives) —
-  // 'bank-travelers-rest-greenville-growth-engine',
-  // 'conway-national-bank-grand-strand-dominance',
-  // 'south-atlantic-bank-coastal-growth-engine',
   'first-reliance-sells-at-the-top',
   // — Phase 6: add Jul 28 —
-  // 'first-reliance-outgrew-florence',
-  // 'carolina-bank-between-two-economies',
-  // 'colony-bankcorp-farm-to-fees',
+  // retired 2026-10-21: overtaken by the Colony Bankcorp sale (shareholders approved Oct 15, closing Q4 2026), covered in first-reliance-sells-at-the-top — 'first-reliance-outgrew-florence'
+  // retired 2026-10-21: predates the First Reliance deal (Colony's largest, closing Q4 2026) and its Q1 2026 figures are stale; the deal is covered in first-reliance-sells-at-the-top. Write a fresh Colony piece after the merger closes — 'colony-bankcorp-farm-to-fees'
   // — Phase 7: add Aug 4 —
-  // 'chime-account-opening-deposit-war',
-  // 'southern-bank-nc-digital-bet',
   // — Phase 8: add Aug 11 (core-specific SEO: Jack Henry + Fiserv, LinkedIn posts 12–13) —
-  // 'jack-henry-symitar-loan-origination',
-  // 'fiserv-premier-digital-lending',
   // — SEO drafts (Jul 18): review before publishing, then also add to articles-index.ts —
-  // 'the-work-number-alternatives-community-banks',
-  // 'best-digital-account-opening-software-community-banks',
 ];
 
 // Real publish (or last substantive update) dates per article (ISO). Google
@@ -103,6 +106,23 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'fintech-bank-charter-rush-2026': '2026-10-22',
+  'fiserv-premier-digital-lending': '2026-10-22',
+  'jack-henry-symitar-loan-origination': '2026-10-22',
+  'southern-bank-nc-digital-bet': '2026-10-22',
+  'carolina-bank-between-two-economies': '2026-10-22',
+  'south-atlantic-bank-coastal-growth-engine': '2026-10-22',
+  'conway-national-bank-grand-strand-dominance': '2026-10-22',
+  'bank-travelers-rest-greenville-growth-engine': '2026-10-22',
+  'open-banking-community-bank-guide': '2026-10-22',
+  'chime-account-opening-deposit-war': '2026-10-22',
+  'white-label-borrower-portal-community-bank': '2026-10-22',
+  'community-bank-ai-lending-guide': '2026-10-22',
+  'security-federal-bank-cdfi-rate-rebound-aiken': '2026-10-22',
+  'ccnb-myrtle-beach-merger-growth-2026': '2026-10-22',
+  'first-capital-bank-charleston-growth-digital-gap': '2026-10-22',
+  'best-digital-account-opening-software-community-banks': '2026-10-22',
+  'the-work-number-alternatives-community-banks': '2026-10-22',
   'robins-financial-20-million-rebate': '2026-08-17',
   'founders-credit-union-mill-town': '2026-08-17',
   'champions-first-fsu-rebrand': '2026-08-12',
@@ -120,13 +140,8 @@ export const BLOG_DATES: Record<string, string> = {
   'how-to-start-a-bank': '2026-07-10',
   'de-novo-bank-day-one-fraud-program': '2026-07-10',
   'one-in-116-mortgage-fraud': '2026-07-04',
-  'jack-henry-symitar-loan-origination': '2026-06-26',
-  'fiserv-premier-digital-lending': '2026-06-26',
-  'first-reliance-sells-at-the-top': '2026-06-21',
-  'community-bank-ai-lending-guide': '2026-06-26',
-  'white-label-borrower-portal-community-bank': '2026-06-26',
+  'first-reliance-sells-at-the-top': '2026-06-26',
   'digital-account-opening-community-bank': '2026-06-26',
-  'open-banking-community-bank-guide': '2026-06-26',
   'fintech-grade-loan-application-community-bank': '2026-06-16',
   'what-neobanks-get-right-community-banks': '2026-06-09',
   'community-bank-borrower-experience-roi': '2026-06-02',
@@ -134,23 +149,14 @@ export const BLOG_DATES: Record<string, string> = {
   'community-bank-ceo-digital-lending-2026': '2026-05-19',
   'community-banks-lose-loans-fintechs': '2026-05-12',
   'community-bank-compete-neobank-core': '2026-05-05',
-  'south-atlantic-bank-coastal-growth-engine': '2026-06-20',
-  'conway-national-bank-grand-strand-dominance': '2026-06-13',
-  'bank-travelers-rest-greenville-growth-engine': '2026-06-11',
-  'security-federal-bank-cdfi-rate-rebound-aiken': '2026-05-21',
-  'ccnb-myrtle-beach-merger-growth-2026': '2026-05-14',
-  'first-capital-bank-charleston-growth-digital-gap': '2026-05-07',
   'first-community-bank-sc-cre-merger-growth': '2026-04-30',
   'countybank-greenwood-sc-sba-deep-dive': '2026-04-23',
   'optus-bank-cdfi-columbia-growth': '2026-04-16',
   'beacon-community-bank-charleston-growth-capacity': '2026-04-09',
   'first-palmetto-bank-sc-performance-deep-dive': '2026-04-02',
   'queensborough-national-bank-trust-deep-dive': '2026-03-26',
-  'southern-bank-nc-digital-bet': '2026-06-25',
-  'chime-account-opening-deposit-war': '2026-06-24',
   'first-reliance-outgrew-florence': '2026-06-22',
   'colony-bankcorp-farm-to-fees': '2026-06-17',
-  'carolina-bank-between-two-economies': '2026-06-17',
   'rocket-mortgage-22-days-how': '2026-06-15',
   'coastal-states-bank-boat-bank': '2026-06-12',
   'oconee-federal-quiet-comeback': '2026-06-10',
@@ -167,6 +173,56 @@ export const BLOG_DATES: Record<string, string> = {
   '59-billion-compliance-burden': '2026-03-03',
   'how-figure-closes-heloc-in-5-days': '2026-02-24',
   'one-link-complete-verification': '2026-02-17',
-  'the-work-number-alternatives-community-banks': '2026-07-18',
-  'best-digital-account-opening-software-community-banks': '2026-07-18',
+};
+
+// Last substantive correction per published article (ISO), where it is later
+// than the BLOG_DATES entry. The sitemap uses it for lastModified so crawlers
+// revisit corrected pages, without re-dating the article in the RSS feed.
+// Keep in sync with updatedDate in blog/[slug]/page.tsx (content tests check).
+export const BLOG_UPDATED: Record<string, string> = {
+  '59-billion-compliance-burden': '2026-10-22',
+  'affirm-vs-community-bank-personal-loans': '2026-10-22',
+  'anderson-brothers-bank-myrtle-beach-bet': '2026-10-22',
+  'arthur-state-bank-upstate-bet': '2026-10-22',
+  'beacon-community-bank-charleston-growth-capacity': '2026-10-22',
+  'champions-first-fsu-rebrand': '2026-10-22',
+  'coastal-states-bank-boat-bank': '2026-10-22',
+  'community-bank-borrower-experience-roi': '2026-10-22',
+  'community-bank-ceo-digital-lending-2026': '2026-10-22',
+  'community-bank-compete-neobank-core': '2026-10-22',
+  'community-bank-digital-lending-platform-guide': '2026-10-22',
+  'community-banks-are-losing-the-lending-race': '2026-10-22',
+  'community-banks-lose-loans-fintechs': '2026-10-22',
+  'countybank-greenwood-sc-sba-deep-dive': '2026-10-22',
+  'de-novo-bank-day-one-fraud-program': '2026-10-22',
+  'fintech-grade-loan-application-community-bank': '2026-10-22',
+  'first-community-bank-sc-cre-merger-growth': '2026-10-22',
+  'first-palmetto-bank-sc-performance-deep-dive': '2026-10-22',
+  'first-party-fraud-community-banks': '2026-10-22',
+  'first-reliance-sells-at-the-top': '2026-10-22',
+  'foreclosure-wave-hiding-in-plain-sight': '2026-10-22',
+  'founders-credit-union-mill-town': '2026-10-22',
+  'glades-bank-broward-de-novo': '2026-10-22',
+  'how-figure-closes-heloc-in-5-days': '2026-10-22',
+  'how-to-start-a-bank': '2026-10-22',
+  'huntington-bank-southeast-expansion': '2026-10-22',
+  'income-verification-fintech-vs-bank': '2026-10-22',
+  'next-generation-borrowers-wont-wait': '2026-10-22',
+  'oconee-federal-quiet-comeback': '2026-10-22',
+  'one-in-116-mortgage-fraud': '2026-10-22',
+  'one-link-complete-verification': '2026-10-22',
+  'optimumbank-98-percent-cre-growth': '2026-10-22',
+  'optus-bank-cdfi-columbia-growth': '2026-10-22',
+  'palmetto-citizens-90-year-wait': '2026-10-22',
+  'portrait-bank-winter-park-de-novo': '2026-10-22',
+  'queensborough-national-bank-trust-deep-dive': '2026-10-22',
+  'rev-credit-union-west-virginia-bet': '2026-10-22',
+  'robins-financial-20-million-rebate': '2026-10-22',
+  'rocket-mortgage-22-days-how': '2026-10-22',
+  'south-carolina-de-novo-drought': '2026-10-22',
+  'southern-bank-spartanburg-side-door': '2026-10-22',
+  'southern-first-bank-upstate-sc-bet': '2026-10-22',
+  'trillion-dollar-ipo-wave-2026': '2026-10-22',
+  'what-neobanks-get-right-community-banks': '2026-10-22',
+  'why-it-takes-42-days-to-close-a-mortgage': '2026-10-22',
 };

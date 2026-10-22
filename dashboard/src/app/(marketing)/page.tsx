@@ -1452,6 +1452,7 @@ export default function LandingPage() {
             <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/bank-snapshot">Bank Peer Snapshot</a>
             <a href="/bank-rankings">Bank Rankings</a>
+            <a href="/bank-tech-stack">Bank Tech Stack</a>
             <a href="/about">About</a>
             <a href="/legal/privacy-policy">Privacy Policy</a>
             <a href="/legal/terms-of-service">Terms of Service</a>

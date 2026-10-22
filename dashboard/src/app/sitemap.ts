@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
 import { AUDITS, AUDIT_HOLD } from './(whitelabel)/_config/audit-data';
+import { STACK_UPDATED } from './(marketing)/bank-tech-stack/stack-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
-import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
+import { BLOG_SLUGS, BLOG_DATES, BLOG_UPDATED } from './(marketing)/blog/published';
 import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
 import { bankSlug, financialsUpdated, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
 
@@ -12,6 +13,13 @@ const SITE = 'https://reportraven.tech';
 
 // Bump manually when non-blog page content meaningfully changes.
 const SITE_UPDATED = new Date('2026-07-05');
+
+// auditDate is a month ("October 2026"); a refreshed audit reports the first of
+// that month, never earlier than SITE_UPDATED.
+function auditModified(auditDate: string): Date {
+  const d = new Date(`1 ${auditDate}`);
+  return Number.isNaN(d.getTime()) || d < SITE_UPDATED ? SITE_UPDATED : d;
+}
 // Homepage: bump when its content changes (2026-10-19: free-audit card, De Novo Watch nav).
 const HOME_UPDATED = new Date('2026-10-19');
 // The blog index changes whenever an article is published.
@@ -42,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // to /audit/<slug>, so only the canonical /audit URLs belong here.
   const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug) && !AUDIT_HOLD.has(a.slug)).map((a) => ({
     url: `${SITE}/audit/${a.slug}`,
-    lastModified: SITE_UPDATED,
+    lastModified: auditModified(a.auditDate),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
@@ -85,6 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE}/about`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/ai-info`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.3 },
     { url: `${SITE}/de-novo-watch`, lastModified: new Date(TRACKER_SUMMARY.updated), changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/bank-tech-stack`, lastModified: new Date(STACK_UPDATED), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({
       url: `${SITE}/glossary/${t.slug}`,
@@ -92,12 +101,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
-    ...BLOG_SLUGS.map((slug) => ({
-      url: `${SITE}/blog/${slug}`,
-      lastModified: BLOG_DATES[slug] ? new Date(BLOG_DATES[slug]) : SITE_UPDATED,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
+    ...BLOG_SLUGS.map((slug) => {
+      const date = BLOG_UPDATED[slug] ?? BLOG_DATES[slug];
+      return {
+        url: `${SITE}/blog/${slug}`,
+        lastModified: date ? new Date(date) : SITE_UPDATED,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      };
+    }),
     ...auditUrls,
     ...bankUrls,
     ...LEGAL_PATHS.map((path) => ({

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CHARTER_MOVES, DE_NOVO_BANKS, TRACKER_SUMMARY } from '../../src/app/(marketing)/de-novo-watch/de-novo-data';
+import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, TRACKER_SUMMARY } from '../../src/app/(marketing)/de-novo-watch/de-novo-data';
 import { csvCell, trackerCsv } from '../../src/app/(marketing)/de-novo-watch/tracker-csv';
 import { BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
 import { FDIC_CERTS } from '../../src/app/(marketing)/de-novo-watch/fdic-certs';
@@ -39,6 +39,18 @@ describe('De Novo Watch data', () => {
   it('has no em dashes', () => {
     expect(JSON.stringify(rows)).not.toContain('—');
   });
+
+  it('has a well-formed FDIC pending list', () => {
+    expect(FDIC_PENDING.asOf).toMatch(DATE);
+    expect(FDIC_PENDING.asOf <= today).toBe(true);
+    const names = FDIC_PENDING.rows.map((r) => r.name);
+    expect(new Set(names).size).toBe(names.length);
+    for (const r of FDIC_PENDING.rows) {
+      expect(r.received, r.name).toMatch(DATE);
+      expect(r.received <= FDIC_PENDING.asOf, `${r.name} received after asOf`).toBe(true);
+      expect(r.state, r.name).toMatch(/^[A-Z]{2}$/);
+    }
+  });
 });
 
 describe('tracker CSV', () => {
@@ -52,7 +64,7 @@ describe('tracker CSV', () => {
   it('has a header and one line per row', () => {
     const lines = trackerCsv().trimEnd().split('\n');
     expect(lines[0]).toBe('type,bank,location,status,detail,capital,leadership,technology,coverage_url,verified');
-    expect(lines).toHaveLength(1 + DE_NOVO_BANKS.length + CHARTER_MOVES.length);
+    expect(lines).toHaveLength(1 + DE_NOVO_BANKS.length + CHARTER_MOVES.length + FDIC_PENDING.rows.length);
   });
 });
 

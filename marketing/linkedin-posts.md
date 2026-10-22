@@ -549,6 +549,7 @@ That is not a criticism. It is an observation about what the intake model that g
 ---
 
 ## POST 18 — July 29, 2026 (Tuesday)
+> **Superseded (Oct 2026):** the merger described below is wrong (the deal was Signature Bank of Georgia, closed Jan 8, 2026) and the article was rewritten. Use `marketing/linkedin/queue/first-community-bank-sc-cre-merger-growth.md`.
 **Article:** First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight
 **URL:** https://reportraven.tech/blog/first-community-bank-sc-cre-merger-growth
 
@@ -575,6 +576,7 @@ Fort Jackson. University of South Carolina hospital system. State government. Th
 ---
 
 ## POST 19 — July 30, 2026 (Wednesday)
+> **Superseded (Oct 2026):** the figures below are wrong (efficiency ratio is 75.9%, not 55%; assets $733M, not $900M) and the article was rewritten. Use `marketing/linkedin/queue/countybank-greenwood-sc-sba-deep-dive.md`.
 **Article:** Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business
 **URL:** https://reportraven.tech/blog/countybank-greenwood-sc-sba-deep-dive
 
@@ -601,6 +603,7 @@ The SBA program works when the document assembly process works. A small business
 ---
 
 ## POST 20 — July 31, 2026 (Thursday)
+> **Superseded (Oct 2026):** the figures below are wrong (Optus had $764M in assets at Q2 2026, not $250M) and the article was rewritten. Use `marketing/linkedin/queue/optus-bank-cdfi-columbia-growth.md`.
 **Article:** Optus Bank: Columbia's CDFI Institution Betting on Scale
 **URL:** https://reportraven.tech/blog/optus-bank-cdfi-columbia-growth
 
@@ -751,6 +754,7 @@ I broke down what the deal really signals for community banks: https://reportrav
 ---
 
 ## POST 25 — August 11, 2026 (Tuesday)
+> **Superseded (Oct 2026):** figures below are out of date (SilverLake is 500+ banks, not 425; the partner network is 850+, not 950). Use `marketing/linkedin/queue/jack-henry-symitar-loan-origination*.md`.
 **Article:** Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support
 **URL:** https://reportraven.tech/blog/jack-henry-symitar-loan-origination
 
@@ -787,6 +791,8 @@ We mapped the full stack: https://reportraven.tech/blog/jack-henry-symitar-loan-
 ## POST 26 — August 12, 2026 (Wednesday)
 **Article:** Digital Lending on Fiserv: What Premier and Portico Actually Support
 **URL:** https://reportraven.tech/blog/fiserv-premier-digital-lending
+
+> **Superseded (Oct 2026):** the client counts and vendor results below could not be verified and were removed when the article was refreshed. Use `marketing/linkedin/queue/fiserv-premier-digital-lending*.md`.
 
 ### Variant A (Data hook)
 300+ financial institutions use Fiserv's Communicator Open API layer. The reason is that Premier, Portico, and Precision do not ship a native digital LOS.
