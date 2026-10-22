@@ -25,6 +25,13 @@ const faqs = trackerFaqs();
 
 const TRACKED = new Set(DE_NOVO_BANKS.map((b) => b.name));
 const pending = [...FDIC_PENDING.rows].sort((a, b) => b.received.localeCompare(a.received));
+const byState = Object.entries(
+  FDIC_PENDING.rows.reduce<Record<string, number>>((acc, r) => ({ ...acc, [r.state]: (acc[r.state] ?? 0) + 1 }), {}),
+)
+  .filter(([, n]) => n > 1)
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([st, n]) => `${st} ${n}`)
+  .join(', ');
 const fmtDate = (iso: string) =>
   new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
@@ -202,7 +209,7 @@ export default function DeNovoWatchPage() {
         <p>
           The complete FDIC list of pending deposit insurance applications, every state, as published
           with data as of {fmtDate(FDIC_PENDING.asOf)}. {pending.length} applications are waiting on a
-          decision. Banks profiled in the tracker above are marked. Source:{' '}
+          decision. States with more than one: {byState}. The list includes applications filed before 2026 and leaves out ones already approved, so its state counts differ from the 2026 filing counts above. Banks profiled in the tracker above are marked. Source:{' '}
           <a href={FDIC_PENDING.source} rel="noreferrer">FDIC</a>.
         </p>
         <div className="dnw-table-wrap">
