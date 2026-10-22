@@ -25,14 +25,14 @@ export const STATUS_LABELS: Record<DeNovoStatus, string> = {
 };
 
 // Tracker-level context, verified against the FDIC pending deposit insurance
-// applications list (as of 2026-10-13) and FDIC decisions on deposit insurance.
+// applications list (as of 2026-10-20) and FDIC decisions on deposit insurance.
 // countsThrough is rendered in the page's stat box ("filed nationally in 2026 through ...").
 export const TRACKER_SUMMARY = {
   updated: '2026-10-21',
   countsThrough: 'mid-October',
   nationalApplications2026: 25,
   floridaApplications2026: 6,
-  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 13: 24 still pending on the FDIC list plus New South Bank, approved Sept. 28. Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
+  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus New South Bank, approved Sept. 28. Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
 };
 
 // Charter moves: banks that entered a market by acquiring and relocating or
@@ -89,7 +89,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     name: 'Glades Bank and Trust',
     location: 'Plantation, FL (Broward County)',
     status: 'application-pending',
-    statusDetail: 'FDIC deposit insurance application received June 2, 2026; still pending on the FDIC list as of Oct 13, 2026. The bank says it plans to launch in the first quarter of 2027, pending regulatory approval (CSI/Apiture release, Oct 13, 2026).',
+    statusDetail: 'FDIC deposit insurance application received June 2, 2026; still pending on the FDIC list as of Oct 20, 2026. The bank says it plans to launch in the first quarter of 2027, pending regulatory approval (CSI/Apiture release, Oct 13, 2026).',
     capital: 'Reportedly raising $45M',
     leadership: 'Led by former Amerant executive Howard Levine',
     techNotes: 'Vendors named unusually early: CSI NuPoint core and Apiture digital and business banking (including treasury management), announced Oct 13, 2026 while the application is still pending. gladesbank.com registered Oct 9, 2025, eight months before filing.',
@@ -101,7 +101,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     location: 'Miami, FL',
     status: 'application-pending',
     statusDetail:
-      'OCC national bank charter application filed July 15, 2026; FDIC deposit insurance application received Aug 10, 2026; pending as of Oct 13, 2026.',
+      'OCC national bank charter application filed July 15, 2026; FDIC deposit insurance application received Aug 10, 2026; pending as of Oct 20, 2026.',
     techNotes:
       'U.S. arm of Brazilian API-first business banking fintech Stark Bank. Filings describe a fully digital, business-only bank: treasury management, payments, corporate cards, merchant acquiring, business loans. No consumer products.',
     asOf: '2026-10-19',
@@ -111,7 +111,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     location: 'Miami, FL',
     status: 'application-pending',
     statusDetail:
-      'FDIC deposit insurance application received Mar 16, 2026; pending as of Oct 13, 2026. OCC preliminary conditional approval Aug 14, 2026 (Corporate Decision #1386); Federal Reserve and FDIC approvals still required. Single Miami location serving Brazil- and Latin America-linked high-net-worth clients.',
+      'FDIC deposit insurance application received Mar 16, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval Aug 14, 2026 (Corporate Decision #1386); Federal Reserve and FDIC approvals still required. Single Miami location serving Brazil- and Latin America-linked high-net-worth clients.',
     capital: 'OCC requires at least $507M at launch',
     leadership: "Proposed U.S. CEO Percy Moreira, head of Itaú's international private bank",
     asOf: '2026-10-19',
@@ -120,14 +120,14 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     name: 'Tidestone Bank',
     location: 'Coral Gables, FL',
     status: 'application-pending',
-    statusDetail: 'FDIC deposit insurance application received Mar 23, 2026; pending as of Oct 13, 2026.',
+    statusDetail: 'FDIC deposit insurance application received Mar 23, 2026; pending as of Oct 20, 2026.',
     asOf: '2026-10-19',
   },
   {
     name: 'Florida Bank of Finance',
     location: 'Coral Gables, FL',
     status: 'application-pending',
-    statusDetail: 'FDIC deposit insurance application received Apr 16, 2026; pending as of Oct 13, 2026.',
+    statusDetail: 'FDIC deposit insurance application received Apr 16, 2026; pending as of Oct 20, 2026.',
     asOf: '2026-10-19',
   },
   {
