@@ -108,9 +108,35 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
     },
   ];
 
+  const url = `https://reportraven.tech/audit/${audit.slug}`;
+  const audited = new Date(`1 ${audit.auditDate}`);
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: `Digital Lending Audit: ${audit.bankName}`,
+      description: audit.summary,
+      url,
+      mainEntityOfPage: url,
+      ...(Number.isNaN(audited.getTime()) ? {} : { datePublished: `${audited.getFullYear()}-${String(audited.getMonth() + 1).padStart(2, '0')}-01` }),
+      about: { '@type': 'BankOrCreditUnion', name: audit.bankName },
+      author: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+      publisher: { '@type': 'Organization', name: 'RAVEN', url: 'https://reportraven.tech' },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'RAVEN', item: 'https://reportraven.tech' },
+        { '@type': 'ListItem', position: 2, name: `${audit.bankName} audit`, item: url },
+      ],
+    },
+  ];
+
   return (
     <>
       <style>{styles}</style>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="aud-shell">
         <nav>
           <a href="/" className="aud-nav-logo">
