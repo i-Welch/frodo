@@ -134,6 +134,8 @@ export default function BankTechStackPage() {
         <p className="bts-note">
           Counts are institutions where the vendor was positively identified. &ldquo;Not identified&rdquo;
           means the flow was checked but did not reveal a vendor, or the product has no online application.
+          New to the layers? See what a <a href="/glossary/digital-banking-platform">digital banking platform</a> and
+          a <a href="/glossary/loan-origination-system">loan origination system</a> do.
         </p>
 
         <h2>Every institution</h2>

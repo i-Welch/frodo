@@ -65,4 +65,18 @@ describe('Bank Tech Stack data', () => {
     expect(text).toContain(`Of ${STACK_ROWS.filter((r) => r.consumerLending).length} identified consumer loan applications`);
     expect(text).toContain(`behind ${STACK_ROWS.length} Southeast banks`);
   });
+  it('keeps the digital banking platform glossary counts in sync with the tracker', async () => {
+    const { GLOSSARY_TERMS } = await import('../../src/app/(marketing)/glossary/glossary-data');
+    const text = JSON.stringify(GLOSSARY_TERMS.find((t) => t.slug === 'digital-banking-platform'));
+    const dig = STACK_ROWS.filter((r) => r.digitalBanking);
+    const count = (re: RegExp) => dig.filter((r) => re.test(r.digitalBanking!)).length;
+    expect(text).toContain(`Of the ${dig.length} where we could identify`);
+    expect(text).toContain(`Banno (Jack Henry): ${count(/Banno/)}`);
+    expect(text).toContain(`Fiserv: ${count(/Fiserv/)}`);
+    expect(text).toContain(`Q2: ${count(/^Q2$/)}`);
+    expect(text).toContain(`used by ${count(/Banno/)} of the ${dig.length} institutions`);
+    const both = dig.filter((r) => r.accountOpening);
+    expect(text).toContain(`In all ${both.length} institutions where we identified both vendors`);
+    for (const r of both) expect(r.accountOpening!.includes(r.digitalBanking!.replace(/ \(.*\)$/, '')), r.name).toBe(false);
+  });
 });

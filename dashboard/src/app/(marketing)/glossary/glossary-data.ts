@@ -659,6 +659,64 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
   },
   {
+    slug: 'digital-banking-platform',
+    term: 'Digital Banking Platform',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Digital Banking Platform?',
+    metaDescription:
+      'A digital banking platform powers a bank’s online and mobile banking. How it relates to the core, who the vendors are, and which ones Southeast banks run.',
+    definition:
+      'A digital banking platform is the software behind a bank’s online banking website and mobile app: balances, transfers, bill pay, mobile check deposit and alerts. It sits on top of the core banking system, which keeps the actual account records.',
+    sections: [
+      {
+        heading: 'How it fits with the core',
+        paragraphs: [
+          'The core banking system is the ledger: it holds accounts, posts transactions and calculates interest. The digital banking platform is the customer-facing layer that reads from and writes to the core. Banks either buy the platform from their core provider, such as Jack Henry’s Banno or Fiserv’s digital banking products, or from an independent vendor such as Q2 or Apiture that connects to many cores.',
+          'Switching cores is a multi-year project, so the digital banking platform is often where a bank changes the customer experience without touching the ledger.',
+        ],
+      },
+      {
+        heading: 'What Southeast banks run',
+        paragraphs: [
+          'RAVEN’s [Bank Tech Stack](/bank-tech-stack) tracker identifies the vendors behind 32 Southeast banks and credit unions. Of the 17 where we could identify the digital banking platform as of October 2026:',
+        ],
+        bullets: [
+          'Banno (Jack Henry): 7',
+          'Fiserv: 5',
+          'Q2: 2',
+          'Apiture, FIS and Smiley Technologies: 1 each',
+        ],
+      },
+      {
+        heading: 'Where the platform stops',
+        paragraphs: [
+          'A digital banking platform serves people who are already customers. Opening an account or applying for a loan usually happens somewhere else. In all 5 institutions where we identified both vendors, account opening ran on a different vendor than digital banking, so a new customer’s first experience with the bank is a different product, often with a different look, login and document upload, from the app they will use afterward.',
+          'That gap matters because the application is where most prospects drop out. A polished mobile app does not help a customer who abandoned the [account opening](/solutions/digital-account-opening) form before they ever got to it.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between a digital banking platform and a core banking system?',
+        a: 'The core banking system keeps the account records and posts transactions. The digital banking platform is the website and mobile app customers use to see and move their money, connected to the core.',
+      },
+      {
+        q: 'What is Banno?',
+        a: 'Banno is Jack Henry’s digital banking platform for banks and credit unions. It is the most common digital banking platform in RAVEN’s Southeast tracker, used by 7 of the 17 institutions where the platform was identified as of October 2026.',
+      },
+      {
+        q: 'Does the digital banking platform handle account opening?',
+        a: 'Often not. In RAVEN’s Southeast tracker, every institution where both vendors were identified used a different vendor for account opening than for digital banking.',
+      },
+    ],
+    relatedTerms: ['loan-origination-system', 'bank-account-verification', 'customer-identification-program'],
+    relatedArticles: [
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+    ],
+    relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',
