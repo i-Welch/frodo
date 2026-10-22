@@ -22,8 +22,8 @@
 //
 // Usage: bun automation/auto-publish.ts [--dry-run]
 
-import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { execFileSync, spawn } from 'node:child_process';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { browserReady, postViaBrowser } from './linkedin-browser';
@@ -452,6 +452,44 @@ async function bankTrackerUpdates() {
   }
 }
 
+/* ---------- Missed scheduled runs ---------- */
+
+// run-article.ps1 writes ~/.raven/missed-runs/<logName>.json when the Claude
+// usage limit skips a run. Retry each one at most every 3 hours during the ET
+// workday, give up after 48 hours, and let a successful run delete the marker.
+const MISSED_DIR = join(STATE_DIR, 'missed-runs');
+const RETRY_GAP_MS = 3 * 3_600_000;
+const GIVE_UP_MS = 48 * 3_600_000;
+
+type MissedRun = { prompt: string; cloneName: string; port: number; logName: string; missedAt: string; lastRetryAt?: string };
+
+function retryMissedRuns(): void {
+  if (!existsSync(MISSED_DIR) || process.platform !== 'win32') return;
+  const hourEt = Number(new Date().toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', hour12: false }));
+  const logs = join(STATE_DIR, 'logs');
+  for (const file of readdirSync(MISSED_DIR).filter((f) => f.endsWith('.json'))) {
+    const path = join(MISSED_DIR, file);
+    const run = JSON.parse(readFileSync(path, 'utf8').replace(/^\uFEFF/, '')) as MissedRun;
+    const now = Date.now();
+    if (now - Date.parse(run.missedAt) > GIVE_UP_MS) {
+      rmSync(path);
+      log(`missed run ${run.logName}: gave up after 48h`);
+      continue;
+    }
+    if (hourEt < 8 || hourEt >= 18 || DRY_RUN) continue;
+    if (run.lastRetryAt && now - Date.parse(run.lastRetryAt) < RETRY_GAP_MS) continue;
+    // Skip while a run for the same task is still writing its log.
+    const busy = existsSync(logs) && readdirSync(logs).some((f) => f.startsWith(`${run.logName}-`) && now - statSync(join(logs, f)).mtimeMs < 45 * 60_000);
+    if (busy) continue;
+    writeFileSync(path, JSON.stringify({ ...run, lastRetryAt: new Date(now).toISOString() }, null, 2));
+    const script = join(homedir(), 'projects', run.cloneName, 'automation', 'run-article.ps1');
+    spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script,
+      '-Prompt', run.prompt, '-CloneName', run.cloneName, '-Port', String(run.port), '-LogName', run.logName],
+      { detached: true, stdio: 'ignore', windowsHide: true }).unref();
+    log(`missed run ${run.logName}: retrying "${run.prompt}"`);
+  }
+}
+
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
@@ -468,5 +506,10 @@ if (import.meta.main) {
   await followUpAudits().catch((err) => log(`audit follow-up step failed: ${(err as Error).message}`));
   await warmAccountAlerts().catch((err) => log(`warm account step skipped: ${(err as Error).message.split('\n')[0]}`));
   await bankTrackerUpdates();
+  try {
+    retryMissedRuns();
+  } catch (err) {
+    log(`missed-run retry step failed: ${(err as Error).message}`);
+  }
   log('done');
 }

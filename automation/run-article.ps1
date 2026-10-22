@@ -16,6 +16,10 @@ $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
 $Log = Join-Path $LogDir ("$LogName-{0:yyyy-MM-dd-HHmm}.log" -f (Get-Date))
 Start-Transcript -Path $Log | Out-Null
+# A run skipped by the Claude usage limit leaves a marker here; auto-publish.ts
+# retries it once the limit resets, and a successful run clears it.
+$MissedDir = Join-Path $env:USERPROFILE '.raven\missed-runs'
+$Missed = Join-Path $MissedDir "$LogName.json"
 
 try {
     if (-not (Test-Path $Clone)) {
@@ -57,10 +61,19 @@ try {
         if ($limit) { throw "Claude usage limit, run skipped: $limit" }
         throw "claude exited with $LASTEXITCODE"
     }
+    Remove-Item $Missed -ErrorAction SilentlyContinue
 }
 catch {
     Write-Output "RUN FAILED ($Prompt): $_"
     $subject = if ("$_" -match 'usage limit') { "$Prompt skipped (Claude usage limit)" } else { "$Prompt run failed" }
+    if ("$_" -match 'usage limit') {
+        New-Item -ItemType Directory -Force $MissedDir | Out-Null
+        $prior = if (Test-Path $Missed) { Get-Content $Missed -Raw | ConvertFrom-Json } else { $null }
+        $missedAt = if ($prior) { $prior.missedAt } else { (Get-Date).ToUniversalTime().ToString('o') }
+        @{ prompt = $Prompt; cloneName = $CloneName; port = $Port; logName = $LogName; missedAt = $missedAt } |
+            ConvertTo-Json | Set-Content -Encoding utf8 $Missed
+        $subject = "$subject; will retry"
+    }
     bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" $subject "$_`n`nTranscript: $Log"
     exit 1
 }
