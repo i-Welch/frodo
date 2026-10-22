@@ -2770,7 +2770,7 @@
     "slug": "rev-federal-credit-union",
     "bankName": "REV Federal Credit Union",
     "shortName": "REV",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "rev-federal-credit-union",
     "stats": [
       {
@@ -2783,14 +2783,14 @@
       },
       {
         "label": "Branches",
-        "value": "17 (plus 5 pending in WV)"
+        "value": "14 (10 SC, 4 NC) plus 3 WV offices converting"
       },
       {
         "label": "Lending portals in use",
         "value": "3 separate systems"
       }
     ],
-    "summary": "REV Federal Credit Union is buying a bank 520 miles from its own field of membership, the first-ever credit union purchase of a bank in West Virginia. Its digital lending experience at home isn't ready for the member base it's about to inherit. Auto, personal, and REVline loans apply directly through REV's own domain, a genuinely good first-party experience. Mortgage hands off to a third-party Mortgagebot-style portal on a different domain. Commercial term loans route through a third, separate portal. Commercial real estate ends at an email address, and the business credit card requires a branch visit. REV already knows this: it relaunched its digital banking platform and has an in-house loan origination system targeted for a 2026 launch. That build just got a harder job, verifying members in a rural West Virginia county with no nearby REV branch as easily as it verifies members in Summerville.",
+    "summary": "REV Federal Credit Union bought a bank 520 miles from its own field of membership, the first-ever credit union purchase of a bank in West Virginia, closing July 1, 2026. Its digital lending experience at home isn't ready for the member base it just inherited. Auto, personal, and REVline loans apply directly through REV's own domain, a genuinely good first-party experience. Mortgage hands off to a third-party ICE Encompass portal on a different domain. Commercial term loans route through a third, separate portal. Commercial real estate ends at an email address, and the business credit card points applicants to a branch or a separate commercial portal. REV already knows this: it relaunched its digital banking platform and has an in-house loan origination system targeted for a 2026 launch. That build just got a harder job, verifying members in a rural West Virginia county with no nearby REV branch as easily as it verifies members in Summerville.",
     "currentJourney": [
       {
         "channel": "Auto / RV / watercraft loans",
@@ -2819,8 +2819,8 @@
       },
       {
         "channel": "Business credit card",
-        "detail": "Site states: \"Please visit your nearest branch to apply\"",
-        "status": "missing"
+        "detail": "Page says \"Please visit your nearest branch to apply\" but also carries an \"Apply Now\" link to revfcu.onlineportalnow.com, the same separate commercial portal",
+        "status": "weak"
       },
       {
         "channel": "New membership / share draft account",
@@ -2837,7 +2837,7 @@
       {
         "title": "Commercial lending is the least digital, right as it becomes the priority",
         "severity": "gap",
-        "body": "REV just promoted its business-solutions director to Vice President of Commercial Banking, signaling a real strategic push into commercial lending. But commercial real estate has no online application at all, and the business credit card requires a branch visit. REV has absorbed First Neighborhood Bank's commercial customers in Roane County, West Virginia, a rural, commercial-dependent market 520 miles from the nearest REV branch. Email and branch visits do not scale across that distance."
+        "body": "REV just promoted its business-solutions director to Vice President of Commercial Banking, signaling a real strategic push into commercial lending. But commercial real estate has no online application at all, and the business credit card sends applicants to a branch or the separate commercial portal. REV has absorbed First Neighborhood Bank's commercial customers in Roane County, West Virginia, a rural, commercial-dependent market 520 miles from the nearest REV branch. Email and branch visits do not scale across that distance."
       },
       {
         "title": "REV already knows this needs fixing",
@@ -2847,7 +2847,7 @@
       {
         "title": "Mortgage breaks brand at the exact moment it matters most",
         "severity": "friction",
-        "body": "The mortgage \"Apply Now\" button hands the borrower to revfcu3333.mymortgage-online.com, a Mortgagebot-style legacy portal with its own look and a workflow ID in the URL. At the single highest-value conversion moment in consumer lending, the member leaves REV's brand entirely."
+        "body": "The mortgage \"Apply Now\" button hands the borrower to revfcu3333.mymortgage-online.com, an ICE Encompass Consumer Connect portal with its own look and a workflow ID in the URL. At the single highest-value conversion moment in consumer lending, the member leaves REV's brand entirely."
       }
     ],
     "comparison": [
@@ -2873,17 +2873,17 @@
       },
       {
         "dimension": "Business credit card",
-        "today": "Branch visit required",
+        "today": "Branch visit or the separate commercial portal",
         "withRaven": "Applied for online alongside every other product"
       }
     ],
-    "sources": "revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026); join.revfcu.com application domain; revfcu3333.mymortgage-online.com and revfcu.onlineportalnow.com (third-party lending portals); revfcu.com press release \"South Carolina CU Expands With Planned Bank Acquisition in West Virginia\"; revfcu.com \"REV Announces Organizational and Leadership Changes as Next Phase of its Mission: Growth with Purpose VISION2030\"; NCUA charter #9986 (bestcashcow.com, ncuso.org call report aggregation); S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition."
+    "sources": "revfcu.com (auto-loans, business-lending, mortgage-rates, digital-banking, open-membership pages, reviewed August 2026, rechecked October 2026); join.revfcu.com application domain; revfcu3333.mymortgage-online.com and revfcu.onlineportalnow.com (third-party lending portals); revfcu.com press release \"South Carolina CU Expands With Planned Bank Acquisition in West Virginia\"; revfcu.com \"REV Announces Organizational and Leadership Changes as Next Phase of its Mission: Growth with Purpose VISION2030\"; NCUA charter #9986 (bestcashcow.com, ncuso.org call report aggregation); S&P Global Market Intelligence and CUToday.info coverage of the First Neighborhood Bank acquisition."
   },
   {
     "slug": "palmetto-citizens-federal-credit-union",
     "bankName": "Palmetto Citizens Federal Credit Union",
     "shortName": "Palmetto Citizens",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "palmetto-citizens-federal-credit-union",
     "stats": [
       {
@@ -2903,21 +2903,21 @@
         "value": "0 of 5"
       }
     ],
-    "summary": "Palmetto Citizens Federal Credit Union just closed its first out-of-state expansion in 90 years, four former Southern Bank branches in rural Georgia, and its consumer digital lending experience is genuinely solid: vehicle loans, mortgages, home equity, and credit cards all apply through one consolidated first-party flow at applynow.palmettocitizens.org on Tyfone's nFinia platform. New membership runs through MeridianLink, a purpose-built account-opening vendor. The gap is business lending. Lines of credit, term loans, commercial real estate, SBA 7(a) loans, and nonprofit financing all require a phone call, a Help Desk message, or a branch visit. Zero of the five have an online application. That was a minor gap for a Midlands credit union with established local businesses. It's a bigger one now that Palmetto Citizens, a CDFI-certified institution, is the primary financial option in Georgia counties where median household income runs near $41,600 and SBA-backed small-business lending is exactly the kind of product its own mission points toward.",
+    "summary": "Palmetto Citizens Federal Credit Union just closed its first out-of-state expansion in 90 years, four former Southern Bank branches in rural Georgia, and its consumer digital lending experience is genuinely solid: vehicle loans, credit cards, and personal loans apply through a MeridianLink flow at applynow.palmettocitizens.org, mortgages and home equity run through a separate Docitt portal on a Palmetto Citizens subdomain, and new membership also runs through MeridianLink. The gap is business lending. Lines of credit, term loans, commercial real estate, SBA 7(a) loans, and nonprofit financing all require a phone call, a Help Desk message, or a branch visit. Zero of the five have an online application. That was a minor gap for a Midlands credit union with established local businesses. It's a bigger one now that Palmetto Citizens, a CDFI-certified institution, is the primary financial option in Georgia counties where median household income runs near $41,600 and SBA-backed small-business lending is exactly the kind of product its own mission points toward.",
     "currentJourney": [
       {
         "channel": "Vehicle loans",
-        "detail": "Apply through the consolidated first-party flow at applynow.palmettocitizens.org",
+        "detail": "Apply through applynow.palmettocitizens.org, a MeridianLink consumer-lending flow on a Palmetto Citizens subdomain",
         "status": "ok"
       },
       {
         "channel": "Mortgage / home equity",
-        "detail": "Same consolidated first-party flow as vehicle loans, running on Tyfone nFinia",
+        "detail": "Mortgage and home equity go to a separate portal, mymortgage.palmettocitizens.org (Docitt), not the consumer-loan flow",
         "status": "ok"
       },
       {
         "channel": "Credit cards / personal loans",
-        "detail": "Same consolidated first-party application flow",
+        "detail": "Same applynow.palmettocitizens.org MeridianLink flow as vehicle loans",
         "status": "ok"
       },
       {
@@ -2953,9 +2953,9 @@
     ],
     "findings": [
       {
-        "title": "Consumer lending is genuinely consolidated. Business lending has nothing.",
+        "title": "Consumer lending is genuinely digital. Business lending has nothing.",
         "severity": "gap",
-        "body": "Palmetto Citizens already solved the problem most of the banks and credit unions we've audited haven't: one first-party flow for vehicle, mortgage, home equity, and credit card applications. That makes the complete absence of a digital path for any of its five business loan categories, lines of credit, term loans, CRE, SBA 7(a), and nonprofit lending, stand out more, not less. The consumer side proves Palmetto Citizens can build this. It just hasn't built it for business borrowers."
+        "body": "Palmetto Citizens already solved the problem most of the banks and credit unions we've audited haven't: a real online application for every consumer product, with vehicle, card, and personal loans in one flow and mortgage and home equity in a second, both on Palmetto Citizens subdomains. That makes the complete absence of a digital path for any of its five business loan categories, lines of credit, term loans, CRE, SBA 7(a), and nonprofit lending, stand out more, not less. The consumer side proves Palmetto Citizens can build this. It just hasn't built it for business borrowers."
       },
       {
         "title": "A CDFI mission with no digital path for its own flagship product",
@@ -2976,7 +2976,7 @@
     "comparison": [
       {
         "dimension": "Consumer lending",
-        "today": "One consolidated first-party flow (already solid)",
+        "today": "Two online flows on its own subdomains (already solid)",
         "withRaven": "Same flow, verified in real time instead of after the fact"
       },
       {
@@ -2996,17 +2996,17 @@
       },
       {
         "dimension": "New membership onboarding",
-        "today": "Third-party MeridianLink flow, separate from lending",
+        "today": "MeridianLink flow, separate from the mortgage portal",
         "withRaven": "One verification layer spanning membership and lending"
       }
     ],
-    "sources": "palmettocitizens.org (loan/, business/loans/, personal/vehicles/, personal/mortgage/, personal/homeequity/ pages, reviewed August 2026); applynow.palmettocitizens.org and app.consumer.meridianlink.com (application domains); fintechfutures.com coverage of the Tyfone nFinia platform adoption; palmettocitizens.org CDFI designation press release (April 2023) and CUInsight coverage; bestcashcow.com and ncuso.org NCUA charter #1472 call-report aggregation (assets, net worth, net worth ratio); cutoday.info and coladaily.com coverage of the Southern Bank Georgia branch acquisition (announced November 2025, closed August 1, 2026); Census QuickFacts and worldpopulationreview.com for Burke, Glascock, and Richmond County GA and the eight South Carolina Midlands counties."
+    "sources": "palmettocitizens.org (loan/, business/loans/, personal/vehicles/, personal/mortgage/, personal/homeequity/ pages, reviewed August 2026, rechecked October 2026); applynow.palmettocitizens.org and app.consumer.meridianlink.com (application domains); palmettocitizens.org CDFI designation press release (April 2023) and CUInsight coverage; bestcashcow.com and ncuso.org NCUA charter #1472 call-report aggregation (assets, net worth, net worth ratio); cutoday.info and coladaily.com coverage of the Southern Bank Georgia branch acquisition (announced November 2025, closed August 1, 2026); Census QuickFacts and worldpopulationreview.com for Burke, Glascock, and Richmond County GA and the eight South Carolina Midlands counties."
   },
   {
     "slug": "champions-first-credit-union",
     "bankName": "Champions First Credit Union",
     "shortName": "Champions First",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "champions-first-credit-union",
     "stats": [
       {
@@ -3026,7 +3026,7 @@
         "value": "~900 (~220/year)"
       }
     ],
-    "summary": "Champions First Credit Union spent six years assembling growth machinery: the GPCE Credit Union merger in 2020, the FDOT Credit Union merger in 2022, and the October 2024 retirement of the FSU Credit Union name it had carried since 1954. Assets grew 34% to $535.8 million. Membership went from roughly 32,000 to 32,930. The funnel explains the gap. Every loan product hands applicants to MeridianLink's generic app.loanspq.com portal, account opening routes to a MeridianLink domain whose lender reference still reads 'Floridascu,' and the loan page's App Store link still points to an app named FSU Credit Union Mobility. Champions First is rolling out a new digital banking platform and mobile app in August 2026, which makes right now the moment the intake layer gets decided.",
+    "summary": "Champions First Credit Union spent six years assembling growth machinery: the GPCE Credit Union merger in 2020, the FDOT Credit Union merger in 2022, and the October 2024 retirement of the FSU Credit Union name it had carried since 1954. Assets grew 34% to $535.8 million. Membership went from roughly 32,000 to 32,930. The funnel explains the gap. Auto, personal, and credit-builder loans hand applicants to MeridianLink's generic app.loanspq.com portal, mortgages go to a partner's Encompass portal, and account opening routes to a MeridianLink domain whose lender reference still reads 'Floridascu.' Champions First launched a new digital banking platform and mobile app in August 2026, which makes this the moment the intake layer gets decided.",
     "currentJourney": [
       {
         "channel": "Online banking",
@@ -3045,22 +3045,17 @@
       },
       {
         "channel": "Mortgages",
-        "detail": "No dedicated first-party mortgage flow; routes through the same generic MeridianLink loan portal",
+        "detail": "Mortgages are offered through AmeriCU Mortgage (Towne Mortgage); applications go to an ICE Encompass portal at americu.mymortgage-online.com, off the Champions First domain",
         "status": "weak"
       },
       {
         "channel": "Business loans",
-        "detail": "No business-specific online application; the Business Loans page routes to the generic consumer loan portal",
-        "status": "missing"
+        "detail": "Business loans have an express online application through dblc.app (Lucro), a third-party domain",
+        "status": "weak"
       },
       {
         "channel": "New membership / account opening",
         "detail": "Routes to app.consumer.meridianlink.com with the FSU-era lender reference “Floridascu” still in the URL",
-        "status": "weak"
-      },
-      {
-        "channel": "Mobile app",
-        "detail": "The loan page’s App Store link still points to “FSU Credit Union Mobility,” nearly two years after the rebrand",
         "status": "weak"
       }
     ],
@@ -3068,7 +3063,7 @@
       {
         "title": "The rebrand stopped at the application layer",
         "severity": "gap",
-        "body": "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But the account-opening URL still identifies the institution as “Floridascu,” the App Store listing still says FSU Credit Union Mobility, and every loan application leaves the brand for a generic MeridianLink portal. The brand investment stops at exactly the moment a prospect decides whether to become a member."
+        "body": "Champions First spent nearly three years researching its new name and celebrated it with ribbon cuttings in four counties. But the account-opening URL still identifies the institution as “Floridascu,” and every loan application leaves the Champions First domain for a vendor or partner portal. The brand investment stops at exactly the moment a prospect decides whether to become a member."
       },
       {
         "title": "Funding costs rose 49% because new members did not show up",
@@ -3076,9 +3071,9 @@
         "body": "Only 17% of shares sit in share drafts, the primary-relationship balances that arrive with new members. Growth got bought instead: dividends on shares jumped 49% in 2024 to $8.0 million, net income fell 12%, and certificates plus money market now make up 54.5% of shares. Rate-bought money leaves with the rate. Members do not."
       },
       {
-        "title": "The August 2026 replatform is the moment to fix intake, not just the interface",
+        "title": "The August 2026 replatform was the moment to fix intake, not just the interface",
         "severity": "note",
-        "body": "Champions First is rolling out a new online banking platform, mobile app, chatbot, and phone system in August 2026, the first major infrastructure decision of the Champions First era. A new interface in front of the same third-party application handoff changes how the front door looks, not how many people get through it. Building verified intake (identity, income, funding account, in one sitting, on the credit union’s own domain) into the replatform is the difference between a facelift and a funnel."
+        "body": "Champions First rolled out a new online banking platform, mobile app, chatbot, and phone system in August 2026, the first major infrastructure decision of the Champions First era. A new interface in front of the same third-party application handoff changes how the front door looks, not how many people get through it. Building verified intake (identity, income, funding account, in one sitting, on the credit union’s own domain) into the replatform is the difference between a facelift and a funnel."
       }
     ],
     "comparison": [
@@ -3089,7 +3084,7 @@
       },
       {
         "dimension": "Applying for any loan",
-        "today": "Generic app.loanspq.com portal, same for every product",
+        "today": "Generic app.loanspq.com portal for consumer loans; partner portal for mortgage",
         "withRaven": "One branded flow with product-aware verification"
       },
       {
@@ -3099,17 +3094,17 @@
       },
       {
         "dimension": "Business lending",
-        "today": "No dedicated online application",
+        "today": "Express application on a third-party domain (dblc.app)",
         "withRaven": "Digital business intake with entity and owner verification"
       }
     ],
-    "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
+    "sources": "championsfirst.org (borrow/auto-loans, borrow/business-loans, borrow/mortgages, borrow/apply-for-a-loan, bank/open-an-account, exciting-2026-changes pages, reviewed August 2026, rechecked October 2026); app.loanspq.com and app.consumer.meridianlink.com application domains (lenderref 'Floridascu070816' observed August 2026); my.championsfirst.org (Jack Henry Banno, fingerprinted August 2026); Champions First 2024 Annual Report; NCUA 5300 aggregation via ncuso.org for charter #67874 (Mar 31, 2026); IRS Form 990 FY2024 via ProPublica Nonprofit Explorer; American Banker and cucentral.the-league.coop merger coverage; FFIEC HMDA filer lists 2023-2024 (absence verified); Census county population estimates."
   },
   {
     "slug": "founders-federal-credit-union",
     "bankName": "Founders Federal Credit Union",
     "shortName": "Founders",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "founders-federal-credit-union",
     "stats": [
       {
@@ -3129,7 +3124,7 @@
         "value": "~1.29% annualized (about 2x industry)"
       }
     ],
-    "summary": "Founders Federal Credit Union is the strongest digital operator in this series, which changes what an audit looks for. Account opening and lending already run first-party at apply.foundersfcu.com, digital banking is Q2, and Founders' own FIT CUSO sells Corelation KeyStone tooling to other credit unions. The exposure isn't the front door; it's what flows through it. Founders lends $605.8M unsecured (one loan dollar in seven, on signature), reserves a heavy 2.0% of loans, and still earns roughly double the industry's ROA. That model prices losses correctly only if intake data is correct: every basis point of future charge-off in a signature book enters through an application. Verification depth at intake, not interface quality, is where this institution's next basis points live.",
+    "summary": "Founders Federal Credit Union is the strongest digital operator in this series, which changes what an audit looks for. Account opening and lending already run on a Founders-branded subdomain, apply.foundersfcu.com (hosted by Clutch), digital banking is Q2, and Founders' own FIT CUSO sells Corelation KeyStone tooling to other credit unions. The exposure isn't the front door; it's what flows through it. Founders lends $605.8M unsecured (one loan dollar in seven, on signature), reserves a heavy 2.0% of loans, and still earns roughly double the industry's ROA. That model prices losses correctly only if intake data is correct: every basis point of future charge-off in a signature book enters through an application. Verification depth at intake, not interface quality, is where this institution's next basis points live.",
     "currentJourney": [
       {
         "channel": "Online banking",
@@ -3138,17 +3133,17 @@
       },
       {
         "channel": "Account opening / new membership",
-        "detail": "First-party at apply.foundersfcu.com/account-opening, no third-party domain handoff",
+        "detail": "apply.foundersfcu.com/account-opening, a Clutch-hosted flow on a Founders subdomain",
         "status": "ok"
       },
       {
         "channel": "Auto / personal / express loans",
-        "detail": "First-party at apply.foundersfcu.com, consistent branding across consumer products",
+        "detail": "apply.foundersfcu.com (Clutch-hosted, Founders-branded) across consumer products. Some older loans.foundersfcu.com/Loan/Selection/ links on the site return a 404",
         "status": "ok"
       },
       {
         "channel": "Mortgage",
-        "detail": "mortgage.foundersfcu.com/loan-app with a workflowId-style URL: vendor-powered under the hood, but kept on a Founders subdomain",
+        "detail": "mortgage.foundersfcu.com/loan-app, an ICE Encompass Consumer Connect application kept on a Founders subdomain",
         "status": "ok"
       },
       {
@@ -3176,19 +3171,19 @@
       {
         "title": "Business lending is the one product with no digital path",
         "severity": "gap",
-        "body": "For a credit union whose charter is literally a list of 200+ employers, business owners are the natural next relationship, and the only product category without an online application. Digital business intake with entity and owner verification would extend the first-party experience Founders already runs on the consumer side to the segment its employer-group model knows best."
+        "body": "For a credit union whose charter is literally a list of 200+ employers, business owners are the natural next relationship, and the only product category without an online application. Digital business intake with entity and owner verification would extend the branded experience Founders already runs on the consumer side to the segment its employer-group model knows best."
       },
       {
         "title": "A build-and-own culture that verification infrastructure fits naturally",
         "severity": "note",
-        "body": "Founders commercializes its own KeyStone tooling through the FIT CUSO and keeps applications on domains it controls. This is an institution that prefers owning machinery to renting experiences. A verification layer that slots underneath the existing apply.foundersfcu.com flow, returning source-verified identity, income, employment, and account data through APIs, matches how Founders already builds, rather than asking it to replace a front door that is not broken."
+        "body": "Founders commercializes its own KeyStone tooling through the FIT CUSO and keeps applications on its own subdomains. This is an institution that prefers owning machinery to renting experiences. A verification layer that slots underneath the existing apply.foundersfcu.com flow, returning source-verified identity, income, employment, and account data through APIs, matches how Founders already builds, rather than asking it to replace a front door that is not broken."
       }
     ],
     "comparison": [
       {
         "dimension": "Applying for a consumer loan",
-        "today": "First-party form, borrower-typed data",
-        "withRaven": "Same first-party flow, source-verified data"
+        "today": "Founders-branded form, borrower-typed data",
+        "withRaven": "Same branded flow, source-verified data"
       },
       {
         "dimension": "Income behind a signature loan",
@@ -3211,13 +3206,13 @@
         "withRaven": "Digital intake with entity and owner verification"
       }
     ],
-    "sources": "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, business and membership pages, reviewed August 2026); apply.foundersfcu.com and mortgage.foundersfcu.com (application domains); Q2 external-link whitelist in foundersfcu.com page source; info.q2.com published Founders FCU customer story; fitcuso.com (FIT CUSO KeyStone-specific product line); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 5493001AGQGPJ3N3YL33; CUToday, CU Times, WRHI, and Tyfone coverage of the 2025-2026 leadership transition; Home Textiles Today for Springs Industries plant closure history."
+    "sources": "foundersfcu.com (auto-loans, personal-loans, express-loan, mortgage-loans, business and membership pages, reviewed August 2026, rechecked October 2026); apply.foundersfcu.com (Clutch) and mortgage.foundersfcu.com (ICE Encompass) application domains; Q2 external-link whitelist in foundersfcu.com page source; info.q2.com published Founders FCU customer story; fitcuso.com (FIT CUSO KeyStone-specific product line); NCUA 5300 aggregation via ncuso.org for charter #24063 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 5493001AGQGPJ3N3YL33; CUToday, CU Times, WRHI, and Tyfone coverage of the 2025-2026 leadership transition; Home Textiles Today for Springs Industries plant closure history."
   },
   {
     "slug": "robins-financial-credit-union",
     "bankName": "Robins Financial Credit Union",
     "shortName": "Robins Financial",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "robins-financial-credit-union",
     "stats": [
       {
@@ -3237,7 +3232,7 @@
         "value": "$151M in annual rebates"
       }
     ],
-    "summary": "Robins Financial is the healthiest institution in this series: a 17.3% net worth ratio, a ~1.8% annualized ROA built on a 1.15% cost of funds, and a $20 million December member rebate ($151 million since 2017). Its digital architecture is sound: Q2 online banking and first-party account opening at newaccount.robinsfcu.org, with no third-party domain handoffs. The strategic gap is between eligibility and reach. Robins AFB employees live in 110 of Georgia's 159 counties and the 2016 state charter opened roughly 43 counties, but the branch network is 24 locations, so for most eligible members the digital front door is the only door. The rebate flywheel pays on relationship depth, which makes conversion quality at intake (verified identity, linked funding account, share draft on day one) the highest-leverage variable in the model.",
+    "summary": "Robins Financial is the healthiest institution in this series: a 17.3% net worth ratio, a ~1.8% annualized ROA built on a 1.15% cost of funds, and a $20 million December member rebate ($151 million since 2017). Its digital architecture is sound: Q2 online banking and MANTL account opening on its own subdomain, newaccount.robinsfcu.org, though non-member loan applicants hand off to DecisionLender. The strategic gap is between eligibility and reach. Robins AFB employees live in 110 of Georgia's 159 counties and the 2016 state charter opened roughly 43 counties, but the branch network is 23 branches, so for most eligible members the digital front door is the only door. The rebate flywheel pays on relationship depth, which makes conversion quality at intake (verified identity, linked funding account, share draft on day one) the highest-leverage variable in the model.",
     "currentJourney": [
       {
         "channel": "Online banking",
@@ -3246,7 +3241,7 @@
       },
       {
         "channel": "Account opening / new membership",
-        "detail": "First-party at newaccount.robinsfcu.org, no third-party domain handoff",
+        "detail": "newaccount.robinsfcu.org, a MANTL (Alkami) account-opening flow on a Robins subdomain",
         "status": "ok"
       },
       {
@@ -3255,8 +3250,13 @@
         "status": "ok"
       },
       {
+        "channel": "Mortgage",
+        "detail": "Mortgage applications go to an ICE Encompass Consumer Connect portal at robinsfcuportal.mymortgage-online.com",
+        "status": "ok"
+      },
+      {
         "channel": "Non-member borrower path",
-        "detail": "A prospective member an hour from the nearest branch must complete membership, funding, and loan application digitally; verification depth in that flow determines conversion",
+        "detail": "Non-members applying for a loan are sent to DecisionLender (cp.decisionlender.solutions), a third-party domain, and must complete membership, funding, and the loan application there; verification depth in that flow determines conversion",
         "status": "weak"
       },
       {
@@ -3279,12 +3279,12 @@
       {
         "title": "A 30.9% share-draft mix is the series-best asset, and the most attackable",
         "severity": "note",
-        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Digital banks and fintechs took 44% of new checking accounts opened in 2024 (Cornerstone Advisors), on account-opening speed. Defending this mix means matching that speed with the verification rigor a 17%-capitalized institution expects, inside the first-party flow Robins already owns."
+        "body": "Nearly a third of Robins' $4.07B share base is primary-relationship checking, which is why its cost of funds runs about half what peers pay. Digital banks and fintechs took 44% of new checking accounts opened in 2024 (Cornerstone Advisors), on account-opening speed. Defending this mix means matching that speed with the verification rigor a 17%-capitalized institution expects, inside the account-opening flow Robins already runs."
       },
       {
         "title": "The architecture is right; the depth is the question",
         "severity": "note",
-        "body": "Unlike most institutions in this series, Robins needs no front-door replacement: Q2 online banking plus first-party account opening is a sound, conventional stack. The open question is what happens inside the apply flow: whether identity, income, employment, and funding data are verified from source in-session, or collected as typed fields for manual follow-up. RAVEN slots into an existing first-party flow as the verification layer, which is the only missing piece of an otherwise complete machine."
+        "body": "Unlike most institutions in this series, Robins needs no front-door replacement: Q2 online banking plus MANTL account opening on a Robins subdomain is a sound, conventional stack. The open question is what happens inside the apply flow: whether identity, income, employment, and funding data are verified from source in-session, or collected as typed fields for manual follow-up. RAVEN slots into an existing flow as the verification layer, which is the only missing piece of an otherwise complete machine."
       }
     ],
     "comparison": [
@@ -3314,18 +3314,18 @@
         "withRaven": "Digital intake with entity and owner verification"
       }
     ],
-    "sources": "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026); newaccount.robinsfcu.org and onlinebanking.robinsfcu.org (application and digital banking domains, Q2 fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica, EIN 580641605; CUToday and CUInsight coverage of the December 2025 $20M member rebate; 13WMAZ 2026 State of the Base coverage; Wikipedia for the 1954 founding and 2016 charter conversion."
+    "sources": "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026, rechecked October 2026); newaccount.robinsfcu.org (MANTL), cp.decisionlender.solutions, robinsfcuportal.mymortgage-online.com, and onlinebanking.robinsfcu.org (Q2, fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica, EIN 580641605; CUToday and CUInsight coverage of the December 2025 $20M member rebate; 13WMAZ 2026 State of the Base coverage; Wikipedia for the 1954 founding and 2016 charter conversion."
   },
   {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "uwharrie-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.25B"
+        "value": "$1.22B"
       },
       {
         "label": "Branches",
@@ -3337,7 +3337,7 @@
       },
       {
         "label": "ROA",
-        "value": "1.14%"
+        "value": "1.26%"
       }
     ],
     "summary": "Uwharrie Bank, the only commercial bank headquartered in Stanly County, NC, already runs real online applications for mortgage, auto, personal loans, and deposit account opening. HELOC and business lending are the two exceptions: both dead-end at a pre-filled contact form instead of an application. Closing those two gaps completes a self-serve stack the bank has mostly already built.",
@@ -3412,18 +3412,18 @@
         "withRaven": "Captured, verified, and queued immediately"
       }
     ],
-    "sources": "uwharrie.com (personal-banking/mortgages, personal-banking/loans, business-banking/loans, reviewed August 2026); mymortgage.uwharrie.com, uwharrie.loanwebcenter.com, forms.fivision.com/uwharrie (application portal domains); FDIC BankFind cert #24919."
+    "sources": "uwharrie.com (personal-banking/mortgages, personal-banking/loans, business-banking/loans, reviewed August 2026, rechecked October 2026); mymortgage.uwharrie.com, uwharrie.loanwebcenter.com, forms.fivision.com/uwharrie (application portal domains); FDIC BankFind cert #24919."
   },
   {
     "slug": "wilson-bank-and-trust",
     "bankName": "Wilson Bank and Trust",
     "shortName": "Wilson Bank",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "wilson-bank-and-trust",
     "stats": [
       {
         "label": "Total assets",
-        "value": "$5.99B"
+        "value": "$5.98B"
       },
       {
         "label": "Branches",
@@ -3431,14 +3431,14 @@
       },
       {
         "label": "Online loan products",
-        "value": "5 of 6, on 3 separate vendor portals"
+        "value": "5 of 6, across 4 separate portals"
       },
       {
         "label": "ROA",
-        "value": "1.52%"
+        "value": "1.48%"
       }
     ],
-    "summary": "Wilson Bank and Trust grew from a single 1987 de novo charter into a $6B, 32-branch bank across the counties ringing Nashville, largely through acquiring smaller local banks. Mortgage, auto, personal loans, HELOC, and deposit account opening all have real online applications today, but they run on three separate vendor portals across three different domains. Business lending has no online application at all.",
+    "summary": "Wilson Bank and Trust grew from a single 1987 de novo charter into a $6B, 32-branch bank across the counties ringing Nashville, largely through acquiring smaller local banks. Mortgage, auto, personal loans, HELOC, and deposit account opening all have real online applications today, but they run on four separate portals: two Finastra MortgageWebCenter sites, a LoanWebCenter site, and a separate account-opening site. Business lending has no online application at all.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -3472,7 +3472,7 @@
       },
       {
         "channel": "Existing-customer banking",
-        "detail": "Treasury Management hosted on Jack Henry infrastructure; personal login/enrollment vendor not publicly confirmed",
+        "detail": "Personal online banking runs on Jack Henry's Banno platform; Treasury Management is also hosted on Jack Henry infrastructure",
         "status": "ok"
       }
     ],
@@ -3515,13 +3515,13 @@
         "withRaven": "Verified once, automatically, in ~90 seconds"
       }
     ],
-    "sources": "wilsonbank.com (loans/home-loans, loans/vehicle, loans/personal, loans/home-equity-line-of-credit, loans/business-loans, reviewed August 2026); centralized-wilsonbanktn.mortgagewebcenter.com, wilsonbank.loanwebcenter.com, openaccounts.wilsonbank.com (application portal domains); treasury.jackhenry.com/wilsonbank; FDIC BankFind cert #26962."
+    "sources": "wilsonbank.com (loans/home-loans, loans/vehicle, loans/personal, loans/home-equity-line-of-credit, loans/business-loans, reviewed August 2026, rechecked October 2026); centralized-wilsonbanktn.mortgagewebcenter.com, wilsonbank.loanwebcenter.com, openaccounts.wilsonbank.com (application portal domains); treasury.jackhenry.com/wilsonbank; FDIC BankFind cert #26962."
   },
   {
     "slug": "cogent-bank",
     "bankName": "Cogent Bank",
     "shortName": "Cogent",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "cogent-bank",
     "stats": [
       {
@@ -3530,23 +3530,23 @@
       },
       {
         "label": "Branches",
-        "value": "10 (Central & South Florida)"
+        "value": "11 (Central & South Florida)"
       },
       {
         "label": "Online loan products",
-        "value": "0 of 5"
+        "value": "1 of 5 (mortgage)"
       },
       {
         "label": "ROE",
-        "value": "23.04%"
+        "value": "23.54%"
       }
     ],
-    "summary": "Cogent Bank runs a Specialty Lending Group that doubled loan commitments from $100M to $200M in a single year and holds SBA Preferred Lender status across three federal programs. None of it has an online application. Mortgage, specialty lending, SBA, personal, and business lending all end at a phone call or a named specialist's contact info, and the site's account-opening form is a scheduling request, not a self-serve application.",
+    "summary": "Cogent Bank runs a Specialty Lending Group that doubled loan commitments from $100M to $200M in 2021 and makes SBA loans through a team of named specialists. Mortgage is the one product with a real online application, reached through each loan officer's \"Apply Here\" link to an ICE Encompass portal. Specialty lending, SBA, personal, and business lending all end at a phone call or a named specialist's contact info, and the site's account-opening form is a scheduling request, not a self-serve application.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Lists conventional, FHA/VA/USDA, jumbo, and construction products with no apply button; directs to phone or branch",
-        "status": "missing"
+        "detail": "Each mortgage loan officer's profile has an \"Apply Here\" link to an ICE Encompass Consumer Connect application at edocs.cogentbank.net; the main mortgage page itself directs to phone or branch",
+        "status": "ok"
       },
       {
         "channel": "Specialty / SBA lending",
@@ -3576,9 +3576,9 @@
         "body": "The Specialty Lending Group's growth depends on speed to compete for $1M-$15M deals. Every one of those deals starts with a phone call today. Automated identity, income, and asset verification lets underwriters spend time on the specialty-credit analysis that differentiates the deal, instead of the document chase before it."
       },
       {
-        "title": "SBA Preferred Lender status rewards whoever closes fastest",
+        "title": "SBA deals go to whoever closes fastest",
         "severity": "gap",
-        "body": "SBA brokers route deals to whichever Preferred Lender can close quickest. Cogent's SBA page lists four named specialists and a phone number; there is no application to start a file before that first call happens."
+        "body": "SBA brokers route deals to whichever lender can close quickest. Cogent's SBA page lists four named specialists and a phone number; there is no application to start a file before that first call happens."
       },
       {
         "title": "The account-opening form isn't actually an application",
@@ -3589,7 +3589,7 @@
     "comparison": [
       {
         "dimension": "Products you can start online",
-        "today": "0 of 5",
+        "today": "1 of 5 (mortgage, via loan-officer links)",
         "withRaven": "Every product, one front door"
       },
       {
@@ -3608,13 +3608,13 @@
         "withRaven": "Captured, verified, and queued immediately"
       }
     ],
-    "sources": "cogentbank.com (personal/, business/, sba-lending/, open-a-new-personal-account/, reviewed August 2026); FDIC BankFind cert #34908. Digital banking login observed at a white-label \"Flex\" domain; core vendor not positively identified."
+    "sources": "cogentbank.com (personal/, business/, sba-lending/, open-a-new-personal-account/, reviewed August 2026, rechecked October 2026); FDIC BankFind cert #34908. Digital banking login observed at a white-label \"Flex\" domain; core vendor not positively identified."
   },
   {
     "slug": "chesapeake-bank",
     "bankName": "Chesapeake Bank",
     "shortName": "Chesapeake",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "chesapeake-bank",
     "stats": [
       {
@@ -3623,7 +3623,7 @@
       },
       {
         "label": "Branches",
-        "value": "19 (Northern Neck & Middle Peninsula, VA)"
+        "value": "19 (Northern Neck, Middle Peninsula, Williamsburg & Richmond, VA)"
       },
       {
         "label": "Online loan products",
@@ -3631,10 +3631,10 @@
       },
       {
         "label": "ROA",
-        "value": "1.49%"
+        "value": "1.78% (includes a one-time gain)"
       }
     ],
-    "summary": "Chesapeake Bank runs Chesapeake Payment Systems, a 30-year-old merchant-payments subsidiary that recently partnered with fintech Silverflow, real sophistication in financial infrastructure. That hasn't reached borrower-facing lending: only mortgage has a real online application. Personal loans and business lending are contact-only, no dedicated auto loan product was found on the site, and one of the bank's three checking products is branch-only while the other two open online.",
+    "summary": "Chesapeake Bank runs Chesapeake Payment Systems, a 30-year-old merchant-payments subsidiary that partnered with fintech Silverflow in September 2024, real sophistication in financial infrastructure. That hasn't reached borrower-facing lending: only mortgage has a real online application. Personal loans and business lending are contact-only, no dedicated auto loan product was found on the site, and one of the bank's three checking products is branch-only while the other two open online.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -3701,22 +3701,22 @@
         "withRaven": "Verified automatically in ~90 seconds"
       }
     ],
-    "sources": "ches.bank (personal/lending/home-loans, personal/lending/personal-loans, business/business-lending/business-loans, personal/personal-checking, reviewed August 2026); chesbank2.mortgagewebcenter.com, chesapeakebank.my.site.com (application portal domains); FDIC BankFind cert #6862. Brand colors (#002D5B, #E16B43) pulled directly from live site CSS."
+    "sources": "ches.bank (personal/lending/home-loans, personal/lending/personal-loans, business/business-lending/business-loans, personal/personal-checking, reviewed August 2026, rechecked October 2026); chesbank2.mortgagewebcenter.com, chesapeakebank.my.site.com (application portal domains); FDIC BankFind cert #6862. Brand colors (#002D5B, #E16B43) pulled directly from live site CSS."
   },
   {
     "slug": "bankplus",
     "bankName": "BankPlus",
     "shortName": "BankPlus",
-    "auditDate": "August 2026",
+    "auditDate": "October 2026",
     "demoSlug": "bankplus",
     "stats": [
       {
         "label": "Total assets",
-        "value": "$8.28B"
+        "value": "$8.38B"
       },
       {
         "label": "Branches",
-        "value": "75 (Mississippi, Alabama & Louisiana)"
+        "value": "74 (Mississippi, Louisiana, Alabama & Florida)"
       },
       {
         "label": "Online loan products",
@@ -3724,10 +3724,10 @@
       },
       {
         "label": "ROA",
-        "value": "1.40%"
+        "value": "1.27%"
       }
     ],
-    "summary": "BankPlus has made American Banker's \"Best Banks to Work For\" list for nine consecutive years, one of only seven U.S. banks with that full streak, real evidence of investment in staff experience. The borrower-facing digital experience hasn't kept pace: of six lending lines, only mortgage has a real online application. The remaining five all route to \"meet with a banker\" or a branch locator, and the deposit-account-opening link found on multiple pages did not load correctly when tested.",
+    "summary": "BankPlus made American Banker's \"Best Banks to Work For\" list ten consecutive years through 2022, one of only eight banks with that streak, real evidence of investment in staff experience. The borrower-facing digital experience hasn't kept pace: of six lending lines, only mortgage has a real online application. The remaining five all route to \"meet with a banker\" or a branch locator. Deposit accounts do open online, through a MeridianLink flow at apply.bankplus.net, which shows the bank can run self-serve intake when it chooses to.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -3761,25 +3761,25 @@
       },
       {
         "channel": "Deposit account opening",
-        "detail": "Multiple pages link to an \"Open an Account\" portal that returned an error page when tested directly; not confirmed working",
-        "status": "weak"
+        "detail": "\"Open an Account\" goes to apply.bankplus.net, a working MeridianLink online account-opening flow",
+        "status": "ok"
       }
     ],
     "findings": [
       {
-        "title": "Nine years of \"Best Banks to Work For\" is worth extending to borrowers",
+        "title": "A decade on \"Best Banks to Work For\" is worth extending to borrowers",
         "severity": "note",
         "body": "A bank that consistently invests in staff experience has the same incentive to modernize the borrower-facing side of lending. That investment hasn't reached the loan application, where auto, personal, HELOC, and business borrowers all get the same instruction: visit a branch."
       },
       {
-        "title": "At 75 branches, an $8.3B bank still has a phone-call front door",
+        "title": "At 74 branches, an $8.4B bank still has a phone-call front door",
         "severity": "gap",
-        "body": "Scale doesn't eliminate the labor problem, it multiplies it across 75 branches and their loan officers. Automating verification protects margin as growth, including the 2021 First Trust Corporation acquisition, continues to add branches and files."
+        "body": "Scale doesn't eliminate the labor problem, it multiplies it across 74 branches and their loan officers. Automating verification protects margin as growth, including the 2021 First Trust Corporation acquisition, continues to add branches and files."
       },
       {
-        "title": "The account-opening link needs a direct check",
-        "severity": "friction",
-        "body": "Multiple deposit-product pages link to an \"Open an Account\" portal that returned an error page when tested directly. If that's broken for real customers too, there may currently be no working self-serve path into the bank at all outside a mortgage refinance."
+        "title": "Account opening proves the self-serve model already works here",
+        "severity": "note",
+        "body": "Deposit accounts open online through a MeridianLink flow at apply.bankplus.net, so BankPlus customers can already become customers without a branch visit. Lending is where that stops: outside mortgage, every loan product sends the borrower to a banker. Extending the same self-serve, verified intake to auto, personal, HELOC, and business loans uses a pattern the bank already runs."
       }
     ],
     "comparison": [
@@ -3790,11 +3790,11 @@
       },
       {
         "dimension": "Account opening",
-        "today": "Link returned an error page when tested",
-        "withRaven": "Reliable, self-serve, verified in ~90 seconds"
+        "today": "Online via MeridianLink (apply.bankplus.net)",
+        "withRaven": "Same self-serve verification extended to every loan product"
       },
       {
-        "dimension": "After-hours demand across 75 branches",
+        "dimension": "After-hours demand across 74 branches",
         "today": "\"Meet with a banker\" / branch locator",
         "withRaven": "Captured, verified, and queued immediately"
       },
@@ -3804,6 +3804,6 @@
         "withRaven": "Verified automatically in ~90 seconds"
       }
     ],
-    "sources": "bankplus.net (personal/borrow/home-mortgages, personal/borrow/auto-loans, personal/borrow/personal-loan, personal/borrow/home-equity-line, business/borrow/business-loans, wealth-management/services, reviewed August 2026); bankplus.mymortgage-online.com (mortgage application portal); apply.bankplus.net (deposit account link tested, returned an error page); FDIC BankFind cert #5903."
+    "sources": "bankplus.net (personal/borrow/home-mortgages, personal/borrow/auto-loans, personal/borrow/personal-loan, personal/borrow/home-equity-line, business/borrow/business-loans, wealth-management/services, reviewed August 2026, rechecked October 2026); bankplus.mymortgage-online.com (mortgage application portal); apply.bankplus.net (MeridianLink deposit account opening, working when rechecked October 2026); FDIC BankFind cert #5903."
   }
 ]
