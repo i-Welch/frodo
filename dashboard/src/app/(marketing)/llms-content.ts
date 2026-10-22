@@ -87,7 +87,7 @@ function glossarySection(full: boolean): string {
     const note = full ? t.definition : t.metaDescription;
     return `- [${name}](${SITE}/glossary/${t.slug}): ${note}`;
   });
-  return `## Glossary of verification and account-opening terms\n\n${lines.join('\n')}`;
+  return `## Glossary of banking, lending, verification and account-opening terms\n\n${lines.join('\n')}`;
 }
 
 function articlesSection(): string {
