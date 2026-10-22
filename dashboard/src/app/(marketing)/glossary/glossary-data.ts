@@ -717,6 +717,64 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },
   {
+    slug: 'know-your-customer',
+    term: 'Know Your Customer',
+    abbreviation: 'KYC',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Know Your Customer (KYC) in Banking?',
+    metaDescription:
+      'KYC is how banks verify who a customer is and understand the risk they pose. The parts of a KYC program, how it differs from CIP, and what it means for account opening.',
+    definition:
+      'Know Your Customer (KYC) is the set of processes a bank uses to verify a customer’s identity, understand the nature of the relationship, and monitor it over time for suspicious activity. In the US it is not one rule but the combination of the Customer Identification Program, customer due diligence and ongoing monitoring requirements under the Bank Secrecy Act.',
+    sections: [
+      {
+        heading: 'The parts of a KYC program',
+        paragraphs: [
+          'KYC is usually described in layers, each building on the last:',
+        ],
+        bullets: [
+          '[Customer Identification Program](/glossary/customer-identification-program) (CIP): collect and verify name, date of birth, address and identification number before opening the account, and check government lists.',
+          'Customer due diligence (CDD): understand what the account is for and what activity to expect, so the bank can build a risk profile. For legal entities, FinCEN’s CDD Rule, in effect since May 11, 2018, also requires identifying and verifying the beneficial owners.',
+          'Enhanced due diligence (EDD): more scrutiny for higher-risk customers, such as cash-intensive businesses or politically exposed persons.',
+          'Ongoing monitoring: watching activity against the expected profile, updating customer information when risk changes, and filing suspicious activity reports when warranted.',
+        ],
+      },
+      {
+        heading: 'KYC vs. CIP',
+        paragraphs: [
+          'CIP is the identity piece of KYC: the specific, rule-defined steps to confirm a person is who they claim to be. KYC is broader. A bank can pass CIP on an applicant whose identity is real and still miss what KYC is meant to catch: that the account will be used for something other than what was described, or that the applicant’s stated income and employment do not hold up.',
+        ],
+      },
+      {
+        heading: 'Where KYC meets account opening',
+        paragraphs: [
+          'For a digital applicant, every KYC question has to be answered inside the application. Each manual step, such as a document upload, a branch visit to show ID, or a callback to confirm employment, is a point where real customers abandon the form. The banks that open accounts quickly answer the same questions from authoritative sources instead: identity data verified against issuers and services like [eCBSV](/glossary/ecbsv), and the funding account and income confirmed directly with the customer’s bank or payroll provider.',
+          'Speed is not the only reason. Fraud that walks through CIP, such as [synthetic identities](/glossary/synthetic-identity-fraud) and [first-party fraud](/glossary/first-party-fraud), is caught by checking the facts on the application against data the applicant cannot edit.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the difference between KYC and CIP?',
+        a: 'CIP is the identity verification requirement: collect and verify four data points and check government lists. KYC is the wider program that also includes customer due diligence, enhanced due diligence for higher-risk customers, and ongoing monitoring.',
+      },
+      {
+        q: 'Is KYC a legal requirement for banks?',
+        a: 'Yes. US banks must maintain a Customer Identification Program, perform customer due diligence including beneficial ownership for legal entity customers, and monitor accounts for suspicious activity under the Bank Secrecy Act and its implementing rules.',
+      },
+      {
+        q: 'Can KYC be done fully online?',
+        a: 'Yes. The CIP rule allows non-documentary verification, so identity, due diligence and funding checks can all be completed digitally when the bank verifies the information against reliable independent sources.',
+      },
+    ],
+    relatedTerms: ['customer-identification-program', 'ecbsv', 'synthetic-identity-fraud'],
+    relatedArticles: [
+      { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
+      { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
+    ],
+    relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',
@@ -1067,7 +1125,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'That the written program is risk-based and board-approved, that actual practice matches it, and that the bank can produce verification records showing what was checked, when, and against what source for any given customer.',
       },
     ],
-    relatedTerms: ['ecbsv', 'synthetic-identity-fraud', 'bank-account-verification'],
+    relatedTerms: ['ecbsv', 'synthetic-identity-fraud', 'know-your-customer'],
     relatedArticles: [
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
