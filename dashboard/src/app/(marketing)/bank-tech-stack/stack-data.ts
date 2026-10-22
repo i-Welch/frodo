@@ -426,6 +426,27 @@ export function vendorCounts(key: StackKey): [string, number][] {
   return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
 
+// Integration page slug -> how that vendor appears in the rows.
+const INTEGRATION_VENDORS: Record<string, RegExp> = {
+  'jack-henry': /Jack Henry/,
+  fiserv: /^Fiserv/,
+  fis: /^FIS$/,
+  meridianlink: /MeridianLink/,
+  'ice-encompass': /Encompass/,
+  ncino: /nCino/,
+  csi: /^CSI$/,
+};
+
+/** Institutions in the tracker that run the vendor behind an integration page. */
+export function stackUsage(integrationSlug: string): { name: string; layers: string[] }[] {
+  const re = INTEGRATION_VENDORS[integrationSlug];
+  if (!re) return [];
+  return STACK_ROWS.flatMap((r) => {
+    const layers = CATEGORIES.filter((c) => re.test(r[c.key] ?? '')).map((c) => c.label.toLowerCase());
+    return layers.length ? [{ name: r.name, layers }] : [];
+  });
+}
+
 export interface StackFaq {
   q: string;
   a: string;
