@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Fintech (Oct 2026) —
+  'fintech-bank-charter-rush-2026',
   // — Released from drafts (Oct 2026) —
   'fiserv-premier-digital-lending',
   'jack-henry-symitar-loan-origination',
@@ -104,6 +106,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'fintech-bank-charter-rush-2026': '2026-10-22',
   'fiserv-premier-digital-lending': '2026-10-22',
   'jack-henry-symitar-loan-origination': '2026-10-22',
   'southern-bank-nc-digital-bet': '2026-10-22',

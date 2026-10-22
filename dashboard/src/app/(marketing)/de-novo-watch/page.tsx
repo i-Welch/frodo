@@ -257,6 +257,8 @@ export default function DeNovoWatchPage() {
 
         <h2>Read the analysis</h2>
         <p>
+          <a href="/blog/fintech-bank-charter-rush-2026">PayPal, Klarna and Revolut Want Bank Charters. Here&rsquo;s the Full List</a>
+          <br />
           <a href="/blog/portrait-bank-winter-park-de-novo">Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back</a>
           <br />
           <a href="/blog/glades-bank-broward-de-novo">Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind</a>

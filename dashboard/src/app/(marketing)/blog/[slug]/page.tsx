@@ -88,6 +88,100 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'fintech-bank-charter-rush-2026': {
+    title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
+    description:
+      "At least 14 of the 27 pending FDIC deposit insurance applications come from fintechs and consumer lenders, from PayPal and Klarna to Upstart, whose OCC approval requires $404.1 million in capital. The full list, where each stands, and what it means for community banks.",
+    publishedDate: 'October 22, 2026',
+    readTime: '6 min read',
+    content: `
+# PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List
+
+*Published October 22, 2026*
+
+Twenty-seven applications for FDIC deposit insurance are waiting on a decision, according to the FDIC's list with data as of October 20, 2026. At least 14 of them come from fintechs and consumer lenders.
+
+PayPal is on the list. So are Klarna, Revolut, Nubank, Affirm, Upstart, Upgrade, Avant, Mission Lane, Albert, Flex, OneMain, the crypto-focused OpenReserve and the Brazilian business bank Stark Bank. They sit in the same queue as community bank organizers like [Glades Bank and Trust](/blog/glades-bank-broward-de-novo) in Plantation, Florida.
+
+For two decades, fintechs reached customers through partner banks. Now a large share of them want to be the bank.
+
+:::stat
+**14 of 27**
+Pending FDIC deposit insurance applications that come from fintechs and consumer lenders, as of October 20, 2026. The full list is on [De Novo Watch](/de-novo-watch).
+:::
+
+## Three Routes to a Charter
+
+The applicants split by the kind of charter they want.
+
+**Utah industrial loan companies.** PayPal Bank (filed December 15, 2025), OneMain Bank (March 13, 2025), Klarna Bank USA (July 6, 2026), Albert Bank (July 20, 2026) and Flex Bank (July 23, 2026). An industrial loan company, or ILC, is a state-chartered, FDIC-insured bank that a commercial parent can own without becoming a bank holding company. Utah's regulator lists all five as pending.
+
+**Nevada industrial loan companies.** Affirm Bank (January 23, 2026) and Upgrade Bank (October 9, 2026). Both chose Nevada over Utah.
+
+**OCC national banks.** Nubank, Revolut, Upstart, OpenReserve, Mission Lane, Avant and Stark Bank applied to the Office of the Comptroller of the Currency for national charters. Mission Lane's is a narrower version: a credit card bank under the Competitive Equality Banking Act of 1987, which cannot take demand deposits or savings deposits under $100,000.
+
+The products are what you would expect. PayPal plans to start with small-business lending and add interest-bearing savings. Klarna wants to bring in-house the banking it runs through partner banks today. Flex wants to issue its rent-payment credit directly. Avant wants to originate its own credit cards and personal loans instead of using WebBank.
+
+## How Far Along They Are
+
+The national bank applicants are moving fastest. The OCC has granted preliminary conditional approval to five of them, and the decision letters spell out what each must hold:
+
+- **Upstart Bank:** approved July 23, 2026. At least $404.1 million in initial capital, a 12% tier 1 leverage ratio and a 15% total risk-based ratio for three years. It will make unsecured personal, house-secured and auto-secured loans, funded at first through brokered and placement-network deposits.
+- **OpenReserve Bank:** approved September 2, 2026. At least $210 million and a 12% leverage ratio, for a bank offering tokenized deposits and digital asset services.
+- **Revolut Bank US:** approved September 2, 2026. At least $95 million and a 10% leverage ratio. The approval excludes Revolut's retail foreign exchange business, which needs separate sign-off. Revolut says it is on track to launch in 2027.
+- **Mission Lane Bank:** approved September 25, 2026. At least $35 million and an 11% leverage ratio, for a bank focused on subprime credit cards.
+- **Nubank:** conditional approval announced January 29, 2026, 121 days after it applied.
+
+:::stat
+**$404.1 million**
+The minimum initial capital the OCC set for Upstart Bank, with a 12% tier 1 leverage floor. Regulators are approving fintech banks, and pricing their risk with much thicker capital cushions than a typical community bank holds.
+:::
+
+None of these banks can open yet. Each still needs FDIC deposit insurance, and every one of them is still on the FDIC's pending list. The ILC applicants have no decisions at all. OneMain has been waiting more than 19 months.
+
+The FDIC is not frozen, though. On January 22, 2026, it approved deposit insurance for Ford Credit Bank and GM Financial Bank, two Utah ILCs owned by automakers, each required to hold a 15% leverage ratio. In September it conditionally approved Mercury, the business-banking fintech, which is projected to open in 2027.
+
+And approval is not automatic. On August 4, 2026, the OCC denied bunq's application, citing unclear capitalization and management without experience in unsecured credit cards.
+
+## Why Now
+
+The short answer is that regulators opened the door.
+
+"My job is not about incumbent protection," Comptroller Jonathan Gould said in August, describing roughly 40 charter applications in about 18 months as an eightfold increase over the previous administration's four years. By late September, Banking Dive counted Avant as the 43rd firm to apply for an OCC de novo charter since January 2025. The OCC had approved 27, denied two and returned one.
+
+At the FDIC, the board under Acting Chairman Travis Hill opened a review of ILC policy in July 2025, and Hill said pending applications would keep moving.
+
+The business case is funding and control. Today most of these companies rent a bank. Affirm works with Celtic Bank and Lead Bank. Upgrade works with Cross River and Celtic. Flex uses Lead Bank and Column. Mission Lane relies on TAB Bank and WebBank. A charter lets them fund with their own insured deposits, which SoFi found lowered its funding costs after it became a bank, and keep the economics they now share with the partner.
+
+:::pullquote
+For two decades, fintechs reached customers through partner banks. Now a large share of them want to be the bank.
+:::
+
+## The Opposition
+
+Community banks have noticed. The Bank Policy Institute and the Independent Community Bankers of America wrote to the FDIC in August urging it not to insure Albert, or any ILC applicant, until Congress closes what they call the ILC loophole. The National Community Reinvestment Coalition formally opposed OneMain's application in 2025. Affirm's own annual report says its application "has attracted opposition from industry and advocacy groups."
+
+The objection is structural. An ILC parent is not supervised like a bank holding company, and critics argue that mixes commerce and banking. A bill introduced in January 2026 to close the gap is pending in the Senate Banking Committee.
+
+:::pullquote
+An ILC parent is not supervised like a bank holding company, and critics argue that mixes commerce and banking.
+:::
+
+## What It Means for a Community Bank
+
+Three things change when a fintech becomes a bank.
+
+First, deposits. PayPal and Klarna each reach millions of Americans through an app they already use, and Revolut already serves U.S. customers through partner banks. With a charter, a savings account is one more screen. Community banks already lose the second-account decision to the easier front door, as [Chime's growth](/blog/chime-account-opening-deposit-war) showed without any charter at all.
+
+Second, lending. A chartered Upstart or Avant funds personal loans and cards with its own insured deposits instead of borrowed money, which lowers its cost of funds on exactly the products where community banks are already [losing share](/blog/community-banks-lose-loans-fintechs). [Affirm's](/blog/affirm-vs-community-bank-personal-loans) speed advantage gets a cheaper balance sheet behind it.
+
+Third, partner banks. The banks that sponsor fintech programs today earn fees for it. Affirm and Upgrade both say a charter will complement their partner banks, not replace them. Mission Lane is more direct: it will shift its card program to its own bank over three years and become the sole issuer.
+
+The defense is not a charter of your own. It is matching the part of the fintech experience that actually wins customers: an application that verifies identity, income and the funding account from the source in minutes, on a phone, at night, with a person available when something goes wrong. That last part is the one thing none of these applicants can copy.
+
+Twenty-seven applicants are waiting. Most of the fintechs among them already have the customers.
+`,
+  },
   'robins-financial-20-million-rebate': {
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:

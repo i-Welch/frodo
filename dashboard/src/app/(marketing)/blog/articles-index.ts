@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'fintech-bank-charter-rush-2026',
+    title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
+    description:
+      "At least 14 of the 27 pending FDIC deposit insurance applications come from fintechs and consumer lenders, from PayPal and Klarna to Upstart, whose OCC approval requires $404.1 million in capital. The full list, where each stands, and what it means for community banks.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'fintech',
+  },
+  {
     slug: 'best-digital-account-opening-software-community-banks',
     title: 'Best Digital Account Opening Software for Community Banks (2026)',
     description:
