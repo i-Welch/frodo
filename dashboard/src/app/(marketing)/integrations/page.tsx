@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
-import { INTEGRATION_CATEGORIES, getIntegrationsByCategory } from './integrations-data';
+import { INTEGRATIONS, INTEGRATION_CATEGORIES, getIntegrationsByCategory } from './integrations-data';
 
 export const metadata: Metadata = {
   title: 'Integrations',
@@ -17,9 +17,26 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'RAVEN Integrations',
+  url: 'https://reportraven.tech/integrations',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: INTEGRATIONS.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.name,
+      url: `https://reportraven.tech/integrations/${t.slug}`,
+    })),
+  },
+};
+
 export default function IntegrationsIndex() {
   return (
     <SiteShell ctaSource="integrations-index">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .intx { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
         .intx-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }

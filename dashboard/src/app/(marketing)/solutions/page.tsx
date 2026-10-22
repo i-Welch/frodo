@@ -17,9 +17,26 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'RAVEN Solutions for Community Banks',
+  url: 'https://reportraven.tech/solutions',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: SOLUTIONS.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: s.h1,
+      url: `https://reportraven.tech/solutions/${s.slug}`,
+    })),
+  },
+};
+
 export default function SolutionsIndex() {
   return (
     <SiteShell ctaSource="solutions-index">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .solx { max-width: 900px; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
         .solx-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
