@@ -158,7 +158,7 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
           </div>
         )}
 
-        <LeadCapture variant="subscribe" source={`glossary:${slug}`} />
+        <LeadCapture variant="audit" source={`glossary:${slug}`} title="See where your bank stands" />
 
         <div className="glos-related">
           {related.length > 0 && (
