@@ -3123,7 +3123,7 @@ The bank that figured out how to pair its local credibility with a borrower inta
     content: `
 *Updated October 22, 2026, with second- and third-quarter 2026 results, the completed Signature Bank of Georgia acquisition and the bank's leadership transition. An earlier version of this article misidentified the merger partner and understated the bank's size.*
 
-*Q3 2026 update: First Community reported third-quarter net income of $8.0 million, or $0.85 per diluted share, on October 21, 2026. Total assets were $2.36 billion at September 30, with $1.61 billion in loans and $2.01 billion in deposits. The net interest margin was 3.59% (tax-equivalent), return on average assets 1.34%, and nonperforming assets just 0.04% of total assets. The Signature acquisition accounts for $195.7 million of the year's loan growth (company release).*
+*Q3 2026 update: First Community reported third-quarter net income of $8.0 million, or $0.85 per diluted share, on October 21, 2026. Total assets were $2.36 billion at September 30, with $1.61 billion in loans and $2.01 billion in deposits. The [net interest margin](/glossary/net-interest-margin) was 3.59% (tax-equivalent), [return on average assets](/glossary/return-on-assets) 1.34%, and nonperforming assets just 0.04% of total assets. The Signature acquisition accounts for $195.7 million of the year's loan growth (company release).*
 
 First Community Bank of Lexington, South Carolina, has spent 2026 doing three things at once: absorbing an acquisition, posting its best earnings in years and planning a change at the top.
 
@@ -4712,7 +4712,7 @@ The verification delay is not an immutable fact of lending. It's a product of in
     content: `
 *Updated October 22, 2026: corrected the names of the bank's president and CFO, full-year net charge-offs, the period of the net interest margin and the real estate share of loans, and added third-quarter 2026 results.*
 
-*Q3 2026 update: Southern First reported third-quarter net income of $12.2 million, or $1.28 per diluted share, up 21% from a year earlier. Total assets reached $4.88 billion, loans grew $145 million in the quarter to $4.18 billion, retail client deposits rose $163 million, and the net interest margin was 3.02%. Net charge-offs ran 0.07% of average loans, annualized, and nonperforming assets were 0.30% of total assets (company release, October 20, 2026). The analysis below is based on full-year 2025 results.*
+*Q3 2026 update: Southern First reported third-quarter net income of $12.2 million, or $1.28 per diluted share, up 21% from a year earlier. Total assets reached $4.88 billion, loans grew $145 million in the quarter to $4.18 billion, retail client deposits rose $163 million, and the [net interest margin](/glossary/net-interest-margin) was 3.02%. Net charge-offs ran 0.07% of average loans, annualized, and nonperforming assets were 0.30% of total assets (company release, October 20, 2026). The analysis below is based on full-year 2025 results.*
 
 Art Seaver has been running Southern First Bank for 26 years. He's watched Greenville go from a post-textile mill town to a metro that just crossed one million residents. That context matters when you look at what his bank just reported.
 

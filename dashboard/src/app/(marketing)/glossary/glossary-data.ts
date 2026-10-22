@@ -775,6 +775,206 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
   },
   {
+    slug: 'return-on-assets',
+    term: 'Return on Assets',
+    abbreviation: 'ROA',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Return on Assets (ROA) for a Bank?',
+    metaDescription:
+      'Return on assets measures how much profit a bank earns on its balance sheet. The formula, what counts as a good ROA for a community bank, and what moves it.',
+    definition:
+      'Return on assets (ROA) is a bank’s net income divided by its average total assets, usually annualized. It shows how much profit the bank earns for every dollar on its balance sheet, and it is the most common single measure of bank profitability.',
+    sections: [
+      {
+        heading: 'How ROA is calculated',
+        paragraphs: [
+          'ROA = net income ÷ average total assets. Quarterly figures are annualized, so a bank that earns $5 million in a quarter on $2 billion of average assets reports an ROA of about 1.0% ($20 million a year ÷ $2 billion). Using average rather than period-end assets keeps a large deposit inflow on the last day of the quarter from distorting the ratio.',
+        ],
+      },
+      {
+        heading: 'What counts as a good ROA',
+        paragraphs: [
+          'Banks have thin margins by design: they are highly leveraged, so a small return on assets becomes a much larger return on equity. For community banks, an ROA around 1% is the long-standing rule of thumb for solid performance, and sustained results well above that usually reflect a low-cost deposit base, a lean expense structure, or both.',
+          'For example, First Community Bank in South Carolina reported a 1.34% return on average assets for the third quarter of 2026, according to its earnings release (see our [First Community profile](/blog/first-community-bank-sc-cre-merger-growth)).',
+        ],
+      },
+      {
+        heading: 'What moves it',
+        paragraphs: [
+          'ROA is the product of everything else on the income statement: the [net interest margin](/glossary/net-interest-margin) earned on loans and securities, fee income, operating expenses (captured in the [efficiency ratio](/glossary/efficiency-ratio)), credit losses and taxes. One-time items, such as a securities sale or a gain on a branch sale, can swing a single quarter, which is why analysts look at several quarters or a core ROA that strips them out.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good ROA for a bank?',
+        a: 'Around 1% is the common benchmark for a well-run community bank. Results consistently above that point to strong margins or low costs; results well below it usually mean thin margins, high expenses or elevated credit losses.',
+      },
+      {
+        q: 'What is the difference between ROA and ROE?',
+        a: 'ROA divides net income by assets; return on equity (ROE) divides it by shareholders’ equity. Because banks fund most assets with deposits, ROE is typically around ten times ROA.',
+      },
+      {
+        q: 'Where can I find a bank’s ROA?',
+        a: 'In its quarterly earnings release, or for any FDIC-insured bank in the call report data published by the FDIC.',
+      },
+    ],
+    relatedTerms: ['net-interest-margin', 'efficiency-ratio', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+  },
+  {
+    slug: 'net-interest-margin',
+    term: 'Net Interest Margin',
+    abbreviation: 'NIM',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Net Interest Margin (NIM) for a Bank?',
+    metaDescription:
+      'Net interest margin is the spread a bank earns between what loans and securities yield and what deposits cost. The formula, what drives it, and why deposits matter most.',
+    definition:
+      'Net interest margin (NIM) is a bank’s net interest income (interest earned on loans and securities minus interest paid on deposits and borrowings) divided by its average earning assets. It is the core spread that pays for a bank’s operations.',
+    sections: [
+      {
+        heading: 'How NIM is calculated',
+        paragraphs: [
+          'NIM = net interest income ÷ average earning assets, annualized. Earning assets are the loans, securities and interest-bearing balances that generate interest; cash in the vault and premises do not count. Banks often report NIM on a tax-equivalent basis, grossing up tax-exempt municipal income so it compares fairly with taxable income.',
+        ],
+      },
+      {
+        heading: 'What drives it',
+        paragraphs: [
+          'Two sides move the margin. On the asset side: loan mix and pricing, how fast loans and securities reprice, and how much of the balance sheet sits in low-yielding securities. On the funding side: how much of the bank is funded by noninterest-bearing checking accounts versus CDs, money market accounts and wholesale borrowings.',
+          'Two South Carolina banks reporting the same week show the range. First Community reported a 3.59% tax-equivalent margin for the third quarter of 2026, and Southern First reported 3.02% according to their earnings releases (see our profiles of [First Community](/blog/first-community-bank-sc-cre-merger-growth) and [Southern First](/blog/southern-first-bank-upstate-sc-bet)).',
+        ],
+      },
+      {
+        heading: 'Why deposits decide it',
+        paragraphs: [
+          'Loan yields are set largely by the market. Deposit costs are where a community bank has an edge or loses one. Every operating checking account a bank opens replaces higher-cost funding, which is why account opening conversion is a margin question, not just a marketing one. A bank that loses the primary checking relationship to an app keeps paying for the deposits it has to buy instead.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good net interest margin?',
+        a: 'It depends on the business model and the rate environment. Community banks with strong core deposit bases and loan-heavy balance sheets typically run higher margins than banks funded by CDs or holding large securities portfolios.',
+      },
+      {
+        q: 'What is the difference between net interest margin and net interest spread?',
+        a: 'Spread is the yield on earning assets minus the rate paid on interest-bearing liabilities. NIM divides net interest income by all earning assets, so it also credits the value of free funding such as noninterest-bearing deposits and equity.',
+      },
+      {
+        q: 'How do rate cuts affect NIM?',
+        a: 'It depends on what reprices first. Banks whose loans reset quickly while deposit costs lag can see margins compress; banks with high deposit costs that can lower them quickly can see margins expand.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'efficiency-ratio', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+    relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
+  },
+  {
+    slug: 'efficiency-ratio',
+    term: 'Efficiency Ratio',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Bank Efficiency Ratio?',
+    metaDescription:
+      'The efficiency ratio shows how many cents a bank spends to earn a dollar of revenue. The formula, what counts as efficient, and where community bank costs go.',
+    definition:
+      'A bank’s efficiency ratio is its noninterest expense divided by its revenue (net interest income plus noninterest income). It shows how many cents the bank spends to earn each dollar of revenue, so lower is better.',
+    sections: [
+      {
+        heading: 'How it is calculated',
+        paragraphs: [
+          'Efficiency ratio = noninterest expense ÷ (net interest income + noninterest income). A bank with $60 million in operating expenses and $100 million in revenue has an efficiency ratio of 60%: it spends 60 cents to earn each dollar. Many banks also report an adjusted ratio that excludes one-time items such as merger costs or securities losses.',
+        ],
+      },
+      {
+        heading: 'What counts as efficient',
+        paragraphs: [
+          'Below 60% is a common benchmark for an efficient community bank, and the best performers run in the low 50s or below. Ratios in the 70s or higher leave little room for credit losses or investment. Scale helps, which is one reason smaller banks pursue mergers, but business model matters more than size: a branch-light commercial bank and a branch-heavy retail bank of the same size can land far apart.',
+        ],
+      },
+      {
+        heading: 'Where the costs go',
+        paragraphs: [
+          'Salaries and benefits are the largest line at most community banks, followed by occupancy and technology. Manual work in lending and account opening shows up here directly: every application that needs someone to chase a pay stub, call an employer or review an uploaded bank statement adds staff time per loan. Automating verification is one of the few ways to grow volume without growing that line in step.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good efficiency ratio for a bank?',
+        a: 'Below 60% is generally considered efficient for a community bank, and top performers run near or below 50%. Lower means the bank spends less to earn each dollar of revenue.',
+      },
+      {
+        q: 'Is a lower efficiency ratio always better?',
+        a: 'Usually, but not always. A bank can cut its ratio by underinvesting in technology, compliance or staff, which tends to cost it later. The trend over several years says more than a single quarter.',
+      },
+      {
+        q: 'Does the efficiency ratio include loan loss provisions?',
+        a: 'No. Provisions for credit losses are excluded, so the ratio measures operating cost against revenue before credit costs.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
+    relatedArticles: [
+      { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+    ],
+    relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
+  },
+  {
+    slug: 'loan-to-deposit-ratio',
+    term: 'Loan-to-Deposit Ratio',
+    abbreviation: 'LDR',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Loan-to-Deposit Ratio (LDR)?',
+    metaDescription:
+      'The loan-to-deposit ratio compares a bank’s loans with its deposits. The formula, what a high or low ratio signals, and why deposit growth limits loan growth.',
+    definition:
+      'The loan-to-deposit ratio (LDR) is a bank’s total loans divided by its total deposits. It shows how much of the money customers have deposited the bank has lent out, and it is a quick read on both liquidity and how hard the balance sheet is working.',
+    sections: [
+      {
+        heading: 'How it is calculated',
+        paragraphs: [
+          'LDR = total loans ÷ total deposits. First Community Bank in South Carolina, for example, reported $1.61 billion in loans and $2.01 billion in deposits at September 30, 2026, a loan-to-deposit ratio of about 80%, according to its earnings release (see our [First Community profile](/blog/first-community-bank-sc-cre-merger-growth)).',
+        ],
+      },
+      {
+        heading: 'What high and low ratios signal',
+        paragraphs: [
+          'A low ratio, say under 70%, means much of the deposit base sits in securities or cash, which is safe but earns less. A ratio near or above 100% means the bank is lending out more than it gathers in deposits and relies on borrowings, brokered deposits or other wholesale funding to fill the gap, which costs more and can be less stable. Many community banks aim for somewhere in the 80% to 90% range.',
+        ],
+      },
+      {
+        heading: 'Why deposits limit loan growth',
+        paragraphs: [
+          'For a bank near the top of its range, the constraint on new lending is not demand, it is funding. Each new loan has to be matched by a new deposit or by more expensive borrowed money. That makes deposit gathering, and how easily a new customer can open and fund an account, a direct input into how much a bank can lend.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a good loan-to-deposit ratio?',
+        a: 'Many community banks target roughly 80% to 90%. Lower ratios leave earnings on the table; ratios near or above 100% mean the bank depends on more expensive, less stable funding.',
+      },
+      {
+        q: 'Can a loan-to-deposit ratio be over 100%?',
+        a: 'Yes. It means the bank has lent more than its deposits and funds the difference with borrowings or other wholesale sources.',
+      },
+    ],
+    relatedTerms: ['net-interest-margin', 'return-on-assets', 'digital-banking-platform'],
+    relatedArticles: [
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+    ],
+    relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',
