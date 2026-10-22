@@ -98,6 +98,12 @@ const styles = `
   .dnw-table th { text-align: left; padding: 0.7rem 0.9rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); border-bottom: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
   .dnw-table td { padding: 0.8rem 0.9rem; vertical-align: top; color: var(--gray-300); line-height: 1.55; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .dnw-table tr:last-child td { border-bottom: none; }
+  /* Main tracker (the only six-column table): give the long status and tech text room instead of a tall sliver. */
+  @media (max-width: 900px) {
+    .dnw-table:has(th:nth-child(6)) { min-width: 1080px; }
+    .dnw-table:has(th:nth-child(6)) td:nth-child(3) { min-width: 300px; }
+    .dnw-table:has(th:nth-child(6)) td:nth-child(5) { min-width: 200px; }
+  }
   .dnw-bank { font-weight: 600; color: var(--white); white-space: nowrap; }
   .dnw-status { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap; }
   .dnw-status-chartered { background: rgba(108,142,255,0.16); color: #A8BDFF; }
