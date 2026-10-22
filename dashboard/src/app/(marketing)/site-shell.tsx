@@ -177,6 +177,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
             <a href="/glossary">Glossary</a>
             <a href="/integrations">Integrations</a>
             <a href="/de-novo-watch">De Novo Watch</a>
+            <a href="/bank-tech-stack">Bank Tech Stack</a>
             <a href="/about">About</a>
             <a href="/legal/security">Security</a>
             <a href="/legal/privacy-policy">Privacy</a>
