@@ -271,7 +271,7 @@ export default function DeNovoWatchPage() {
           read the <a href="/glossary/de-novo-bank">de novo bank</a> glossary entry.
         </p>
 
-        <LeadCapture variant="subscribe" source="de-novo-watch" />
+        <LeadCapture variant="subscribe" source="de-novo-watch" title="Get De Novo Watch updates by email" />
       </div>
     </SiteShell>
   );
