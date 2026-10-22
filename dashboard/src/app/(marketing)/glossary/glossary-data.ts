@@ -975,6 +975,161 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
   {
+    slug: 'cre-concentration',
+    term: 'CRE Concentration',
+    updated: '2026-10-22',
+    metaTitle: 'CRE Concentration: The 100% and 300% Tests',
+    metaDescription:
+      'How regulators measure commercial real estate concentration at banks: the 100% construction test, the 300% total CRE test, and what happens when a bank crosses them.',
+    definition:
+      'CRE concentration is the size of a bank’s commercial real estate loan book relative to its capital. Under interagency guidance from the FDIC, Federal Reserve and OCC, banks whose CRE lending crosses set thresholds draw closer supervisory review of how they manage that risk.',
+    sections: [
+      {
+        heading: 'The two thresholds',
+        paragraphs: [
+          'The 2006 interagency guidance on concentrations in commercial real estate lending names two screens, measured against the bank’s total capital (in call report analysis, commonly tier 1 capital plus the allowance for credit losses). A bank may be identified for further supervisory analysis if:',
+        ],
+        bullets: [
+          'Construction, land development and other land loans are 100% or more of total capital, or',
+          'Total CRE loans are 300% or more of total capital, and the CRE portfolio has grown 50% or more over the prior 36 months.',
+        ],
+      },
+      {
+        heading: 'What crossing them means',
+        paragraphs: [
+          'The thresholds are not limits. A bank above them is not breaking a rule, and many well-run community banks operate there for years. What changes is the scrutiny: examiners expect board-approved concentration limits, stress testing of the CRE book, strong appraisal and underwriting standards, and capital that reflects the risk. Banks that cannot show those controls can face pressure to slow CRE growth or hold more capital.',
+          'Owner-occupied commercial property is excluded from the total CRE measure, because repayment depends on the occupant’s business rather than rents or a sale. Multifamily, non-owner-occupied office, retail and industrial property, and construction loans all count.',
+        ],
+      },
+      {
+        heading: 'Why community banks run close to the line',
+        paragraphs: [
+          'CRE is where many community banks have a real advantage: local knowledge of properties, developers and markets that national lenders do not have. It is also where consumer and small business lending has drifted away to fintechs and larger banks, leaving CRE as a larger share of what remains. RAVEN’s analysis of [OptimumBank](/blog/optimumbank-98-percent-cre-growth) walks through the 300% test using a real call report.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is the 300% CRE concentration test?',
+        a: 'Under 2006 interagency guidance, a bank whose total commercial real estate loans are 300% or more of total capital, with CRE growth of 50% or more over the prior 36 months, may be identified for closer supervisory review.',
+      },
+      {
+        q: 'Is it illegal for a bank to exceed 300% CRE concentration?',
+        a: 'No. The thresholds are screening tools, not limits. Banks above them are expected to show stronger risk management, including concentration limits, stress testing and adequate capital.',
+      },
+      {
+        q: 'Do owner-occupied commercial loans count toward CRE concentration?',
+        a: 'No. Loans secured by owner-occupied commercial property are excluded from the total CRE measure, because repayment comes from the operating business rather than the property.',
+      },
+    ],
+    relatedTerms: ['call-report', 'return-on-assets', 'loan-to-deposit-ratio'],
+    relatedArticles: [
+      { slug: 'optimumbank-98-percent-cre-growth', title: 'The 98.7% Bank' },
+      { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
+    ],
+  },
+  {
+    slug: 'call-report',
+    term: 'Call Report',
+    updated: '2026-10-22',
+    metaTitle: 'What Is a Bank Call Report?',
+    metaDescription:
+      'The call report is the quarterly financial filing every FDIC-insured bank submits. What it contains, when it is due, where to find it, and the credit union equivalent.',
+    definition:
+      'A call report, formally the Consolidated Reports of Condition and Income, is the quarterly financial filing every FDIC-insured bank submits to its federal regulator. It contains the bank’s balance sheet, income statement and detailed schedules on loans, deposits, capital and asset quality, and almost all of it is public.',
+    sections: [
+      {
+        heading: 'What it contains',
+        paragraphs: [
+          'Banks file one of three FFIEC forms depending on size and whether they have foreign offices (FFIEC 031, 041 or the streamlined 051 for smaller banks). Each covers the same core: assets and liabilities, income and expense, loans by type, past-due and nonaccrual loans, charge-offs, deposits by type, and regulatory capital. From those schedules come the ratios analysts use, such as [return on assets](/glossary/return-on-assets), [net interest margin](/glossary/net-interest-margin), the [efficiency ratio](/glossary/efficiency-ratio) and the [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio).',
+        ],
+      },
+      {
+        heading: 'When it is filed and where to find it',
+        paragraphs: [
+          'Call reports are as of the last day of each calendar quarter and generally due 30 days later. The data is published through the FFIEC Central Data Repository and the FDIC’s BankFind Suite, which makes it the most complete public picture of any bank, including the many community banks that are not publicly traded and publish no earnings release.',
+          'Credit unions file their own quarterly equivalent, the NCUA 5300 Call Report, which the NCUA publishes for every federally insured credit union.',
+        ],
+      },
+      {
+        heading: 'Why it matters',
+        paragraphs: [
+          'For a private community bank, the call report is often the only financial disclosure there is. RAVEN’s bank deep dives and audits start from it, alongside [HMDA](/glossary/hmda) mortgage data, to measure lending mix, growth and efficiency against peers.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How often do banks file call reports?',
+        a: 'Quarterly. Each report is as of the last day of the quarter and is generally due 30 days after quarter end.',
+      },
+      {
+        q: 'Are bank call reports public?',
+        a: 'Yes, almost entirely. Call report data for every FDIC-insured bank is available through the FFIEC Central Data Repository and the FDIC’s BankFind Suite.',
+      },
+      {
+        q: 'Do credit unions file call reports?',
+        a: 'Yes. Federally insured credit unions file the NCUA 5300 Call Report each quarter, and the NCUA publishes the data.',
+      },
+    ],
+    relatedTerms: ['return-on-assets', 'net-interest-margin', 'hmda'],
+    relatedArticles: [
+      { slug: 'optimumbank-98-percent-cre-growth', title: 'The 98.7% Bank' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+  },
+  {
+    slug: 'hmda',
+    term: 'HMDA',
+    abbreviation: 'HMDA',
+    updated: '2026-10-22',
+    metaTitle: 'What Is HMDA Data? Home Mortgage Disclosure Act',
+    metaDescription:
+      'HMDA requires mortgage lenders to report every application they receive. Who must report, what the data includes, and how it shows a bank’s real mortgage volume.',
+    definition:
+      'The Home Mortgage Disclosure Act (HMDA), enacted in 1975 and implemented by Regulation C, requires most mortgage lenders to report data on every home loan application they receive. The resulting public dataset shows each lender’s applications, originations and denials by loan type, geography and borrower characteristics.',
+    sections: [
+      {
+        heading: 'Who must report',
+        paragraphs: [
+          'Coverage depends on an institution’s size, location and volume. Depository institutions above an annual asset threshold with a branch in a metropolitan area generally report if they originated at least 25 closed-end mortgages in each of the two preceding calendar years, or at least 200 open-end lines of credit such as HELOCs. Many small rural banks and credit unions fall below the thresholds and do not report.',
+        ],
+      },
+      {
+        heading: 'What the data shows',
+        paragraphs: [
+          'Each reported application records the loan type and purpose, amount, property location, action taken (originated, denied, withdrawn and so on), and, for most lenders, pricing and borrower demographics. Lenders submit a Loan/Application Register each year, and the CFPB and FFIEC publish the combined data, with some fields modified to protect borrower privacy.',
+          'For anyone studying a bank, HMDA is the best public measure of real mortgage activity: how many loans it actually closed, in which counties, and how often applications ended in denial or withdrawal.',
+        ],
+      },
+      {
+        heading: 'How RAVEN uses it',
+        paragraphs: [
+          'Every RAVEN audit sizes a bank’s mortgage volume from its HMDA filings rather than estimates. Combined with the [call report](/glossary/call-report), it gives a grounded picture of how much verification work a lending team actually does.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What does HMDA stand for?',
+        a: 'The Home Mortgage Disclosure Act, a 1975 federal law implemented by the CFPB’s Regulation C.',
+      },
+      {
+        q: 'Which lenders have to report HMDA data?',
+        a: 'Most mortgage lenders above the coverage thresholds: generally those with a metropolitan-area branch that originated at least 25 closed-end mortgages in each of the two prior years, or at least 200 open-end lines of credit, plus asset-size tests for banks and credit unions.',
+      },
+      {
+        q: 'Is HMDA data public?',
+        a: 'Yes. The CFPB and FFIEC publish it annually, with some fields modified or removed to protect borrower privacy.',
+      },
+    ],
+    relatedTerms: ['call-report', 'income-verification', 'loan-origination-system'],
+    relatedArticles: [
+      { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
+      { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+    ],
+  },
+  {
     slug: 'synthetic-identity-fraud',
     term: 'Synthetic Identity Fraud',
     metaTitle: 'What Is Synthetic Identity Fraud?',
