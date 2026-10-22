@@ -171,3 +171,33 @@ export const BLOG_DATES: Record<string, string> = {
   'how-figure-closes-heloc-in-5-days': '2026-02-24',
   'one-link-complete-verification': '2026-02-17',
 };
+
+// Last substantive correction per published article (ISO), where it is later
+// than the BLOG_DATES entry. The sitemap uses it for lastModified so crawlers
+// revisit corrected pages, without re-dating the article in the RSS feed.
+// Keep in sync with updatedDate in blog/[slug]/page.tsx (content tests check).
+export const BLOG_UPDATED: Record<string, string> = {
+  'anderson-brothers-bank-myrtle-beach-bet': '2026-10-22',
+  'arthur-state-bank-upstate-bet': '2026-10-22',
+  'beacon-community-bank-charleston-growth-capacity': '2026-10-22',
+  'champions-first-fsu-rebrand': '2026-10-22',
+  'coastal-states-bank-boat-bank': '2026-10-22',
+  'countybank-greenwood-sc-sba-deep-dive': '2026-10-22',
+  'first-community-bank-sc-cre-merger-growth': '2026-10-22',
+  'first-palmetto-bank-sc-performance-deep-dive': '2026-10-22',
+  'first-reliance-sells-at-the-top': '2026-10-22',
+  'founders-credit-union-mill-town': '2026-10-22',
+  'glades-bank-broward-de-novo': '2026-10-22',
+  'huntington-bank-southeast-expansion': '2026-10-22',
+  'oconee-federal-quiet-comeback': '2026-10-22',
+  'optimumbank-98-percent-cre-growth': '2026-10-22',
+  'optus-bank-cdfi-columbia-growth': '2026-10-22',
+  'palmetto-citizens-90-year-wait': '2026-10-22',
+  'portrait-bank-winter-park-de-novo': '2026-10-22',
+  'queensborough-national-bank-trust-deep-dive': '2026-10-22',
+  'rev-credit-union-west-virginia-bet': '2026-10-22',
+  'robins-financial-20-million-rebate': '2026-10-22',
+  'south-carolina-de-novo-drought': '2026-10-22',
+  'southern-bank-spartanburg-side-door': '2026-10-22',
+  'southern-first-bank-upstate-sc-bet': '2026-10-22',
+};

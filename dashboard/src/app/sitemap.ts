@@ -4,7 +4,7 @@ import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
-import { BLOG_SLUGS, BLOG_DATES } from './(marketing)/blog/published';
+import { BLOG_SLUGS, BLOG_DATES, BLOG_UPDATED } from './(marketing)/blog/published';
 
 const SITE = 'https://reportraven.tech';
 
@@ -68,12 +68,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     })),
-    ...BLOG_SLUGS.map((slug) => ({
-      url: `${SITE}/blog/${slug}`,
-      lastModified: BLOG_DATES[slug] ? new Date(BLOG_DATES[slug]) : SITE_UPDATED,
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    })),
+    ...BLOG_SLUGS.map((slug) => {
+      const date = BLOG_UPDATED[slug] ?? BLOG_DATES[slug];
+      return {
+        url: `${SITE}/blog/${slug}`,
+        lastModified: date ? new Date(date) : SITE_UPDATED,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+      };
+    }),
     ...auditUrls,
     ...LEGAL_PATHS.map((path) => ({
       url: `${SITE}/legal/${path}`,
