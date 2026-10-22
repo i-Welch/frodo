@@ -3226,7 +3226,7 @@ The merger gives the combined bank the size to make larger loans. A loan applica
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Update, October 22, 2026: Beacon is no longer independent. Beacon Holding Company closed a merger of equals with Coastal Carolina National Bank (CCNB) on October 1, 2026. The combined bank has about $2.3 billion in assets across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of CCNB. Core systems convert in early 2027, and the combined bank takes the name Beacon Bank, N.A. in mid-March 2027. [Our analysis of the merger](/blog/ccnb-myrtle-beach-merger-growth-2026) covers what comes next. The figures below are as of the original April 2026 publication.*
+*Update, October 22, 2026: Beacon is no longer independent. Beacon Holding Company closed a merger of equals with Coastal Carolina National Bank (CCNB) on October 1, 2026. The combined bank has about $2.3 billion in assets across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of CCNB. Core systems convert in early 2027, and the combined bank takes the name Beacon Bank, N.A. in mid-March 2027. [Our analysis of the merger](/blog/ccnb-myrtle-beach-merger-growth-2026) covers what comes next. The figures below are as of the original April 2026 publication, with the bank's net interest margin, efficiency ratio, loan growth and branch locations in the original April 2026 text.*
 
 Beacon Community Bank started 2018 with $36 million in assets. Seven years later it sits at $972 million, and its mortgage application page returns a 404 error.
 
@@ -3234,21 +3234,21 @@ That single fact explains more about where this bank is headed than any line on 
 
 ## A Balance Sheet That Outgrew Its Intake
 
-The numbers are real. Net loans climbed from $788 million to $848 million in just three quarters of 2025, a pace that implies roughly $80 million in new originations every 90 days. The bank's ROA improved from 0.38% for full-year 2025 to 0.52% annualized through Q1 2026. NIM moved up too, from 2.28% to 2.42%, and while those figures sit below the community bank average of roughly 3.36%, the trajectory is clearly upward.
+The numbers are real. Net loans climbed from $788 million in mid-2025 to $848 million by March 2026, about $20 million of net growth a quarter, with new originations running above that to replace payoffs. The bank's ROA improved from 0.38% for full-year 2025 to 0.52% annualized through Q1 2026. Net interest margin was 2.58% for 2025 and 2.52% in the first quarter of 2026, well below the community bank average of roughly 3.36%.
 
-Six branches. One relationship-driven model. One COO with a background in financial technology and customer experience.
+Six branches. One relationship-driven model.
 
 The loan book is growing at roughly 10% annually, but the origination infrastructure still runs on phone calls.
 
 That is not a sustainable combination.
 
-At the current pace, loan officers at Beacon's six Mount Pleasant locations are processing a rising volume of mortgage and commercial files with no automated income verification, no employment verification tools, and no borrower self-service intake. Every new application begins with a call to 843-936-5100. Every document arrives via email or fax. Every income check involves a human chasing a pay stub or dialing an HR department.
+At the current pace, loan officers at Beacon's six Charleston-area locations are processing a rising volume of mortgage and commercial files with no automated income verification, no employment verification tools, and no borrower self-service intake. Every new application begins with a call to 843-936-5100. Every document arrives via email or fax. Every income check involves a human chasing a pay stub or dialing an HR department.
 
-This is the throughput ceiling. It is not visible on the call report yet. But at $80 million a quarter in new originations, it is coming.
+This is the throughput ceiling. It is not visible on the call report yet. But as the loan book keeps growing, it is coming.
 
 :::stat
-**$80 million**
-New originations every 90 days at Beacon, processed through a manual intake model with no automated income or employment verification and no borrower self-service portal.
+**$848 million**
+Beacon's net loans at March 31, 2026, up from $788 million nine months earlier.
 :::
 
 ## The Borrower Profile Beacon Is Facing
@@ -3275,15 +3275,15 @@ There is no online application on Beacon's site anywhere. Online banking enrollm
 
 No fintech partner integrations appear anywhere: no Plaid, no Finicity, no Truework, no Work Number connectivity. There are no job postings for digital mortgage, LOS, or verification technology roles, which suggests this is not a gap the bank is actively closing. It is structural.
 
-The COO's background in financial technology is the tell that this is not an ideological opposition to digital tools. Someone in that seat understands the problem clearly. The constraint is more likely bandwidth and prioritization than philosophy.
+Nothing suggests an ideological opposition to digital tools. The constraint is more likely bandwidth and prioritization than philosophy.
 
-For a bank with six relationship bankers handling a $972 million loan book growing at 10% annually, the math is unforgiving. Cutting borrower verification time from four days to four hours does not just feel better. It is the difference between closing 15 loans a month per officer and closing 22.
+For a bank with a small team of relationship bankers handling an $848 million loan book growing at 10% annually, the math is unforgiving. Cutting borrower verification time from four days to four hours does not just feel better. It is the difference between closing 15 loans a month per officer and closing 22.
 
 ## The Capacity Question
 
-The efficiency ratio at Beacon is estimated in the 78-82% range, derived from the NIM and ROA spread relative to peer norms for growth-stage community banks at this asset size. That is notably above the community bank average of roughly 60-65%. For a bank that has compounded asset growth at roughly 75% per year since founding, some margin compression is expected. Growth costs money.
+The efficiency ratio at Beacon was 70.8% for 2025 and 70.2% in the first quarter of 2026. That is notably above the community bank average of roughly 60-65%. For a bank that has compounded asset growth at more than 50% a year since 2018, some margin compression is expected. Growth costs money.
 
-But efficiency ratios in the high 70s also mean that every loan that takes three extra days to close because a borrower's income took two days to verify is expensive labor. At loaded staff rates of $38-48 per hour across loan officers and processors, a mortgage file that takes 10 additional hours to work through manual verification represents $380-$480 in overhead per loan. Multiply that across 300+ originations a year and the number becomes material.
+But efficiency ratios above 70% also mean that every loan that takes three extra days to close because a borrower's income took two days to verify is expensive labor. Ten extra staff hours on a file, multiplied across hundreds of originations a year, becomes material.
 
 The inverse matters too. A borrower-facing verification portal that lets applicants consent and connect their accounts directly eliminates the three-to-five day document-request cycle without removing the banker from the relationship. The officer still reviews the file. The bank still makes a relationship-based credit decision. But the verification report arrives in minutes instead of days, and the borrower has already done most of the work by the time the officer calls.
 
@@ -3300,10 +3300,10 @@ The question is whether the origination infrastructure can keep pace with the ma
 Banks that solve that problem with technology, connecting the right data sources in the right sequence automatically, keep compounding. Banks that solve it with headcount eventually hit a margin wall. The Charleston market is going to deliver borrowers either way. How fast Beacon can turn an application into a closed loan will determine how much of that flow stays in-house versus leaks to lenders who answer with a link instead of a phone number.
 
 :::pullquote
-The $972 million loan book is the easy part. The next $400 million is where verification speed becomes the product.
+The $972 million balance sheet is the easy part. The next $400 million is where verification speed becomes the product.
 :::
 
-The $972 million loan book is the easy part. The next $400 million is where verification speed becomes the product.
+The $972 million balance sheet is the easy part. The next $400 million is where verification speed becomes the product.
     `,
   },
   'first-palmetto-bank-sc-performance-deep-dive': {
@@ -3951,14 +3951,17 @@ Twenty days isn't magic. It's the sum of several verifications that take seconds
     title: 'The Boat Bank of Beaufort County',
     description: 'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',
     publishedDate: 'June 12, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '5 min read',
     content: `
+*Updated October 22, 2026: corrected the date of the first dividend and the marine share of loans, and removed an unsourced share-price figure.*
+
 Coastal States Bank holds more deposits in Beaufort County than Wells Fargo. More than Bank of America. More than SouthState, Truist, or TD. And the loan book behind that #1 hometown franchise is, to a degree that surprises almost everyone who looks, made of boats.
 
-Marine vessels are 18.9% of total loans. Senior housing is another 15.6%. The "island bank" on Hilton Head is actually a national specialty lender that happens to dominate one of the wealthiest retirement markets in America.
+Marine vessels are about 19% of total loans. Senior housing is another 15.6%. The "island bank" on Hilton Head is actually a national specialty lender that happens to dominate one of the wealthiest retirement markets in America.
 
 :::stat
-**18.9%**
+**About 19%**
 Marine vessels make up nearly one-fifth of Coastal States Bank's total loan book, more than residential mortgages.
 :::
 
@@ -3966,7 +3969,7 @@ Marine vessels make up nearly one-fifth of Coastal States Bank's total loan book
 
 Coastal States was founded in 2004 as southern Beaufort County's only locally owned bank, and for its first decade it behaved like one. The inflection came in 2017, when Stephen Stone arrived with a recapitalization and a different idea: keep the Lowcountry deposit franchise, but lend nationally in niches where a $2B bank can actually win.
 
-It worked. Total assets reached $2.35 billion this March. The holding company, CoastalSouth Bancshares, listed on the NYSE last July at $21.50 a share; it trades around $25.50 today, up 28.5% in twelve months. The first dividend in company history, a nickel a share, went out in April.
+It worked. Total assets reached $2.35 billion this March. The holding company, CoastalSouth Bancshares, listed on the NYSE last July at $21.50 a share; its first dividend, a nickel a share, was paid in February 2026.
 
 :::pullquote
 In a county with $6.55 billion in total deposits, Coastal States holds $1.17 billion, a 17.9% share that beats every megabank on the island.
@@ -3978,11 +3981,11 @@ That's the foundation national lenders dream about: cheap, sticky, locally gathe
 
 ## What the niches actually look like
 
-Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, 18.9%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the bank's eleven branches sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
+Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, about 19%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the bank's eleven branches sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
 
 The model prints respectable numbers: 1.11% ROA, 3.61% NIM, a 59% efficiency ratio, and charge-offs of one basis point.
 
-But the growth-mode costs are visible too. ROE has come down from 15.9% in 2023 to 10.0% now, diluted by the IPO raise and compressed by deposit competition. The efficiency ratio has drifted up eight points from its 52% best. Nonperforming assets, 0.21% of assets in 2023, now sit at 0.78%. None of it alarming. All of it the price of building Charleston, where the bank announced a new commercial team under Market President Edward Vaughan in January.
+But the growth-mode costs are visible too. ROE has come down from 15.9% in 2023 to 10.0% now, diluted by the capital raised with the NYSE listing and compressed by deposit competition. The efficiency ratio has drifted up about seven points from 52% in 2023. Nonperforming assets, 0.21% of assets in 2023, now sit at 0.78%. None of it alarming. All of it the price of building Charleston, where the bank announced a new commercial team under Market President Edward Vaughan in January.
 
 ## The 42-mortgage footnote
 
@@ -4371,10 +4374,13 @@ We're about to find out if that's a question the market is ready to answer.
   'anderson-brothers-bank-myrtle-beach-bet': {
     title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
     description:
-      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.19B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
+      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.28B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
     publishedDate: 'May 31, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
+*Updated October 22, 2026: corrected 2025 return on assets, Marion County household income, the dates of the credit-quality figures, Horry County ranking and Forbes listing, and asset size.*
+
 In 1933, two brothers started a bank in Mullins, South Carolina by financing tobacco farmers from the back of a warehouse. Ninety-two years later, that same bank is posting a 16.7% return on equity, a net interest margin more than double the industry average, and a stock price that has gone from $23 to $1,000 a share.
 
 Anderson Brothers Bank is not a bank most people outside the Pee Dee region have heard of. It probably should be.
@@ -4383,7 +4389,7 @@ Anderson Brothers Bank is not a bank most people outside the Pee Dee region have
 
 A 6.1% net interest margin. That's the figure that stops you when you pull the call report data for Anderson Brothers Bank.
 
-The industry average NIM for community banks is around 3.3%. Most banks would consider 4% a very good year. Anderson Brothers is running at nearly twice that, and it's not a fluke of one quarter. ROA came in at roughly 1.46% for 2025. ROE at 16.7%. The efficiency ratio sits at about 59%, meaning for every dollar the bank brings in, it spends 59 cents running the place. Not spectacular on its own, but strong for a bank growing assets at 12% a year.
+The industry average NIM for community banks is around 3.3%. Most banks would consider 4% a very good year. Anderson Brothers is running at nearly twice that, and it's not a fluke of one quarter. ROA came in at 1.38% for 2025 and 1.48% in the first quarter of 2026. ROE at 16.7%. The efficiency ratio sits at about 59%, meaning for every dollar the bank brings in, it spends 59 cents running the place. Not spectacular on its own, but strong for a bank growing assets at 12% a year.
 
 Full-year 2025 net income: $29 million. Record.
 
@@ -4400,7 +4406,7 @@ How does a community bank in rural South Carolina generate margins that would ma
 
 Anderson Brothers' home market is Marion County, South Carolina. This is not a glamour market.
 
-Population: approximately 28,215 people, declining at about 0.5% per year. Median household income: $24,304. Every county in the Pee Dee region recorded more deaths than births from 2020 to 2023. The economic base is agricultural and light industrial: Sopakco Packaging, DMA Sales, tobacco farming legacy.
+Population: approximately 28,215 people, declining at about 0.5% per year. Median household income: about $36,300. Every county in the Pee Dee region recorded more deaths than births from 2020 to 2023. The economic base is agricultural and light industrial: Sopakco Packaging, DMA Sales, tobacco farming legacy.
 
 What that market lacks in growth it more than compensates for in deposit loyalty. Anderson Brothers holds roughly 60% of Marion County deposits. That's not a market share number, that's a lock. When you fund your loan book with low-cost deposits from a market where you've been the dominant bank for 90 years, your cost of funds stays structurally below what banks in competitive urban markets can achieve. That deposit advantage flows directly into NIM.
 
@@ -4414,15 +4420,15 @@ The bank explicitly tracks this. Management describes its retained earnings mode
 
 The other half of the margin story is what Anderson Brothers lends.
 
-Consumer loans represent 28.5% of the loan book, a notably high share for a bank this size. The product driving that number is non-prime indirect auto lending, a specialty the bank has deliberately built and maintained. Non-prime borrowers pay higher rates. They also default more. The bank's management is not naive about this: the shareholder letter acknowledges that auto delinquencies peaked in mid-2024 and spent most of 2025 recovering. As of early 2026, past-due accounts in that portfolio had returned to their lowest level since September 2022.
+Consumer loans represent about 27% of the loan book, a notably high share for a bank this size. The product driving that number is non-prime indirect auto lending, a specialty the bank has deliberately built and maintained. Non-prime borrowers pay higher rates. They also default more. The bank's management is not naive about this: the shareholder letter acknowledges that auto delinquencies peaked in mid-2024 and spent most of 2025 recovering. As of early 2026, past-due accounts in that portfolio had returned to their lowest level since September 2022.
 
 The math works because the yield on non-prime auto more than compensates for the higher loss rate, especially when you're funding it with 60%-market-share rural deposits. Anderson Brothers is essentially running a carry trade that most community banks either can't execute or won't touch. They've been doing it long enough to manage the cycle.
 
-Credit quality across the full book is clean. Non-current loans sit at 0.52% of the portfolio. The Texas Ratio (a measure of problem assets relative to capital and reserves) is 4.16%. Any figure below 10% is considered healthy. The loan loss reserve covers non-current loans at 338%. These are not the numbers of a bank taking reckless risk.
+Credit quality across the full book is clean. Non-current loans were 0.60% of the portfolio in the first quarter of 2026. The Texas Ratio (a measure of problem assets relative to capital and reserves) is 4.16%. Any figure below 10% is considered healthy. The loan loss reserve covered non-current loans about 2.75 times over. These are not the numbers of a bank taking reckless risk.
 
 :::stat
-**338%**
-Anderson Brothers' loan loss reserve covers non-current loans at more than triple the balance, signaling a conservative credit cushion despite the higher-yield non-prime book.
+**0.60%**
+Anderson Brothers' non-current loans as a share of the portfolio in the first quarter of 2026.
 :::
 
 ## Six Years, Eleven Spots
@@ -4431,7 +4437,7 @@ The story that explains where Anderson Brothers is going is Horry County.
 
 Myrtle Beach is a different world from Mullins. Horry County has unemployment around 3-4%, median home prices around $327,000-$360,000, over $100 million in active hotel investment, and a tourism-driven economy that has grown consistently for two decades. LinkedIn named Myrtle Beach one of its Top Cities on the Rise in July 2025.
 
-Six years ago, Anderson Brothers Bank ranked 11th in Horry County deposit market share among 20 competing banks. Today they rank 2nd.
+In 2018, Anderson Brothers Bank ranked 11th in Horry County deposit market share among 20 competing banks. Today they rank 2nd.
 
 :::pullquote
 Eleven spots in six years. In a market where they started as an outsider, against banks that had been there for decades.
@@ -4459,11 +4465,11 @@ Beyond the financial results, 2025 was the year Anderson Brothers signaled it in
 
 The bank simultaneously deployed three new technology platforms: FedNow for real-time payments, LoanVantage for loan origination, and RingCentral for communications. AI integration is underway across loan collections, fraud detection, compliance, and underwriting. Four new C-suite roles were created in a single restructuring, adding a COO, a Chief Credit Officer, a Chief Banking Officer, and a Chief Risk Officer.
 
-Forbes named them 3rd best bank in South Carolina on their inaugural America's Best in State Banks list, based on customer surveys covering trust, digital services, branch services, and financial advice.
+In 2018, Forbes named them 3rd best bank in South Carolina on its inaugural America's Best in State Banks list, based on customer surveys covering trust, digital services, branch services, and financial advice.
 
 For a 92-year-old bank headquartered in a town of 4,500 people, this is a lot of momentum. The tobacco warehouse is long gone. What replaced it is a bank running margins its competitors can't quite explain, from a deposit base that took 90 years to build, pointed directly at one of the fastest-growing coastal markets in the South.
 
-The Anderson family has been patient before. Thirty dollars turned into a thousand. The next move is into Myrtle Beach.
+The Anderson family has been patient before. A $23 share, thirty years ago, turned into a thousand. The next move is into Myrtle Beach.
 
     `,
   },
@@ -4569,33 +4575,36 @@ The verification delay is not an immutable fact of lending. It's a product of in
     description:
       'Southern First Bancshares just reported Q4 EPS up 73% year-over-year. The story behind that number is 30 people a day moving to Greenville-Spartanburg, a $1.7 billion BMW investment, and a 26-year-old relationship banking bet that\'s finally paying off.',
     publishedDate: 'May 24, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '8 min read',
     content: `
+*Updated October 22, 2026: corrected the names of the bank's president and CFO, full-year net charge-offs, the period of the net interest margin and the real estate share of loans.*
+
 Art Seaver has been running Southern First Bank for 26 years. He's watched Greenville go from a post-textile mill town to a metro that just crossed one million residents. That context matters when you look at what his bank just reported.
 
 Q4 2025 earnings per share: $1.21. Up 73% from a year ago.
 
 ## The Numbers First
 
-Southern First Bancshares finished 2025 with $30.4 million in net income, a net interest margin of 2.72% (up 47 basis points year-over-year), and a loan book that grew 6% to $3.85 billion. CEO Seaver, President Justin Strickland, and CFO Andy Borrmann have spent the last two years fighting margin compression like every other community bank in America. They've come out the other side in genuinely strong shape.
+Southern First Bancshares finished 2025 with $30.4 million in net income, a fourth-quarter net interest margin of 2.72% (up 47 basis points year-over-year), and a loan book that grew 6% to $3.85 billion. CEO Art Seaver, President Calvin Hurst, and CFO Christian Zych have spent the last two years fighting margin compression like every other community bank in America. They've come out the other side in genuinely strong shape.
 
 The credit quality numbers are almost hard to believe.
 
-Net charge-offs for the entire year: $69,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills. Nonperforming assets sit at 0.32% of total assets. Past due loans are 0.13%.
+Net charge-offs for the entire year: about $84,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills. Nonperforming assets sit at 0.32% of total assets. Past due loans are 0.13%.
 
 That kind of performance doesn't happen by accident. It happens when you're lending into a market that keeps growing.
 
 :::pullquote
-Net charge-offs for the entire year: $69,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills.
+Net charge-offs for the entire year: about $84,000. On a $3.85 billion portfolio. That's not a rounding error, that's a bank whose borrowers are paying their bills.
 :::
 
 ## 30 People a Day
 
 Here's the thing about Upstate South Carolina that most people outside the region don't fully appreciate.
 
-Thirty people relocate to the Greenville-Spartanburg area every single day. South Carolina netted over 68,000 domestic migrants in 2023-2024 alone, and the Upstate captured the overwhelming share of that growth. They're coming from Florida, New York, Ohio, Michigan, Pennsylvania, Connecticut, California. People leaving high-cost metros and landing in a place where the cost of living runs as much as 88% lower than Manhattan.
+Thirty people relocate to the Greenville-Spartanburg area every single day. South Carolina netted over 68,000 domestic migrants in 2023-2024 alone, and the Upstate captured the overwhelming share of that growth. They're coming from Florida, New York, Ohio, Michigan, Pennsylvania, Connecticut, California. People leaving high-cost metros for a lower cost of living.
 
-Greenville County added 11,049 new residents in a single year. Spartanburg is the third-fastest growing metro in the country. The Greenville metro just crossed one million people for the first time, adding nearly 86,000 residents since the 2020 Census.
+Greenville County added 11,049 new residents in a single year. The Greenville metro just crossed one million people for the first time, adding nearly 86,000 residents since the 2020 Census.
 
 Every one of those households needs a checking account. A mortgage. A car loan. A small business line of credit when the new restaurant opens on Main Street. Southern First has been standing in that town for over two decades, with the relationships and the brand recognition to capture a meaningful slice of that demand.
 
@@ -4630,13 +4639,13 @@ Efficiency ratio came in at 57.85% in Q4. Not best-in-class, but moving in the r
 
 Southern First is, by almost any measure, performing well. The region they serve is genuinely one of the best economic stories in the country right now.
 
-But 74% of their loan book is in real estate, commercial and consumer combined. And the Greenville housing market is shifting.
+But about 84% of their loan book is secured by real estate, commercial and consumer combined, by the company's own loan categories. And the Greenville housing market is shifting.
 
 Inventory is up 28.2% year-over-year. Days on market climbed to 71, up from 62 a year ago. The median sales price dipped 0.8%. None of these numbers signal a crash. They signal a market normalizing after years of frenzied appreciation, which is healthy. But normalization looks different on a bank balance sheet than it does in a real estate brochure.
 
 The honest read is that Southern First's credit quality has benefited from a rising-tide market. Borrowers who got in trouble could sell. Collateral values held. That cushion is thinner now. Not gone, just thinner.
 
-The BMW battery plant opens next year. Migration is still running at 30 people a day. The industrial investment pipeline is full. Those are real tailwinds and Art Seaver has been navigating this market long enough to know the difference between a headwind and a speed bump.
+The BMW battery plant is set to open this year. Migration is still running at 30 people a day. The industrial investment pipeline is full. Those are real tailwinds and Art Seaver has been navigating this market long enough to know the difference between a headwind and a speed bump.
 
 :::pullquote
 For now, the numbers say this is a bank that has earned the right to be optimistic.

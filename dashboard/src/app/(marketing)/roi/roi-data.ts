@@ -556,7 +556,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     stats: [
       { label: 'Total assets', value: '$972M' },
       { label: 'ROA', value: '0.38% (FY2025); 0.52% annualized Q1 2026' },
-      { label: 'NIM', value: '2.28% (FY2025); 2.42% annualized Q1 2026' },
+      { label: 'NIM', value: '2.58% (FY2025); 2.52% annualized Q1 2026' },
       { label: 'Branch count', value: '6' },
     ],
     volumes: {
@@ -571,8 +571,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     intro: "Update, October 2026: Beacon merged with Coastal Carolina National Bank on October 1, 2026, and the combined bank takes the name Beacon Bank, N.A. in March 2027. The figures below are as of June 2026, before the merger. Mount Pleasant is the fourth-largest city in South Carolina and part of the Charleston-North Charleston MSA, one of the fastest-growing metros in the country. The MSA (Berkeley, Charleston, Dorchester counties) grew nearly 9% from 2020-2024, adding 70,000+ residents. The borrower base skews toward higher-income professionals, military personnel (Joint Base Charleston), retirees relocating from the Northeast, and small-business owners in the Lowcountry economy. Home prices are well above state averages, making the $375K+ average mortgage size realistic. Beacon competes against First Citizens, South State Bank, and national lenders while deliberately positioning as a local alternative.",
     strategic: [
       {
-        title: 'A $972M Loan Book Growing 10% Annually With No Digital Verification Stack',
-        body: "Beacon grew its net loan portfolio from $788M to $848M in three quarters of 2025, a pace that implies loan officers are processing a rising volume of mortgage and commercial files without automated income, employment, or asset verification. At that origination velocity, document collection and manual review are almost certainly the throughput bottleneck. RAVEN's API-first verification stack plugs directly into community bank workflows, eliminating the paper-chase that slows closings without requiring a full LOS replacement. For a bank with six relationship bankers handling a $972M book, cutting borrower verification time from days to minutes frees capacity for the next tranche of growth. Beacon's COO background in financial technology suggests there is a champion in the C-suite who already understands why this matters.",
+        title: 'An $848M Loan Book Growing 14% a Year With No Digital Verification Stack',
+        body: "Beacon grew its net loan portfolio from $788M in mid-2025 to $848M by March 2026, a pace that implies loan officers are processing a rising volume of mortgage and commercial files without automated income, employment, or asset verification. At that origination velocity, document collection and manual review are almost certainly the throughput bottleneck. RAVEN's API-first verification stack plugs directly into community bank workflows, eliminating the paper-chase that slows closings without requiring a full LOS replacement. For a bank with six relationship bankers handling a $972M book, cutting borrower verification time from days to minutes frees capacity for the next tranche of growth. Beacon's COO background in financial technology suggests there is a champion in the C-suite who already understands why this matters.",
       },
       {
         title: 'The Charleston Migration Wave Is Creating a Verification Problem, Not Just an Opportunity',
@@ -1048,8 +1048,8 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 9923,
     auditDate: 'May 2026',
     stats: [
-      { label: 'Total assets', value: '$1.78B' },
-      { label: 'ROA / ROE', value: '1.46% / 17.7%' },
+      { label: 'Total assets', value: '$2.28B (Q1 2026)' },
+      { label: 'ROA', value: '1.38% (FY2025); 1.48% annualized Q1 2026' },
       { label: 'Branches', value: '25+ across coastal SC' },
       { label: 'Mortgage originations', value: '~250/yr' },
     ],
@@ -1063,7 +1063,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       source: 'Horry County among fastest-growing US metros (~3%/yr on ~390K), Census estimates',
     },
     intro:
-      'Anderson Brothers runs one of the highest-velocity lending operations among SC community banks: a 1.46% ROA, a 25-branch coastal footprint, and a consumer loan channel that processes serious volume. Velocity is exactly where per-file verification time compounds fastest.',
+      'Anderson Brothers runs one of the highest-velocity lending operations among SC community banks: a 1.38% ROA in 2025, a 25-branch coastal footprint, and a consumer loan channel that processes serious volume. Velocity is exactly where per-file verification time compounds fastest.',
     strategic: [
       {
         title: 'Volume is the multiplier',
