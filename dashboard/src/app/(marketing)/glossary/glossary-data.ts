@@ -499,7 +499,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       {
         heading: 'Who is applying now',
         paragraphs: [
-          'ILCs have become the charter of choice for consumer fintechs and commercial companies that want insured deposits without holding company supervision. As of October 20, 2026, the FDIC’s list of pending deposit insurance applications included five proposed Utah ILCs and two in Nevada:',
+          'ILCs have become the charter of choice for consumer fintechs and commercial companies that want insured deposits without holding company supervision. As of October 20, 2026, the FDIC’s list of pending deposit insurance applications included five proposed Utah ILCs and two in Nevada. [De Novo Watch](/de-novo-watch) tracks the full list:',
         ],
         bullets: [
           'Utah: PayPal Bank, OneMain Bank, Klarna Bank USA, Albert Bank and Flex Bank',
@@ -573,7 +573,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       {
         heading: 'From renting a bank to becoming one',
         paragraphs: [
-          'Higher compliance costs at sponsor banks, and a friendlier charter environment, have pushed fintechs toward charters of their own. As of October 2026, at least 14 of the 27 pending FDIC deposit insurance applications came from fintechs and consumer lenders. Mission Lane, for example, plans to move its card program to its own bank over three years. For a community bank with a sponsor business, that is fee income and deposits that can leave when the partner gets a charter.',
+          'Higher compliance costs at sponsor banks, and a friendlier charter environment, have pushed fintechs toward charters of their own. As of October 2026, at least 14 of the 27 pending FDIC deposit insurance applications [came from fintechs and consumer lenders](/blog/fintech-bank-charter-rush-2026). Mission Lane, for example, plans to move its card program to its own bank over three years. For a community bank with a sponsor business, that is fee income and deposits that can leave when the partner gets a charter.',
         ],
       },
     ],
