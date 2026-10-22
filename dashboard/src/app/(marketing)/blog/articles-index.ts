@@ -277,7 +277,7 @@ export const articles: Article[] = [
     slug: 'community-bank-borrower-experience-roi',
     title: 'The ROI of Modernizing Your Community Bank Borrower Experience',
     description:
-      "Blend's third-party ROI study found a 10.15x return per loan and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
+      "A Blend-commissioned ROI study reported $10.15 returned per dollar invested and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'guide',
@@ -295,7 +295,7 @@ export const articles: Article[] = [
     slug: 'community-bank-ceo-digital-lending-2026',
     title: "The Community Bank CEO's Guide to Digital Lending in 2026",
     description:
-      "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
+      "Most community bank CEOs say they want to modernize lending. Most haven't. Here is the decision framework for 2026 that skips the core replacement debate.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -304,7 +304,7 @@ export const articles: Article[] = [
     slug: 'community-banks-lose-loans-fintechs',
     title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)',
     description:
-      "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
+      "Non-bank lenders now originate about 65% of U.S. mortgages. The gap isn't rates or trust. It's the application experience.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -313,7 +313,7 @@ export const articles: Article[] = [
     slug: 'community-bank-compete-neobank-core',
     title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core',
     description:
-      "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
+      "Chime spent $519M on marketing in 2024 and has 9.5M active members. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
     readTime: '6 min read',
     date: 'May 2026',
     category: 'guide',
@@ -531,7 +531,7 @@ export const articles: Article[] = [
     slug: 'affirm-vs-community-bank-personal-loans',
     title: 'The Two-Second Loan',
     description:
-      'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
+      "Affirm has 26.8 million active consumers, underwritten using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'fintech',
@@ -540,7 +540,7 @@ export const articles: Article[] = [
     slug: 'trillion-dollar-ipo-wave-2026',
     title: 'The $3.6 Trillion Question',
     description:
-      'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
+      "SpaceX went public on June 12. OpenAI and Anthropic have filed confidentially. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'guide',
@@ -579,7 +579,7 @@ export const articles: Article[] = [
     slug: 'foreclosure-wave-hiding-in-plain-sight',
     title: 'The Foreclosure Wave Is Already Here. Your Bank Just Can\'t See It Yet.',
     description:
-      '118,727 households entered foreclosure in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
+      "118,727 U.S. properties had a foreclosure filing in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here's why that's the problem.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -588,7 +588,7 @@ export const articles: Article[] = [
     slug: 'why-it-takes-42-days-to-close-a-mortgage',
     title: 'Why It Takes 42 Days to Close a Mortgage (And What That\'s Costing Your Bank)',
     description:
-      'The average mortgage takes 42 days to close. FHA loans take 77. The average file is 500 pages thick. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
+      'The average mortgage takes about six weeks to close, and the average file can run 500 pages. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
     readTime: '8 min read',
     date: 'March 2026',
     category: 'guide',
@@ -607,16 +607,16 @@ export const articles: Article[] = [
     slug: 'next-generation-borrowers-wont-wait',
     title: 'Your Next Generation of Borrowers Won\'t Wait 42 Days',
     description:
-      '54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers are already gone.',
+      '54% of Gen Z rely primarily on non-traditional financial providers, and younger borrowers expect digital speed. Your future borrowers are already shopping elsewhere.',
     readTime: '8 min read',
     date: 'March 2026',
     category: 'guide',
   },
   {
     slug: '59-billion-compliance-burden',
-    title: 'The $59 Billion Compliance Burden — And How Automation Is Cutting It in Half',
+    title: 'The $61 Billion Compliance Burden, and How Automation Can Shrink It',
     description:
-      'U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
+      'Financial institutions in the U.S. and Canada spend $61 billion a year on financial crime compliance. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
     readTime: '10 min read',
     date: 'March 2026',
     category: 'guide',
@@ -634,7 +634,7 @@ export const articles: Article[] = [
     slug: 'one-link-complete-verification',
     title: 'One Link, Complete Verification: How RAVEN Works for Community Banks',
     description:
-      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from seven providers with a full audit trail.',
+      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from six providers with a full audit trail.',
     readTime: '12 min read',
     date: 'February 2026',
     category: 'guide',

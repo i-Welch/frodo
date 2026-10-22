@@ -1109,11 +1109,14 @@ Broward has been exporting its banks for twenty years. A $45 million filing orga
     description:
       'First-party fraud jumped from 15% to 36% of all reported fraud in one year and now leads every category globally. Your KYC program can’t see it, because the identity checks out. Here is what catches it.',
     publishedDate: 'July 10, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # First-Party Fraud: The Applicant Is Real. The Application Isn't.
 
 *Published July 10, 2026*
+
+*Updated October 22, 2026: corrected a reference to an out-of-date fraud figure.*
 
 The fastest-growing fraud category in banking is committed by people using their own names.
 
@@ -1144,7 +1147,7 @@ First-party fraud walks through KYC untouched. The identity is real; the lie is 
 
 Then the loan defaults, and here's the quiet part: the loss books as a credit loss, not a fraud loss. No identity theft victim ever calls to dispute anything. The file goes to collections, the charge-off goes in the credit bucket, and the fraud team never studies the case. LexisNexis puts the true cost at more than $5 for every $1 lost, and at community banks the miscategorization means nobody is even counting the $1.
 
-Fannie Mae's numbers show the concentration point: income misrepresentation is 46% of confirmed mortgage fraud findings, year after year. Most of that is first-party. It's also the share of the 1-in-116 problem that no identity product will ever fix.
+Fannie Mae's numbers show the concentration point: income misrepresentation is 46% of confirmed mortgage fraud findings, year after year. Most of that is first-party. It's also the share of the mortgage-misrepresentation problem that no identity product will ever fix.
 
 ## What actually catches it
 
@@ -1275,15 +1278,18 @@ The suspicion you can't prove today is, more often than not, the verification yo
     description:
       '31 charter applications were filed in 2025. Four banks actually opened. What it really takes to start a de novo bank: the capital math, the 18-to-24-month timeline, the three-year supervision period, and the stack you build before day one.',
     publishedDate: 'July 10, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # How to Start a Bank: The De Novo Playbook
 
 *Published July 10, 2026*
 
-Thirty-one banking charter applications were filed in 2025, the busiest year in recent memory. Four new banks actually opened.
+*Updated October 22, 2026: corrected the number of banks opened in 2025, the annual de novo pace and the FDIC's position on minimum capital, and updated the application timeline for the FDIC's two-phase process that took effect in August 2026.*
 
-That gap is the whole story of starting a bank in America right now. The application surge is real, but most of it came from fintechs, payment platforms, and digital-asset firms chasing limited-purpose and trust charters. The true full-service community bank, a [de novo](/glossary/de-novo-bank) in the classic sense, remains rare: roughly ten to fifteen organizing groups a year nationally get one off the ground.
+Thirty-one banking charter applications were filed in 2025, the busiest year in recent memory. Only about five new banks actually opened.
+
+That gap is the whole story of starting a bank in America right now. The application surge is real, but most of it came from fintechs, payment platforms, and digital-asset firms chasing limited-purpose and trust charters. The true full-service community bank, a [de novo](/glossary/de-novo-bank) in the classic sense, remains rare: fewer than ten organizing groups a year nationally get one off the ground.
 
 Here is what the journey actually looks like, for founders thinking about it and for everyone who wonders why their town hasn't seen a new bank since 2008.
 
@@ -1293,7 +1299,7 @@ The FDIC's binding rule is simple to state and expensive to satisfy: a de novo m
 
 :::stat
 **$20M to $40M**
-The initial capital raised by recently approved community de novo banks. The FDIC has cited $15M to $30M as a working floor.
+The initial capital raised by recently approved community de novo banks. The FDIC sets no minimum; capital is sized to the business plan, and industry groups have cited $15M to $30M as a practical range.
 :::
 
 In practice that means an organizing group raises twenty to forty million dollars before the bank earns its first dollar of interest income. The raise itself is a filter: it forces a real market study, a credible management team, and directors willing to put their own money in, all of which the regulators will examine anyway.
@@ -1302,13 +1308,13 @@ In practice that means an organizing group raises twenty to forty million dollar
 
 From first organizing meeting to ribbon cutting, plan on 18 to 24 months. The regulatory clock is only part of it.
 
-The pre-filing phase, assembling the board, recruiting a CEO examiners will accept, writing the business plan, and lining up capital commitments, typically takes two or three months of formal preparation after months of informal groundwork. Once the deposit insurance application is filed, the FDIC determines within about 30 days whether it's substantially complete, aims to finish its field investigation within 60 days, and targets a decision within roughly four months of acceptance. Six to eight months from filing to decision is the realistic band.
+The pre-filing phase, assembling the board, recruiting a CEO examiners will accept, writing the business plan, and lining up capital commitments, typically takes two or three months of formal preparation after months of informal groundwork. Under the FDIC's two-phase process, effective for applications received after August 15, 2026, the agency addresses completeness within 30 days, holds management interviews by day 90, and issues a contingent authorization by day 120 if warranted. Final approval follows once pre-opening conditions are met, within 12 months.
 
 :::pullquote
 The approval is not the finish line. It's the starting gun for the hardest phase: building an actual bank in the months before the doors open.
 :::
 
-Then comes the buildout. Conditional approval arrives with a list of conditions to satisfy before opening: the capital must fund, key hires must land, policies must exist, and the technology stack must work. Core system, digital banking, BSA program, verification layer, all of it gets selected, contracted, and stood up in this window.
+Then comes the buildout. Contingent authorization arrives with a list of conditions to satisfy before opening: the capital must fund, key hires must land, policies must exist, and the technology stack must work. Core system, digital banking, BSA program, verification layer, all of it gets selected, contracted, and stood up in this window.
 
 ## The three-year probation
 
@@ -1334,13 +1340,16 @@ Starting a bank is a long, expensive, heavily supervised project, and that is ar
     description:
       'A new bank’s first exam tests whether the fraud program in its business plan actually exists. Why document-based intake fails that test, and what a source-verified day-one program looks like.',
     publishedDate: 'July 10, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '5 min read',
     content: `
 # The De Novo Bank's Day-One Fraud Program
 
 *Published July 10, 2026*
 
-Every de novo bank application contains a promise: a BSA/AML and fraud program, described in detail, committed to in writing. The FDIC's conditional approval turns that promise into a condition, and the bank's first examination tests whether it came true.
+*Updated October 22, 2026: corrected the Fannie Mae fictitious-employer count, dated the Cotality fraud figure and the synthetic identity loss estimate, and updated FDIC approval terminology for its August 2026 process change.*
+
+Every de novo bank application contains a promise: a BSA/AML and fraud program, described in detail, committed to in writing. The FDIC's contingent authorization turns that promise into a condition, and the bank's first examination tests whether it came true.
 
 That test arrives fast. A [de novo](/glossary/de-novo-bank) operates under heightened supervision for its first three years, with more frequent exams and less benefit of the doubt than an established bank gets. Examiners walk in with the business plan and check it against reality. A named BSA officer is not a program. A policy binder is not a control. What counts is whether the bank can show, applicant by applicant, that it verified who it let in the door.
 
@@ -1352,10 +1361,10 @@ The default is document-based intake. The applicant types their information into
 
 :::stat
 **1 in 116**
-mortgage applications now shows indications of material misrepresentation, and income fraud leads Fannie Mae's confirmed findings at 46%.
+mortgage applications showed fraud-risk indications in Cotality's 2025 report, and income misrepresentation leads Fannie Mae's investigation findings at 46%.
 :::
 
-The numbers from the lending side show where this ends up. Cotality puts material misrepresentation at 1 in 116 mortgage applications. Fannie Mae's fraud team maintains a watchlist of 63 fictitious employers, some with staffed phone lines whose entire purpose is to answer verification calls. On the deposit side, synthetic identities, real Social Security numbers attached to fabricated people, have cost lenders an estimated $6 billion, and they pass document-based onboarding because no document is technically fake.
+The numbers from the lending side show where this ends up. Cotality puts material misrepresentation at 1 in 116 mortgage applications. Fannie Mae's fraud team has flagged 65 potentially fictitious employers on loan applications, businesses it could not confirm even exist. On the deposit side, synthetic identities, real Social Security numbers attached to fabricated people, have cost U.S. lenders up to $6 billion by one widely cited estimate, and they pass document-based onboarding because no document is technically fake.
 
 :::pullquote
 The fraud program most banks would build by default is the one that's currently failing across the industry.
@@ -1389,15 +1398,18 @@ The business plan promised examiners a fraud program. Build it as source verific
     description:
       'Cotality data shows 1 in 116 mortgage applications carries indications of material misrepresentation, and income fraud leads Fannie Mae findings at 46%. The VOE phone call your bank relies on is the exact attack surface fraud rings are built around.',
     publishedDate: 'July 4, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # One in 116 Mortgage Applications Is Lying to You
 
 *Published July 4, 2026*
 
+*Updated October 22, 2026: noted Cotality's 2026 report (1 in 119, down 4.6%), corrected the Fannie Mae fictitious-employer count and the CSBS fraud statistic, and removed an unsupported per-loan-officer estimate.*
+
 Cotality's 2025 Annual Mortgage Fraud Report landed with a number that should bother every chief credit officer in the country: 1 in 116 mortgage applications now shows indications of material misrepresentation. On purchase loans, it's 1 in 106.
 
-That's not a rounding error. That's roughly one fraudulent file per loan officer per quarter at a typical community bank origination pace.
+That's not a rounding error.
 
 The national fraud risk index rose 6.1% year over year through Q2 2025. And the categories driving the increase are exactly the ones a manual verification process is worst at catching.
 
@@ -1416,27 +1428,21 @@ Income has led Fannie Mae's fraud findings for years, and it isn't close. Nearly
 
 Some segments are worse. Applications on 2-to-4-unit properties, the classic house-hack investment play, flag at 1 in 27. If your bank is growing its small rental portfolio, your highest-fraud-risk product is also your fastest-growing one.
 
-:::pullquote
-One fraudulent application per loan officer per quarter. That's what 1 in 116 means at community bank volume.
-:::
-
 ## The fake employer industry
 
 Here's the part that should change how you think about your verification process, not just your fraud filters.
 
-Fannie Mae's fraud team maintains a running list of fictitious employers: companies that appear on loan applications as the borrower's place of work but that investigators could not confirm exist. The list has grown to 63 named entities. These aren't typos or defunct businesses. They're purpose-built fakes, some with websites, staffed phone lines, and someone on the other end ready to verify employment for anyone who asks.
-
-Read that again. The fake employers have staffed phone lines.
+Fannie Mae's fraud team maintains a running list of fictitious employers: companies that appear on loan applications as the borrower's place of work but that investigators could not confirm exist. As of Fannie Mae's 2020 alert, the list had grown to 65 entities that investigators could not confirm exist. These aren't typos or defunct businesses.
 
 The [verification-of-employment call](/glossary/verification-of-employment), the one your processor makes to the number the borrower provided, is not a fraud control. It's the attack surface. A fraud ring that can print a fake paystub can absolutely answer a phone and say "yes, she works here." The entire scheme is designed around the assumption that your bank verifies employment by calling a number on the application.
 
 :::pullquote
-The fake employers have staffed phone lines. The VOE call isn't your fraud control. It's the attack surface.
+A fraud ring can answer a phone. The VOE call isn't your fraud control. It's the attack surface.
 :::
 
 ## Community banks are carrying the exposure with the fewest tools
 
-The CSBS 2025 Annual Survey of Community Banks found that card fraud, check fraud, and identity theft account for nearly 88% of fraud cases at community banks. Those are the categories with dashboards, vendor tools, and daily attention. Application fraud doesn't make that list, because it doesn't show up as a fraud loss. It shows up two years later as a nonperforming loan.
+The CSBS 2025 Annual Survey of Community Banks found that card fraud alone accounts for 59% of reported fraud cases at community banks. Those are the categories with dashboards, vendor tools, and daily attention. Application fraud doesn't make that list, because it doesn't show up as a fraud loss. It shows up two years later as a nonperforming loan.
 
 Synthetic identity fraud, where a real Social Security number gets paired with a fabricated person, has already cost US lenders an estimated $6 billion, and the Federal Reserve calls it the fastest-growing financial crime in the country. ICBA is blunt about who's most exposed: it's one of the hardest fraud types for community banks to detect, because the synthetic borrower has no history to contradict, and community bank underwriting leans on documents the applicant provides.
 
@@ -1458,7 +1464,7 @@ Verified-at-source data isn't just faster than borrower-supplied documents. It's
 
 None of this requires new underwriting standards. It requires replacing borrower-supplied documents with source-verified data, which is the same change that takes verification from weeks to minutes.
 
-The 1-in-116 number is going to keep climbing. Fraud rings industrialize; community bank processes haven't. The banks that close that gap won't just close loans faster. They'll quietly stop being the softest target in the market.
+Cotality's 2026 report ticked down to 1 in 119, but undisclosed real estate debt kept rising. Fraud rings industrialize; community bank processes haven't. The banks that close that gap won't just close loans faster. They'll quietly stop being the softest target in the market.
     `,
   },
   'jack-henry-symitar-loan-origination': {
@@ -2005,10 +2011,13 @@ For community banks, there is an advantage hiding in the delay. The friction lef
     title: 'How to Offer a Fintech-Grade Loan Application as a Community Bank',
     description: "The banking industry's average loan application conversion rate is 3%. Here is how fintechs get it to 80%, and how community banks can copy the playbook without replacing their core.",
     publishedDate: 'June 16, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# How to Offer a Fintech-Grade Loan Application as a Community Bank
 
 *Published June 26, 2026*
+
+*Updated October 22, 2026: corrected the attribution of two abandonment estimates and described an 80% conversion figure as a vendor claim.*
 
 The banking industry's average loan application conversion rate is 3%. Three percent of people who start an application close a loan.
 
@@ -2018,13 +2027,13 @@ The gap between a fintech-grade loan application and a community bank loan appli
 
 ## The Abandonment Problem
 
-Loan application abandonment rates reach 97.5% in some segments, per Resolve Pay and Gnosari's 2026 research. The average digital application abandonment rate hit 67% in 2025. If your borrower cannot complete the application in under five minutes, abandonment likelihood rises above 60%.
+A Forrester estimate cited by SavvyMoney found that more than 97% of consumer loan applications started online are abandoned. Other industry estimates put digital loan application abandonment near 67%. If your borrower cannot complete the application in under five minutes, abandonment likelihood rises above 60%.
 
 :::pullquote
 Every field you add to the form makes it worse.
 :::
 
-Every field you add to the form makes it worse. Every additional field beyond three reduces completion by 5 to 10%. A three-field form converts at a rate 10% higher than a six-field form. Complex identity verification steps alone can drive a 30% increase in abandonment.
+Every field you add to the form makes it worse. UX research consistently finds that shorter forms complete at higher rates. Complex identity verification steps alone can drive a 30% increase in abandonment.
 
 Read those numbers and then count the fields in your current loan application.
 
@@ -2049,11 +2058,11 @@ The biggest abandonment driver in the back half of a loan application is documen
 
 The fintech solution is open banking income verification.
 
-MeridianLink announced a partnership with Plaid in April 2026 specifically to bring this capability to community financial institutions. The integration drives 80% conversion in lending flows by replacing manual document upload with a direct connection to the borrower's bank or payroll account. Instead of waiting days for the borrower to locate and scan documents, the bank pulls the data directly, with the borrower's authorization, in minutes.
+MeridianLink announced a partnership with Plaid in April 2026 specifically to bring this capability to community financial institutions. The companies say the integration drives 80% conversion in lending flows by replacing manual document upload with a direct connection to the borrower's bank or payroll account. Instead of waiting days for the borrower to locate and scan documents, the bank pulls the data directly, with the borrower's authorization, in minutes.
 
 :::stat
 **80%**
-Conversion rate in lending flows when Plaid Income replaces manual document uploads, per MeridianLink's April 2026 deployment data.
+Conversion rate in lending flows claimed by MeridianLink and Plaid in their April 2026 partnership announcement.
 :::
 
 Plaid connects to 9,706 financial institutions in the United States. Traditional bank verification that required faxed documents and took weeks now delivers account balance, account holder name, account number, and transaction history in real time.
@@ -2062,7 +2071,7 @@ That is not a marginal improvement. For a borrower applying for a personal loan 
 
 ## The KYC Timing Rule
 
-KYC processes that take more than five minutes see a 40% drop in completion rates, per UX research from Eleken and ProCreator. The threshold is not arbitrary. Five minutes is approximately the point at which a mobile user's attention and patience break.
+UX research suggests KYC steps that run past about five minutes lose a large share of applicants. The threshold is not arbitrary. Five minutes is approximately the point at which a mobile user's attention and patience break.
 
 The implication: if your identity verification workflow, however compliant and thorough it may be, takes longer than five minutes in a mobile flow, you are losing 40% of applicants at that step alone.
 
@@ -2087,20 +2096,23 @@ The banks that compete on digital loan applications in 2026 are not the ones wit
     title: 'What Neobanks Get Right (and What Community Banks Already Have That They Don\'t)',
     description: "Neobanks won on UX. Community banks won on trust, deposits, and relationships. 70% of small businesses prefer community banks but only 31% use one. The gap is digital capability, not preference.",
     publishedDate: 'June 9, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# What Neobanks Get Right (and What Community Banks Already Have That They Don't)
 
 *Published June 26, 2026*
 
+*Updated October 22, 2026: replaced a J.D. Power complaint figure we could not find with its 2026 neobank satisfaction scores, corrected the Synapse frozen-funds figure, and removed complaint, trust and profitability figures we could not source.*
+
 Let's be fair about what neobanks actually do well, because community banks can't compete with something they refuse to understand.
 
 J.D. Power's 2025 U.S. Direct Banking Satisfaction Study put online-only direct bank checking accounts at 692 satisfaction points, 24 points above regional banks and 35 above national banks. That lead is real. It is driven by interface simplicity, fast onboarding, and no fees. Those things matter to consumers.
 
-But the same study contained a number that gets far less attention: 28% of neobank customers reported a problem or complaint in the prior 12 months. For traditional online banks, that number was 23%. Neobanks win on experience and lose on reliability.
+J.D. Power's 2026 study, which for the first time scored neobanks separately, found they averaged 622 in satisfaction versus 674 for online bank checking providers. Neobanks win on experience and lose on reliability.
 
 :::stat
-**28%**
-Share of neobank customers who reported a problem or complaint in the prior 12 months, versus 23% for traditional online banks.
+**52 points**
+Satisfaction gap between online banks and neobanks, J.D. Power 2026.
 :::
 
 Community banks have something neobanks are spending years and billions trying to acquire. The right question is whether they are using it.
@@ -2121,7 +2133,7 @@ These are real advantages. They are also all replicable.
 
 The Chime story that does not get told in the press release is the enforcement action.
 
-Chime accumulated more than 920 CFPB complaints since 2020, nearly 200 involving accounts that were locked with customer funds trapped inside. In May 2024, the CFPB ordered Chime to pay millions after the company failed to return funds within 14 days of account closure. Some customers waited more than 90 days for their own money back. For comparison, Wells Fargo generated 317 similar complaints over the same period.
+In May 2024, the CFPB ordered Chime to pay millions after the company failed to return funds within 14 days of account closure. Some customers waited more than 90 days for their own money back.
 
 That is a customer service problem at scale with no branch to walk into and no loan officer to call.
 
@@ -2129,13 +2141,11 @@ That is a customer service problem at scale with no branch to walk into and no l
 That is a customer service problem at scale with no branch to walk into and no loan officer to call.
 :::
 
-The Synapse bankruptcy in April 2024 made the structural risk explicit. When the BaaS middleware provider that linked several neobanks to their sponsor banks filed for bankruptcy, approximately $85 million in customer deposits became inaccessible for months. A shortfall of $65 to $96 million was identified that FDIC coverage could not resolve because the account ledgers were contradictory. Customers had done nothing wrong and could not access their money.
+The Synapse bankruptcy in April 2024 made the structural risk explicit. When the BaaS middleware provider that linked several neobanks to their sponsor banks filed for bankruptcy, hundreds of millions of dollars in customer funds became inaccessible for months. A shortfall of $65 to $96 million was identified that FDIC coverage could not resolve because the account ledgers were contradictory. Customers had done nothing wrong and could not access their money.
 
 Community banks do not have a Synapse problem. They have direct FDIC coverage, direct core access, and a loan officer the borrower can call by name.
 
 ## The Trust Gap Is Real
-
-AlternaCX's analysis put traditional bank trust and stability perception scores at 87, versus 74 for neobanks. That 13-point gap reflects genuine differences in what happens when something goes wrong.
 
 More than 70% of small businesses say they prefer or would prefer to bank with a community bank. Only 31% currently do. The gap is digital capability, not preference. Fifty-five percent of millennial-run small businesses say they would prefer a community institution if it matched digital capabilities.
 
@@ -2147,7 +2157,7 @@ That is the market opportunity in a single sentence. The preference is already t
 
 ## The Profitability Reality
 
-Only 15% of neobanks are profitable as of 2026. The average annual revenue per U.S. neobank retail customer is $70 to $80, well below the $100-plus global average. Fintech funding dropped 40% year-over-year as investors demanded viable paths to profitability. Most neobanks remain almost entirely dependent on interchange revenue, with no access to interest income because they lack full banking licenses.
+Most neobanks remain almost entirely dependent on interchange revenue, with no access to interest income because they lack full banking licenses.
 
 Community banks have net interest income. They have fee income across a diversified product mix. They have customers with mortgages, business checking accounts, and 20-year relationships. The neobank customer has a debit card and a direct deposit.
 
@@ -2156,22 +2166,25 @@ The competitive asymmetry runs in both directions. Neobanks have better interfac
   },
   'community-bank-borrower-experience-roi': {
     title: 'The ROI of Modernizing Your Community Bank Borrower Experience',
-    description: "Blend's third-party ROI study found a 10.15x return per loan and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
+    description: "A Blend-commissioned ROI study reported $10.15 returned per dollar invested and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
     publishedDate: 'June 2, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# The ROI of Modernizing Your Community Bank Borrower Experience
 
 *Published June 26, 2026*
 
+*Updated October 22, 2026: corrected what the Blend ROI study measured and how, dated the ICE closing rate, fixed a pull-through calculation, and removed figures we could not source.*
+
 Here is a number that most community bank CFOs have not seen: 10.15.
 
-That is the documented return per loan that Blend's mortgage suite customers achieved in a third-party ROI study. Not 10.15 percentage points. 10.15 times the investment, per loan, after implementation costs.
+That is the return per dollar invested that Blend mortgage customers reported in a Blend-commissioned ROI study conducted by MarketWise Advisors.
 
-The same study found $914 in cost savings per loan, 7.3 days removed from the average loan cycle, and a 50% reduction in borrower withdrawal rates. These are not projections. They are averages across Blend's actual customer base.
+The same study reported $914 in average cost savings per loan and about 8 days removed from the processing cycle, based on survey responses from roughly 100 Blend customers.
 
 :::stat
 **$914**
-Cost savings per loan achieved by Blend mortgage suite customers in a third-party ROI study, alongside a 50% reduction in borrower withdrawal rates.
+Average cost savings per loan reported by Blend mortgage customers in a Blend-commissioned ROI study.
 :::
 
 The ROI of modernizing a community bank borrower experience is not theoretical. It is documented, and it is large.
@@ -2186,7 +2199,7 @@ The Blend study is not an outlier.
 
 A community bank case study published by Vantage Point documented a 360-employee bank that completed a digital transformation of its loan process and achieved: 25% increase in recurring service revenue, 50% faster loan processing, 60% fewer compliance errors, 20% lower operational costs, and 3 times return on marketing campaigns.
 
-Abrigo reports that financial institutions on its lending platform show 38% higher loan growth on average compared to peer institutions. ScienceSoft's benchmarking of custom loan origination software implementations documents up to 225% ROI in year one, alongside a 2x increase in loan approval rates and 50% lower onboarding costs.
+ScienceSoft's benchmarking of custom loan origination software implementations documents up to 225% ROI in year one, alongside a 2x increase in loan approval rates and 50% lower onboarding costs.
 
 The range is wide, which is honest. The outcome depends on starting point, implementation quality, and which loan products you modernize first. But the direction is consistent across every documented case.
 
@@ -2194,7 +2207,7 @@ The range is wide, which is honest. The outcome depends on starting point, imple
 
 Two metrics generate most of the financial return: pull-through rate and processing cost per loan.
 
-Pull-through rate is the percentage of applications that make it from submission to closing. The industry average for mortgage is 75.3%, per ICE Mortgage Technology. Every percentage point above that baseline is revenue your bank keeps instead of losing to abandonment, competitor offers, or borrower fatigue during a slow process.
+Pull-through rate is the percentage of applications that make it from submission to closing. ICE Mortgage Technology put the industry closing rate at 75.3% in mid-2021. Every percentage point above that baseline is revenue your bank keeps instead of losing to abandonment, competitor offers, or borrower fatigue during a slow process.
 
 A 1.8-percentage-point improvement in pull-through rate translates to $6.6 million in incremental annual revenue for an average-sized lender, according to LendArch benchmarking. A modern digital experience, with faster decisions, fewer document requests, and cleaner mobile UX, moves that number.
 
@@ -2203,10 +2216,6 @@ Processing cost per loan is the other lever. At community banks with manual work
 ## The Digital Customer Revenue Gap
 
 There is a less obvious driver of ROI that shows up in account-level analysis.
-
-Digital banking customers generate incremental revenue at 10.7% annually. Non-digital customers generate it at 4.5%. That 6-point gap, documented by Cornerstone Advisors, reflects a customer who uses more products, stays longer, and costs less to serve.
-
-Attrition tells the same story. Digital customers leave at 8.9% annually. Non-digital customers leave at 13.8%. The difference is nearly 5 percentage points of annual retention, which compounds dramatically over a 5 to 10-year relationship.
 
 The ROI of a better borrower experience is not just in the loan file. It is in the lifetime value of the customer relationship.
 
@@ -2218,15 +2227,15 @@ The ROI of a better borrower experience is not just in the loan file. It is in t
 
 Some of the highest-ROI changes in the digital lending experience are also the least expensive.
 
-Reducing an online loan application from 20 fields to 10 produces a 15% improvement in completion rate, per Gold Point Systems' analysis of documented bank redesigns. Removing a single unnecessary form field raises completion rates by 26%.
+Reducing an online loan application from 20 fields to 10 produces a 15% improvement in completion rate, per Gold Point Systems' analysis of documented bank redesigns.
 
-The average digital loan application abandonment rate hit 67% in 2025, more than double the prior year. Some of that is macroeconomic. Much of it is avoidable through simpler forms, fewer upload requirements, and income verification that pulls data automatically instead of asking borrowers to manually submit pay stubs.
+Industry estimates put digital loan application abandonment near 67%. Some of that is macroeconomic. Much of it is avoidable through simpler forms, fewer upload requirements, and income verification that pulls data automatically instead of asking borrowers to manually submit pay stubs.
 
 Borrowers who complete an application in a single sitting close at much higher rates than borrowers who drop off and return later, if they return at all.
 
 ## The Calculation Your CFO Should Run
 
-If your bank closes 500 loans a year and the current pull-through rate is 75%, a 5-point improvement closes 25 more loans. At an average loan balance of $250,000 and a net interest margin of 3%, that is $187,500 in incremental annual net interest income, before fees.
+If your bank closes 500 loans a year and the current pull-through rate is 75%, a 5-point improvement closes about 33 more loans. At an average loan balance of $250,000 and a net interest margin of 3%, that is roughly $247,500 in incremental annual net interest income, before fees.
 
 Apply the Blend benchmark of $914 in processing cost savings across those same 500 loans. That is $457,000 in efficiency savings.
 
@@ -2237,10 +2246,13 @@ Combined, the number is not small. And it does not require a new core.
     title: 'What to Look for in a Community Bank Digital Lending Platform',
     description: "There are five platforms most community banks evaluate when they go shopping for a loan origination system. Pricing runs $50K to $500K annually. Here is what to ask before you sign anything.",
     publishedDate: 'May 26, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# What to Look for in a Community Bank Digital Lending Platform
 
 *Published June 26, 2026*
+
+*Updated October 22, 2026: corrected a Blend ROI figure and removed vendor-performance figures we could not source.*
 
 There are five platforms most community banks evaluate when they go shopping for a loan origination system. All of them will solve some of your problems and create new ones. Knowing which questions to ask before you sign anything is the most important part of the process.
 
@@ -2281,7 +2293,7 @@ Ask every vendor you talk to: "What is your certified integration with our core 
 
 ## The ICBA Vendor Evaluation Framework
 
-ICBA's fintech vendor evaluation guidance flags five risk categories that should appear on every community bank's checklist:
+A sound vendor evaluation should cover five risk categories that should appear on every community bank's checklist:
 
 - Financial stability of the vendor (ask for audited financials or ownership structure)
 - Data security and SOC 2 Type II certification
@@ -2299,12 +2311,7 @@ Contracts without explicit data-portability and off-boarding provisions are a re
 
 When vendors present ROI projections, the industry benchmarks give you something to push back with.
 
-Digital lending implementations at community bank scale have produced an 80% reduction in per-loan origination costs in documented cases. Blend's mortgage-specific ROI study showed a 10.15x return per loan and a 20% higher pull-through rate. Abrigo reports that customers on its platform show 38% higher loan growth on average than peer institutions.
-
-:::stat
-**80%**
-Reduction in per-loan origination costs documented in community bank digital lending implementations.
-:::
+A Blend-commissioned ROI study reported $10.15 in return per dollar invested.
 
 The 2 to 4 times return within 2 to 3 years benchmark is achievable. Ask vendors to show you reference customers in your asset class who have hit it, with specific numbers, not testimonial quotes.
 
@@ -2313,14 +2320,17 @@ The community bank technology landscape is full of implementations that looked r
   },
   'community-bank-ceo-digital-lending-2026': {
     title: "The Community Bank CEO's Guide to Digital Lending in 2026",
-    description: "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
+    description: "Most community bank CEOs say they want to modernize lending. Most haven't. Here is the decision framework for 2026 that skips the core replacement debate.",
     publishedDate: 'May 19, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# The Community Bank CEO's Guide to Digital Lending in 2026
 
 *Published June 26, 2026*
 
-Ninety-four percent of community bank CEOs say they would adopt digital lending if the economics made sense.
+*Updated October 22, 2026: removed a CEO survey figure we could not find, corrected the attribution and findings of CSI's Banking Priorities reports and a Blend study, and removed other figures we could not source.*
+
+Most community bank CEOs say they want to modernize lending. Most haven't.
 
 Most haven't. That gap is the central challenge of community banking in 2026.
 
@@ -2328,11 +2338,11 @@ The intent is not the problem. The problem is execution, and specifically the as
 
 ## The Intent-Execution Gap
 
-The 94% figure comes from Jifiti's survey of community bank decision-makers, and it holds up against other data sources. CSI's 2025 Banking Priorities Report found that 45% of community bank executives named AI as their top innovation priority, for the third consecutive year. ICBA's 2026 priorities formally designated AI, payments, fraud, and digital customer experience as the top technology focuses for the year.
+CSI's 2026 Banking Priorities Report found that half of community bankers named AI the top technology trend, for the third consecutive year. ICBA's 2026 priorities formally designated AI, payments, fraud, and digital customer experience as the top technology focuses for the year.
 
 The intent is clearly there. The execution gap is what varies.
 
-What keeps banks stuck is not a lack of desire to modernize. It is the framing of the problem. When "digital lending" is understood as "replace the core," the economics are terrible. A full core migration runs $100 million to $2 billion over 3 to 7 years. That math does not work for a $500 million community bank.
+What keeps banks stuck is not a lack of desire to modernize. It is the framing of the problem. When "digital lending" is understood as "replace the core," the economics are terrible. A full core migration is a multi-year, multimillion-dollar project. That math does not work for a $500 million community bank.
 
 :::pullquote
 But that is not what digital lending has to mean.
@@ -2342,11 +2352,11 @@ But that is not what digital lending has to mean.
 
 Ninety percent of community banks already offer online loan applications, up from 76% in 2019. The channel exists.
 
-The problem is what happens when borrowers find it. Auto loan completion rates run at 28%. Personal loans complete at 42%. Credit cards at 34%. The average digital application abandonment rate hit 67% in 2025, more than double the prior year.
+The problem is what happens when borrowers find it. Auto loan completion rates run at 28%. Personal loans complete at 42%. Credit cards at 34%. Industry estimates put digital loan application abandonment near 67%.
 
 :::stat
 **67%**
-The average digital loan application abandonment rate in 2025, more than double the prior year, despite 90% of community banks offering online applications.
+Industry estimates of digital loan application abandonment, even as most community banks now offer online applications.
 :::
 
 The bank built a front door. Nobody is walking through it.
@@ -2355,7 +2365,7 @@ Digital lending, in the sense that matters for 2026, is not about whether a link
 
 ## The Completion Rate Problem
 
-Community banks issued 38% of total U.S. small and medium business credit in 2025, down from 41% the prior year. That slide tracks directly with the experience gap in the digital channel.
+That slide tracks directly with the experience gap in the digital channel.
 
 When only 25% of visitors who reach a community bank loan page even begin the application, and of those, 67% abandon before finishing, the actual conversion rate from visitor to completed application is under 10%.
 
@@ -2369,7 +2379,7 @@ The fix is not a new core. It is a better application flow, integrated with the 
 
 ## 2026 Priorities: What Actually Matters
 
-The ICBA has flagged four areas as the top technology focuses for 2026: AI, payments, fraud, and customer experience. The BNY Voice of Community Banks Survey for 2025 surfaced core modernization (44% of respondents) and deposit growth (40%) as the top two strategic goals.
+The ICBA has flagged four areas as the top technology focuses for 2026: AI, payments, fraud, and customer experience. CSI's 2025 Banking Priorities Report found operational efficiency (44%) and deposit growth (40%) were the top two strategic goals.
 
 Both of those can be addressed without a core replacement.
 
@@ -2383,7 +2393,7 @@ The way to evaluate a digital lending initiative in 2026 is not "which core shou
 
 **Can we add a modern front-end to the core we have?** For Fiserv and Jack Henry shops, the answer is yes. Both cores expose API layers that modern software connects to. The integration is not trivial, but it is documented and it has been done.
 
-**What does the ROI look like?** Industry benchmarks for digital lending implementations cluster around 2 to 4 times return within 2 to 3 years. Blend's documented study put the mortgage-specific ROI at 10.15 times per loan. These are not promotional figures. They reflect real changes in pull-through rates, processing speed, and borrower retention.
+**What does the ROI look like?** Industry benchmarks for digital lending implementations cluster around 2 to 4 times return within 2 to 3 years. A Blend-commissioned study of its mortgage customers reported $10.15 in return per dollar invested. They reflect real changes in pull-through rates, processing speed, and borrower retention.
 
 **What is the time to value?** A full core migration means 3 to 7 years before borrowers experience anything different. A layered digital experience can go live in months. For a community bank competing with neobanks right now, the timeline matters as much as the end state.
 
@@ -2392,14 +2402,17 @@ The banks that make the right decision in 2026 will be the ones that stopped ask
   },
   'community-banks-lose-loans-fintechs': {
     title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)',
-    description: "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
+    description: "Non-bank lenders now originate about 65% of U.S. mortgages. The gap isn't rates or trust. It's the application experience.",
     publishedDate: 'May 12, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `# Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)
 
 *Published June 26, 2026*
 
-Non-bank lenders now control 66.4% of the U.S. mortgage market. Six years ago, community banks held 42.5% of mortgage originations. By 2024, that had fallen to 30.1%.
+*Updated October 22, 2026: corrected mortgage market-share figures that contradicted each other, the scope of FDIC and Harvard statistics, and the attribution of an abandonment estimate, and removed figures we could not source.*
+
+Non-bank lenders originated about 65% of U.S. mortgages in 2024, per Inside Mortgage Finance.
 
 This is not a blip. It is a structural shift, and it is accelerating.
 
@@ -2409,14 +2422,14 @@ The question worth asking is not whether it's happening. It clearly is. The ques
 
 Start with the mortgage numbers, because they are the starkest.
 
-Of the 25 largest mortgage lenders in the United States today, 17 are non-bank institutions. Banks collectively dropped to 28.9% of the mortgage market in 2024. Credit unions held 15.4%. Non-banks took the rest.
+Of the 25 largest mortgage lenders in the United States today, 17 are non-bank institutions. Banks collectively dropped to 28.9% of the mortgage market in 2024. Credit unions held 15.4%. Non-banks took the rest (55.7%, by this measure).
 
-The same trend is playing out in small business lending. Fintechs now capture 28% of new small business loan originations, a segment that community banks historically dominated with roughly 45% market share. The FDIC's 2024 Small Business Lending Survey found that 31% of community banks are already using fintech partnerships in their small business lending process, an implicit acknowledgment that going it alone isn't working.
+The same trend is playing out in small business lending. Fintechs have taken a growing share of small business lending, a segment that community banks historically dominated with roughly 45% market share. The FDIC's 2024 Small Business Lending Survey found that about 3 in 10 banks already use FinTech in their small business lending process.
 
-Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% today. The compression is slow but relentless.
+Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% by 2014, and has kept falling since. The compression is slow but relentless.
 
 :::pullquote
-Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% today. The compression is slow but relentless.
+Community banks' overall share of U.S. banking assets has fallen from more than 40% in 1994 to roughly 20% by 2014, and has kept falling since. The compression is slow but relentless.
 :::
 
 ## The Application Experience Leak
@@ -2427,11 +2440,11 @@ Fintech platforms issue loan approval decisions in minutes. AI-driven underwriti
 
 That speed gap creates a specific problem in the digital channel that most community banks have not measured carefully enough.
 
-The average digital loan application abandonment rate hit 67% in 2025, more than double the prior year, according to Cornerstone Advisors. Some research puts mobile banking application abandonment even higher: Forrester has measured it at 97.5% for certain product types. And only 25% of users who visit a community bank's loan page even begin the application.
+Industry estimates put digital loan application abandonment near 67% to 68%. Some research puts mobile banking application abandonment even higher: Forrester has measured it at 97.5% for certain product types. And only 25% of users who visit a community bank's loan page even begin the application.
 
 :::stat
 **67%**
-The average digital loan application abandonment rate in 2025, more than double the prior year, according to Cornerstone Advisors.
+Industry estimates of digital loan application abandonment.
 :::
 
 Read that again. Three out of four prospective borrowers who show up at the digital front door and look at the loan page leave without starting.
@@ -2442,7 +2455,7 @@ That is not a marketing problem. It is a product problem.
 
 Gen Z is not waiting for community banks to catch up.
 
-Twenty-nine percent of Gen Z consumers now name a digital bank or fintech as their primary checking provider, up from 11% just four years ago. Sixty-one percent say fintech apps specifically help them manage financial challenges better than their bank does. Seventy-seven percent insist that their financial institution integrates with the apps they already use.
+More than a third of Gen Z consumers now consider a digital bank or fintech their primary checking provider, per Cornerstone Advisors.
 
 These are not edge cases. They are early signals of a generation building financial habits outside the traditional banking system. Once a 24-year-old opens a Chime account and takes out an SoFi personal loan, the community bank relationship has to be rebuilt from scratch, and the switching cost makes that unlikely.
 
@@ -2458,7 +2471,7 @@ The path back is not complicated. It is just hard to execute without the right i
 
 Community banks that have closed the experience gap share a common approach: they added a modern digital front-end to their existing core rather than replacing the core entirely. The result is an application flow that feels like SoFi, built on Fiserv or Jack Henry infrastructure that the bank already operates.
 
-The economics of this approach matter. A full core replacement runs $100 million to $2 billion and takes 3 to 7 years. A layered digital experience can go live in months. The difference in time-to-market is the difference between winning borrowers who are available now and chasing borrowers who have already made a different choice.
+The economics of this approach matter. A full core replacement is a multi-year, multimillion-dollar project. A layered digital experience can go live in months. The difference in time-to-market is the difference between winning borrowers who are available now and chasing borrowers who have already made a different choice.
 
 ICBA's 2025 CEO Outlook survey found multiple bank CEOs explicitly citing plans to implement loan origination software to improve turnaround times on business loans. The will is there. The constraint has been finding an implementation path that does not require betting the bank on a multi-year infrastructure project.
 
@@ -2467,16 +2480,19 @@ That path exists. Community banks that find it are the ones that will be gaining
   },
   'community-bank-compete-neobank-core': {
     title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core',
-    description: "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
+    description: "Chime spent $519M on marketing in 2024 and has 9.5M active members. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
     publishedDate: 'May 5, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `# How Community Banks Can Compete With Neobanks Without Replacing Their Core
 
 *Published June 26, 2026*
 
-Chime spent $519 million on marketing last year. For context, that's more than most community banks have in total assets. And it's working.
+*Updated October 22, 2026: dated Chime's marketing figure, corrected its member count and the scope of an ABA survey figure, and removed an unsourced core-migration cost range.*
 
-Chime now counts 22.34 million customers, up 21% in a single year. SoFi has 5.34 million more. Together, these two companies are doing what every community bank CEO has been warned about for a decade: pulling younger, digital-native customers away from institutions that have served their families for generations.
+Chime spent $519 million on marketing in 2024. For context, that's more than most community banks have in total assets. And it's working.
+
+Chime ended 2025 with 9.5 million active members, up 19% in a single year. Together, fintechs like Chime and SoFi are doing what every community bank CEO has been warned about for a decade: pulling younger, digital-native customers away from institutions that have served their families for generations.
 
 The question is what to do about it.
 
@@ -2506,14 +2522,9 @@ Here's where most of the vendor conversation goes wrong.
 
 When community bank leadership says "we need to modernize," the technology industry's answer is to sell a new core. The pitch is compelling: newer architecture, better APIs, purpose-built for digital. The problem is the price tag and the timeline.
 
-A full core migration runs between $100 million and $2 billion. It takes three to seven years. During that entire window, your team is managing the migration instead of serving customers. Staff is in training. Integrations are being rebuilt. And at the end of it, you have a new core, but you still need a modern front-end to show borrowers.
+A full core migration is a multi-year, multimillion-dollar project. It takes three to seven years. During that entire window, your team is managing the migration instead of serving customers. Staff is in training. Integrations are being rebuilt. And at the end of it, you have a new core, but you still need a modern front-end to show borrowers.
 
-:::stat
-**$100M–$2B**
-The cost range for a full core migration, which takes three to seven years and consumes staff and capital the entire time.
-:::
-
-Thirty-five percent of community banks are already dissatisfied with their core provider, according to the American Bankers Association's 2025 Core Platform Survey. That dissatisfaction is real. But dissatisfaction with your core is not the same thing as needing a new one.
+Thirty-five percent of banks are dissatisfied with their core provider, according to the American Bankers Association's 2025 Core Platforms Survey. That dissatisfaction is real. But dissatisfaction with your core is not the same thing as needing a new one.
 
 Most community banks run Fiserv or Jack Henry. These are mature, stable platforms with deep integrations built over decades. They're not fundamentally broken. The problem is that the customer-facing interfaces sitting on top of them were designed in a different era. The loan application experience feels like it, too.
 
@@ -3909,11 +3920,14 @@ The zero on the foreclosed real estate line is the evidence. Carolina Bank is pl
     title: 'How Rocket Mortgage Closes in 22 Days',
     description: 'Independent mortgage banks now originate 84% of U.S. mortgages. Banks gave that market away one slow VOE call at a time. A step-by-step breakdown of what Rocket does differently, and what community banks can actually copy.',
     publishedDate: 'June 15, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
+*Updated October 22, 2026: attributed the 22-day closing figure to its source, corrected the Freddie Mac study and the scope of the MBA cost data, and removed figures we could not source.*
+
 Independent mortgage banks now originate 84.1% of all U.S. single-family mortgages. Banks held that market. They gave it away, one slow [VOE call](/glossary/verification-of-employment) at a time.
 
-The number that explains the shift isn't the interest rate or the loan limit. It's 22. That's how many days Rocket Mortgage takes to close, on average, against an industry average of 42 (ICE Mortgage Technology, June 2025). The gap isn't marketing. It's process. And the process difference is specific enough to walk through step by step.
+The number that explains the shift isn't the interest rate or the loan limit. It's 22. That's how many days Rocket Mortgage takes to close, on average, according to a CNBC Select review, against an industry average of about 42. The gap isn't marketing. It's process. And the process difference is specific enough to walk through step by step.
 
 :::stat
 **22 days**
@@ -3928,7 +3942,7 @@ The approval letter is valid for 90 days and functions as close to a conditional
 
 On income and employment, Rocket pulls from The Work Number (Equifax's payroll database) and similar automated sources that cover roughly 60-70% of employed U.S. workers. Verification that would take a loan processor a phone call and potentially several days of waiting for HR to call back happens in seconds. For IRS transcript requests, Rocket uses automated tax data services that eliminate the manual form-filing process that still costs some lenders a week.
 
-The appraisal piece is where the structural gap gets harder to close. Fannie Mae expanded its Value Acceptance program in Q1 2025, lifting the LTV cap from 80% to 90% for primary residences. That means borrowers with as little as 10% down can now potentially skip the appraisal entirely. Waiver usage in the 80-90% LTV band jumped from roughly 2% to 17% within seven months of the policy change. Rocket, with its volume and extensive data on prior appraisals from repeat and refinance customers, is structurally positioned to capture a disproportionate share of those waivers. On no-cash-out refinances, roughly half of GSE loans now skip the appraisal.
+The appraisal piece is where the structural gap gets harder to close. Fannie Mae expanded its Value Acceptance program in Q1 2025, lifting the LTV cap from 80% to 90% for primary residences. That means borrowers with as little as 10% down can now potentially skip the appraisal entirely. Rocket, with its volume and extensive data on prior appraisals from repeat and refinance customers, is structurally positioned to capture a disproportionate share of those waivers. On no-cash-out refinances, roughly half of GSE loans now skip the appraisal.
 
 ## What the community bank does instead
 
@@ -3941,12 +3955,12 @@ This has to happen twice: once at origination, and again within 10 days of closi
 Initial underwriting under normal conditions takes roughly 72 hours. A full review with a complete file runs 7-10 business days. Add an appraisal (6-20 days depending on the market, with appraiser supply declining roughly 3% annually), and the math gets to 42 days before any complications arrive. A single HR department that takes four days to return a call and the loan slides to 46.
 
 :::pullquote
-The cost structure reflects the labor. The MBA puts average origination costs at $11,094 per loan in 2025, with a profit of $785.
+The cost structure reflects the labor. The MBA puts independent mortgage banks' average production costs at $11,094 per loan in 2025, with a profit of $785.
 :::
 
-The cost structure reflects the labor. The MBA puts average origination costs at $11,094 per loan in 2025, with a profit of $785. That $785 margin is what the process has to earn after paying everyone who touched the file.
+The cost structure reflects the labor. The MBA puts independent mortgage banks' average production costs at $11,094 per loan in 2025, with a profit of $785. That $785 margin is what the process has to earn after paying everyone who touched the file.
 
-## Why banks gave up 70 points of market share
+## Why banks gave up the mortgage market
 
 The bank retreat from mortgage isn't a mystery. It's a rational response to unfavorable economics made worse by technology inaction.
 
@@ -3954,7 +3968,7 @@ IMBs have structural advantages on the cost side: no capital requirements on mor
 
 That borrower now shops on their phone. Ninety percent of 2024 homebuyers wanted a fully or mostly digital mortgage process. Rocket now services one in every six U.S. mortgages, has an 83% refinance recapture rate against an industry average of 25-28%, and just added Mr. Cooper's 6.7 million customers and Redfin's buyer network in the same year. The flywheel turns faster every cycle.
 
-Freddie Mac's 2024 Cost to Originate study found that lenders fully adopting its digital tools originate loans $1,500 cheaper and close five days faster, with 10% higher net margin. That data is available to every community bank in the country. Most haven't moved on it.
+Freddie Mac's Cost to Originate study found that lenders making heavy use of its digital tools originate loans about $1,500 (14%) cheaper, with shorter cycle times and higher pull-through; its 2025 update put the savings at $1,700. That data is available to every community bank in the country. Most haven't moved on it.
 
 The piece that doesn't require a technology overhaul is verification. VOE by phone call is a policy choice, not a technical constraint. The Work Number covers the majority of employed borrowers. Automated income verification through bank data connectivity is Fannie DU-certified. The community bank that wires these into its existing process captures most of the time savings without replacing its LOS, its underwriting team, or its relationships.
 
@@ -4205,19 +4219,22 @@ They're not moving fast. They don't need to. The market is coming to them.
   },
   'affirm-vs-community-bank-personal-loans': {
     title: 'The Two-Second Loan',
-    description: 'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
+    description: 'Affirm has 26.8 million active consumers, underwritten using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
     publishedDate: 'June 6, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
-Affirm approved 24 million Americans for credit last year. Your community bank probably took a week to approve one.
+*Updated October 22, 2026: updated Affirm's operating figures to its March 2026 quarter, corrected personal loan balance growth, Affirm's credit reporting and the CFPB's BNPL rule status, and removed figures we could not source.*
+
+Affirm has 26.8 million active consumers. Your community bank probably took a week to approve one.
 
 That's not a knock on community banks. It's a description of what happens when one side of a lending market rebuilds itself around real-time data and the other side still faxes pay stubs.
 
-The personal loan market is at a record $277 billion in outstanding balances as of Q1 2026, up 21.7% year-over-year. Affirm alone processed $10.8 billion in loan volume in a single quarter, growing 42% from the prior year. They just turned profitable. Their average customer takes out 6.1 loans per year across the platform.
+The personal loan market is at a record $277 billion in outstanding balances as of Q1 2026, up about 9.5% year-over-year. Affirm alone processed $11.6 billion in GMV in the quarter ending March 2026, up 35% from the prior year. They have reported GAAP operating income since mid-2025. Their average customer takes out 6.7 transactions per year across the platform.
 
 :::stat
 **$277B**
-Outstanding personal loan balances as of Q1 2026, up 21.7% year-over-year — a market that largely didn't exist at this scale a decade ago.
+Outstanding personal loan balances as of Q1 2026, up about 9.5% year-over-year — a market that largely didn't exist at this scale a decade ago.
 :::
 
 Community banks are watching this happen from the sidelines.
@@ -4226,9 +4243,9 @@ Community banks are watching this happen from the sidelines.
 
 The mythology around BNPL is that it's just installment credit with a better app. The reality is more interesting.
 
-When a consumer checks out at Walmart, Amazon, or one of Affirm's 330,000+ merchant partners, Affirm runs a real-time underwriting decision in seconds. Not minutes. Not hours. The model pulls from three data sources simultaneously: a traditional bureau inquiry, the consumer's Affirm repayment history if they've borrowed before, and live bank account data through Plaid, which shows cash flow, recurring deposits, and spending patterns.
+When a consumer checks out at Walmart, Amazon, or one of Affirm's 515,000+ active merchants, Affirm runs a real-time underwriting decision in seconds. Not minutes. Not hours. The model pulls from three data sources simultaneously: a traditional bureau inquiry, the consumer's Affirm repayment history if they've borrowed before, and live bank account data through Plaid, which shows cash flow, recurring deposits, and spending patterns.
 
-The bank account data is the key differentiator. A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month. Affirm's models weight the latter heavily, which is how they achieve a 79% approval rate while keeping charge-offs at 1.83% of loans. For context, that's lower than most community bank credit card portfolios.
+The bank account data is the key differentiator. A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month. Affirm's models weight the latter heavily.
 
 :::pullquote
 A credit score tells you what a borrower did in the past. Cash flow data tells you what they can pay next month.
@@ -4240,7 +4257,7 @@ The whole process: two seconds at checkout.
 
 A community bank personal loan works like this.
 
-You come in (or apply online, if the bank has gotten that far). You provide proof of income, a few months of bank statements, and your Social Security number. A loan officer pulls your credit, reviews the file, and either approves it, escalates it for a second review, or declines it. The industry average from application to funding is 3-7 business days. Origination costs run $200-300 per loan before you factor in overhead.
+You come in (or apply online, if the bank has gotten that far). You provide proof of income, a few months of bank statements, and your Social Security number. A loan officer pulls your credit, reviews the file, and either approves it, escalates it for a second review, or declines it. The industry average from application to funding is 3-7 business days.
 
 The community bank version is not inherently worse. Local decision-making, relationship context, and the ability to consider factors that a model would miss are real advantages. A farmer with lumpy seasonal income who has banked at the same institution for 20 years is a good credit risk in ways that don't show up cleanly in a bureau pull.
 
@@ -4250,11 +4267,11 @@ But the community bank version is slower, more expensive to originate, and invis
 
 Here's where it gets complicated.
 
-Affirm's borrower profile skews toward FICO 600-699, the subprime and near-prime range. These are consumers who often can't get a credit card with a reasonable rate, or who don't want one. BNPL gives them point-of-sale credit with clear repayment terms and no revolving balance trap. From a consumer welfare standpoint, that's genuinely useful.
+Many of Affirm's borrowers sit in the near-prime range. These are consumers who often can't get a credit card with a reasonable rate, or who don't want one. BNPL gives them point-of-sale credit with clear repayment terms and no revolving balance trap. From a consumer welfare standpoint, that's genuinely useful.
 
-The problem is what happens at the margin. CFPB complaints against BNPL companies jumped 45% in 2026. The primary issues: hidden fees, inconsistent credit reporting (Affirm reports to Experian on some products but not others), and consumers stacking multiple simultaneous BNPL loans across providers without any single lender seeing the full picture.
+The problem is what happens at the margin. The primary issues: hidden fees, inconsistent credit reporting across providers, and consumers stacking multiple simultaneous BNPL loans across providers without any single lender seeing the full picture.
 
-The Trump administration signaled in 2025 that it would not enforce the CFPB's 2024 rule placing BNPL under Regulation Z, which would have required the same consumer protections as credit cards. So the regulatory arbitrage that made BNPL attractive to build on continues, at least for now.
+The CFPB withdrew its 2024 interpretive rule in May 2025 placing BNPL under Regulation Z, which would have required the same consumer protections as credit cards. So the regulatory arbitrage that made BNPL attractive to build on continues, at least for now.
 
 Community banks don't have this problem, exactly. But they have a related one: the consumer loan quality at community banks worsened in 2024, more than at large banks. The most creditworthy, tech-comfortable borrowers went to Affirm. The community bank consumer loan book is left with a harder-to-underwrite pool.
 
@@ -4262,20 +4279,15 @@ Community banks don't have this problem, exactly. But they have a related one: t
 
 The data that should concern community bank executives most isn't Affirm's GMV growth. It's the transaction frequency.
 
-Affirm's active consumers averaged 6.1 transactions per year in Q1 2026, up from 5.1 a year earlier. This is not a product people use once for a big purchase. It's becoming a primary financial tool for how tens of millions of Americans manage spending. The Affirm Card, a physical debit card tied to the platform, grew its active base 121% year-over-year to 3.7 million cardholders.
+Affirm's active consumers averaged 6.7 transactions per year as of March 2026, up from 5.6 a year earlier. This is not a product people use once for a big purchase. It's becoming a primary financial tool for how tens of millions of Americans manage spending. The Affirm Card, a physical debit card tied to the platform, more than doubled its active base year-over-year to 4.4 million cardholders.
 
 That's the real competitive threat. Not a faster personal loan. A parallel financial infrastructure that intercepts the customer relationship before a community bank even gets a chance to offer one.
 
 :::pullquote
-Affirm has 24 million active borrowers averaging 6 loans a year because they show up at the exact second the decision gets made.
+Affirm has 26.8 million active consumers averaging nearly 7 transactions a year a year because they show up at the exact second the decision gets made.
 :::
 
-The cost math matters too. Affirm's scale allows it to originate at a fraction of a community bank's per-loan cost. Banks that have digitized their consumer lending can get origination costs down to $60-80 per loan from $200-300, but most community banks haven't made that investment.
-
-:::stat
-**$60-80**
-Per-loan origination cost for digitized community banks, versus $200-300 for traditional manual processes — a gap that compounds across every loan in the book.
-:::
+The cost math matters too. Affirm's scale allows it to originate at a fraction of a community bank's per-loan cost. Banks that have digitized their consumer lending can cut that cost sharply, but most community banks haven't made that investment.
 
 ## What Community Banks Can Actually Do
 
@@ -4292,13 +4304,16 @@ Affirm built a data infrastructure to serve customers banks weren't reaching. Th
   },
   'trillion-dollar-ipo-wave-2026': {
     title: 'The $3.6 Trillion Question',
-    description: 'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
+    description: 'SpaceX went public on June 12. OpenAI and Anthropic have filed confidentially. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
     publishedDate: 'June 4, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
-The three biggest IPOs in history are coming at once. Banks are licking their chops. They should also be nervous.
+*Updated October 22, 2026: This article was written before the SpaceX IPO priced in June. We updated the IPO timeline and valuation figures, OpenAI's revenue and valuation, the Chicago Fed and St. Louis Fed figures, and Q1 2026 IPO data, and removed an incorrect GDP comparison.*
 
-SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1 and is aiming for October. Combined, these three companies are targeting public market valuations north of $3.6 trillion. For context, that's larger than the entire GDP of Germany.
+The three biggest IPOs in history could land within about a year of each other. SpaceX has already gone. Banks are licking their chops. They should also be nervous.
+
+SpaceX began trading on June 12 after the largest IPO on record. OpenAI has filed confidentially but has not set timing. Anthropic filed confidentially on June 1. Combined, these three companies are targeting public market valuations north of $3.6 trillion.
 
 Nothing like this has ever happened before. Not even close.
 
@@ -4323,7 +4338,7 @@ SpaceX is the most straightforward of the three. Revenue of $18.7 billion in 202
 SpaceX's 2025 revenue, up 33% year-over-year, with Starlink alone generating $11.4 billion and $4.4 billion in operating profit.
 :::
 
-OpenAI and Anthropic are a different animal. OpenAI is targeting a $60 billion raise at an $852 billion valuation, with 2025 revenues of roughly $20 billion and a projected $14 billion net loss in 2026. Anthropic's annualized revenue run rate is about $47 billion (up from $10 billion a year ago), but the company has never disclosed a path to profitability.
+OpenAI and Anthropic are a different animal. OpenAI was valued at $852 billion in a $122 billion private round in March 2026, on 2025 revenue of about $13 billion and a projected $14 billion net loss in 2026. Anthropic's annualized revenue run rate is about $47 billion (up from $10 billion a year ago), but the company has never disclosed a path to profitability.
 
 These are not valuations grounded in discounted cash flows. They are bets on category dominance in a technology that may be the most consequential since the internet. That's not irrational. It is, however, a different kind of risk than buying into a company that makes rockets and sells broadband.
 
@@ -4331,19 +4346,19 @@ These are not valuations grounded in discounted cash flows. They are bets on cat
 
 The underwriting fees are the visible part. The scarier number is on the loan book.
 
-US banks have committed $450 billion in AI-related lending, representing roughly 25% of aggregate Tier 1 capital for participating banks. That's an 80% surge over the past year. The commitments are largely undrawn, meaning actual drawn AI loans represent only about 0.8% of total bank assets today. But committed facilities convert fast when a borrower needs liquidity.
+US banks have committed $450 billion in AI-related lending, representing roughly 25% of aggregate Tier 1 capital for participating banks. The commitments are largely undrawn, meaning actual drawn AI loans represent only about 0.8% of total bank assets today. But committed facilities convert fast when a borrower needs liquidity.
 
 :::stat
 **$450 billion**
-US bank commitments to AI-related lending, representing 25% of participating banks' aggregate Tier 1 capital — an 80% surge in a single year.
+US bank commitments to AI-related lending, representing 25% of participating banks' aggregate Tier 1 capital.
 :::
 
-The Chicago Fed has flagged this explicitly: prolonged high interest rates could trigger massive losses if committed facilities get drawn during adverse conditions. The St. Louis Fed noted that AI investment contributed 39% of US GDP growth in 2025, a higher share than tech contributed at the peak of the dot-com bubble in 2000 (28%).
+The Chicago Fed has flagged this explicitly: prolonged high interest rates could trigger massive losses if committed facilities get drawn during adverse conditions. The St. Louis Fed noted that AI-related investment made up 39% of US GDP growth in the first three quarters of 2025, a higher share than tech contributed at the peak of the dot-com bubble in 2000 (28%).
 
 That last comparison deserves to sit with you for a moment.
 
 :::pullquote
-US banks have committed $450 billion in AI-related lending — 25% of Tier 1 capital — and 80% of that exposure was added in the last year alone.
+US banks have committed $450 billion in AI-related lending — 25% of Tier 1 capital —.
 :::
 
 Nobody is saying this is the dot-com bubble. The companies are bigger, the revenues are real, and the infrastructure buildout is serving genuine demand. But the concentration of bank exposure to a single sector, at a moment when that sector is going through simultaneous mega-IPOs and valuation resets, creates a specific kind of fragility that doesn't show up clearly in any single institution's 10-K.
@@ -4352,15 +4367,15 @@ Nobody is saying this is the dot-com bubble. The companies are bigger, the reven
 
 The 2026 IPO wave isn't rising all boats. It's bifurcating them.
 
-Q1 2026 was the strongest IPO quarter in five years, with 22 traditional deals raising $9.4 billion. Projections for the full year range from $40-60 billion in the base case to over $142 billion if the mega-deals execute on schedule. That's a potential all-time US record.
+Q1 2026 saw 35 IPOs raise $9.9 billion; Q2 then set a record at $104.9 billion, led by SpaceX. Projections for the full year range from $40-60 billion in the base case to over $142 billion if the mega-deals execute on schedule. That's a potential all-time US record.
 
 But capital is concentrating. Mega deals ($100 million+ VC financings) represented 70% of all US venture deal value in 2025, up from 56% in 2024. The companies at the top of the food chain are getting bigger, better-funded, and more dominant faster than ever before.
 
 For institutional investors, this creates a clear two-tier risk/return picture:
 
-**The mega-cap tier** (SpaceX, OpenAI, Anthropic): High absolute risk, high potential return, but the real money was made in private markets years ago. Public investors are buying into the story at prices that assume continued dominance. First-day trading on SpaceX is already projected to push the valuation toward $2.2 trillion, a 24% premium over IPO pricing before the stock trades for a full week.
+**The mega-cap tier** (SpaceX, OpenAI, Anthropic): High absolute risk, high potential return, but the real money was made in private markets years ago. Public investors are buying into the story at prices that assume continued dominance. SpaceX closed its first trading day up about 19%, at a market value above $2 trillion.
 
-**The mid-tier** (profitable SaaS, B2B software, fintech without clear AI integration): These companies are getting crowded out. Investor attention is finite. Capital is flowing up-market. A solid enterprise software company with $200 million in ARR and 30% growth is a much harder sell in a market where Anthropic is compounding revenue at 130% year-over-year.
+**The mid-tier** (profitable SaaS, B2B software, fintech without clear AI integration): These companies are getting crowded out. Investor attention is finite. Capital is flowing up-market. A solid enterprise software company with $200 million in ARR and 30% growth is a much harder sell in a market where Anthropic's revenue run rate has grown several-fold in a year.
 
 The window for mid-tier IPOs isn't closed, but it's narrower than it looks. Companies that can credibly claim AI infrastructure relevance will price well. Companies that can't are going to spend 2026 watching from the sidelines.
 
@@ -4383,7 +4398,7 @@ Goldman's David Solomon said the market has enough greed to absorb these deals. 
 But "enough greed to absorb" and "rationally priced" are not the same sentence. The banks will collect their fees, the VCs will get their liquidity, and public markets will get to decide what a world-historical AI company is actually worth.
 
 :::pullquote
-AI investment contributed 39% of US GDP growth in 2025. At the dot-com peak in 2000, tech contributed 28%. That comparison doesn't disappear just because the companies are bigger this time.
+AI-related investment made up 39% of US GDP growth in the first three quarters of 2025. At the dot-com peak in 2000, tech contributed 28%. That comparison doesn't disappear just because the companies are bigger this time.
 :::
 
 We're about to find out if that's a question the market is ready to answer.
@@ -4496,11 +4511,14 @@ The Anderson family has been patient before. A $23 share, thirty years ago, turn
     description:
       'Community banks pay $55–$280 per file to verify borrower income through The Work Number and IRS transcripts. Plaid does it in seconds for $1–$3. The gap is not regulatory necessity — it\'s infrastructure debt.',
     publishedDate: 'May 30, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
+*Updated October 22, 2026: corrected IRS transcript turnaround and fees, and attributed a rejection-rate estimate and an antitrust claim to their sources.*
+
 Here's a number worth sitting with: a community bank can pay more to verify a borrower's income than it costs to buy a tank of gas, a nice dinner, or a month of streaming services. Sometimes all three.
 
-The Work Number, Equifax's employment verification database, charges lenders $55 to $70 per standard verification order. For a two-borrower mortgage file requiring verification at underwriting and again before closing, that's $140 to $280 per loan, before accounting for the cases where verification fails and someone has to pick up the phone. The Community Home Lenders of America (CHLA) formally asked regulators to scrutinize the pricing. An antitrust class action filed in 2024 documented a 272% price increase since 2012, when the same verification cost $17.85. Equifax has a near-monopoly on automated employment data for GSE lending. They know it.
+The Work Number, Equifax's employment verification database, charges lenders $55 to $70 per standard verification order. For a two-borrower mortgage file requiring verification at underwriting and again before closing, that's $140 to $280 per loan, before accounting for the cases where verification fails and someone has to pick up the phone. The Community Home Lenders of America (CHLA) formally asked regulators to scrutinize the pricing. An antitrust class action filed in 2024 alleges a 272% price increase since 2012, when the same verification cost $17.85. Equifax has a near-monopoly on automated employment data for GSE lending. They know it.
 
 Meanwhile, Plaid returns income verification results in seconds. For somewhere between $1 and $3 per pull.
 
@@ -4528,15 +4546,15 @@ The product also operates as a consumer reporting agency under Plaid Check, mean
 
 The traditional income verification chain for a mortgage involves several sequential steps, most of which cannot be parallelized and several of which involve waiting on parties the lender cannot control.
 
-The borrower submits two recent pay stubs, two years of W-2s, and one to two years of federal tax returns. The lender orders tax transcripts from the IRS using Form 4506-C through the Income Verification Express Service (IVES). The IRS targets 10 business days for processing. That's two calendar weeks, minimum, assuming nothing goes wrong.
+The borrower submits two recent pay stubs, two years of W-2s, and one to two years of federal tax returns. The lender orders tax transcripts from the IRS using Form 4506-C through the Income Verification Express Service (IVES). The IRS says IVES returns transcripts in roughly 2 to 3 business days, though vendor turnaround often runs longer.
 
-Here's what goes wrong: the IRS rejects 30–40% of all 4506-C requests. When a form is rejected, the IRS returns it without an error code. The lender has to diagnose the problem, correct the form, and resubmit from scratch, restarting the 10-business-day clock. A single rejection cycle can consume the entire back half of a 30-day purchase closing window.
+Here's what goes wrong: industry vendors estimate 30–40% of 4506-C requests are rejected. When a form is rejected, the IRS returns it without an error code. The lender has to diagnose the problem, correct the form, and resubmit from scratch, restarting the clock. A single rejection cycle can consume the entire back half of a 30-day purchase closing window.
 
 Meanwhile, the lender also needs to verify employment. If the employer is in The Work Number's database, an automated report comes back instantly. But The Work Number's coverage is inconsistent for small businesses, nonprofits, newer companies, and gig platforms. When an employer isn't in the database, a human initiates outbound verification: independently validate the employer's phone number and physical location, call HR, verbally confirm employment status and job title, and obtain income details in a separate written format. Fannie Mae requires a [verbal VOE](/glossary/verification-of-employment) completed within 10 business days of the loan note date regardless, which means lenders cannot do this step early. It becomes a closing-week bottleneck on every single file.
 
 For self-employed borrowers, add a year-to-date profit and loss statement to the stack. Underwriting complexity scales up from there.
 
-**Total income verification cost per mortgage file:** IRS transcript ($40+ per order, plus resubmission costs), Work Number ($55–280 depending on borrower count and timing), staff time for manual calls and document chasing. The average cost to originate a mortgage was approximately $11,800 in Q2 2025. Income verification is not a trivial line item.
+**Total income verification cost per mortgage file:** IRS transcript ($4 IRS fee plus vendor charges and resubmission costs), Work Number ($55–280 depending on borrower count and timing), staff time for manual calls and document chasing. The average cost to originate a mortgage was approximately $11,800 in Q2 2025. Income verification is not a trivial line item.
 
 :::stat
 **$11,800**
@@ -4553,7 +4571,7 @@ Here's the same borrower moving through both systems.
 |---|---|---|
 | Income data pull | Borrower logs into payroll portal: ~90 seconds | Borrower uploads pay stubs: minutes to days |
 | Verification result | 11 seconds (bank income) or immediate (payroll) | Work Number: instant if employer is listed |
-| Tax transcript | Not required for bank/payroll path | 4506-C: 10 business days minimum, 30–40% rejection rate |
+| Tax transcript | Not required for bank/payroll path | 4506-C: days, with frequent rejections |
 | Verbal VOE | Not required | Required within 10 days of note date |
 | Cost per file | $1–3 | $55–280+ |
 
@@ -4676,32 +4694,35 @@ For now, the numbers say this is a bank that has earned the right to be optimist
   'foreclosure-wave-hiding-in-plain-sight': {
     title: 'The Foreclosure Wave Is Already Here. Your Bank Just Can\'t See It Yet.',
     description:
-      '118,727 households entered foreclosure in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
+      '118,727 U.S. properties had a foreclosure filing in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
     publishedDate: 'May 24, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '7 min read',
     content: `
-118,727 households. That's how many American families entered foreclosure in the first three months of 2026.
+*Updated October 22, 2026: clarified that ATTOM's 118,727 figure counts properties with foreclosure filings, corrected the FHA delinquency rate, the Fed's wording, the share of housing units in foreclosure and FHA partial-claim rules, and noted that the Homeowner Assistance Fund closed out in September 2026.*
 
-Up 26% from a year ago. The worst quarterly number in six years. And in March alone, filings jumped 28% year-over-year.
+118,727 properties. That's how many U.S. homes had a foreclosure filing in the first three months of 2026.
+
+Up 26% from a year ago. And in March alone, filings jumped 28% year-over-year.
 
 Your bank's residential mortgage portfolio is probably showing sound credit quality right now. Both things are true at the same time. That gap is exactly what should keep you up at night.
 
 :::pullquote
-118,727 households entered foreclosure in Q1 2026. Up 26% from a year ago. The worst quarterly number in six years.
+118,727 properties had a foreclosure filing in Q1 2026. Up 26% from a year ago.
 :::
 
 ## The Stress Has an Address
 
 This isn't a broad-based mortgage collapse. It's surgical. Almost all of it is concentrated in one loan type: FHA.
 
-As of March 2026, **11.6% of FHA borrowers were delinquent.** FHA loans now account for **55% of all seriously delinquent mortgages** in the country, despite being a fraction of total outstanding balances.
+In the first quarter of 2026, **11.88% of FHA loans were delinquent**, per the MBA. FHA loans now account for **55% of all seriously delinquent mortgages** in the country, despite being a fraction of total outstanding balances.
 
 :::stat
-**11.6%**
-Share of FHA borrowers delinquent as of March 2026 — and FHA loans now represent 55% of all seriously delinquent mortgages in the country.
+**11.88%**
+Share of FHA loans delinquent in the first quarter of 2026, per the MBA — and FHA loans now represent 55% of all seriously delinquent mortgages in the country.
 :::
 
-Community banks mostly originate conventional conforming loans. Stronger borrower profiles. Better coverage ratios. So your call report looks fine. The Fed's May 2026 Financial Stability Report says residential mortgage delinquencies at commercial banks "remained historically low." The FDIC's 2026 Risk Review agrees: credit quality in residential portfolios is "relatively sound."
+Community banks mostly originate conventional conforming loans. Stronger borrower profiles. Better coverage ratios. So your call report looks fine. The Fed's May 2026 Financial Stability Report says overall mortgage delinquency rates "remained low by historical standards," even as FHA delinquencies rose above pre-pandemic levels. The FDIC's 2026 Risk Review agrees: credit quality in residential portfolios is "relatively sound."
 
 All of that is accurate.
 
@@ -4713,7 +4734,7 @@ First-time buyers. Lower-income households. Borrowers with credit scores that do
 
 These aren't reckless borrowers. In many cases they're the first homeowners in their families. But the math has turned on them in ways the original underwriting never captured.
 
-- **Homeowners insurance is up 12%,** now averaging $2,948 per year
+- **Homeowners insurance is up roughly 12% in 2025,** now averaging $2,948 per year
 - **Property taxes rose 3%,** averaging $4,427
 - Both costs hit after closing, after the DTI calculation, after the loan is on the books
 
@@ -4727,11 +4748,11 @@ Here's the part that turns a stress situation into a crisis.
 
 The federal programs that historically caught falling borrowers are disappearing, right now, as the stress peaks.
 
-**FHA partial claims** (the program that let servicers defer missed payments to a subordinate lien so borrowers could get current without a lump sum) just had its rules tightened. Borrowers can access it once every two years, with a 30% lifetime cap. It used to be more flexible. It isn't anymore.
+**FHA partial claims** (the program that let servicers defer missed payments to a subordinate lien so borrowers could get current without a lump sum) just had its rules tightened. Borrowers can now access it only once every two years, on top of the longstanding 30% cap. It isn't anymore.
 
 **The VA loan rescue program** ended entirely.
 
-**The Homeowner Assistance Fund** ($9.9 billion in pandemic-era grants for struggling homeowners) depletes in September 2026.
+**The Homeowner Assistance Fund** ($9.96 billion in pandemic-era aid) required states to obligate all funds by September 30, 2026, and state programs have now wound down.
 
 These programs were imperfect. They also worked. They're why the 2020-2022 forbearance wave didn't turn into a foreclosure wave. That buffer is gone now, and analysts are projecting roughly **250,000 distressed property sales** over the next 12 to 18 months.
 
@@ -4739,7 +4760,7 @@ These programs were imperfect. They also worked. They're why the 2020-2022 forbe
 
 The direct exposure to FHA delinquencies probably isn't your problem. The indirect exposure is.
 
-Distressed sales don't spread evenly across 50 states. They cluster in the markets with the highest FHA concentration and the sharpest insurance increases: Florida, Nevada, and **South Carolina**, where **1 in every 2,351 housing units** is already in some stage of foreclosure, before the safety net programs expire.
+Distressed sales don't spread evenly across 50 states. They cluster in the markets with the highest FHA concentration and the sharpest insurance increases: Florida, Nevada, and **South Carolina**, where **1 in every 743 housing units** had a foreclosure filing in Q1 2026, before the safety net programs expire.
 
 For a community bank with a residential portfolio concentrated in those markets, a few things are worth watching:
 
@@ -4751,28 +4772,32 @@ The FDIC doesn't predict a crisis. "Relatively sound underwriting standards and 
 
 It may not be right in Myrtle Beach.
 
-## The Number to Watch Is Q3
+## The Numbers to Watch Next
 
-The foreclosure tightening took effect this spring. The Homeowner Assistance Fund runs out in the fall. Servicers who've been working through loss mitigation options will hit the end of the waterfall for a meaningful group of borrowers around the same time.
+The foreclosure tightening took effect this spring. The Homeowner Assistance Fund closed out at the end of September. Servicers who've been working through loss mitigation options will hit the end of the waterfall for a meaningful group of borrowers around the same time.
 
 No recession required. Just the current conditions, flat or softening home prices, insurance costs that don't stop climbing, a federal safety net with fewer rungs, continuing exactly as they are.
 
-**118,727 foreclosures in 90 days.** That's not a blip.
+**118,727 foreclosure filings in 90 days.** That's not a blip.
 
 The wave isn't coming. It's already in the water. Most community bank balance sheets just haven't felt the pull yet.
 
 :::pullquote
-The Homeowner Assistance Fund runs out in September 2026. The safety net programs that kept the 2020 forbearance wave from becoming a foreclosure wave are gone now.
+The Homeowner Assistance Fund closed out in September 2026. The safety net programs that kept the 2020 forbearance wave from becoming a foreclosure wave are gone now.
 :::
     `,
   },
   'why-it-takes-42-days-to-close-a-mortgage': {
     title: 'Why It Takes 42 Days to Close a Mortgage (And What That\'s Costing Your Bank)',
     description:
-      'The average mortgage takes 42 days to close. FHA loans take 77. The average file is 500 pages thick. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
+      'The average mortgage takes about six weeks to close, and the average file can run 500 pages. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
     publishedDate: 'March 24, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '8 min read',
-    content: `## Where the Time Actually Goes
+    content: `
+*Updated October 22, 2026: removed abandonment, satisfaction, cost-growth and timing statistics we could not source, clarified that the MBA cost data covers mortgage lenders, and corrected the Figure, Better and Rocket descriptions.*
+
+## Where the Time Actually Goes
 
 Forty-two days sounds like a process problem. It is — but not the kind most banks think.
 
@@ -4780,11 +4805,11 @@ The bulk of that timeline sits in underwriting and verification. Collecting pay 
 
 According to Plaid, lenders "still fall back on manual, document-based processes" even when digital alternatives exist. The borrower fills out an application in 20 minutes, then spends the next five weeks feeding paper into a system that was designed for fax machines.
 
-Underwriting alone consumes 30 to 50 of those 42 days. Not because underwriters are slow — because they're waiting. Waiting for documents. Waiting for third-party verifications. Waiting for the borrower to respond to the third email asking for a corrected W-2. As Blend's research describes it, traditional lending is defined by "clunky, disconnected onboarding journeys" — and their analysis estimates that automating these workflows could save banks up to $70 billion industrywide.
+Much of that time sits in underwriting. Not because underwriters are slow — because they're waiting. Waiting for documents. Waiting for third-party verifications. Waiting for the borrower to respond to the third email asking for a corrected W-2. As Blend's research describes it, traditional lending is defined by "clunky, disconnected onboarding journeys".
 
 ## The Real Cost: $11,094 Per Loan, $785 in Profit
 
-The MBA's 2025 data puts the average cost to originate a mortgage at $11,094. That includes personnel, technology, occupancy, and overhead — everything it takes to move a loan from application to closing.
+The MBA's 2025 data puts the average cost to originate a mortgage at $11,094 for independent mortgage banks and bank mortgage subsidiaries. That includes personnel, technology, occupancy, and overhead — everything it takes to move a loan from application to closing.
 
 :::pullquote
 The average cost to originate a mortgage: $11,094. The average profit per loan: $785. That's a 7% margin on a process that takes six weeks.
@@ -4792,28 +4817,15 @@ The average cost to originate a mortgage: $11,094. The average profit per loan: 
 
 The average profit per loan? $785.
 
-That's a 7% margin on a process that takes six weeks and involves dozens of manual steps. Origination costs have risen 35% over the past three years, according to Plaid's lending research. Revenue per loan has not kept pace.
-
-At $11,094 per origination across a 42-day cycle, the daily carrying cost of an in-process loan is roughly $264. Every day a file sits waiting for a document is a day that cost accrues. Multiply that by your pipeline volume and the number gets uncomfortable fast.
-
-:::stat
-**$264**
-The daily carrying cost of an in-process mortgage loan, based on $11,094 average origination cost spread across a 42-day cycle.
-:::
+That's a 7% margin on a process that takes six weeks and involves dozens of manual steps.
 
 ## The Abandonment Problem
 
 Here's where the cost becomes invisible — because it's the loans you never close.
 
-Sixty-eight percent of mortgage applications are abandoned before closing, according to industry data tracked by the MBA. That's not 68% of unqualified applicants. That includes pre-approved borrowers who started the process and quit.
+Every lender loses applicants between application and closing, including pre-approved borrowers who started the process and quit. Each one consumed staff time, technology resources, and pipeline capacity and produced no revenue.
 
-The reasons are predictable. The process is too slow. The document requests are too frequent. The communication is too opaque. Forty-eight percent of consumers who experience digital friction in financial services take their business to a competitor, according to J.D. Power.
-
-Only 55% of mortgage applications at banks result in closings. That means for every two loans your team works, nearly one produces zero revenue — but consumed staff time, technology resources, and pipeline capacity.
-
-:::pullquote
-68% of mortgage applications are abandoned before closing. Those borrowers aren't disappearing from the market. They're closing with someone else.
-:::
+The reasons are predictable. The process is too slow. The document requests are too frequent. The communication is too opaque.
 
 Those borrowers aren't disappearing from the market. They're closing with someone else.
 
@@ -4821,9 +4833,9 @@ Those borrowers aren't disappearing from the market. They're closing with someon
 
 Borrower satisfaction data tells the same story from the other side.
 
-When borrowers need to call their lender for status updates — because the process doesn't proactively communicate — their Net Promoter Score drops by 83 points, according to J.D. Power's mortgage origination studies.
+When borrowers need to call their lender for status updates — because the process doesn't proactively communicate — their satisfaction drops sharply. J.D. Power's 2024 mortgage origination study put overall satisfaction at 727 out of 1,000, down 3 points from 2023, with loan status communication among the pain points.
 
-Eighty-three points. That's the difference between a promoter who refers three friends and a detractor who posts a one-star review. And it's driven by a single variable: whether the borrower felt informed or left in the dark.
+Much of it comes down to a single variable: whether the borrower felt informed or left in the dark.
 
 In a 42-day process with dozens of moving parts, most borrowers end up calling. Most loan officers end up fielding those calls instead of originating new loans. The cycle reinforces itself.
 
@@ -4831,16 +4843,16 @@ In a 42-day process with dozens of moving parts, most borrowers end up calling. 
 
 While community banks are managing 42-day timelines, a different class of lender has rewritten the math.
 
-**Figure** approves HELOCs in 5 minutes and funds in 5 days. Their cost per loan is $730 — against an industry average of $11,230. That's a 15x cost advantage, and it drove $340.9 million in net revenue in 2024, up 62.7% year-over-year. They IPO'd at a $5.29 billion valuation.
+**Figure** approves HELOCs in as little as 5 minutes and funds in as few as 5 days. Their cost per loan is $730 — against an industry average of $11,230. That's a 15x cost advantage, and it drove $340.9 million in net revenue in 2024, up 62.7% year-over-year. They IPO'd at a $5.29 billion valuation.
 
 :::stat
 **$730**
 Figure's cost per loan origination, versus the $11,230 industry average — a 15x cost advantage built entirely on automated verification pipelines.
 :::
 
-**Better.com** issues mortgage commitment letters in 24 hours and closes HELOCs in 3 days. Their HELOC volume grew 416% year-over-year in Q4 2024.
+**Better.com** issues mortgage commitment letters in 24 hours and can close HELOCs in as little as one day, with funding in as little as five. Their HELOC volume grew 416% year-over-year in Q4 2024.
 
-**Rocket Mortgage** closes 2.5x faster than the industry average, with initial approval in 8 minutes. They originated $130.4 billion in 2025 and hold 6.33% national market share.
+**Rocket Mortgage** offers initial approval in as little as 8 minutes. They originated $130.4 billion in 2025.
 
 None of these companies built a better branch network. They built automated verification pipelines that pull income, identity, employment, and asset data in real time — eliminating the weeks of document collection that define the traditional process.
 
@@ -4854,7 +4866,7 @@ The constraint isn't talent or service quality. Community bank loan officers con
 
 As Fed Governor Bowman acknowledged, "Community banks face competitive pressures from many sources... competitors can take the form of traditional banks, internet banks, and non-banks like fintechs." The pressure is real and it's recognized at the regulatory level.
 
-When that plumbing is manual, it takes weeks. When it's automated, it takes minutes. The borrower experience is the same either way: they share their information and wait for an answer. The difference is whether the answer comes in 5 minutes or 5 weeks. And in a market where 48% of digitally frustrated consumers walk, that difference determines whether your pipeline converts or evaporates.
+When that plumbing is manual, it takes weeks. When it's automated, it takes minutes. The borrower experience is the same either way: they share their information and wait for an answer. The difference is whether the answer comes in 5 minutes or 5 weeks. And in a market where frustrated borrowers can move to a faster lender, that difference determines whether your pipeline converts or evaporates.
 
 ## How RAVEN Changes This
 
@@ -4876,10 +4888,14 @@ The 42-day mortgage isn't inevitable. It's a symptom of manual verification in a
     description:
       'Banks originated 42.5% of mortgages in 2018. By 2024, that fell to 30.1%. Non-bank lenders now close more than half of all home loans. This is a structural shift, and it is accelerating.',
     publishedDate: 'March 17, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '9 min read',
-    content: `In 2018, banks originated 42.5% of all mortgages in the United States. By 2024, that number had fallen to 30.1%. Non-bank lenders — fintechs, independent mortgage companies, and digital-first platforms — now close more than half of all home loans, at 53.3% and climbing, according to the NCRC Mortgage Market Report and FDIC data.
+    content: `
+*Updated October 22, 2026: corrected the community bank share of charters and the source of a Gen Z statistic, clarified that the MBA cost data covers mortgage lenders, and removed several statistics we could not source.*
 
-This isn't a blip. It's a structural shift that has been accelerating for six years, and it's not limited to mortgages. Community banks' share of small business lending has been cut in half over two decades, falling from 24% to 12%, according to the Kansas City Fed. Fintech small business loan applications grew from 17% to 29% between 2020 and 2025.
+In 2018, banks originated 42.5% of all mortgages in the United States. By 2024, that number had fallen to 30.1%. Non-bank lenders — fintechs, independent mortgage companies, and digital-first platforms — now close more than half of all home loans, at 53.3% and climbing, according to the NCRC Mortgage Market Report and FDIC data.
+
+This isn't a blip. It's a structural shift that has been accelerating for six years, and it's not limited to mortgages. Community banks' share of small business lending has been cut in half over two decades, falling from 24% to 12%, according to the Kansas City Fed.
 
 Community banks aren't losing because of bad service. They're losing because the speed of their lending process no longer matches the speed their borrowers expect.
 
@@ -4891,9 +4907,9 @@ Banks originated 42.5% of mortgages in 2018. By 2024, that fell to 30.1%. Non-ba
 
 The numbers paint a clear picture of an industry in retreat.
 
-Community banks hold 97% of all bank charters in the United States but control only 14% of total deposits, according to the FDIC. In 2024, 44% of new checking accounts were opened at fintechs or neobanks — not at traditional banks of any size.
+Community banks make up about 90% of FDIC-insured institutions in the United States but control only 14% of total deposits, according to the FDIC. In 2024, 44% of new checking accounts were opened at fintechs or neobanks — not at traditional banks of any size.
 
-The generational pipeline is worse. Fifty-four percent of Gen Z rely primarily on non-traditional financial providers, according to a 2024 study from Cornerstone Advisors. Only 14% of Gen Z trust traditional banks "a lot." Sixty-one percent switched banks in the past two years.
+The generational pipeline is worse. Fifty-four percent of Gen Z rely primarily on non-traditional financial providers, according to PYMNTS research.
 
 These aren't borrowers who are hostile to community banks. Most of them have never walked into one. By the time they need a mortgage or a business line of credit, their financial life already lives on a platform that processes requests in minutes — not weeks.
 
@@ -4905,7 +4921,7 @@ When a borrower applies for a HELOC through Figure, here's what happens: they en
 
 Behind the scenes, Figure is pulling the same types of data that a community bank loan officer collects by hand — income, assets, employment, identity, property value. The difference is that Figure pulls it programmatically from data providers in real time, cross-references it automatically, and renders an underwriting decision without a human touching a piece of paper.
 
-Better.com does the same for mortgages, issuing commitment letters in 24 hours. Their HELOC volume grew 416% year-over-year in Q4 2024. Rocket Mortgage closes 2.5x faster than the industry average, with initial approval in 8 minutes. Upstart makes personal loan decisions in seconds, with 91% of loans fully automated.
+Better.com does the same for mortgages, issuing commitment letters in 24 hours. Their HELOC volume grew 416% year-over-year in Q4 2024. Rocket Mortgage offers initial approval in as little as 8 minutes. Upstart makes personal loan decisions in seconds, with 91% of loans fully automated.
 
 None of these companies invented new financial products. They automated the verification layer that sits between application and decision — and that's where all the time goes in a traditional lending process.
 
@@ -4922,9 +4938,9 @@ Figure's cost to originate a loan, versus the MBA industry average of $11,230 �
 
 Figure generated $340.9 million in net revenue in 2024, up 62.7% year-over-year, and IPO'd at a $5.29 billion valuation. That valuation wasn't built on a better marketing campaign. It was built on a cost structure that traditional lenders cannot match with manual processes.
 
-At the MBA's reported average of $11,094 per mortgage origination and $785 in profit per loan, community banks are running on a 7% margin for a process that takes six weeks. Figure runs on a fraction of the cost with a process that takes days. The math is not subtle.
+At the MBA's reported average of $11,094 per mortgage origination and $785 in profit per loan, mortgage lenders are running on roughly a 7% margin for a process that takes six weeks. Figure runs on a fraction of the cost with a process that takes days. The math is not subtle.
 
-When origination costs have risen 35% over the past three years, according to Plaid, and the competitive set is operating at a fraction of that cost, the pressure compounds. Every quarter that passes without closing the gap makes the next quarter harder.
+When the competitive set is operating at a fraction of that cost, the pressure compounds. Every quarter that passes without closing the gap makes the next quarter harder.
 
 ## The Technology Gap Is Not About Budget
 
@@ -4932,7 +4948,7 @@ The instinctive response from most community bank leadership is: "We can't compe
 
 Rocket spent years and hundreds of millions building a proprietary loan origination system. Figure built on blockchain infrastructure (though their SEC filing quietly notes their LOS "does not rely on the use of blockchain technology" — the speed comes from automated data aggregation, not distributed ledgers). Better.com rebuilt the mortgage stack from the ground up.
 
-Community banks don't need to replicate any of those builds. The competitive advantage these fintechs share isn't a single piece of proprietary technology. It's the fact that they automated the verification and data collection layer — the part of the lending process that consumes 70% to 80% of the elapsed time in a traditional origination.
+Community banks don't need to replicate any of those builds. The competitive advantage these fintechs share isn't a single piece of proprietary technology. It's the fact that they automated the verification and data collection layer — the part of the lending process that consumes most of the elapsed time in a traditional origination.
 
 That layer is now available as infrastructure. The same data providers that power Figure's 5-minute approval — Plaid for financial data, identity verification services, employment verification APIs, property data feeds — are accessible to any lender willing to integrate them.
 
@@ -4940,13 +4956,11 @@ The question for community banks is not whether to build a billion-dollar techno
 
 ## The Opportunity Hiding in the Data
 
-Here is the number that should give every community banker hope: 70% of small businesses say they prefer to bank with a community institution, according to Federal Reserve small business survey data.
+Here is the number that should give every community banker hope: in the Fed's Small Business Credit Survey, 79% of community bank loan applicants were satisfied, versus 40% at online lenders.
 
-Seventy percent. But only 31% actually do.
+That gap — between preference and behavior — is the entire opportunity. Small business owners want the relationship, the local knowledge, the flexibility, and the human judgment that community banks provide. They switch to fintechs anyway because they need speed, because they can't wait 60 to 90 days for an SBA loan decision, and because an online-lender approval can come in minutes while a community bank is still requesting two years of tax returns.
 
-That gap — between preference and behavior — is the entire opportunity. Small business owners want the relationship, the local knowledge, the flexibility, and the human judgment that community banks provide. They switch to fintechs anyway because they need speed, because they can't wait 60 to 90 days for an SBA loan decision, and because a Kabbage or OnDeck approval comes in 7 to 10 minutes while a community bank is still requesting two years of tax returns.
-
-The same dynamic plays out in consumer lending. Borrowers don't leave community banks because they dislike them. They leave because someone else gave them an answer faster. According to J.D. Power, 48% of consumers who experience digital friction in a financial interaction take their business to a competitor.
+The same dynamic plays out in consumer lending. Borrowers don't leave community banks because they dislike them. They leave because someone else gave them an answer faster.
 
 Community banks don't have a demand problem. They have a speed problem. And speed, unlike brand affinity or market presence, is a solvable engineering challenge.
 
@@ -4992,10 +5006,14 @@ Community banks have something fintechs cannot build: decades of trust, local ma
   'next-generation-borrowers-wont-wait': {
     title: 'Your Next Generation of Borrowers Won\'t Wait 42 Days',
     description:
-      '54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers are already gone.',
+      '54% of Gen Z rely primarily on non-traditional financial providers, and younger borrowers expect digital speed. Your future borrowers are already shopping elsewhere.',
     publishedDate: 'March 10, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '8 min read',
-    content: `**54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers aren't just preferring digital — they're already gone.**
+    content: `
+*Updated October 22, 2026: corrected J.D. Power and Figure figures and the sources of several statistics, and removed Gen Z switching, trust, abandonment and NPS figures we could not source.*
+
+**54% of Gen Z rely primarily on non-traditional financial providers. Your future borrowers aren't just preferring digital — they're already gone.**
 
 ---
 
@@ -5003,27 +5021,23 @@ Community banks have something fintechs cannot build: decades of trust, local ma
 
 The data on younger consumers and banking is no longer directional. It is definitive.
 
-According to a 2024 J.D. Power study, 29% of Gen Z consumers now consider a digital bank their primary checking account provider — up from 11% in 2020. Across all age groups, 44% of new checking accounts opened in 2024 went to fintechs and neobanks, not traditional banks (Cornerstone Advisors). Among Gen Z specifically, 54% rely primarily on non-traditional financial providers for core banking services (TransUnion, 2024).
+J.D. Power's 2026 Millennial & Gen Z Checking Satisfaction Study found 28% of this cohort's newly opened checking accounts are at online banks and fintechs. Across all age groups, 44% of new checking accounts opened in 2024 went to fintechs and neobanks, not traditional banks (Cornerstone Advisors). Among Gen Z specifically, 54% rely primarily on non-traditional financial providers for core banking services (PYMNTS).
 
-And they are not sticking around to be won back. 61% of Gen Z consumers switched their primary bank in the past two years (Bankrate), compared to 28% of Gen X and 15% of boomers. Only 14% of Gen Z say they trust traditional banks "a lot" (Morning Consult).
+And they are not sticking around to be won back.
 
 This is not a preference. It is a migration.
-
-:::pullquote
-61% of Gen Z switched their primary bank in the past two years. Only 14% trust traditional banks "a lot." Your future borrowers aren't coming back — they were never there.
-:::
 
 For community banks, where the median customer age skews older and relationship tenure is measured in decades, these numbers represent a slow-moving but existential problem. The generation entering its prime borrowing years — first homes, auto loans, small business starts — is building financial relationships with Square, Chime, SoFi, and Robinhood. Not with your branches.
 
 ## The Experience Gap
 
-Gen Z logs into mobile banking 21 times per month, compared to 14 for millennials and 9 for boomers (Insider Intelligence). They interact with financial services more frequently than any prior generation — but through their phones, not your lobbies.
+Gen Z logs into mobile banking 21 times per month, compared to 14 for millennials (eMarketer). They interact with financial services more frequently than any prior generation — but through their phones, not your lobbies.
 
 This is the context in which they encounter mortgage lending for the first time.
 
-J.D. Power's 2024 U.S. Mortgage Origination Satisfaction Study pegged overall satisfaction at 760 out of 1,000 — with digital experience scores declining year-over-year. The specific pain points tracked directly to what younger borrowers tolerate least: lack of transparency into loan status, excessive document requests, and slow response times from loan officers.
+J.D. Power's 2024 U.S. Mortgage Origination Satisfaction Study pegged overall satisfaction at 727 out of 1,000, down 3 points from 2023. The specific pain points tracked directly to what younger borrowers tolerate least: lack of transparency into loan status, excessive document requests, and slow response times from loan officers.
 
-When borrowers need to call for a status update, NPS drops by 83 points (ICE Mortgage Technology). For a generation that tracks packages in real time and gets Uber ETAs down to the minute, calling a loan officer to ask "where's my file?" is not an inconvenience. It is a disqualifying experience.
+For a generation that tracks packages in real time and gets Uber ETAs down to the minute, calling a loan officer to ask "where's my file?" is not an inconvenience. It is a disqualifying experience.
 
 ## What "Digital" Actually Means to a Borrower
 
@@ -5031,11 +5045,11 @@ Many banks describe their lending process as "digital" because they offer a PDF 
 
 Here is what digital lending looks like from the borrower's side at the fintechs already winning this generation's business:
 
-**Figure**: The borrower opens a link on their phone. They enter basic information, connect their bank account, and receive a HELOC approval in 5 minutes. Funding arrives in 5 days. No branch visit, no document scanning, no phone tag with a processor. Figure funded $6 billion in home equity products in 2024, at a cost of $730 per loan — versus the industry average of $11,230 (Figure S-1 filing).
+**Figure**: The borrower opens a link on their phone. They enter basic information, connect their bank account, and receive a HELOC approval in 5 minutes. Funding arrives in 5 days. No branch visit, no document scanning, no phone tag with a processor. Figure facilitated about $5 billion in home equity lending in 2024, at a cost of $730 per loan — versus the industry average of $11,230 (Figure S-1 filing).
 
-**Better.com**: A borrower can get a mortgage commitment letter in 24 hours and a HELOC approved in the same day. Better's HELOC volume grew 416% year-over-year in Q4 2024. Their positioning is explicit: "The traditional processes around homeownership are opaque and stressful... the industry operates in the same way it has for decades."
+**Better.com**: A borrower can get a mortgage commitment letter in 24 hours and a HELOC approval decision within 24 hours. Better's HELOC volume grew 416% year-over-year in Q4 2024. Their positioning is explicit: "The traditional processes around homeownership are opaque and stressful... the industry operates in the same way it has for decades."
 
-**Rocket Mortgage**: Approval in 8 minutes. Closing 2.5x faster than the industry average. Rocket processed $130.4 billion in originations in 2025 and built its market share to 6.33% — largely by making the borrower's experience feel effortless. Behind the scenes, Rocket processes 1.5 million documents per month, with 70% auto-identified and routed without human intervention. Borrowers never see the work.
+**Rocket Mortgage**: Approval in as little as 8 minutes. Rocket closed $130.4 billion in originations in 2025 — largely by making the borrower's experience feel effortless. Behind the scenes, Rocket processes 1.5 million documents per month, with 70% auto-identified and routed without human intervention. Borrowers never see the work.
 
 The common thread is not that these companies have superior underwriting judgment. It is that the borrower's experience — the part they see — requires almost nothing from them. Open a link. Connect your bank. Done.
 
@@ -5057,7 +5071,7 @@ A first-time homebuyer walks into a community bank branch (or more likely, finds
 - Call or email for status updates, often getting voicemail
 - 42 days later — if the loan doesn't fall through — close in person at a title office
 
-Every step in that process is a step where the borrower can abandon. And they do. 68% of mortgage applications started online are never completed (MBA). Among borrowers who experience digital friction, 48% take their business to a competitor (Signicat).
+Every step in that process is a step where the borrower can abandon. And they do.
 
 :::pullquote
 For a Gen Z borrower whose baseline expectation was set by Figure and Rocket, this process is not "traditional." It is broken.
@@ -5097,24 +5111,26 @@ The next generation of borrowers has already decided what lending should feel li
   },
 
   '59-billion-compliance-burden': {
-    title: 'The $59 Billion Compliance Burden — And How Automation Is Cutting It in Half',
+    title: 'The $61 Billion Compliance Burden, and How Automation Can Shrink It',
     description:
-      'U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
+      'Financial institutions in the U.S. and Canada spend $61 billion a year on financial crime compliance. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
     publishedDate: 'March 3, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '10 min read',
-    content: `**U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks. The smallest banks pay the highest price for the same regulations.**
+    content: `
+*Updated October 22, 2026: corrected the headline compliance figure (LexisNexis reports $61 billion for U.S. and Canadian financial crime compliance, not $59 billion for U.S. BSA/AML), the sources and scope of several statistics, and the regulation that requires income verification, and removed figures we could not source.*
+
+**Financial institutions in the U.S. and Canada spend $61 billion a year on financial crime compliance. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks. The smallest banks pay the highest price for the same regulations.**
 
 ---
 
 ## The Scale of the Problem
 
-Banking compliance in the United States costs an estimated $270 billion per year, consuming more than 10% of operating costs across the industry (American Bankers Association, 2024).
-
 :::pullquote
 For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at large banks. The smallest banks pay the most for the same regulations.
 :::
 
-Of that total, $59 billion goes specifically to BSA/AML — Bank Secrecy Act and anti-money laundering programs (LexisNexis Risk Solutions).
+Financial crime compliance alone costs U.S. and Canadian financial institutions $61 billion a year (LexisNexis Risk Solutions, 2024).
 
 These are not optional line items. They are the cost of holding a bank charter. Every institution, from JPMorgan Chase to a $75 million community bank in rural South Carolina, must run the same categories of compliance programs: Know Your Customer (KYC), Customer Due Diligence (CDD), suspicious activity monitoring, watchlist screening, and ongoing transaction surveillance.
 
@@ -5122,7 +5138,7 @@ The regulations do not scale by institution size. The costs do — but in the wr
 
 ## The Disproportionate Burden on Community Banks
 
-A 2023 study by the Conference of State Bank Supervisors (CSBS) found that community banks with less than $100 million in assets spend 8.7% of their noninterest expenses on compliance. Banks above $1 billion spend 2.9%.
+A 2016 St. Louis Fed study of CSBS survey data found that community banks with less than $100 million in assets spend 8.7% of their noninterest expenses on compliance. Banks with $1 billion to $10 billion spend 2.9%.
 
 That is a 3x disparity for meeting the same regulatory obligations.
 
@@ -5130,17 +5146,17 @@ The reason is straightforward: compliance infrastructure has high fixed costs. A
 
 At small community banks, compliance personnel and external consultants account for 50% to 64% of the total compliance budget (CSBS). Over 60% of industry-wide compliance spending goes to staffing (Fenergo). This is largely manual labor: reviewing documents, screening names against watchlists, verifying information across multiple sources, and documenting findings for examiners.
 
-The economics are punishing. A community bank generating $4 million in noninterest income is spending approximately $350,000 on compliance — money that could fund two additional loan officers, a technology upgrade, or a meaningful deposit rate improvement. A large bank generating $400 million spends $11.6 million — proportionally, a rounding error.
+The economics are punishing. A community bank with $4 million in noninterest expense is spending approximately $350,000 on compliance — money that could fund two additional loan officers, a technology upgrade, or a meaningful deposit rate improvement. A larger bank with $400 million in noninterest expense spends $11.6 million — proportionally, a rounding error.
 
 ## What It Takes to Verify One Borrower
 
 Abstract compliance cost figures become concrete when you trace what happens each time a community bank processes a single loan application.
 
-Before a loan officer can recommend approval, the bank must satisfy requirements from more than 20 federal regulations. For a standard mortgage borrower, the verification burden includes:
+Before a loan officer can recommend approval, the bank must satisfy requirements from a long list of federal regulations. For a standard mortgage borrower, the verification burden includes:
 
 **Identity and KYC**: Under the USA PATRIOT Act and FinCEN's Customer Due Diligence Rule, the bank must verify the borrower's identity, assess risk, and screen against the OFAC Specially Designated Nationals list and Politically Exposed Persons databases. This is not a one-time check — it must be documented, timestamped, and retained.
 
-**Income and Employment**: Regulation B (ECOA), the Truth in Lending Act, and agency guidelines require verified income documentation. The bank must confirm the borrower's stated income against actual records — pay stubs, tax returns, W-2s, or direct verification through employers.
+**Income and Employment**: The ability-to-repay rule under the Truth in Lending Act (Regulation Z) and agency guidelines require verified income documentation. The bank must confirm the borrower's stated income against actual records — pay stubs, tax returns, W-2s, or direct verification through employers.
 
 **Financial Assets and Liabilities**: The bank needs to verify the borrower's bank account balances, existing debts, and cash reserves. This typically requires collecting and manually reviewing two months of bank statements, cross-referencing against the credit report.
 
@@ -5150,7 +5166,7 @@ Before a loan officer can recommend approval, the bank must satisfy requirements
 
 Each of these verification steps historically involves separate systems, separate vendors, and significant manual labor. A compliance officer pulls a watchlist report from one vendor, checks income documentation from another source, and reviews property records from a third — then documents the findings in the bank's compliance management system.
 
-The industry data on this process is sobering. According to Fenergo's 2023 KYC research, the average KYC review costs $2,211 per client. For corporate clients, the review takes an average of 95 days. Even routine individual screenings average 18 minutes or more per check (KPMG/Refinitiv).
+The industry data on this process is sobering. According to Fenergo's 2023 KYC research, the average corporate KYC review costs $2,598. For corporate clients, the review takes an average of 95 days.
 
 The result: 70% of financial services firms report losing clients due to inefficient or slow onboarding processes (Fenergo). The compliance burden is not just a cost problem. It is a customer acquisition problem.
 
@@ -5166,13 +5182,11 @@ Community bank executives know this tension intimately. The compliance team is n
 
 ## How Automation Is Changing the Equation
 
-The data on compliance automation adoption shows a market that is moving rapidly. According to KPMG, the share of financial institutions using AI-powered KYC solutions jumped from 42% to 82% in a single year (2023 to 2024). This is not a gradual trend. It is a recognition that manual compliance processes are no longer viable at current regulatory complexity.
+The data on compliance automation adoption shows a market that is moving rapidly. According to Fenergo, reported use of advanced AI tools in KYC/AML jumped from 42% in 2024 to 82% in 2025. This is not a gradual trend. It is a recognition that manual compliance processes are no longer viable at current regulatory complexity.
 
 The measurable impact of automation on compliance operations is significant:
 
-- **Cost reduction**: Automation can reduce compliance costs by up to 60% (McKinsey, Deloitte)
 - **False positives**: Automated screening reduces false positive rates by up to 70%, directly cutting the time compliance staff spend investigating non-issues (Fenergo)
-- **Industry-wide savings**: Analysts estimate U.S. financial institutions could collectively save $23.4 billion through compliance automation (LexisNexis)
 - **Processing speed**: Automated identity verification takes seconds versus days for manual reviews
 - **Audit readiness**: Automated systems generate timestamped, immutable audit trails — eliminating the documentation scramble before examiner visits
 
@@ -5210,7 +5224,7 @@ Automating the verification layer does not eliminate the compliance function. It
 
 The banks spending 8.7% of noninterest expenses on compliance are not spending it on risk judgment. They are spending it on data collection, document review, and manual cross-referencing — precisely the work that automation handles better, faster, and more consistently than human labor.
 
-The $59 billion compliance burden is real. But the portion of it that consists of manual verification — the part that slows lending, frustrates borrowers, and burns through community bank budgets — does not have to be.
+The $61 billion compliance burden is real. But the portion of it that consists of manual verification — the part that slows lending, frustrates borrowers, and burns through community bank budgets — does not have to be.
 
 ---
 
@@ -5222,8 +5236,12 @@ The $59 billion compliance burden is real. But the portion of it that consists o
     description:
       'Figure originates at $730 per loan versus the industry average of $11,230. Their S-1 reveals the speed comes from automated data aggregation, not blockchain. The playbook is more replicable than you think.',
     publishedDate: 'February 24, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '11 min read',
-    content: `Figure went from zero to $6 billion in annual home equity lending in four years. They close HELOCs in 5 days at a cost of $730 per loan — while the industry spends $11,230. They filed for a $5.29 billion IPO. And buried in their S-1 is a detail that should change how every community bank CTO thinks about competing with them.
+    content: `
+*Updated October 22, 2026: corrected Figure's 2024 lending volume, funding times, IPO and ownership status, and a quote attributed to its S-1, and removed mortgage-process statistics we could not source.*
+
+Figure reached about $6 billion in annual home equity lending by mid-2025. They can fund HELOCs in as few as 5 days at a cost of $730 per loan — while the industry spends $11,230. They went public in September 2025 at a roughly $5.3 billion valuation. And buried in their S-1 is a detail that should change how every community bank CTO thinks about competing with them.
 
 Here is exactly what Figure is doing, where their speed actually comes from, and why the playbook is more replicable than you think.
 
@@ -5233,9 +5251,9 @@ Here is exactly what Figure is doing, where their speed actually comes from, and
 
 The scale is worth stating plainly.
 
-Figure Technologies originated roughly $6 billion in home equity products in 2024, serving over 253,000 households. Net revenue hit $340.9 million, up 62.7% year-over-year. Their cost per loan sits at approximately $730 — compared to the Mortgage Bankers Association's reported industry average of $11,230 for a standard origination (MBA, 2025). That is a 15:1 cost advantage.
+Figure facilitated roughly $5 billion in home equity lending in 2024, up 51%. Net revenue hit $340.9 million, up 62.7% year-over-year. Their cost per loan sits at approximately $730 — compared to the Mortgage Bankers Association's reported industry average of $11,230 per mortgage for Q4 2024 (MBA, cited in Figure's S-1). That is a 15:1 cost advantage.
 
-Their HELOC product approves borrowers in as little as 5 minutes and funds in 5 days. The industry median for a home equity line of credit is 39 days.
+Their HELOC product approves borrowers in as little as 5 minutes and funds in as few as 5 days (median 10 days in H1 2025).
 
 :::stat
 **$730**
@@ -5246,7 +5264,7 @@ Figure's cost per loan — versus the industry average of $11,230. That is a 15:
 Figure's cost per loan: $730. The industry average: $11,230. That's a 15:1 cost advantage — and it doesn't come from blockchain. It comes from automated data.
 :::
 
-When Figure filed for its IPO at a $5.29 billion valuation, the S-1 laid out the thesis in plain language: they are a technology company that happens to make loans. The filing describes "layers of intermediaries that have long slowed things down" and positions Figure as the company that strips them out.
+When Figure filed for its IPO at a $5.29 billion valuation, the S-1 laid out the thesis in plain language: they are a technology company that happens to make loans. The filing describes "removing layers of the current legacy systems" and positions Figure as the company that strips them out.
 
 This is not posturing. The numbers support it.
 
@@ -5296,7 +5314,7 @@ Figure's actual moat is the time between "borrower clicks apply" and "lender has
 
 In a traditional origination, that gap is measured in weeks. The borrower fills out an application. The loan officer requests documents. The borrower gathers pay stubs, tax returns, bank statements. Someone uploads them. Someone else reviews them. Discrepancies trigger re-requests. The underwriter orders a credit report, an appraisal, a title search. Each step involves a queue.
 
-The average mortgage file contains 500 pages of documentation (MBA). Lenders work from checklists with 55 line items. Borrowers submit an average of 16 separate documents per application. The process takes 42 days for a conventional mortgage, 77 days for FHA (ICE Mortgage Technology, 2025).
+Mortgage files can run 500 pages, and the average loan takes roughly six weeks to close.
 
 :::stat
 **500 pages**
@@ -5317,7 +5335,7 @@ Here is the part Figure's investor deck does not emphasize.
 
 **Figure does not serve complex borrowers well.** Self-employed income. Agricultural operations. Small business owners with intermingled personal and business finances. Borrowers who need someone to walk them through the difference between a HELOC and a cash-out refinance. These borrowers need a conversation, not a funnel. Community banks handle them every day. Figure's 5-minute approval flow is optimized for clean, salaried W-2 borrowers with straightforward financials — a profitable segment, but not the only segment.
 
-**Figure does not invest in your community.** Community banks deploy deposits locally. They fund the small business loans that national lenders will not touch. They meet CRA obligations through genuine community investment, not compliance checkboxes. Figure is a national lender backed by venture capital, headquartered in New York. Their capital goes where the risk-adjusted return is highest, not where Main Street needs it. Community banks hold 97% of banking charters and remain the primary credit source for rural and underserved markets (FDIC).
+**Figure does not invest in your community.** Community banks deploy deposits locally. They fund the small business loans that national lenders will not touch. They meet CRA obligations through genuine community investment, not compliance checkboxes. Figure is a publicly traded national lender (Nasdaq: FIGR), headquartered in New York. Their capital goes where the risk-adjusted return is highest, not where Main Street needs it. Community banks hold 97% of banking charters and remain the primary credit source for rural and underserved markets (FDIC).
 
 **Figure does not offer a branch.** For a significant segment of borrowers — larger than fintech evangelists admit — a branch matters. It matters when a borrower has a question about their draw period. It matters during the signing of the largest financial commitment of someone's life. It matters when something goes wrong and the borrower wants to talk to a human being who knows their name, not submit a support ticket.
 
@@ -5329,7 +5347,7 @@ Community banks that try to become Figure will fail. They do not have the engine
 
 ## The Verification Gap Is Closable
 
-Figure's S-1 reveals the real architecture: automated data pulls from identity providers, income verification services, property data vendors, and bank account aggregators — stitched into a single workflow.
+Figure's S-1 makes clear the speed doesn't come from blockchain; it comes from an automated application and verification workflow.
 
 That is not a technology stack that requires $200 million in venture funding to assemble. The individual components — Plaid for financial data, Socure for identity and fraud, Truework for employment, ATTOM for property valuations — are available as APIs to any lender. The hard part is integrating them into a single flow that is fast enough to compete.
 
@@ -5359,17 +5377,21 @@ Community banks do not need to become fintechs. They need to verify like fintech
   'one-link-complete-verification': {
     title: 'One Link, Complete Verification: How RAVEN Works for Community Banks',
     description:
-      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from seven providers with a full audit trail.',
+      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from six providers with a full audit trail.',
     publishedDate: 'February 17, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '12 min read',
-    content: `What if verifying a borrower took 5 minutes instead of 5 weeks?
+    content: `
+*Updated October 22, 2026: corrected the number of data providers and the scope of a compliance-cost statistic, and removed mortgage-process and abandonment figures we could not source.*
 
-The average mortgage origination requires 16 separate documents, runs through a 55-item checklist, generates a 500-page file, and takes 42 days to close (ICE Mortgage Technology, MBA, 2025). The average cost: $11,094 per loan originated, with only $785 in profit at the end (MBA, 2025). Most of that time and cost is not spent making lending decisions. It is spent collecting and verifying data.
+What if verifying a borrower took 5 minutes instead of 5 weeks?
 
-RAVEN replaces the collection phase. One link. One borrower interaction. Complete verification data back to the bank in minutes — identity, income, employment, property, and fraud screening — cross-referenced from seven providers with a full audit trail.
+The average mortgage file can run 500 pages and takes roughly six weeks to close. The average cost: $11,094 per loan originated, with only $785 in profit at the end (MBA, 2025). Most of that time and cost is not spent making lending decisions. It is spent collecting and verifying data.
+
+RAVEN replaces the collection phase. One link. One borrower interaction. Complete verification data back to the bank in minutes — identity, income, employment, property, and fraud screening — cross-referenced from six providers with a full audit trail.
 
 :::pullquote
-The average mortgage file: 16 documents, a 55-item checklist, 500 pages, and 42 days. Most of that time is not spent making lending decisions. It's spent chasing data.
+The average mortgage file: hundreds of pages and roughly six weeks. Most of that time is not spent making lending decisions. It's spent chasing data.
 :::
 
 Here is exactly how it works.
@@ -5384,12 +5406,7 @@ Pull a credit report. Request pay stubs. Call the employer for verification. Wai
 
 Each of these steps involves a different system, a different provider, and often a different person. The loan officer toggles between platforms, re-enters data, waits for responses, and chases down discrepancies. Some verifications come back in hours. Others take days. An appraisal can take two weeks.
 
-Meanwhile, the borrower waits. And 68% of mortgage applicants who start this process abandon it before closing. Among borrowers who experience digital friction, 48% take their business to a competitor (J.D. Power, Plaid).
-
-:::stat
-**68%**
-The share of mortgage applicants who abandon the process before closing — not because they stopped wanting a loan, but because the verification workflow drove them away.
-:::
+Meanwhile, the borrower waits.
 
 The process is not broken because bankers are slow. It is broken because the workflow requires serial, manual interactions with dozens of systems that were never designed to talk to each other.
 
@@ -5498,7 +5515,7 @@ Loan officers access results through the RAVEN dashboard — a web interface tha
 
 ## What This Means for Compliance
 
-Community banks under $100 million in assets spend 8.7% of noninterest expenses on compliance — three times the rate at banks over $1 billion (CSBS). A significant share of that cost goes to the manual, repetitive work of verifying borrowers against regulatory requirements.
+Community banks under $100 million in assets spend 8.7% of noninterest expenses on compliance — three times the rate at banks with $1 billion to $10 billion (St. Louis Fed, 2016). A significant share of that cost goes to the manual, repetitive work of verifying borrowers against regulatory requirements.
 
 RAVEN does not replace compliance judgment. It replaces compliance data collection. The KYC checks, the watchlist screening, the identity verification, the income confirmation — these are executed automatically, sourced from authoritative providers, and documented with a full audit trail. The compliance officer reviews results and makes decisions, rather than gathering data and entering it into systems.
 

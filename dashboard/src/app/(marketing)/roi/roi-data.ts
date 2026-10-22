@@ -514,7 +514,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 28396,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$1.08B' },
+      { label: 'Total assets', value: '$1.10B (Q2 2026)' },
       { label: 'ROA', value: '1.36% (1H 2026); 1.07% (FY2025)' },
       { label: 'NIM', value: '3.59% (1H 2026)' },
       { label: 'Branch count', value: '22' },
@@ -554,7 +554,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 59106,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$972M' },
+      { label: 'Total assets', value: '$982M (Q2 2026)' },
       { label: 'ROA', value: '0.38% (FY2025); 0.52% annualized Q1 2026' },
       { label: 'NIM', value: '2.58% (FY2025); 2.52% annualized Q1 2026' },
       { label: 'Branch count', value: '6' },
@@ -594,7 +594,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 2138,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$2.34B' },
+      { label: 'Total assets', value: '$2.28B (Q2 2026)' },
       { label: 'ROA', value: '1.06%' },
       { label: 'NIM', value: '3.5%' },
       { label: 'Branch count', value: '27' },
@@ -1090,7 +1090,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35295,
     auditDate: 'May 2026',
     stats: [
-      { label: 'Total assets', value: '$4.4B' },
+      { label: 'Total assets', value: '$4.7B (Q2 2026)' },
       { label: 'Total loans', value: '$3.9B' },
       { label: '2024 HMDA originations', value: '1,119' },
       { label: 'Branches', value: '12 across SC, NC, GA' },
@@ -1170,7 +1170,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 20504,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '~$25.6B' },
+      { label: 'Total assets', value: '~$28.4B (Q2 2026)' },
       { label: 'States', value: 'GA, AL, FL, SC, NC' },
       { label: 'Online loan products', value: '1 of 6 (partial)' },
       { label: 'Mortgage', value: 'Third-party portal' },
@@ -1185,7 +1185,7 @@ export const ROI_BANKS: BankRoiInput[] = [
       source: "Ameris Bank footprint spans high-growth metros: Atlanta MSA (~50,000 net new households/year), Jacksonville FL MSA, Columbia SC MSA, and coastal GA/FL markets. Estimated 25,000 net new households in primary service areas annually (ACS 2019-2023, Census population estimates).",
     },
     intro:
-      "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across Georgia, Alabama, Florida, South Carolina, and North Carolina. The mortgage operation is substantial, but mortgage applications route to a third-party subdomain (mymortgage-online.com), breaking the brand at the highest-stakes conversion step. Personal loans have no digital application path. HELOC and home equity require a branch visit. Commercial is relationship-only. For a bank this size, automated borrower verification at intake is the infrastructure that makes the mortgage volume sustainable without proportional staffing.",
+      "Ameris Bank is the dominant Southeast-focused regional with $28.4 billion in assets across Georgia, Alabama, Florida, South Carolina, and North Carolina. The mortgage operation is substantial, but mortgage applications route to a third-party subdomain (mymortgage-online.com), breaking the brand at the highest-stakes conversion step. Personal loans have no digital application path. HELOC and home equity require a branch visit. Commercial is relationship-only. For a bank this size, automated borrower verification at intake is the infrastructure that makes the mortgage volume sustainable without proportional staffing.",
     strategic: [
       {
         title: '$25B mortgage operation running on a third-party portal',

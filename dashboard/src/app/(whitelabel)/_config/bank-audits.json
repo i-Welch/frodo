@@ -229,16 +229,16 @@
     "slug": "first-reliance-bank",
     "bankName": "First Reliance Bank",
     "shortName": "First Reliance",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "first-reliance-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.12B"
+        "value": "~$1.13B"
       },
       {
         "label": "Branches",
-        "value": "~13 across SC"
+        "value": "10 across SC"
       },
       {
         "label": "Online application portals",
@@ -246,10 +246,10 @@
       },
       {
         "label": "Digital banking",
-        "value": "Jack Henry (likely)"
+        "value": "Apiture (digital banking)"
       }
     ],
-    "summary": "First Reliance Bank has done more than most community banks its size to put lending online, but the result is three disconnected front doors: deposit account opening on apply.firstreliance.com, a consumer loan application on a vendor portal (digitallending.online), and a separate mortgage application path. Each leaves the First Reliance brand for a generic vendor screen, and HELOC, auto/RV, and all commercial lending still end at 'apply in person or call.' Underneath, every portal collects identity, income, employment, and property the slow, manual way. The bank already runs a modern stack (a branded mobile app, Jack Henry Lending participation); what's missing is one branded, verify-as-you-go intake that spans every product.",
+    "summary": "First Reliance Bank has done more than most community banks its size to put lending online, but the result is three disconnected front doors: deposit account opening on apply.firstreliance.com, a consumer loan application on a vendor portal (digitallending.online), and a separate mortgage application path. Each leaves the First Reliance brand for a generic vendor screen, and HELOC, auto/RV, and all commercial lending still end at 'apply in person or call.' Underneath, every portal collects identity, income, employment, and property the slow, manual way. The bank already runs a modern stack (a branded mobile app, Jack Henry Lending participation); what's missing is one branded, verify-as-you-go intake that spans every product. Update, October 2026: Colony Bankcorp agreed in June 2026 to acquire First Reliance for about $163 million; regulators and both companies' shareholders have approved, and the deal is expected to close in the fourth quarter of 2026.",
     "currentJourney": [
       {
         "channel": "Personal loans",
@@ -258,7 +258,7 @@
       },
       {
         "channel": "Mortgage",
-        "detail": "Dedicated online application path, separate again from the consumer-loan portal; brand and login differ",
+        "detail": "'Apply Now' goes to firstreliance3.mortgagewebcenter.com, a Finastra Mortgagebot portal off the bank's domain.",
         "status": "weak"
       },
       {
@@ -268,13 +268,13 @@
       },
       {
         "channel": "HELOC / Home equity",
-        "detail": "Marketing page only; no apply button, routes to a branch visit or phone call",
-        "status": "missing"
+        "detail": "HELOC page has an 'Apply for a Loan Today' button linking to the same third-party consumer-loan portal (app.prod.digitallending.online). No verification visible.",
+        "status": "weak"
       },
       {
         "channel": "Auto / RV / Watercraft",
-        "detail": "Listed as a product but no online application surfaced; contact a lender",
-        "status": "missing"
+        "detail": "Auto/RV page says 'Apply online, call us, or stop by'; its 'Apply for a Loan' button goes to the third-party consumer-loan portal (app.prod.digitallending.online).",
+        "status": "weak"
       },
       {
         "channel": "Business / Commercial",
@@ -317,7 +317,7 @@
       },
       {
         "dimension": "Products you can start online",
-        "today": "Personal, mortgage, deposits",
+        "today": "Personal, auto/RV, HELOC, mortgage, deposits",
         "withRaven": "Add HELOC, auto, and commercial too"
       },
       {
@@ -338,40 +338,40 @@
       {
         "dimension": "Into the core system",
         "today": "Re-keyed by staff across portals",
-        "withRaven": "Synced to Jack Henry automatically"
+        "withRaven": "Synced to First Reliance's core automatically"
       }
     ],
-    "sources": "firstreliance.com (/, /personal/personal-borrowing, /personal/personal-borrowing/home-equity-line-of-credit-heloc, /mortgages, /login), apply.firstreliance.com and app.prod.digitallending.online application portals, First Reliance App on the Apple App Store, research.jackhenry.com Jack Henry Lending bank scorecard, FDIC BankFind cert #35214, First Reliance Bancshares Q1 2026 disclosures. Brand colors (#0e2a59 navy, #001a91 royal blue, #ffdd00 gold) extracted from the live homepage CSS; tagline 'There's More to Banking Than Money' from the site. Reviewed June 2026."
+    "sources": "firstreliance.com (/, /personal/personal-borrowing, /personal/personal-borrowing/home-equity-line-of-credit-heloc, /mortgages, /login), apply.firstreliance.com and app.prod.digitallending.online application portals, First Reliance App on the Apple App Store, research.jackhenry.com Jack Henry Lending bank scorecard, FDIC BankFind cert #35214, First Reliance Bancshares Q1 2026 disclosures. Brand colors (#0e2a59 navy, #001a91 royal blue, #ffdd00 gold) extracted from the live homepage CSS; tagline 'There's More to Banking Than Money' from the site. Reviewed October 2026."
   },
   {
     "slug": "colony-bankcorp",
     "bankName": "Colony Bank",
     "shortName": "Colony",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "colony-bankcorp",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$3.7B"
+        "value": "~$3.6B"
       },
       {
         "label": "Locations",
-        "value": "~37"
+        "value": "33 (GA, FL)"
       },
       {
         "label": "Online loan applications",
-        "value": "2 of 6"
+        "value": "4 of 6"
       },
       {
         "label": "Digital banking",
         "value": "Fiserv"
       }
     ],
-    "summary": "Colony Bank runs a modern Fiserv digital-banking stack for existing customers, but its self-serve front door for new lending is partial and fragmented. Mortgage and personal loans can be started online, yet each hands the borrower off to a different third-party domain with a different look. Auto, boat/RV/ATV, and home equity are marketing pages that end at 'see loan details' or a call to a lender, and business/SBA lending routes to a specialty team with no digital intake. Across a 37-location footprint spanning Georgia, Alabama, and north Florida, that means high-intent demand scatters across vendor portals or stalls at a phone call. The platform to do better is already in place; what is missing is one branded, verify-as-you-go intake.",
+    "summary": "Colony Bank runs a modern Fiserv digital-banking stack for existing customers, but its self-serve front door for new lending is partial and fragmented. Mortgage and personal loans can be started online, yet each hands the borrower off to a different third-party domain with a different look. Auto, boat/RV/ATV, and home equity are marketing pages that end at 'see loan details' or a call to a lender, and business/SBA lending routes to a specialty team with no digital intake. Across a 33-office footprint spanning Georgia, Alabama, and north Florida, that means high-intent demand scatters across vendor portals or stalls at a phone call. The platform to do better is already in place; what is missing is one branded, verify-as-you-go intake. Update, October 2026: Colony is acquiring First Reliance Bancshares (expected to close in the fourth quarter of 2026), creating a bank of about $5 billion across Alabama, Florida, Georgia and South Carolina.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Online 'Apply Now' that hands off to mortgage.colonybank.com, a separate third-party POS domain with a different look",
+        "detail": "Mortgage intake is split: mortgage.colonybank.com runs on Maxwell, while loan-officer 'Apply Now' links go to colonybank.mymortgage-online.com, an ICE Encompass Consumer Connect portal.",
         "status": "weak"
       },
       {
@@ -381,8 +381,8 @@
       },
       {
         "channel": "Auto / Boat / RV / ATV",
-        "detail": "Marketing detail pages only ('See loan details'); no application, no after-hours capture",
-        "status": "missing"
+        "detail": "Auto and boat/RV/ATV pages have 'Apply Now' buttons that hand off to colonybank.loanwebcenter.com, a Finastra Mortgagebot portal, the same third-party portal as personal loans.",
+        "status": "weak"
       },
       {
         "channel": "Home equity / HELOC",
@@ -396,8 +396,8 @@
       },
       {
         "channel": "Deposit account opening",
-        "detail": "No clear self-serve online account opening surfaced; branch-oriented",
-        "status": "missing"
+        "detail": "'Open an Account' goes to apply.colony.bank, an online account opening flow on the Prelim platform.",
+        "status": "weak"
       },
       {
         "channel": "Existing-customer banking",
@@ -407,7 +407,7 @@
     ],
     "findings": [
       {
-        "title": "Lending intake is split across three different domains",
+        "title": "Lending intake is split across four different platforms",
         "severity": "friction",
         "body": "A borrower who wants a mortgage lands on mortgage.colonybank.com; one who wants a personal loan lands on colonybank.loanwebcenter.com; everything else routes to a phone call. At the highest-intent moment, the customer leaves Colony's brand for a generic vendor screen, and there is no single place that knows the borrower across products."
       },
@@ -419,7 +419,7 @@
       {
         "title": "You already own the platform to fix this",
         "severity": "note",
-        "body": "Colony runs Fiserv for digital banking (online banking is served from the secureinternetbank.com root domain, Fiserv's platform). A white-label intake that syncs verified applications straight into the Fiserv core is an incremental addition to a stack you already run, not a rip-and-replace. The gap is intake and verification, not infrastructure."
+        "body": "Colony runs Fiserv for digital banking (online banking is, Fiserv's platform). A white-label intake that syncs verified applications straight into the Fiserv core is an incremental addition to a stack you already run, not a rip-and-replace. The gap is intake and verification, not infrastructure."
       },
       {
         "title": "Complex Southeast borrowers get verified the slow way",
@@ -430,7 +430,7 @@
     "comparison": [
       {
         "dimension": "Products you can start online",
-        "today": "Mortgage + personal only (2 of 6), on separate domains",
+        "today": "Mortgage, personal, auto/boat and deposits (4 of 6), across four vendors, on separate domains",
         "withRaven": "Every product, one front door"
       },
       {
@@ -459,7 +459,7 @@
         "withRaven": "Synced to Fiserv automatically"
       }
     ],
-    "sources": "colony.bank (/personal/lending, /about-us, /digital-banking/online-banking); mortgage.colonybank.com and colonybank.loanwebcenter.com application hand-offs; digitalbanking.colony.bank on the secureinternetbank.com root domain (Fiserv online banking platform); 2026 Colony Bank logo and theme CSS for brand colors (#840029 crimson, #e9bc55 gold, #25333e slate-navy); FDIC BankFind cert #22257; Colony Bankcorp (NYSE: CBAN) investor relations. Reviewed June 2026."
+    "sources": "colony.bank (/personal/lending, /about-us, /digital-banking/online-banking); mortgage.colonybank.com and colonybank.loanwebcenter.com application hand-offs; digitalbanking.colony.bank on the secureinternetbank.com root domain (Fiserv online banking platform); 2026 Colony Bank logo and theme CSS for brand colors (#840029 crimson, #e9bc55 gold, #25333e slate-navy); FDIC BankFind cert #22257; Colony Bankcorp (NYSE: CBAN) investor relations. Reviewed October 2026."
   },
   {
     "slug": "carolina-bank-trust",
@@ -706,16 +706,16 @@
     "slug": "oconee-federal",
     "bankName": "Oconee Federal Savings and Loan Association",
     "shortName": "Oconee Federal",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "oconee-federal",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$663M"
+        "value": "~$679M"
       },
       {
         "label": "Branches",
-        "value": "9 (SC & GA)"
+        "value": "8 (SC & GA)"
       },
       {
         "label": "Online loan products",
@@ -723,14 +723,14 @@
       },
       {
         "label": "Digital banking",
-        "value": "FIS"
+        "value": "Fiserv"
       }
     ],
     "summary": "Oconee Federal is a 100-year-old thrift built almost entirely around home lending: conventional fixed and ARM mortgages, construction-to-permanent, and lot/land loans. Its conforming mortgage products already have an online 'Apply Now' path, which is ahead of many peers. But the rest of the catalog falls off a cliff: HELOC, home equity, FHA/VA/USDA, and all commercial/SBA lending end at 'Contact Our Team' with a phone number. There is no verification layer behind any of it, so even the products you can start online still trigger a manual document chase. The opportunity is one branded, verify-as-you-go front door that covers every line and feeds clean, verified data into the core, rather than a mortgage app on one product and phone calls for everything else.",
     "currentJourney": [
       {
         "channel": "Conforming mortgage (fixed/ARM)",
-        "detail": "Online 'Apply Now' portal from the mortgage page, ahead of peers, but no verification, so documents are chased manually after submission",
+        "detail": "Online 'Apply Now' portal from the mortgage page, ahead of peers, but no verification, so documents are chased manually after submission 'Apply Now' goes to ofedtest.mymortgage-online.com, an ICE Encompass Consumer Connect portal.",
         "status": "weak"
       },
       {
@@ -745,7 +745,7 @@
       },
       {
         "channel": "HELOC / Home equity",
-        "detail": "'Contact Our Team' only. No application, no after-hours capture",
+        "detail": "'Call us to discuss if a HELOC is right for you' only. No application, no after-hours capture",
         "status": "missing"
       },
       {
@@ -765,7 +765,7 @@
       },
       {
         "channel": "Existing-customer banking",
-        "detail": "FIS online + mobile banking, functional for current customers",
+        "detail": "Fiserv online + mobile banking, functional for current customers",
         "status": "ok"
       }
     ],
@@ -788,7 +788,7 @@
       {
         "title": "The digital banking platform is already there to build on",
         "severity": "note",
-        "body": "Existing customers bank through FIS. A white-label intake that verifies the borrower and syncs the application into the core is an incremental addition on top of infrastructure you already run and pay for, not a core conversion. The gap is intake and verification, not the platform."
+        "body": "Existing customers bank through Fiserv. A white-label intake that verifies the borrower and syncs the application into the core is an incremental addition on top of infrastructure you already run and pay for, not a core conversion. The gap is intake and verification, not the platform."
       }
     ],
     "comparison": [
@@ -820,25 +820,25 @@
       {
         "dimension": "Into the core system",
         "today": "Re-keyed by staff",
-        "withRaven": "Synced to FIS automatically"
+        "withRaven": "Synced to Fiserv automatically"
       }
     ],
-    "sources": "oconeefederal.com (/, /mortgage-lending, /locations, /online-banking, /who-we-are), FIS online-banking host. Oconee Federal Financial Corp (Nasdaq: OFED) earnings releases (~$663.1M total assets at 3/31/2026) and SEC EDGAR filings. FDIC BankFind cert #30111. NMLS #810392. Founded 1924, federal charter since 1991. Navy/white brand from the bank's logo and site. Reviewed June 2026."
+    "sources": "oconeefederal.com (/, /mortgage-lending, /locations, /online-banking, /who-we-are), Fiserv online-banking host. Oconee Federal Financial Corp (Nasdaq: OFED) earnings releases (~$663.1M total assets at 3/31/2026) and SEC EDGAR filings. FDIC BankFind cert #30111. NMLS #810392. Founded 1924, federal charter since 1991. Navy/white brand from the bank's logo and site. Reviewed October 2026."
   },
   {
     "slug": "anderson-brothers-bank",
     "bankName": "Anderson Brothers Bank",
     "shortName": "Anderson Brothers",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "anderson-brothers-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.78B"
+        "value": "~$2.38B"
       },
       {
         "label": "Branches",
-        "value": "26+ across coastal & Pee Dee SC"
+        "value": "27 across coastal & Pee Dee SC"
       },
       {
         "label": "Online intake vendors",
@@ -846,10 +846,10 @@
       },
       {
         "label": "Digital banking",
-        "value": "Jack Henry (NetTeller)"
+        "value": "Jack Henry (Banno)"
       }
     ],
-    "summary": "Anderson Brothers Bank is a consumer-lending workhorse: a 1933-vintage Mullins, SC bank that has built more online loan intake than most community-bank peers, but stitched it together from three different vendors on three different domains. Auto and personal applications hand off to a defi SOLUTIONS portal (abbank.defidirect.com), mortgages route to a separate third-party POS (abbankconsumerconnect.mymortgage-online.com), and existing-customer banking lives on Jack Henry's NetTeller (go.abbank.com). Every borrower who clicks 'apply' leaves the Anderson Brothers brand for a generic vendor screen, no rates are published anywhere, and nothing is verified at intake. The volume and the appetite for digital are already there; what's missing is a single, branded, verify-as-you-go front door.",
+    "summary": "Anderson Brothers Bank is a consumer-lending workhorse: a 1933-vintage Mullins, SC bank that has built more online loan intake than most community-bank peers, but stitched it together from three different vendors on three different domains. Auto and personal applications hand off to a defi SOLUTIONS portal (abbank.defidirect.com), mortgages route to a separate third-party POS (abbankconsumerconnect.mymortgage-online.com), and existing-customer banking lives on Jack Henry's Banno platform (go.abbank.com). Every borrower who clicks 'apply' leaves the Anderson Brothers brand for a generic vendor screen, no rates are published anywhere, and nothing is verified at intake. The volume and the appetite for digital are already there; what's missing is a single, branded, verify-as-you-go front door.",
     "currentJourney": [
       {
         "channel": "Auto loans",
@@ -888,7 +888,7 @@
       },
       {
         "channel": "Existing-customer banking",
-        "detail": "Jack Henry NetTeller at go.abbank.com plus a mobile app and ProfitStars remote deposit; functional but a legacy NetTeller UI",
+        "detail": "Jack Henry Banno digital banking at go.abbank.com, plus a mobile app and ProfitStars remote deposit. Functional for existing customers.",
         "status": "ok"
       }
     ],
@@ -896,7 +896,7 @@
       {
         "title": "Three apply buttons, three different vendors, three brands",
         "severity": "gap",
-        "body": "Anderson Brothers actually lets borrowers start online, which puts it ahead of most peers. But auto/personal go to defi SOLUTIONS, mortgage goes to mymortgage-online.com, and banking sits on NetTeller. A borrower who wants an auto loan and a mortgage touches two unrelated portals, neither of which looks like Anderson Brothers. The brand equity built over 90 years evaporates at the exact moment of conversion."
+        "body": "Anderson Brothers actually lets borrowers start online, which puts it ahead of most peers. But auto/personal go to defi SOLUTIONS, mortgage goes to mymortgage-online.com, and banking sits on Jack Henry Banno. A borrower who wants an auto loan and a mortgage touches two unrelated portals, neither of which looks like Anderson Brothers. The brand equity built over 90 years evaporates at the exact moment of conversion."
       },
       {
         "title": "A high-velocity consumer book with no verification at intake",
@@ -911,7 +911,7 @@
       {
         "title": "You already own the platform to unify this",
         "severity": "note",
-        "body": "Anderson Brothers runs Jack Henry (NetTeller online banking and ProfitStars remote deposit are both Jack Henry products, and NetTeller ships on the SilverLake / CIF 20/20 cores). A white-label intake that verifies the borrower and syncs straight into the Jack Henry core is an incremental addition to a stack the bank already runs, not a rip-and-replace, and it retires two third-party portals at once."
+        "body": "Anderson Brothers runs Jack Henry: its Banno digital banking and ProfitStars remote deposit are both Jack Henry products. A white-label intake that verifies the borrower and syncs straight into the Jack Henry core is an incremental addition to a stack the bank already runs, not a rip-and-replace, and it retires two third-party portals at once."
       }
     ],
     "comparison": [
@@ -946,18 +946,18 @@
         "withRaven": "Synced to Jack Henry automatically"
       }
     ],
-    "sources": "abbank.com (/, /personal/lending/auto-loans, /personal/lending/personal-loans, /personal/services-resources/online-banking); auto/personal application portal abbank.defidirect.com (defi SOLUTIONS); mortgage portal abbankconsumerconnect.mymortgage-online.com; deposit application on app.consumer.meridianlink.com; online banking go.abbank.com (Jack Henry NetTeller) and ProfitStars remote deposit; FDIC BankFind cert #9923; NMLS #410840. Brand green #2f7851 and orange accent #d04b00 extracted from the bank's CSS. Reviewed June 2026."
+    "sources": "abbank.com (/, /personal/lending/auto-loans, /personal/lending/personal-loans, /personal/services-resources/online-banking); auto/personal application portal abbank.defidirect.com (defi SOLUTIONS); mortgage portal abbankconsumerconnect.mymortgage-online.com; deposit application on app.consumer.meridianlink.com; online banking go.abbank.com (Jack Henry Banno) and ProfitStars remote deposit; FDIC BankFind cert #9923; NMLS #410840. Brand green #2f7851 and orange accent #d04b00 extracted from the bank's CSS. Reviewed October 2026."
   },
   {
     "slug": "southern-first-bank",
     "bankName": "Southern First Bank",
     "shortName": "Southern First",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "southern-first-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$4.4B"
+        "value": "~$4.7B"
       },
       {
         "label": "Offices",
@@ -972,7 +972,7 @@
         "value": "1,119"
       }
     ],
-    "summary": "Southern First is a $4.4B relationship-first bank (NASDAQ: SFST) built on a high-touch ClientFIRST model, with a deep mortgage book (1,119 HMDA originations in 2024) and heavy CRE/C&I lending. It is further along than most peers on one product: mortgages have a real online application that starts on southernfirst.com, complete with a pick-your-mortgage-executive step. But that is the only line a borrower can start online, no rates are published anywhere, and every other product (home equity, HELOC, personal loans, and all business/commercial lending) ends at 'contact your Southern First banker.' At this origination volume, the missing piece is a single branded, verify-as-you-go front door that captures and qualifies demand across the whole lineup, not just mortgage.",
+    "summary": "Southern First is a $4.7B relationship-first bank (NASDAQ: SFST) built on a high-touch ClientFIRST model, with a deep mortgage book (1,119 HMDA originations in 2024) and heavy CRE/C&I lending. It is further along than most peers on one product: mortgages have a real online application that starts on southernfirst.com, complete with a pick-your-mortgage-executive step. But that is the only line a borrower can start online, no rates are published anywhere, and every other product (home equity, HELOC, personal loans, and all business/commercial lending) ends at 'contact your Southern First banker.' At this origination volume, the missing piece is a single branded, verify-as-you-go front door that captures and qualifies demand across the whole lineup, not just mortgage.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -1064,7 +1064,7 @@
         "withRaven": "Banker gets a verified, complete file by name"
       }
     ],
-    "sources": "southernfirst.com (/, /personal/mortgages, /personal/loans, /business/loans, /about), mortgageapp.southernfirst.com (online mortgage application), southernfirstpersonal.com (online banking), FDIC BankFind cert #35295, Southern First Bancshares (NASDAQ: SFST) filings. Brand colors approximated from the live site's navy/accent-blue palette. Core system not publicly disclosed; Fiserv inferred at low confidence. Reviewed June 2026."
+    "sources": "southernfirst.com (/, /personal/mortgages, /personal/loans, /business/loans, /about), mortgageapp.southernfirst.com (online mortgage application), southernfirstpersonal.com (online banking), FDIC BankFind cert #35295, Southern First Bancshares (NASDAQ: SFST) filings. Brand colors approximated from the live site's navy/accent-blue palette. Core system not publicly disclosed; Fiserv inferred at low confidence. Reviewed October 2026."
   },
   {
     "slug": "south-atlantic-bank",
@@ -1748,12 +1748,12 @@
     "slug": "first-palmetto-bank",
     "bankName": "First Palmetto Bank",
     "shortName": "First Palmetto",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "first-palmetto-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.08B"
+        "value": "~$1.10B"
       },
       {
         "label": "Branches",
@@ -1768,7 +1768,7 @@
         "value": "1904 (est. 122 years)"
       }
     ],
-    "summary": "First Palmetto Bank has zero online loan applications across its entire product line. Every mortgage product (traditional, balloon, ARM, HELOC, construction-to-permanent, bridge, second mortgage), every personal loan, every vehicle loan, and every business loan ends at the same three options: call 1.888.413.BANK, submit a contact form, or visit one of 22 branches. The mortgage section offers a lead-capture information request form at /mortgage-information-form, but this is not an application: it collects a name and question and routes to a banker. With $1.08B in assets, 22 locations spanning four SC regions, and Newsweek Best Small Bank recognition three years running (2021-2023), the bank has strong market presence; what it lacks is any after-hours digital capture. A borrower who finds First Palmetto at 9 PM on a Saturday has nowhere to go.",
+    "summary": "First Palmetto Bank has zero online loan applications across its entire product line. Every mortgage product (traditional, balloon, ARM, HELOC, construction-to-permanent, bridge, second mortgage), every personal loan, every vehicle loan, and every business loan ends at the same three options: call 1.888.413.BANK, submit a contact form, or visit one of 22 branches. The mortgage section offers a lead-capture information request form at /mortgage-information-form, but this is not an application: it collects a name and question and routes to a banker. With $1.10B in assets, 22 locations spanning four SC regions, and Newsweek Best Small Bank recognition three years running (2021-2023), the bank has strong market presence; what it lacks is any after-hours digital capture. A borrower who finds First Palmetto at 9 PM on a Saturday has nowhere to go.",
     "currentJourney": [
       {
         "channel": "Mortgage (all 7 types)",
@@ -1852,21 +1852,21 @@
       {
         "dimension": "Into the core system",
         "today": "Bankers re-key data from lead forms and phone notes",
-        "withRaven": "Verified data synced to Jack Henry automatically, no re-keying"
+        "withRaven": "Verified data synced to the bank's core automatically, no re-keying"
       }
     ],
-    "sources": "firstpalmetto.com (/, /mortgage, /mortgage/borrow/traditional-mortgages, /mortgage-information-form, /mortgage/bankers, /personal/borrow/personal-loans, /personal/borrow/vehicle-loans, /business/loans, /locations, /about, sitemap.xml), firstpalmetto.onlinebank.com (personal online banking portal), web13.secureinternetbank.com (commercial banking portal — Jack Henry inferred from EBC reference pattern and secureinternetbank.com hosting), FDIC cert #28396. Tagline 'Serving South Carolina since 1904' from live homepage. Core inferred as Jack Henry from EBC_EBC1151 portal path and secureinternetbank.com domain pattern (moderate confidence). Reviewed June 2026."
+    "sources": "firstpalmetto.com (/, /mortgage, /mortgage/borrow/traditional-mortgages, /mortgage-information-form, /mortgage/bankers, /personal/borrow/personal-loans, /personal/borrow/vehicle-loans, /business/loans, /locations, /about, sitemap.xml), firstpalmetto.onlinebank.com (personal online banking portal), web13.secureinternetbank.com (commercial banking portal — Fiserv-hosted online banking (secureinternetbank.com); core not confirmed. Tagline 'Serving South Carolina since 1904' from live homepage. Core inferred as Jack Henry from EBC_EBC1151 portal path and secureinternetbank.com domain pattern (moderate confidence). Reviewed October 2026."
   },
   {
     "slug": "beacon-community-bank",
     "bankName": "Beacon Community Bank",
     "shortName": "Beacon Community",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "beacon-community-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$972M"
+        "value": "~$982M"
       },
       {
         "label": "Branches",
@@ -1881,21 +1881,21 @@
         "value": "Jack Henry (Banno)"
       }
     ],
-    "summary": "Update, October 2026: Beacon merged with Coastal Carolina National Bank on October 1, 2026, and the combined bank takes the name Beacon Bank, N.A. in March 2027. The figures below are as of June 2026, before the merger. Beacon Community Bank is a $972M Lowcountry-focused community bank built on a straightforward promise: local decisions, personal service, face-to-face relationships. That philosophy is consistent from the homepage down to the loans section, where every product — mortgage, HELOC, personal and auto loans, business lines, and SBA financing — ends at the same CTA: 'Contact a Personal Banker today.' There is no online loan application of any kind on beacon.bank, not even an off-brand vendor portal. Digital banking is handled well via a Jack Henry Banno mobile app, but the lending intake layer is entirely phone-and-branch, meaning the bank has no way to capture a Lowcountry borrower who shops after 5pm or on a weekend.",
+    "summary": "Update, October 2026: Beacon merged with Coastal Carolina National Bank on October 1, 2026, and the combined bank takes the name Beacon Bank, N.A. in March 2027. The figures below are as of June 2026, before the merger. Beacon Community Bank is a $982M Lowcountry-focused community bank built on a straightforward promise: local decisions, personal service, face-to-face relationships. That philosophy is consistent from the homepage down to the loans section, where every product — mortgage, HELOC, personal and auto loans, business lines, and SBA financing — ends at the same CTA: 'Please contact a branch manager or visit one of our convenient locations.' There is no online loan application of any kind on beacon.bank, not even an off-brand vendor portal. Digital banking is handled well via a Jack Henry Banno mobile app, but the lending intake layer is entirely phone-and-branch, meaning the bank has no way to capture a Lowcountry borrower who shops after 5pm or on a weekend. The bank now operates as Beacon Community Bank, a division of Coastal Carolina National Bank, and its systems convert to CCNB's in early 2027, so the platform details below may change.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Marketing page with loan officer bios and two calculators (payment and qualifier); no apply button. CTA: 'Contact a Mortgage Loan Officer to discover options and latest rates.' Borrower must call (843) 936-5100 or visit a branch.",
+        "detail": "Marketing page with loan officer bios and two calculators (payment and qualifier); no apply button. CTA: 'Contact a mortgage lender today!.' Borrower must call (843) 936-5100 or visit a branch.",
         "status": "missing"
       },
       {
         "channel": "HELOC / Home equity",
-        "detail": "Product page with HELOC and term loan options plus two calculators; no apply button. CTA: 'Contact a Personal Banker today to decide how a Home Equity can help you.' Rates available only on inquiry.",
+        "detail": "Product page with HELOC and term loan options plus two calculators; no apply button. CTA: 'Please contact a branch manager or visit one of our convenient locations to decide how a Home Equity can help you.' Rates available only on inquiry.",
         "status": "missing"
       },
       {
         "channel": "Personal / auto / boat / RV loans",
-        "detail": "Four product categories listed (unsecured, CD-secured, auto/light truck, boat/RV); no apply button anywhere. CTA: 'Contact a Personal Banker today to discuss your financing needs.'",
+        "detail": "Four product categories listed (unsecured, CD-secured, auto/light truck, boat/RV); no apply button anywhere. CTA: 'Please contact a branch manager or visit one of our convenient locations to discuss your financing needs.'",
         "status": "missing"
       },
       {
@@ -1968,22 +1968,22 @@
         "withRaven": "Verified application data synced directly into Jack Henry"
       }
     ],
-    "sources": "beacon.bank (/, /personal/lending/vehicles-and-personal-loans, /personal/lending/home-equity, /personal/lending/digital-banking, /personal/banking/checking, /business/lending/sba, /connect/who-we-are, /community/our-story), onlinebanking.beacon.bank (Jack Henry Banno digital banking portal), FDIC BankFind cert #59106. Site footer confirms 'Created by Banno, a Jack Henry & Associates company.' Tagline 'We'll give you every reason to love your bank for the very first time.' from the live who-we-are page. Bank founded 2017, opened 2018 as South Carolina's first new bank in nearly a decade; 6 Lowcountry branches confirmed via bankbranchlocator.com and Yelp listings (June 2026). 76 employees per DepositAccounts (December 2025). Brand colors inferred from site aesthetic and naming (lighthouse/beacon nautical motif); exact hex codes not exposed in rendered content. Reviewed June 2026."
+    "sources": "beacon.bank (/, /personal/lending/vehicles-and-personal-loans, /personal/lending/home-equity, /personal/lending/digital-banking, /personal/banking/checking, /business/lending/sba, /connect/who-we-are, /community/our-story), onlinebanking.beacon.bank (Jack Henry Banno digital banking portal), FDIC BankFind cert #59106. Site footer confirms 'Created by Banno, a Jack Henry & Associates company.' Tagline 'We'll give you every reason to love your bank for the very first time.' from the live who-we-are page. Bank founded 2017, opened 2018 as South Carolina's first new bank in nearly a decade; 6 Lowcountry branches confirmed via bankbranchlocator.com and Yelp listings (June 2026). 76 employees per DepositAccounts (December 2025). Brand colors inferred from site aesthetic and naming (lighthouse/beacon nautical motif); exact hex codes not exposed in rendered content. Reviewed October 2026."
   },
   {
     "slug": "queensborough-national-bank",
     "bankName": "Queensborough National Bank & Trust Company",
     "shortName": "Queensborough National",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "queensborough-national-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$2.34B"
+        "value": "~$2.28B"
       },
       {
         "label": "Branches",
-        "value": "28 across GA and SC"
+        "value": "25 branches in GA (plus SC wealth and commercial lending offices)"
       },
       {
         "label": "Online loan products",
@@ -1994,7 +1994,7 @@
         "value": "1902, Louisville GA"
       }
     ],
-    "summary": "Queensborough National Bank & Trust is a $2.34 billion Georgia community bank serving 28 locations from Augusta to Savannah, founded in 1902 and operating as one of the larger independent community banks in the state. Of seven distinct loan categories on its site, only mortgage has any digital path at all, and that path routes the borrower off-brand to a separate subdomain (qbor.qnbtrust.bank) where each individual loan officer has a unique apply link. Personal loans, auto loans, home equity, construction loans, and all business and agricultural lending have no digital intake whatsoever: every product ends at a branch visit or a phone call to a Q Banker. The bank was publicly documented in 2022 as shopping for a new core banking system (evaluating FIS, Fiserv, Jack Henry, and Smiley Technologies), with its prior contract expiring at end of 2024, making this a moment when the digital front-end and verification layer question is live at the infrastructure level.",
+    "summary": "Queensborough National Bank & Trust is a $2.28 billion Georgia community bank serving 25 branches from Augusta to Savannah, founded in 1902 and operating as one of the larger independent community banks in the state. Of seven distinct loan categories on its site, only mortgage has any digital path at all, and that path routes the borrower off-brand to a separate subdomain (qbor.qnbtrust.bank) where each individual loan officer has a unique apply link. Personal loans, auto loans, home equity, construction loans, and all business and agricultural lending have no digital intake whatsoever: every product ends at a branch visit or a phone call to a Q Banker. The bank was publicly documented in 2022 as shopping for a new core banking system (evaluating FIS, Fiserv, Jack Henry, and Smiley Technologies), with its prior contract expiring at end of 2024, making this a moment when the digital front-end and verification layer question is live at the infrastructure level.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -2046,7 +2046,7 @@
       {
         "title": "Agricultural and SBA lending has no digital intake across a farm-country footprint",
         "severity": "gap",
-        "body": "Queensborough's footprint includes Louisville, Millen, Wadley, Waynesboro, Midville, and Swainsboro — Jefferson, Burke, Jenkins, and Emanuel counties that are core Georgia agricultural territory. The bank is a Certified FSA Guaranteed Lender for SBA products. Yet farm operators, agribusiness borrowers, and small business owners looking for a line of credit or equipment loan all hit the same wall: call a Q Banker. Seasonal income, variable cash flows, and farm operator schedules make these borrowers the hardest to capture by phone and the easiest to lose to Farm Credit or a competing agricultural lender who can take an application online."
+        "body": "Queensborough's footprint includes Louisville, Millen, Wadley, Waynesboro, Midville, and Swainsboro — Jefferson, Burke, Jenkins, and Emanuel counties that are core Georgia agricultural territory. The bank is a Certified FSA (USDA Farm Service Agency) Guaranteed Lender that also offers SBA loans. Yet farm operators, agribusiness borrowers, and small business owners looking for a line of credit or equipment loan all hit the same wall: call a Q Banker. Seasonal income, variable cash flows, and farm operator schedules make these borrowers the hardest to capture by phone and the easiest to lose to Farm Credit or a competing agricultural lender who can take an application online."
       }
     ],
     "comparison": [
@@ -2081,7 +2081,7 @@
         "withRaven": "All 2,865 annual loan starts eligible for verified digital intake from day one"
       }
     ],
-    "sources": "qnbtrust.bank (/, /Personal, /Personal/Loans/Personal-Loans, /Mortgage, /Mortgage/Loan-Officers, /Business, /Business/Loans/Business-Loans, /Resources/About-Us/Locations-Hours, /enroll), qbor.qnbtrust.bank (mortgage POS portal — vendor unidentified, Encompass-pattern URL structure), qnbtdi.com (online banking and enrollment portal), helpnow.qnbtrust.bank (digital banking tutorials powered by Lemonade LXP), FDIC BankFind cert #2138. Brand colors #027052 (primary green) and #e6af10 (gold) extracted from /Portals/0/Skins/QNBT/skin.css; fonts Nunito Sans and PT Serif from Google Fonts. Core banking vendor unknown — publicly documented in American Banker (August 2022) as evaluating FIS, Fiserv, Jack Henry, and Smiley Technologies ahead of a contract expiration at end of 2024; outcome not publicly confirmed. Q Mobile Banking app package id com.ifs.banking.fiid5372. Tagline 'Georgia's Community Bank' and 'Providing professional expertise and personal relationships' from live site. Reviewed June 2026."
+    "sources": "qnbtrust.bank (/, /Personal, /Personal/Loans/Personal-Loans, /Mortgage, /Mortgage/Loan-Officers, /Business, /Business/Loans/Business-Loans, /Resources/About-Us/Locations-Hours, /enroll), qbor.qnbtrust.bank (mortgage POS portal — vendor unidentified, vendor unidentified), qnbtdi.com (online banking and enrollment portal), helpnow.qnbtrust.bank (digital banking tutorials powered by Lemonade LXP), FDIC BankFind cert #2138. Brand colors #027052 (primary green) and #e6af10 (gold) extracted from /Portals/0/Skins/QNBT/skin.css; fonts Nunito Sans and PT Serif from Google Fonts. Core banking vendor unknown — publicly documented in American Banker (August 2022) as evaluating FIS, Fiserv, Jack Henry, and Smiley Technologies ahead of a contract expiration at end of 2024; outcome not publicly confirmed. Q Mobile Banking app package id com.ifs.banking.fiid5372. Tagline 'Georgia's Community Bank' and 'Providing professional expertise and personal relationships' from live site. Reviewed October 2026."
   },
   {
     "slug": "first-community-bank-sc",
@@ -2544,12 +2544,12 @@
     "slug": "ameris-bank",
     "bankName": "Ameris Bank",
     "shortName": "Ameris",
-    "auditDate": "June 2026",
+    "auditDate": "October 2026",
     "demoSlug": "ameris-bank",
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$25.6B"
+        "value": "~$28.4B"
       },
       {
         "label": "States",
@@ -2564,11 +2564,11 @@
         "value": "Third-party domain"
       }
     ],
-    "summary": "Ameris Bank is the dominant Southeast-focused regional with $25.6 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party ICE (Encompass) portal that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck.",
+    "summary": "Ameris Bank is the dominant Southeast-focused regional with $28.4 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party ICE (Encompass) portal that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Online application routes to mymortgage-online.com (ICE Encompass third-party portal); off-brand at the critical conversion moment for a $25B bank",
+        "detail": "Online application routes to mymortgage-online.com (ICE Encompass third-party portal); off-brand at the critical conversion moment for a $28B bank",
         "status": "weak"
       },
       {
@@ -2588,7 +2588,7 @@
       },
       {
         "channel": "Deposit account opening",
-        "detail": "Online account opening available but routes to a third-party provider",
+        "detail": "Online account opening available but is on online.amerisbank.com (vendor-hosted, Ameris subdomain)",
         "status": "weak"
       },
       {
@@ -2601,7 +2601,7 @@
       {
         "title": "The mortgage portal breaks brand at the highest-value moment",
         "severity": "gap",
-        "body": "Ameris Bank is one of the largest mortgage originators in the Southeast, but every applicant who clicks Apply Now is handed to a third-party ICE (Encompass) portal on amerisbank.mymortgage-online.com. On mobile, this is a trust-breaking redirect before the first field. For a bank with $25B in assets and a brand built on Southeast market leadership, this is the digital equivalent of sending a borrower to a competitor's lobby to complete their application."
+        "body": "Ameris Bank is one of the largest mortgage originators in the Southeast, but every applicant who clicks Apply Now is handed to a third-party ICE (Encompass) portal on amerisbank.mymortgage-online.com. On mobile, this is a trust-breaking redirect before the first field. For a bank with $28B in assets and a brand built on Southeast market leadership, this is the digital equivalent of sending a borrower to a competitor's lobby to complete their application."
       },
       {
         "title": "Four product lines with no digital front door",
@@ -2648,10 +2648,10 @@
       {
         "dimension": "Core sync",
         "today": "Manual re-keying after application",
-        "withRaven": "Verified file delivered to Jack Henry via API, no double entry"
+        "withRaven": "Verified file delivered to Ameris's core via API, no double entry"
       }
     ],
-    "sources": "amerisbank.com (homepage, /mortgage, /personal-banking, /business-banking, /about), mymortgage-online.com (Ameris mortgage portal), FDIC BankFind cert #20504, HMDA 2024 public data, Ameris Bancorporation annual reports. Reviewed June 2026."
+    "sources": "amerisbank.com (homepage, /mortgage, /personal-banking, /business-banking, /about), mymortgage-online.com (Ameris mortgage portal), FDIC BankFind cert #20504, HMDA 2024 public data, Ameris Bancorporation annual reports. Reviewed October 2026."
   },
   {
     "slug": "united-bank",
