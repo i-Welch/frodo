@@ -23,7 +23,7 @@
         "value": "40.2% YoY"
       }
     ],
-    "summary": "OptimumBank grew total assets 40.2% in twelve months to $1.40 billion, posted a 2.04% ROA, and ranked 49th out of 3,465 U.S. community banks by S&P Global. It did all of that with a website whose title tag reads \"Traditional in-person banking.\" None of the bank's own lending products has an online application. Small business financing now hands off to a third party: \"OptimumBank Business Finance, Powered by Newtek Lending,\" with a button to a registration page on newtekadvantage.com. There is no digital deposit account opening. Online banking serves existing customers only. That posture was coherent for the $154.5 million bank Moishe Gubin took over in 2010; it is a strange fit for a $1.4 billion commercial lender adding $126 million of loans per quarter from four offices. The gap here is not a retail mortgage funnel, which this bank does not want. It is verified commercial intake for the CRE, SBA, and HUD sponsors who now drive nearly all of the growth.",
+    "summary": "OptimumBank grew total assets 40.2% in twelve months to $1.40 billion, posted a 2.04% ROA, and ranked 49th out of 3,465 U.S. community banks by S&P Global. It did all of that with a website whose title tag reads \"Traditional in-person banking.\" None of the bank's own lending products has an online application. Small business financing now hands off to a third party: \"OptimumBank Business Finance, Powered by Newtek Lending,\" with a button to a registration page on newtekadvantage.com. There is no digital deposit account opening. Online banking serves existing customers only. That posture was coherent for the roughly $190 million bank Moishe Gubin took over in 2010; it is a strange fit for a $1.4 billion commercial lender adding $126 million of loans per quarter from four offices. The gap here is not a retail mortgage funnel, which this bank does not want. It is verified commercial intake for the CRE, SBA, and HUD sponsors who now drive nearly all of the growth.",
     "currentJourney": [
       {
         "channel": "Commercial real estate",
@@ -58,9 +58,9 @@
     ],
     "findings": [
       {
-        "title": "A 570% CRE concentration makes file quality an examination issue, not a preference",
+        "title": "A 600%-plus CRE concentration makes file quality an examination issue, not a preference",
         "severity": "gap",
-        "body": "Commercial real estate reached $905.2 million against roughly $158.7 million of Tier 1 capital plus reserves, about 570%. Interagency guidance directs examiners toward closer review at 300% paired with 50% CRE growth over 36 months; this book grew 89.3% in twelve. The exam that follows will test global cash flow on sponsors, verified rent rolls, entity documentation, and guarantor income and asset support. Email-and-PDF file assembly cannot produce that evidence on demand across 200-plus commercial credits. Source-verified intake with a per-file audit trail can."
+        "body": "Commercial real estate reached $905.2 million against roughly $148.6 million of Tier 1 capital plus reserves, about 609%. Interagency guidance directs examiners toward closer review at 300% paired with 50% CRE growth over 36 months; this book grew 89.3% in twelve. The exam that follows will test global cash flow on sponsors, verified rent rolls, entity documentation, and guarantor income and asset support. Email-and-PDF file assembly cannot produce that evidence on demand across 200-plus commercial credits. Source-verified intake with a per-file audit trail can."
       },
       {
         "title": "Zero digital front doors on a balance sheet growing $126 million a quarter",

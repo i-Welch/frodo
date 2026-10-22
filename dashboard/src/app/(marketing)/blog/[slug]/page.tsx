@@ -96,11 +96,11 @@ const articles: Record<string, Article> = {
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the net worth ratio (17.3% in the first quarter of 2026, not 16.1%), the branch count, the base payroll figure and the history of the credit union's field of membership.*
-
 # The Credit Union That Can't Spend Its Money Fast Enough
 
 *Published August 17, 2026*
+
+*Updated October 22, 2026: corrected the net worth ratio (17.3% in the first quarter of 2026, not 16.1%), the branch count, the base payroll figure and the history of the credit union's field of membership.*
 
 ## The Number That Doesn't Fit
 
@@ -173,11 +173,11 @@ Robins is what the end state of the cooperative model looks like: a sponsor that
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the timing of the Grace plant closings and the period of the net worth ratio, removed an unsupported growth ranking and a mortgage origination count we could not confirm, and noted the VITAL Federal Credit Union merger.*
-
 # The Mill Closed. The Credit Union Didn't.
 
 *Published August 17, 2026*
+
+*Updated October 22, 2026: corrected the timing of the Grace plant closings and the period of the net worth ratio, removed an unsupported growth ranking and a mortgage origination count we could not confirm, and noted the VITAL Federal Credit Union merger.*
 
 ## The Number That Doesn't Fit
 
@@ -264,11 +264,11 @@ And that's the real lesson of both stories in Lancaster. Springmaid outlived the
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the net worth ratio and the year of the 0.6% return on assets, and removed claims about a 2018 expansion, a state membership cap, a CDFI grant and an indirect lending channel that we could not source.*
-
 # The Credit Union Formerly Known as FSU
 
 *Published August 12, 2026*
+
+*Updated October 22, 2026: corrected the net worth ratio and the year of the 0.6% return on assets, and removed claims about a 2018 expansion, a state membership cap, a CDFI grant and an indirect lending channel that we could not source.*
 
 ## The Number That Doesn't Fit
 
@@ -347,11 +347,11 @@ The replatform will fix how the front door looks. Whether it fixes the funnel de
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the number of customers in the acquired branches, Glascock County's population rank, the largest of the four Georgia towns and the size of the loan portfolio, and removed an asset target we could not source.*
-
 # Palmetto Citizens Could Have Opened in Georgia Decades Ago. It Took 90 Years.
 
 *Published August 3, 2026*
+
+*Updated October 22, 2026: corrected the number of customers in the acquired branches, Glascock County's population rank, the largest of the four Georgia towns and the size of the loan portfolio, and removed an asset target we could not source.*
 
 ## The Number That Doesn't Fit
 
@@ -411,11 +411,11 @@ Then there's business lending. Lines of credit, term loans, commercial real esta
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the deal timeline (it closed July 1, 2026; May 1, 2027 is the systems conversion target), REV's field of membership, First Bancorp's home state and deal status, and Roane County's income and unemployment figures.*
-
 # REV Federal Credit Union's 520-Mile Bet on West Virginia
 
 *Published August 2, 2026*
+
+*Updated October 22, 2026: corrected the deal timeline (it closed July 1, 2026; May 1, 2027 is the systems conversion target), REV's field of membership, First Bancorp's home state and deal status, and Roane County's income and unemployment figures.*
 
 ## The Number That Doesn't Fit
 
@@ -476,13 +476,16 @@ That gap is about to get tested for real. A retiree in Summerville and a borrowe
   'optimumbank-98-percent-cre-growth': {
     title: 'The 98.7% Bank',
     description:
-      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 570% of capital, all in the same quarter.',
+      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 600% of capital, all in the same quarter.',
     publishedDate: 'July 28, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # The 98.7% Bank
 
 *Published July 28, 2026*
+
+*Updated October 22, 2026: corrected the loan yield, the Tier 1 capital figure behind the CRE concentration ratio (about 609%, not 570%), the bank's size when Moishe Gubin took over and Broward County deposits.*
 
 OptimumBank added $432.5 million in loans over the twelve months ending June 30, 2026. Commercial real estate accounted for $427.0 million of it.
 
@@ -494,7 +497,7 @@ Start with what the Fort Lauderdale bank actually did, because it is genuinely i
 
 Second-quarter net income hit $6.7 million, up 85% from $3.6 million a year earlier. Return on average assets was 2.04% annualized. Return on average equity was 20.34%. The efficiency ratio came in at 48.78%, meaning the bank spends under 49 cents to earn a dollar of revenue while running one of the fastest balance sheet expansions in the country. Total assets went from $999.1 million to $1.40 billion in twelve months, a 40.2% increase.
 
-The margin story is better than the growth story. Net interest margin expanded to 4.57%, up 25 basis points year over year, because loan yields rose 22 basis points to 6.75% while the cost of interest-bearing liabilities fell 19 basis points to 3.30%. Getting both sides of that trade to move your way in the same year is rare.
+The margin story is better than the growth story. Net interest margin expanded to 4.57%, up 25 basis points year over year, because loan yields rose 17 basis points to 7.16% while the cost of interest-bearing liabilities fell 19 basis points to 3.30%. Getting both sides of that trade to move your way in the same year is rare.
 
 Credit looks pristine. Net charge-offs for the quarter were $11,000. Not $11 million. Eleven thousand dollars, against a $1.2 billion loan book. Nonaccruals sat at $2.1 million, or 0.17% of loans, down from $3.2 million a year ago, and one of those loans was settled after quarter end.
 
@@ -513,11 +516,11 @@ Commercial real estate stood at $905.2 million on June 30, out of $1.217 billion
 Everything else shrank or crawled. Multifamily fell $15.8 million year over year. Land and construction fell $14.8 million. The actual C&I book grew $1.0 million, from $50.4 million to $51.4 million, on a balance sheet that added $402 million in assets.
 
 :::stat
-**570%**
+**About 609%**
 OptimumBank's commercial real estate loans as a share of Tier 1 capital plus reserves. Interagency guidance flags banks that cross 300% while growing CRE 50% over three years. This book grew 89% in one.
 :::
 
-The interagency guidance on CRE concentrations, issued jointly by the FDIC, Federal Reserve, and OCC, singles out an institution for closer supervisory review when two things are true at once: total CRE loans exceed 300% of Tier 1 capital plus the allowance, and the CRE portfolio has grown 50% or more over the prior 36 months. OptimumBank reported Tier 1 capital at 10.54% of total assets, roughly $147.7 million. Add the $11.0 million allowance and the denominator is about $158.7 million. The CRE line alone works out to 570% of that. Both criteria are cleared by a wide margin, and the growth criterion was met in one year rather than three.
+The interagency guidance on CRE concentrations, issued jointly by the FDIC, Federal Reserve, and OCC, singles out an institution for closer supervisory review when two things are true at once: total CRE loans exceed 300% of Tier 1 capital plus the allowance, and the CRE portfolio has grown 50% or more over the prior 36 months. The bank's call report shows Tier 1 capital of $137.6 million. Add the $11.0 million allowance and the denominator is about $148.6 million. The CRE line alone works out to about 609% of that. Both criteria are cleared by a wide margin, and the growth criterion was met in one year rather than three.
 
 Two caveats, in fairness. The guidance excludes owner-occupied commercial property, and OptimumBank does not disclose that split, so the true regulatory ratio is lower. And 300% is a screening trigger, not a limit. Plenty of healthy banks operate above it for years. What it does mean is that examiners look harder at underwriting, stress testing, and capital planning. Tier 1 leverage has now declined four quarters running, from 11.89% to 10.54%, because earning assets are growing faster than retained earnings.
 
@@ -525,7 +528,7 @@ The allowance moved the other way. It ended June at 0.91% of loans, down from 1.
 
 ## What Broward Is Actually Doing
 
-Broward County holds $69.69 billion in deposits across 369 branches and 44 institutions. Only five of those institutions are still headquartered in the county, and together they hold 2.4% of the market. OptimumBank's three Broward branches held $865.3 million in the FDIC's June 2025 survey, more than half of that entire locally headquartered total. In a county that has exported seventeen bank charters since 2008, OptimumBank is most of what is left.
+Broward County holds $69.46 billion in deposits across 369 branches and 44 institutions. Only five of those institutions are still headquartered in the county, and together they hold 2.4% of the market. OptimumBank's three Broward branches held $865.3 million in the FDIC's June 2025 survey, more than half of that entire locally headquartered total. In a county that has exported seventeen bank charters since 2008, OptimumBank is most of what is left.
 
 That scarcity is real franchise value. It is also why the concentration deserves a market test rather than a reflex.
 
@@ -547,11 +550,11 @@ Then there is OptimumFinance. The new non-bank subsidiary made its first loan in
 
 ## What the Next Four Quarters Test
 
-None of this says OptimumBank is in trouble. A 2.04% ROA and $11,000 of net charge-offs are not the signature of a bank in trouble. Moishe Gubin took over a $154.5 million institution operating under a consent order in 2010 and built it past $1.4 billion, adding the CEO title in May after sixteen years as chairman. That is a real turnaround, and the market has priced it.
+None of this says OptimumBank is in trouble. A 2.04% ROA and $11,000 of net charge-offs are not the signature of a bank in trouble. Moishe Gubin took over a roughly $190 million institution operating under a consent order in 2010 and built it past $1.4 billion, adding the CEO title in May after sixteen years as chairman. That is a real turnaround, and the market has priced it.
 
 The question is what happens when a growth engine built on relationship CRE lending has to keep running at this speed. Adding $126 million of loans in a single quarter from four branches means every incremental dollar depends on underwriting throughput. Salaries rose 41% year over year and data processing expense rose 58%, both faster than the 40% asset growth. That is the shape of an operation buying people and systems to keep pace with volume.
 
-This is the point where verification infrastructure stops being back-office plumbing and becomes the growth constraint. Property-secured commercial lending at scale means income and asset verification, entity documentation, and rent rolls on every borrower, and examiners looking at a 570% concentration will want evidence that file quality did not degrade while the book doubled. Banks that pull verified borrower and property data from source in minutes, with a full audit trail, can defend the growth rate and the exam at the same time. Banks that cannot eventually pick one.
+This is the point where verification infrastructure stops being back-office plumbing and becomes the growth constraint. Property-secured commercial lending at scale means income and asset verification, entity documentation, and rent rolls on every borrower, and examiners looking at a 600%-plus concentration will want evidence that file quality did not degrade while the book doubled. Banks that pull verified borrower and property data from source in minutes, with a full audit trail, can defend the growth rate and the exam at the same time. Banks that cannot eventually pick one.
 
 OptimumBank has four quarters to show it never had to pick.
     `,
@@ -559,15 +562,18 @@ OptimumBank has four quarters to show it never had to pick.
   'huntington-bank-southeast-expansion': {
     title: 'The $284 Billion Bank Down the Street',
     description:
-      "Huntington added $18.8B in deposits in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
+      "Huntington's average deposits rose $18.8B in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
     publishedDate: 'July 23, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # The $284 Billion Bank Down the Street
 
 *Published July 23, 2026*
 
-Huntington Bancshares reported second-quarter earnings this morning: $727 million in net income, loans up $15.0 billion, deposits up $18.8 billion. In one quarter.
+*Updated October 22, 2026: corrected how we described Huntington's second-quarter loan and deposit growth (linked-quarter average balances), the office count, the source of its Texas branches and the status of Mississippi banks chartered since 2000.*
+
+Huntington Bancshares reported second-quarter earnings this morning: $727 million in net income, average loans up $15.0 billion, average deposits up $18.8 billion from the first quarter, the first full quarter with Cadence on the books.
 
 Nobody grows like that. Huntington didn't either. Those numbers are what it looks like when the Gulf South's biggest homegrown bank finishes becoming a division of a Columbus, Ohio company, and they are the clearest picture yet of what is rolling toward every community bank market in the Southeast.
 
@@ -577,7 +583,7 @@ Huntington spent 2025 buying its way below the Mason-Dixon line. In October, it 
 
 The systems conversion finished in mid-June. This morning's release closed the book: "With the Veritex, Janney & TM Capital, and Cadence integrations behind us," CEO Steve Steinour said, "we are well positioned to deliver the full economic benefits of our combined company."
 
-The combined company is now a $284 billion bank with 1,627 offices, and its FDIC branch map reads like a Southeast community banker's service area. Mississippi: 89 branches. Alabama: 52. Georgia: 39. Tennessee: 33. Florida: 21. Texas: 152. Every one of them acquired in a single February morning.
+The combined company is now a $284 billion bank with more than 1,400 branches, and its FDIC branch map reads like a Southeast community banker's service area. Mississippi: 89 branches. Alabama: 52. Georgia: 39. Tennessee: 33. Florida: 21. Texas: 152. Nearly all of them came through acquisitions: Veritex in October 2025, then Cadence on a single February morning.
 
 :::stat
 **$18.8 billion**
@@ -594,7 +600,7 @@ The dates tell you how deliberate it is. Charleston opened in February 2025. Spa
 
 ## Mississippi's double loss
 
-Set the Cadence deal next to a number from our [de novo drought research](/blog/south-carolina-de-novo-drought): Mississippi has not chartered a new bank since 2008. Eighteen years without a single new institution, and every Mississippi bank chartered since 2000 is already gone.
+Set the Cadence deal next to a number from our [de novo drought research](/blog/south-carolina-de-novo-drought): Mississippi has not chartered a new bank since 2008. Eighteen years without a single new institution.
 
 Now its largest homegrown bank is gone too, not failed, not diminished, just headquartered 700 miles north.
 
@@ -632,15 +638,18 @@ The $284 billion bank is coming either way. The 55 branches are announced, the s
     description:
       "On April 14, 2026, Southern Bank moved its headquarters to Spartanburg on a charter issued in 1945. Inside the recapitalization that took a $93M Sardis, Georgia bank to $400M across South Carolina's growth markets, through the de novo process's side door.",
     publishedDate: 'July 22, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # South Carolina's Newest Bank Is 81 Years Old
 
 *Published July 22, 2026*
 
+*Updated October 22, 2026: corrected the dates of the bank's name changes (Bank of Burke County in 1987, Southern Bank in 2001), the size of its loan book, the timing of its Spartanburg presence and its current office count.*
+
 On April 14, 2026, South Carolina got its first new bank headquarters since 2018. No FDIC application, no conditional approval order, no capital campaign with a charter lawyer on retainer. The newest bank in the state arrived on a charter issued on July 2, 1945.
 
-Southern Bank, now of Spartanburg, spent most of its life as the Bank of Sardis, serving a Burke County, Georgia town of about a thousand people. It was renamed Bank of Burke County in 2001 and kept doing what tiny rural banks do: $80 million in assets, $45 million in loans, a quiet half-percent return, decade after decade.
+Southern Bank, now of Spartanburg, spent most of its life as the Bank of Sardis, serving a Burke County, Georgia town of about a thousand people. It was renamed Bank of Burke County in 1987 and Southern Bank in 2001, and kept doing what tiny rural banks do: $80 million in assets, $45 million in loans, a quiet half-percent return, decade after decade.
 
 Then somebody bought the keys. (A reader pointed us to this one after last week's [drought piece](/blog/south-carolina-de-novo-drought). Credit where due.)
 
@@ -648,7 +657,7 @@ Then somebody bought the keys. (A reader pointed us to this one after last week'
 
 The front door to banking is the de novo process: an FDIC application, roughly $30 million in committed capital, and a three-year supervisory leash. Nobody has walked through it in South Carolina since Beacon Community Bank in January 2018.
 
-The side door is buying a charter that already exists. An investor group did exactly that with the Bank of Burke County, and the call reports mark the moment: the bank posted a $718,000 loss in 2020, its only loss in the modern record, and new equity started arriving by mid-2021. Capital stair-stepped from $9.5 million to $31.4 million across successive raises. The name became Southern Bank. The strategy became something no Sardis bank ever attempted.
+The side door is buying a charter that already exists. An investor group did exactly that with the Bank of Burke County, and the call reports mark the moment: the bank posted a $718,000 loss in 2020, its only loss in the modern record, and new equity started arriving by mid-2021. Capital stair-stepped from $9.5 million to $31.4 million across successive raises. The name stayed Southern Bank. The strategy became something no Sardis bank ever attempted.
 
 :::pullquote
 By headquarters date, the newest bank in South Carolina is three months old. By charter date, it is eighty-one.
@@ -660,11 +669,11 @@ This is the same route Georgia's newest bank took this summer, when First City B
 
 What came after, in Southern Bank's case, was growth at a pace that looks more like a de novo than an 80-year-old institution, because functionally that is what it is.
 
-Assets ran $93 million at the end of 2020. Then $145 million in 2021. Then $224 million, $295 million, $338 million, $371 million at each following year-end. As of the first quarter of 2026: $400 million, with $347 million in deposits. The loan book grew from $45 million to $234 million over the same stretch.
+Assets ran $93 million at the end of 2020. Then $145 million in 2021. Then $224 million, $295 million, $338 million, $371 million at each following year-end. As of the first quarter of 2026: $400 million, with $347 million in deposits. The loan book grew from $57 million at the end of 2020 to $257 million in the first quarter of 2026.
 
 :::stat
 **$400 million**
-Southern Bank's assets at Q1 2026, up from $93 million at the end of 2020. The loan book grew from $45 million to $234 million over the same period.
+Southern Bank's assets at Q1 2026, up from $93 million at the end of 2020. The loan book grew from $57 million to $257 million over the same period.
 :::
 
 The income statement tells the honest other half. Net income for 2025 was $856,000, a 0.24% return on assets. Margin compressed from 4.5% in the sleepy years to a 2.87% trough in early 2024 before recovering to 3.4% in 2025. That is what a balance sheet being built at speed looks like: the earnings come later, after the growth is paid for. Every de novo investor knows this curve. Southern Bank's shareholders are living it with an 81-year-old charter instead of a new one.
@@ -681,7 +690,7 @@ Spartanburg is a pointed choice. The county lost both of its homegrown charters 
 Spartanburg lost two homegrown charters in 2019. In April, it imported one.
 :::
 
-Eight offices now span the two states: four in South Carolina's fastest-growing corridors, four in the legacy Burke County footprint that still anchors the charter's history.
+The Georgia branches are gone now: Southern Bank sold them to Palmetto Citizens Federal Credit Union effective August 1, 2026, and the FDIC lists four offices, all in South Carolina. The bank had opened its first Spartanburg branch in June 2023, when its holding company moved there; the bank's own headquarters followed in April 2026.
 
 ## Forty decades of bankers, one modern stack
 
@@ -705,12 +714,14 @@ Southern Bank just became the newest entry on our [De Novo Watch](/de-novo-watch
     description:
       'South Carolina chartered 56 banks in the 15 years before 2010 and one in the 16 years since. Thirteen charters have retired since 2018, in the fastest-growing state in America. The de novo drought, in FDIC data.',
     publishedDate: 'July 21, 2026',
-    updatedDate: 'July 22, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # No One Starts Banks in South Carolina Anymore
 
 *Published July 21, 2026*
+
+*Updated October 22, 2026: corrected the history of Southern Bank's name (it has been Southern Bank since 2001) and Solutions Plus Bank's growth, and noted that Beacon Community Bank's charter retired on October 1, 2026, the 14th South Carolina charter to retire since 2018.*
 
 The Census Bureau ranked South Carolina the fastest-growing state in America in 2023. The FDIC has not insured a new South Carolina bank since January 2018.
 
@@ -753,11 +764,11 @@ South Carolina is down to 44 FDIC-insured institutions headquartered in the stat
 
 Consolidation is not a South Carolina quirk. It is the national story, and it is the stated rationale in nearly every de novo application filed anywhere. The South Carolina quirk is that nothing replaces the banks that leave.
 
-Florida has filed five of the nation's fifteen deposit insurance applications in 2026, and one of them, Portrait Bank, is already chartered. Alabama produced two new banks in two years; the second, Solutions Plus Bank in Albertville, reached $34 million in assets within seven months of opening. Georgia's last new bank came in 2022, North Carolina's in 2020.
+Florida has filed five of the nation's fifteen deposit insurance applications in 2026, and one of them, Portrait Bank, is already chartered. Alabama produced two new banks in two years; the second, Solutions Plus Bank in Albertville, reached $34 million in assets about four months after opening. Georgia's last new bank came in 2022, North Carolina's in 2020.
 
 South Carolina has nothing pending on the FDIC's application list, and no organizing group has surfaced publicly.
 
-**Update, July 22:** There is one asterisk, and it proves the rule. During the drought an investor group bought the 1945-chartered Bank of Burke County in Sardis, Georgia, relaunched it as Southern Bank, and in April 2026 moved its headquarters to Spartanburg, where it now holds $400 million in assets. A new bank for South Carolina without a new certificate: the side door. [We wrote up the full story.](/blog/southern-bank-spartanburg-side-door)
+**Update, July 22:** There is one asterisk, and it proves the rule. During the drought an investor group recapitalized Southern Bank, the 1945-chartered former Bank of Burke County in Sardis, Georgia, and in April 2026 moved its headquarters to Spartanburg, where it now holds $400 million in assets. A new bank for South Carolina without a new certificate: the side door. [We wrote up the full story.](/blog/southern-bank-spartanburg-side-door)
 
 ## The one that got in
 
@@ -946,13 +957,16 @@ No. Every option in this guide, including the core vendors' own products, runs a
     description:
       "Central Florida's last de novo grew to $827M and got absorbed by a Michigan credit union. Eight months later, Portrait Bank chartered in the same city with $43M from 256 local investors and 'agentic AI' in its press release.",
     publishedDate: 'July 11, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back
 
 *Published July 11, 2026*
 
-On November 3, 2025, the Orlando area's only new bank of the past two decades disappeared into a Michigan credit union. Eight months later, and a few blocks away, Portrait Bank got its charter.
+*Updated October 22, 2026: corrected the date of the state charter, the count of 2026 bank openings, and two claims that Portrait was the area's first new bank in decades (Winter Park National opened in 2017 and First Green Bank in 2009).*
+
+On November 3, 2025, the Orlando area's most recent new bank disappeared into a Michigan credit union. Eight months later, and a few blocks away, Portrait Bank got its charter.
 
 That sequence is the whole story of Central Florida banking in miniature. Winter Park National Bank opened in 2017, grew to $827 million in assets, proved a hometown bank could still win in this market, and got bought for its trouble. DFCU Financial, a credit union headquartered 1,100 miles away in Dearborn, completed the acquisition last November. The market's reward for building a successful local bank was ceasing to be one.
 
@@ -960,7 +974,7 @@ Erik Weiner watched all of it. "Whenever there's a community bank that's proven 
 
 ## The filing: 54% over the floor
 
-Portrait Bank's organizers filed with the FDIC on August 27, 2025. Conditional approval came February 5, 2026. The Florida Office of Financial Regulation granted the state charter on June 29, and the bank is now soft-open by appointment at 941 West Morse Boulevard in Winter Park, with a full public grand opening set for September.
+Portrait Bank's organizers filed with the FDIC on August 27, 2025. Conditional approval came February 5, 2026. The bank was established on June 22 and announced its charter on June 29, and the bank is now soft-open by appointment at 941 West Morse Boulevard in Winter Park, with a full public grand opening set for September.
 
 The capital story is the part worth reading twice. The FDIC's order required initial paid-in capital of exactly $27,996,000. Portrait closed its raise at $43 million.
 
@@ -989,7 +1003,7 @@ The 14-member board reads like a Winter Park chamber of commerce meeting: a cate
 
 Orange County held $44.59 billion in deposits as of the FDIC's June 2025 Summary of Deposits. Truist, Bank of America, JPMorgan Chase, and Wells Fargo control 64.6% of it. The largest locally headquartered competitor, One Florida Bank, holds 2.4%.
 
-The consolidation math behind that: Central Florida had 38 locally headquartered banks in 2000. Today it has about six. Portrait is the first new bank chartered in Orange County since 2008.
+The consolidation math behind that: Central Florida had 38 locally headquartered banks in 2000. Today it has about six. Portrait is the first new bank chartered in Orange County since Winter Park National in 2017.
 
 Meanwhile the market underneath keeps compounding. The Orlando metro added 37,690 residents in the year ending July 2025, reaching nearly 2.96 million, and posted the highest job growth rate among the 30 largest US metros in 2024. Winter Park itself is one of Florida's wealthiest enclaves: median household income of $105,724 and a median home value of $731,400.
 
@@ -997,7 +1011,7 @@ More people, more businesses, more wealth, fewer local banks every year. That is
 
 ## The gauntlet: what the next three years require
 
-New bank formation nationally has, in FDIC Chairman Travis Hill's words, "fallen off a cliff." Roughly 85 banks opened in the entire 2010 to 2025 stretch, fewer than six per year, against 93 or more every single year from 1995 to 2007. Only four opened in all of 2025. Six have opened so far in 2026, and the FDIC's pending list held about two dozen applications as of July 7, a real thaw by recent standards.
+New bank formation nationally has, in FDIC Chairman Travis Hill's words, "fallen off a cliff." Roughly 85 banks opened in the entire 2010 to 2025 stretch, fewer than six per year, against 93 or more every single year from 1995 to 2007. Only four opened in all of 2025. Seven had opened in 2026 by mid-July, and the FDIC's pending list held about two dozen applications as of July 7, a real thaw by recent standards.
 
 Getting the charter is the start, not the finish. Portrait's own FDIC order spells out the three-year de novo leash: a Tier 1 leverage ratio of at least 8%, no dividends without prior FDIC approval, annual independent audits, FDIC non-objection for every new director or senior executive, and operation within the business plan on file, with prior notice of any material deviation.
 
@@ -1023,11 +1037,14 @@ The 256 investors who oversubscribed this bank are betting Orlando wants its hom
     description:
       "The five banks still headquartered in Broward County hold 2.4% of its $69.7B in deposits. A group led by the ex-Amerant executive who digitized Florida's largest community bank just filed to build a new one.",
     publishedDate: 'July 11, 2026',
+    updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
 # Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind
 
 *Published July 11, 2026*
+
+*Updated October 22, 2026: corrected the founding year of Exuma Capital Partners, the opening date of Echelon Bank and the timing of Locality Bank's growth.*
 
 The five banks still headquartered in Broward County hold 2.4% of its deposits. The other 97.6% of a $69.7 billion market answers to boardrooms in Charlotte, New York, San Francisco, and Toronto.
 
@@ -1051,7 +1068,7 @@ Levine is not a first-time operator testing a thesis. He spent four years in the
 
 The relevant part of that tenure is what happened to Amerant's consumer business while he ran it. The bank executed a digital transformation that made it a 2023 Banking Tech Awards USA finalist, partnering with Alloy for identity and onboarding, Numerated for digital business lending, Marstone for digital wealth, and Q2's ClickSWITCH for deposit acquisition. Levine has seen what a modern consumer banking stack looks like from the inside, at scale, in this exact market.
 
-His co-organizers, per The Bank Slate, are executives from Exuma Capital Partners, a private equity firm founded in 2022 by Air Pros USA founder Anthony Perera. Exuma's headquarters sit in Plantation, the same city as the proposed bank. A hometown bank organized by people whose firm is already headquartered in that hometown is exactly how this is supposed to work.
+His co-organizers, per The Bank Slate, are executives from Exuma Capital Partners, a private equity firm founded in 2024 by Air Pros USA founder Anthony Perera. Exuma's headquarters sit in Plantation, the same city as the proposed bank. A hometown bank organized by people whose firm is already headquartered in that hometown is exactly how this is supposed to work.
 
 ## The market: the county the banks left behind
 
@@ -1066,11 +1083,11 @@ The share of Broward County's $69.7 billion in deposits held by all five banks s
 
 Seventeen Broward-headquartered banks have disappeared since 2008. The most recent was the most symbolic: American National Bank of Oakland Park, family-owned for 38 years and often called Broward's oldest community bank, sold to Georgia's United Community Banks for roughly $80 million in May 2025.
 
-The counter-evidence that local demand survived the consolidation: Locality Bank, the county's first new bank since 2009, opened in January 2022 and passed $300 million in assets within three years. The market did not stop wanting a hometown bank. It just stopped having ones to choose from.
+The counter-evidence that local demand survived the consolidation: Locality Bank, the county's first new bank since 2009, opened in January 2022 and passed $300 million in assets a little over three years later. The market did not stop wanting a hometown bank. It just stopped having ones to choose from.
 
 ## The gauntlet: a Florida wave meets a friendlier FDIC
 
-Glades is filing into the strongest de novo environment in years, and the epicenter is its home state. Five of the fifteen deposit insurance applications filed nationally in 2026 through early July are Florida banks: New South Bank in Tampa, Tidestone Bank and Florida Bank of Finance in Coral Gables, Portrait Bank in Winter Park (chartered June 29), and Glades. Add BankMiami's March 2025 opening and Echelon Bank's April 2026 opening in Clearwater, and Florida is producing new banks faster than any state in the country.
+Glades is filing into the strongest de novo environment in years, and the epicenter is its home state. Five of the fifteen deposit insurance applications filed nationally in 2026 through early July are Florida banks: New South Bank in Tampa, Tidestone Bank and Florida Bank of Finance in Coral Gables, Portrait Bank in Winter Park (chartered June 29), and Glades. Add BankMiami's March 2025 opening and Echelon Bank's May 2026 opening in Clearwater, and Florida is producing new banks faster than any state in the country.
 
 The regulatory weather helps. FDIC Chairman Travis Hill has called the post-2010 formation drought, roughly 86 new banks in 15 years against 412 in 1984 alone, a problem to fix, and has proposed easing capital expectations for noncomplex community banks. In June, the FFIEC issued a joint statement explicitly supporting new bank formation.
 
@@ -3239,7 +3256,7 @@ The merger gives the combined bank the size to make larger loans. A loan applica
     updatedDate: 'October 22, 2026',
     readTime: '6 min read',
     content: `
-*Update, October 22, 2026: Beacon is no longer independent. Beacon Holding Company closed a merger of equals with Coastal Carolina National Bank (CCNB) on October 1, 2026. The combined bank has about $2.3 billion in assets across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of CCNB. Core systems convert in early 2027, and the combined bank takes the name Beacon Bank, N.A. in mid-March 2027. [Our analysis of the merger](/blog/ccnb-myrtle-beach-merger-growth-2026) covers what comes next. The figures below are as of the original April 2026 publication, with the bank's net interest margin, efficiency ratio, loan growth and branch locations in the original April 2026 text.*
+*Update, October 22, 2026: Beacon is no longer independent. Beacon Holding Company closed a merger of equals with Coastal Carolina National Bank (CCNB) on October 1, 2026. The combined bank has about $2.3 billion in assets across 16 branches and a loan production office. Beacon's six Charleston-area branches operate for now as Beacon Community Bank, a division of CCNB. Core systems convert in early 2027, and the combined bank takes the name Beacon Bank, N.A. in mid-March 2027. [Our analysis of the merger](/blog/ccnb-myrtle-beach-merger-growth-2026) covers what comes next. The figures below are as of the original April 2026 publication; on October 22 we corrected the bank's net interest margin, efficiency ratio, loan growth and branch locations.*
 
 Beacon Community Bank started 2018 with $36 million in assets. Seven years later it sits at $972 million, and its mortgage application page returns a 404 error.
 

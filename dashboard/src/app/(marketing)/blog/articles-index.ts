@@ -87,7 +87,7 @@ export const articles: Article[] = [
     slug: 'optimumbank-98-percent-cre-growth',
     title: 'The 98.7% Bank',
     description:
-      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 570% of capital, all in the same quarter.',
+      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 600% of capital, all in the same quarter.',
     readTime: '6 min read',
     date: 'July 2026',
     category: 'bank',
@@ -97,7 +97,7 @@ export const articles: Article[] = [
     slug: 'huntington-bank-southeast-expansion',
     title: 'The $284 Billion Bank Down the Street',
     description:
-      "Huntington added $18.8B in deposits in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
+      "Huntington's average deposits rose $18.8B in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
     readTime: '6 min read',
     date: 'July 2026',
     category: 'bank',
