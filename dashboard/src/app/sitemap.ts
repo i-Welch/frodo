@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { AUDITS } from './(whitelabel)/_config/audit-data';
+import { TRACKER_SUMMARY } from './(marketing)/de-novo-watch/de-novo-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
@@ -67,7 +68,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE}/about`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/ai-info`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.3 },
-    { url: `${SITE}/de-novo-watch`, lastModified: PAGES_ADDED, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/de-novo-watch`, lastModified: new Date(TRACKER_SUMMARY.updated), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({
       url: `${SITE}/glossary/${t.slug}`,
