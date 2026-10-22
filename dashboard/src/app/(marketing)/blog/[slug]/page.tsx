@@ -4614,7 +4614,9 @@ The verification delay is not an immutable fact of lending. It's a product of in
     updatedDate: 'October 22, 2026',
     readTime: '8 min read',
     content: `
-*Updated October 22, 2026: corrected the names of the bank's president and CFO, full-year net charge-offs, the period of the net interest margin and the real estate share of loans.*
+*Updated October 22, 2026: corrected the names of the bank's president and CFO, full-year net charge-offs, the period of the net interest margin and the real estate share of loans, and added third-quarter 2026 results.*
+
+*Q3 2026 update: Southern First reported third-quarter net income of $12.2 million, or $1.28 per diluted share, up 21% from a year earlier. Total assets reached $4.88 billion, loans grew $145 million in the quarter to $4.18 billion, retail client deposits rose $163 million, and the net interest margin was 3.02%. Net charge-offs ran 0.07% of average loans, annualized, and nonperforming assets were 0.30% of total assets (company release, October 20, 2026). The analysis below is based on full-year 2025 results.*
 
 Art Seaver has been running Southern First Bank for 26 years. He's watched Greenville go from a post-textile mill town to a metro that just crossed one million residents. That context matters when you look at what his bank just reported.
 

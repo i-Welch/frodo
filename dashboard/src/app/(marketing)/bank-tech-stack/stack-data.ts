@@ -144,7 +144,7 @@ export const STACK_ROWS: StackRow[] = [
     name: "Southern First Bank",
     type: "bank",
     states: ["SC", "NC", "GA"],
-    assets: "~$4.7B",
+    assets: "~$4.9B",
     digitalBanking: null,
     consumerLending: null,
     mortgage: null,

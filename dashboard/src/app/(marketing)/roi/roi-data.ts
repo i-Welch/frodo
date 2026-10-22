@@ -1090,7 +1090,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35295,
     auditDate: 'May 2026',
     stats: [
-      { label: 'Total assets', value: '$4.7B (Q2 2026)' },
+      { label: 'Total assets', value: '$4.88B (Q3 2026)' },
       { label: 'Total loans', value: '$3.9B' },
       { label: '2024 HMDA originations', value: '1,119' },
       { label: 'Branches', value: '12 across SC, NC, GA' },
