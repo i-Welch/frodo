@@ -28,7 +28,7 @@ export const STATUS_LABELS: Record<DeNovoStatus, string> = {
 // applications list (as of 2026-10-13) and FDIC decisions on deposit insurance.
 // countsThrough is rendered in the page's stat box ("filed nationally in 2026 through ...").
 export const TRACKER_SUMMARY = {
-  updated: '2026-10-19',
+  updated: '2026-10-21',
   countsThrough: 'mid-October',
   nationalApplications2026: 25,
   floridaApplications2026: 6,
@@ -89,12 +89,12 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     name: 'Glades Bank and Trust',
     location: 'Plantation, FL (Broward County)',
     status: 'application-pending',
-    statusDetail: 'FDIC deposit insurance application received June 2, 2026; still pending on the FDIC list as of Oct 13, 2026.',
+    statusDetail: 'FDIC deposit insurance application received June 2, 2026; still pending on the FDIC list as of Oct 13, 2026. The bank says it plans to launch in the first quarter of 2027, pending regulatory approval (CSI/Apiture release, Oct 13, 2026).',
     capital: 'Reportedly raising $45M',
     leadership: 'Led by former Amerant executive Howard Levine',
-    techNotes: 'Core named unusually early: CSI, announced while the application is still pending. gladesbank.com registered Oct 9, 2025, eight months before filing.',
+    techNotes: 'Vendors named unusually early: CSI NuPoint core and Apiture digital and business banking (including treasury management), announced Oct 13, 2026 while the application is still pending. gladesbank.com registered Oct 9, 2025, eight months before filing.',
     articleSlug: 'glades-bank-broward-de-novo',
-    asOf: '2026-07-11',
+    asOf: '2026-10-21',
   },
   {
     name: 'Stark Bank, N.A.',

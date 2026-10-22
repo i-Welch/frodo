@@ -1044,7 +1044,7 @@ The 256 investors who oversubscribed this bank are betting Orlando wants its hom
 
 *Published July 11, 2026*
 
-*Updated October 22, 2026: corrected the founding year of Exuma Capital Partners, the opening date of Echelon Bank and the timing of Locality Bank's growth.*
+*Updated October 22, 2026: corrected the founding year of Exuma Capital Partners, the opening date of Echelon Bank and the timing of Locality Bank's growth, and added the bank's October vendor announcement and launch target.*
 
 The five banks still headquartered in Broward County hold 2.4% of its deposits. The other 97.6% of a $69.7 billion market answers to boardrooms in Charlotte, New York, San Francisco, and Toronto.
 
@@ -1095,7 +1095,7 @@ None of that softens the standard that follows approval: three years of enhanced
 
 ## The stack: an early signal most de novos never send
 
-Most bank organizing groups say nothing about technology until after approval. Levine has already named a core: he noted on LinkedIn that Glades is partnering with CSI, the community bank core processor, as the institution takes shape.
+Most bank organizing groups say nothing about technology until after approval. Levine has already named a core: he noted on LinkedIn that Glades is partnering with CSI, the community bank core processor, as the institution takes shape. On October 13, 2026, CSI and Apiture announced that Glades had chosen CSI's NuPoint core and Apiture's digital and business banking platform, and that the bank plans to launch in the first quarter of 2027, pending regulatory approval.
 
 That is an unusually early commitment, and a revealing one. Choosing the core first is the conventional sequence; the decisions that follow it are the ones that will define how Glades actually feels to the founders and business owners it wants. Account opening, identity verification, income and employment data, fraud screening: the layer between the borrower and the core is where a 2026 de novo can be genuinely better than the incumbents, because it gets to start source-verified instead of retrofitting verification onto document-based intake the way every 20-year-old bank must.
 
