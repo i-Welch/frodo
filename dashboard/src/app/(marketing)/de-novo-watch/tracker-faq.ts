@@ -1,4 +1,4 @@
-import { DE_NOVO_BANKS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { DE_NOVO_BANKS, FDIC_PENDING, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 
 // FAQ answers are built from the tracker rows, so the weekly unattended update
 // keeps them true without anyone editing prose. Rendered on the page and as
@@ -29,6 +29,12 @@ export function trackerFaqs(): TrackerFaq[] {
   }
   const pending = list('application-pending');
   if (pending) faqs.push({ q: 'Which de novo bank applications are still pending?', a: `Pending applications on the tracker: ${pending}.` });
+  if (FDIC_PENDING.rows.length) {
+    faqs.push({
+      q: 'Which companies have pending FDIC deposit insurance applications?',
+      a: `As of ${FDIC_PENDING.asOf}, the FDIC lists ${FDIC_PENDING.rows.length} pending deposit insurance applications: ${FDIC_PENDING.rows.map((r) => `${r.name} (${r.city}, ${r.state})`).join('; ')}.`,
+    });
+  }
   faqs.push({
     q: 'Can I use this data?',
     a: 'Yes. The tracker is free to cite with attribution to RAVEN (reportraven.tech), and the rows are available as a CSV download at reportraven.tech/de-novo-watch/data.csv.',

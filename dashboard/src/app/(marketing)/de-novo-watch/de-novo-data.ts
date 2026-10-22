@@ -35,6 +35,50 @@ export const TRACKER_SUMMARY = {
   note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus New South Bank, approved Sept. 28. Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
 };
 
+// The full FDIC pending deposit insurance applications list, copied as published
+// (every state, not just the tracker's focus). Refresh asOf and rows from the
+// FDIC page on every update; a row that disappears was approved or withdrawn.
+export interface FdicPendingApplication {
+  name: string;
+  city: string;
+  state: string;
+  received: string;
+}
+
+export const FDIC_PENDING = {
+  asOf: '2026-10-20',
+  source: 'https://www.fdic.gov/bank-examinations/summary-new-deposit-insurance-application-activities',
+  rows: [
+    { name: 'Upgrade Bank', city: 'Las Vegas', state: 'NV', received: '2026-10-09' },
+    { name: 'Final Finance Bank', city: 'Seattle', state: 'WA', received: '2026-10-08' },
+    { name: 'Mooddai International Bank', city: 'Washington', state: 'DC', received: '2026-09-24' },
+    { name: 'Avant Bank, N.A.', city: 'Chicago', state: 'IL', received: '2026-09-18' },
+    { name: 'California Standard Bank', city: 'Fresno', state: 'CA', received: '2026-09-17' },
+    { name: 'Texas Patriot Bank', city: 'Frisco', state: 'TX', received: '2026-09-08' },
+    { name: 'Bank Elevated', city: 'Frisco', state: 'TX', received: '2026-08-31' },
+    { name: 'Stark Bank, N.A.', city: 'Miami', state: 'FL', received: '2026-08-10' },
+    { name: 'Flex Bank', city: 'Lehi', state: 'UT', received: '2026-07-23' },
+    { name: 'Albert Bank', city: 'Salt Lake City', state: 'UT', received: '2026-07-20' },
+    { name: 'Sagehaven Bancorp, N.A.', city: 'Pittsburgh', state: 'PA', received: '2026-07-14' },
+    { name: 'Klarna Bank USA', city: 'Salt Lake City', state: 'UT', received: '2026-07-06' },
+    { name: 'Novus Bank', city: 'Edmond', state: 'OK', received: '2026-06-24' },
+    { name: 'Glades Bank and Trust', city: 'Plantation', state: 'FL', received: '2026-06-02' },
+    { name: 'Dorado Bank', city: 'San Juan', state: 'PR', received: '2026-05-27' },
+    { name: 'Venture Coast Partners LLC', city: 'San Francisco', state: 'CA', received: '2026-05-21' },
+    { name: 'Mission Lane Bank, National Association', city: 'Richmond', state: 'VA', received: '2026-04-20' },
+    { name: 'Florida Bank of Finance', city: 'Coral Gables', state: 'FL', received: '2026-04-16' },
+    { name: 'OpenReserve Bank, National Association', city: 'Salt Lake City', state: 'UT', received: '2026-04-13' },
+    { name: 'Upstart Bank, National Association', city: 'Wilmington', state: 'DE', received: '2026-03-25' },
+    { name: 'Tidestone Bank', city: 'Coral Gables', state: 'FL', received: '2026-03-23' },
+    { name: 'Itaú Bank, National Association', city: 'Miami', state: 'FL', received: '2026-03-16' },
+    { name: 'Revolut Bank US, N.A.', city: 'Stamford', state: 'CT', received: '2026-03-05' },
+    { name: 'Affirm Bank', city: 'Henderson', state: 'NV', received: '2026-01-23' },
+    { name: 'PayPal Bank', city: 'Salt Lake City', state: 'UT', received: '2025-12-15' },
+    { name: 'Nubank, National Association', city: 'McLean', state: 'VA', received: '2025-10-29' },
+    { name: 'OneMain Bank', city: 'West Valley City', state: 'UT', received: '2025-03-13' },
+  ] as FdicPendingApplication[],
+};
+
 // Charter moves: banks that entered a market by acquiring and relocating or
 // relaunching an existing charter instead of filing a de novo application.
 // Same sourcing rules as DE_NOVO_BANKS.

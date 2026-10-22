@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
-import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 import { trackerFaqs } from './tracker-faq';
 
 export const metadata: Metadata = {
@@ -22,6 +22,11 @@ export const metadata: Metadata = {
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
 const faqs = trackerFaqs();
+
+const TRACKED = new Set(DE_NOVO_BANKS.map((b) => b.name));
+const pending = [...FDIC_PENDING.rows].sort((a, b) => b.received.localeCompare(a.received));
+const fmtDate = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -187,6 +192,37 @@ export default function DeNovoWatchPage() {
                     <div className="dnw-note">Verified {m.asOf}</div>
                   </td>
                   <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="fdic-pending">Every pending FDIC deposit insurance application</h2>
+        <p>
+          The complete FDIC list of pending deposit insurance applications, every state, as published
+          with data as of {fmtDate(FDIC_PENDING.asOf)}. {pending.length} applications are waiting on a
+          decision. Banks profiled in the tracker above are marked. Source:{' '}
+          <a href={FDIC_PENDING.source} rel="noreferrer">FDIC</a>.
+        </p>
+        <div className="dnw-table-wrap">
+          <table className="dnw-table">
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Location</th>
+                <th>Received</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pending.map((r) => (
+                <tr key={r.name}>
+                  <td className="dnw-bank">
+                    {r.name}
+                    {TRACKED.has(r.name) && <div className="dnw-note">Profiled above</div>}
+                  </td>
+                  <td>{r.city}, {r.state}</td>
+                  <td>{fmtDate(r.received)}</td>
                 </tr>
               ))}
             </tbody>
