@@ -27,6 +27,21 @@ function convertMarkdown(md: string): string {
   // Links: [text](url)
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
 
+  // Tables: consecutive lines starting with "|"; the second line is the |---| separator
+  html = html.replace(/((?:^\|.+\|[ \t]*$\n?)+)/gm, (match) => {
+    const rows = match
+      .trim()
+      .split('\n')
+      .map((line) => line.trim().replace(/^\||\|$/g, '').split('|').map((c) => c.trim()));
+    if (rows.length < 2 || !rows[1].every((c) => /^:?-{3,}:?$/.test(c))) return match;
+    const head = rows[0].map((c) => `<th>${c}</th>`).join('');
+    const body = rows
+      .slice(2)
+      .map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`)
+      .join('\n');
+    return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>\n${body}\n</tbody></table></div>\n`;
+  });
+
   // Process unordered lists: consecutive lines starting with "- "
   html = html.replace(/((?:^- .+$\n?)+)/gm, (match) => {
     const items = match
