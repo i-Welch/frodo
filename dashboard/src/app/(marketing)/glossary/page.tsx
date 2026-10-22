@@ -39,6 +39,8 @@ const TOPICS: Record<string, { label: string; tone: 'fraud' | 'reg' | 'verif' }>
   'customer-identification-program': { label: 'Regulatory', tone: 'reg' },
   'ecbsv': { label: 'Regulatory', tone: 'reg' },
   'de-novo-bank': { label: 'Regulatory', tone: 'reg' },
+  'industrial-loan-company': { label: 'Regulatory', tone: 'reg' },
+  'banking-as-a-service': { label: 'Regulatory', tone: 'reg' },
   'verification-of-deposit': { label: 'Verification', tone: 'verif' },
   'verification-of-employment': { label: 'Verification', tone: 'verif' },
   'verification-of-mortgage': { label: 'Verification', tone: 'verif' },

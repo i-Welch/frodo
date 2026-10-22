@@ -114,7 +114,7 @@ Pending FDIC deposit insurance applications that come from fintechs and consumer
 
 The applicants split by the kind of charter they want.
 
-**Utah industrial loan companies.** PayPal Bank (filed December 15, 2025), OneMain Bank (March 13, 2025), Klarna Bank USA (July 6, 2026), Albert Bank (July 20, 2026) and Flex Bank (July 23, 2026). An industrial loan company, or ILC, is a state-chartered, FDIC-insured bank that a commercial parent can own without becoming a bank holding company. Utah's regulator lists all five as pending.
+**Utah industrial loan companies.** PayPal Bank (filed December 15, 2025), OneMain Bank (March 13, 2025), Klarna Bank USA (July 6, 2026), Albert Bank (July 20, 2026) and Flex Bank (July 23, 2026). An [industrial loan company](/glossary/industrial-loan-company), or ILC, is a state-chartered, FDIC-insured bank that a commercial parent can own without becoming a bank holding company. Utah's regulator lists all five as pending.
 
 **Nevada industrial loan companies.** Affirm Bank (January 23, 2026) and Upgrade Bank (October 9, 2026). Both chose Nevada over Utah.
 
@@ -151,7 +151,7 @@ The short answer is that regulators opened the door.
 
 At the FDIC, the board under Acting Chairman Travis Hill opened a review of ILC policy in July 2025, and Hill said pending applications would keep moving.
 
-The business case is funding and control. Today most of these companies rent a bank. Affirm works with Celtic Bank and Lead Bank. Upgrade works with Cross River and Celtic. Flex uses Lead Bank and Column. Mission Lane relies on TAB Bank and WebBank. A charter lets them fund with their own insured deposits, which SoFi found lowered its funding costs after it became a bank, and keep the economics they now share with the partner.
+The business case is funding and control. Today most of these companies rent a bank through [banking-as-a-service](/glossary/banking-as-a-service) partnerships. Affirm works with Celtic Bank and Lead Bank. Upgrade works with Cross River and Celtic. Flex uses Lead Bank and Column. Mission Lane relies on TAB Bank and WebBank. A charter lets them fund with their own insured deposits, which SoFi found lowered its funding costs after it became a bank, and keep the economics they now share with the partner.
 
 :::pullquote
 For two decades, fintechs reached customers through partner banks. Now a large share of them want to be the bank.

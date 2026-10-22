@@ -471,12 +471,131 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'Working versions of everything the business plan promised: capital at the committed level, staffed compliance and BSA functions, and operating fraud and identity verification controls, not roadmap items.',
       },
     ],
-    relatedTerms: ['synthetic-identity-fraud', 'bank-account-verification', 'income-verification'],
+    relatedTerms: ['synthetic-identity-fraud', 'industrial-loan-company', 'banking-as-a-service'],
     relatedArticles: [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
+  },
+  {
+    slug: 'industrial-loan-company',
+    term: 'Industrial Loan Company',
+    abbreviation: 'ILC',
+    updated: '2026-10-22',
+    metaTitle: 'What Is an Industrial Loan Company (ILC)?',
+    metaDescription:
+      'An industrial loan company is an FDIC-insured, state-chartered bank a commercial company can own. How the ILC exemption works, who is applying, and the debate.',
+    definition:
+      'An industrial loan company (ILC), also called an industrial bank, is a state-chartered, FDIC-insured bank that a commercial company can own without becoming a bank holding company supervised by the Federal Reserve. Most are chartered in Utah, with a smaller number in Nevada.',
+    sections: [
+      {
+        heading: 'How the ILC exemption works',
+        paragraphs: [
+          'The Competitive Equality Banking Act of 1987 excluded qualifying industrial loan companies from the Bank Holding Company Act’s definition of “bank.” The ILC itself is a real bank: it makes loans, takes FDIC-insured deposits, and is examined by its state regulator and the FDIC. Its parent, though, can be an automaker, a retailer or a fintech, and it does not face the consolidated Federal Reserve supervision that applies to a bank holding company.',
+          'The exemption comes with limits. An ILC with more than $100 million in assets generally cannot offer demand deposits such as checking accounts unless it qualifies under a grandfather provision. Since 2021, FDIC rules (12 CFR Part 354) also require a parent company to sign written commitments with the FDIC covering capital and liquidity support for the bank, reporting, and examination of the parent’s relationship with the ILC.',
+        ],
+      },
+      {
+        heading: 'Who is applying now',
+        paragraphs: [
+          'ILCs have become the charter of choice for consumer fintechs and commercial companies that want insured deposits without holding company supervision. As of October 20, 2026, the FDIC’s list of pending deposit insurance applications included five proposed Utah ILCs and two in Nevada:',
+        ],
+        bullets: [
+          'Utah: PayPal Bank, OneMain Bank, Klarna Bank USA, Albert Bank and Flex Bank',
+          'Nevada: Affirm Bank and Upgrade Bank',
+        ],
+      },
+      {
+        heading: 'Recent approvals',
+        paragraphs: [
+          'On January 22, 2026, the FDIC approved deposit insurance for Ford Credit Bank and GM Financial Bank, two Utah ILCs owned by automakers. Each must maintain a 15% tier 1 leverage ratio, well above the 8% the FDIC typically expects of a community de novo, along with capital and liquidity support from its parent. None of the fintech ILC applicants had received a decision as of October 2026, and OneMain’s application had been pending since March 2025.',
+        ],
+      },
+      {
+        heading: 'The debate',
+        paragraphs: [
+          'Critics call the exemption the ILC loophole, arguing it mixes banking and commerce and leaves the parent outside bank-level supervision. In August 2026, the Bank Policy Institute and the Independent Community Bankers of America urged the FDIC not to insure Albert, or any ILC applicant, until Congress closes it. A bill introduced in January 2026 to close the gap is pending in the Senate Banking Committee. The FDIC opened a review of its ILC policy in July 2025.',
+          'For community banks the practical concern is deposits. An ILC owned by a payments app or retailer can put an insured savings account one screen away from millions of existing customers, with no branch network to fund.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Is an industrial loan company FDIC insured?',
+        a: 'Yes. An ILC cannot operate without FDIC deposit insurance, and the FDIC examines it alongside the state regulator. What differs is the parent: it is not supervised as a bank holding company.',
+      },
+      {
+        q: 'Which states charter industrial loan companies?',
+        a: 'Utah charters most of them, and Nevada charters a smaller number. Of the seven fintech and consumer lender ILC applications pending with the FDIC in October 2026, five were in Utah and two in Nevada.',
+      },
+      {
+        q: 'Why do fintechs want ILC charters?',
+        a: 'An ILC lets a fintech fund loans with its own insured deposits instead of renting a partner bank, and keep the economics it now shares with that partner, without the parent becoming a bank holding company.',
+      },
+      {
+        q: 'How long does ILC approval take?',
+        a: 'It varies widely and can take years. OneMain’s Utah ILC application was received by the FDIC in March 2025 and was still pending in October 2026. Track every pending application on RAVEN’s De Novo Watch.',
+      },
+    ],
+    relatedTerms: ['de-novo-bank', 'banking-as-a-service', 'bank-account-verification'],
+    relatedArticles: [
+      { slug: 'fintech-bank-charter-rush-2026', title: 'PayPal, Klarna and Revolut Want Bank Charters. Here’s the Full List' },
+      { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+    ],
+    relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
+  },
+  {
+    slug: 'banking-as-a-service',
+    term: 'Banking-as-a-Service',
+    abbreviation: 'BaaS',
+    updated: '2026-10-22',
+    metaTitle: 'What Is Banking-as-a-Service (BaaS)?',
+    metaDescription:
+      'Banking-as-a-service lets a fintech offer accounts, cards or loans through a chartered sponsor bank. How BaaS works, the regulatory crackdown, and why fintechs now want charters.',
+    definition:
+      'Banking-as-a-service (BaaS) is an arrangement in which a chartered bank, called the sponsor or partner bank, lets a non-bank company offer deposit accounts, cards or loans under its own brand. The bank holds the deposits or originates the loans and remains responsible to its regulators for the program.',
+    sections: [
+      {
+        heading: 'How BaaS works',
+        paragraphs: [
+          'The fintech owns the app, the brand and the customer relationship. The sponsor bank holds the charter: deposits sit at the bank, usually in pooled accounts eligible for pass-through FDIC insurance, and loans are originated on the bank’s books before many are sold back to the fintech or investors. Some programs add a middleware company between the two that handles ledgers and connections. The bank earns fees and deposits; the fintech gets to market without a charter.',
+          'Many of the best-known consumer fintechs run this way. Affirm works with Celtic Bank and Lead Bank, Upgrade with Cross River and Celtic, Flex with Lead Bank and Column, and Mission Lane with TAB Bank and WebBank.',
+        ],
+      },
+      {
+        heading: 'The regulatory crackdown',
+        paragraphs: [
+          'The model drew heavy scrutiny after 2022. Federal regulators issued final interagency guidance on third-party risk management in June 2023, and several sponsor banks entered enforcement actions over BSA/AML, consumer compliance and oversight of fintech partners, including Cross River (FDIC, 2023) and Evolve Bank & Trust (Federal Reserve, 2024).',
+          'The April 2024 bankruptcy of middleware provider Synapse showed the risk to consumers: when the ledger between fintech apps and their partner banks broke down, end users lost access to funds for months. Pass-through deposit insurance only protects a customer if the bank or its agents keep records that show who owns each dollar.',
+        ],
+      },
+      {
+        heading: 'From renting a bank to becoming one',
+        paragraphs: [
+          'Higher compliance costs at sponsor banks, and a friendlier charter environment, have pushed fintechs toward charters of their own. As of October 2026, at least 14 of the 27 pending FDIC deposit insurance applications came from fintechs and consumer lenders. Mission Lane, for example, plans to move its card program to its own bank over three years. For a community bank with a sponsor business, that is fee income and deposits that can leave when the partner gets a charter.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'What is a sponsor bank?',
+        a: 'The chartered, FDIC-insured bank behind a fintech’s accounts, cards or loans. It holds the deposits or originates the loans and answers to regulators for the program’s compliance.',
+      },
+      {
+        q: 'Is money in a fintech app FDIC insured?',
+        a: 'Only the portion held at an insured bank, and only if the records show which customer owns which funds. FDIC insurance does not cover the failure of the fintech or a middleware provider, which is what the Synapse bankruptcy exposed.',
+      },
+      {
+        q: 'Why are fintechs applying for their own charters?',
+        a: 'A charter lets them fund loans with their own insured deposits and keep the economics they share with a partner bank. Regulators have also been approving more charters since 2025.',
+      },
+    ],
+    relatedTerms: ['industrial-loan-company', 'de-novo-bank', 'new-account-fraud'],
+    relatedArticles: [
+      { slug: 'fintech-bank-charter-rush-2026', title: 'PayPal, Klarna and Revolut Want Bank Charters. Here’s the Full List' },
+      { slug: 'community-banks-lose-loans-fintechs', title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)' },
+    ],
   },
   {
     slug: 'synthetic-identity-fraud',
