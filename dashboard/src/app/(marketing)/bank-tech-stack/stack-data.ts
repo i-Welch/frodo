@@ -417,17 +417,21 @@ export const STACK_ROWS: StackRow[] = [
   },
 ];
 
+/** "Maxwell and ICE Encompass" -> ["Maxwell", "ICE Encompass"]. */
+function splitVendors(v: string | null | undefined): string[] {
+  return (v ?? '').split(' and ').filter(Boolean);
+}
+
 /** Distinct identified vendors across the four layers ("Maxwell and ICE Encompass" counts as two). */
 export function distinctVendors(r: StackRow): number {
-  const names = CATEGORIES.flatMap((c) => (r[c.key] ?? '').split(' and ')).filter(Boolean);
+  const names = CATEGORIES.flatMap((c) => splitVendors(r[c.key]));
   return new Set(names).size;
 }
 
 export function vendorCounts(key: StackKey): [string, number][] {
   const counts = new Map<string, number>();
   for (const r of STACK_ROWS) {
-    const v = r[key];
-    if (v) counts.set(v, (counts.get(v) ?? 0) + 1);
+    for (const v of splitVendors(r[key])) counts.set(v, (counts.get(v) ?? 0) + 1);
   }
   return [...counts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
 }
@@ -464,13 +468,13 @@ export function stackFaqs(): StackFaq[] {
   const byVendor = new Map<string, { name: string; layers: string[] }[]>();
   for (const r of STACK_ROWS) {
     for (const c of CATEGORIES) {
-      const v = r[c.key];
-      if (!v) continue;
-      const list = byVendor.get(v) ?? [];
-      const hit = list.find((x) => x.name === r.name);
-      if (hit) hit.layers.push(c.label.toLowerCase());
-      else list.push({ name: r.name, layers: [c.label.toLowerCase()] });
-      byVendor.set(v, list);
+      for (const v of splitVendors(r[c.key])) {
+        const list = byVendor.get(v) ?? [];
+        const hit = list.find((x) => x.name === r.name);
+        if (hit) hit.layers.push(c.label.toLowerCase());
+        else list.push({ name: r.name, layers: [c.label.toLowerCase()] });
+        byVendor.set(v, list);
+      }
     }
   }
   return [...byVendor.entries()]
