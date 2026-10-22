@@ -473,6 +473,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+      { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },

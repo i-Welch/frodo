@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'florida-new-bank-charters-2026',
+    title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole",
+    description:
+      'Florida leads the nation in 2026 bank charter filings and won three FDIC approvals. Two new banks opened, with $97 million in assets. Five Florida charters retired, holding $8.4 billion, and every one was itself a de novo. Every 2026 Florida filing and exit, counted.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
     slug: 'robins-financial-20-million-rebate',
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:

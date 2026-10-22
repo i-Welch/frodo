@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Institutional research (Oct 2026) —
+  'florida-new-bank-charters-2026',
   // — Credit Union Deep Dives (Aug 2026) —
   'robins-financial-20-million-rebate',
   'founders-credit-union-mill-town',
@@ -103,6 +105,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'florida-new-bank-charters-2026': '2026-10-23',
   'robins-financial-20-million-rebate': '2026-08-17',
   'founders-credit-union-mill-town': '2026-08-17',
   'champions-first-fsu-rebrand': '2026-08-12',
