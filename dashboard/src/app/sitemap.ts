@@ -10,6 +10,13 @@ const SITE = 'https://reportraven.tech';
 
 // Bump manually when non-blog page content meaningfully changes.
 const SITE_UPDATED = new Date('2026-07-05');
+
+// auditDate is a month ("October 2026"); a refreshed audit reports the first of
+// that month, never earlier than SITE_UPDATED.
+function auditModified(auditDate: string): Date {
+  const d = new Date(`1 ${auditDate}`);
+  return Number.isNaN(d.getTime()) || d < SITE_UPDATED ? SITE_UPDATED : d;
+}
 // About / AI-info / De Novo Watch pages: bump when their content changes.
 const PAGES_ADDED = new Date('2026-07-18');
 
@@ -36,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // to /audit/<slug>, so only the canonical /audit URLs belong here.
   const auditUrls = AUDITS.filter((a) => getRoiBank(a.slug) && !SITEMAP_HOLD.has(a.slug)).map((a) => ({
     url: `${SITE}/audit/${a.slug}`,
-    lastModified: SITE_UPDATED,
+    lastModified: auditModified(a.auditDate),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
