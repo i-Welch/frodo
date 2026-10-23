@@ -10,6 +10,12 @@ const nextConfig: NextConfig = {
         destination: '/audit/:slug',
         permanent: true,
       },
+      // No pricing page yet; visitors who guess the URL land where they can book a demo.
+      {
+        source: '/pricing',
+        destination: '/',
+        permanent: false,
+      },
     ];
   },
 

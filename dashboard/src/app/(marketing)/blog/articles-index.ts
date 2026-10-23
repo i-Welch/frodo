@@ -25,10 +25,37 @@ export const articles: Article[] = [
     category: 'bank',
   },
   {
+    slug: 'fintech-bank-charter-rush-2026',
+    title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
+    description:
+      "At least 14 of the 27 pending FDIC deposit insurance applications come from fintechs and consumer lenders, from PayPal and Klarna to Upstart, whose OCC approval requires $404.1 million in capital. The full list, where each stands, and what it means for community banks.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'fintech',
+  },
+  {
+    slug: 'best-digital-account-opening-software-community-banks',
+    title: 'Best Digital Account Opening Software for Community Banks (2026)',
+    description:
+      'An honest comparison of digital account opening platforms for community banks: MANTL (Alkami, $40 billion in deposits raised), Narmi, Apiture (now CSI), core-attached options from Jack Henry and Fiserv, and verification-first intake. Written by a vendor, with the disclosure.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'guide',
+  },
+  {
+    slug: 'the-work-number-alternatives-community-banks',
+    title: 'The Work Number Alternatives for Community Banks (2026)',
+    description:
+      'Equifax raised The Work Number’s prices again in January 2026, and one mortgage with two borrowers can cost $280 to verify. A community bank buyer’s guide to the alternatives: Truework (now Checkr), Truv, Argyle, Experian Verify after Workday, and the verbal VOE.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'guide',
+  },
+  {
     slug: 'robins-financial-20-million-rebate',
     title: "The Credit Union That Can't Spend Its Money Fast Enough",
     description:
-      'Robins Financial runs a 16.1% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
+      'Robins Financial runs a 17% net worth ratio, earns two and a half times the industry ROA, and still handed members $20 million in December, $151 million since 2017. Inside the inverted capital problem of middle Georgia’s giant.',
     readTime: '6 min read',
     date: 'August 2026',
     category: 'creditunion',
@@ -68,7 +95,7 @@ export const articles: Article[] = [
     slug: 'rev-credit-union-west-virginia-bet',
     title: "REV Federal Credit Union's 520-Mile Bet on West Virginia",
     description:
-      "A Charleston-area credit union is buying a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its own charter doesn't reach anywhere near there.",
+      "A Charleston-area credit union bought a bank two states away, the first-ever credit union purchase of a bank in West Virginia history. Its home turf is 520 miles away.",
     readTime: '6 min read',
     date: 'August 2026',
     category: 'creditunion',
@@ -78,7 +105,7 @@ export const articles: Article[] = [
     slug: 'optimumbank-98-percent-cre-growth',
     title: 'The 98.7% Bank',
     description:
-      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 570% of capital, all in the same quarter.',
+      'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 600% of capital, all in the same quarter.',
     readTime: '6 min read',
     date: 'July 2026',
     category: 'bank',
@@ -88,7 +115,7 @@ export const articles: Article[] = [
     slug: 'huntington-bank-southeast-expansion',
     title: 'The $284 Billion Bank Down the Street',
     description:
-      "Huntington added $18.8B in deposits in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
+      "Huntington's average deposits rose $18.8B in one quarter, absorbed the Gulf South's biggest homegrown bank, and is building 55 branches across the Carolinas. What the super-regional march south means for the community banks already there.",
     readTime: '6 min read',
     date: 'July 2026',
     category: 'bank',
@@ -187,18 +214,18 @@ export const articles: Article[] = [
     slug: 'jack-henry-symitar-loan-origination',
     title: 'Digital Lending on Jack Henry: What SilverLake and Symitar Actually Support',
     description:
-      'SilverLake powers 425 banks, Symitar serves 700+ credit unions. Neither ships a native digital LOS. Here is what Jack Henry actually provides for loan origination, what requires a separate license, and how the 950-partner integration ecosystem works in practice.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      "SilverLake runs at more than 500 banks and Symitar at more than 700 credit unions, but neither core is a loan origination system. What Jack Henry sells for lending today, what its forthcoming Jack Henry Origination changes, and what to ask any vendor before you buy.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {
     slug: 'fiserv-premier-digital-lending',
-    title: 'Digital Lending on Fiserv: What Premier and Portico Actually Support',
+    title: 'Digital Lending on Fiserv in 2026: What Premier, Precision and Portico Support',
     description:
-      'Premier serves 194 community banks. Portico serves nearly 500 credit unions. None of the three Fiserv legacy cores ships with a native digital LOS. Here is what Communicator Open actually costs, which AppMarket vendors have delivered results, and where the Portico gap is.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      "Fiserv changed CEOs and cut guidance, but it says it is not consolidating its cores. None of Premier, Precision or Portico ships with a digital loan application. How Communicator Open, the AppMarket and Loan Director fit together, and where the Portico gap is.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {
@@ -214,18 +241,18 @@ export const articles: Article[] = [
     slug: 'community-bank-ai-lending-guide',
     title: 'How Community Banks Can Use AI in Lending Without the Risk',
     description:
-      'Community bank AI adoption tripled in 2026. Here is what the regulations actually require, where AI fits today, and how to implement it without triggering examiner problems.',
-    readTime: '7 min read',
-    date: 'June 2026',
+      'Bank generative AI adoption tripled going into 2026, and in April regulators replaced SR 11-7 with new model risk guidance that leaves generative AI out of scope. What the rules now say, where AI fits in lending, and how to stay out of exam findings.',
+    readTime: '6 min read',
+    date: 'October 2026',
     category: 'guide',
   },
   {
     slug: 'white-label-borrower-portal-community-bank',
     title: 'The White-Label Borrower Portal: What It Is and Why Community Banks Need One',
     description:
-      'Only 24% of small banks accepted small business loan applications online in 2024. Here is what a white-label borrower portal is, what it costs, and why it is the fastest path to closing the digital gap.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      'Only 24% of small banks took small business loan applications through an online portal in the FDIC\'s latest survey, and just 6% of banks ran the whole process online. What a white-label borrower portal is, when it pays off, and how to evaluate one.',
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {
@@ -241,9 +268,9 @@ export const articles: Article[] = [
     slug: 'open-banking-community-bank-guide',
     title: 'Open Banking for Community Banks: What Plaid, Fiserv, and Jack Henry Actually Support',
     description:
-      'Section 1033 is enjoined, but open banking is already deployed at community banks. Here is what Plaid, Fiserv, and Jack Henry actually offer, what works, and what still requires custom integration.',
-    readTime: '7 min read',
-    date: 'June 2026',
+      'Section 1033 is enjoined and being rewritten, with data access fees back on the table. Open banking is already live at community banks anyway. What Plaid, Fiserv and Jack Henry actually offer, and where it pays off now.',
+    readTime: '6 min read',
+    date: 'October 2026',
     category: 'platform',
   },
   {
@@ -268,7 +295,7 @@ export const articles: Article[] = [
     slug: 'community-bank-borrower-experience-roi',
     title: 'The ROI of Modernizing Your Community Bank Borrower Experience',
     description:
-      "Blend's third-party ROI study found a 10.15x return per loan and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
+      "A Blend-commissioned ROI study reported $10.15 returned per dollar invested and $914 in cost savings per file. A documented community bank case study showed 50% faster processing and 25% higher revenue. These are not projections.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'guide',
@@ -286,7 +313,7 @@ export const articles: Article[] = [
     slug: 'community-bank-ceo-digital-lending-2026',
     title: "The Community Bank CEO's Guide to Digital Lending in 2026",
     description:
-      "94% of community bank CEOs say they would adopt digital lending if the economics made sense. Most haven't. Here is the decision framework for 2026 that skips the $2B core replacement debate.",
+      "Most community bank CEOs say they want to modernize lending. Most haven't. Here is the decision framework for 2026 that skips the core replacement debate.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -295,7 +322,7 @@ export const articles: Article[] = [
     slug: 'community-banks-lose-loans-fintechs',
     title: 'Why Community Banks Lose Loans to Fintechs (and How to Win Them Back)',
     description:
-      "Non-bank lenders now hold 66% of the U.S. mortgage market. Community banks dropped from 42.5% to 30.1% in six years. The gap isn't rates or trust. It's the application experience.",
+      "Non-bank lenders now originate about 65% of U.S. mortgages. The gap isn't rates or trust. It's the application experience.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -304,7 +331,7 @@ export const articles: Article[] = [
     slug: 'community-bank-compete-neobank-core',
     title: 'How Community Banks Can Compete With Neobanks Without Replacing Their Core',
     description:
-      "Chime spent $519M on marketing last year and added 22M customers. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
+      "Chime spent $519M on marketing in 2024 and has 9.5M active members. Community banks don't need to replace their core to fight back. Here's the third option most vendors don't want to sell you.",
     readTime: '6 min read',
     date: 'May 2026',
     category: 'guide',
@@ -313,9 +340,9 @@ export const articles: Article[] = [
     slug: 'south-atlantic-bank-coastal-growth-engine',
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description:
-      "South Atlantic Bank turned a 2007 startup in Myrtle Beach into a $1.93B coastal lending machine in under 17 years. How in-migration math, a 53% CRE concentration, and 13% loan growth are forcing a digital reckoning.",
+      "South Atlantic Bank turned a 2007 Myrtle Beach startup into a $1.98B coastal lender with branches from Myrtle Beach to Hilton Head. How in-migration, a 56% CRE and construction concentration and a $1M-plus Lowcountry mortgage book are forcing a digital reckoning.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'south-atlantic-bank',
   },
@@ -323,9 +350,9 @@ export const articles: Article[] = [
     slug: 'conway-national-bank-grand-strand-dominance',
     title: "Conway National Bank's Quiet Dominance on the Grand Strand",
     description:
-      "Conway National Bank runs a sub-48% efficiency ratio and holds the top deposit share in one of America's fastest-growing counties. What their numbers reveal about scaling a lean community bank into a surging coastal market.",
+      "Conway National Bank has held the top deposit share in Horry County every year since at least 2021, and ran a 47.9% efficiency ratio in the first half of 2026. What its numbers reveal about scaling a lean community bank into a surging coastal market.",
     readTime: '6 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'conway-national-bank',
   },
@@ -333,9 +360,9 @@ export const articles: Article[] = [
     slug: 'bank-travelers-rest-greenville-growth-engine',
     title: "Bank of Travelers Rest: Greenville's $1.6B Growth Engine",
     description:
-      'Bank of Travelers Rest is posting 1.44% ROA and 21.82% ROE from a single county in South Carolina. How a 10-branch community bank became the quiet growth engine of one of the fastest-moving metros in the Southeast.',
-    readTime: '6 min read',
-    date: 'June 2026',
+      'Bank of Travelers Rest earned a 1.60% ROA in the first half of 2026 from a single South Carolina county, and just opened its 11th branch. How an 80-year-old community bank became the quiet growth engine of Greenville, and where its loan intake still lags.',
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'bank-of-travelers-rest',
   },
@@ -343,19 +370,19 @@ export const articles: Article[] = [
     slug: 'security-federal-bank-cdfi-rate-rebound-aiken',
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     description:
-      "South Carolina's largest CDFI-certified bank is growing into a hot Aiken-Augusta corridor with 19 branches and an ICE-powered mortgage stack. The missing piece is automated verification, and the efficiency ratio tells the whole story.",
-    readTime: '6 min read',
-    date: 'May 2026',
+      "Security Federal, the Aiken CDFI bank with 19 branches and an ICE-powered mortgage stack, cut its efficiency ratio from 75.35% to 70.44% in a year. Still above 70%, and the missing piece is automated verification for its hardest borrower files.",
+    readTime: '7 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'security-federal-bank',
   },
   {
     slug: 'ccnb-myrtle-beach-merger-growth-2026',
-    title: "CCNB's $2.2B Merger Bet on SC's Fastest-Growing Coast",
+    title: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
     description:
-      "CCNB grew from a 2009 de novo to a $1.28B franchise serving one of the fastest-growing metros in the US. Now a $2.2B merger bet is forcing the bank to standardize workflows before a 2027 systems conversion.",
+      "CCNB grew from a 2009 de novo to a $1.35B bank on one of the fastest-growing coasts in the US. On October 1 it closed a merger of equals with Beacon, creating a $2.3B franchise that converts systems and rebrands in March 2027. The clock is running.",
     readTime: '6 min read',
-    date: 'May 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'coastal-carolina-national-bank',
   },
@@ -363,38 +390,38 @@ export const articles: Article[] = [
     slug: 'first-capital-bank-charleston-growth-digital-gap',
     title: 'First Capital Bank Hit $1B. Can It Keep Growing Without Going Digital?',
     description:
-      "First Capital Bank crossed $1B in assets in a metro adding 17,500 residents a year. Here is why its four-branch, no-digital-application model is a structural bet that gets harder to win as the market heats up.",
+      "First Capital Bank grew from $1.05 billion to $1.32 billion in assets in the year to June 2026, in a metro adding 17,500 residents a year, with no online loan application. Why its phone-and-email intake is a bet that gets harder to win as Charleston grows.",
     readTime: '6 min read',
-    date: 'May 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'first-capital-bank-charleston',
   },
   {
     slug: 'first-community-bank-sc-cre-merger-growth',
-    title: 'First Community Bank SC: The $2.4B CRE Bet Hiding in Plain Sight',
+    title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO',
     description:
-      'First Community Bankshares SC just completed a $1.6B merger and is running a 46% CRE concentration in a market where commercial real estate is simultaneously the best growth story and the biggest risk. Here is what the numbers show.',
-    readTime: '6 min read',
+      "First Community Bank of Lexington, SC closed its acquisition of Signature Bank of Georgia in January 2026, reached $2.38 billion in assets and grew second-quarter earnings 46%. Its bank CEO retires at year-end. What the numbers show, and what the next leadership team inherits.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'first-community-bank-sc',
   },
   {
     slug: 'countybank-greenwood-sc-sba-deep-dive',
-    title: "Countybank's SBA Playbook: How a Greenwood, SC Bank Thinks About Small Business",
+    title: 'Countybank Is From Greenwood. Its Mortgage Business Lives in Greenville',
     description:
-      'Countybank runs a 17.6% ROE and a 55% efficiency ratio from Greenwood, SC, and its SBA lending volume punches well above its weight class. A deep dive into how a $900M community bank competes for business borrowers in a shrinking market.',
-    readTime: '6 min read',
+      "Countybank has banked Greenwood, SC since 1933, but its 2025 HMDA data shows more home loans in Greenville County than at home, and mortgage sale gains are its biggest fee line. A look at a $733 million bank that earns like a mortgage company, and what that means for its other loans.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'countybank',
   },
   {
     slug: 'optus-bank-cdfi-columbia-growth',
-    title: "Optus Bank: Columbia's CDFI Institution Betting on Scale",
+    title: 'Optus Bank Grew From $65 Million to $764 Million. Now Comes M&F',
     description:
-      "Optus Bank is South Carolina's only Black-owned CDFI bank, and it is in the middle of a growth push that has taken it from $130M to over $250M in assets in three years. The challenge is running CDFI mission economics at a scale that requires modern infrastructure.",
-    readTime: '6 min read',
+      "Optus Bank grew from $65 million in assets in 2018 to $764 million in mid-2026, and in July agreed to merge with Durham's M&F Bank to form a $1.27 billion CDFI. What drove the growth, what the bank actually lends, and what the merger has to get right.",
+    readTime: '5 min read',
     date: 'April 2026',
     category: 'bank',
     auditSlug: 'optus-bank',
@@ -413,7 +440,7 @@ export const articles: Article[] = [
     slug: 'first-palmetto-bank-sc-performance-deep-dive',
     title: 'First Palmetto Bank: 120 Years Old, $1B in Assets, Zero Excuses',
     description:
-      'First Palmetto Bank has run a 1.07% ROA and 53% efficiency ratio for 22 offices across South Carolina while its four Grand Strand branches sit inside one of the fastest-growing metros in the country. The performance is real. The manual mortgage workflow is a risk.',
+      'First Palmetto Bank earned a 1.36% ROA with a 54.8% efficiency ratio in the first half of 2026 across 22 South Carolina offices, while its four Grand Strand branches sit in one of the fastest-growing counties in the state. The performance is real. The manual mortgage workflow is a risk.',
     readTime: '6 min read',
     date: 'April 2026',
     category: 'bank',
@@ -423,7 +450,7 @@ export const articles: Article[] = [
     slug: 'queensborough-national-bank-trust-deep-dive',
     title: "Queensborough's Long Runway: A $2.3B Georgia Bank Built to Last",
     description:
-      "Queensborough National Bank & Trust has grown to $2.34B in assets across a 27-branch corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
+      "Queensborough National Bank & Trust has grown to $2.34B in assets across a 25-office corridor from Louisville to Savannah without a single acquisition. A $477M commercial real estate book with no digital front door, 57 VA loans in 2024, and a mortgage operation still running on paper.",
     readTime: '6 min read',
     date: 'March 2026',
     category: 'bank',
@@ -431,21 +458,21 @@ export const articles: Article[] = [
   },
   {
     slug: 'southern-bank-nc-digital-bet',
-    title: 'The Century Bank That Hired a Chief Digital Officer',
+    title: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     description:
-      "Southern Bank and Trust has run $5 billion across 57 eastern North Carolina branches for over a century. In 2024, they hired a Chief Digital Officer from First Citizens Bank. What that hire means for borrowers from the tobacco belt to the Outer Banks.",
-    readTime: '6 min read',
-    date: 'June 2026',
+      "Southern Bank and Trust, chartered in Mount Olive, NC in 1901, cut its efficiency ratio from 69.4% to 52.6% in two years and switched on a new digital banking platform on October 19, 2026. What drove the turnaround, what its 2025 mortgage data shows, and where the next efficiency gain has to come from.",
+    readTime: '5 min read',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'southern-bank-trust',
   },
   {
     slug: 'chime-account-opening-deposit-war',
-    title: 'The 92% Problem',
+    title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy',
     description:
-      'Community banks built digital account opening. Then 92% of customers abandoned it on mobile. Chime does it in two minutes, added 700,000 members last quarter, and went public on NASDAQ. A step-by-step look at what each side actually does.',
+      'Chime reached 10.4 million active members in mid-2026 without a branch, a signature card or a ChexSystems check. A side-by-side look at its account opening and a community bank\'s, what Chime gave up to be fast, and which parts a community bank can copy.',
     readTime: '5 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'fintech',
   },
   {
@@ -472,9 +499,9 @@ export const articles: Article[] = [
     slug: 'carolina-bank-between-two-economies',
     title: 'The Bank Between Two Economies',
     description:
-      'Carolina Bank & Trust runs a 1.68% ROA, a 44.86% efficiency ratio, and zero foreclosed real estate out of Lamar, SC — right between a county shedding timber jobs and a county landing a $1.62 billion EV battery plant. Here is how a 90-year-old family bank navigates the gap.',
+      'Carolina Bank & Trust earned a 1.85% ROA with a 43.2% efficiency ratio in the first half of 2026, out of Lamar, SC, between a county that lost its sawmill and a county whose $1.6 billion battery plant is on pause. How a 90-year-old family bank thrives while both economies wait.',
     readTime: '5 min read',
-    date: 'June 2026',
+    date: 'October 2026',
     category: 'bank',
     auditSlug: 'carolina-bank-trust',
   },
@@ -522,7 +549,7 @@ export const articles: Article[] = [
     slug: 'affirm-vs-community-bank-personal-loans',
     title: 'The Two-Second Loan',
     description:
-      'Affirm approved 24 million Americans for credit last year using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.',
+      "Affirm has 26.8 million active consumers, underwritten using real-time cash flow data and ML underwriting. Your community bank probably took a week. Here is what that gap actually means, and what banks can do about it.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'fintech',
@@ -531,7 +558,7 @@ export const articles: Article[] = [
     slug: 'trillion-dollar-ipo-wave-2026',
     title: 'The $3.6 Trillion Question',
     description:
-      'SpaceX prices on June 12. OpenAI targets September. Anthropic filed confidentially on June 1. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.',
+      "SpaceX went public on June 12. OpenAI and Anthropic have filed confidentially. Three companies worth a combined $3.6 trillion are going public at once. Here is what that means for banks, investors, and the market segments caught in between.",
     readTime: '7 min read',
     date: 'June 2026',
     category: 'guide',
@@ -540,7 +567,7 @@ export const articles: Article[] = [
     slug: 'anderson-brothers-bank-myrtle-beach-bet',
     title: 'From Tobacco Warehouses to Myrtle Beach: The Quiet Dominance of Anderson Brothers Bank',
     description:
-      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.19B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
+      'Anderson Brothers Bank runs a 6.1% net interest margin, a 16.7% ROE, and grew from $500M to $2.28B in assets in a decade without a single acquisition. The story is Myrtle Beach, a 60% deposit monopoly in rural SC, and 92 years of patience.',
     readTime: '7 min read',
     date: 'May 2026',
     category: 'bank',
@@ -570,7 +597,7 @@ export const articles: Article[] = [
     slug: 'foreclosure-wave-hiding-in-plain-sight',
     title: 'The Foreclosure Wave Is Already Here. Your Bank Just Can\'t See It Yet.',
     description:
-      '118,727 households entered foreclosure in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here\'s why that\'s the problem.',
+      "118,727 U.S. properties had a foreclosure filing in Q1 2026, up 26% from a year ago. Your call report probably looks fine. Here's why that's the problem.",
     readTime: '7 min read',
     date: 'May 2026',
     category: 'guide',
@@ -579,7 +606,7 @@ export const articles: Article[] = [
     slug: 'why-it-takes-42-days-to-close-a-mortgage',
     title: 'Why It Takes 42 Days to Close a Mortgage (And What That\'s Costing Your Bank)',
     description:
-      'The average mortgage takes 42 days to close. FHA loans take 77. The average file is 500 pages thick. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
+      'The average mortgage takes about six weeks to close, and the average file can run 500 pages. Every one of those days costs money in staff time, borrower patience, and loans that never close.',
     readTime: '8 min read',
     date: 'March 2026',
     category: 'guide',
@@ -598,16 +625,16 @@ export const articles: Article[] = [
     slug: 'next-generation-borrowers-wont-wait',
     title: 'Your Next Generation of Borrowers Won\'t Wait 42 Days',
     description:
-      '54% of Gen Z rely primarily on non-traditional financial providers. 61% switched banks in the last two years. Only 14% trust traditional banks "a lot." Your future borrowers are already gone.',
+      '54% of Gen Z rely primarily on non-traditional financial providers, and younger borrowers expect digital speed. Your future borrowers are already shopping elsewhere.',
     readTime: '8 min read',
     date: 'March 2026',
     category: 'guide',
   },
   {
     slug: '59-billion-compliance-burden',
-    title: 'The $59 Billion Compliance Burden — And How Automation Is Cutting It in Half',
+    title: 'The $61 Billion Compliance Burden, and How Automation Can Shrink It',
     description:
-      'U.S. banks spend $59 billion a year on BSA/AML compliance alone. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
+      'Financial institutions in the U.S. and Canada spend $61 billion a year on financial crime compliance. For community banks under $100 million in assets, compliance eats 8.7% of noninterest expenses — three times the rate at larger banks.',
     readTime: '10 min read',
     date: 'March 2026',
     category: 'guide',
@@ -625,7 +652,7 @@ export const articles: Article[] = [
     slug: 'one-link-complete-verification',
     title: 'One Link, Complete Verification: How RAVEN Works for Community Banks',
     description:
-      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from seven providers with a full audit trail.',
+      'What if verifying a borrower took 5 minutes instead of 5 weeks? One link, one borrower interaction, complete verification data back to the bank in minutes from six providers with a full audit trail.',
     readTime: '12 min read',
     date: 'February 2026',
     category: 'guide',

@@ -97,7 +97,7 @@ export const SOLUTIONS: Solution[] = [
       'Verification-first digital account opening for community banks: open deposit accounts online in minutes with source-verified identity, without the fraud wave.',
     eyebrow: 'Account Opening',
     intro: [
-      'Neobanks captured 44% of new checking accounts in 2024. Community banks opened 16% of theirs digitally. The gap isn’t preference: customers repeatedly say they’d rather bank locally. It’s that opening an account at most community banks still requires a branch visit, and the online version, where it exists, loses 92% of mobile applicants before they finish.',
+      'Digital banks and fintechs took 44% of new checking accounts opened in 2024, per Cornerstone Advisors, and J.D. Power found 20% of bank customers moved money away from their primary bank in the prior three months. At most community banks, opening an account still means a branch visit, or an online form built like one.',
       'RAVEN provides the verification layer that makes digital account opening work: a branded flow where identity, funding account, and (for interest-bearing products) income are confirmed at the source before the account is booked.',
     ],
     sections: [
@@ -140,8 +140,8 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
     ],
     relatedArticles: [
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
-      { slug: 'chime-account-opening-deposit-war', title: 'The 92% Problem' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
+      { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
     ],
   },
   {
@@ -161,7 +161,7 @@ export const SOLUTIONS: Solution[] = [
           'Most demos show the happy path. The differences that matter show up in the details:',
         ],
         bullets: [
-          'Completion rate on mobile: the industry average abandonment is brutal (92% on mobile); ask for the vendor’s real funnel numbers',
+          'Completion rate on mobile: ask for the vendor’s real funnel numbers, step by step, from its community bank clients',
           'Verification depth: does it validate identity and funding at the source, or just collect typed answers?',
           'Synthetic identity coverage: SSN validation against issuance records, not just credit-header matching',
           'Funding: instant account verification vs. micro-deposits (micro-deposits add days and abandonment)',
@@ -196,7 +196,7 @@ export const SOLUTIONS: Solution[] = [
       { slug: 'synthetic-identity-fraud', label: 'Synthetic Identity Fraud' },
     ],
     relatedArticles: [
-      { slug: 'digital-account-opening-community-bank', title: 'Digital Account Opening for Community Banks: The Deposit Side of the Gap' },
+      { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
       { slug: 'what-neobanks-get-right-community-banks', title: 'What Neobanks Get Right (and What Community Banks Already Have)' },
     ],
   },

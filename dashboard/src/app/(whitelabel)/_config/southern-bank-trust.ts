@@ -4,21 +4,20 @@ import type { WhiteLabelConfig } from './types';
  * Southern Bank and Trust Company — white-label demo config.
  *
  * Brand, products, and core platform grounded in public research
- * (southernbank.com, June 2026):
+ * (southernbank.com, reviewed October 2026):
  *   - Southern BancShares (N.C.), Inc. (OTC: SBNC), HQ Mount Olive, NC;
- *     ~$5.25B assets, 57 branches across eastern NC and southeastern VA;
- *     FDIC cert #15359. CEO: Drew M. Covert. CDO: Sondra McCorquodale (2024).
+ *     ~$5.30B assets (Q2 2026), 57 offices across eastern NC and southeastern VA;
+ *     FDIC cert #15359. CEO: Drew M. Covert. CDO: Sondra McCorquodale.
  *   - Tagline: "Grounded in Tradition. Ready for What's Next."
  *   - Brand palette is navy/blue; hex values approximated from the live site.
- *   - Core system not publicly disclosed. online-banking-services.com hosting
- *     pattern is associated with FIS-hosted retail digital banking; used at
- *     LOW confidence. coreSync.mode is 'mock' regardless.
- *   - Digital reality: only mortgage has an online application
- *     (southernbank.mymortgage-online.com, a third-party Finastra portal).
- *     Personal, auto, boat, HELOC, and business lending have no digital intake.
- *     Account opening runs on a 32-character off-brand subdomain. This demo
- *     unifies all six lines behind one branded, verify-as-you-go front door
- *     with income flows for farm, military, and vacation-rental borrowers.
+ *   - Core system not publicly disclosed. coreSync.mode is 'mock' regardless.
+ *   - Digital reality: new Southern Bank Digital platform launched Oct 19, 2026.
+ *     Deposit accounts open on openaccount.southernbank.com; the HELOC special
+ *     has an online application; mortgage applies through a separate portal
+ *     (southernbank.mymortgage-online.com). Personal, auto, boat and business
+ *     lending start with a phone call or contact form. This demo unifies all
+ *     six lines behind one branded, verify-as-you-go front door with income
+ *     flows for farm, military, and vacation-rental borrowers.
  *
  * All rates below are ILLUSTRATIVE demo estimates, not offers of credit.
  */

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
-import { CHARTER_MOVES, DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 import { trackerFaqs } from './tracker-faq';
 
 export const metadata: Metadata = {
@@ -22,6 +22,18 @@ export const metadata: Metadata = {
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
 const faqs = trackerFaqs();
+
+const TRACKED = new Set(DE_NOVO_BANKS.map((b) => b.name));
+const pending = [...FDIC_PENDING.rows].sort((a, b) => b.received.localeCompare(a.received));
+const byState = Object.entries(
+  FDIC_PENDING.rows.reduce<Record<string, number>>((acc, r) => ({ ...acc, [r.state]: (acc[r.state] ?? 0) + 1 }), {}),
+)
+  .filter(([, n]) => n > 1)
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([st, n]) => `${st} ${n}`)
+  .join(', ');
+const fmtDate = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -86,6 +98,12 @@ const styles = `
   .dnw-table th { text-align: left; padding: 0.7rem 0.9rem; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); border-bottom: 1px solid rgba(255,255,255,0.1); white-space: nowrap; }
   .dnw-table td { padding: 0.8rem 0.9rem; vertical-align: top; color: var(--gray-300); line-height: 1.55; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .dnw-table tr:last-child td { border-bottom: none; }
+  /* Main tracker (the only six-column table): give the long status and tech text room instead of a tall sliver. */
+  @media (max-width: 900px) {
+    .dnw-table:has(th:nth-child(6)) { min-width: 1080px; }
+    .dnw-table:has(th:nth-child(6)) td:nth-child(3) { min-width: 300px; }
+    .dnw-table:has(th:nth-child(6)) td:nth-child(5) { min-width: 200px; }
+  }
   .dnw-bank { font-weight: 600; color: var(--white); white-space: nowrap; }
   .dnw-status { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap; }
   .dnw-status-chartered { background: rgba(108,142,255,0.16); color: #A8BDFF; }
@@ -193,6 +211,37 @@ export default function DeNovoWatchPage() {
           </table>
         </div>
 
+        <h2 id="fdic-pending">Every pending FDIC deposit insurance application</h2>
+        <p>
+          The complete FDIC list of pending deposit insurance applications, every state, as published
+          with data as of {fmtDate(FDIC_PENDING.asOf)}. {pending.length} applications are waiting on a
+          decision. States with more than one: {byState}. The list includes applications filed before 2026 and leaves out ones already approved, so its state counts differ from the 2026 filing counts above. Banks profiled in the tracker above are marked. Source:{' '}
+          <a href={FDIC_PENDING.source} rel="noreferrer">FDIC</a>.
+        </p>
+        <div className="dnw-table-wrap">
+          <table className="dnw-table">
+            <thead>
+              <tr>
+                <th>Applicant</th>
+                <th>Location</th>
+                <th>Received</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pending.map((r) => (
+                <tr key={r.name}>
+                  <td className="dnw-bank">
+                    {r.name}
+                    {TRACKED.has(r.name) && <div className="dnw-note">Profiled above</div>}
+                  </td>
+                  <td>{r.city}, {r.state}</td>
+                  <td>{fmtDate(r.received)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
         <section className="dnw-faq">
           <h2 id="faq">Frequently asked questions</h2>
           {faqs.map((f) => (
@@ -214,6 +263,8 @@ export default function DeNovoWatchPage() {
 
         <h2>Read the analysis</h2>
         <p>
+          <a href="/blog/fintech-bank-charter-rush-2026">PayPal, Klarna and Revolut Want Bank Charters. Here&rsquo;s the Full List</a>
+          <br />
           <a href="/blog/portrait-bank-winter-park-de-novo">Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back</a>
           <br />
           <a href="/blog/glades-bank-broward-de-novo">Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind</a>
@@ -228,7 +279,7 @@ export default function DeNovoWatchPage() {
           read the <a href="/glossary/de-novo-bank">de novo bank</a> glossary entry.
         </p>
 
-        <LeadCapture variant="subscribe" source="de-novo-watch" />
+        <LeadCapture variant="subscribe" source="de-novo-watch" title="Get De Novo Watch updates by email" />
       </div>
     </SiteShell>
   );
