@@ -129,13 +129,52 @@ export function composeBrowserText(text: string, url: string): string {
   return hasTags ? `${body}\n\n${url}\n\n${last}` : `${body}\n\n${url}`;
 }
 
-export async function postViaBrowser(text: string, url: string, opts: { submit: boolean }): Promise<void> {
+async function clickDialogButton(page: Page, label: RegExp, timeout = 20_000): Promise<void> {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    for (const b of await page.$$(`:is(${DIALOG}) button`)) {
+      const [text, aria, disabled] = await b.evaluate((e) => [
+        (e.textContent ?? '').trim(),
+        e.getAttribute('aria-label') ?? '',
+        (e as HTMLButtonElement).disabled,
+      ]);
+      const box = !disabled && (label.test(text) || label.test(aria)) ? await b.boundingBox() : null;
+      if (box) {
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2, { steps: 10 });
+        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2, { delay: 60 });
+        return;
+      }
+    }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  throw new Error(`composer button not found: ${label}`);
+}
+
+// Attach the image before typing: with media attached LinkedIn shows no link
+// card, and the URL in the text stays a plain clickable link. The media button
+// opens a file chooser, then an editor whose "Next" returns to the composer.
+async function attachImage(page: Page, image: string): Promise<void> {
+  const [chooser] = await Promise.all([
+    page.waitForFileChooser({ timeout: 20_000 }),
+    clickDialogButton(page, /^(add (a )?(media|photo)|photo)$/i),
+  ]);
+  await chooser.accept([image]);
+  await clickDialogButton(page, /^next$/i, 30_000);
+  await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 20_000 });
+}
+
+export async function postViaBrowser(
+  text: string,
+  url: string,
+  opts: { submit: boolean; image?: string | null },
+): Promise<void> {
   const adminUrl = companyAdminUrl();
   if (!adminUrl) throw new Error(`LINKEDIN_COMPANY_URL missing from ${ENV_FILE}`);
   const browser = await launch(false);
   try {
     const page = (await browser.pages())[0] ?? (await browser.newPage());
     await openComposer(page, adminUrl);
+    if (opts.image) await attachImage(page, opts.image);
     await typePost(page, composeBrowserText(text, url));
     // Give LinkedIn time to fetch the link preview card.
     await new Promise((r) => setTimeout(r, 6_000));
@@ -173,12 +212,13 @@ if (import.meta.main) {
     console.log('Sign in to LinkedIn in the Edge window, then close it.');
     await new Promise<void>((r) => browser.on('disconnected', () => r()));
   } else if (mode === 'test') {
+    // Optional third argument: an image to attach, e.g. one from `bun automation/graphics.ts preview`.
     await postViaBrowser(
       'Test post from the RAVEN automation. Not for publishing.\n\nSecond paragraph with a question?\n\n#CommunityBanking #Fintech',
       'https://reportraven.tech/blog',
-      { submit: false },
+      { submit: false, image: process.argv[3] },
     );
   } else {
-    console.log('usage: bun automation/linkedin-browser.ts login|test');
+    console.log('usage: bun automation/linkedin-browser.ts login|test [image.png]');
   }
 }
