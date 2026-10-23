@@ -71,14 +71,18 @@ function hash(s: string): number {
 
 /** Least-used variant so far; a forced `graphic:` wins. `stat` is skipped
  *  when the post has no lead number, `carousel` when it has under three
- *  findings to put on slides. */
+ *  findings to put on slides. A follow-up post skips the variant its launch
+ *  post used, so each article is seen in two formats. */
 export function pickVariant(post: GraphicPost, history: Record<string, AbEntry>): GraphicVariant {
   if (post.graphic && (GRAPHIC_VARIANTS as readonly string[]).includes(post.graphic)) {
     return post.graphic as GraphicVariant;
   }
-  const eligible = GRAPHIC_VARIANTS.filter(
+  const launch = history[post.slug.replace(/-followup$/, '')]?.variant;
+  const usable = GRAPHIC_VARIANTS.filter(
     (v) => (v !== 'stat' || leadStat(post) !== null) && (v !== 'carousel' || carouselFindings(post).length >= 3),
   );
+  const fresh = post.slug.endsWith('-followup') ? usable.filter((v) => v !== launch) : usable;
+  const eligible = fresh.length > 0 ? fresh : usable;
   const counts = new Map<GraphicVariant, number>(eligible.map((v) => [v, 0]));
   for (const entry of Object.values(history)) {
     if (counts.has(entry.variant)) counts.set(entry.variant, counts.get(entry.variant)! + 1);
