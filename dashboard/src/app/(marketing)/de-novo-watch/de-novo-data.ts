@@ -28,11 +28,11 @@ export const STATUS_LABELS: Record<DeNovoStatus, string> = {
 // applications list (as of 2026-10-20) and FDIC decisions on deposit insurance.
 // countsThrough is rendered in the page's stat box ("filed nationally in 2026 through ...").
 export const TRACKER_SUMMARY = {
-  updated: '2026-10-21',
+  updated: '2026-10-22',
   countsThrough: 'mid-October',
-  nationalApplications2026: 25,
+  nationalApplications2026: 28,
   floridaApplications2026: 6,
-  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus New South Bank, approved Sept. 28. Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
+  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus four already decided whose FDIC application numbers start with 2026 (Bank of St. George, UT, approved June 30; New South Bank, FL, Sept. 28; Alba Bank, TX, Oct. 2; Strategist Bank, NH, Oct. 19). Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
 };
 
 // The full FDIC pending deposit insurance applications list, copied as published
