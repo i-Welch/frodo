@@ -1,5 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, TRACKER_SUMMARY } from '../../src/app/(marketing)/de-novo-watch/de-novo-data';
+import {
+  CHARTER_MOVES,
+  DE_NOVO_BANKS,
+  FDIC_PENDING,
+  PROFILED_BANKS,
+  TRACKER_SUMMARY,
+  deNovoSlug,
+  deNovoState,
+  getProfiledBank,
+} from '../../src/app/(marketing)/de-novo-watch/de-novo-data';
 import { csvCell, trackerCsv } from '../../src/app/(marketing)/de-novo-watch/tracker-csv';
 import { BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
 
@@ -70,5 +79,28 @@ describe('tracker FAQ', () => {
     const text = trackerFaqs().map((f) => f.a).join('\n');
     for (const b of DE_NOVO_BANKS) expect(text, b.name).toContain(b.name);
     expect(text).not.toContain('—');
+  });
+});
+
+describe('bank profile pages', () => {
+  it('gives every profiled bank a unique, clean slug that resolves', () => {
+    const slugs = PROFILED_BANKS.map((b) => deNovoSlug(b.name));
+    expect(new Set(slugs).size).toBe(slugs.length);
+    for (const s of slugs) {
+      expect(s).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+      expect(getProfiledBank(s)?.name).toBeTruthy();
+    }
+    expect(deNovoSlug('Itaú Bank, National Association')).toBe('itau-bank');
+    expect(deNovoSlug('Revolut Bank US, N.A.')).toBe('revolut-bank-us');
+    expect(deNovoSlug('Private Bank & Trust')).toBe('private-bank-and-trust');
+  });
+
+  it('only profiles rows with enough sourced detail, each with a state', () => {
+    expect(PROFILED_BANKS.length).toBeGreaterThan(0);
+    for (const b of PROFILED_BANKS) {
+      expect([b.capital, b.leadership, b.techNotes, b.articleSlug].filter(Boolean).length, b.name).toBeGreaterThanOrEqual(2);
+      expect(deNovoState(b.location), b.name).toMatch(/^[A-Z]{2}$/);
+    }
+    expect(getProfiledBank('tidestone-bank')).toBeUndefined();
   });
 });
