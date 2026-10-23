@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'florida-new-bank-charters-2026',
+    title: 'New Bank Charters in Florida 2026: Every Filing, Approval and Opening',
+    description:
+      'Florida filed 6 of at least 28 FDIC deposit insurance applications in 2026, more than any state. Three Florida de novos won FDIC approval and two opened, after a decade that produced three new banks. Every 2026 filing, approval and opening, counted from FDIC records.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
     slug: 'fintech-bank-charter-rush-2026',
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:

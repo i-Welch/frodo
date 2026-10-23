@@ -104,6 +104,107 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'florida-new-bank-charters-2026': {
+    title: 'New Bank Charters in Florida 2026: Every Filing, Approval and Opening',
+    description:
+      'Florida filed 6 of at least 28 FDIC deposit insurance applications in 2026, more than any state. Three Florida de novos won FDIC approval and two opened, after a decade that produced three new banks. Every 2026 filing, approval and opening, counted from FDIC records.',
+    publishedDate: 'October 26, 2026',
+    readTime: '6 min read',
+    content: `
+# New Bank Charters in Florida 2026: Every Filing, Approval and Opening
+
+*Published October 26, 2026*
+
+In the ten years from 2011 through 2020, three new banks opened in Florida. That is the full count in FDIC BankFind for de novos established in the state over the decade, setting aside one shelf charter built to buy failed banks.
+
+In 2026 alone, six groups have asked the FDIC to insure a new Florida bank. That is more than any other state. Three Florida de novos won FDIC approval this year, and two have opened.
+
+The de novo bank is back in Florida. Here is every 2026 filing, approval and opening, counted from FDIC and OCC records.
+
+:::stat
+**6 of at least 28**
+FDIC deposit insurance applications received in 2026 that came from Florida, the most of any state. Utah is next with five, Texas third with three. FDIC data as of October 20, 2026.
+:::
+
+## The Florida list
+
+The FDIC's pending list (data as of October 20, 2026) holds 27 applications. Twenty-four were received in 2026, and five of those are in Florida. A sixth Florida applicant, New South Bank in Tampa, filed in 2026 and was approved on September 28, so it has already left the list.
+
+Counting the whole year takes one more step. FDIC application numbers begin with the year the application was filed, and four 2026-numbered applications have already been decided: New South, Alba Bank in Houston, Bank of St. George in Utah, and Strategist Bank in New Hampshire. That makes at least 28 applications received nationally in 2026, before counting any that were withdrawn.
+
+Here is every Florida bank that filed, won approval or opened in 2026:
+
+| Bank | City | Filed | Where it stands | Capital floor |
+|---|---|---|---|---|
+| Echelon Bank | Clearwater | 2025 | FDIC approved Jan 5; opened May 27 | $23.0M |
+| Portrait Bank | Winter Park | 2025 | FDIC approved Feb 5; opened June 22, public Sept 19 | $28.0M |
+| New South Bank | Tampa | 2026 | State approval Sept 1; FDIC approved Sept 28 | $25.0M |
+| Itaú Bank, N.A. | Miami | Mar 16 | OCC preliminary approval Aug 14; FDIC pending | $507M |
+| Tidestone Bank | Coral Gables | Mar 23 | FDIC pending | Not public |
+| Florida Bank of Finance | Coral Gables | Apr 16 | FDIC pending | Not public |
+| Glades Bank and Trust | Plantation | June 2 | FDIC pending | Not public |
+| Stark Bank, N.A. | Miami | Aug 10 | FDIC pending | Not public |
+
+Capital floors are the minimums in each bank's FDIC order, or the OCC decision for Itaú. New South's notice of application was published April 22, 2026.
+
+## A decade of almost nothing
+
+BankFind lists 66 Florida institutions established from 2005 through 2007, the peak of the last cycle. Then the line went flat. From 2010 through 2016, the FDIC approved no conventional de novo in Florida at all. The Florida approvals it did issue in 2010 and 2011 were shelf charters, like NAFH National Bank and Superior Bank, N.A., created to absorb failed banks rather than to start new ones.
+
+The three real openings of the decade were Winter Park National Bank in 2017, Gulfside Bank in Sarasota in 2018 and Gulf Atlantic Bank in Key West in 2020. Winter Park National is already gone, sold to a Michigan credit union, which is part of why [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) exists.
+
+Since 2021, nine new banks have opened in Florida: Climate First, Waterfall, Locality, Gulf Coast Business Bank, Evermore, Gala, BankMiami, Echelon and Portrait. Three times the previous decade, in less than six years.
+
+:::pullquote
+Florida opened three new banks in the decade through 2020. It has opened nine since 2021.
+:::
+
+The national picture is thinner. The FDIC's decisions page records nine banks opening anywhere in the United States in 2026 so far. Florida is the only state with two of them.
+
+## Who is filing
+
+Florida's six 2026 applicants are not one kind of bank.
+
+**A foreign bank's arm.** Itaú Bank, N.A. is the largest by far. The OCC's August 14 decision (Corporate Decision #1386) requires at least $507 million in capital and an 8% leverage ratio for three years. It will operate from a single Miami location, serving high-net-worth clients with Brazilian and Latin American ties. The capital is not a new raise: Itaú will fund the bank by contributing Banco Itaú International, its existing Miami Edge Act corporation.
+
+**A national bank applicant with little public detail.** Stark Bank, N.A. filed with the FDIC on August 10. The "N.A." means a national charter from the OCC. We found no public filing or announcement describing its plans, so we count it and leave it there.
+
+**Community bank organizers.** New South Bank in Tampa is a conventional state nonmember bank: Florida's Office of Financial Regulation granted conditional approval on September 1, and the FDIC followed on September 28 with a $25 million capital floor raised through 2.5 million shares at $10. [Glades Bank and Trust](/blog/glades-bank-broward-de-novo) in Plantation has been pending since June 2.
+
+**Two quiet Coral Gables filers.** Tidestone Bank and Florida Bank of Finance appear on the FDIC list with a name, a city and a date. We found no public announcement from either.
+
+Compare that with the national queue, where at least 14 of the 27 pending applicants are fintechs and consumer lenders, as we counted in [the fintech charter rush](/blog/fintech-bank-charter-rush-2026). Florida's pipeline leans the other way. Its best-documented filers are hometown community banks, and so is every Florida bank approved or opened this year.
+
+:::pullquote
+Florida's best-documented filers are hometown community banks, and so is every Florida bank approved or opened this year.
+:::
+
+## Capital, speed and the first six months
+
+The capital floors for Florida's community de novos sit in a narrow band. Echelon's FDIC order required $23 million. New South's requires $25 million. Portrait's required exactly $27,996,000.
+
+Portrait raised $43 million from 256 local investors, according to Banking Dive, 54% above its floor.
+
+:::stat
+**137 to 159 days**
+The span between FDIC milestones for this year's Florida de novos: 142 days from Echelon's FDIC approval to opening, 137 for Portrait, and 159 days from New South's published application notice to its FDIC approval.
+:::
+
+Two caveats, in fairness. Opening is not the same as earning. Echelon reported a net loss of $2.1 million for the first half of 2026, with $52.2 million in assets but only $3.8 million in net loans at June 30. Portrait held $44.7 million in assets, nearly all of it capital, and $594,000 in deposits; it opened to the public on September 19.
+
+The 2025 class shows the next phase. BankMiami, which opened in March 2025, grew from $140.9 million in assets at September 30, 2025 to $317.9 million at June 30, 2026, with $280.8 million in deposits. It was still losing money, $921,000 in the first half. Growth comes first. Profit follows if the bank survives the three-year [de novo period](/glossary/de-novo-bank).
+
+## What it means for Florida's community banks
+
+For an incumbent, the 2026 class is a competitive fact. Each new bank arrives with fresh capital, experienced management and a simple pitch to customers left behind by consolidation: a local bank again. The FDIC orders bind each one to its business plan for three years, so the targets are on file. Echelon's plan names small and medium-sized businesses and individuals in the Tampa-St. Petersburg-Clearwater metro. New South's names the same customers in Hillsborough County. Two de novos in one metro, chasing one segment, within a year.
+
+For the de novos, the race starts at the intake. A bank with $3.8 million in loans and $27 million in capital needs to put money to work fast without importing fraud. The banks that bolted fast applications onto document-based processes learned that speed without verification invites losses. A bank built in 2026 can verify identity, income and the funding account from the source on day one, close in minutes instead of weeks, and keep an audit trail an examiner can read. [Starting a bank](/blog/how-to-start-a-bank) has always meant writing that plan. The first exam tests whether it runs.
+
+We track every filing, approval and opening at [De Novo Watch](/de-novo-watch). Florida fills more rows than any other state.
+
+Three new banks in a decade. Six applications in 2026 alone. Florida's question is no longer whether anyone will start a bank, but which of these six will open.
+`,
+  },
   'fintech-bank-charter-rush-2026': {
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:
