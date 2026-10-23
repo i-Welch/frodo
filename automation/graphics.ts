@@ -45,6 +45,10 @@ export interface GraphicPost {
 export interface AbEntry {
   variant: GraphicVariant;
   postedAt: string;
+  // For matching the post to LinkedIn's analytics table (ab-report.ts), which
+  // lists a link post by the article title and other posts by their text.
+  title?: string;
+  hook?: string;
 }
 
 export function loadAbLog(): Record<string, AbEntry> {
@@ -52,9 +56,9 @@ export function loadAbLog(): Record<string, AbEntry> {
   return JSON.parse(readFileSync(AB_LOG, 'utf8'));
 }
 
-export function recordVariant(slug: string, variant: GraphicVariant) {
+export function recordVariant(post: GraphicPost, variant: GraphicVariant) {
   const log = loadAbLog();
-  log[slug] = { variant, postedAt: new Date().toISOString() };
+  log[post.slug] = { variant, postedAt: new Date().toISOString(), title: post.title, hook: post.text.trim().split('\n')[0] };
   mkdirSync(STATE_DIR, { recursive: true });
   writeFileSync(AB_LOG, JSON.stringify(log, null, 2));
 }

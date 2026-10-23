@@ -218,6 +218,64 @@ export async function postViaBrowser(
   }
 }
 
+export interface PostAnalytics {
+  urn: string;
+  title: string;
+  date: string; // YYYY-MM-DD, as LinkedIn shows it (page timezone)
+  impressions: number;
+  clicks: number;
+  reactions: number;
+  comments: number;
+  reposts: number;
+}
+
+/** Reads the page's content engagement table (Analytics > Posts): the most
+ *  recent posts with impressions and engagement. Read-only. */
+export async function readPostAnalytics(): Promise<PostAnalytics[]> {
+  const adminUrl = companyAdminUrl();
+  if (!adminUrl) throw new Error(`LINKEDIN_COMPANY_URL missing from ${ENV_FILE}`);
+  const browser = await launch(false);
+  try {
+    const page = (await browser.pages())[0] ?? (await browser.newPage());
+    await page.goto(`${adminUrl.replace(/\/admin\/?.*$/, '/admin/')}analytics/updates/`, { waitUntil: 'networkidle2', timeout: 60_000 }).catch(() => {});
+    if (/\/(login|authwall|checkpoint)/.test(page.url())) {
+      throw new Error('LinkedIn session expired; run: bun automation/linkedin-browser.ts login');
+    }
+    await page.waitForSelector('table.org-analytics__table tbody tr', { timeout: 30_000 });
+    const rows = await page.$$eval('table.org-analytics__table', (tables) => {
+      const table = tables[0];
+      const headers = [...table.querySelectorAll('thead th')].map((th) => (th.textContent ?? '').trim().toLowerCase());
+      return [...table.querySelectorAll('tbody tr')].map((tr) => {
+        const cells = [...tr.querySelectorAll('td')].map((td) => (td.textContent ?? '').trim());
+        const link = tr.querySelector('a[href*="urn:li:"]');
+        const titleEl = link?.querySelector('div') ?? link;
+        return {
+          href: link?.getAttribute('href') ?? '',
+          title: (titleEl?.textContent ?? '').trim(),
+          date: (tr.querySelector('[class*="table__date"]')?.textContent ?? '').trim(),
+          cell: Object.fromEntries(headers.map((h, i) => [h, cells[i] ?? ''])),
+        };
+      });
+    });
+    const num = (s: string | undefined) => Number((s ?? '').replace(/[^\d.]/g, '')) || 0;
+    return rows.map((r) => {
+      const [m, d, y] = r.date.split('/');
+      return {
+        urn: r.href.match(/urn:li:[a-z]+:\d+/)?.[0] ?? '',
+        title: r.title,
+        date: y ? `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}` : '',
+        impressions: num(r.cell.impressions),
+        clicks: num(r.cell.clicks),
+        reactions: num(r.cell.reactions),
+        comments: num(r.cell.comments),
+        reposts: num(r.cell.reposts),
+      };
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
 if (import.meta.main) {
   const mode = process.argv[2];
   if (mode === 'login') {
@@ -233,7 +291,9 @@ if (import.meta.main) {
       'https://reportraven.tech/blog',
       { submit: false, image: process.argv[3], documentTitle: 'Test carousel, not for publishing' },
     );
+  } else if (mode === 'analytics') {
+    console.table(await readPostAnalytics());
   } else {
-    console.log('usage: bun automation/linkedin-browser.ts login|test [image.png]');
+    console.log('usage: bun automation/linkedin-browser.ts login|test [image.png|carousel.pdf]|analytics');
   }
 }

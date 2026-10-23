@@ -310,7 +310,7 @@ async function postQueued() {
       }
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
-      recordVariant(post.slug, variant);
+      recordVariant(post, variant);
       log(`${post.slug}: posted to LinkedIn (${id}, graphic ${variant})`);
     } catch (err) {
       log(`${post.slug}: ${(err as Error).message}`);

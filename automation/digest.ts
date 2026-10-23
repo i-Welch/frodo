@@ -10,7 +10,8 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
 import { alertFounder } from './alert';
-import { abDigestLines } from './ab-report';
+import { abDigestLines, refreshLinkedInStats } from './ab-report';
+import { browserReady } from './linkedin-browser';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -67,7 +68,16 @@ function problems(): string[] {
   return [`Problems in the logs (${found.length}):`, ...found.slice(-15).map((l) => `  - ${l}`)];
 }
 
-const automation = [...openPullRequests(), ...linkedInPosts(), ...abDigestLines(), ...problems()];
+// Fresh LinkedIn impressions for the graphic test; the report still runs on
+// the last stored numbers if the browser session has expired.
+let statsNote: string[] = [];
+if (browserReady()) {
+  await refreshLinkedInStats().catch((err) => {
+    statsNote = [`  (LinkedIn analytics not refreshed: ${(err as Error).message.split('\n')[0]})`];
+  });
+}
+
+const automation = [...openPullRequests(), ...linkedInPosts(), ...abDigestLines(), ...statsNote, ...problems()];
 
 if (process.argv.includes('--print')) {
   console.log(automation.join('\n'));
