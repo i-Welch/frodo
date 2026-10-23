@@ -208,6 +208,96 @@ The second lesson is about cost. A bank cannot copy ServisFirst's business model
 Still to report: Seacoast on October 27 and Colony Bankcorp on October 28. We will update this read when they do.
 `,
   },
+
+  'florida-new-bank-charters-2026': {
+    title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole",
+    description:
+      'Florida leads the nation in 2026 bank charter filings and won three FDIC approvals. Two new banks opened, with $97 million in assets. Five Florida charters retired, holding $8.4 billion, and every one was itself a de novo. Every 2026 Florida filing and exit, counted.',
+    publishedDate: 'October 23, 2026',
+    readTime: '6 min read',
+    content: `
+# Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole
+
+*Published October 23, 2026*
+
+Florida is starting banks again. No state has filed more applications for new bank charters in 2026, and two new Florida banks opened their doors this year.
+
+Here is the other half of the ledger. In the same year, the FDIC retired five Florida bank charters. The two newcomers held $97 million in assets at June 30. The five departures held $8.4 billion at their final call reports. And every one of the five was itself a de novo, founded between 1997 and 2017.
+
+## Every 2026 filing, approval and opening
+
+Start with the good news, because it is real.
+
+The FDIC's list of pending deposit insurance applications, as of October 20, 2026, holds 27 filings. Five are from Florida: Itaú Bank in Miami (received March 16), Tidestone Bank in Coral Gables (March 23), Florida Bank of Finance in Coral Gables (April 16), [Glades Bank and Trust](/blog/glades-bank-broward-de-novo) in Plantation (June 2), and Stark Bank in Miami (August 10). Add New South Bank in Tampa, which filed in April and won FDIC approval on September 28, and Florida has six 2026 filings. Utah is next, with four 2026 filings still pending.
+
+Approvals tell the same story. The FDIC has issued 17 deposit insurance decisions dated 2026. Utah collected six, five of them for Ford, GM, Stellantis, Edward Jones and the fintech Mercury. Florida collected three: Echelon Bank in Clearwater (January 5), [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) in Winter Park (February 5), and New South (September 28). All three are community banks.
+
+Two of them are already open. FDIC records list Echelon as opened May 27 and Portrait as established June 22. At June 30, Echelon held $52.2 million in assets and Portrait $44.7 million.
+
+:::stat
+**6 filings, 3 approvals, 2 openings**
+Florida's 2026 de novo count through October 20, from FDIC records: more charter filings than any other state, and the most community bank approvals.
+:::
+
+Two caveats, in fairness. Two of the six filings are not hometown banks in the usual sense: Itaú, Latin America's largest bank, plans a single Miami branch for high-net-worth clients with ties to the region, and Stark is a fully digital, business-only bank from a Brazilian fintech. And the regulatory weather just improved. On August 10 the FDIC announced a two-phase review for applications received after August 15, with a contingent authorization due within 120 days of filing. The 2026 count may be the start of a bigger wave, not the peak of it.
+
+## The class of 228
+
+To see why two openings is a comeback, look at what came before.
+
+From 1995 through 2009, the FDIC insured 228 new institutions headquartered in Florida, by our count of BankFind records. Twenty-two in 2006. Twenty-five in 2007. Florida was the country's de novo factory.
+
+Then it stopped. Florida added one institution in 2010 and one in 2011, both in the middle of the failed-bank cleanup. From 2012 through 2016 it added none. Ten arrived from 2017 through 2025, starting with Winter Park National Bank, and the two this year make twelve in a decade.
+
+Meanwhile the count of Florida banks collapsed. At the end of 2008, 308 FDIC-insured institutions were headquartered in Florida. Today there are 81, in a state that reached 23.46 million residents in July 2025, up 8.9% since 2020.
+
+:::pullquote
+Florida had 308 banks at the end of 2008. It has 81 now, and the new class is not big enough to stop the count from falling.
+:::
+
+The recent class is not small potatoes. The nine 2018-2025 Florida de novos still operating held $4.2 billion in assets at June 30, led by Climate First Bank in St. Petersburg, which opened in June 2021 and now holds $1.94 billion. Demand for new Florida banks has never been the problem, as we found when [South Carolina's drought](/blog/south-carolina-de-novo-drought) ran the same test.
+
+## Who is buying Florida's banks
+
+The five charters the FDIC retired this year:
+
+- **FineMark National Bank & Trust**, Fort Myers, founded 2007: merged into Commerce Bank of Kansas City effective January 1, $3.93 billion.
+- **Winter Park National Bank**, founded 2017: bought by DFCU Financial, a Dearborn, Michigan credit union, which completed the deal November 3, 2025. The FDIC closed the charter March 31, 2026. $827 million.
+- **Marine Bank & Trust**, Vero Beach, founded 1997: bought by ELGA Credit Union of Grand Blanc, Michigan, which closed March 6. $657 million.
+- **Prime Meridian Bank**, Tallahassee, founded 2008: bought by MidFlorida Credit Union of Lakeland, which closed in March. $956 million.
+- **One Florida Bank**, Orlando, founded 2008 as One South Bank: merged into Hancock Whitney of Gulfport, Mississippi effective August 1. $2.07 billion.
+
+Four of the five buyers are headquartered outside Florida. Three of the five are credit unions, and they took $2.44 billion of Florida bank assets, 25 times what the two new banks hold. Two of them are Michigan credit unions. ELGA paid Marine's shareholders $43.75 a share in cash and waited nearly two years, from the June 2024 announcement to the March close, for the deal to clear.
+
+:::stat
+**$8.4 billion out, $97 million in**
+The five Florida charters retired in 2026 held $8.4 billion at their final call reports. The two Florida de novos that opened in 2026 held $97 million at June 30. Every departing bank was itself a de novo, founded between 1997 and 2017.
+:::
+
+That last detail is the real finding. Florida's exits are not old family banks running out of heirs. They are the previous de novo wave being harvested. FineMark and One Florida came from the 2007-2008 class; Winter Park National was the first new Florida bank after the drought, and it lasted eight years. Organizers build a bank, investors get liquidity, a larger institution, often from out of state, gets a growth market. Then the cycle needs new organizers.
+
+## What the pipeline can and cannot fix
+
+At this year's pace the arithmetic does not close. Florida added two charters and lost five, a net loss of three, and its count fell from 84 at the end of 2025 to 81. Even if New South and the three pending Florida community bank filings all opened next year, that would be four new banks, barely more than this year's five exits.
+
+:::pullquote
+Florida's exits are not old family banks running out of heirs. They are the previous de novo wave being harvested.
+:::
+
+The size gap matters more than the count. A de novo opens with roughly $25 million to $45 million in capital and spends years building a balance sheet. New South's FDIC order requires at least $25 million in paid-in capital; Portrait raised $43 million. The banks walking out the door took years of relationships, deposit franchises and commercial books with them. Climate First's five-year climb to $1.94 billion is the best-case template, and it is the exception in this class.
+
+## What the new class has to do differently
+
+The 2026 Florida de novos are building in a state where the most likely end of a successful bank is a sale, and where credit unions now bid alongside banks. That changes what a new bank has to be good at on day one.
+
+They do not have years of branch traffic to grow into. Echelon and Portrait each had less than $55 million in assets at midyear, in markets where the national banks already have the brand and the budget. The growth has to come from intake: an application a business owner can finish without a branch visit, verified at the source so the fraud program examiners will test in the [first three years](/glossary/de-novo-bank) is running from the start, and decisions in minutes instead of weeks. Our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what examiners expect to find. A de novo that builds verification-first intake now never has to retrofit it, and keeps an audit trail of every check from its first application.
+
+We track every filing, approval and opening at [De Novo Watch](/de-novo-watch). Florida has more rows than any other state.
+
+It also has more exits. The comeback counts when the first number outruns the second.
+`,
+  },
+
   'fintech-bank-charter-rush-2026': {
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:

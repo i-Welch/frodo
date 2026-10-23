@@ -17,6 +17,8 @@
 export const BLOG_SLUGS = [
   // — Market (Oct 2026) —
   'southeast-bank-earnings-q3-2026',
+  // — Institutional research (Oct 2026) —
+  'florida-new-bank-charters-2026',
   // — Fintech (Oct 2026) —
   'fintech-bank-charter-rush-2026',
   // — Released from drafts (Oct 2026) —
@@ -109,6 +111,7 @@ export const BLOG_SLUGS = [
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
   'southeast-bank-earnings-q3-2026': '2026-10-23',
+  'florida-new-bank-charters-2026': '2026-10-23',
   'fintech-bank-charter-rush-2026': '2026-10-22',
   'fiserv-premier-digital-lending': '2026-10-22',
   'jack-henry-symitar-loan-origination': '2026-10-22',
