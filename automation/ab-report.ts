@@ -1,6 +1,7 @@
 // Compares the LinkedIn graphic variants (see graphics.ts): posts per variant
 // and the site visits their links brought in, from Vercel Web Analytics
 // grouped by utm_campaign (the post's slug) and utm_content (the variant).
+// The Monday digest (digest.ts) includes the per-variant summary.
 //
 // Usage: bun automation/ab-report.ts
 // Needs the Vercel CLI signed in to the team that owns the frodo project.
@@ -26,33 +27,55 @@ function visitsByCampaign(since: string): Row[] {
   return (JSON.parse(res.stdout.toString()) as { data: Row[] }).data;
 }
 
-const log = loadAbLog();
-const entries = Object.entries(log);
-if (entries.length === 0) {
-  console.log('No graphic-variant posts yet.');
-  process.exit(0);
+export interface AbReport {
+  posts: { slug: string; variant: GraphicVariant; visitors: number }[];
+  totals: { variant: GraphicVariant; posts: number; visitors: number }[];
 }
 
-const since = entries.map(([, e]) => e.postedAt).sort()[0];
-const rows = visitsByCampaign(since);
-
-const totals = new Map<GraphicVariant, { posts: number; visitors: number; pageviews: number }>(
-  GRAPHIC_VARIANTS.map((v) => [v, { posts: 0, visitors: 0, pageviews: 0 }]),
-);
-console.log('Post'.padEnd(60), 'Variant'.padEnd(10), 'Visitors');
-for (const [slug, entry] of entries.sort((a, b) => a[1].postedAt.localeCompare(b[1].postedAt))) {
-  const hits = rows.filter((r) => r.utmCampaign === slug && r.utmContent === entry.variant);
-  const visitors = hits.reduce((n, r) => n + r.visitors, 0);
-  const t = totals.get(entry.variant)!;
-  t.posts += 1;
-  t.visitors += visitors;
-  t.pageviews += hits.reduce((n, r) => n + r.pageviews, 0);
-  console.log(slug.slice(0, 59).padEnd(60), entry.variant.padEnd(10), visitors);
+export function abReport(): AbReport | null {
+  const entries = Object.entries(loadAbLog()).sort((a, b) => a[1].postedAt.localeCompare(b[1].postedAt));
+  if (entries.length === 0) return null;
+  const rows = visitsByCampaign(entries[0][1].postedAt);
+  const posts = entries.map(([slug, entry]) => ({
+    slug,
+    variant: entry.variant,
+    visitors: rows
+      .filter((r) => r.utmCampaign === slug && r.utmContent === entry.variant)
+      .reduce((n, r) => n + r.visitors, 0),
+  }));
+  const totals = GRAPHIC_VARIANTS.map((variant) => {
+    const mine = posts.filter((p) => p.variant === variant);
+    return { variant, posts: mine.length, visitors: mine.reduce((n, p) => n + p.visitors, 0) };
+  });
+  return { posts, totals };
 }
 
-console.log('\nVariant'.padEnd(11), 'Posts'.padEnd(7), 'Visitors'.padEnd(10), 'Per post');
-for (const [variant, t] of totals) {
-  console.log(variant.padEnd(10), String(t.posts).padEnd(7), String(t.visitors).padEnd(10), t.posts ? (t.visitors / t.posts).toFixed(1) : '-');
+/** One line per variant, for the Monday digest. */
+export function abDigestLines(): string[] {
+  try {
+    const report = abReport();
+    if (!report) return ['LinkedIn graphic test: no posts yet.'];
+    return [
+      'LinkedIn graphic test (visitors per post, all time):',
+      ...report.totals.map((t) => `  - ${t.variant}: ${t.posts ? (t.visitors / t.posts).toFixed(1) : '-'} (${t.visitors} from ${t.posts} posts)`),
+    ];
+  } catch (err) {
+    return [`LinkedIn graphic test: could not read Vercel Analytics (${(err as Error).message.split('\n')[0]})`];
+  }
 }
-console.log('\nSmall samples: read this as a direction after 5+ posts per variant, not a verdict.');
-console.log('Impressions and reactions per post: LinkedIn page admin > Analytics > Content.');
+
+if (import.meta.main) {
+  const report = abReport();
+  if (!report) {
+    console.log('No graphic-variant posts yet.');
+    process.exit(0);
+  }
+  console.log('Post'.padEnd(60), 'Variant'.padEnd(10), 'Visitors');
+  for (const p of report.posts) console.log(p.slug.slice(0, 59).padEnd(60), p.variant.padEnd(10), p.visitors);
+  console.log('\nVariant'.padEnd(11), 'Posts'.padEnd(7), 'Visitors'.padEnd(10), 'Per post');
+  for (const t of report.totals) {
+    console.log(t.variant.padEnd(10), String(t.posts).padEnd(7), String(t.visitors).padEnd(10), t.posts ? (t.visitors / t.posts).toFixed(1) : '-');
+  }
+  console.log('\nSmall samples: read this as a direction after 5+ posts per variant, not a verdict.');
+  console.log('Impressions and reactions per post: LinkedIn page admin > Analytics > Content.');
+}
