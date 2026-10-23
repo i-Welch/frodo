@@ -1,13 +1,14 @@
-// HTML/CSS graphics for LinkedIn posts, rendered to PNG with headless Edge, and
+// HTML/CSS graphics for LinkedIn posts, rendered with headless Edge, and
 // the A/B rotation that decides which graphic (if any) a post goes out with.
 //
 // Variants:
 //   link      control: no image, LinkedIn renders the article's link card (OG image)
 //   stat      dark data card built around the hook's lead number
 //   headline  light editorial card with the article title and description
+//   carousel  PDF document post: cover, one slide per finding, closing slide
 //
 // Each post gets the variant used least so far (ties broken by slug), unless
-// its queue file sets `graphic: link|stat|headline`. The variant rides along
+// its queue file sets `graphic: <variant>`. The variant rides along
 // as utm_content on the posted link, so Vercel Analytics splits clicks by it;
 // `bun automation/ab-report.ts` prints the comparison.
 //
@@ -25,8 +26,9 @@ export const GRAPHICS_DIR = join(STATE_DIR, 'graphics');
 const AB_LOG = join(STATE_DIR, 'linkedin-ab.json');
 const EDGE = 'C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe';
 
-export const GRAPHIC_VARIANTS = ['link', 'stat', 'headline'] as const;
+export const GRAPHIC_VARIANTS = ['link', 'stat', 'headline', 'carousel'] as const;
 export type GraphicVariant = (typeof GRAPHIC_VARIANTS)[number];
+export type RenderedVariant = Exclude<GraphicVariant, 'link'>;
 
 export interface GraphicPost {
   slug: string;
@@ -63,13 +65,16 @@ function hash(s: string): number {
   return h;
 }
 
-/** Least-used variant so far; a forced `graphic:` wins, and `stat` is skipped
- *  when the post has no lead number to build the card around. */
+/** Least-used variant so far; a forced `graphic:` wins. `stat` is skipped
+ *  when the post has no lead number, `carousel` when it has under three
+ *  findings to put on slides. */
 export function pickVariant(post: GraphicPost, history: Record<string, AbEntry>): GraphicVariant {
   if (post.graphic && (GRAPHIC_VARIANTS as readonly string[]).includes(post.graphic)) {
     return post.graphic as GraphicVariant;
   }
-  const eligible = GRAPHIC_VARIANTS.filter((v) => v !== 'stat' || leadStat(post) !== null);
+  const eligible = GRAPHIC_VARIANTS.filter(
+    (v) => (v !== 'stat' || leadStat(post) !== null) && (v !== 'carousel' || carouselFindings(post).length >= 3),
+  );
   const counts = new Map<GraphicVariant, number>(eligible.map((v) => [v, 0]));
   for (const entry of Object.values(history)) {
     if (counts.has(entry.variant)) counts.set(entry.variant, counts.get(entry.variant)! + 1);
@@ -102,6 +107,17 @@ export function leadStat(post: GraphicPost): { value: string; label: string } | 
   return null;
 }
 
+/** The post's body paragraphs that carry a number, for carousel slides: not
+ *  the hashtag line, the closing question, or a lead-in to the link. */
+export function carouselFindings(post: GraphicPost): string[] {
+  return post.text
+    .trim()
+    .split(/\n\s*\n/)
+    .map((p) => p.replace(/\s*\n\s*/g, ' ').trim())
+    .filter((p) => /\d/.test(p) && !/^#/.test(p) && !/[?:]$/.test(p) && p.length <= 320)
+    .slice(0, 5);
+}
+
 /** Cuts at a word boundary under `max` characters and adds an ellipsis. */
 function clip(s: string, max: number): string {
   if (s.length <= max) return s;
@@ -123,10 +139,10 @@ body { font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif; -webkit-font-s
 .brand { font-weight: 700; letter-spacing: 10px; }
 `;
 
-function page(css: string, body: string): string {
+function page(css: string, body: string, base = BASE_CSS): string {
   return `<!doctype html><html><head><meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=block" rel="stylesheet">
-<style>${BASE_CSS}${css}</style></head><body>${body}</body></html>`;
+<style>${base}${css}</style></head><body>${body}</body></html>`;
 }
 
 function statHtml(post: GraphicPost): string {
@@ -180,11 +196,68 @@ function headlineHtml(post: GraphicPost): string {
   );
 }
 
-export function graphicHtml(variant: Exclude<GraphicVariant, 'link'>, post: GraphicPost): string {
-  return variant === 'stat' ? statHtml(post) : headlineHtml(post);
+// 4:5 portrait slides, LinkedIn's tallest document format.
+const SLIDE = { width: 1080, height: 1350 };
+
+// The description's first sentence when it fits the closing slide whole.
+function closingLine(post: GraphicPost): string {
+  const first = post.description.match(/^.+?[.!?](?=\s|$)/)?.[0] ?? post.description;
+  return first.length <= 160 ? first : 'The data, the context, and what it means for your bank.';
 }
 
-export function altText(variant: Exclude<GraphicVariant, 'link'>, post: GraphicPost): string {
+function carouselHtml(post: GraphicPost): string {
+  const findings = carouselFindings(post);
+  const total = findings.length + 2;
+  const slide = (cls: string, inner: string, n: number) =>
+    `<section class="slide ${cls}">${inner}<div class="foot"><span class="brand">RAVEN</span><span>${n} / ${total}</span></div></section>`;
+  const finding = (text: string, i: number) => {
+    const value = text.match(LEADING_COUNT)?.[0] ?? text.match(MONEY_OR_PCT)?.[0];
+    const big = value && !/^(19|20)\d\d$/.test(value) ? `<div class="value">${esc(value.replace(/\.$/, ''))}</div>` : '';
+    const size = text.length > 220 ? 46 : text.length > 140 ? 54 : 62;
+    return slide('finding', `<div class="idx">${String(i + 1).padStart(2, '0')}</div>${big}<p style="font-size:${size}px">${esc(text)}</p>`, i + 2);
+  };
+  const titleSize = post.title.length > 90 ? 76 : post.title.length > 60 ? 88 : 104;
+  return page(
+    `
+* { margin: 0; padding: 0; box-sizing: border-box; }
+@page { size: ${SLIDE.width}px ${SLIDE.height}px; margin: 0; }
+body { font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+.slide { position: relative; width: ${SLIDE.width}px; height: ${SLIDE.height}px; overflow: hidden; padding: 110px 96px;
+  display: flex; flex-direction: column; justify-content: center; break-after: page; }
+.foot { position: absolute; left: 96px; right: 96px; bottom: 80px; display: flex; justify-content: space-between; font-size: 28px; }
+.brand { font-weight: 700; letter-spacing: 10px; }
+.eyebrow { font-size: 28px; font-weight: 700; letter-spacing: 7px; text-transform: uppercase; }
+.cover { background: #F6F1E7; color: #141414; }
+.cover::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 22px; background: #1B2A6B; }
+.cover .eyebrow { color: #1B2A6B; margin-bottom: 56px; }
+.cover h1 { font-family: 'Fraunces', Georgia, serif; font-size: ${titleSize}px; font-weight: 600; line-height: 1.06; letter-spacing: -2px; }
+.cover .swipe { margin-top: 72px; font-size: 34px; font-weight: 500; color: #1B2A6B; }
+.finding { background: linear-gradient(160deg, #0A0A0A 0%, #101322 100%); color: #fff; }
+.finding .idx { font-size: 30px; font-weight: 700; color: #6C8EFF; letter-spacing: 4px; margin-bottom: 40px; }
+.finding .value { font-size: 190px; font-weight: 700; line-height: 0.95; letter-spacing: -6px; margin-bottom: 48px; color: #FFFFFF; }
+.finding p { line-height: 1.3; font-weight: 500; color: #E5E7EB; }
+.finding .foot, .end .foot { color: #A3A3A3; }
+.end { background: #1B2A6B; color: #fff; }
+.end h2 { font-family: 'Fraunces', Georgia, serif; font-size: 92px; font-weight: 600; line-height: 1.08; letter-spacing: -1.5px; }
+.end p { font-size: 40px; color: #C9D3FF; margin-top: 44px; line-height: 1.4; }
+.end .url { margin-top: 72px; font-size: 44px; font-weight: 700; }
+`,
+    [
+      slide('cover', `<div class="eyebrow">RAVEN Research</div><h1>${esc(post.title)}</h1><div class="swipe">Swipe for the numbers &rarr;</div>`, 1),
+      ...findings.map(finding),
+      slide('end', `<h2>Read the full analysis</h2><p>${esc(closingLine(post))}</p><div class="url">reportraven.tech/blog</div>`, total),
+    ].join(''),
+    '',
+  );
+}
+
+export function graphicHtml(variant: RenderedVariant, post: GraphicPost): string {
+  return variant === 'stat' ? statHtml(post) : variant === 'carousel' ? carouselHtml(post) : headlineHtml(post);
+}
+
+/** Image alt text, or the document title LinkedIn shows on a carousel. */
+export function altText(variant: RenderedVariant, post: GraphicPost): string {
+  if (variant === 'carousel') return clip(post.title, 100);
   if (variant === 'stat') {
     const stat = leadStat(post)!;
     return `${stat.value}: ${stat.label}. RAVEN Research, reportraven.tech`;
@@ -196,19 +269,24 @@ export function altText(variant: Exclude<GraphicVariant, 'link'>, post: GraphicP
 
 const requireFromDashboard = createRequire(resolve(import.meta.dir, '../dashboard/package.json'));
 
-/** Renders the variant's HTML to a PNG and returns its path. Uses a throwaway
- *  headless profile, so it never touches the signed-in LinkedIn profile. */
-export async function renderGraphic(variant: Exclude<GraphicVariant, 'link'>, post: GraphicPost): Promise<string> {
+/** Renders the variant's HTML to a PNG (a PDF for the carousel) and returns
+ *  its path. Uses a throwaway headless profile, so it never touches the
+ *  signed-in LinkedIn profile. */
+export async function renderGraphic(variant: RenderedVariant, post: GraphicPost): Promise<string> {
   const puppeteer = requireFromDashboard('puppeteer-core') as typeof import('puppeteer-core');
   mkdirSync(GRAPHICS_DIR, { recursive: true });
-  const out = join(GRAPHICS_DIR, `${post.slug}-${variant}.png`);
+  const out = join(GRAPHICS_DIR, `${post.slug}-${variant}.${variant === 'carousel' ? 'pdf' : 'png'}`);
   const browser = await puppeteer.launch({ executablePath: EDGE, headless: true, args: ['--no-first-run'] });
   try {
     const page = await browser.newPage();
     await page.setViewport({ width: SIZE, height: SIZE, deviceScaleFactor: 1 });
     await page.setContent(graphicHtml(variant, post), { waitUntil: 'networkidle0', timeout: 30_000 });
     await page.evaluate(() => document.fonts.ready);
-    await page.screenshot({ path: out as `${string}.png`, clip: { x: 0, y: 0, width: SIZE, height: SIZE } });
+    if (variant === 'carousel') {
+      await page.pdf({ path: out, width: `${SLIDE.width}px`, height: `${SLIDE.height}px`, printBackground: true });
+    } else {
+      await page.screenshot({ path: out as `${string}.png`, clip: { x: 0, y: 0, width: SIZE, height: SIZE } });
+    }
   } finally {
     await browser.close();
   }
@@ -234,8 +312,9 @@ if (import.meta.main && process.argv[2] === 'preview') {
   const history = loadAbLog();
   for (const post of queuedPosts().filter((p) => !only || p.slug === only)) {
     const picks = [];
-    for (const v of ['stat', 'headline'] as const) {
+    for (const v of ['stat', 'headline', 'carousel'] as const) {
       if (v === 'stat' && !leadStat(post)) continue;
+      if (v === 'carousel' && carouselFindings(post).length < 3) continue;
       picks.push(await renderGraphic(v, post));
     }
     console.log(`${post.slug}: next variant ${pickVariant(post, history)}; rendered ${picks.join(', ')}`);

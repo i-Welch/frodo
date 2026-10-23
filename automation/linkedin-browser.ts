@@ -163,10 +163,24 @@ async function attachImage(page: Page, image: string): Promise<void> {
   await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 20_000 });
 }
 
+// A carousel is a PDF "document" post: More > Add a document, upload, give it
+// the title LinkedIn requires, then Done returns to the composer.
+async function attachDocument(page: Page, pdf: string, title: string): Promise<void> {
+  await clickDialogButton(page, /^more$/i);
+  await clickDialogButton(page, /^add a document$/i);
+  const input = await page.waitForSelector(`:is(${DIALOG}) input[type="file"]`, { timeout: 20_000 });
+  await (input as unknown as { uploadFile(p: string): Promise<void> }).uploadFile(pdf);
+  const titleBox = await page.waitForSelector(`:is(${DIALOG}) input[type="text"]`, { visible: true, timeout: 60_000 });
+  await titleBox!.click({ clickCount: 3 });
+  await page.keyboard.type(title, { delay: 8 });
+  await clickDialogButton(page, /^done$/i, 60_000);
+  await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 30_000 });
+}
+
 export async function postViaBrowser(
   text: string,
   url: string,
-  opts: { submit: boolean; image?: string | null },
+  opts: { submit: boolean; image?: string | null; documentTitle?: string },
 ): Promise<void> {
   const adminUrl = companyAdminUrl();
   if (!adminUrl) throw new Error(`LINKEDIN_COMPANY_URL missing from ${ENV_FILE}`);
@@ -174,7 +188,8 @@ export async function postViaBrowser(
   try {
     const page = (await browser.pages())[0] ?? (await browser.newPage());
     await openComposer(page, adminUrl);
-    if (opts.image) await attachImage(page, opts.image);
+    if (opts.image?.endsWith('.pdf')) await attachDocument(page, opts.image, opts.documentTitle ?? 'RAVEN Research');
+    else if (opts.image) await attachImage(page, opts.image);
     await typePost(page, composeBrowserText(text, url));
     // Give LinkedIn time to fetch the link preview card.
     await new Promise((r) => setTimeout(r, 6_000));
@@ -216,7 +231,7 @@ if (import.meta.main) {
     await postViaBrowser(
       'Test post from the RAVEN automation. Not for publishing.\n\nSecond paragraph with a question?\n\n#CommunityBanking #Fintech',
       'https://reportraven.tech/blog',
-      { submit: false, image: process.argv[3] },
+      { submit: false, image: process.argv[3], documentTitle: 'Test carousel, not for publishing' },
     );
   } else {
     console.log('usage: bun automation/linkedin-browser.ts login|test [image.png]');

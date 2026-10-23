@@ -226,25 +226,27 @@ function linkedInHeaders(env: Record<string, string>): Record<string, string> {
   };
 }
 
-// Images API: register the upload, PUT the bytes, then post with the image URN.
-async function uploadImage(env: Record<string, string>, path: string): Promise<string> {
-  const init = await fetch('https://api.linkedin.com/rest/images?action=initializeUpload', {
+// Images / Documents API: register the upload, PUT the bytes, then post with
+// the returned URN. A carousel PDF goes up as a document.
+async function uploadMedia(env: Record<string, string>, path: string): Promise<string> {
+  const kind = path.endsWith('.pdf') ? 'documents' : 'images';
+  const init = await fetch(`https://api.linkedin.com/rest/${kind}?action=initializeUpload`, {
     method: 'POST',
     headers: linkedInHeaders(env),
     body: JSON.stringify({ initializeUploadRequest: { owner: `urn:li:organization:${env.LINKEDIN_ORG_ID}` } }),
   });
-  if (!init.ok) throw new Error(`LinkedIn image init ${init.status}: ${await init.text()}`);
-  const { value } = (await init.json()) as { value: { uploadUrl: string; image: string } };
+  if (!init.ok) throw new Error(`LinkedIn ${kind} init ${init.status}: ${await init.text()}`);
+  const { value } = (await init.json()) as { value: { uploadUrl: string; image?: string; document?: string } };
   const put = await fetch(value.uploadUrl, {
     method: 'PUT',
     headers: { Authorization: `Bearer ${env.LINKEDIN_ACCESS_TOKEN}` },
     body: readFileSync(path),
   });
-  if (!put.ok) throw new Error(`LinkedIn image upload ${put.status}: ${await put.text()}`);
-  return value.image;
+  if (!put.ok) throw new Error(`LinkedIn ${kind} upload ${put.status}: ${await put.text()}`);
+  return (value.image ?? value.document)!;
 }
 
-// An image post can't also carry a link card, so its link goes in the text.
+// An image or document post can't also carry a link card, so its link goes in the text.
 async function postToLinkedIn(
   env: Record<string, string>,
   post: QueuedPost,
@@ -253,7 +255,9 @@ async function postToLinkedIn(
 ): Promise<string> {
   const url = linkedInUrl(post, variant);
   const content = image && variant !== 'link'
-    ? { media: { id: await uploadImage(env, image), altText: altText(variant, post) } }
+    ? variant === 'carousel'
+      ? { media: { id: await uploadMedia(env, image), title: altText(variant, post) } }
+      : { media: { id: await uploadMedia(env, image), altText: altText(variant, post) } }
     : { article: { source: url, title: post.title, description: post.description } };
   const res = await fetch('https://api.linkedin.com/rest/posts', {
     method: 'POST',
@@ -300,7 +304,10 @@ async function postQueued() {
       const image = variant === 'link' ? null : await renderGraphic(variant, post);
       let id = 'browser';
       if (env) id = await postToLinkedIn(env, post, variant, image);
-      else await postViaBrowser(post.text, linkedInUrl(post, variant), { submit: true, image });
+      else {
+        const documentTitle = variant === 'carousel' ? altText(variant, post) : undefined;
+        await postViaBrowser(post.text, linkedInUrl(post, variant), { submit: true, image, documentTitle });
+      }
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
       recordVariant(post.slug, variant);
