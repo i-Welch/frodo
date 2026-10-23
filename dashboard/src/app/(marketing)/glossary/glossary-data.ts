@@ -542,6 +542,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'glades-bank-broward-de-novo', title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind' },
       { slug: 'portrait-bank-winter-park-de-novo', title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back' },
       { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
+      { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },
