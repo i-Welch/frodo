@@ -104,6 +104,111 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'southeast-bank-earnings-q3-2026': {
+    title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
+    description:
+      "Truist, United Community and First Horizon booked big losses selling low-yield assets on purpose. The community banks widened margins instead: Southern First from 2.62% to 3.02%, ServisFirst from 3.09% to 3.63%. What 18 Southeast Q3 releases show.",
+    publishedDate: 'October 23, 2026',
+    readTime: '5 min read',
+    content: `
+# Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset
+
+*Published October 23, 2026*
+
+Three of the Southeast's largest banks took big losses on purpose this quarter. Two of them finished it in the red.
+
+Truist booked a $1.4 billion pretax loss selling available-for-sale securities. United Community Banks took a $366.1 million securities loss repositioning its portfolio and reported a GAAP net loss of $139.7 million. First Horizon agreed to sell about $4.5 billion of lower-yielding consumer mortgages, recorded a $473 million loss on the pending sale, and reported a net loss to common shareholders of $94 million.
+
+Truist still earned $684 million for common shareholders. Strip the one-time items out and all three had ordinary quarters. United Community's operating EPS was $0.77, up from $0.75. First Horizon's adjusted EPS was $0.53, up from $0.51. Truist's adjusted EPS of $1.16 was up 12%.
+
+The smaller banks did not need a reset. They were busy widening their margins.
+
+Two more reported after the close on October 22. Ameris, the Atlanta bank with $28.55 billion in assets, earned $116.1 million, or $1.73 per diluted share, up from $51.4 million in the second quarter, when a litigation expense accrual weighed on results. Its margin held at 3.87%, up from 3.80% a year earlier. In Myrtle Beach, [South Atlantic Bancshares](/blog/south-atlantic-bank-coastal-growth-engine) earned $5.2 million, up 19.3% from a year earlier, as its margin rose to 3.38% from 3.28%.
+
+## The Losses Were a Trade
+
+Selling a bond or a mortgage below its book value turns an unrealized loss into a realized one. The bank takes the hit to earnings once and can reinvest the proceeds at today's higher yields. United Community called its sale a repositioning of the securities portfolio. First Horizon described the mortgages it is selling as lower-yielding.
+
+The cost lands in a single quarter. The benefit is meant to arrive as higher interest income in the quarters after. In effect, a bank that can absorb the hit to capital is trading a worse third quarter for higher interest income later.
+
+Two caveats, in fairness. These were not credit losses: United Community's nonperforming assets were 0.28% of total assets. And none of the community banks in this group made the trade. Their margins were already moving the right way.
+
+## Community Bank Margins Widened
+
+The [net interest margin](/glossary/net-interest-margin) is where the quarter's real story sits. Every bank in the table below widened its margin from a year earlier except Live Oak.
+
+| Bank | Headquarters | Q3 2026 NIM | Q3 2025 NIM | Change |
+|---|---|---|---|---|
+| ServisFirst | Birmingham, AL | 3.63% | 3.09% | +54 bp |
+| Southern First | Greenville, SC | 3.02% | 2.62% | +40 bp |
+| First Community | Lexington, SC | 3.59% | 3.27% | +32 bp |
+| First Bancorp | Southern Pines, NC | 3.75% | 3.46% | +29 bp |
+| Peoples Bancorp | Newton, NC | 3.85% | 3.58% | +27 bp |
+| SmartFinancial | Knoxville, TN | 3.45% | 3.25% | +20 bp |
+| CoastalSouth | Atlanta, GA | 3.70% | 3.58% | +12 bp |
+| South Atlantic | Myrtle Beach, SC | 3.38% | 3.28% | +10 bp |
+| Capital City | Tallahassee, FL | 4.42% | 4.34% | +8 bp |
+| Ameris | Atlanta, GA | 3.87% | 3.80% | +7 bp |
+| Live Oak | Wilmington, NC | 3.30% | 3.33% | -3 bp |
+
+Southern First shows how it happened. Net interest income rose 26% from a year earlier, to $34.7 million, and wholesale deposits fell 32%. At September 30 the bank held $3.72 billion of retail deposits against $386.5 million of wholesale deposits. Replacing rate-sensitive wholesale money with customer deposits is the most direct way a bank widens its margin, and [Southern First's Upstate strategy](/blog/southern-first-bank-upstate-sc-bet) has been built on exactly that.
+
+:::stat
+**+40 basis points**
+Southern First's net interest margin, from 2.62% in the third quarter of 2025 to 3.02%, as wholesale deposits fell 32% and net interest income rose 26%.
+:::
+
+[First Community](/blog/first-community-bank-sc-cre-merger-growth) widened its margin to 3.59% from 3.27% while absorbing the Signature Bank of Georgia acquisition, which closed January 8. Net income rose 54.9% to $8.0 million.
+
+## The Efficiency Gap
+
+Margins decide revenue. The [efficiency ratio](/glossary/efficiency-ratio), the cost of earning each dollar of it, decides how much reaches the bottom line, and the spread across the region is wide.
+
+| Bank | Total assets | ROA | Efficiency ratio |
+|---|---|---|---|
+| Ameris | $28.6B | 1.61% | 49.32% |
+| ServisFirst | $18.3B | 1.89% | 30.20% |
+| Live Oak | $17.0B | 0.59% | 48.80% |
+| First Bancorp | $13.2B | 1.55% | 49.09% |
+| Southern First | $4.9B | 1.03% | 54.10% |
+| CoastalSouth | $2.4B | 1.45% | 55.16% |
+| First Community | $2.4B | 1.34% | 60.81% |
+| South Atlantic | $2.0B | 1.04% | 62.06% |
+| HomeTrust | $4.4B | 1.65% | 61.47% |
+| Capital City | $4.4B | 1.53% | 65.63% |
+
+Live Oak, HomeTrust and South Atlantic present these efficiency ratios as non-GAAP measures.
+
+ServisFirst spends about 30 cents to earn a dollar of revenue. Capital City spends nearly 66 cents, and still earned a 1.53% [return on assets](/glossary/return-on-assets) thanks to a 4.42% margin, second only to HomeTrust's 4.46% in this group. Branch-light commercial banks and branch-heavy community banks will never post the same ratio. But the direction matters: Southern First's efficiency ratio fell from 60.86% to 54.10% in a year, and First Community's from 64.44% to 60.81%.
+
+:::pullquote
+ServisFirst spends about 30 cents to earn a dollar of revenue. Capital City spends nearly 66 cents. Both are profitable. The difference is what each new dollar of revenue costs.
+:::
+
+## Credit Stayed Quiet, With Two Exceptions
+
+Asset quality across the group was clean. Nonperforming assets were 0.04% of total assets at First Community, 0.22% at Capital City, 0.25% at SmartFinancial and Peoples, 0.28% at United Community and Atlantic Union, 0.30% at Southern First and 0.54% at Ameris. South Atlantic reported one loan on nonaccrual and none more than 30 days past due.
+
+The exceptions are specific. Live Oak's net charge-offs ran 1.00% of loans annualized, up from 0.61% a year earlier, and its $54.7 million provision included $17.0 million tied to what it called its stressed distillery portfolio. HomeTrust's nonperforming assets were 1.59% of total assets, or 1.08% excluding SBA-guaranteed balances.
+
+## The Deal Pipeline Keeps Filling
+
+Consolidation ran through almost every release. Pinnacle and Synovus closed their merger on January 1 and reported as one company: $130.7 billion in assets and $364 million of net income available to common shareholders. United Community closed its Peach State Bank acquisition on August 1 and sold its Navitas equipment finance business for $2.0 billion in cash. First Bancorp's pending acquisition of Carolina Bank is scheduled to close in early 2027. HomeTrust agreed on August 16 to buy Blue Ridge Bankshares, with closing expected early in the first quarter of 2027. And in Myrtle Beach, [Beacon and CCNB](/blog/ccnb-myrtle-beach-merger-growth-2026) completed a merger of equals on October 1.
+
+:::pullquote
+Every operating account a bank opens online, funded and verified in one sitting, is a deposit it does not have to buy.
+:::
+
+## What It Means for a Community Bank
+
+The quarter's lesson is about deposits. At Southern First, the clearest case in the group, the margin gain came from funding: customer deposits replacing wholesale money. That makes account opening a margin decision. Every operating account a bank opens online, funded and verified in one sitting, is a deposit it does not have to buy.
+
+The second lesson is about cost. A bank cannot copy ServisFirst's business model, but it can stop spending staff time on work a system can do: chasing pay stubs, calling employers, re-keying bank statements, waiting on documents before a decision. Verification-first intake, with income, assets and identity confirmed from the source in minutes, is how a community bank grows loans and accounts without growing headcount at the same rate.
+
+Still to report: Seacoast on October 27 and Colony Bankcorp on October 28. We will update this read when they do.
+`,
+  },
+
   'florida-new-bank-charters-2026': {
     title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole",
     description:
@@ -2758,11 +2863,13 @@ The banks that figure this out won't be the ones who spent five years on a core 
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description: 'South Atlantic Bank turned a 2007 Myrtle Beach startup into a $1.98B coastal lender with branches from Myrtle Beach to Hilton Head. How in-migration, a 56% CRE and construction concentration and a $1M-plus Lowcountry mortgage book are forcing a digital reckoning.',
     publishedDate: 'June 20, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'October 23, 2026',
     readTime: '6 min read',
     content: `# South Atlantic Bank: The $2B Coastal Lender Built on In-Migration
 
 *Published June 20, 2026*
+
+*Q3 2026 update: South Atlantic Bancshares reported third-quarter net income of $5.2 million, or $0.67 per diluted share, up 19.3% from a year earlier (company release, October 22, 2026). Total assets were $1.99 billion at September 30, with $1.55 billion in loans and $1.69 billion in deposits. The [net interest margin](/glossary/net-interest-margin) was 3.38%, up from 3.28% a year earlier, [return on average assets](/glossary/return-on-assets) was 1.04%, and one loan was on nonaccrual with none more than 30 days past due. The analysis below uses first-half 2026 call report figures. See how it compares with its peers in our [Southeast Q3 earnings roundup](/blog/southeast-bank-earnings-q3-2026).*
 
 South Atlantic Bank opened its doors in Myrtle Beach on November 28, 2007. Within months, the financial crisis was pulling the banking industry apart. Many banks chartered in that window did not survive the decade. South Atlantic Bank is now a $1.98 billion institution.
 
