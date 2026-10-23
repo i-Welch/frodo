@@ -6,7 +6,8 @@
 //    not yet posted, waits until the article URL returns 200, then posts it to
 //    the RAVEN company page and records it in the local posted log. A queue
 //    file with `notBefore: YYYY-MM-DD` (the follow-up post /article writes)
-//    waits until that date.
+//    waits until that date. Each post goes out with one of the graphic
+//    variants in graphics.ts (A/B rotation), tagged as utm_content.
 //
 // LinkedIn credentials live outside the repo in %USERPROFILE%\.raven\linkedin.env:
 //   LINKEDIN_ACCESS_TOKEN=...      (w_organization_social scope)
@@ -26,7 +27,8 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
-import { browserReady, postViaBrowser } from './linkedin-browser';
+import { browserReady, composeBrowserText, postViaBrowser } from './linkedin-browser';
+import { altText, loadAbLog, pickVariant, recordVariant, renderGraphic, type GraphicVariant } from './graphics';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
@@ -120,6 +122,9 @@ interface QueuedPost {
   url: string;
   text: string;
   notBefore?: string;
+  graphic?: string;
+  stat?: string;
+  statLabel?: string;
 }
 
 function readQueue(): QueuedPost[] {
@@ -150,6 +155,9 @@ function readQueue(): QueuedPost[] {
       url: meta.url,
       text: match[2].trim(),
       notBefore: meta.notBefore || undefined,
+      graphic: meta.graphic || undefined,
+      stat: meta.stat || undefined,
+      statLabel: meta.statLabel || undefined,
     };
   });
 }
@@ -196,21 +204,70 @@ async function isLive(url: string): Promise<boolean> {
   }
 }
 
-async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Promise<string> {
+// LinkedIn's in-app browser often drops the referrer, so untagged clicks land
+// in Vercel Analytics as direct traffic. Tag the posted link instead; the
+// article's canonical URL stays untagged, and isLive/IndexNow use post.url.
+// utm_content carries the graphic variant for the A/B comparison.
+function linkedInUrl(post: QueuedPost, variant: GraphicVariant): string {
+  const u = new URL(post.url);
+  u.searchParams.set('utm_source', 'linkedin');
+  u.searchParams.set('utm_medium', 'social');
+  u.searchParams.set('utm_campaign', post.slug);
+  u.searchParams.set('utm_content', variant);
+  return u.toString();
+}
+
+function linkedInHeaders(env: Record<string, string>): Record<string, string> {
+  return {
+    Authorization: `Bearer ${env.LINKEDIN_ACCESS_TOKEN}`,
+    'Content-Type': 'application/json',
+    'LinkedIn-Version': env.LINKEDIN_VERSION || '202609',
+    'X-Restli-Protocol-Version': '2.0.0',
+  };
+}
+
+// Images / Documents API: register the upload, PUT the bytes, then post with
+// the returned URN. A carousel PDF goes up as a document.
+async function uploadMedia(env: Record<string, string>, path: string): Promise<string> {
+  const kind = path.endsWith('.pdf') ? 'documents' : 'images';
+  const init = await fetch(`https://api.linkedin.com/rest/${kind}?action=initializeUpload`, {
+    method: 'POST',
+    headers: linkedInHeaders(env),
+    body: JSON.stringify({ initializeUploadRequest: { owner: `urn:li:organization:${env.LINKEDIN_ORG_ID}` } }),
+  });
+  if (!init.ok) throw new Error(`LinkedIn ${kind} init ${init.status}: ${await init.text()}`);
+  const { value } = (await init.json()) as { value: { uploadUrl: string; image?: string; document?: string } };
+  const put = await fetch(value.uploadUrl, {
+    method: 'PUT',
+    headers: { Authorization: `Bearer ${env.LINKEDIN_ACCESS_TOKEN}` },
+    body: readFileSync(path),
+  });
+  if (!put.ok) throw new Error(`LinkedIn ${kind} upload ${put.status}: ${await put.text()}`);
+  return (value.image ?? value.document)!;
+}
+
+// An image or document post can't also carry a link card, so its link goes in the text.
+async function postToLinkedIn(
+  env: Record<string, string>,
+  post: QueuedPost,
+  variant: GraphicVariant,
+  image: string | null,
+): Promise<string> {
+  const url = linkedInUrl(post, variant);
+  const content = image && variant !== 'link'
+    ? variant === 'carousel'
+      ? { media: { id: await uploadMedia(env, image), title: altText(variant, post) } }
+      : { media: { id: await uploadMedia(env, image), altText: altText(variant, post) } }
+    : { article: { source: url, title: post.title, description: post.description } };
   const res = await fetch('https://api.linkedin.com/rest/posts', {
     method: 'POST',
-    headers: {
-      Authorization: `Bearer ${env.LINKEDIN_ACCESS_TOKEN}`,
-      'Content-Type': 'application/json',
-      'LinkedIn-Version': env.LINKEDIN_VERSION || '202609',
-      'X-Restli-Protocol-Version': '2.0.0',
-    },
+    headers: linkedInHeaders(env),
     body: JSON.stringify({
       author: `urn:li:organization:${env.LINKEDIN_ORG_ID}`,
-      commentary: toLittleText(post.text),
+      commentary: toLittleText(image ? composeBrowserText(post.text, url) : post.text),
       visibility: 'PUBLIC',
       distribution: { feedDistribution: 'MAIN_FEED', targetEntities: [], thirdPartyDistributionChannels: [] },
-      content: { article: { source: post.url, title: post.title, description: post.description } },
+      content,
       lifecycleState: 'PUBLISHED',
       isReshareDisabledByAuthor: false,
     }),
@@ -238,17 +295,23 @@ async function postQueued() {
       log(`${post.slug}: ${post.url} not live yet, will retry`);
       continue;
     }
+    const variant = pickVariant(post, loadAbLog());
     if (DRY_RUN) {
-      log(`${post.slug}: would post to LinkedIn via ${env ? 'API' : 'browser'} (dry run)`);
+      log(`${post.slug}: would post to LinkedIn via ${env ? 'API' : 'browser'} with graphic ${variant} (dry run)`);
       continue;
     }
     try {
+      const image = variant === 'link' ? null : await renderGraphic(variant, post);
       let id = 'browser';
-      if (env) id = await postToLinkedIn(env, post);
-      else await postViaBrowser(post.text, post.url, { submit: true });
+      if (env) id = await postToLinkedIn(env, post, variant, image);
+      else {
+        const documentTitle = variant === 'carousel' ? altText(variant, post) : undefined;
+        await postViaBrowser(post.text, linkedInUrl(post, variant), { submit: true, image, documentTitle });
+      }
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
-      log(`${post.slug}: posted to LinkedIn (${id})`);
+      recordVariant(post, variant);
+      log(`${post.slug}: posted to LinkedIn (${id}, graphic ${variant})`);
     } catch (err) {
       log(`${post.slug}: ${(err as Error).message}`);
       await alertFounder('linkedin', 'LinkedIn post failed',

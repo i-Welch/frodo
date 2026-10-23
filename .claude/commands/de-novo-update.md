@@ -27,6 +27,7 @@ Check, and note the URL and date of everything you use:
 - Replace `FDIC_PENDING.rows` with the FDIC pending list exactly as published (every state) and set `FDIC_PENDING.asOf` to the list's "data as of" date. An applicant that drops off the list was approved or withdrawn: find out which and reflect it in its tracker row if it has one.
 - Never contradict a published article; if new facts supersede one, say so in `statusDetail` (e.g. "Opened 2026-10-01, after the article was published").
 - No em dashes. Keep the existing tone: factual, dated, specific.
+- **Profile pages.** A row with at least two of `capital`, `leadership`, `techNotes` and `articleSlug` gets its own page at `/de-novo-watch/<slug>` (`PROFILED_BANKS`; the slug comes from the name via `deNovoSlug`). Adding a sourced detail can therefore create a page, which is the point: bank-name searches land there. Renaming a profiled bank changes its URL, so add a permanent redirect from the old slug in `dashboard/next.config.ts`.
 
 **Article leads.** Bank-name searches are among the site's best traffic (the Glades and Portrait deep dives), so for each Southeast row (SC, NC, GA, FL, TN, VA, AL) that is new or reached conditional approval, charter or opening in this run and has no `articleSlug`, append a topic to `marketing/topic-ideas.md` (create it with a `# Topic ideas` header if missing) unless one for that bank is already there:
 
@@ -54,6 +55,6 @@ Post text: 100-170 words, the news in the first line (e.g. "A new bank just file
 
 ## 4. Verify and ship
 
-From `dashboard/`: `bun run typecheck` and `bun run lint` pass; start the dev server on `$ARTICLE_DEV_PORT` (default 3000) if needed and confirm `/de-novo-watch` returns 200 and shows the changes.
+From `dashboard/`: `bun run typecheck` and `bun run lint` pass; start the dev server on `$ARTICLE_DEV_PORT` (default 3000) if needed and confirm `/de-novo-watch` returns 200 and shows the changes, and that the profile page of every changed profiled row returns 200.
 
 Branch `de-novo/<YYYY-MM-DD>` from an up-to-date `master`, commit (`Update De Novo Watch (<YYYY-MM-DD>)`, body listing each change with its source), push, and `gh pr create` titled `De Novo Watch update: <YYYY-MM-DD>` with the full change list and source URLs. **Auto mode only:** `gh pr edit <n> --add-label auto-publish`. Report the PR URL and a one-line summary of what changed.

@@ -166,6 +166,8 @@ Post text, for the RAVEN company page, modeled on the variants in `marketing/lin
 - Ends with one question to community bankers, then a blank line and exactly five hashtags (e.g. `#CommunityBanking #CreditUnions #BankingInnovation #Fintech #Lending`), chosen to fit the type.
 - Must not claim anything the article does not support.
 
+**Graphic.** Each post goes out with one of four graphic variants in rotation (`automation/graphics.ts`): the plain link card, a stat card, a headline card, or a carousel (PDF slides, one per paragraph that carries a number; needs at least three such paragraphs, so keep each finding in its own short paragraph). The stat card is built around the first dollar figure or percentage in the post's opening lines (or a count that opens a sentence). If that number is not the sharpest one, add front matter `stat: <value, e.g. $8.4 billion>` and `statLabel: <one sentence, under 170 characters, that the number belongs to>`. Don't set `graphic:`; it forces a variant and skews the A/B test. Preview: `bun automation/graphics.ts preview <slug>`.
+
 **Follow-up post.** Also write `marketing/linkedin/queue/<slug>-followup.md`, posted automatically a week later to bring the article back into the feed. Same front matter, except `slug: <slug>-followup` and an added line `notBefore: <publish date + 7 days, YYYY-MM-DD>`. Same rules as above, but 100-160 words built around a *different* finding from the launch post (a number, comparison or implication the launch post did not use), opening with that finding. Do not refer to the earlier post or say "last week".
 
 ## Verify

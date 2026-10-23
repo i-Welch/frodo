@@ -274,3 +274,35 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     asOf: '2026-10-19',
   },
 ];
+
+/** URL slug for a tracked bank: "Itaú Bank, National Association" -> "itau-bank". */
+export function deNovoSlug(name: string): string {
+  return deNovoShortName(name)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/&/g, 'and')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+/** Name without the national-bank suffix: "Revolut Bank US, N.A." -> "Revolut Bank US". */
+export function deNovoShortName(name: string): string {
+  return name.replace(/,?\s+(National Association|N\.A\.)$/, '');
+}
+
+/** Two-letter state from a location like "Winter Park, FL (Orlando MSA)". */
+export function deNovoState(location: string): string | undefined {
+  return location.match(/,\s*([A-Z]{2})\b/)?.[1];
+}
+
+// Banks with enough sourced detail for their own page under /de-novo-watch:
+// at least two of capital, leadership, tech notes and a deep-dive article.
+// Rows with only a filing date stay on the tracker so no profile page is thin.
+export const PROFILED_BANKS: DeNovoBank[] = DE_NOVO_BANKS.filter(
+  (b) => [b.capital, b.leadership, b.techNotes, b.articleSlug].filter(Boolean).length >= 2,
+);
+
+export function getProfiledBank(slug: string): DeNovoBank | undefined {
+  return PROFILED_BANKS.find((b) => deNovoSlug(b.name) === slug);
+}
