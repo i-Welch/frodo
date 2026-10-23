@@ -1,7 +1,16 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
-import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
+import {
+  CHARTER_MOVES,
+  DE_NOVO_BANKS,
+  FDIC_PENDING,
+  PROFILED_BANKS,
+  STATUS_LABELS,
+  TRACKER_SUMMARY,
+  deNovoSlug,
+  type DeNovoStatus,
+} from './de-novo-data';
 import { trackerFaqs } from './tracker-faq';
 
 export const metadata: Metadata = {
@@ -24,6 +33,7 @@ const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'appl
 const faqs = trackerFaqs();
 
 const TRACKED = new Set(DE_NOVO_BANKS.map((b) => b.name));
+const PROFILED = new Set(PROFILED_BANKS.map((b) => b.name));
 const pending = [...FDIC_PENDING.rows].sort((a, b) => b.received.localeCompare(a.received));
 const byState = Object.entries(
   FDIC_PENDING.rows.reduce<Record<string, number>>((acc, r) => ({ ...acc, [r.state]: (acc[r.state] ?? 0) + 1 }), {}),
@@ -105,6 +115,8 @@ const styles = `
     .dnw-table:has(th:nth-child(6)) td:nth-child(5) { min-width: 200px; }
   }
   .dnw-bank { font-weight: 600; color: var(--white); white-space: nowrap; }
+  .dnw-bank-link { text-decoration: none; border-bottom: 1px solid var(--accent-border); }
+  .dnw-bank-link:hover { border-bottom-color: var(--accent); }
   .dnw-status { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap; }
   .dnw-status-chartered { background: rgba(108,142,255,0.16); color: #A8BDFF; }
   .dnw-status-conditional-approval { background: rgba(255,196,0,0.14); color: #FFD666; }
@@ -156,7 +168,11 @@ export default function DeNovoWatchPage() {
               {banks.map((b) => (
                 <tr key={b.name}>
                   <td>
-                    <span className="dnw-bank">{b.name}</span>
+                    {PROFILED.has(b.name) ? (
+                      <a className="dnw-bank dnw-bank-link" href={`/de-novo-watch/${deNovoSlug(b.name)}`}>{b.name}</a>
+                    ) : (
+                      <span className="dnw-bank">{b.name}</span>
+                    )}
                     {b.leadership && <div className="dnw-note">{b.leadership}</div>}
                   </td>
                   <td>{b.location}</td>
