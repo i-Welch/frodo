@@ -16,6 +16,10 @@ $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
 $Log = Join-Path $LogDir ("$LogName-{0:yyyy-MM-dd-HHmm}.log" -f (Get-Date))
 Start-Transcript -Path $Log | Out-Null
+# A run skipped by the Claude usage limit leaves a marker here; auto-publish.ts
+# retries it once the limit resets, and a successful run clears it.
+$MissedDir = Join-Path $env:USERPROFILE '.raven\missed-runs'
+$Missed = Join-Path $MissedDir "$LogName.json"
 
 try {
     if (-not (Test-Path $Clone)) {
@@ -31,6 +35,16 @@ try {
     bun install
     Set-Location $Clone
 
+    # Most days the audit queue is empty; skip the Claude session (and its usage)
+    # unless something is pending. If the check itself fails, run as before.
+    if ($Prompt -like '/audit-request*') {
+        $pending = (bun automation\audit-requests.ts list pending | Out-String).Trim()
+        if ($LASTEXITCODE -eq 0 -and $pending -eq '[]') {
+            Write-Output 'No pending audit requests; skipping the Claude run.'
+            return
+        }
+    }
+
     # The run verifies pages on its own dev server, away from port 3000.
     $env:ARTICLE_DEV_PORT = "$Port"
 
@@ -40,12 +54,27 @@ try {
         'Bash(grep *)', 'Bash(wc *)', 'Bash(cat *)', 'Bash(ls *)', 'Bash(head *)',
         'Bash(tail *)', 'Bash(sed -n *)', 'Bash(sleep *)'
     )
-    claude -p $Prompt --permission-mode acceptEdits --allowedTools $allowed --output-format text
-    if ($LASTEXITCODE -ne 0) { throw "claude exited with $LASTEXITCODE" }
+    claude -p $Prompt --permission-mode acceptEdits --allowedTools $allowed --output-format text | Tee-Object -Variable claudeOut
+    if ($LASTEXITCODE -ne 0) {
+        # A usage limit is not a bug: say so, with the reset time, so the alert is actionable.
+        $limit = $claudeOut | Where-Object { $_ -match 'hit your .*limit' } | Select-Object -First 1
+        if ($limit) { throw "Claude usage limit, run skipped: $limit" }
+        throw "claude exited with $LASTEXITCODE"
+    }
+    Remove-Item $Missed -ErrorAction SilentlyContinue
 }
 catch {
     Write-Output "RUN FAILED ($Prompt): $_"
-    bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" "$Prompt run failed" "$_`n`nTranscript: $Log"
+    $subject = if ("$_" -match 'usage limit') { "$Prompt skipped (Claude usage limit)" } else { "$Prompt run failed" }
+    if ("$_" -match 'usage limit') {
+        New-Item -ItemType Directory -Force $MissedDir | Out-Null
+        $prior = if (Test-Path $Missed) { Get-Content $Missed -Raw | ConvertFrom-Json } else { $null }
+        $missedAt = if ($prior) { $prior.missedAt } else { (Get-Date).ToUniversalTime().ToString('o') }
+        @{ prompt = $Prompt; cloneName = $CloneName; port = $Port; logName = $LogName; missedAt = $missedAt } |
+            ConvertTo-Json | Set-Content -Encoding utf8 $Missed
+        $subject = "$subject; will retry"
+    }
+    bun (Join-Path $Clone 'automation\alert.ts') "run-$LogName" $subject "$_`n`nTranscript: $Log"
     exit 1
 }
 finally {

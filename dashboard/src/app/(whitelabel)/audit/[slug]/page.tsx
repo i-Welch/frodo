@@ -6,7 +6,8 @@ import { LeadCapture } from '../../../(marketing)/lead-capture';
 import { STACK_ROWS } from '../../../(marketing)/bank-tech-stack/stack-data';
 import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
-import { AUDITS, getAudit } from '../../_config/audit-data';
+import { AUDITS, certForAudit, getAudit } from '../../_config/audit-data';
+import { bankSlug } from '../../../(marketing)/bank-snapshot/peer-data';
 import { getWlConfig } from '../../_config/registry';
 import { buildApplicationSummary } from '../../_config/summary';
 import { LoPreview } from '../../_components/lo-preview';
@@ -429,7 +430,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </>
           )}
 
-          <LeadCapture variant="audit" source={`audit:${audit.slug}`} />
+          <LeadCapture variant="audit" source={`audit:${audit.slug}`} defaultBank={audit.bankName} />
           <LeadCapture variant="subscribe" source={`audit:${audit.slug}`} />
 
           <div className="aud-methodology" id="methodology">
@@ -442,6 +443,12 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             ))}
             <p className="aud-sources">Digital audit sources: {audit.sources}</p>
             <p className="aud-sources">ROI data sources: {bank.sources}</p>
+            {certForAudit(audit) && (
+              <p className="aud-sources">
+                How {audit.bankName} compares with banks its size:{' '}
+                <a href={`/bank-snapshot/${certForAudit(audit)}-${bankSlug(audit.bankName)}`}>Bank Peer Snapshot</a>
+              </p>
+            )}
           </div>
         </main>
 

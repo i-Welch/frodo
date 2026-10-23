@@ -16,6 +16,7 @@ import { usd, pct, indefiniteArticle } from '../../_config/format';
 import { LoPreview } from '../../_components/lo-preview';
 import { OfficerView } from '../../_components/officer-view';
 import { MockAction } from '../../_components/mock-action';
+import { CalendlyButton } from '../../../(marketing)/calendly-button';
 
 type Perspective = 'borrower' | 'officer';
 
@@ -442,6 +443,8 @@ export function Journey({
         {showChrome && (
           <DemoBanner
             bankName={b.name}
+            shortName={b.shortName}
+            slug={config.slug}
             perspective={perspective}
             onSwitch={switchPerspective}
             flow={flow}
@@ -473,6 +476,8 @@ export function Journey({
 
 function DemoBanner({
   bankName,
+  shortName,
+  slug,
   perspective,
   onSwitch,
   flow,
@@ -480,6 +485,8 @@ function DemoBanner({
   onSwitchFlow,
 }: {
   bankName: string;
+  shortName: string;
+  slug: string;
   perspective: Perspective;
   onSwitch: (p: Perspective) => void;
   flow: FlowKind;
@@ -526,6 +533,8 @@ function DemoBanner({
             Loan officer
           </button>
         </div>
+        {/* Bank staff are the main viewers of their own demo: give them a next step. */}
+        <CalendlyButton source={`wl:${slug}`} label={`Set this up for ${shortName}`} buttonClassName="wl-cta" />
       </div>
     </div>
   );
@@ -1129,6 +1138,8 @@ const styles = `
   .wl-tab:hover { color: #fff; }
   .wl-tab-on { background: #fff; color: #0A0A0A; }
   .wl-tab-on:hover { color: #0A0A0A; }
+  .wl-cta { font-family: inherit; font-size: 0.74rem; font-weight: 700; color: #0A0A0A; background: #6C8EFF; border: none; border-radius: 8px; padding: 0.45rem 0.8rem; cursor: pointer; white-space: nowrap; }
+  .wl-cta:hover { background: #8CA6FF; }
   @media (max-width: 720px) {
     .wl-banner { flex-wrap: wrap; }
     .wl-banner-text { white-space: normal; }

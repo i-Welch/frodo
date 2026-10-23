@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getRelatedArticles } from '../articles-index';
+import { articles as ARTICLE_INDEX, getRelatedArticles } from '../articles-index';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
@@ -1334,6 +1334,8 @@ That is a genuinely differentiated posture for a de novo. Most new banks talk ab
 Portrait gets to skip that mistake. A bank built in 2026 can make source-verified onboarding, where identity, income, employment, and address come from authoritative data sources rather than borrower-typed documents, a day-one architectural decision instead of a retrofit. No public source yet names Portrait's core provider or its AI partner, so the most interesting question about the most interesting de novo in Florida is still open: what, exactly, is under the hood when the doors open in September?
 
 The 256 investors who oversubscribed this bank are betting Orlando wants its hometown bank back. The September opening will start answering whether the technology matches the talk. Given who is building it, the smart money says take them seriously.
+
+*Update: Portrait Bank opened to the public on September 19, 2026. We follow it, and every other new bank, at [De Novo Watch](/de-novo-watch).*
   `,
   },
   'glades-bank-broward-de-novo': {
@@ -1406,6 +1408,8 @@ That is an unusually early commitment, and a revealing one. Choosing the core fi
 Levine has already run that playbook once, wiring Alloy, Numerated, and Marstone into a $10 billion balance sheet. The interesting question for Glades is what the equivalent stack looks like when you get to design it before day one, for a county with 336,000 nonemployer businesses whose owners do not have W-2s.
 
 Broward has been exporting its banks for twenty years. A $45 million filing organized by the executive who digitized Florida's largest community bank, backed by a PE firm headquartered in the same city, is the most credible attempt yet to reverse the flow.
+
+*We track Glades' application, and every other new bank filing, approval and opening, at [De Novo Watch](/de-novo-watch). Organizing a bank yourself? Here is what a [day-one de novo technology stack](/solutions/de-novo-bank-technology) looks like, layer by layer.*
   `,
   },
   'first-party-fraud-community-banks': {
@@ -5914,6 +5918,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const html = linkGlossaryTerms(convertMarkdown(cleanContent));
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
   const related = getRelatedArticles(slug);
+  // De novo readers are organizers and trackers, not banks with a call report to audit.
+  const isDeNovo = ARTICLE_INDEX.find((a) => a.slug === slug)?.category === 'denovo';
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
   // Articles with fewer than 3 sections render in one piece (no mid CTA).
@@ -6116,6 +6122,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
           {secondHalf && (
             <>
+              {isDeNovo ? (
+              <aside className="article-mid-cta">
+                <h2>Organizing a bank?</h2>
+                <p>
+                  Your business plan promised examiners a fraud program. RAVEN gives de novo banks
+                  source-verified onboarding from one link, live before day one.
+                </p>
+                <a href="/solutions/de-novo-bank-technology" className="article-mid-cta-btn">See the day-one stack</a>
+                <p className="article-mid-cta-alt">
+                  Following new charters? <a href="/de-novo-watch">De Novo Watch</a> tracks every
+                  filing, approval and opening.
+                </p>
+              </aside>
+              ) : (
               <aside className="article-mid-cta">
                 <h2>Verification shouldn&apos;t take weeks</h2>
                 <p>
@@ -6131,6 +6151,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </p>
                 )}
               </aside>
+              )}
               <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
             </>
           )}
@@ -6150,8 +6171,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </a>
             </aside>
           )}
-          <LeadCapture variant="audit" source={`article:${slug}`} />
-          <LeadCapture variant="subscribe" source={`article:${slug}`} />
+          {isDeNovo ? (
+            <LeadCapture variant="subscribe" source={`article:${slug}`} title="Get De Novo Watch updates by email" />
+          ) : (
+            <>
+              <LeadCapture variant="audit" source={`article:${slug}`} />
+              <LeadCapture variant="subscribe" source={`article:${slug}`} />
+            </>
+          )}
           {related.length > 0 && (
             <nav className="article-related" aria-label="Related articles">
               <div className="article-related-label">Related reading</div>

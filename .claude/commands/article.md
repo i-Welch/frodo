@@ -34,9 +34,9 @@ Types 1 and 6 match numbers used in earlier commit messages; the others were ren
 
 Runs happen Tuesday, Wednesday, Thursday.
 
-- **Tuesday:** an institution deep dive. Alternate between type 2 (bank) and type 6 (credit union) based on whichever was published less recently. Use type 8 instead when a Southeast de novo has a fresh charter or FDIC approval.
+- **Tuesday:** an institution deep dive. Alternate between type 2 (bank) and type 6 (credit union) based on whichever was published less recently. Use type 8 instead when a Southeast de novo has a fresh charter or FDIC approval, or when `marketing/topic-ideas.md` has an unchecked type 8 topic (take the oldest). De novo coverage is the site's strongest search traffic (the tracker and the Glades deep dive led search landings in Sept-Oct 2026), so it wins ties.
 - **Wednesday:** type 3 or 4, whichever was published less recently. **Search-gap override:** if `marketing/topic-ideas.md` has an unchecked topic (written by the monthly `/visibility-check`), write the oldest one instead, whatever its type, aiming the title, description and first section at its target query. Check it off in that file (`- [x]`, add `published <slug>`) in the same PR. Any article whose subject matches an unchecked topic in that file (for example a Tuesday type 8 on a bank `/de-novo-update` queued) checks it off the same way.
-- **Thursday:** type 5 or 7. Use type 7 when a quarterly dataset dropped in the past three weeks (FDIC Quarterly Banking Profile, NCUA quarterly data); otherwise type 5. Use type 1 when research turned up a strong original finding.
+- **Thursday:** type 5 or 7. Use type 7 when a quarterly dataset dropped in the past three weeks (FDIC Quarterly Banking Profile, NCUA quarterly data); otherwise type 5. Use type 1 when research turned up a strong original finding. **State rankings read (type 7):** when the latest bank call report quarter (the quarter shown on `/bank-rankings/<state>`) has no state rankings article yet for one of SC, GA, NC, FL (in that order), write one for the first such state instead: what separates the state's most efficient and most profitable community banks from the median, built from the same FDIC figures the rankings page uses plus each leader's call report detail (loan mix, deposit costs, staffing). Name it for the state and quarter (e.g. "Q3 2026: What South Carolina's Most Efficient Banks Do Differently"), link `/bank-rankings/<state>` near the top and each named bank's peer snapshot, and log it in `marketing/article-log.md` with the state and quarter so the next run can tell which states are done. Never frame a bank as a loser; describe the median and the leaders.
 
 Work out what ran recently from `marketing/article-log.md`, falling back to `published.ts` and `git log`. A breaking event (big earnings surprise, merger announcement, regulatory action against a covered institution) overrides the rotation. Say so in the PR.
 
@@ -105,6 +105,7 @@ A sentence from the article, usually verbatim, that carries the argument.
 
 - Each block sits in its own paragraph with blank lines around it. The stat headline is the first bold run.
 - Internal links: link prior RAVEN articles where a comparison is natural, as `[Founders'](/blog/founders-credit-union-mill-town)`. Aim for one to six. Link glossary terms (`/glossary/<slug>`) where one exists. Only link slugs that exist.
+- Data pages: the first time an article names an FDIC-insured bank, link its peer snapshot, `/bank-snapshot/<cert>-<name-slug>`: the FDIC cert you already looked up, then the FDIC institution name lowercased with `&` as `and` and every other run of non-alphanumerics as one hyphen (e.g. `/bank-snapshot/2102-the-conway-national-bank`; `bankSlug` in `bank-snapshot/peer-data.ts`). Fetch it on the dev server and expect 200, not a redirect. When an article compares a state's banks, link `/bank-rankings/<state-name-slug>` once (e.g. `/bank-rankings/south-carolina`). These count toward the one-to-six links. Credit unions have no snapshot page.
 - Final section turns to the community bank takeaway. In deep dives (types 2, 6, 8) and research/macro pieces, describe the fix generically (verification-first intake, source-verified borrower data, minutes instead of weeks, audit trail) and **do not name RAVEN**. Types 3, 4, and 7 may name RAVEN once, briefly, near the end, only if the reference articles of that type do.
 - End on a one-line kicker that turns the central number or tension ("OptimumBank has four quarters to show it never had to pick.").
 - No CTA, no "request early access", no author bio. The template adds CTAs, the ROI callout, related reading, and JSON-LD.
@@ -144,7 +145,7 @@ Paths are under `dashboard/src/app/`. Keep title, description, and dates identic
 
 `/audit/<inst-slug>` 404s unless items 6-9 all exist. Check it renders.
 
-**De Novo Watch (type 8):** also set `articleSlug` on the matching row in `(marketing)/de-novo-watch/de-novo-data.ts`, adding a row if needed, and check whether `de-novo-watch/page.tsx` hardcodes a link list that needs the new article.
+**De Novo Watch (type 8):** end the article with an italic line linking [De Novo Watch](/de-novo-watch) and the [day-one stack page](/solutions/de-novo-bank-technology) (see the Glades article). Also set `articleSlug` on the matching row in `(marketing)/de-novo-watch/de-novo-data.ts`, adding a row if needed, and check whether `de-novo-watch/page.tsx` hardcodes a link list that needs the new article.
 
 ## LinkedIn post
 

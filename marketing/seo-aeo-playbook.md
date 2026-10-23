@@ -84,7 +84,7 @@ Skipped, with reasons:
 
 1. SHIPPED AS DRAFT: "The Work Number Alternatives for Community Banks" (blog). The alternatives SERP is directories + vendor posts; no bank-specific page exists.
 2. SHIPPED AS DRAFT: "Best Digital Account Opening Software for Community Banks (2026)" (blog listicle, honest, RAVEN included with disclosure). Only competitor advertorials rank today.
-3. "De novo bank technology stack (2026)": no complete neutral answer exists online. Expand the de-novo-bank-technology solutions page or write the pillar with a vendor table per layer (core, digital banking, account opening, verification, BSA/AML).
+3. STARTED 2026-10-19 (layer-by-layer vendor section on /solutions/de-novo-bank-technology): "De novo bank technology stack (2026)": no complete neutral answer exists online. Expand the de-novo-bank-technology solutions page or write the pillar with a vendor table per layer (core, digital banking, account opening, verification, BSA/AML).
 4. "KYC software for community banks" roundup: no third-party roundup exists at all.
 5. "What does digital account opening software cost?": every vendor hides pricing; the SERP has no vendor answer. Needs real market pricing data; consider publishing RAVEN pricing (Truework/Truv/Argyle all expose /pricing and use it as a wedge against Equifax opacity).
 6. Freshness cadence: touch each money page (solutions, top glossary terms, the two pillar glossary pages) with a REAL content update every 60-90 days; set `updated` in glossary-data and `updatedDate` on articles so dateModified is honest.

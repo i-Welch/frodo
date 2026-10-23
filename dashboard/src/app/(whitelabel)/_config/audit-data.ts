@@ -107,6 +107,20 @@ export const AUDITS: AuditContent[] = [
   ...(bankAudits as AuditContent[]),
 ];
 
+// Audits not yet ready to surface in search or to link from other pages.
+export const AUDIT_HOLD: ReadonlySet<string> = new Set(['oconee-state-bank', 'ameris-bank', 'united-bank']);
+
+/** The surfaced audit for an FDIC cert, matched on the "cert #N" its sources cite. */
+export function auditForCert(cert: number): AuditContent | undefined {
+  return AUDITS.find((a) => !AUDIT_HOLD.has(a.slug) && new RegExp(`cert #${cert}(?![0-9])`).test(a.sources));
+}
+
+/** The FDIC cert an audit's sources cite, if any. */
+export function certForAudit(audit: AuditContent): number | undefined {
+  const m = /cert #([0-9]+)/.exec(audit.sources);
+  return m ? Number(m[1]) : undefined;
+}
+
 export function getAudit(slug: string): AuditContent | undefined {
   return AUDITS.find((a) => a.slug === slug);
 }

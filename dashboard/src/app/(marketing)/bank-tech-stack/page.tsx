@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
 import { CATEGORIES, STACK_ROWS, STACK_UPDATED, distinctVendors, stackFaqs, vendorCounts } from './stack-data';
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     url: URL,
     siteName: 'RAVEN',
     type: 'website',
+    images: DEFAULT_OG_IMAGES,
   },
 };
 

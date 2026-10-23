@@ -45,6 +45,8 @@ export const digestAdminRoutes = new Elysia({ prefix: '/api/v1/admin/digest' })
         ...byKind('audit').map(leadLine),
         `  Demo requests: ${byKind('demo').length}`,
         ...byKind('demo').map(leadLine),
+        `  Bank tracker signups: ${byKind('track').length}`,
+        ...byKind('track').map(leadLine),
         `  Newsletter signups: ${byKind('subscribe').length}`,
         '',
         `AUDIT QUEUE: ${openAudits.length} open`,

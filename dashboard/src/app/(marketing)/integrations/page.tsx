@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { INTEGRATIONS, INTEGRATION_CATEGORIES, getIntegrationsByCategory } from './integrations-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: 'Integrations',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'RAVEN integrates with Plaid, Socure, Truework, Melissa, and FullContact, and works with Jack Henry, Fiserv, FIS, CSI, nCino, MeridianLink, Baker Hill, Abrigo, and Encompass.',
   alternates: { canonical: 'https://reportraven.tech/integrations' },
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'RAVEN Integrations',
     description:
       'Source-data verification providers plus connectivity for major cores and loan origination systems. No core replacement required to launch.',

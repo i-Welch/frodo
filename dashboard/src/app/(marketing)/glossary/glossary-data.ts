@@ -425,6 +425,70 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedSolution: { slug: 'digital-account-opening', label: 'Digital account opening' },
   },
   {
+    slug: 'fdic-deposit-insurance-application',
+    term: 'FDIC Deposit Insurance Application',
+    updated: '2026-10-19',
+    metaTitle: 'FDIC Deposit Insurance Application: How It Works',
+    metaDescription:
+      'How a proposed bank applies for FDIC deposit insurance: the seven statutory factors, public notice, conditional approval orders, and what organizers file.',
+    definition:
+      'An FDIC deposit insurance application is the filing a proposed bank must win before it can open: Section 5 of the Federal Deposit Insurance Act requires FDIC approval before a new institution’s deposits are insured. It runs alongside the charter application to the OCC or the state banking regulator.',
+    sections: [
+      {
+        heading: 'Two approvals, filed in parallel',
+        paragraphs: [
+          'A new bank needs a charter and deposit insurance. The charter comes from the OCC for a national bank or from the state banking regulator for a state bank; deposit insurance comes from the FDIC in every case. Organizers usually file both at once so the reviews run in parallel, and the FDIC application follows its Statement of Policy on Applications for Deposit Insurance.',
+          'The filing is built around the business plan: three years of projections, the capital raise, the proposed directors and executives, the market the bank will serve, and the policies and programs it will operate, from lending and BSA/AML to information security.',
+        ],
+      },
+      {
+        heading: 'The seven statutory factors',
+        paragraphs: ['Section 6 of the Federal Deposit Insurance Act lists what the FDIC must weigh:'],
+        bullets: [
+          'The financial history and condition of the institution',
+          'The adequacy of its capital structure',
+          'Its future earnings prospects',
+          'The general character and fitness of its management',
+          'The risk it presents to the Deposit Insurance Fund',
+          'The convenience and needs of the community it will serve',
+          'Whether its corporate powers are consistent with the purposes of the Act',
+        ],
+      },
+      {
+        heading: 'Public notice, conditional approval, opening',
+        paragraphs: [
+          'The applicant publishes a public notice of the filing, and the FDIC publishes the applications it has received and acted on, which is how trackers such as RAVEN’s De Novo Watch follow the pipeline. Approval arrives as an order with conditions: minimum paid-in capital, the de novo period requirements (including a tier-1 leverage ratio of at least 8% for the first three years), audits, and FDIC review of changes to the business plan, directors, or senior executives. The order typically lapses if the bank does not open within a set period, often 12 months.',
+          'Between the order and opening day, the bank finishes its capital raise and builds out its operations, including the technology stack and the fraud and identity verification controls the business plan promised examiners.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'Does a national bank need FDIC deposit insurance approval?',
+        a: 'Yes. The OCC grants the national charter, but deposit insurance for any new bank requires FDIC approval under Section 5 of the Federal Deposit Insurance Act. Organizers file both applications, usually at the same time.',
+      },
+      {
+        q: 'What does the FDIC evaluate in a deposit insurance application?',
+        a: 'Seven statutory factors: financial history and condition, capital adequacy, future earnings prospects, management’s character and fitness, risk to the Deposit Insurance Fund, the convenience and needs of the community, and whether the bank’s corporate powers are consistent with the Act.',
+      },
+      {
+        q: 'What happens after the FDIC approves an application?',
+        a: 'The FDIC issues an order with conditions, such as minimum paid-in capital and the three-year de novo requirements. The bank must meet them and open within the period the order sets, often 12 months, or the approval lapses.',
+      },
+      {
+        q: 'Where can I see pending deposit insurance applications?',
+        a: 'The FDIC publishes the applications it has received and acted on. RAVEN’s De Novo Watch (reportraven.tech/de-novo-watch) tracks them with capital, leadership, and technology choices, verified against the FDIC lists.',
+      },
+    ],
+    relatedTerms: ['de-novo-bank', 'customer-identification-program', 'new-account-fraud'],
+    relatedArticles: [
+      { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+      { slug: 'glades-bank-broward-de-novo', title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind' },
+      { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
+    ],
+    relatedSolution: { slug: 'de-novo-bank-technology', label: 'De Novo Bank Technology' },
+  },
+  {
     slug: 'de-novo-bank',
     term: 'De Novo Bank',
     metaTitle: 'What Is a De Novo Bank?',
@@ -471,10 +535,13 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
         a: 'Working versions of everything the business plan promised: capital at the committed level, staffed compliance and BSA functions, and operating fraud and identity verification controls, not roadmap items.',
       },
     ],
-    relatedTerms: ['synthetic-identity-fraud', 'industrial-loan-company', 'banking-as-a-service'],
+    relatedTerms: ['fdic-deposit-insurance-application', 'industrial-loan-company', 'banking-as-a-service', 'synthetic-identity-fraud'],
     relatedArticles: [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
+      { slug: 'glades-bank-broward-de-novo', title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind' },
+      { slug: 'portrait-bank-winter-park-de-novo', title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back' },
+      { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
       { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },

@@ -5,6 +5,7 @@ import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { GLOSSARY_TERMS, getGlossaryTerm } from '../glossary-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 /** Renders [text](/path) markdown links in body strings as internal <a> elements. */
 function renderInline(text: string): ReactNode[] {
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: term.metaDescription,
     alternates: { canonical: `https://reportraven.tech/glossary/${slug}` },
     openGraph: {
+      images: DEFAULT_OG_IMAGES,
       title: term.metaTitle,
       description: term.metaDescription,
       url: `https://reportraven.tech/glossary/${slug}`,

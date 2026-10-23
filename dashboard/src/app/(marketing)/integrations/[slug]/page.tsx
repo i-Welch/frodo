@@ -4,6 +4,7 @@ import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { INTEGRATIONS, getIntegration } from '../integrations-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import { STACK_ROWS, stackUsage } from '../../bank-tech-stack/stack-data';
 
 export function generateStaticParams() {
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: integration.metaDescription,
     alternates: { canonical: `https://reportraven.tech/integrations/${slug}` },
     openGraph: {
+      images: DEFAULT_OG_IMAGES,
       title: integration.metaTitle,
       description: integration.metaDescription,
       url: `https://reportraven.tech/integrations/${slug}`,
