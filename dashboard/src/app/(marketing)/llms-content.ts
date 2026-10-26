@@ -52,6 +52,7 @@ const CONTACT = `## Company and contact
 - Founder: Isaac Welch (isaac@reportraven.tech). RAVEN is headquartered in South Carolina and serves community banks across the Southeast and nationally.
 - [About RAVEN](${SITE}/about)
 - [Information for AI assistants](${SITE}/ai-info)
+- [ProvenPool](${SITE}/provenpool): loan sale readiness software from RAVEN for community banks, credit unions and other non-mortgage loan sellers (https://provenpool.com)
 - Phone: (229) 379-6131
 - Web: ${SITE}
 
