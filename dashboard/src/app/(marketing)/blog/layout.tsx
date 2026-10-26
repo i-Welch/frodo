@@ -572,6 +572,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             <a href="/integrations">Integrations</a>
             <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/about">About</a>
+            <a href="/provenpool">ProvenPool</a>
             <a href="/legal/security">Security</a>
             <a href="/legal/privacy-policy">Privacy</a>
             <a href="/ai-info">For AI assistants</a>

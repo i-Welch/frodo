@@ -69,6 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     { url: `${SITE}/about`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.5 },
     { url: `${SITE}/ai-info`, lastModified: PAGES_ADDED, changeFrequency: 'monthly', priority: 0.3 },
+    { url: `${SITE}/provenpool`, lastModified: new Date('2026-10-26'), changeFrequency: 'monthly', priority: 0.4 },
     { url: `${SITE}/de-novo-watch`, lastModified: new Date(TRACKER_SUMMARY.updated), changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/bank-tech-stack`, lastModified: new Date(STACK_UPDATED), changeFrequency: 'monthly', priority: 0.8 },
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },

@@ -1412,6 +1412,7 @@ export default function LandingPage() {
             <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/bank-tech-stack">Bank Tech Stack</a>
             <a href="/about">About</a>
+            <a href="/provenpool">ProvenPool</a>
             <a href="/legal/privacy-policy">Privacy Policy</a>
             <a href="/legal/terms-of-service">Terms of Service</a>
             <a href="/legal/security">Security</a>
