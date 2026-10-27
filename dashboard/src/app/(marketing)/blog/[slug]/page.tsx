@@ -104,6 +104,91 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'new-south-bank-tampa-de-novo': {
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    publishedDate: 'October 28, 2026',
+    readTime: '6 min read',
+    content: `
+# New South Bank: A $25M Bet on a County Down to Five Banks
+
+*Published October 28, 2026*
+
+In June 2008, 21 banks kept their main office in Hillsborough County, Florida. This June there were five. One of the five is a trust company holding $500,000 in deposits.
+
+The money did not leave. Deposits in the county grew from $20.2 billion to $45.05 billion over the same stretch, according to the FDIC's Summary of Deposits. The banks headquartered there simply stopped being the ones holding it.
+
+On September 28, the FDIC approved deposit insurance for New South Bank, a proposed Tampa bank led by a 35-year veteran of the Office of the Comptroller of the Currency. If its organizers raise $25 million, it becomes the first bank chartered in the county since 2007.
+
+## The approval: $25 million at $10 a share
+
+New South filed with the FDIC and the Florida Office of Financial Regulation in April, announcing the applications on April 20. The FDIC's decision, application number 20260392, is dated September 28, 2026. It came 161 days after that announcement, and it makes New South the third Florida community bank to win deposit insurance this year, after Echelon Bank in Clearwater and [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) in Winter Park.
+
+The condition that matters: the organizers must raise $25 million before the bank can open, per The Bank Slate's read of the approval. Ten named insiders have agreed to buy 309,000 shares for $3.1 million, roughly $10 a share and about 12% of the minimum. The rest has to come from outside investors.
+
+For scale, Portrait's FDIC order required just under $28 million and the bank raised $43 million from 256 local investors. New South's floor is lower, and its business plan is smaller and more specific.
+
+The plan, as summarized from the application: profitability in year two, then $250 million in assets the following year, funded by $225 million in deposits and carrying $180 million in loans. That is an 80% [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio), conservative by community bank standards.
+
+The capital math is tighter than it looks. $25 million against $250 million in assets is a 10% leverage ratio before a single dollar of startup losses. The FDIC's de novo policy requires capital sufficient for an 8% Tier 1 leverage ratio throughout the first three years. Every dollar a new bank loses before it turns profitable comes straight out of that two-point cushion.
+
+## The people: the regulators cross the table
+
+Kennard Page, the proposed chairman and CEO, spent more than 35 years at the OCC and retired as assistant deputy comptroller for its North Florida field office. He then ran Lafayette State Bank in Mayo, Fla., as president and CEO, and founded KLZ Investments, a bank consulting firm.
+
+Lafayette State Bank is a 1946 charter that held $252.2 million in assets at June 30, 2026. That is almost exactly the size New South's plan targets for year three. Page has run a bank that size before.
+
+He is not the only former examiner on the roster. Outside director Charles Race was a national bank examiner in the OCC's Tampa office from 2016 to 2025. The proposed president and CFO, Thomas Welsh, is a former CFO of TCM Bank, N.A., according to the bank's announcement, and Business Observer describes his most recent role as executive vice president and CFO of CapTec USA, a Tampa firm that specializes in SBA loan facilitation. Director Jeffrey Cathey, a Navy veteran, formed and led Bank of America's Military and Veterans Affairs organization from 2008 until he retired in 2022.
+
+:::pullquote
+The people who used to write the exam findings are now the ones who will have to answer them.
+:::
+
+Two caveats, in fairness. Knowing what an examiner wants to see is not the same as knowing how to win a deposit relationship from Truist, and the board leans toward regulators, lawyers and operators rather than Tampa rainmakers. And a bank built by former supervisors can err on the side of caution. In a market this concentrated, too little appetite is its own risk.
+
+## The market: $45 billion, 6.4% at home
+
+As of June 30, 2026, 51 FDIC-insured institutions had at least one office in Hillsborough County, holding $45.05 billion in deposits across 259 offices. In 2008 the county had 321 offices and less than half the money.
+
+Four out-of-state banks hold more than half of it. Truist has $7.25 billion in the county, Bank of America $6.61 billion, Wells Fargo $6.22 billion and JPMorgan Chase $3.85 billion: 53.1% combined.
+
+:::stat
+**6.4%**
+The share of Hillsborough County's $45.05 billion in deposits held by all five institutions still headquartered there, combined, as of June 30, 2026. Take out The Bank of Tampa and the other four hold 1.2%.
+:::
+
+The Bank of Tampa, chartered in 1973, carries the hometown flag nearly alone: $2.34 billion in county deposits and $3.02 billion in total assets. Behind it are TCM Bank ($280 million in county deposits), Central Bank ($170 million), Century Bank of Florida ($87 million) and Members Trust Company. Of the 21 banks headquartered in the county in 2008, only four are still there.
+
+The two newest charters in the county, NorthStar Bank and Gulfshore Bank, both opened in August 2007 and both merged away in 2017. The only charter issued in Hillsborough since then was a 2011 vehicle created to take over a failed bank, which merged into Cadence seven months later.
+
+New South's announcement says Florida has lost nearly 70% of its locally headquartered banks. The FDIC's own survey says that undersells it: 309 banks were headquartered in Florida in June 2008, and 82 this June, a 73% decline. [Our count of Florida's 2026 charters](/blog/florida-new-bank-charters-2026) found the state is still retiring banks faster than it adds them.
+
+The newcomer is already crossing the bay. Echelon Bank, the Clearwater de novo that opened May 27, opened a Tampa office on Bayshore Boulevard the next day and held $3.4 million in deposits there by June 30. New South will not be the only new bank chasing Tampa business owners.
+
+## The plan: small business, centralized
+
+New South describes itself as a full-service commercial bank for small businesses and their owners in Tampa Bay, with the ability to serve clients statewide. Its targets are owner-operated businesses, professional firms and family-owned companies. Its lending emphasis is SBA and USDA-guaranteed programs, delivered through a mix of direct relationships and what the organizers call a "centralized, technology-enabled model."
+
+The guaranteed-lending focus fits a small balance sheet. An SBA 7(a) loan can run up to $5 million, and the SBA guarantees 85% of loans of $150,000 or less and 75% of larger ones. A bank with $25 million in capital can serve borrowers it could not otherwise carry, with the government absorbing much of the credit risk.
+
+The catch is that the guarantee is only as good as the file. SBA lending is the most document-heavy small business lending there is: tax returns, personal financial statements, debt schedules, eligibility checks on the owner and the business. A guarantee can be reduced or denied after a default if the lender missed a requirement at origination. Welsh's background in SBA loan facilitation fits that plan.
+
+:::pullquote
+The guarantee is only as good as the file, and the file gets built at intake.
+:::
+
+## The stack: what the first exam will test
+
+Page and Race have sat on the other side of a de novo's first examination. They know the FDIC's three-year leash: the [de novo](/glossary/de-novo-bank) capital floor, prior approval for dividends and new executives, and a business plan the bank is expected to follow. Examiners will test whether the controls described in that plan are actually running, not on a roadmap. Our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what they look for.
+
+None of the filings or coverage we reviewed names New South's core processor or digital vendors. That leaves the most important design decision open. A centralized, technology-enabled SBA lender lives or dies on its intake. Every application has to arrive with the owner's identity, income and business financials verified against authoritative sources, not typed in and uploaded as PDFs for a loan officer to chase. Done that way, a small team can decide in minutes instead of weeks, and every check leaves an audit trail an SBA reviewer or an examiner can follow years later.
+
+A bank that starts that way never has to retrofit it. The 17 Hillsborough banks that have left since 2008 never got that chance.
+
+Hillsborough added $24.9 billion in deposits since 2008. New South needs one-thousandth of that to open its doors.
+  `,
+  },
   'southeast-bank-earnings-q3-2026': {
     title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
     description:

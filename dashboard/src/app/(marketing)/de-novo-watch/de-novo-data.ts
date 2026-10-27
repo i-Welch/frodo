@@ -127,6 +127,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'FDIC application notice published Apr 22, 2026. Florida OFR conditional approval Sept 1, 2026; FDIC deposit insurance approved with conditions Sept 28, 2026. The FDIC approval expires if insurance is not effective within one year.',
     capital: 'FDIC requires at least $25M initial paid-in capital (offering of 2.5M shares at $10)',
     leadership: 'Proposed chairman and CEO Kennard Page; proposed president and CFO Thomas Welsh',
+    articleSlug: 'new-south-bank-tampa-de-novo',
     asOf: '2026-10-26',
   },
   {

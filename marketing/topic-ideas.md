@@ -2,7 +2,7 @@
 
 Search-gap and article-lead topics for `/article` (written by `/visibility-check` and `/de-novo-update`). Oldest unchecked first.
 
-- [ ] New South Bank: a Tampa de novo wins FDIC approval with a $25M minimum raise | type 8 | target query: "New South Bank Tampa" | why winnable: new bank, no existing coverage | added 2026-10-19
+- [x] New South Bank: a Tampa de novo wins FDIC approval with a $25M minimum raise | type 8 | target query: "New South Bank Tampa" | why winnable: new bank, no existing coverage | added 2026-10-19 | published new-south-bank-tampa-de-novo
 - [ ] Private Bank & Trust: Gainesville, GA gets a new bank (opened Sept 28, 2026) | type 8 | target query: "Private Bank & Trust Gainesville" | why winnable: new bank, no existing coverage | added 2026-10-19
 - [x] Florida's de novo comeback: every 2026 charter filing, approval and opening, counted | type 1 | target query: "new bank charters Florida 2026" | why winnable: results are national counts (S&P, American Banker) and single-bank news; nobody publishes a verified Florida list, and De Novo Watch already holds the FDIC-verified rows | added 2026-10-19 | published florida-new-bank-charters-2026
 - [ ] We audited the digital lending journeys of 30+ Southeast banks and credit unions: what's missing | type 1 | target query: "credit union digital lending audit" | why winnable: results are a FLEX vendor blog and generic audit-prep advice; our dated audit records (`bank-audits.json` currentJourney ok/weak/missing) are original data no one else has | added 2026-10-19
