@@ -263,6 +263,8 @@ export default function DeNovoWatchPage() {
 
         <h2>Read the analysis</h2>
         <p>
+          <a href="/blog/new-south-bank-tampa-de-novo">New South Bank: A $25M Bet on a County Down to Five Banks</a>
+          <br />
           <a href="/blog/fintech-bank-charter-rush-2026">PayPal, Klarna and Revolut Want Bank Charters. Here&rsquo;s the Full List</a>
           <br />
           <a href="/blog/portrait-bank-winter-park-de-novo">Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back</a>

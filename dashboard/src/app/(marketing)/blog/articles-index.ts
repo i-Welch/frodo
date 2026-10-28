@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'new-south-bank-tampa-de-novo',
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'denovo',
+  },
+  {
     slug: 'southeast-bank-earnings-q3-2026',
     title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
     description:
