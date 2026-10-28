@@ -476,6 +476,8 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
       { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
+      { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
+      { slug: 'private-bank-trust-gainesville-de-novo', title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },
@@ -972,6 +974,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
