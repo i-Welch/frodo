@@ -16,6 +16,7 @@
 
 export const BLOG_SLUGS = [
   // — De Novo Watch (Oct 2026) —
+  'private-bank-trust-gainesville-de-novo',
   'new-south-bank-tampa-de-novo',
   // — Market (Oct 2026) —
   'southeast-bank-earnings-q3-2026',
@@ -112,6 +113,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'private-bank-trust-gainesville-de-novo': '2026-10-29',
   'new-south-bank-tampa-de-novo': '2026-10-28',
   'southeast-bank-earnings-q3-2026': '2026-10-23',
   'florida-new-bank-charters-2026': '2026-10-23',

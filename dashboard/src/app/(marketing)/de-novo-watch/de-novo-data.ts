@@ -238,6 +238,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     statusDetail: 'FDIC deposit insurance approved with conditions Apr 3, 2026; FDIC records list the bank as opened Sept 28, 2026.',
     capital: 'FDIC required at least $19M net of organizational costs; organizers targeted at least $27M',
     leadership: 'President and CEO Gregory Barrett, formerly of Chattahoochee Bank of Georgia; chairman Brian Daniel',
+    articleSlug: 'private-bank-trust-gainesville-de-novo',
     asOf: '2026-10-26',
   },
   {

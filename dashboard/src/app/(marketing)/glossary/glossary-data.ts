@@ -477,6 +477,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
       { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
       { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
+      { slug: 'private-bank-trust-gainesville-de-novo', title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },

@@ -104,6 +104,93 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'private-bank-trust-gainesville-de-novo': {
+    title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank',
+    description:
+      "On Aug. 1, Hall County, Georgia, lost its last hometown bank, $786M Peach State, to United Community. For 58 days a county with $5.8B in deposits, up 125% since 2008, had none. Then Private Bank & Trust opened with more than $33M, run by a banker who worked at the last two.",
+    publishedDate: 'October 29, 2026',
+    readTime: '6 min read',
+    content: `
+# Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank
+
+*Published October 29, 2026*
+
+On August 1, 2026, Hall County, Georgia, lost its last hometown bank. Peach State Bank & Trust, $786 million in assets and 21 years old, became part of United Community Bank of Greenville, South Carolina.
+
+For the next 58 days, a county of 226,568 people and $5.8 billion in bank deposits had no bank headquartered inside it. On September 28, Private Bank & Trust opened at 424 Green Street in Gainesville. Its CEO, Greg Barrett, has now worked at three of the county's banks: the one that sold in 2017, the one that sold this summer, and the one that just opened.
+
+## The Filing: 114 Days to Approval
+
+Seven local organizers announced the bank on December 3, 2025, led by proposed chairman Brian Daniel, president and CEO of Gainesville-based Carroll Daniel, Inc., with Barrett as proposed president and CEO. The FDIC published notice of the deposit insurance application on December 10. Its Atlanta Regional Office approved it on April 3, 2026, 114 days later.
+
+The FDIC order set the floor: initial paid-in capital of at least $19 million, net of organizational costs. The FDIC's accompanying statement described an offering of 2.2 million shares at $10, or $22 million. Investors went well past both.
+
+:::stat
+**More than $33 million**
+Raised in Private Bank & Trust's stock offering, above its original $33 million maximum target and at least 74% above the FDIC's $19 million capital floor.
+:::
+
+On September 28 the Georgia Department of Banking and Finance issued the permit to begin business and deposit insurance took effect. The bank soft-opened that day, opened to the public October 5, and cut the ribbon October 6.
+
+The approval comes with the standard three-year leash. A Tier 1 leverage ratio of at least 8%, annual independent audits, prior FDIC approval for any material change to the business plan, and 60 days' notice before opening a loan production office. The plan on file is plain: a state nonmember bank serving small and medium-sized businesses and individuals in Hall County, with "traditional products and services."
+
+The headquarters is the Hosch home, a white-columned house that for more than a decade was the last family home left on Green Street.
+
+## The Market: Twice the Deposits, No Hometown Bank
+
+Hall County is not a shrinking market that lost its banks for lack of business. It is the opposite.
+
+FDIC Summary of Deposits data show the county held $2.59 billion in deposits across 61 offices at June 30, 2008. At June 30, 2026, it held $5.85 billion across 38 offices. Deposits are up 125%. The office count is down by more than a third. The county's population grew from 202,813 in April 2020 to 226,568 in July 2025, up 11.7% in five years.
+
+At midyear, 16 institutions held those deposits. Peach State, with $706.7 million and 12.1% of the market, was the only one headquartered in the county. Here is who holds the market now, with Peach State folded into its buyer:
+
+| Bank | Headquarters | Hall deposits | Share |
+|---|---|---|---|
+| United Community (with Peach State) | Greenville, SC | $1.60B | 27.4% |
+| Truist | Charlotte, NC | $1.07B | 18.2% |
+| Wells Fargo | Sioux Falls, SD | $830M | 14.2% |
+| Regions | Birmingham, AL | $628M | 10.7% |
+| Bank of America | Charlotte, NC | $400M | 6.8% |
+
+Those five hold 77% of Hall County's deposits. Private Bank & Trust starts at zero against all of it.
+
+## The Cycle: Gainesville Keeps Selling Its Banks
+
+FDIC records list 15 institutions that have ever been headquartered in Hall County. Fourteen are gone. Since 2008, every one that existed has been sold, and Barrett has been inside two of them.
+
+The pattern starts with Gainesville Bank & Trust, which held 15.3% of county deposits in June 2008 and merged into SunTrust that July. In December 2007, while that sale was pending, a group of organizers announced Chattahoochee Bank of Georgia and hired three former SunTrust executives to run it. Barrett was its chief administrative officer. The bank opened September 15, 2008, grew to $189 million in assets, and merged into North Carolina-based Entegra Bank on October 1, 2017. First Citizens absorbed Entegra at the end of 2019.
+
+Barrett joined Peach State as a senior vice president in 2021. Peach State had opened in 2005 and held $167 million in assets at the end of 2008. In 2025 it earned $10.1 million, a 1.36% return on assets, and at June 30, 2026, it held $786 million. United Community announced the deal on April 21, 2026, and closed it August 1.
+
+:::pullquote
+Hall County has not run out of people willing to build a bank. It keeps running out of banks.
+:::
+
+Two caveats, in fairness. Private Bank & Trust is not a reaction to the Peach State sale: its organizers went public four months before that deal was announced. And a sale is not a failure. Peach State's investors built a bank from nothing in 2005 and sold it in a deal valued at $100.8 million, and CEO Ron Quinn called United Community "by far the best strategic fit." Selling is how de novo investors get paid. It is also why the county needs a new de novo every decade.
+
+## The Peer Class: What Georgia's Last De Novos Became
+
+Private Bank & Trust is the first new bank in Georgia since Moultrie Bank & Trust opened in May 2022. FDIC records show eight new Georgia institutions since 2010. Two were special-purpose: Community & Southern, formed in 2010 to buy failed banks, and a temporary FDIC payout bank in McDonough in 2011. The other six are community bank de novos, and their record is a preview of the road ahead.
+
+Tandem Bank, which opened in Tucker in 2019, merged into Georgia Banking Company on June 1, 2026. The four survivors held between $150.6 million and $314.3 million in assets at June 30: Moultrie $150.6 million, Loyal Trust $235.3 million, Craft $305.9 million, and Classic City $314.3 million. Six years in, the 2019-2020 class is still well under half of Peach State's size when it sold.
+
+That is the same shape we found in Florida, where every charter retired this year [was itself a de novo](/blog/florida-new-bank-charters-2026), and the inverse of [South Carolina](/blog/south-carolina-de-novo-drought), which has not added a bank since 2018. Georgia is producing new banks, slowly, and selling the grown ones to regionals. United Community itself was headquartered in Blairsville, Georgia, in 2008 and is a [$28.2 billion Greenville bank](/blog/southeast-bank-earnings-q3-2026) today.
+
+:::pullquote
+Since 2008, every bank headquartered in Hall County has been sold. Private Bank & Trust's job is to break the pattern or to repeat it profitably.
+:::
+
+## The Stack: What a Day-One Bank Should Not Retrofit
+
+Neither the FDIC order nor the opening announcement names a core processor or a digital banking vendor. That is a contrast with two Florida de novos in this series: [Glades Bank and Trust](/blog/glades-bank-broward-de-novo) named its core and digital platform while still awaiting approval, and [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) put "agentic AI" in its charter press release.
+
+Private Bank & Trust's pitch is the older one. Chairman Daniel has said the goal from the start was to bring locally based, relationship-focused banking back to Hall County, with lending and other decisions made locally. Against United Community, which runs a national SBA lending franchise, and Truist, local decisions are the main advantage a one-month-old bank can claim. They are also only an advantage if the decision arrives fast.
+
+A business owner who applies for a line of credit does not see the loan committee. They see the application: how many documents it asks for, how long it sits, how many times someone calls back for a missing pay stub or tax return. A de novo gets to choose that experience before its first customer. It can make intake verification-first, pulling income, identity, and business data from the source instead of from uploaded PDFs, decide in minutes instead of weeks, and keep an audit trail of every check. Examiners will test the fraud and BSA program in the [first three years](/glossary/de-novo-bank), and our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what they expect to find.
+
+Every Gainesville bank Barrett has worked for has been sold, except the newest one, which Barrett now runs. It opened 58 days after the last one merged away, and its investors put up more than $33 million to make it the one that stays.
+`,
+  },
   'new-south-bank-tampa-de-novo': {
     title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
     description:
