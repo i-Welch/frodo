@@ -104,6 +104,91 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'fed-rate-hike-community-bank-deposits': {
+    title: "The Fed Turned Around. Deposit Rates Didn't.",
+    description:
+      'The Fed hiked in September for the first time since 2023, then held with two votes for more. The 2-year Treasury is up 132 basis points since February and mortgages hit 7.40%. The national 12-month CD rate rose 24. What the gap means for community banks.',
+    publishedDate: 'October 30, 2026',
+    readTime: '6 min read',
+    content: `
+# The Fed Turned Around. Deposit Rates Didn't.
+
+*Published October 30, 2026*
+
+On Wednesday the Federal Reserve held its benchmark rate at 3.75% to 4.00%. The news was in the vote. Two members, Governor Lisa Cook and Cleveland Fed President Beth Hammack, dissented. They wanted another quarter-point hike.
+
+Six weeks earlier, on September 16, the committee voted 12-0 to raise rates for the first time since July 2023. That move erased the December 2025 cut and put the target range back exactly where it stood at the end of October 2025. The statement was blunt: "Inflation remains elevated."
+
+For community banks, the hike itself is the small number. The big one is what the bond market did around it, and how little of it has reached the deposit side of the balance sheet.
+
+## The market moved first
+
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+
+On February 27, the 2-year yielded 3.38%. On September 16 it closed at 4.74%. On October 27 it was 4.70%, about 80 basis points above the midpoint of the Fed's range, which is the market's way of saying it expects more. The 10-year rose from 3.97% to 4.99% over the same stretch and touched 5.31% on October 5.
+
+The committee's own forecasts moved the same way. In June, the median projection for the federal funds rate at the end of 2026 was 3.8%. In September it was 4.1%, a midpoint that implies one more quarter-point increase before year-end. The 2027 median jumped from 3.6% to 4.1%. Core PCE inflation is projected at 3.4% for 2026.
+
+:::pullquote
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+:::
+
+## Deposit rates barely noticed
+
+Now set those numbers next to what the FDIC publishes every month as the national average deposit rate.
+
+| Rate | Spring 2026 | October 2026 | Change |
+|---|---|---|---|
+| 2-year Treasury | 3.38% | 4.70% | +1.32 |
+| 30-year mortgage | 5.98% | 7.32% | +1.34 |
+| Prime rate | 6.75% | 7.00% | +0.25 |
+| National 12-month CD | 1.52% | 1.76% | +0.24 |
+| National savings | 0.39% | 0.38% | -0.01 |
+
+The Treasury and mortgage figures are from February 26 and 27 and October 22 and 27; the FDIC national rates are from its March 16 and October 19 releases. The national rate is an average across insured institutions, so it does not describe any one bank's rate sheet. But the direction is unmistakable. Market rates repriced by more than a full point. The average savings account repriced by nothing.
+
+Depositors with options are not waiting. Money market fund assets reached $7.94 trillion in the week ended October 21, according to the Investment Company Institute, after a $21.49 billion gain in a single week. Institutional funds took in $24.01 billion of it.
+
+## The relief that just ended
+
+The cuts of late 2025 did real work for Southeast community banks, and the call reports show it.
+
+We pulled the FDIC's June 30 call report data for every bank under $10 billion in assets headquartered in South Carolina, North Carolina, Georgia and Florida: 279 banks holding $236.2 billion in assets. In the first half of 2026 they paid $1.89 billion in interest expense, down from $2.04 billion for the 295 banks in the same group a year earlier. Interest income rose 1.6% to $6.13 billion. Net interest income rose 6.2% to $4.24 billion.
+
+:::stat
+**$150.5 million**
+How much less the Southeast's community banks under $10 billion paid in interest in the first half of 2026 than a year earlier, a 7.4% drop. Interest expense fell from 33.8% of interest income to 30.8%.
+:::
+
+That is the margin expansion that showed up in third-quarter earnings, when [Southern First and ServisFirst widened their margins](/blog/southeast-bank-earnings-q3-2026) while the big banks were busy repositioning. One caveat: the peer group shrank by 16 banks in a year, so the totals are not the identical set of institutions. The ratios still tell the story.
+
+The September hike ends that tailwind. And the cheapest money on these balance sheets is the money most exposed. The 279 banks held $50.9 billion in noninterest-bearing deposits at June 30, 25.4% of domestic deposits, down from 25.7% a year earlier. At a 4.70% 2-year yield, $50.9 billion is worth about $2.4 billion a year to whoever holds it. Every operating account that moves to a money fund or an online bank gets replaced with a CD or a borrowing at today's prices. The [net interest margin](/glossary/net-interest-margin) is decided at the account opening screen as much as at the loan committee.
+
+## The mortgage window closed
+
+On February 26, Freddie Mac's 30-year average was 5.98%, the low of the past year. Borrowers who had waited for a refinance finally had one.
+
+By October 8 the average was 7.40%. Between September 10 and October 8 it rose 64 basis points in four weeks. On October 22 it was 7.32%.
+
+A borrower who applied in early September at a community bank that takes [42 days to close](/blog/why-it-takes-42-days-to-close-a-mortgage), and did not lock, watched the rate move against them before the appraisal came back. A lender that [closes in 22 days](/blog/rocket-mortgage-22-days-how) had half the exposure. In a flat rate market, speed is a convenience. In a market that moves 64 basis points in a month, speed is a price.
+
+:::pullquote
+In a market that moves 64 basis points in a month, speed is a price.
+:::
+
+Two caveats, in fairness. Higher rates help any bank whose loans reprice faster than its deposits, and prime-based commercial lines reset the day after the hike. And the Fed held on Wednesday rather than hiking; the 2-year has eased from 4.92% on September 28, and the 10-year is back below 5%. Nobody knows whether September was the start of a cycle or a single correction.
+
+## What the next 60 days decide
+
+The committee meets once more this year, in December, and the September median says it expects to move again. Community banks do not need to forecast the December vote to know what the last two months changed.
+
+On the deposit side, the gap between 4.70% in the market and 0.38% in the average savings account is a 432-basis-point reason to move money, and depositors can see both numbers. The defense is not matching money fund yields across the book. It is winning the primary operating account in the first place: opening it in minutes, verifying the customer once, and making the switch from a competitor easy enough that it actually happens.
+
+On the lending side, rate volatility rewards whoever finishes first. That means intake that verifies income, assets and identity against source data on day one, instead of chasing documents for weeks while the rate moves. It means a decision in minutes when the file is clean, and an audit trail that holds up when the examiner asks why a file closed in ten days.
+
+The market has already repriced by 132 basis points. Depositors are next, and they do not wait for a meeting.
+`,
+  },
   'new-south-bank-tampa-de-novo': {
     title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
     description:
