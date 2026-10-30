@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Macro commentary (Oct 2026) —
+  'fed-rate-hike-community-bank-deposits',
   // — De Novo Watch (Oct 2026) —
   'new-south-bank-tampa-de-novo',
   // — Market (Oct 2026) —
@@ -112,6 +114,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'fed-rate-hike-community-bank-deposits': '2026-10-30',
   'new-south-bank-tampa-de-novo': '2026-10-28',
   'southeast-bank-earnings-q3-2026': '2026-10-23',
   'florida-new-bank-charters-2026': '2026-10-23',
