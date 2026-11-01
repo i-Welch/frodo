@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 const UTM = 'utm_source=reportraven&utm_medium=referral&utm_campaign=provenpool';
 const PROVENPOOL = `https://provenpool.com/?${UTM}`;
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     url: 'https://reportraven.tech/provenpool',
     siteName: 'RAVEN',
     type: 'website',
+    images: DEFAULT_OG_IMAGES,
   },
 };
 
