@@ -94,7 +94,7 @@ export const newsletterAdminRoutes = new Elysia({ prefix: '/api/v1/admin/newslet
         return { error: 'NEWSLETTER_POSTAL_ADDRESS is not set (CAN-SPAM requires a mailing address in every issue)' };
       }
       const issue = buildIssue(issueDate);
-      if (!issue) return { sent: 0, skipped: 'no articles published this week' };
+      if (!issue) return { sent: 0, skipped: 'no new articles or De Novo Watch changes this week' };
       const slugs = issue.articles.map((a) => a.slug);
 
       if (body.testTo) {

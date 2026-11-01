@@ -11,7 +11,7 @@ const FDIC = 'https://api.fdic.gov/banks/institutions';
 const FIELDS = 'NAME,CITY,STALP,ASSET,CERT,WEBADDR';
 const FREE_MAIL = /^(gmail|googlemail|yahoo|outlook|hotmail|live|msn|icloud|me|aol|proton|protonmail|gmx|comcast|att)\./i;
 
-interface Institution {
+export interface Institution {
   NAME: string;
   CITY: string;
   STALP: string;
@@ -54,5 +54,92 @@ export async function describeInstitution(lead: { email: string; bank?: string }
     return [];
   } catch {
     return [];
+  }
+}
+
+export interface BankSnapshot {
+  name: string;
+  city: string;
+  state: string;
+  cert: number;
+  /** Call report quarter, e.g. "Q2 2026". */
+  quarter: string;
+  assets: string;
+  deposits: string;
+  loans: string;
+  /** Year-over-year net loan growth in percent, one decimal; absent without a year-ago report. */
+  loanGrowthPct?: number;
+  roaPct: number;
+}
+
+interface Financials {
+  REPDTE: string;
+  ASSET: number;
+  DEP: number;
+  LNLSNET: number;
+  ROA: number;
+}
+
+async function oneInstitution(lead: { email: string; bank?: string; cert?: number }): Promise<Institution | undefined> {
+  // The visitor picked their bank from the FDIC autocomplete: no guessing needed.
+  if (lead.cert) {
+    const [picked] = await fdic({ filters: `CERT:${lead.cert} AND ACTIVE:1`, limit: '1' });
+    if (picked) return picked;
+  }
+  const domain = lead.email.split('@')[1]?.toLowerCase() ?? '';
+  const root = domain.split('.').slice(-2, -1)[0];
+  if (domain && root && root.length >= 4 && !FREE_MAIL.test(domain)) {
+    const [match] = await fdic({ filters: `ACTIVE:1 AND WEBADDR:*${root}*`, limit: '1' });
+    if (match) return match;
+  }
+  if (!lead.bank) return undefined;
+  // Only a single name match is confident enough to show the visitor.
+  const matches = await fdic({ search: `NAME:"${lead.bank.replace(/"/g, '')}"`, filters: 'ACTIVE:1', limit: '2' });
+  return matches.length === 1 ? matches[0] : undefined;
+}
+
+export function toSnapshot(i: Institution, reports: Financials[]): BankSnapshot | undefined {
+  const [latest] = reports;
+  if (!latest) return undefined;
+  const yearAgo = reports.find((r) => r.REPDTE === `${Number(latest.REPDTE.slice(0, 4)) - 1}${latest.REPDTE.slice(4)}`);
+  const month = Number(latest.REPDTE.slice(4, 6));
+  return {
+    name: i.NAME,
+    city: i.CITY,
+    state: i.STALP,
+    cert: i.CERT,
+    quarter: `Q${Math.ceil(month / 3)} ${latest.REPDTE.slice(0, 4)}`,
+    assets: formatAssets(latest.ASSET),
+    deposits: formatAssets(latest.DEP),
+    loans: formatAssets(latest.LNLSNET),
+    ...(yearAgo && yearAgo.LNLSNET > 0
+      ? { loanGrowthPct: Math.round(((latest.LNLSNET - yearAgo.LNLSNET) / yearAgo.LNLSNET) * 1000) / 10 }
+      : {}),
+    roaPct: Math.round(latest.ROA * 100) / 100,
+  };
+}
+
+/**
+ * Latest call report figures for the lead's bank, shown on the audit form's
+ * thank-you state. Only returned for a confident match. Never throws.
+ */
+export async function bankSnapshot(lead: { email: string; bank?: string; cert?: number }): Promise<BankSnapshot | undefined> {
+  if (process.env.LEAD_ENRICHMENT === 'off') return undefined;
+  try {
+    const inst = await oneInstitution(lead);
+    if (!inst) return undefined;
+    const params = new URLSearchParams({
+      filters: `CERT:${inst.CERT}`,
+      fields: 'REPDTE,ASSET,DEP,LNLSNET,ROA',
+      sort_by: 'REPDTE',
+      sort_order: 'DESC',
+      limit: '5',
+    });
+    const res = await fetch(`https://api.fdic.gov/banks/financials?${params}`, { signal: AbortSignal.timeout(3000) });
+    if (!res.ok) return undefined;
+    const body = (await res.json()) as { data?: { data: Financials }[] };
+    return toSnapshot(inst, (body.data ?? []).map((d) => d.data));
+  } catch {
+    return undefined;
   }
 }

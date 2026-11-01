@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
+import { LeadCapture } from '../lead-capture';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -7,6 +9,7 @@ export const metadata: Metadata = {
     'RAVEN (Real-time Aggregation and Verification Engine) is borrower verification and digital account opening software for community banks, founded by Isaac Welch in Greenville, South Carolina.',
   alternates: { canonical: 'https://reportraven.tech/about' },
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'About RAVEN',
     description:
       'Borrower verification and digital account opening software for community banks. Who builds RAVEN, why it exists, and what it is (and is not).',
@@ -172,6 +175,8 @@ export default function AboutPage() {
           <p>Phone: <a href="tel:+12293796131">(229) 379-6131</a></p>
           <p>Greenville, South Carolina</p>
         </div>
+
+        <LeadCapture variant="audit" source="about" title="Not ready for a call? Start with a free audit." />
       </div>
     </SiteShell>
   );

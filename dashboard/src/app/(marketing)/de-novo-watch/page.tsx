@@ -3,6 +3,8 @@ import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
 import { CHARTER_MOVES, DE_NOVO_BANKS, FDIC_PENDING, STATUS_LABELS, TRACKER_SUMMARY, type DeNovoStatus } from './de-novo-data';
 import { trackerFaqs } from './tracker-faq';
+import { FDIC_CERTS } from './fdic-certs';
+import { bankSlug } from '../bank-snapshot/peer-data';
 
 export const metadata: Metadata = {
   title: 'De Novo Bank Tracker: 2026 Charters and Applications',
@@ -19,10 +21,27 @@ export const metadata: Metadata = {
   },
 };
 
+// Rows added or with a status change within two weeks of the last update get a badge.
+function isRecent(changed: string | undefined): boolean {
+  if (!changed) return false;
+  return Date.parse(TRACKER_SUMMARY.updated) - Date.parse(changed) <= 14 * 86_400_000;
+}
+
 const STATUS_ORDER: DeNovoStatus[] = ['chartered', 'conditional-approval', 'application-pending', 'open'];
 
 const faqs = trackerFaqs();
 
+function Coverage({ name, articleSlug }: { name: string; articleSlug?: string }) {
+  const cert = FDIC_CERTS[name];
+  if (!articleSlug && !cert) return <>–</>;
+  return (
+    <>
+      {articleSlug && <a href={`/blog/${articleSlug}`}>Deep dive</a>}
+      {articleSlug && cert && <br />}
+      {cert && <a href={`/bank-snapshot/${cert}-${bankSlug(name)}`}>FDIC peer data</a>}
+    </>
+  );
+}
 const TRACKED = new Set(DE_NOVO_BANKS.map((b) => b.name));
 const pending = [...FDIC_PENDING.rows].sort((a, b) => b.received.localeCompare(a.received));
 const byState = Object.entries(
@@ -48,6 +67,8 @@ const jsonLd = {
       creator: { '@id': 'https://reportraven.tech/#organization' },
       dateModified: TRACKER_SUMMARY.updated,
       isAccessibleForFree: true,
+      temporalCoverage: '2025/..',
+      spatialCoverage: { '@type': 'Place', name: 'United States' },
       license: 'https://reportraven.tech/de-novo-watch#citation',
       keywords: ['de novo bank', 'bank charter', 'FDIC application', 'new bank', 'community bank'],
       distribution: {
@@ -90,6 +111,7 @@ const styles = `
   .dnw-page p { font-size: 0.95rem; line-height: 1.75; color: var(--gray-300); margin-bottom: 1rem; }
   .dnw-page a { color: var(--accent); text-decoration: none; }
   .dnw-page a:hover { text-decoration: underline; }
+  .dnw-page p a, .dnw-note a { text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(108,142,255,0.5); }
   .dnw-updated { font-size: 0.78rem; color: var(--gray-500); margin-bottom: 1.75rem; }
   .dnw-stat { border: 1px solid var(--accent-border); background: var(--accent-dim); border-radius: 10px; padding: 1.1rem 1.4rem; margin: 1.5rem 0 2rem; font-size: 0.92rem; line-height: 1.65; color: var(--gray-200); }
   .dnw-stat strong { color: var(--white); }
@@ -111,6 +133,7 @@ const styles = `
   .dnw-status-application-pending { background: rgba(255,255,255,0.08); color: var(--gray-300); }
   .dnw-status-open { background: rgba(74,222,128,0.13); color: #86EFAC; }
   .dnw-faq h3 { font-size: 1rem; font-weight: 600; color: var(--white); margin: 1.4rem 0 0.4rem; }
+  .dnw-new { display: inline-block; margin-left: 0.5rem; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.12rem 0.45rem; border-radius: 999px; background: var(--accent-dim); color: var(--accent); vertical-align: 2px; }
   .dnw-note { font-size: 0.8rem; color: var(--gray-500); line-height: 1.6; margin-top: 0.75rem; }
 `;
 
@@ -157,6 +180,7 @@ export default function DeNovoWatchPage() {
                 <tr key={b.name}>
                   <td>
                     <span className="dnw-bank">{b.name}</span>
+                    {isRecent(b.statusChanged) && <span className="dnw-new">Updated</span>}
                     {b.leadership && <div className="dnw-note">{b.leadership}</div>}
                   </td>
                   <td>{b.location}</td>
@@ -168,7 +192,7 @@ export default function DeNovoWatchPage() {
                   <td>{b.capital ?? '–'}</td>
                   <td>{b.techNotes ?? '–'}</td>
                   <td>
-                    {b.articleSlug ? <a href={`/blog/${b.articleSlug}`}>Deep dive</a> : '–'}
+                    <Coverage name={b.name} articleSlug={b.articleSlug} />
                   </td>
                 </tr>
               ))}
@@ -204,7 +228,7 @@ export default function DeNovoWatchPage() {
                     {m.move}
                     <div className="dnw-note">Verified {m.asOf}</div>
                   </td>
-                  <td>{m.articleSlug ? <a href={`/blog/${m.articleSlug}`}>Deep dive</a> : '–'}</td>
+                  <td><Coverage name={m.name} articleSlug={m.articleSlug} /></td>
                 </tr>
               ))}
             </tbody>
@@ -254,7 +278,7 @@ export default function DeNovoWatchPage() {
 
         <h2 id="citation">Methodology and citation</h2>
         <p>
-          Sources: the FDIC pending deposit insurance applications list, state banking regulator
+          Sources: the FDIC pending <a href="/glossary/fdic-deposit-insurance-application">deposit insurance applications</a> list, state banking regulator
           filings (for Florida, the Office of Financial Regulation), organizer press releases and
           public statements, and FDIC call reports for market analysis. Each row shows the date it
           was last verified. This tracker is free to cite with attribution to RAVEN

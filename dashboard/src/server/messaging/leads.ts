@@ -1,6 +1,6 @@
 import { sendEmail } from './email';
 import { logger } from '../logger';
-import { describeInstitution } from './lead-enrichment';
+import { describeInstitution, type BankSnapshot } from './lead-enrichment';
 
 /**
  * Lead notifications for the marketing site: an alert to the founder and a
@@ -12,7 +12,7 @@ import { describeInstitution } from './lead-enrichment';
  * - LEAD_REPLY_FROM (default: Isaac Welch <isaac@reportraven.tech>)
  */
 
-export type LeadKind = 'subscribe' | 'audit' | 'demo';
+export type LeadKind = 'subscribe' | 'audit' | 'demo' | 'track';
 
 export interface Lead {
   kind: LeadKind;
@@ -20,6 +20,8 @@ export interface Lead {
   name?: string;
   bank?: string;
   source?: string;
+  /** Latest call report figures for a confident FDIC match (audit requests). */
+  snapshot?: BankSnapshot;
 }
 
 const ALERT_TO = process.env.LEAD_ALERT_TO ?? 'isaac@reportraven.tech';
@@ -32,6 +34,7 @@ const KIND_LABEL: Record<LeadKind, string> = {
   subscribe: 'Newsletter signup',
   audit: 'Free audit request',
   demo: 'Demo request',
+  track: 'Bank tracker signup',
 };
 
 /** Turns a source like "article:robins-financial-20-million-rebate" into a page URL. */
@@ -54,7 +57,9 @@ function alertMessage(lead: Lead, institution: string[]) {
     '',
     lead.kind === 'audit'
       ? 'They were told the audit arrives within a few business days.'
-      : 'They received an automatic confirmation from you. Reply to this email to reach them directly.',
+      : lead.kind === 'track'
+        ? 'They get an email when this bank files its next call report. Someone tracking one bank is usually on its staff or board: a warm lead.'
+        : 'They received an automatic confirmation from you. Reply to this email to reach them directly.',
   ].filter((l): l is string => l !== null);
   const who = lead.bank ? `${lead.name ?? lead.email} (${lead.bank})` : (lead.name ?? lead.email);
   return {
@@ -63,6 +68,26 @@ function alertMessage(lead: Lead, institution: string[]) {
     subject: `New lead: ${KIND_LABEL[lead.kind].toLowerCase()} from ${who}`,
     text: lines.join('\n'),
   };
+}
+
+// The bank's public peer comparison; the bare cert redirects to the named URL.
+const peerUrl = (s: BankSnapshot) => `https://reportraven.tech/bank-snapshot/${s.cert}`;
+
+function snapshotParagraph(s: BankSnapshot | undefined): string {
+  if (!s) return '';
+  const growth =
+    s.loanGrowthPct === undefined ? '' : ` (${s.loanGrowthPct > 0 ? 'up' : 'down'} ${Math.abs(s.loanGrowthPct)}% over the past year)`;
+  return (
+    `While I work on it, here's where ${s.name} stood in its ${s.quarter} FDIC call report: ${s.assets} in total assets, ` +
+    `${s.loans} in net loans${growth}, and a ${s.roaPct}% return on assets. The audit adds what the call report can't show: ` +
+    `how borrowers apply online today and what's missing from that journey.\n\n` +
+    `How it compares with banks its size in ${s.state}: ${peerUrl(s)}\n\n`
+  );
+}
+
+// Signups from the tracker, de novo articles or the de novo solution page.
+function isDeNovoSource(source: string | undefined): boolean {
+  return !!source && /de-novo|denovo/.test(source);
 }
 
 function confirmationMessage(lead: Lead) {
@@ -75,6 +100,10 @@ function confirmationMessage(lead: Lead) {
       text:
         `${greeting}\n\nThanks for subscribing. You'll get RAVEN's new analyses of community banks and credit unions by email: ` +
         `deep dives built from FDIC, NCUA, HMDA and SEC filings, plus the occasional market read.\n\n` +
+        (isDeNovoSource(lead.source)
+          ? `Since you signed up from De Novo Watch, the weekly issue also lists every new bank filing, approval and opening we track. ` +
+            `The full tracker lives at ${SITE}/de-novo-watch\n\n`
+          : '') +
         `If there's an institution or question you want us to dig into, just reply. I read every response.` +
         signoff,
     },
@@ -83,8 +112,24 @@ function confirmationMessage(lead: Lead) {
       text:
         `${greeting}\n\nThanks for requesting a free digital lending audit${lead.bank ? ` of ${lead.bank}` : ''}. ` +
         `I'll build it from your public call report and HMDA data and send it within a few business days.\n\n` +
+        snapshotParagraph(lead.snapshot) +
         `Here's an example of what you'll get:\n${SITE}/audit/robins-financial-credit-union\n\n` +
         `If you'd rather walk through it live, grab 20 minutes here:\n${CALENDLY_URL}` +
+        signoff,
+    },
+    track: {
+      subject: `You're tracking ${lead.snapshot?.name ?? lead.bank ?? 'your bank'}`,
+      text:
+        `${greeting}
+
+You're set. When ${lead.snapshot?.name ?? lead.bank ?? 'the bank'} files its next quarterly call report with the FDIC, ` +
+        `I'll email you the headline numbers and how they compare with peers its size.
+
+` +
+        (lead.snapshot ? `Current snapshot (${lead.snapshot.quarter}): ${peerUrl(lead.snapshot)}
+
+` : '') +
+        `If you'd also like a free digital lending audit, built from the same call report plus HMDA data, just reply.` +
         signoff,
     },
     demo: {
@@ -158,7 +203,10 @@ ${SITE}`,
 /** Sends the founder alert and the lead confirmation. Never throws: a failed
  *  email must not fail the signup, which is already stored. */
 export async function notifyLead(lead: Lead): Promise<void> {
-  const institution = await describeInstitution(lead);
+  // A snapshot already identifies the bank; skip the second FDIC lookup.
+  const institution = lead.snapshot
+    ? [`FDIC match: ${lead.snapshot.name}, ${lead.snapshot.city}, ${lead.snapshot.state}: ${lead.snapshot.assets} assets, FDIC cert ${lead.snapshot.cert}`, `Peer snapshot: ${peerUrl(lead.snapshot)}`]
+    : await describeInstitution(lead);
   const results = await Promise.allSettled([
     sendEmail(alertMessage(lead, institution)),
     sendEmail(confirmationMessage(lead)),

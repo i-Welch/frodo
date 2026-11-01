@@ -1,0 +1,14 @@
+# Scheduled article, release-draft, audit and De Novo PRs each insert new
+# entries at the top of these lists. When two such PRs overlap, the conflict is
+# always "both sides added lines here"; the union driver keeps both, and
+# automation/auto-publish.ts merges master into conflicting PRs with it. CI
+# (typecheck, content-integrity tests, build) still gates the result.
+dashboard/src/app/(marketing)/blog/published.ts merge=union
+dashboard/src/app/(marketing)/blog/articles-index.ts merge=union
+dashboard/src/app/(marketing)/blog/\[slug\]/page.tsx merge=union
+dashboard/src/app/(marketing)/roi/roi-data.ts merge=union
+dashboard/src/app/(whitelabel)/_config/registry.ts merge=union
+dashboard/src/app/(whitelabel)/_config/bank-audits.json merge=union
+dashboard/src/app/(marketing)/glossary/glossary-data.ts merge=union
+marketing/article-log.md merge=union
+marketing/topic-ideas.md merge=union

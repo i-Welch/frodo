@@ -15,6 +15,8 @@ export interface DeNovoBank {
   techNotes?: string;
   articleSlug?: string;
   asOf: string;
+  /** Date the row was added or its status last changed (YYYY-MM-DD); feeds the newsletter. */
+  statusChanged?: string;
 }
 
 export const STATUS_LABELS: Record<DeNovoStatus, string> = {

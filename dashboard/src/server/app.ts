@@ -22,6 +22,7 @@ import { socureVerifyRoutes } from './api/routes/socure-verify';
 import { verificationRoutes } from './api/routes/verifications';
 import { reportRoutes } from './api/routes/report';
 import { interestRoutes } from './api/routes/interest';
+import { bankTrackerAdminRoutes } from './api/routes/bank-tracker';
 import { leadsAdminRoutes } from './api/routes/leads-admin';
 import { newsletterAdminRoutes, unsubscribeRoutes } from './api/routes/newsletter';
 import { alertAdminRoutes, digestAdminRoutes } from './api/routes/digest';
@@ -169,6 +170,7 @@ export const app = new Elysia()
   .use(leadsAdminRoutes)
   .use(unsubscribeRoutes)
   .use(newsletterAdminRoutes)
+  .use(bankTrackerAdminRoutes)
   .use(digestAdminRoutes)
   .use(alertAdminRoutes)
   .use(whitelabelRoutes)

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { GLOSSARY_TERMS, type GlossaryTerm } from './glossary-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: 'Community Banking and Lending Glossary',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'Plain-English definitions of community banking and lending terms: VOD, VOE, KYC, synthetic identity fraud, loan origination systems, ROA, net interest margin, ILCs and more.',
   alternates: { canonical: 'https://reportraven.tech/glossary' },
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'Community Banking and Lending Glossary',
     description:
       'Plain-English definitions of community banking and lending terms, from VOD and KYC to net interest margin and industrial loan companies.',
