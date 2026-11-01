@@ -10,6 +10,8 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
 import { alertFounder } from './alert';
+import { abDigestLines, refreshLinkedInStats } from './ab-report';
+import { browserReady } from './linkedin-browser';
 import { deNovoChanges } from './de-novo-changes';
 import { fetchPageVisits, warmAccounts } from './warm-accounts';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
@@ -131,9 +133,20 @@ function problems(): string[] {
   return [`Problems in the logs (${found.length}):`, ...found.slice(-15).map((l) => `  - ${l}`)];
 }
 
+// Fresh LinkedIn impressions for the graphic test; the report still runs on
+// the last stored numbers if the browser session has expired.
+let statsNote: string[] = [];
+if (browserReady()) {
+  await refreshLinkedInStats().catch((err) => {
+    statsNote = [`  (LinkedIn analytics not refreshed: ${(err as Error).message.split('\n')[0]})`];
+  });
+}
+
 const automation = [
   ...openPullRequests(),
   ...linkedInPosts(),
+  ...abDigestLines(),
+  ...statsNote,
   ...(await deNovoChanges(new Date(WEEK_AGO))),
   ...pitches(),
   ...auditVisits(),

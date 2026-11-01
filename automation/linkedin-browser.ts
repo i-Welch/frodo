@@ -129,13 +129,67 @@ export function composeBrowserText(text: string, url: string): string {
   return hasTags ? `${body}\n\n${url}\n\n${last}` : `${body}\n\n${url}`;
 }
 
-export async function postViaBrowser(text: string, url: string, opts: { submit: boolean }): Promise<void> {
+async function clickDialogButton(page: Page, label: RegExp, timeout = 20_000): Promise<void> {
+  const deadline = Date.now() + timeout;
+  while (Date.now() < deadline) {
+    for (const b of await page.$$(`:is(${DIALOG}) button`)) {
+      const [text, aria, disabled] = await b.evaluate((e) => [
+        (e.textContent ?? '').trim(),
+        e.getAttribute('aria-label') ?? '',
+        (e as HTMLButtonElement).disabled,
+      ]);
+      const box = !disabled && (label.test(text) || label.test(aria)) ? await b.boundingBox() : null;
+      if (box) {
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2, { steps: 10 });
+        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2, { delay: 60 });
+        return;
+      }
+    }
+    await new Promise((r) => setTimeout(r, 500));
+  }
+  throw new Error(`composer button not found: ${label}`);
+}
+
+// Attach the image before typing: with media attached LinkedIn shows no link
+// card, and the URL in the text stays a plain clickable link. The media button
+// opens a file chooser, then an editor whose "Next" returns to the composer.
+async function attachImage(page: Page, image: string): Promise<void> {
+  const [chooser] = await Promise.all([
+    page.waitForFileChooser({ timeout: 20_000 }),
+    clickDialogButton(page, /^(add (a )?(media|photo)|photo)$/i),
+  ]);
+  await chooser.accept([image]);
+  await clickDialogButton(page, /^next$/i, 30_000);
+  await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 20_000 });
+}
+
+// A carousel is a PDF "document" post: More > Add a document, upload, give it
+// the title LinkedIn requires, then Done returns to the composer.
+async function attachDocument(page: Page, pdf: string, title: string): Promise<void> {
+  await clickDialogButton(page, /^more$/i);
+  await clickDialogButton(page, /^add a document$/i);
+  const input = await page.waitForSelector(`:is(${DIALOG}) input[type="file"]`, { timeout: 20_000 });
+  await (input as unknown as { uploadFile(p: string): Promise<void> }).uploadFile(pdf);
+  const titleBox = await page.waitForSelector(`:is(${DIALOG}) input[type="text"]`, { visible: true, timeout: 60_000 });
+  await titleBox!.click({ clickCount: 3 });
+  await page.keyboard.type(title, { delay: 8 });
+  await clickDialogButton(page, /^done$/i, 60_000);
+  await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 30_000 });
+}
+
+export async function postViaBrowser(
+  text: string,
+  url: string,
+  opts: { submit: boolean; image?: string | null; documentTitle?: string },
+): Promise<void> {
   const adminUrl = companyAdminUrl();
   if (!adminUrl) throw new Error(`LINKEDIN_COMPANY_URL missing from ${ENV_FILE}`);
   const browser = await launch(false);
   try {
     const page = (await browser.pages())[0] ?? (await browser.newPage());
     await openComposer(page, adminUrl);
+    if (opts.image?.endsWith('.pdf')) await attachDocument(page, opts.image, opts.documentTitle ?? 'RAVEN Research');
+    else if (opts.image) await attachImage(page, opts.image);
     await typePost(page, composeBrowserText(text, url));
     // Give LinkedIn time to fetch the link preview card.
     await new Promise((r) => setTimeout(r, 6_000));
@@ -164,6 +218,64 @@ export async function postViaBrowser(text: string, url: string, opts: { submit: 
   }
 }
 
+export interface PostAnalytics {
+  urn: string;
+  title: string;
+  date: string; // YYYY-MM-DD, as LinkedIn shows it (page timezone)
+  impressions: number;
+  clicks: number;
+  reactions: number;
+  comments: number;
+  reposts: number;
+}
+
+/** Reads the page's content engagement table (Analytics > Posts): the most
+ *  recent posts with impressions and engagement. Read-only. */
+export async function readPostAnalytics(): Promise<PostAnalytics[]> {
+  const adminUrl = companyAdminUrl();
+  if (!adminUrl) throw new Error(`LINKEDIN_COMPANY_URL missing from ${ENV_FILE}`);
+  const browser = await launch(false);
+  try {
+    const page = (await browser.pages())[0] ?? (await browser.newPage());
+    await page.goto(`${adminUrl.replace(/\/admin\/?.*$/, '/admin/')}analytics/updates/`, { waitUntil: 'networkidle2', timeout: 60_000 }).catch(() => {});
+    if (/\/(login|authwall|checkpoint)/.test(page.url())) {
+      throw new Error('LinkedIn session expired; run: bun automation/linkedin-browser.ts login');
+    }
+    await page.waitForSelector('table.org-analytics__table tbody tr', { timeout: 30_000 });
+    const rows = await page.$$eval('table.org-analytics__table', (tables) => {
+      const table = tables[0];
+      const headers = [...table.querySelectorAll('thead th')].map((th) => (th.textContent ?? '').trim().toLowerCase());
+      return [...table.querySelectorAll('tbody tr')].map((tr) => {
+        const cells = [...tr.querySelectorAll('td')].map((td) => (td.textContent ?? '').trim());
+        const link = tr.querySelector('a[href*="urn:li:"]');
+        const titleEl = link?.querySelector('div') ?? link;
+        return {
+          href: link?.getAttribute('href') ?? '',
+          title: (titleEl?.textContent ?? '').trim(),
+          date: (tr.querySelector('[class*="table__date"]')?.textContent ?? '').trim(),
+          cell: Object.fromEntries(headers.map((h, i) => [h, cells[i] ?? ''])),
+        };
+      });
+    });
+    const num = (s: string | undefined) => Number((s ?? '').replace(/[^\d.]/g, '')) || 0;
+    return rows.map((r) => {
+      const [m, d, y] = r.date.split('/');
+      return {
+        urn: r.href.match(/urn:li:[a-z]+:\d+/)?.[0] ?? '',
+        title: r.title,
+        date: y ? `${y}-${m.padStart(2, '0')}-${d.padStart(2, '0')}` : '',
+        impressions: num(r.cell.impressions),
+        clicks: num(r.cell.clicks),
+        reactions: num(r.cell.reactions),
+        comments: num(r.cell.comments),
+        reposts: num(r.cell.reposts),
+      };
+    });
+  } finally {
+    await browser.close();
+  }
+}
+
 if (import.meta.main) {
   const mode = process.argv[2];
   if (mode === 'login') {
@@ -173,12 +285,15 @@ if (import.meta.main) {
     console.log('Sign in to LinkedIn in the Edge window, then close it.');
     await new Promise<void>((r) => browser.on('disconnected', () => r()));
   } else if (mode === 'test') {
+    // Optional third argument: an image to attach, e.g. one from `bun automation/graphics.ts preview`.
     await postViaBrowser(
       'Test post from the RAVEN automation. Not for publishing.\n\nSecond paragraph with a question?\n\n#CommunityBanking #Fintech',
       'https://reportraven.tech/blog',
-      { submit: false },
+      { submit: false, image: process.argv[3], documentTitle: 'Test carousel, not for publishing' },
     );
+  } else if (mode === 'analytics') {
+    console.table(await readPostAnalytics());
   } else {
-    console.log('usage: bun automation/linkedin-browser.ts login|test');
+    console.log('usage: bun automation/linkedin-browser.ts login|test [image.png|carousel.pdf]|analytics');
   }
 }
