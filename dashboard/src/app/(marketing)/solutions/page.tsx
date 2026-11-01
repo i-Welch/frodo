@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { SOLUTIONS } from './solutions-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
   title: 'Solutions for Community Banks',
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
     'Verification-first infrastructure for community banks: borrower verification, digital account opening, KYC, and instant income and employment verification.',
   alternates: { canonical: 'https://reportraven.tech/solutions' },
   openGraph: {
+    images: DEFAULT_OG_IMAGES,
     title: 'RAVEN Solutions for Community Banks',
     description:
       'Borrower verification, digital account opening, KYC, and instant income and employment verification. One link, source-verified data.',

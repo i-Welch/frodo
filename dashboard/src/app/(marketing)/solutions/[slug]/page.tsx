@@ -4,6 +4,7 @@ import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
 import { SOLUTIONS, getSolution } from '../solutions-data';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export function generateStaticParams() {
   return SOLUTIONS.map((s) => ({ slug: s.slug }));
@@ -18,6 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: solution.metaDescription,
     alternates: { canonical: `https://reportraven.tech/solutions/${slug}` },
     openGraph: {
+      images: DEFAULT_OG_IMAGES,
       title: solution.metaTitle,
       description: solution.metaDescription,
       url: `https://reportraven.tech/solutions/${slug}`,
@@ -119,7 +121,12 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
           ))}
         </section>
 
-        <LeadCapture variant="audit" source={`solutions:${slug}`} />
+        {/* Banks in organization have no call report to audit yet. */}
+        {slug === 'de-novo-bank-technology' ? (
+          <LeadCapture variant="subscribe" source={`solutions:${slug}`} title="Get De Novo Watch updates by email" />
+        ) : (
+          <LeadCapture variant="audit" source={`solutions:${slug}`} />
+        )}
 
         <div className="sol-related">
           <div className="sol-related-col">

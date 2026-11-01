@@ -1,11 +1,13 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import { articles, type Article } from '../../app/(marketing)/blog/articles-index';
 import { BLOG_DATES, BLOG_SLUGS } from '../../app/(marketing)/blog/published';
+import { DE_NOVO_BANKS, STATUS_LABELS, type DeNovoBank } from '../../app/(marketing)/de-novo-watch/de-novo-data';
 import type { EmailMessage } from './email';
 
 /**
- * The weekly RAVEN newsletter: the articles published in the past week, sent
- * from the founder to everyone who subscribed on the site.
+ * The weekly RAVEN newsletter: the articles published in the past week, plus
+ * any De Novo Watch status changes, sent from the founder to everyone who
+ * subscribed on the site.
  *
  * Env vars:
  * - NEWSLETTER_SECRET          signs unsubscribe links (falls back to RAVEN_AUTOMATION_SECRET)
@@ -57,6 +59,26 @@ export function weeklyArticles(issueDate: string): (Article & { publishedOn: str
     .sort((a, b) => b.publishedOn.localeCompare(a.publishedOn));
 }
 
+export interface TrackerChange {
+  name: string;
+  location: string;
+  status: string;
+  detail: string;
+}
+
+/** De Novo Watch rows added or whose status changed in the 7 days ending on `issueDate`. */
+export function weeklyTrackerChanges(issueDate: string, rows: DeNovoBank[] = DE_NOVO_BANKS): TrackerChange[] {
+  const end = Date.parse(`${issueDate}T23:59:59Z`);
+  const start = end - 7 * 86_400_000;
+  return rows
+    .filter((r) => {
+      if (!r.statusChanged) return false;
+      const t = Date.parse(`${r.statusChanged}T12:00:00Z`);
+      return t > start && t <= end;
+    })
+    .map((r) => ({ name: r.name, location: r.location, status: STATUS_LABELS[r.status], detail: r.statusDetail }));
+}
+
 function articleUrl(slug: string, issueDate: string): string {
   return `${SITE}/blog/${slug}?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-${issueDate}`;
 }
@@ -69,20 +91,31 @@ export interface Issue {
   subject: string;
   preview: string;
   articles: ReturnType<typeof weeklyArticles>;
+  tracker: TrackerChange[];
 }
 
-export function buildIssue(issueDate: string): Issue | null {
+export function buildIssue(issueDate: string, tracker: TrackerChange[] = weeklyTrackerChanges(issueDate)): Issue | null {
   const list = weeklyArticles(issueDate);
-  if (list.length === 0) return null;
+  if (list.length === 0 && tracker.length === 0) return null;
+  if (list.length === 0) {
+    const [first] = tracker;
+    const subject =
+      tracker.length === 1 ? `De Novo Watch: ${first.name} (${first.status})` : `De Novo Watch: ${tracker.length} new bank updates`;
+    return { subject, preview: `${first.name}, ${first.location}: ${first.status}.`, articles: list, tracker };
+  }
   const subject = list.length === 1 ? list[0].title : `${list[0].title} (+${list.length - 1} more from RAVEN)`;
-  return { subject, preview: list[0].description, articles: list };
+  return { subject, preview: list[0].description, articles: list, tracker };
 }
 
 /** Renders one recipient's copy of an issue, with their own unsubscribe link. */
 export function issueMessage(issue: Issue, issueDate: string, to: string, address: string): EmailMessage {
   const unsub = unsubscribeUrl(to);
   const count = issue.articles.length === 1 ? 'one new analysis' : `${issue.articles.length} new analyses`;
-  const intro = `This week on RAVEN: ${count} built from public filings on community banks and credit unions.`;
+  const intro = issue.articles.length
+    ? `This week on RAVEN: ${count} built from public filings on community banks and credit unions.`
+    : 'This week on De Novo Watch: new bank filings, approvals and openings, from FDIC and state regulator records.';
+  const trackerUrl = `${SITE}/de-novo-watch?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-${issueDate}`;
+  const trackerHeading = 'De Novo Watch this week';
   const audit =
     'Want this treatment for your own institution? Request a free digital lending audit and we will build it from your call report and HMDA data:';
   const auditUrl = `${SITE}/audit/robins-financial-credit-union?utm_source=newsletter&utm_medium=email&utm_campaign=weekly-${issueDate}`;
@@ -91,6 +124,9 @@ export function issueMessage(issue: Issue, issueDate: string, to: string, addres
     intro,
     '',
     ...issue.articles.flatMap((a) => [a.title, a.description, articleUrl(a.slug, issueDate), '']),
+    ...(issue.tracker.length
+      ? [trackerHeading, ...issue.tracker.map((c) => `- ${c.name} (${c.location}): ${c.status}. ${c.detail}`), trackerUrl, '']
+      : []),
     `${audit}\n${auditUrl}`,
     '',
     'Reply any time. I read every response.',
@@ -114,13 +150,29 @@ export function issueMessage(issue: Issue, issueDate: string, to: string, addres
     )
     .join('');
 
+  const trackerHtml = issue.tracker.length
+    ? `
+    <tr><td style="padding:0 32px 24px">
+      <div style="border-top:1px solid #e5e7eb;padding-top:20px">
+        <div style="font-size:13px;font-weight:700;letter-spacing:.08em;color:#6b7280;margin-bottom:12px">${trackerHeading.toUpperCase()}</div>
+        ${issue.tracker
+          .map(
+            (c) =>
+              `<p style="margin:0 0 12px;font-size:15px;line-height:1.6;color:#374151"><strong style="color:#111827">${escapeHtml(c.name)}</strong> (${escapeHtml(c.location)}): ${escapeHtml(c.status)}. ${escapeHtml(c.detail)}</p>`,
+          )
+          .join('')}
+        <a href="${trackerUrl}" style="font-size:14px;font-weight:600;color:#2563eb;text-decoration:none">See the full tracker &rarr;</a>
+      </div>
+    </td></tr>`
+    : '';
+
   const html = `<!doctype html><html><body style="margin:0;padding:0;background:#f3f4f6">
 <span style="display:none;max-height:0;overflow:hidden">${escapeHtml(issue.preview)}</span>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f3f4f6"><tr><td align="center" style="padding:32px 16px">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border-radius:8px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
     <tr><td style="padding:28px 32px 8px;font-size:13px;font-weight:700;letter-spacing:.08em;color:#6b7280">RAVEN WEEKLY</td></tr>
     <tr><td style="padding:0 32px 24px;font-size:15px;line-height:1.6;color:#374151">${escapeHtml(intro)}</td></tr>
-    <tr><td style="padding:0 32px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>
+    <tr><td style="padding:0 32px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${items}</table></td></tr>${trackerHtml}
     <tr><td style="padding:0 32px 28px">
       <div style="border-top:1px solid #e5e7eb;padding-top:20px;font-size:15px;line-height:1.6;color:#374151">
         ${escapeHtml(audit)} <a href="${auditUrl}" style="color:#2563eb;font-weight:600">see an example audit</a>.

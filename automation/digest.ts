@@ -10,6 +10,9 @@ import { homedir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { ravenApi } from './raven-api';
 import { alertFounder } from './alert';
+import { deNovoChanges } from './de-novo-changes';
+import { fetchPageVisits, warmAccounts } from './warm-accounts';
+import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
 const REPO = resolve(import.meta.dir, '..');
 const STATE_DIR = join(homedir(), '.raven');
@@ -24,17 +27,25 @@ function readLog(path: string): string {
 
 function openPullRequests(): string[] {
   try {
-    const prs: { number: number; title: string; createdAt: string }[] = JSON.parse(
-      execFileSync('gh', ['pr', 'list', '--state', 'open', '--label', 'auto-publish', '--json', 'number,title,createdAt'], {
+    const prs: { number: number; title: string; createdAt: string; labels: { name: string }[] }[] = JSON.parse(
+      execFileSync('gh', ['pr', 'list', '--state', 'open', '--json', 'number,title,createdAt,labels'], {
         cwd: REPO,
         encoding: 'utf8',
       }),
     );
-    if (prs.length === 0) return ['No auto-publish PRs waiting.'];
-    return prs.map((p) => {
-      const hours = Math.round((Date.now() - Date.parse(p.createdAt)) / 3_600_000);
-      return `Waiting to merge: #${p.number} ${p.title} (${hours}h old)`;
-    });
+    const auto = prs.filter((p) => p.labels.some((l) => l.name === 'auto-publish'));
+    // PRs without the label never merge on their own; they wait for Isaac.
+    const manual = prs.filter((p) => !p.labels.some((l) => l.name === 'auto-publish'));
+    const age = (p: { createdAt: string }) => Math.round((Date.now() - Date.parse(p.createdAt)) / 86_400_000);
+    return [
+      ...(auto.length === 0
+        ? ['No auto-publish PRs waiting.']
+        : auto.map((p) => {
+            const hours = Math.round((Date.now() - Date.parse(p.createdAt)) / 3_600_000);
+            return `Waiting to merge: #${p.number} ${p.title} (${hours}h old)`;
+          })),
+      ...manual.map((p) => `Needs your review: #${p.number} ${p.title} (${age(p)}d old) https://github.com/i-Welch/frodo/pull/${p.number}`),
+    ];
   } catch (err) {
     return [`Could not list PRs: ${(err as Error).message.split('\n')[0]}`];
   }
@@ -46,6 +57,60 @@ function linkedInPosts(): string[] {
   const posted: Record<string, string> = JSON.parse(readFileSync(file, 'utf8'));
   const recent = Object.entries(posted).filter(([, v]) => Date.parse(v.split(' ')[0]) >= WEEK_AGO);
   return [`LinkedIn posts this week: ${recent.length}`, ...recent.map(([slug]) => `  - ${slug}`)];
+}
+
+// Finished articles still commented out of BLOG_SLUGS, released twice a week by /release-draft.
+function heldDrafts(): string[] {
+  try {
+    const src = readFileSync(join(REPO, 'dashboard/src/app/(marketing)/blog/published.ts'), 'utf8');
+    const block = src.slice(src.indexOf('export const BLOG_SLUGS'), src.indexOf('export const BLOG_DATES'));
+    const held = block.split('\n').filter((l) => /^\s*\/\/\s*'[a-z0-9-]+',/.test(l)).length;
+    const retired = block.split('\n').filter((l) => /\/\/\s*retired/.test(l)).length;
+    return [`Held drafts left to release: ${held}${retired ? ` (${retired} retired)` : ''}`];
+  } catch {
+    return [];
+  }
+}
+
+// Pitch drafts written by /de-novo-update this week, ready for Isaac to send.
+function pitches(): string[] {
+  try {
+    const out = execFileSync(
+      'git',
+      ['log', `--since=${new Date(WEEK_AGO).toISOString()}`, '--diff-filter=A', '--name-only', '--format=', 'origin/master', '--', 'marketing/pitches/'],
+      { cwd: REPO, encoding: 'utf8' },
+    );
+    const files = [...new Set(out.split('\n').map((l) => l.trim()).filter((l) => l.endsWith('.md')))];
+    if (files.length === 0) return [];
+    return [
+      `Reporter pitches ready to send (${files.length}):`,
+      ...files.map((p) => `  - https://github.com/i-Welch/frodo/blob/master/${p}`),
+    ];
+  } catch {
+    return [];
+  }
+}
+
+// Visits this week to each bank's audit and white-label demo (warm-accounts.ts).
+function auditVisits(): string[] {
+  try {
+    return warmAccounts(fetchPageVisits(new Date(WEEK_AGO), REPO), (slug) => getAudit(slug)?.bankName ?? slug);
+  } catch {
+    return [];
+  }
+}
+
+// Tasks that register-tasks.ps1 defines but Windows does not have, e.g. one
+// added in a merged PR before anyone re-ran the script.
+function missingTasks(): string[] {
+  try {
+    const expected = [...readFileSync(join(REPO, 'automation/register-tasks.ps1'), 'utf8').matchAll(/Register-ScheduledTask -TaskName '([^']+)'/g)].map((m) => m[1]);
+    const registered = execFileSync('schtasks', ['/query', '/fo', 'csv', '/nh'], { encoding: 'utf8' });
+    const missing = expected.filter((name) => !registered.includes(`"\\${name}"`));
+    return missing.length ? [`Scheduled tasks not registered (run automation/register-tasks.ps1): ${missing.join(', ')}`] : [];
+  } catch {
+    return [];
+  }
 }
 
 function problems(): string[] {
@@ -66,7 +131,16 @@ function problems(): string[] {
   return [`Problems in the logs (${found.length}):`, ...found.slice(-15).map((l) => `  - ${l}`)];
 }
 
-const automation = [...openPullRequests(), ...linkedInPosts(), ...problems()];
+const automation = [
+  ...openPullRequests(),
+  ...linkedInPosts(),
+  ...(await deNovoChanges(new Date(WEEK_AGO))),
+  ...pitches(),
+  ...auditVisits(),
+  ...heldDrafts(),
+  ...missingTasks(),
+  ...problems(),
+];
 
 if (process.argv.includes('--print')) {
   console.log(automation.join('\n'));

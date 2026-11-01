@@ -62,6 +62,8 @@ export const leadsAdminRoutes = new Elysia({ prefix: '/api/v1/admin/audit-reques
           name: i.name as string | undefined,
           email: i.email as string,
           bank: i.bank as string | undefined,
+          /** FDIC cert, when the requester picked their bank from the form's suggestions. */
+          cert: i.cert as number | undefined,
           source: i.source as string | undefined,
           status: (i.status as string | undefined) ?? 'pending',
           auditSlug: i.auditSlug as string | undefined,

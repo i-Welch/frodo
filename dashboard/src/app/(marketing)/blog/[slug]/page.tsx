@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getRelatedArticles } from '../articles-index';
+import { articles as ARTICLE_INDEX, getRelatedArticles } from '../articles-index';
 import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
@@ -104,6 +104,370 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'fed-rate-hike-community-bank-deposits': {
+    title: "The Fed Turned Around. Deposit Rates Didn't.",
+    description:
+      'The Fed hiked in September for the first time since 2023, then held with two votes for more. The 2-year Treasury is up 132 basis points since February and mortgages hit 7.40%. The national 12-month CD rate rose 24. What the gap means for community banks.',
+    publishedDate: 'October 30, 2026',
+    readTime: '6 min read',
+    content: `
+# The Fed Turned Around. Deposit Rates Didn't.
+
+*Published October 30, 2026*
+
+On Wednesday the Federal Reserve held its benchmark rate at 3.75% to 4.00%. The news was in the vote. Two members, Governor Lisa Cook and Cleveland Fed President Beth Hammack, dissented. They wanted another quarter-point hike.
+
+Six weeks earlier, on September 16, the committee voted 12-0 to raise rates for the first time since July 2023. That move erased the December 2025 cut and put the target range back exactly where it stood at the end of October 2025. The statement was blunt: "Inflation remains elevated."
+
+For community banks, the hike itself is the small number. The big one is what the bond market did around it, and how little of it has reached the deposit side of the balance sheet.
+
+## The market moved first
+
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+
+On February 27, the 2-year yielded 3.38%. On September 16 it closed at 4.74%. On October 27 it was 4.70%, about 80 basis points above the midpoint of the Fed's range, which is the market's way of saying it expects more. The 10-year rose from 3.97% to 4.99% over the same stretch and touched 5.31% on October 5.
+
+The committee's own forecasts moved the same way. In June, the median projection for the federal funds rate at the end of 2026 was 3.8%. In September it was 4.1%, a midpoint that implies one more quarter-point increase before year-end. The 2027 median jumped from 3.6% to 4.1%. Core PCE inflation is projected at 3.4% for 2026.
+
+:::pullquote
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+:::
+
+## Deposit rates barely noticed
+
+Now set those numbers next to what the FDIC publishes every month as the national average deposit rate.
+
+| Rate | Spring 2026 | October 2026 | Change |
+|---|---|---|---|
+| 2-year Treasury | 3.38% | 4.70% | +1.32 |
+| 30-year mortgage | 5.98% | 7.32% | +1.34 |
+| Prime rate | 6.75% | 7.00% | +0.25 |
+| National 12-month CD | 1.52% | 1.76% | +0.24 |
+| National savings | 0.39% | 0.38% | -0.01 |
+
+The Treasury and mortgage figures are from February 26 and 27 and October 22 and 27; the FDIC national rates are from its March 16 and October 19 releases. The national rate is an average across insured institutions, so it does not describe any one bank's rate sheet. But the direction is unmistakable. Market rates repriced by more than a full point. The average savings account repriced by nothing.
+
+Depositors with options are not waiting. Money market fund assets reached $7.94 trillion in the week ended October 21, according to the Investment Company Institute, after a $21.49 billion gain in a single week. Institutional funds took in $24.01 billion of it.
+
+## The relief that just ended
+
+The cuts of late 2025 did real work for Southeast community banks, and the call reports show it.
+
+We pulled the FDIC's June 30 call report data for every bank under $10 billion in assets headquartered in South Carolina, North Carolina, Georgia and Florida: 279 banks holding $236.2 billion in assets. In the first half of 2026 they paid $1.89 billion in interest expense, down from $2.04 billion for the 295 banks in the same group a year earlier. Interest income rose 1.6% to $6.13 billion. Net interest income rose 6.2% to $4.24 billion.
+
+:::stat
+**$150.5 million**
+How much less the Southeast's community banks under $10 billion paid in interest in the first half of 2026 than a year earlier, a 7.4% drop. Interest expense fell from 33.8% of interest income to 30.8%.
+:::
+
+That is the margin expansion that showed up in third-quarter earnings, when [Southern First and ServisFirst widened their margins](/blog/southeast-bank-earnings-q3-2026) while the big banks were busy repositioning. One caveat: the peer group shrank by 16 banks in a year, so the totals are not the identical set of institutions. The ratios still tell the story.
+
+The September hike ends that tailwind. And the cheapest money on these balance sheets is the money most exposed. The 279 banks held $50.9 billion in noninterest-bearing deposits at June 30, 25.4% of domestic deposits, down from 25.7% a year earlier. At a 4.70% 2-year yield, $50.9 billion is worth about $2.4 billion a year to whoever holds it. Every operating account that moves to a money fund or an online bank gets replaced with a CD or a borrowing at today's prices. The [net interest margin](/glossary/net-interest-margin) is decided at the account opening screen as much as at the loan committee.
+
+## The mortgage window closed
+
+On February 26, Freddie Mac's 30-year average was 5.98%, the low of the past year. Borrowers who had waited for a refinance finally had one.
+
+By October 8 the average was 7.40%. Between September 10 and October 8 it rose 64 basis points in four weeks. On October 22 it was 7.32%.
+
+A borrower who applied in early September at a community bank that takes [42 days to close](/blog/why-it-takes-42-days-to-close-a-mortgage), and did not lock, watched the rate move against them before the appraisal came back. A lender that [closes in 22 days](/blog/rocket-mortgage-22-days-how) had half the exposure. In a flat rate market, speed is a convenience. In a market that moves 64 basis points in a month, speed is a price.
+
+:::pullquote
+In a market that moves 64 basis points in a month, speed is a price.
+:::
+
+Two caveats, in fairness. Higher rates help any bank whose loans reprice faster than its deposits, and prime-based commercial lines reset the day after the hike. And the Fed held on Wednesday rather than hiking; the 2-year has eased from 4.92% on September 28, and the 10-year is back below 5%. Nobody knows whether September was the start of a cycle or a single correction.
+
+## What the next 60 days decide
+
+The committee meets once more this year, in December, and the September median says it expects to move again. Community banks do not need to forecast the December vote to know what the last two months changed.
+
+On the deposit side, the gap between 4.70% in the market and 0.38% in the average savings account is a 432-basis-point reason to move money, and depositors can see both numbers. The defense is not matching money fund yields across the book. It is winning the primary operating account in the first place: opening it in minutes, verifying the customer once, and making the switch from a competitor easy enough that it actually happens.
+
+On the lending side, rate volatility rewards whoever finishes first. That means intake that verifies income, assets and identity against source data on day one, instead of chasing documents for weeks while the rate moves. It means a decision in minutes when the file is clean, and an audit trail that holds up when the examiner asks why a file closed in ten days.
+
+The market has already repriced by 132 basis points. Depositors are next, and they do not wait for a meeting.
+`,
+  },
+  'new-south-bank-tampa-de-novo': {
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    publishedDate: 'October 28, 2026',
+    readTime: '6 min read',
+    content: `
+# New South Bank: A $25M Bet on a County Down to Five Banks
+
+*Published October 28, 2026*
+
+In June 2008, 21 banks kept their main office in Hillsborough County, Florida. This June there were five. One of the five is a trust company holding $500,000 in deposits.
+
+The money did not leave. Deposits in the county grew from $20.2 billion to $45.05 billion over the same stretch, according to the FDIC's Summary of Deposits. The banks headquartered there simply stopped being the ones holding it.
+
+On September 28, the FDIC approved deposit insurance for New South Bank, a proposed Tampa bank led by a 35-year veteran of the Office of the Comptroller of the Currency. If its organizers raise $25 million, it becomes the first bank chartered in the county since 2007.
+
+## The approval: $25 million at $10 a share
+
+New South filed with the FDIC and the Florida Office of Financial Regulation in April, announcing the applications on April 20. The FDIC's decision, application number 20260392, is dated September 28, 2026. It came 161 days after that announcement, and it makes New South the third Florida community bank to win deposit insurance this year, after Echelon Bank in Clearwater and [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) in Winter Park.
+
+The condition that matters: the organizers must raise $25 million before the bank can open, per The Bank Slate's read of the approval. Ten named insiders have agreed to buy 309,000 shares for $3.1 million, roughly $10 a share and about 12% of the minimum. The rest has to come from outside investors.
+
+For scale, Portrait's FDIC order required just under $28 million and the bank raised $43 million from 256 local investors. New South's floor is lower, and its business plan is smaller and more specific.
+
+The plan, as summarized from the application: profitability in year two, then $250 million in assets the following year, funded by $225 million in deposits and carrying $180 million in loans. That is an 80% [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio), conservative by community bank standards.
+
+The capital math is tighter than it looks. $25 million against $250 million in assets is a 10% leverage ratio before a single dollar of startup losses. The FDIC's de novo policy requires capital sufficient for an 8% Tier 1 leverage ratio throughout the first three years. Every dollar a new bank loses before it turns profitable comes straight out of that two-point cushion.
+
+## The people: the regulators cross the table
+
+Kennard Page, the proposed chairman and CEO, spent more than 35 years at the OCC and retired as assistant deputy comptroller for its North Florida field office. He then ran Lafayette State Bank in Mayo, Fla., as president and CEO, and founded KLZ Investments, a bank consulting firm.
+
+Lafayette State Bank is a 1946 charter that held $252.2 million in assets at June 30, 2026. That is almost exactly the size New South's plan targets for year three. Page has run a bank that size before.
+
+He is not the only former examiner on the roster. Outside director Charles Race was a national bank examiner in the OCC's Tampa office from 2016 to 2025. The proposed president and CFO, Thomas Welsh, is a former CFO of TCM Bank, N.A., according to the bank's announcement, and Business Observer describes his most recent role as executive vice president and CFO of CapTec USA, a Tampa firm that specializes in SBA loan facilitation. Director Jeffrey Cathey, a Navy veteran, formed and led Bank of America's Military and Veterans Affairs organization from 2008 until he retired in 2022.
+
+:::pullquote
+The people who used to write the exam findings are now the ones who will have to answer them.
+:::
+
+Two caveats, in fairness. Knowing what an examiner wants to see is not the same as knowing how to win a deposit relationship from Truist, and the board leans toward regulators, lawyers and operators rather than Tampa rainmakers. And a bank built by former supervisors can err on the side of caution. In a market this concentrated, too little appetite is its own risk.
+
+## The market: $45 billion, 6.4% at home
+
+As of June 30, 2026, 51 FDIC-insured institutions had at least one office in Hillsborough County, holding $45.05 billion in deposits across 259 offices. In 2008 the county had 321 offices and less than half the money.
+
+Four out-of-state banks hold more than half of it. Truist has $7.25 billion in the county, Bank of America $6.61 billion, Wells Fargo $6.22 billion and JPMorgan Chase $3.85 billion: 53.1% combined.
+
+:::stat
+**6.4%**
+The share of Hillsborough County's $45.05 billion in deposits held by all five institutions still headquartered there, combined, as of June 30, 2026. Take out The Bank of Tampa and the other four hold 1.2%.
+:::
+
+The Bank of Tampa, chartered in 1973, carries the hometown flag nearly alone: $2.34 billion in county deposits and $3.02 billion in total assets. Behind it are TCM Bank ($280 million in county deposits), Central Bank ($170 million), Century Bank of Florida ($87 million) and Members Trust Company. Of the 21 banks headquartered in the county in 2008, only four are still there.
+
+The two newest charters in the county, NorthStar Bank and Gulfshore Bank, both opened in August 2007 and both merged away in 2017. The only charter issued in Hillsborough since then was a 2011 vehicle created to take over a failed bank, which merged into Cadence seven months later.
+
+New South's announcement says Florida has lost nearly 70% of its locally headquartered banks. The FDIC's own survey says that undersells it: 309 banks were headquartered in Florida in June 2008, and 82 this June, a 73% decline. [Our count of Florida's 2026 charters](/blog/florida-new-bank-charters-2026) found the state is still retiring banks faster than it adds them.
+
+The newcomer is already crossing the bay. Echelon Bank, the Clearwater de novo that opened May 27, opened a Tampa office on Bayshore Boulevard the next day and held $3.4 million in deposits there by June 30. New South will not be the only new bank chasing Tampa business owners.
+
+## The plan: small business, centralized
+
+New South describes itself as a full-service commercial bank for small businesses and their owners in Tampa Bay, with the ability to serve clients statewide. Its targets are owner-operated businesses, professional firms and family-owned companies. Its lending emphasis is SBA and USDA-guaranteed programs, delivered through a mix of direct relationships and what the organizers call a "centralized, technology-enabled model."
+
+The guaranteed-lending focus fits a small balance sheet. An SBA 7(a) loan can run up to $5 million, and the SBA guarantees 85% of loans of $150,000 or less and 75% of larger ones. A bank with $25 million in capital can serve borrowers it could not otherwise carry, with the government absorbing much of the credit risk.
+
+The catch is that the guarantee is only as good as the file. SBA lending is the most document-heavy small business lending there is: tax returns, personal financial statements, debt schedules, eligibility checks on the owner and the business. A guarantee can be reduced or denied after a default if the lender missed a requirement at origination. Welsh's background in SBA loan facilitation fits that plan.
+
+:::pullquote
+The guarantee is only as good as the file, and the file gets built at intake.
+:::
+
+## The stack: what the first exam will test
+
+Page and Race have sat on the other side of a de novo's first examination. They know the FDIC's three-year leash: the [de novo](/glossary/de-novo-bank) capital floor, prior approval for dividends and new executives, and a business plan the bank is expected to follow. Examiners will test whether the controls described in that plan are actually running, not on a roadmap. Our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what they look for.
+
+None of the filings or coverage we reviewed names New South's core processor or digital vendors. That leaves the most important design decision open. A centralized, technology-enabled SBA lender lives or dies on its intake. Every application has to arrive with the owner's identity, income and business financials verified against authoritative sources, not typed in and uploaded as PDFs for a loan officer to chase. Done that way, a small team can decide in minutes instead of weeks, and every check leaves an audit trail an SBA reviewer or an examiner can follow years later.
+
+A bank that starts that way never has to retrofit it. The 17 Hillsborough banks that have left since 2008 never got that chance.
+
+Hillsborough added $24.9 billion in deposits since 2008. New South needs one-thousandth of that to open its doors.
+  `,
+  },
+  'southeast-bank-earnings-q3-2026': {
+    title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
+    description:
+      "Truist, United Community and First Horizon booked big losses selling low-yield assets on purpose. The community banks widened margins instead: Southern First from 2.62% to 3.02%, ServisFirst from 3.09% to 3.63%. What 18 Southeast Q3 releases show.",
+    publishedDate: 'October 23, 2026',
+    readTime: '5 min read',
+    content: `
+# Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset
+
+*Published October 23, 2026*
+
+Three of the Southeast's largest banks took big losses on purpose this quarter. Two of them finished it in the red.
+
+Truist booked a $1.4 billion pretax loss selling available-for-sale securities. United Community Banks took a $366.1 million securities loss repositioning its portfolio and reported a GAAP net loss of $139.7 million. First Horizon agreed to sell about $4.5 billion of lower-yielding consumer mortgages, recorded a $473 million loss on the pending sale, and reported a net loss to common shareholders of $94 million.
+
+Truist still earned $684 million for common shareholders. Strip the one-time items out and all three had ordinary quarters. United Community's operating EPS was $0.77, up from $0.75. First Horizon's adjusted EPS was $0.53, up from $0.51. Truist's adjusted EPS of $1.16 was up 12%.
+
+The smaller banks did not need a reset. They were busy widening their margins.
+
+Two more reported after the close on October 22. Ameris, the Atlanta bank with $28.55 billion in assets, earned $116.1 million, or $1.73 per diluted share, up from $51.4 million in the second quarter, when a litigation expense accrual weighed on results. Its margin held at 3.87%, up from 3.80% a year earlier. In Myrtle Beach, [South Atlantic Bancshares](/blog/south-atlantic-bank-coastal-growth-engine) earned $5.2 million, up 19.3% from a year earlier, as its margin rose to 3.38% from 3.28%.
+
+## The Losses Were a Trade
+
+Selling a bond or a mortgage below its book value turns an unrealized loss into a realized one. The bank takes the hit to earnings once and can reinvest the proceeds at today's higher yields. United Community called its sale a repositioning of the securities portfolio. First Horizon described the mortgages it is selling as lower-yielding.
+
+The cost lands in a single quarter. The benefit is meant to arrive as higher interest income in the quarters after. In effect, a bank that can absorb the hit to capital is trading a worse third quarter for higher interest income later.
+
+Two caveats, in fairness. These were not credit losses: United Community's nonperforming assets were 0.28% of total assets. And none of the community banks in this group made the trade. Their margins were already moving the right way.
+
+## Community Bank Margins Widened
+
+The [net interest margin](/glossary/net-interest-margin) is where the quarter's real story sits. Every bank in the table below widened its margin from a year earlier except Live Oak.
+
+| Bank | Headquarters | Q3 2026 NIM | Q3 2025 NIM | Change |
+|---|---|---|---|---|
+| ServisFirst | Birmingham, AL | 3.63% | 3.09% | +54 bp |
+| Southern First | Greenville, SC | 3.02% | 2.62% | +40 bp |
+| First Community | Lexington, SC | 3.59% | 3.27% | +32 bp |
+| First Bancorp | Southern Pines, NC | 3.75% | 3.46% | +29 bp |
+| Peoples Bancorp | Newton, NC | 3.85% | 3.58% | +27 bp |
+| SmartFinancial | Knoxville, TN | 3.45% | 3.25% | +20 bp |
+| CoastalSouth | Atlanta, GA | 3.70% | 3.58% | +12 bp |
+| South Atlantic | Myrtle Beach, SC | 3.38% | 3.28% | +10 bp |
+| Capital City | Tallahassee, FL | 4.42% | 4.34% | +8 bp |
+| Ameris | Atlanta, GA | 3.87% | 3.80% | +7 bp |
+| Live Oak | Wilmington, NC | 3.30% | 3.33% | -3 bp |
+
+Southern First shows how it happened. Net interest income rose 26% from a year earlier, to $34.7 million, and wholesale deposits fell 32%. At September 30 the bank held $3.72 billion of retail deposits against $386.5 million of wholesale deposits. Replacing rate-sensitive wholesale money with customer deposits is the most direct way a bank widens its margin, and [Southern First's Upstate strategy](/blog/southern-first-bank-upstate-sc-bet) has been built on exactly that.
+
+:::stat
+**+40 basis points**
+Southern First's net interest margin, from 2.62% in the third quarter of 2025 to 3.02%, as wholesale deposits fell 32% and net interest income rose 26%.
+:::
+
+[First Community](/blog/first-community-bank-sc-cre-merger-growth) widened its margin to 3.59% from 3.27% while absorbing the Signature Bank of Georgia acquisition, which closed January 8. Net income rose 54.9% to $8.0 million.
+
+## The Efficiency Gap
+
+Margins decide revenue. The [efficiency ratio](/glossary/efficiency-ratio), the cost of earning each dollar of it, decides how much reaches the bottom line, and the spread across the region is wide.
+
+| Bank | Total assets | ROA | Efficiency ratio |
+|---|---|---|---|
+| Ameris | $28.6B | 1.61% | 49.32% |
+| ServisFirst | $18.3B | 1.89% | 30.20% |
+| Live Oak | $17.0B | 0.59% | 48.80% |
+| First Bancorp | $13.2B | 1.55% | 49.09% |
+| Southern First | $4.9B | 1.03% | 54.10% |
+| CoastalSouth | $2.4B | 1.45% | 55.16% |
+| First Community | $2.4B | 1.34% | 60.81% |
+| South Atlantic | $2.0B | 1.04% | 62.06% |
+| HomeTrust | $4.4B | 1.65% | 61.47% |
+| Capital City | $4.4B | 1.53% | 65.63% |
+
+Live Oak, HomeTrust and South Atlantic present these efficiency ratios as non-GAAP measures.
+
+ServisFirst spends about 30 cents to earn a dollar of revenue. Capital City spends nearly 66 cents, and still earned a 1.53% [return on assets](/glossary/return-on-assets) thanks to a 4.42% margin, second only to HomeTrust's 4.46% in this group. Branch-light commercial banks and branch-heavy community banks will never post the same ratio. But the direction matters: Southern First's efficiency ratio fell from 60.86% to 54.10% in a year, and First Community's from 64.44% to 60.81%.
+
+:::pullquote
+ServisFirst spends about 30 cents to earn a dollar of revenue. Capital City spends nearly 66 cents. Both are profitable. The difference is what each new dollar of revenue costs.
+:::
+
+## Credit Stayed Quiet, With Two Exceptions
+
+Asset quality across the group was clean. Nonperforming assets were 0.04% of total assets at First Community, 0.22% at Capital City, 0.25% at SmartFinancial and Peoples, 0.28% at United Community and Atlantic Union, 0.30% at Southern First and 0.54% at Ameris. South Atlantic reported one loan on nonaccrual and none more than 30 days past due.
+
+The exceptions are specific. Live Oak's net charge-offs ran 1.00% of loans annualized, up from 0.61% a year earlier, and its $54.7 million provision included $17.0 million tied to what it called its stressed distillery portfolio. HomeTrust's nonperforming assets were 1.59% of total assets, or 1.08% excluding SBA-guaranteed balances.
+
+## The Deal Pipeline Keeps Filling
+
+Consolidation ran through almost every release. Pinnacle and Synovus closed their merger on January 1 and reported as one company: $130.7 billion in assets and $364 million of net income available to common shareholders. United Community closed its Peach State Bank acquisition on August 1 and sold its Navitas equipment finance business for $2.0 billion in cash. First Bancorp's pending acquisition of Carolina Bank is scheduled to close in early 2027. HomeTrust agreed on August 16 to buy Blue Ridge Bankshares, with closing expected early in the first quarter of 2027. And in Myrtle Beach, [Beacon and CCNB](/blog/ccnb-myrtle-beach-merger-growth-2026) completed a merger of equals on October 1.
+
+:::pullquote
+Every operating account a bank opens online, funded and verified in one sitting, is a deposit it does not have to buy.
+:::
+
+## What It Means for a Community Bank
+
+The quarter's lesson is about deposits. At Southern First, the clearest case in the group, the margin gain came from funding: customer deposits replacing wholesale money. That makes account opening a margin decision. Every operating account a bank opens online, funded and verified in one sitting, is a deposit it does not have to buy.
+
+The second lesson is about cost. A bank cannot copy ServisFirst's business model, but it can stop spending staff time on work a system can do: chasing pay stubs, calling employers, re-keying bank statements, waiting on documents before a decision. Verification-first intake, with income, assets and identity confirmed from the source in minutes, is how a community bank grows loans and accounts without growing headcount at the same rate.
+
+Still to report: Seacoast on October 27 and Colony Bankcorp on October 28. We will update this read when they do.
+`,
+  },
+
+  'florida-new-bank-charters-2026': {
+    title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole",
+    description:
+      'Florida leads the nation in 2026 bank charter filings and won three FDIC approvals. Two new banks opened, with $97 million in assets. Five Florida charters retired, holding $8.4 billion, and every one was itself a de novo. Every 2026 Florida filing and exit, counted.',
+    publishedDate: 'October 23, 2026',
+    readTime: '6 min read',
+    content: `
+# Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole
+
+*Published October 23, 2026*
+
+Florida is starting banks again. No state has filed more applications for new bank charters in 2026, and two new Florida banks opened their doors this year.
+
+Here is the other half of the ledger. In the same year, the FDIC retired five Florida bank charters. The two newcomers held $97 million in assets at June 30. The five departures held $8.4 billion at their final call reports. And every one of the five was itself a de novo, founded between 1997 and 2017.
+
+## Every 2026 filing, approval and opening
+
+Start with the good news, because it is real.
+
+The FDIC's list of pending deposit insurance applications, as of October 20, 2026, holds 27 filings. Five are from Florida: Itaú Bank in Miami (received March 16), Tidestone Bank in Coral Gables (March 23), Florida Bank of Finance in Coral Gables (April 16), [Glades Bank and Trust](/blog/glades-bank-broward-de-novo) in Plantation (June 2), and Stark Bank in Miami (August 10). Add New South Bank in Tampa, which filed in April and won FDIC approval on September 28, and Florida has six 2026 filings. Utah is next, with four 2026 filings still pending.
+
+Approvals tell the same story. The FDIC has issued 17 deposit insurance decisions dated 2026. Utah collected six, five of them for Ford, GM, Stellantis, Edward Jones and the fintech Mercury. Florida collected three: Echelon Bank in Clearwater (January 5), [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) in Winter Park (February 5), and New South (September 28). All three are community banks.
+
+Two of them are already open. FDIC records list Echelon as opened May 27 and Portrait as established June 22. At June 30, Echelon held $52.2 million in assets and Portrait $44.7 million.
+
+:::stat
+**6 filings, 3 approvals, 2 openings**
+Florida's 2026 de novo count through October 20, from FDIC records: more charter filings than any other state, and the most community bank approvals.
+:::
+
+Two caveats, in fairness. Two of the six filings are not hometown banks in the usual sense: Itaú, Latin America's largest bank, plans a single Miami branch for high-net-worth clients with ties to the region, and Stark is a fully digital, business-only bank from a Brazilian fintech. And the regulatory weather just improved. On August 10 the FDIC announced a two-phase review for applications received after August 15, with a contingent authorization due within 120 days of filing. The 2026 count may be the start of a bigger wave, not the peak of it.
+
+## The class of 228
+
+To see why two openings is a comeback, look at what came before.
+
+From 1995 through 2009, the FDIC insured 228 new institutions headquartered in Florida, by our count of BankFind records. Twenty-two in 2006. Twenty-five in 2007. Florida was the country's de novo factory.
+
+Then it stopped. Florida added one institution in 2010 and one in 2011, both in the middle of the failed-bank cleanup. From 2012 through 2016 it added none. Ten arrived from 2017 through 2025, starting with Winter Park National Bank, and the two this year make twelve in a decade.
+
+Meanwhile the count of Florida banks collapsed. At the end of 2008, 308 FDIC-insured institutions were headquartered in Florida. Today there are 81, in a state that reached 23.46 million residents in July 2025, up 8.9% since 2020.
+
+:::pullquote
+Florida had 308 banks at the end of 2008. It has 81 now, and the new class is not big enough to stop the count from falling.
+:::
+
+The recent class is not small potatoes. The nine 2018-2025 Florida de novos still operating held $4.2 billion in assets at June 30, led by Climate First Bank in St. Petersburg, which opened in June 2021 and now holds $1.94 billion. Demand for new Florida banks has never been the problem, as we found when [South Carolina's drought](/blog/south-carolina-de-novo-drought) ran the same test.
+
+## Who is buying Florida's banks
+
+The five charters the FDIC retired this year:
+
+- **FineMark National Bank & Trust**, Fort Myers, founded 2007: merged into Commerce Bank of Kansas City effective January 1, $3.93 billion.
+- **Winter Park National Bank**, founded 2017: bought by DFCU Financial, a Dearborn, Michigan credit union, which completed the deal November 3, 2025. The FDIC closed the charter March 31, 2026. $827 million.
+- **Marine Bank & Trust**, Vero Beach, founded 1997: bought by ELGA Credit Union of Grand Blanc, Michigan, which closed March 6. $657 million.
+- **Prime Meridian Bank**, Tallahassee, founded 2008: bought by MidFlorida Credit Union of Lakeland, which closed in March. $956 million.
+- **One Florida Bank**, Orlando, founded 2008 as One South Bank: merged into Hancock Whitney of Gulfport, Mississippi effective August 1. $2.07 billion.
+
+Four of the five buyers are headquartered outside Florida. Three of the five are credit unions, and they took $2.44 billion of Florida bank assets, 25 times what the two new banks hold. Two of them are Michigan credit unions. ELGA paid Marine's shareholders $43.75 a share in cash and waited nearly two years, from the June 2024 announcement to the March close, for the deal to clear.
+
+:::stat
+**$8.4 billion out, $97 million in**
+The five Florida charters retired in 2026 held $8.4 billion at their final call reports. The two Florida de novos that opened in 2026 held $97 million at June 30. Every departing bank was itself a de novo, founded between 1997 and 2017.
+:::
+
+That last detail is the real finding. Florida's exits are not old family banks running out of heirs. They are the previous de novo wave being harvested. FineMark and One Florida came from the 2007-2008 class; Winter Park National was the first new Florida bank after the drought, and it lasted eight years. Organizers build a bank, investors get liquidity, a larger institution, often from out of state, gets a growth market. Then the cycle needs new organizers.
+
+## What the pipeline can and cannot fix
+
+At this year's pace the arithmetic does not close. Florida added two charters and lost five, a net loss of three, and its count fell from 84 at the end of 2025 to 81. Even if New South and the three pending Florida community bank filings all opened next year, that would be four new banks, barely more than this year's five exits.
+
+:::pullquote
+Florida's exits are not old family banks running out of heirs. They are the previous de novo wave being harvested.
+:::
+
+The size gap matters more than the count. A de novo opens with roughly $25 million to $45 million in capital and spends years building a balance sheet. New South's FDIC order requires at least $25 million in paid-in capital; Portrait raised $43 million. The banks walking out the door took years of relationships, deposit franchises and commercial books with them. Climate First's five-year climb to $1.94 billion is the best-case template, and it is the exception in this class.
+
+## What the new class has to do differently
+
+The 2026 Florida de novos are building in a state where the most likely end of a successful bank is a sale, and where credit unions now bid alongside banks. That changes what a new bank has to be good at on day one.
+
+They do not have years of branch traffic to grow into. Echelon and Portrait each had less than $55 million in assets at midyear, in markets where the national banks already have the brand and the budget. The growth has to come from intake: an application a business owner can finish without a branch visit, verified at the source so the fraud program examiners will test in the [first three years](/glossary/de-novo-bank) is running from the start, and decisions in minutes instead of weeks. Our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what examiners expect to find. A de novo that builds verification-first intake now never has to retrofit it, and keeps an audit trail of every check from its first application.
+
+We track every filing, approval and opening at [De Novo Watch](/de-novo-watch). Florida has more rows than any other state.
+
+It also has more exits. The comeback counts when the first number outruns the second.
+`,
+  },
+
   'fintech-bank-charter-rush-2026': {
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:
@@ -1140,6 +1504,8 @@ That is a genuinely differentiated posture for a de novo. Most new banks talk ab
 Portrait gets to skip that mistake. A bank built in 2026 can make source-verified onboarding, where identity, income, employment, and address come from authoritative data sources rather than borrower-typed documents, a day-one architectural decision instead of a retrofit. No public source yet names Portrait's core provider or its AI partner, so the most interesting question about the most interesting de novo in Florida is still open: what, exactly, is under the hood when the doors open in September?
 
 The 256 investors who oversubscribed this bank are betting Orlando wants its hometown bank back. The September opening will start answering whether the technology matches the talk. Given who is building it, the smart money says take them seriously.
+
+*Update: Portrait Bank opened to the public on September 19, 2026. We follow it, and every other new bank, at [De Novo Watch](/de-novo-watch).*
   `,
   },
   'glades-bank-broward-de-novo': {
@@ -1212,6 +1578,8 @@ That is an unusually early commitment, and a revealing one. Choosing the core fi
 Levine has already run that playbook once, wiring Alloy, Numerated, and Marstone into a $10 billion balance sheet. The interesting question for Glades is what the equivalent stack looks like when you get to design it before day one, for a county with 336,000 nonemployer businesses whose owners do not have W-2s.
 
 Broward has been exporting its banks for twenty years. A $45 million filing organized by the executive who digitized Florida's largest community bank, backed by a PE firm headquartered in the same city, is the most credible attempt yet to reverse the flow.
+
+*We track Glades' application, and every other new bank filing, approval and opening, at [De Novo Watch](/de-novo-watch). Organizing a bank yourself? Here is what a [day-one de novo technology stack](/solutions/de-novo-bank-technology) looks like, layer by layer.*
   `,
   },
   'first-party-fraud-community-banks': {
@@ -2669,11 +3037,13 @@ The banks that figure this out won't be the ones who spent five years on a core 
     title: 'South Atlantic Bank: The $2B Coastal Lender Built on In-Migration',
     description: 'South Atlantic Bank turned a 2007 Myrtle Beach startup into a $1.98B coastal lender with branches from Myrtle Beach to Hilton Head. How in-migration, a 56% CRE and construction concentration and a $1M-plus Lowcountry mortgage book are forcing a digital reckoning.',
     publishedDate: 'June 20, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'October 23, 2026',
     readTime: '6 min read',
     content: `# South Atlantic Bank: The $2B Coastal Lender Built on In-Migration
 
 *Published June 20, 2026*
+
+*Q3 2026 update: South Atlantic Bancshares reported third-quarter net income of $5.2 million, or $0.67 per diluted share, up 19.3% from a year earlier (company release, October 22, 2026). Total assets were $1.99 billion at September 30, with $1.55 billion in loans and $1.69 billion in deposits. The [net interest margin](/glossary/net-interest-margin) was 3.38%, up from 3.28% a year earlier, [return on average assets](/glossary/return-on-assets) was 1.04%, and one loan was on nonaccrual with none more than 30 days past due. The analysis below uses first-half 2026 call report figures. See how it compares with its peers in our [Southeast Q3 earnings roundup](/blog/southeast-bank-earnings-q3-2026).*
 
 South Atlantic Bank opened its doors in Myrtle Beach on November 28, 2007. Within months, the financial crisis was pulling the banking industry apart. Many banks chartered in that window did not survive the decade. South Atlantic Bank is now a $1.98 billion institution.
 
@@ -5718,6 +6088,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const html = linkGlossaryTerms(convertMarkdown(cleanContent));
   const roiBank = ROI_BANKS.find((b) => b.articleSlug === slug);
   const related = getRelatedArticles(slug);
+  // De novo readers are organizers and trackers, not banks with a call report to audit.
+  const isDeNovo = ARTICLE_INDEX.find((a) => a.slug === slug)?.category === 'denovo';
 
   // Split the article at its middle <h2> so a CTA can sit mid-read.
   // Articles with fewer than 3 sections render in one piece (no mid CTA).
@@ -5920,6 +6292,20 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <div dangerouslySetInnerHTML={{ __html: firstHalf }} />
           {secondHalf && (
             <>
+              {isDeNovo ? (
+              <aside className="article-mid-cta">
+                <h2>Organizing a bank?</h2>
+                <p>
+                  Your business plan promised examiners a fraud program. RAVEN gives de novo banks
+                  source-verified onboarding from one link, live before day one.
+                </p>
+                <a href="/solutions/de-novo-bank-technology" className="article-mid-cta-btn">See the day-one stack</a>
+                <p className="article-mid-cta-alt">
+                  Following new charters? <a href="/de-novo-watch">De Novo Watch</a> tracks every
+                  filing, approval and opening.
+                </p>
+              </aside>
+              ) : (
               <aside className="article-mid-cta">
                 <h2>Verification shouldn&apos;t take weeks</h2>
                 <p>
@@ -5935,6 +6321,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                   </p>
                 )}
               </aside>
+              )}
               <div dangerouslySetInnerHTML={{ __html: secondHalf }} />
             </>
           )}
@@ -5954,8 +6341,14 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </a>
             </aside>
           )}
-          <LeadCapture variant="audit" source={`article:${slug}`} />
-          <LeadCapture variant="subscribe" source={`article:${slug}`} />
+          {isDeNovo ? (
+            <LeadCapture variant="subscribe" source={`article:${slug}`} title="Get De Novo Watch updates by email" />
+          ) : (
+            <>
+              <LeadCapture variant="audit" source={`article:${slug}`} />
+              <LeadCapture variant="subscribe" source={`article:${slug}`} />
+            </>
+          )}
           {related.length > 0 && (
             <nav className="article-related" aria-label="Related articles">
               <div className="article-related-label">Related reading</div>
