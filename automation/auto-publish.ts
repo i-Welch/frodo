@@ -244,6 +244,17 @@ async function isLive(url: string): Promise<boolean> {
   }
 }
 
+// LinkedIn's in-app browser often drops the referrer, so untagged clicks land
+// in Vercel Analytics as direct traffic. Tag the posted link instead; the
+// article's canonical URL stays untagged, and isLive/IndexNow use post.url.
+function linkedInUrl(post: QueuedPost): string {
+  const u = new URL(post.url);
+  u.searchParams.set('utm_source', 'linkedin');
+  u.searchParams.set('utm_medium', 'social');
+  u.searchParams.set('utm_campaign', post.slug);
+  return u.toString();
+}
+
 async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Promise<string> {
   const res = await fetch('https://api.linkedin.com/rest/posts', {
     method: 'POST',
@@ -258,7 +269,7 @@ async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Pr
       commentary: toLittleText(post.text),
       visibility: 'PUBLIC',
       distribution: { feedDistribution: 'MAIN_FEED', targetEntities: [], thirdPartyDistributionChannels: [] },
-      content: { article: { source: post.url, title: post.title, description: post.description } },
+      content: { article: { source: linkedInUrl(post), title: post.title, description: post.description } },
       lifecycleState: 'PUBLISHED',
       isReshareDisabledByAuthor: false,
     }),
@@ -316,7 +327,7 @@ async function postQueued(justMerged: boolean) {
     try {
       let id = 'browser';
       if (env) id = await postToLinkedIn(env, post);
-      else await postViaBrowser(post.text, post.url, { submit: true });
+      else await postViaBrowser(post.text, linkedInUrl(post), { submit: true });
       posted[post.slug] = `${new Date().toISOString()} ${id}`;
       savePosted(posted);
       log(`${post.slug}: posted to LinkedIn (${id})`);

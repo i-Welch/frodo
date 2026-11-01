@@ -384,6 +384,7 @@ export function Journey({
             terminal={submitResult.terminal}
             showLo={showLo}
             setShowLo={setShowLo}
+            demo={showChrome}
           />
         ) : (
           <Loading />
@@ -442,9 +443,9 @@ export function Journey({
       <div className="wl-sticky-top">
         {showChrome && (
           <DemoBanner
+            slug={config.slug}
             bankName={b.name}
             shortName={b.shortName}
-            slug={config.slug}
             perspective={perspective}
             onSwitch={switchPerspective}
             flow={flow}
@@ -475,18 +476,18 @@ export function Journey({
 /* ------------------------------------------------------------------ */
 
 function DemoBanner({
+  slug,
   bankName,
   shortName,
-  slug,
   perspective,
   onSwitch,
   flow,
   allowedFlows,
   onSwitchFlow,
 }: {
+  slug: string;
   bankName: string;
   shortName: string;
-  slug: string;
   perspective: Perspective;
   onSwitch: (p: Perspective) => void;
   flow: FlowKind;
@@ -533,8 +534,8 @@ function DemoBanner({
             Loan officer
           </button>
         </div>
-        {/* Bank staff are the main viewers of their own demo: give them a next step. */}
-        <CalendlyButton source={`wl:${slug}`} label={`Set this up for ${shortName}`} buttonClassName="wl-cta" />
+        {/* The banker reviewing their own demo is the lead; give them a next step. */}
+        <CalendlyButton source={`wl-banner:${slug}`} label="Book a walkthrough" buttonClassName="wl-banner-cta" />
       </div>
     </div>
   );
@@ -1020,13 +1021,15 @@ function RateStage({
 }
 
 function Confirmation({
-  config, summary, terminal, showLo, setShowLo,
+  config, summary, terminal, showLo, setShowLo, demo,
 }: {
   config: WhiteLabelConfig;
   summary: ApplicationSummary;
   terminal: SubmitResult['terminal'];
   showLo: boolean;
   setShowLo: (v: boolean) => void;
+  /** False when embedded with ?chrome=0 (the audit page iframe), which has its own CTAs. */
+  demo: boolean;
 }) {
   const firstName = summary.profile.identity.fullName.split(' ')[0];
   const article = indefiniteArticle(config.branding.shortName, true);
@@ -1109,6 +1112,16 @@ function Confirmation({
           <LoPreview config={config} summary={summary} />
         </div>
       )}
+
+      {demo && (
+        <div className="wl-demo-cta">
+          <p>
+            That is the whole {config.branding.shortName} borrower journey, verified from the source in minutes.
+            Want to see it running on your own products and core?
+          </p>
+          <CalendlyButton source={`wl-confirm:${config.slug}`} label="Book a 20-minute walkthrough" buttonClassName="wl-banner-cta" />
+        </div>
+      )}
     </div>
   );
 }
@@ -1138,6 +1151,12 @@ const styles = `
   .wl-tab:hover { color: #fff; }
   .wl-tab-on { background: #fff; color: #0A0A0A; }
   .wl-tab-on:hover { color: #0A0A0A; }
+  .wl-banner-cta { font-family: inherit; font-size: 0.74rem; font-weight: 700; color: #0A0A0A; background: #fff; border: none; border-radius: 8px; padding: 0.45rem 0.8rem; cursor: pointer; white-space: nowrap; transition: opacity 150ms; }
+  .wl-banner-cta:hover { opacity: 0.85; }
+  /* Scoped under .wl-shell so its margin/padding reset doesn't win. */
+  .wl-shell .wl-demo-cta { margin-top: 1.25rem; padding: 1.1rem 1.25rem; border-radius: 12px; background: #0A0A0A; color: #fff; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+  .wl-shell .wl-demo-cta p { margin: 0; font-size: 0.88rem; line-height: 1.5; color: #D4D4D4; flex: 1 1 260px; }
+  .wl-shell .wl-demo-cta .wl-banner-cta { padding: 0.6rem 1rem; font-size: 0.82rem; }
   .wl-cta { font-family: inherit; font-size: 0.74rem; font-weight: 700; color: #0A0A0A; background: #6C8EFF; border: none; border-radius: 8px; padding: 0.45rem 0.8rem; cursor: pointer; white-space: nowrap; }
   .wl-cta:hover { background: #8CA6FF; }
   @media (max-width: 720px) {
