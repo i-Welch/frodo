@@ -16,6 +16,24 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'fed-rate-hike-community-bank-deposits',
+    title: "The Fed Turned Around. Deposit Rates Didn't.",
+    description:
+      'The Fed hiked in September for the first time since 2023, then held with two votes for more. The 2-year Treasury is up 132 basis points since February and mortgages hit 7.40%. The national 12-month CD rate rose 24. What the gap means for community banks.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
+    slug: 'new-south-bank-tampa-de-novo',
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'denovo',
+  },
+  {
     slug: 'southeast-bank-earnings-q3-2026',
     title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
     description:

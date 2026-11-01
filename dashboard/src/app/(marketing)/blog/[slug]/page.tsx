@@ -104,6 +104,176 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'fed-rate-hike-community-bank-deposits': {
+    title: "The Fed Turned Around. Deposit Rates Didn't.",
+    description:
+      'The Fed hiked in September for the first time since 2023, then held with two votes for more. The 2-year Treasury is up 132 basis points since February and mortgages hit 7.40%. The national 12-month CD rate rose 24. What the gap means for community banks.',
+    publishedDate: 'October 30, 2026',
+    readTime: '6 min read',
+    content: `
+# The Fed Turned Around. Deposit Rates Didn't.
+
+*Published October 30, 2026*
+
+On Wednesday the Federal Reserve held its benchmark rate at 3.75% to 4.00%. The news was in the vote. Two members, Governor Lisa Cook and Cleveland Fed President Beth Hammack, dissented. They wanted another quarter-point hike.
+
+Six weeks earlier, on September 16, the committee voted 12-0 to raise rates for the first time since July 2023. That move erased the December 2025 cut and put the target range back exactly where it stood at the end of October 2025. The statement was blunt: "Inflation remains elevated."
+
+For community banks, the hike itself is the small number. The big one is what the bond market did around it, and how little of it has reached the deposit side of the balance sheet.
+
+## The market moved first
+
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+
+On February 27, the 2-year yielded 3.38%. On September 16 it closed at 4.74%. On October 27 it was 4.70%, about 80 basis points above the midpoint of the Fed's range, which is the market's way of saying it expects more. The 10-year rose from 3.97% to 4.99% over the same stretch and touched 5.31% on October 5.
+
+The committee's own forecasts moved the same way. In June, the median projection for the federal funds rate at the end of 2026 was 3.8%. In September it was 4.1%, a midpoint that implies one more quarter-point increase before year-end. The 2027 median jumped from 3.6% to 4.1%. Core PCE inflation is projected at 3.4% for 2026.
+
+:::pullquote
+The Fed raised rates 25 basis points. The 2-year Treasury had already climbed 136 basis points by the day it voted.
+:::
+
+## Deposit rates barely noticed
+
+Now set those numbers next to what the FDIC publishes every month as the national average deposit rate.
+
+| Rate | Spring 2026 | October 2026 | Change |
+|---|---|---|---|
+| 2-year Treasury | 3.38% | 4.70% | +1.32 |
+| 30-year mortgage | 5.98% | 7.32% | +1.34 |
+| Prime rate | 6.75% | 7.00% | +0.25 |
+| National 12-month CD | 1.52% | 1.76% | +0.24 |
+| National savings | 0.39% | 0.38% | -0.01 |
+
+The Treasury and mortgage figures are from February 26 and 27 and October 22 and 27; the FDIC national rates are from its March 16 and October 19 releases. The national rate is an average across insured institutions, so it does not describe any one bank's rate sheet. But the direction is unmistakable. Market rates repriced by more than a full point. The average savings account repriced by nothing.
+
+Depositors with options are not waiting. Money market fund assets reached $7.94 trillion in the week ended October 21, according to the Investment Company Institute, after a $21.49 billion gain in a single week. Institutional funds took in $24.01 billion of it.
+
+## The relief that just ended
+
+The cuts of late 2025 did real work for Southeast community banks, and the call reports show it.
+
+We pulled the FDIC's June 30 call report data for every bank under $10 billion in assets headquartered in South Carolina, North Carolina, Georgia and Florida: 279 banks holding $236.2 billion in assets. In the first half of 2026 they paid $1.89 billion in interest expense, down from $2.04 billion for the 295 banks in the same group a year earlier. Interest income rose 1.6% to $6.13 billion. Net interest income rose 6.2% to $4.24 billion.
+
+:::stat
+**$150.5 million**
+How much less the Southeast's community banks under $10 billion paid in interest in the first half of 2026 than a year earlier, a 7.4% drop. Interest expense fell from 33.8% of interest income to 30.8%.
+:::
+
+That is the margin expansion that showed up in third-quarter earnings, when [Southern First and ServisFirst widened their margins](/blog/southeast-bank-earnings-q3-2026) while the big banks were busy repositioning. One caveat: the peer group shrank by 16 banks in a year, so the totals are not the identical set of institutions. The ratios still tell the story.
+
+The September hike ends that tailwind. And the cheapest money on these balance sheets is the money most exposed. The 279 banks held $50.9 billion in noninterest-bearing deposits at June 30, 25.4% of domestic deposits, down from 25.7% a year earlier. At a 4.70% 2-year yield, $50.9 billion is worth about $2.4 billion a year to whoever holds it. Every operating account that moves to a money fund or an online bank gets replaced with a CD or a borrowing at today's prices. The [net interest margin](/glossary/net-interest-margin) is decided at the account opening screen as much as at the loan committee.
+
+## The mortgage window closed
+
+On February 26, Freddie Mac's 30-year average was 5.98%, the low of the past year. Borrowers who had waited for a refinance finally had one.
+
+By October 8 the average was 7.40%. Between September 10 and October 8 it rose 64 basis points in four weeks. On October 22 it was 7.32%.
+
+A borrower who applied in early September at a community bank that takes [42 days to close](/blog/why-it-takes-42-days-to-close-a-mortgage), and did not lock, watched the rate move against them before the appraisal came back. A lender that [closes in 22 days](/blog/rocket-mortgage-22-days-how) had half the exposure. In a flat rate market, speed is a convenience. In a market that moves 64 basis points in a month, speed is a price.
+
+:::pullquote
+In a market that moves 64 basis points in a month, speed is a price.
+:::
+
+Two caveats, in fairness. Higher rates help any bank whose loans reprice faster than its deposits, and prime-based commercial lines reset the day after the hike. And the Fed held on Wednesday rather than hiking; the 2-year has eased from 4.92% on September 28, and the 10-year is back below 5%. Nobody knows whether September was the start of a cycle or a single correction.
+
+## What the next 60 days decide
+
+The committee meets once more this year, in December, and the September median says it expects to move again. Community banks do not need to forecast the December vote to know what the last two months changed.
+
+On the deposit side, the gap between 4.70% in the market and 0.38% in the average savings account is a 432-basis-point reason to move money, and depositors can see both numbers. The defense is not matching money fund yields across the book. It is winning the primary operating account in the first place: opening it in minutes, verifying the customer once, and making the switch from a competitor easy enough that it actually happens.
+
+On the lending side, rate volatility rewards whoever finishes first. That means intake that verifies income, assets and identity against source data on day one, instead of chasing documents for weeks while the rate moves. It means a decision in minutes when the file is clean, and an audit trail that holds up when the examiner asks why a file closed in ten days.
+
+The market has already repriced by 132 basis points. Depositors are next, and they do not wait for a meeting.
+`,
+  },
+  'new-south-bank-tampa-de-novo': {
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    publishedDate: 'October 28, 2026',
+    readTime: '6 min read',
+    content: `
+# New South Bank: A $25M Bet on a County Down to Five Banks
+
+*Published October 28, 2026*
+
+In June 2008, 21 banks kept their main office in Hillsborough County, Florida. This June there were five. One of the five is a trust company holding $500,000 in deposits.
+
+The money did not leave. Deposits in the county grew from $20.2 billion to $45.05 billion over the same stretch, according to the FDIC's Summary of Deposits. The banks headquartered there simply stopped being the ones holding it.
+
+On September 28, the FDIC approved deposit insurance for New South Bank, a proposed Tampa bank led by a 35-year veteran of the Office of the Comptroller of the Currency. If its organizers raise $25 million, it becomes the first bank chartered in the county since 2007.
+
+## The approval: $25 million at $10 a share
+
+New South filed with the FDIC and the Florida Office of Financial Regulation in April, announcing the applications on April 20. The FDIC's decision, application number 20260392, is dated September 28, 2026. It came 161 days after that announcement, and it makes New South the third Florida community bank to win deposit insurance this year, after Echelon Bank in Clearwater and [Portrait Bank](/blog/portrait-bank-winter-park-de-novo) in Winter Park.
+
+The condition that matters: the organizers must raise $25 million before the bank can open, per The Bank Slate's read of the approval. Ten named insiders have agreed to buy 309,000 shares for $3.1 million, roughly $10 a share and about 12% of the minimum. The rest has to come from outside investors.
+
+For scale, Portrait's FDIC order required just under $28 million and the bank raised $43 million from 256 local investors. New South's floor is lower, and its business plan is smaller and more specific.
+
+The plan, as summarized from the application: profitability in year two, then $250 million in assets the following year, funded by $225 million in deposits and carrying $180 million in loans. That is an 80% [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio), conservative by community bank standards.
+
+The capital math is tighter than it looks. $25 million against $250 million in assets is a 10% leverage ratio before a single dollar of startup losses. The FDIC's de novo policy requires capital sufficient for an 8% Tier 1 leverage ratio throughout the first three years. Every dollar a new bank loses before it turns profitable comes straight out of that two-point cushion.
+
+## The people: the regulators cross the table
+
+Kennard Page, the proposed chairman and CEO, spent more than 35 years at the OCC and retired as assistant deputy comptroller for its North Florida field office. He then ran Lafayette State Bank in Mayo, Fla., as president and CEO, and founded KLZ Investments, a bank consulting firm.
+
+Lafayette State Bank is a 1946 charter that held $252.2 million in assets at June 30, 2026. That is almost exactly the size New South's plan targets for year three. Page has run a bank that size before.
+
+He is not the only former examiner on the roster. Outside director Charles Race was a national bank examiner in the OCC's Tampa office from 2016 to 2025. The proposed president and CFO, Thomas Welsh, is a former CFO of TCM Bank, N.A., according to the bank's announcement, and Business Observer describes his most recent role as executive vice president and CFO of CapTec USA, a Tampa firm that specializes in SBA loan facilitation. Director Jeffrey Cathey, a Navy veteran, formed and led Bank of America's Military and Veterans Affairs organization from 2008 until he retired in 2022.
+
+:::pullquote
+The people who used to write the exam findings are now the ones who will have to answer them.
+:::
+
+Two caveats, in fairness. Knowing what an examiner wants to see is not the same as knowing how to win a deposit relationship from Truist, and the board leans toward regulators, lawyers and operators rather than Tampa rainmakers. And a bank built by former supervisors can err on the side of caution. In a market this concentrated, too little appetite is its own risk.
+
+## The market: $45 billion, 6.4% at home
+
+As of June 30, 2026, 51 FDIC-insured institutions had at least one office in Hillsborough County, holding $45.05 billion in deposits across 259 offices. In 2008 the county had 321 offices and less than half the money.
+
+Four out-of-state banks hold more than half of it. Truist has $7.25 billion in the county, Bank of America $6.61 billion, Wells Fargo $6.22 billion and JPMorgan Chase $3.85 billion: 53.1% combined.
+
+:::stat
+**6.4%**
+The share of Hillsborough County's $45.05 billion in deposits held by all five institutions still headquartered there, combined, as of June 30, 2026. Take out The Bank of Tampa and the other four hold 1.2%.
+:::
+
+The Bank of Tampa, chartered in 1973, carries the hometown flag nearly alone: $2.34 billion in county deposits and $3.02 billion in total assets. Behind it are TCM Bank ($280 million in county deposits), Central Bank ($170 million), Century Bank of Florida ($87 million) and Members Trust Company. Of the 21 banks headquartered in the county in 2008, only four are still there.
+
+The two newest charters in the county, NorthStar Bank and Gulfshore Bank, both opened in August 2007 and both merged away in 2017. The only charter issued in Hillsborough since then was a 2011 vehicle created to take over a failed bank, which merged into Cadence seven months later.
+
+New South's announcement says Florida has lost nearly 70% of its locally headquartered banks. The FDIC's own survey says that undersells it: 309 banks were headquartered in Florida in June 2008, and 82 this June, a 73% decline. [Our count of Florida's 2026 charters](/blog/florida-new-bank-charters-2026) found the state is still retiring banks faster than it adds them.
+
+The newcomer is already crossing the bay. Echelon Bank, the Clearwater de novo that opened May 27, opened a Tampa office on Bayshore Boulevard the next day and held $3.4 million in deposits there by June 30. New South will not be the only new bank chasing Tampa business owners.
+
+## The plan: small business, centralized
+
+New South describes itself as a full-service commercial bank for small businesses and their owners in Tampa Bay, with the ability to serve clients statewide. Its targets are owner-operated businesses, professional firms and family-owned companies. Its lending emphasis is SBA and USDA-guaranteed programs, delivered through a mix of direct relationships and what the organizers call a "centralized, technology-enabled model."
+
+The guaranteed-lending focus fits a small balance sheet. An SBA 7(a) loan can run up to $5 million, and the SBA guarantees 85% of loans of $150,000 or less and 75% of larger ones. A bank with $25 million in capital can serve borrowers it could not otherwise carry, with the government absorbing much of the credit risk.
+
+The catch is that the guarantee is only as good as the file. SBA lending is the most document-heavy small business lending there is: tax returns, personal financial statements, debt schedules, eligibility checks on the owner and the business. A guarantee can be reduced or denied after a default if the lender missed a requirement at origination. Welsh's background in SBA loan facilitation fits that plan.
+
+:::pullquote
+The guarantee is only as good as the file, and the file gets built at intake.
+:::
+
+## The stack: what the first exam will test
+
+Page and Race have sat on the other side of a de novo's first examination. They know the FDIC's three-year leash: the [de novo](/glossary/de-novo-bank) capital floor, prior approval for dividends and new executives, and a business plan the bank is expected to follow. Examiners will test whether the controls described in that plan are actually running, not on a roadmap. Our [day-one fraud program](/blog/de-novo-bank-day-one-fraud-program) piece lays out what they look for.
+
+None of the filings or coverage we reviewed names New South's core processor or digital vendors. That leaves the most important design decision open. A centralized, technology-enabled SBA lender lives or dies on its intake. Every application has to arrive with the owner's identity, income and business financials verified against authoritative sources, not typed in and uploaded as PDFs for a loan officer to chase. Done that way, a small team can decide in minutes instead of weeks, and every check leaves an audit trail an SBA reviewer or an examiner can follow years later.
+
+A bank that starts that way never has to retrofit it. The 17 Hillsborough banks that have left since 2008 never got that chance.
+
+Hillsborough added $24.9 billion in deposits since 2008. New South needs one-thousandth of that to open its doors.
+  `,
+  },
   'southeast-bank-earnings-q3-2026': {
     title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
     description:

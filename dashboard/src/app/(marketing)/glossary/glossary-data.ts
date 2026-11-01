@@ -543,6 +543,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'portrait-bank-winter-park-de-novo', title: 'Portrait Bank: The $43M Bet That Orlando Wants Its Hometown Bank Back' },
       { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
       { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
+      { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },
@@ -942,6 +943,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+      { slug: 'fed-rate-hike-community-bank-deposits', title: "The Fed Turned Around. Deposit Rates Didn't." },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
@@ -1039,6 +1041,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
+      { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },

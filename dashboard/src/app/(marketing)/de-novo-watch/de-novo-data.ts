@@ -30,11 +30,11 @@ export const STATUS_LABELS: Record<DeNovoStatus, string> = {
 // applications list (as of 2026-10-20) and FDIC decisions on deposit insurance.
 // countsThrough is rendered in the page's stat box ("filed nationally in 2026 through ...").
 export const TRACKER_SUMMARY = {
-  updated: '2026-10-21',
+  updated: '2026-10-26',
   countsThrough: 'mid-October',
-  nationalApplications2026: 25,
+  nationalApplications2026: 28,
   floridaApplications2026: 6,
-  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus New South Bank, approved Sept. 28. Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
+  note: 'Deposit insurance applications received by the FDIC in 2026 through Oct. 20: 24 still pending on the FDIC list plus four already decided whose FDIC application numbers start with 2026 (Bank of St. George, UT, approved June 30; New South Bank, FL, Sept. 28; Alba Bank, TX, Oct. 2; Strategist Bank, NH, Oct. 19). Florida accounts for six of them (Itaú, Tidestone, Florida Bank of Finance, New South, Glades, Stark), the most of any state.',
 };
 
 // The full FDIC pending deposit insurance applications list, copied as published
@@ -119,7 +119,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     leadership: 'Founder and CEO Erik Weiner; CFO Jeff Jenkins, former Winter Park National Bank CFO. First new bank chartered in Orange County since 2008',
     techNotes: 'Charter announcement cites "agentic AI for real-time fraud detection." Core provider not yet public.',
     articleSlug: 'portrait-bank-winter-park-de-novo',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'New South Bank',
@@ -129,7 +129,8 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'FDIC application notice published Apr 22, 2026. Florida OFR conditional approval Sept 1, 2026; FDIC deposit insurance approved with conditions Sept 28, 2026. The FDIC approval expires if insurance is not effective within one year.',
     capital: 'FDIC requires at least $25M initial paid-in capital (offering of 2.5M shares at $10)',
     leadership: 'Proposed chairman and CEO Kennard Page; proposed president and CFO Thomas Welsh',
-    asOf: '2026-10-19',
+    articleSlug: 'new-south-bank-tampa-de-novo',
+    asOf: '2026-10-26',
   },
   {
     name: 'Glades Bank and Trust',
@@ -140,7 +141,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     leadership: 'Led by former Amerant executive Howard Levine',
     techNotes: 'Vendors named unusually early: CSI NuPoint core and Apiture digital and business banking (including treasury management), announced Oct 13, 2026 while the application is still pending. gladesbank.com registered Oct 9, 2025, eight months before filing.',
     articleSlug: 'glades-bank-broward-de-novo',
-    asOf: '2026-10-21',
+    asOf: '2026-10-26',
   },
   {
     name: 'Stark Bank, N.A.',
@@ -150,7 +151,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'OCC national bank charter application filed July 15, 2026; FDIC deposit insurance application received Aug 10, 2026; pending as of Oct 20, 2026.',
     techNotes:
       'U.S. arm of Brazilian API-first business banking fintech Stark Bank. Filings describe a fully digital, business-only bank: treasury management, payments, corporate cards, merchant acquiring, business loans. No consumer products.',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Itaú Bank, National Association',
@@ -160,7 +161,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'FDIC deposit insurance application received Mar 16, 2026; pending as of Oct 20, 2026. OCC preliminary conditional approval Aug 14, 2026 (Corporate Decision #1386); Federal Reserve and FDIC approvals still required. Single Miami location serving Brazil- and Latin America-linked high-net-worth clients.',
     capital: 'OCC requires at least $507M at launch',
     leadership: "Proposed U.S. CEO Percy Moreira, head of Itaú's international private bank",
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Upstart Bank, National Association',
@@ -172,7 +173,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     leadership: 'Proposed CEO Annie Delgado, Upstart chief risk officer',
     techNotes: 'Fintech parent: Upstart Network moves its existing lending operations into the bank.',
     articleSlug: 'fintech-bank-charter-rush-2026',
-    asOf: '2026-10-22',
+    asOf: '2026-10-26',
   },
   {
     name: 'Revolut Bank US, N.A.',
@@ -183,7 +184,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     capital: 'OCC requires at least $95M and a 10% tier 1 leverage ratio for three years',
     techNotes: 'Fintech parent: Revolut serves U.S. customers through partner banks today.',
     articleSlug: 'fintech-bank-charter-rush-2026',
-    asOf: '2026-10-22',
+    asOf: '2026-10-26',
   },
   {
     name: 'OpenReserve Bank, National Association',
@@ -194,7 +195,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     capital: 'OCC requires at least $210M and a 12% tier 1 leverage ratio',
     techNotes: 'Plans a stablecoin-issuing subsidiary; that application had not been filed as of the OCC decision.',
     articleSlug: 'fintech-bank-charter-rush-2026',
-    asOf: '2026-10-22',
+    asOf: '2026-10-26',
   },
   {
     name: 'Mission Lane Bank, National Association',
@@ -205,7 +206,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     capital: 'OCC requires at least $35M and an 11% tier 1 leverage ratio for three years',
     techNotes: 'Fintech parent: card programs currently issued through partner banks TAB Bank and WebBank (Banking Dive, Sept 28, 2026).',
     articleSlug: 'fintech-bank-charter-rush-2026',
-    asOf: '2026-10-22',
+    asOf: '2026-10-26',
   },
   {
     name: 'Nubank, National Association',
@@ -216,21 +217,21 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     leadership: 'Co-founder Cristina Junqueira leads the U.S. bank; former Central Bank of Brazil president Roberto Campos Neto to chair the board',
     techNotes: 'Fintech parent: Nu Holdings, about 127M customers in Brazil, Mexico and Colombia.',
     articleSlug: 'fintech-bank-charter-rush-2026',
-    asOf: '2026-10-22',
+    asOf: '2026-10-26',
   },
   {
     name: 'Tidestone Bank',
     location: 'Coral Gables, FL',
     status: 'application-pending',
     statusDetail: 'FDIC deposit insurance application received Mar 23, 2026; pending as of Oct 20, 2026.',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Florida Bank of Finance',
     location: 'Coral Gables, FL',
     status: 'application-pending',
     statusDetail: 'FDIC deposit insurance application received Apr 16, 2026; pending as of Oct 20, 2026.',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Private Bank & Trust',
@@ -239,7 +240,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
     statusDetail: 'FDIC deposit insurance approved with conditions Apr 3, 2026; FDIC records list the bank as opened Sept 28, 2026.',
     capital: 'FDIC required at least $19M net of organizational costs; organizers targeted at least $27M',
     leadership: 'President and CEO Gregory Barrett, formerly of Chattahoochee Bank of Georgia; chairman Brian Daniel',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Nola Bank',
@@ -249,7 +250,7 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'FDIC deposit insurance approved Aug 11, 2025; final regulatory approval Sept 11, 2026; opened Sept 14, 2026, the eighth de novo to open nationally in 2026 (Banking Dive).',
     capital: '$29.2M raised from investors',
     leadership: 'CEO Joe Omner; board chair Henry L. Coaxum Jr.',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Echelon Bank',
@@ -259,20 +260,20 @@ export const DE_NOVO_BANKS: DeNovoBank[] = [
       'FDIC deposit insurance approved Jan 5, 2026; FDIC records list the bank as opened May 27, 2026. Earlier reporting, including our Glades Bank article, gave April 2026; the FDIC date supersedes it.',
     capital: '$23M minimum capital target reached January 2026',
     leadership: 'CEO Rob Shaw, formerly of USAmeriBank',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'Solutions Plus Bank',
     location: 'Albertville, AL',
     status: 'open',
     statusDetail: 'FDIC records list the bank as established Dec 4, 2025.',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
   {
     name: 'BankMiami',
     location: 'Coral Gables, FL (Miami-Dade County)',
     status: 'open',
     statusDetail: 'Opened March 2025 (FDIC records list the bank as established Mar 17, 2025).',
-    asOf: '2026-10-19',
+    asOf: '2026-10-26',
   },
 ];

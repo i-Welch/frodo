@@ -184,6 +184,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
             <a href="/bank-rankings">Bank Rankings</a>
             <a href="/bank-tech-stack">Bank Tech Stack</a>
             <a href="/about">About</a>
+            <a href="/provenpool">ProvenPool</a>
             <a href="/legal/security">Security</a>
             <a href="/legal/privacy-policy">Privacy</a>
             <a href="/ai-info">For AI assistants</a>
