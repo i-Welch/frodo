@@ -120,7 +120,7 @@ Supported: `#`/`##`/`###`, `**bold**`, `*italic*`, `[text](url)`, `- ` lists, `1
 - `title`: the hook, not the institution's name alone. Under 70 characters.
 - `description`: 200-280 characters, packed with the article's best numbers, written as a standalone teaser.
 - `readTime`: `'6 min read'` for 1,100-1,500 words; `'5 min read'` under 1,100; `'7 min read'` over 1,500.
-- `publishedDate`: the date the article goes live. In auto mode that is **tomorrow** (the PR auto-merges about 24 hours after it opens). Otherwise today, unless told differently.
+- `publishedDate`: the date the article goes live. In auto mode that is **tomorrow** (the PR auto-merges at 10am ET on the next weekday). Otherwise today, unless told differently.
 
 ## Wiring it into the site
 
@@ -185,5 +185,5 @@ Fix anything that fails. Do not ship a failing article.
    - Subject: `Add <Subject> deep dive, ROI audit, and white-label demo` for types 2/6; `Add <short title> analysis` or `Publish <short title> article` otherwise.
    - Body: `Type <n> <type name> on <subject> (<City>, <ST>): ` then what was added, the headline numbers, and the data sources (e.g. "NCUA charter 68670, real 2024 HMDA origination counts"). Note firsts ("First Georgia credit union in the series.").
 3. Push and open a PR against `master` with `gh pr create`. Title: `Article: <title>`. Body: the type and why this subject, the description, word count, the full source list (URL per source), anything estimated, and both LinkedIn post texts.
-4. **Auto mode only:** add the `auto-publish` label (`gh pr edit <n> --add-label auto-publish`). The auto-publisher merges labeled PRs about 24 hours after they open if CI is green and nobody closed the PR or removed the label, then posts the LinkedIn queue file to the company page once the article URL is live. When a human is present, leave the label off unless asked.
+4. **Auto mode only:** add the `auto-publish` label (`gh pr edit <n> --add-label auto-publish`). The auto-publisher merges labeled PRs at 10am ET on the next weekday (at least 20 hours after they open) if CI is green and nobody closed the PR or removed the label, then posts the LinkedIn queue file to the company page once the article URL is live. When a human is present, leave the label off unless asked.
 5. Report the PR URL, the slug, and one line on the angle.

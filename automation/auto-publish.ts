@@ -1,7 +1,8 @@
 // Auto-publisher for /article PRs. Run hourly (see register-tasks.ps1).
 //
-// 1. Merges open PRs labeled `auto-publish` once they are 24h old, CI is green,
-//    and the PR is mergeable. Close the PR or remove the label to stop it.
+// 1. Merges open PRs labeled `auto-publish` once they are 20h old, CI is green,
+//    and the PR is mergeable, at 10am ET on weekdays (the 11am run catches a
+//    missed one). Close the PR or remove the label to stop it.
 // 2. For each LinkedIn queue file on master (marketing/linkedin/queue/<slug>.md)
 //    not yet posted, waits until the article URL returns 200, then posts it to
 //    the RAVEN company page and records it in the local posted log. A queue
@@ -30,6 +31,7 @@ import { browserReady, postViaBrowser } from './linkedin-browser';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
+import { postingSlotOpen, publishWindowOpen } from './publish-schedule';
 import { ravenApi } from './raven-api';
 import { fetchPageVisits, hotAccounts } from './warm-accounts';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
@@ -41,11 +43,10 @@ const LINKEDIN_ENV = join(STATE_DIR, 'linkedin.env');
 const INDEXNOW_LOG = join(STATE_DIR, 'indexnow-pinged.json');
 const SITEMAP_STATE = join(STATE_DIR, 'indexnow-sitemap.json');
 const LABEL = 'auto-publish';
-const DELAY_HOURS = 24;
-// LinkedIn: one post per run, spaced out, during the business day (ET) when
-// bankers are reading. Queued posts wait for the next open slot.
-const POST_GAP_HOURS = 4;
-const POST_WINDOW = { startHour: 8, endHour: 17 };
+const DELAY_HOURS = 20;
+// After a merge, Vercel takes a few minutes to deploy; wait this long for the
+// article URL before leaving its launch post to the next run.
+const DEPLOY_WAIT_MS = 15 * 60_000;
 const DRY_RUN = process.argv.includes('--dry-run');
 
 function log(msg: string) {
@@ -113,7 +114,9 @@ function resolveConflicts(pr: PullRequest): boolean {
   }
 }
 
-async function mergeDuePullRequests() {
+// Returns how many PRs were merged.
+async function mergeDuePullRequests(): Promise<number> {
+  let merged = 0;
   const prs: PullRequest[] = JSON.parse(
     run('gh', [
       'pr', 'list', '--state', 'open', '--label', LABEL,
@@ -143,13 +146,17 @@ https://github.com/i-Welch/frodo/pull/${pr.number}`);
           `${pr.title} is past its review window but CI failed, so it will not auto-merge.
 https://github.com/i-Welch/frodo/pull/${pr.number}/checks`);
       }
+    } else if (publishWindowOpen(new Date())) {
+      log(`${tag}: ready; waiting for 10am ET on a weekday (${publishWindowOpen(new Date())})`);
     } else if (DRY_RUN) {
       log(`${tag}: would merge (dry run)`);
     } else {
       run('gh', ['pr', 'merge', String(pr.number), '--squash', '--delete-branch']);
       log(`${tag}: merged`);
+      merged++;
     }
   }
+  return merged;
 }
 
 /* ---------- Step 2: post queued LinkedIn updates ---------- */
@@ -262,20 +269,23 @@ async function postToLinkedIn(env: Record<string, string>, post: QueuedPost): Pr
   return res.headers.get('x-restli-id') ?? 'posted';
 }
 
-export function postingSlotOpen(now: Date, lastPosted: Date | undefined): string | undefined {
-  const et = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-  const day = et.getDay();
-  if (day === 0 || day === 6) return 'weekend';
-  if (et.getHours() < POST_WINDOW.startHour || et.getHours() >= POST_WINDOW.endHour) return 'outside business hours';
-  if (lastPosted && now.getTime() - lastPosted.getTime() < POST_GAP_HOURS * 3_600_000) return 'posted recently';
-  return undefined;
+async function waitUntilLive(url: string, maxMs: number): Promise<boolean> {
+  const deadline = Date.now() + maxMs;
+  while (!(await isLive(url))) {
+    if (Date.now() >= deadline) return false;
+    await new Promise((r) => setTimeout(r, 30_000));
+  }
+  return true;
 }
 
-async function postQueued() {
+async function postQueued(justMerged: boolean) {
   const queue = readQueue();
   const posted = loadPosted();
   const today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
-  const pending = queue.filter((p) => !posted[p.slug] && (!p.notBefore || p.notBefore <= today));
+  // Launch posts first, so a new article's post goes out with the article.
+  const pending = queue
+    .filter((p) => !posted[p.slug] && (!p.notBefore || p.notBefore <= today))
+    .sort((a, b) => Number(a.slug.endsWith('-followup')) - Number(b.slug.endsWith('-followup')));
   if (pending.length === 0) return;
 
   const last = Object.values(posted)
@@ -294,7 +304,8 @@ async function postQueued() {
     return;
   }
   for (const post of pending) {
-    if (!(await isLive(post.url))) {
+    const launch = justMerged && !post.slug.endsWith('-followup');
+    if (!(await (launch ? waitUntilLive(post.url, DEPLOY_WAIT_MS) : isLive(post.url)))) {
       log(`${post.slug}: ${post.url} not live yet, will retry`);
       continue;
     }
@@ -493,13 +504,14 @@ function retryMissedRuns(): void {
 /* ---------- Main ---------- */
 
 if (import.meta.main) {
+  let merged = 0;
   try {
-    await mergeDuePullRequests();
+    merged = await mergeDuePullRequests();
   } catch (err) {
     log(`merge step failed: ${(err as Error).message}`);
     await alertFounder('merge-step', 'Auto-publish merge step failed', (err as Error).message);
   }
-  await postQueued().catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
+  await postQueued(merged > 0).catch((err) => log(`LinkedIn step failed: ${(err as Error).message}`));
   await pingNewArticles().catch((err) => log(`IndexNow step failed: ${(err as Error).message}`));
   await pingSitemapChanges().catch((err) => log(`IndexNow sitemap step failed: ${(err as Error).message}`));
   await deliverAudits().catch((err) => log(`audit delivery step failed: ${(err as Error).message}`));

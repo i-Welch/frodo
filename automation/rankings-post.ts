@@ -1,8 +1,9 @@
 // Weekly LinkedIn post from the state bank rankings (Wednesdays, see
 // register-tasks.ps1). Picks the next Southeast state without a post for the
 // current quarter, writes marketing/linkedin/queue/rankings-<st>-<quarter>.md,
-// and opens an auto-publish PR. Auto-publish merges it after 24h and posts it
-// in the next LinkedIn slot. Seven states, so each gets one post a quarter.
+// and opens an auto-publish PR. Auto-publish merges it at 10am ET the next
+// weekday and posts it in the next LinkedIn slot. Seven states, so each gets
+// one post a quarter.
 //
 // Usage: bun automation/rankings-post.ts [--dry-run]
 
@@ -60,7 +61,7 @@ try {
       const url = run('gh', [
         'pr', 'create', '--head', branch, '--base', 'master', '--label', 'auto-publish',
         '--title', `LinkedIn: ${r.stateName} bank rankings (${r.quarter})`,
-        '--body', `Queues a LinkedIn post linking /bank-rankings for ${r.stateName}, generated from ${r.quarter} FDIC call reports by automation/rankings-post.ts. Merges automatically after 24h; close the PR to skip it.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)`,
+        '--body', `Queues a LinkedIn post linking /bank-rankings for ${r.stateName}, generated from ${r.quarter} FDIC call reports by automation/rankings-post.ts. Merges automatically at 10am ET the next weekday; close the PR to skip it.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)`,
       ]);
       log(`queued ${slug}: ${url}`);
     } finally {

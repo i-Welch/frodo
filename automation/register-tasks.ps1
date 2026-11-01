@@ -106,14 +106,14 @@ $digestTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 7:30am
 Register-ScheduledTask -TaskName 'RAVEN Digest' -Action $digestAction -Trigger $digestTrigger `
     -Settings $Settings -Description 'Emails the founder a weekly summary of leads, articles and automation health' -Force | Out-Null
 
-# Hourly: merge PRs past the 24h window, post queued LinkedIn updates, email finished audits.
+# Hourly: merge PRs at 10am ET on weekdays once 20h old, post queued LinkedIn updates, email finished audits.
 $publishLog = Join-Path $LogDir 'auto-publish.log'
 $publishAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
     -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $PublishClone); bun '$PublishClone\automation\auto-publish.ts' *>> '$publishLog'`""
 $publishTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(5) `
     -RepetitionInterval (New-TimeSpan -Hours 1)
 Register-ScheduledTask -TaskName 'RAVEN Auto-Publish' -Action $publishAction -Trigger $publishTrigger `
-    -Settings $Settings -Description 'Merges auto-publish PRs after 24h, posts LinkedIn updates, emails finished audits' -Force | Out-Null
+    -Settings $Settings -Description 'Merges auto-publish PRs at 10am ET on weekdays, posts LinkedIn updates, emails finished audits' -Force | Out-Null
 
 Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch', 'RAVEN Visibility Check' |
     Select-Object TaskName, State, @{ n = 'NextRun'; e = { ($_ | Get-ScheduledTaskInfo).NextRunTime } }
