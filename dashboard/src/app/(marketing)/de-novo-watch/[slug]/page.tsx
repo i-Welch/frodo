@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 import { SiteShell } from '../../site-shell';
 import { CalendlyButton } from '../../calendly-button';
 import { LeadCapture } from '../../lead-capture';
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: title(bank),
     description: description(bank),
     alternates: { canonical: url },
-    openGraph: { title: title(bank), description: description(bank), url, siteName: 'RAVEN', type: 'article' },
+    openGraph: { title: title(bank), description: description(bank), url, siteName: 'RAVEN', type: 'article', images: DEFAULT_OG_IMAGES },
   };
 }
 

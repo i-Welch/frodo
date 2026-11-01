@@ -9,7 +9,7 @@ vi.mock('../../src/server/messaging/email', () => ({ sendEmail, sendEmailBatch, 
 
 const { interestRoutes } = await import('../../src/server/api/routes/interest');
 const { newsletterAdminRoutes, unsubscribeRoutes, activeSubscribers } = await import('../../src/server/api/routes/newsletter');
-const { unsubscribeToken, weeklyArticles } = await import('../../src/server/messaging/newsletter');
+const { buildIssue, issueMessage, unsubscribeToken, weeklyArticles, weeklyTrackerChanges } = await import('../../src/server/messaging/newsletter');
 
 const SECRET = 'test-admin-secret';
 const app = new Elysia().use(interestRoutes).use(unsubscribeRoutes).use(newsletterAdminRoutes);
@@ -60,6 +60,27 @@ describe('newsletter', () => {
       expect(Date.parse(LATEST) - Date.parse(a.publishedOn)).toBeLessThan(7 * 86_400_000);
     }
     expect(weeklyArticles('2020-01-01')).toEqual([]);
+  });
+
+  it('includes De Novo Watch rows whose status changed that week', () => {
+    const row = { name: 'New Bank', location: 'Tampa, FL', status: 'open' as const, statusDetail: 'Opened Oct 14.', asOf: '2026-10-15' };
+    const rows = [
+      { ...row, statusChanged: '2026-10-14' },
+      { ...row, name: 'Old Bank', statusChanged: '2026-09-01' },
+      { ...row, name: 'Unchanged Bank' },
+    ];
+    expect(weeklyTrackerChanges('2026-10-16', rows)).toEqual([
+      { name: 'New Bank', location: 'Tampa, FL', status: 'Open', detail: 'Opened Oct 14.' },
+    ]);
+
+    // A week with tracker news but no articles still gets an issue.
+    const issue = buildIssue('2020-01-03', weeklyTrackerChanges('2020-01-03', [{ ...row, statusChanged: '2020-01-02' }]))!;
+    expect(issue.subject).toBe('De Novo Watch: New Bank (Open)');
+    const msg = issueMessage(issue, '2020-01-03', 'reader@example.org', '123 Main St');
+    expect(msg.text).toContain('De Novo Watch this week');
+    expect(msg.html).toContain('New Bank');
+    expect(msg.html).toContain('/de-novo-watch?utm_source=newsletter');
+    expect(buildIssue('2020-01-03', [])).toBeNull();
   });
 
   it('unsubscribes with a valid token and rejects a forged one', async () => {

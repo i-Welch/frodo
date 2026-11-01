@@ -16,6 +16,42 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'fed-rate-hike-community-bank-deposits',
+    title: "The Fed Turned Around. Deposit Rates Didn't.",
+    description:
+      'The Fed hiked in September for the first time since 2023, then held with two votes for more. The 2-year Treasury is up 132 basis points since February and mortgages hit 7.40%. The national 12-month CD rate rose 24. What the gap means for community banks.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
+    slug: 'new-south-bank-tampa-de-novo',
+    title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
+    description:
+      "Hillsborough County's deposits more than doubled to $45 billion since 2008 while its hometown banks fell from 21 to five, holding 6.4% of the market. New South Bank, led by a 35-year OCC veteran, just won FDIC approval to raise $25 million and build a sixth.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'denovo',
+  },
+  {
+    slug: 'southeast-bank-earnings-q3-2026',
+    title: "Southeast Bank Earnings, Q3 2026: Margins Up, Balance Sheets Reset",
+    description:
+      "Truist, United Community and First Horizon booked big losses selling low-yield assets on purpose. The community banks widened margins instead: Southern First from 2.62% to 3.02%, ServisFirst from 3.09% to 3.63%. What 18 Southeast Q3 releases show.",
+    readTime: '5 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
+    slug: 'florida-new-bank-charters-2026',
+    title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole",
+    description:
+      'Florida leads the nation in 2026 bank charter filings and won three FDIC approvals. Two new banks opened, with $97 million in assets. Five Florida charters retired, holding $8.4 billion, and every one was itself a de novo. Every 2026 Florida filing and exit, counted.',
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'bank',
+  },
+  {
     slug: 'fintech-bank-charter-rush-2026',
     title: "PayPal, Klarna and Revolut Want Bank Charters. Here's the Full List",
     description:

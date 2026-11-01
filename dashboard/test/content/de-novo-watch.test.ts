@@ -11,6 +11,7 @@ import {
 } from '../../src/app/(marketing)/de-novo-watch/de-novo-data';
 import { csvCell, trackerCsv } from '../../src/app/(marketing)/de-novo-watch/tracker-csv';
 import { BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
+import { FDIC_CERTS } from '../../src/app/(marketing)/de-novo-watch/fdic-certs';
 
 // The weekly /de-novo-update run edits the tracker unattended, so these guard
 // the shape the page and CSV export depend on.
@@ -27,6 +28,9 @@ describe('De Novo Watch data', () => {
       expect(r.asOf <= today, `${r.name} asOf ${r.asOf} is in the future`).toBe(true);
     }
     expect(TRACKER_SUMMARY.updated).toMatch(DATE);
+    for (const b of DE_NOVO_BANKS) {
+      if (b.statusChanged) expect(b.statusChanged, b.name).toMatch(DATE);
+    }
   });
 
   it('has unique bank names', () => {
@@ -102,5 +106,12 @@ describe('bank profile pages', () => {
       expect(deNovoState(b.location), b.name).toMatch(/^[A-Z]{2}$/);
     }
     expect(getProfiledBank('tidestone-bank')).toBeUndefined();
+  });
+});
+
+describe('De Novo Watch FDIC certs', () => {
+  it('every cert belongs to a tracked bank or charter move', () => {
+    const names = new Set([...DE_NOVO_BANKS, ...CHARTER_MOVES].map((r) => r.name));
+    for (const name of Object.keys(FDIC_CERTS)) expect(names.has(name), `${name} in fdic-certs.ts has no row`).toBe(true);
   });
 });
