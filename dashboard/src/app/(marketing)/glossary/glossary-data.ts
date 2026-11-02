@@ -544,6 +544,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'south-carolina-de-novo-drought', title: 'No One Starts Banks in South Carolina Anymore' },
       { slug: 'florida-new-bank-charters-2026', title: "Florida's 2026 De Novo Comeback Has an $8.4 Billion Hole" },
       { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
+      { slug: 'private-bank-trust-gainesville-de-novo', title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank' },
     ],
     relatedSolution: { slug: 'de-novo-bank-technology', label: 'De novo bank technology stack' },
   },

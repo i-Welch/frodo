@@ -25,6 +25,15 @@ export const articles: Article[] = [
     category: 'bank',
   },
   {
+    slug: 'private-bank-trust-gainesville-de-novo',
+    title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank',
+    description:
+      "On Aug. 1, Hall County, Georgia, lost its last hometown bank, $786M Peach State, to United Community. For 58 days a county with $5.8B in deposits, up 125% since 2008, had none. Then Private Bank & Trust opened with more than $33M, run by a banker who worked at the last two.",
+    readTime: '6 min read',
+    date: 'October 2026',
+    category: 'denovo',
+  },
+  {
     slug: 'new-south-bank-tampa-de-novo',
     title: 'New South Bank: A $25M Bet on a County Down to Five Banks',
     description:
