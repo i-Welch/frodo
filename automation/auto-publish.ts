@@ -1,6 +1,6 @@
 // Auto-publisher for /article PRs. Run hourly (see register-tasks.ps1).
 //
-// 1. Merges open PRs labeled `auto-publish` once they are 20h old, CI is green,
+// 1. Merges open PRs labeled `auto-publish` once they are 12h old, CI is green,
 //    and the PR is mergeable, at 10am ET on weekdays (the 11am run catches a
 //    missed one). Close the PR or remove the label to stop it.
 // 2. For each LinkedIn queue file on master (marketing/linkedin/queue/<slug>.md)
@@ -45,7 +45,9 @@ const LINKEDIN_ENV = join(STATE_DIR, 'linkedin.env');
 const INDEXNOW_LOG = join(STATE_DIR, 'indexnow-pinged.json');
 const SITEMAP_STATE = join(STATE_DIR, 'indexnow-sitemap.json');
 const LABEL = 'auto-publish';
-const DELAY_HOURS = 20;
+// 12h keeps a night to review, and an article a missed-run retry opens in the
+// afternoon still goes out at the next 10am.
+const DELAY_HOURS = 12;
 // After a merge, Vercel takes a few minutes to deploy; wait this long for the
 // article URL before leaving its launch post to the next run.
 const DEPLOY_WAIT_MS = 15 * 60_000;
