@@ -534,7 +534,9 @@ async function bankTrackerUpdates() {
 // usage limit skips a run. Retry each one at most every 3 hours during the ET
 // workday, give up after 48 hours, and let a successful run delete the marker.
 const MISSED_DIR = join(STATE_DIR, 'missed-runs');
-const RETRY_GAP_MS = 3 * 3_600_000;
+// Runs start hourly with a few seconds of jitter, so allow 10 minutes of slack:
+// a retry at 18:05:13 must not block the 21:05:06 run.
+const RETRY_GAP_MS = 3 * 3_600_000 - 10 * 60_000;
 const GIVE_UP_MS = 48 * 3_600_000;
 
 type MissedRun = { prompt: string; cloneName: string; port: number; logName: string; missedAt: string; lastRetryAt?: string };
