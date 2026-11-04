@@ -6,6 +6,7 @@ export const FDIC_CERTS: Record<string, number> = {
   'Portrait Bank': 59381,
   'Echelon Bank': 59377,
   BankMiami: 59354,
+  'Solutions Plus Bank': 59362,
   'Southern Bank': 16288,
   'First City Bank': 16281,
 };
