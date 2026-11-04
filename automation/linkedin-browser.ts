@@ -153,12 +153,41 @@ async function clickDialogButton(page: Page, label: RegExp, timeout = 20_000): P
 // Attach the image before typing: with media attached LinkedIn shows no link
 // card, and the URL in the text stays a plain clickable link. The media button
 // opens a file chooser, then an editor whose "Next" returns to the composer.
+// The first click after the composer opens sometimes does nothing, and some
+// sessions render a file input instead of a native chooser, so take whichever
+// appears and click again once if neither does.
+type Upload = (path: string) => Promise<void>;
+
+// Resolves with the first promise to produce a value, or null if none does.
+function firstOf<T>(promises: Promise<T | null>[]): Promise<T | null> {
+  return new Promise((resolve) => {
+    let pending = promises.length;
+    for (const p of promises) {
+      p.then((v) => {
+        if (v) resolve(v);
+        else if (--pending === 0) resolve(null);
+      });
+    }
+  });
+}
+
 async function attachImage(page: Page, image: string): Promise<void> {
-  const [chooser] = await Promise.all([
-    page.waitForFileChooser({ timeout: 20_000 }),
-    clickDialogButton(page, /^(add (a )?(media|photo)|photo)$/i),
-  ]);
-  await chooser.accept([image]);
+  for (let attempt = 1; ; attempt++) {
+    const chooser = page.waitForFileChooser({ timeout: 15_000 }).catch(() => null);
+    await clickDialogButton(page, /^(add (a )?(media|photo)|photo)$/i);
+    const input = page
+      .waitForSelector(`:is(${DIALOG}) input[type="file"][accept*="image"]`, { timeout: 15_000 })
+      .catch(() => null);
+    const upload = await firstOf<Upload>([
+      chooser.then((c) => c && ((p: string) => c.accept([p]))),
+      input.then((i) => i && ((p: string) => (i as unknown as { uploadFile(p: string): Promise<void> }).uploadFile(p))),
+    ]);
+    if (upload) {
+      await upload(image);
+      break;
+    }
+    if (attempt === 2) throw new Error('no file picker appeared after clicking the media button twice');
+  }
   await clickDialogButton(page, /^next$/i, 30_000);
   await page.waitForSelector(COMPOSER_BOX, { visible: true, timeout: 20_000 });
 }

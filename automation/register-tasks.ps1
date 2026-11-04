@@ -106,7 +106,7 @@ $digestTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At 7:30am
 Register-ScheduledTask -TaskName 'RAVEN Digest' -Action $digestAction -Trigger $digestTrigger `
     -Settings $Settings -Description 'Emails the founder a weekly summary of leads, articles and automation health' -Force | Out-Null
 
-# Hourly: merge PRs at 10am ET on weekdays once 20h old, post queued LinkedIn updates, email finished audits.
+# Hourly: merge PRs at 10am ET on weekdays once 12h old, post queued LinkedIn updates, email finished audits.
 $publishLog = Join-Path $LogDir 'auto-publish.log'
 $publishAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
     -Argument "-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $PublishClone); bun '$PublishClone\automation\auto-publish.ts' *>> '$publishLog'`""
