@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'south-carolina-most-efficient-banks-q2-2026',
+    title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
+    description:
+      "South Carolina's ten most efficient community banks spent a median 50.9 cents to earn a revenue dollar in the first half of 2026; the median bank spent 62.6. They pay staff about the same, but run $7.9M of assets per employee vs. $7.0M and pay far less for funding.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'fed-rate-hike-community-bank-deposits',
     title: "The Fed Turned Around. Deposit Rates Didn't.",
     description:

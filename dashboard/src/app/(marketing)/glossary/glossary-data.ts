@@ -993,6 +993,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
     relatedArticles: [
+      { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
     ],
