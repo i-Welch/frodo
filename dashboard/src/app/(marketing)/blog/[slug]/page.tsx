@@ -104,6 +104,102 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'south-carolina-most-efficient-banks-q2-2026': {
+    title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
+    description:
+      "South Carolina's ten most efficient community banks spent a median 50.9 cents to earn a revenue dollar in the first half of 2026; the median bank spent 62.6. They pay staff about the same, but run $7.9M of assets per employee vs. $7.0M and pay far less for funding.",
+    publishedDate: 'November 6, 2026',
+    readTime: '6 min read',
+    content: `
+# Q2 2026: What South Carolina's Most Efficient Banks Do Differently
+
+*Published November 6, 2026*
+
+The median bank headquartered in South Carolina spent 62.6 cents to earn a dollar of revenue in the first half of 2026. The state's ten most efficient community banks spent a median 50.9 cents.
+
+That gap of nearly 12 points is not a story about size, and it is mostly not a story about margins. It is a story about overhead, and about deposits nobody has to pay for.
+
+The figures come from the June 30, 2026 FDIC call reports behind our [South Carolina bank rankings](/bank-rankings/south-carolina): 43 banks holding $64.68 billion in assets. The top-ten lists cover the 37 FDIC-designated community banks with at least $100 million in assets. June 30 is still the latest quarter in the FDIC's BankFind data; third-quarter reports were due October 30 and had not posted as of November 5.
+
+## The Leaders
+
+Here are the ten lowest [efficiency ratios](/glossary/efficiency-ratio) among South Carolina's community banks, with year-to-date return on assets, annualized.
+
+| Bank | City | Assets | Efficiency | ROA |
+|---|---|---|---|---|
+| [Enterprise Bank of SC](/bank-snapshot/11539-enterprise-bank-of-south-carolina) | Ehrhardt | $535M | 36.7% | 6.21% |
+| [Carolina Bank & Trust](/bank-snapshot/16723-carolina-bank-and-trust-co) | Lamar | $845M | 43.2% | 1.85% |
+| [Conway National](/bank-snapshot/2102-the-conway-national-bank) | Conway | $2.00B | 47.9% | 1.42% |
+| [Farmers and Merchants](/bank-snapshot/1660-farmers-and-merchants-bank-of-south-carolina) | Holly Hill | $414M | 48.6% | 1.80% |
+| [Bank of York](/bank-snapshot/15104-bank-of-york) | York | $318M | 48.8% | 1.73% |
+| [Bank of Clarendon](/bank-snapshot/15671-the-bank-of-clarendon) | Manning | $438M | 53.0% | 1.54% |
+| [First Capital Bank](/bank-snapshot/34966-first-capital-bank) | Charleston | $1.32B | 53.3% | 1.14% |
+| [First Piedmont Federal](/bank-snapshot/28859-first-piedmont-federal-savings-and-loan-association-of-gaffney) | Gaffney | $597M | 53.7% | 1.76% |
+| [First Palmetto Bank](/bank-snapshot/28396-first-palmetto-bank) | Camden | $1.10B | 54.8% | 1.36% |
+| [OPTUS Bank](/bank-snapshot/35241-optus-bank) | Columbia | $764M | 55.8% | 0.95% |
+
+The leaders' median ROA is 1.63%. The state's median bank earns 1.12%.
+
+## One Asterisk at the Top
+
+Enterprise Bank of South Carolina tops both the efficiency and the profitability lists, and its numbers need context. In the first quarter of 2026 it booked $10.67 million of noninterest income, nearly five times the $2.23 million it reported for all of 2025. Service charges and securities gains account for almost none of it, and the call report does not say what the rest was. First-half net income was $16.0 million, against $1.9 million a year earlier. In June 2025 its efficiency ratio was 73.7%.
+
+That looks like a single event rather than an operating model. The rest of this piece leans on medians, which one outlier barely moves.
+
+## Mostly Cost, Not Margin
+
+The leaders do earn a little more on their balance sheets. Their median net interest margin is 3.83%, against 3.68% for the state's median bank. Fee income is close too: 0.48% of average assets against 0.41%.
+
+Overhead is where they separate. Noninterest expense runs a median 2.16% of average assets at the ten leaders and 2.66% at the median South Carolina bank.
+
+:::stat
+**$2.9 million a year**
+What 50 basis points of overhead is worth on a $571 million balance sheet, the size of South Carolina's median bank. That is the distance between the median bank's noninterest expense ratio and the leaders'.
+:::
+
+The difference is not pay. Salaries and benefits per employee annualize to a median of about $98,000 at the leaders and $100,000 statewide. What differs is how many people each dollar of assets needs. The leaders run a median $7.9 million of assets per full-time employee, against $7.0 million. Salaries and benefits take 1.20% of assets at the leaders and 1.36% at the median bank.
+
+On a $571 million bank, $7.0 million per employee is about 82 people. At $7.9 million it is about 72.
+
+First Capital Bank in Charleston shows the extreme. It runs $1.32 billion with 98 employees and four offices: $13.5 million of assets per employee and $330 million per office. It pays well, about $147,000 per employee annualized, nearly half again the state median. It simply needs fewer people. Premises and equipment cost it 0.14% of assets, about half the state's 0.26%.
+
+:::pullquote
+The leaders do not pay their people less. They need fewer of them per dollar, and they pay less for their deposits.
+:::
+
+## The Deposits Nobody Pays For
+
+The second difference sits on the other side of the balance sheet. At the median leader, 27.1% of domestic deposits pay no interest, against 21.7% at the median South Carolina bank. Interest expense runs 1.07% of earning assets at the leaders and 1.59% statewide.
+
+Farmers and Merchants Bank of South Carolina in Holly Hill is the purest case. Its interest expense was 0.27% of earning assets in the first half, the lowest among the leaders, with 32.3% of deposits in noninterest-bearing accounts. It lends out only 34.7% of its deposits and still earns a 4.14% margin and a 1.80% ROA.
+
+Bank of York does nearly the same with 34 employees: 41.7% of deposits noninterest-bearing, interest expense of 0.55% of earning assets, a 35.5% loan-to-deposit ratio and $9.3 million of assets per employee.
+
+The Conway National Bank, at $2.0 billion the largest of the leaders, combines both levers. It holds 27.8% of deposits in noninterest-bearing accounts, keeps noninterest expense at 1.76% of assets, and lends 51.3% of its deposits. Carolina Bank & Trust runs $845 million from 14 offices with 92 employees, $9.2 million of assets per head, a 4.17% margin and overhead of 1.89% of assets.
+
+Cheap deposits are not the only route. First Capital pays 2.97% of earning assets for its funding, nearly twice the state median, and keeps 8.0% of deposits in noninterest-bearing accounts. It gets to 53.3% on cost alone.
+
+## Size Is Not the Explanation
+
+The ten leaders range from $318 million to $2.0 billion in assets. Their median size is $681 million, not far above the state's $571 million. Bank of York, the smallest, is among the leanest. The state's two other community banks above $2 billion run efficiency ratios of 58.6% and 59.2%: solidly efficient, and outside the top ten.
+
+The leaders' positions are also durable. Carolina Bank & Trust, Farmers and Merchants and Bank of York posted efficiency ratios of 53.3% or lower at the end of 2023, the end of 2024 and June 2025. The state median in June 2025 was 67.6%.
+
+:::pullquote
+The leaders' edge is not a good quarter. Three of them have run below 54% at every mark we checked since 2023. As recently as June 2025, the state median was 67.6%.
+:::
+
+Two caveats, in fairness. The whole state got more efficient this year. The median ratio fell from 67.6% in June 2025 to 62.6%, and median ROA rose from 0.99% to 1.12% as margins widened from 3.51% to 3.68%. Some leaders rode that tide hardest: First Capital's ratio was 67.5% at the end of 2023 and First Palmetto's 64.4%. And a low loan-to-deposit ratio is a choice with a price. A bank lending a third of its deposits has fewer loans to lose, and fewer to grow on.
+
+## What the Median Bank Can Copy
+
+A median bank cannot copy a deposit base built in Holly Hill since 1912, or rebuild its staffing model overnight. But the two levers the leaders pull, fewer staff hours per dollar of assets and more operating accounts that pay nothing, are both set in the same two places: loan intake and account opening.
+
+Every hour a lender spends chasing a pay stub, calling an employer or re-keying a bank statement is overhead that grows with volume. Verification-first intake, with income, assets and identity confirmed from source data at application, lets the same team handle more loans. Clean files get a decision in minutes instead of weeks, and every check leaves an audit trail an examiner can follow. On the deposit side, a checking account opened online, verified and funded in one sitting, is how a bank wins the noninterest-bearing balance before a competitor does.
+
+South Carolina's leaders spend 50.9 cents to earn a dollar. The 11.7 cents between them and the median bank is mostly overhead, and overhead can be redesigned.
+`,
+  },
   'private-bank-trust-gainesville-de-novo': {
     title: 'Private Bank & Trust: The 58 Days Gainesville Had No Hometown Bank',
     description:
