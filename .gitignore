@@ -61,3 +61,6 @@ dashboard/.next
 dashboard/node_modules
 .vercel
 .env*.local
+
+# automation clones used by the RAVEN scheduled tasks (see automation/register-tasks.ps1)
+.automation/

@@ -1,10 +1,10 @@
 # Registers the Windows scheduled tasks for RAVEN automation. Each task has its
-# own clone under ~/projects, updated to origin/master before each run, so they
-# always use the merged scripts and never reset each other's work in progress.
+# own clone under ~/projects/frodo/.automation, updated to origin/master before each
+# run, so they always use the merged scripts and never reset each other's work in progress.
 # Remove with:
 #   Unregister-ScheduledTask -TaskName 'RAVEN Article','RAVEN Auto-Publish','RAVEN Audit Requests','RAVEN Newsletter','RAVEN Digest','RAVEN De Novo Watch','RAVEN Visibility Check','RAVEN Release Draft','RAVEN Rankings Post','RAVEN Earnings Refresh' -Confirm:$false
 
-$Projects = Join-Path $env:USERPROFILE 'projects'
+$Projects = Join-Path $env:USERPROFILE 'projects\frodo\.automation'
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
 

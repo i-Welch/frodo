@@ -560,7 +560,9 @@ function retryMissedRuns(): void {
     const busy = existsSync(logs) && readdirSync(logs).some((f) => f.startsWith(`${run.logName}-`) && now - statSync(join(logs, f)).mtimeMs < 45 * 60_000);
     if (busy) continue;
     writeFileSync(path, JSON.stringify({ ...run, lastRetryAt: new Date(now).toISOString() }, null, 2));
-    const script = join(homedir(), 'projects', run.cloneName, 'automation', 'run-article.ps1');
+    const nested = join(homedir(), 'projects', 'frodo', '.automation', run.cloneName);
+    const cloneDir = existsSync(nested) ? nested : join(homedir(), 'projects', run.cloneName); // older layout
+    const script = join(cloneDir, 'automation', 'run-article.ps1');
     spawn('powershell.exe', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', script,
       '-Prompt', run.prompt, '-CloneName', run.cloneName, '-Port', String(run.port), '-LogName', run.logName],
       { detached: true, stdio: 'ignore', windowsHide: true }).unref();

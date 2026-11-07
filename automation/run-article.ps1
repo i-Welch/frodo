@@ -11,7 +11,8 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$Clone = Join-Path $env:USERPROFILE "projects\$CloneName"
+$Clone = Join-Path $env:USERPROFILE "projects\frodo\.automation\$CloneName"
+if (-not (Test-Path $Clone)) { $Clone = Join-Path $env:USERPROFILE "projects\$CloneName" }  # older layout
 $LogDir = Join-Path $env:USERPROFILE '.raven\logs'
 New-Item -ItemType Directory -Force $LogDir | Out-Null
 $Log = Join-Path $LogDir ("$LogName-{0:yyyy-MM-dd-HHmm}.log" -f (Get-Date))
