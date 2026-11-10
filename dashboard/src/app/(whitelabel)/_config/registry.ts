@@ -30,6 +30,7 @@ import { palmettoCitizensFcu } from './palmetto-citizens-federal-credit-union';
 import { championsFirstCreditUnion } from './champions-first-credit-union';
 import { foundersFederalCreditUnion } from './founders-federal-credit-union';
 import { robinsFinancialCreditUnion } from './robins-financial-credit-union';
+import { additionFinancialCreditUnion } from './addition-financial-credit-union';
 import { uwharrieBank } from './uwharrie-bank';
 import { wilsonBankAndTrust } from './wilson-bank-and-trust';
 import { cogentBank } from './cogent-bank';
@@ -69,6 +70,7 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   championsFirstCreditUnion,
   foundersFederalCreditUnion,
   robinsFinancialCreditUnion,
+  additionFinancialCreditUnion,
   uwharrieBank,
   wilsonBankAndTrust,
   cogentBank,

@@ -1044,6 +1044,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'new-south-bank-tampa-de-novo', title: 'New South Bank: A $25M Bet on a County Down to Five Banks' },
+      { slug: 'addition-financial-shrinking-loan-book', title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.' },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
@@ -1200,6 +1201,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
+      { slug: 'addition-financial-shrinking-loan-book', title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.' },
     ],
   },
   {
