@@ -104,6 +104,88 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'addition-financial-shrinking-loan-book': {
+    title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.',
+    description:
+      'Addition Financial absorbed Envision Credit Union and grew to 262,040 members. Its combined loan book is $355 million smaller than two years ago while shares rose 9%. Inside a 62% loan-to-share ratio in a state where credit unions lend 85%.',
+    publishedDate: 'November 11, 2026',
+    readTime: '6 min read',
+    content: `
+# Addition Financial Got Bigger. Its Loan Book Got Smaller.
+
+*Published November 11, 2026*
+
+## The Number That Doesn't Fit
+
+On October 1, 2025, Envision Credit Union of Tallahassee merged into Addition Financial Credit Union of Lake Mary. Envision's members had voted yes on September 12. The NCUA, the Florida Office of Financial Regulation and the Georgia Department of Banking and Finance signed off. The combined credit union now runs branches from Kissimmee to Thomasville, Georgia.
+
+Two years ago, the two credit unions that make up today's Addition Financial held $2.47 billion in loans between them. On September 30, 2026, according to the call report Addition filed with the NCUA, the combined credit union held $2.12 billion.
+
+Over the same two years, member shares rose 9%, from $3.13 billion to $3.41 billion. Membership rose 5.2%, to 262,040.
+
+:::stat
+**$355 million**
+How much smaller the combined Addition Financial and Envision loan book was on September 30, 2026 than two years earlier, per NCUA call reports. Member shares grew $280 million over the same stretch.
+:::
+
+More members. More money. Fewer loans. In a state where credit union lending grew 7.6% in the year to June, that is the number that doesn't fit.
+
+## Where the $355 Million Went
+
+It left through the car lot and the signature line. Vehicle loans across the two institutions fell from $863.4 million to $634.6 million, down 26.5%. Other unsecured loans and lines of credit fell from $531.5 million to $393.3 million, down 26%. Those two lines shrank a combined $367 million, more than the entire decline. First mortgages slipped 6.6%. Credit cards grew 18%.
+
+Most of it happened before the merger, and much of it was a choice. In the year to September 30, 2025, Addition's own loans fell 11.2%, from $1.86 billion to $1.65 billion, while its shares grew 12.4%. Its indirect book, the loans written through car dealers, dropped from $505.0 million to $373.0 million. And it sold loans: $149.9 million of participations in the first nine months of 2025, after $75.0 million in the same stretch of 2024.
+
+That is a credit union choosing a smaller, more liquid balance sheet. It is not a credit union losing borrowers.
+
+The merger didn't reverse the trend. Combined loans stood at $2.18 billion at the end of 2025 and $2.12 billion nine months later, down another 3%, with no participation sales reported through June. Yet lending activity is up. Addition granted $456.9 million of loans in the first nine months of 2026, against $434.5 million for the two credit unions separately a year earlier.
+
+:::pullquote
+Addition Financial is granting more loan dollars than the two credit unions did separately a year ago. The book is still shrinking, because payoffs are outrunning new loans.
+:::
+
+## The Merger Math
+
+Envision, founded in 1954 to serve Leon County's public educators, brought 63,238 members, 11 branches and $829 million in assets, per its last separate call report on September 30, 2025. It also brought a rough final quarter. Envision earned $1.1 million in the first half of 2025, then lost $11.8 million in the third quarter, and its net worth fell from $96.6 million to $84.7 million in three months.
+
+When we profiled [Champions First](/blog/champions-first-fsu-rebrand) in August, this merger was the backdrop: a Tallahassee credit union of seven decades absorbed by one headquartered outside Orlando.
+
+The integration has been lean. The two credit unions employed 738 full-time and 116 part-time staff on September 30, 2025. A year later Addition reported 668 and 82. That is 104 fewer people, a 12% reduction, serving 5,139 more members. The branch count went from 37 combined to 36.
+
+Earnings are back. Addition reported $20.2 million of net income in the first nine months of 2026, about 0.7% of assets on an annualized basis. Its net worth ratio was 9.86% at September 30, classified well capitalized against the 7% threshold.
+
+Two caveats, in fairness. First, the credit picture explains some of the caution. Loans delinquent two months or more reached $27.5 million in September, 1.30% of the book, up from 0.92% for the two credit unions combined a year earlier and above the 0.78% average for all Florida credit unions at June 30. Net charge-offs ran $21.6 million in nine months, roughly 1.3% of loans annualized. Trimming dealer paper and unsecured lines while those numbers rise is what a careful lender does. Second, liquidity got more valuable this fall, after the Federal Reserve's [September rate increase](/blog/fed-rate-hike-community-bank-deposits).
+
+## The 62% Balance Sheet
+
+The result is a balance sheet unlike its peers. At September 30, Addition held $3.41 billion in shares and $2.12 billion in loans, a loan-to-share ratio of 62.1%. That is the credit union version of the [loan-to-deposit ratio](/glossary/loan-to-deposit-ratio). Two years ago the same two institutions ran 79.1%.
+
+Florida's credit unions as a group lent 85.2% of their shares at June 30, 2026. The national figure was 82.9%. Within this series, [Founders](/blog/founders-credit-union-mill-town) lent 94.2% of shares at June 30, Champions First 87.6%, and even [Robins Financial](/blog/robins-financial-20-million-rebate), the most cautious credit union balance sheet in the series until now, 70.6%.
+
+:::stat
+**62.1%**
+Addition Financial's loan-to-share ratio on September 30, 2026, down from 79.1% for the two merged credit unions two years earlier. Florida credit unions averaged 85.2% at June 30.
+:::
+
+At Florida's ratio, Addition's shares would support about $2.90 billion in loans, roughly $785 million more than it holds. Money that isn't lent sits in cash and investments, where it earns less than an auto loan priced from 5.05%, the rate Addition advertised for new cars in November.
+
+:::pullquote
+The money is not the constraint at Addition Financial. It has $1.29 billion more in member shares than in loans.
+:::
+
+## The Stack
+
+If dealer lending and loan sales are being dialed back, growth has to come from members who apply directly. That puts the weight on the front door, which we fingerprinted in November 2026.
+
+Online banking runs on Lumin Digital at olb.additionfi.com. Joining is a handoff: "Open an Account" and every "Join & Apply" button on the loan pages send the applicant to app.loanspq.com, MeridianLink's portal, where a new member pays a $10 membership fee and keeps $5 in savings. It is the same MeridianLink domain Champions First uses across town. Mortgages run through a separate portal at borrower-portal.additionfi.com. Business lines of credit, term loans, vehicle loans and equipment loans offer a "Schedule Appointment" button and a loan checklist, with no online application.
+
+Three loan types, three front doors. The mortgage door is the one with public numbers. In 2025 [HMDA](/glossary/hmda) data, Addition reported 587 originated home loans worth $87.3 million, against 426 denials, 153 withdrawals and 102 files closed as incomplete.
+
+For community banks, the lesson runs opposite to the usual one. Most institutions in this series are short of funding. Addition has more than it lends, and a branch map that now spans two states. When deposits are plentiful and the dealer channel is shrinking on purpose, the lever left is how many direct applicants become funded loans: verification-first intake, income and identity confirmed from source in minutes instead of weeks, one application across every product, and an audit trail a cautious credit committee can rely on.
+
+Addition Financial merged its way to 262,040 members and $3.41 billion in shares. The next two years will show whether it can lend them.
+`,
+  },
   'south-carolina-most-efficient-banks-q2-2026': {
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:

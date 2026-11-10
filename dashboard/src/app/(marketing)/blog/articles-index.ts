@@ -16,6 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'addition-financial-shrinking-loan-book',
+    title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.',
+    description:
+      'Addition Financial absorbed Envision Credit Union and grew to 262,040 members. Its combined loan book is $355 million smaller than two years ago while shares rose 9%. Inside a 62% loan-to-share ratio in a state where credit unions lend 85%.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'creditunion',
+    auditSlug: 'addition-financial-credit-union',
+  },
+  {
     slug: 'south-carolina-most-efficient-banks-q2-2026',
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:
