@@ -891,6 +891,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['net-interest-margin', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
     ],
@@ -993,6 +994,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
     relatedArticles: [
+      { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },

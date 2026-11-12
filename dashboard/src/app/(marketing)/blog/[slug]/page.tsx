@@ -104,6 +104,117 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'georgia-most-profitable-banks-q2-2026': {
+    title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
+    description:
+      "Georgia's ten most profitable community banks earned a median 2.75% ROA in the first half of 2026, against 1.56% statewide. Eight are S corporations that report little or no income tax. The rest of the edge is cheap deposits: funding costs of 0.95% vs. 1.58%.",
+    publishedDate: 'November 13, 2026',
+    readTime: '6 min read',
+    content: `
+# Q2 2026: What Georgia's Most Profitable Banks Do Differently
+
+*Published November 13, 2026*
+
+The median bank headquartered in Georgia earned a 1.56% return on assets in the first half of 2026. The state's ten most profitable community banks earned a median 2.75%.
+
+Georgia already out-earns its neighbors. Its median bank runs a 4.50% net interest margin, against 3.68% in [South Carolina](/blog/south-carolina-most-efficient-banks-q2-2026), where the median bank earns 1.12% on assets. The gap inside Georgia comes from three places: the tax line, the deposit base and the payroll. Most of the leaders lean on one or two of them, not all three.
+
+The figures come from the June 30, 2026 FDIC call reports behind our [Georgia bank rankings](/bank-rankings/georgia): 122 banks holding $102.90 billion in assets. The top-ten lists cover the 104 FDIC-designated community banks with at least $100 million in assets. June 30 is still the latest quarter in the FDIC's BankFind data; third-quarter reports were due October 30 and had not posted as of November 12.
+
+## The Leaders
+
+Here are the ten highest [returns on assets](/glossary/return-on-assets) among Georgia's community banks, year to date and annualized, after and before taxes.
+
+| Bank | City | Assets | ROA | Pretax ROA |
+|---|---|---|---|---|
+| [Durden Banking Company](/bank-snapshot/15336-durden-banking-company-incorporated) | Twin City | $299M | 3.60% | 3.60% |
+| [Douglas National Bank](/bank-snapshot/57230-douglas-national-bank) | Douglas | $327M | 3.51% | 3.51% |
+| [Bank of Monticello](/bank-snapshot/2145-bank-of-monticello) | Monticello | $158M | 3.21% | 3.31% |
+| [The Commercial Bank](/bank-snapshot/175-the-commercial-bank) | Crawford | $464M | 3.14% | 3.14% |
+| [Sunmark Community Bank](/bank-snapshot/16825-sunmark-community-bank) | Perry | $557M | 2.77% | 2.90% |
+| [Bank of Dade](/bank-snapshot/17543-bank-of-dade) | Trenton | $162M | 2.72% | 2.72% |
+| [Farmers State Bank](/bank-snapshot/879-farmers-state-bank) | Lincolnton | $186M | 2.67% | 2.67% |
+| [FNB South](/bank-snapshot/17011-fnb-south) | Alma | $735M | 2.64% | 2.88% |
+| [Northeast Georgia Bank](/bank-snapshot/15771-northeast-georgia-bank) | Lavonia | $651M | 2.59% | 2.70% |
+| [United Bank](/bank-snapshot/172-united-bank) | Zebulon | $2.16B | 2.50% | 3.23% |
+
+Look at the last two columns. At five of the ten, they are identical.
+
+## The Tax Line
+
+Eight of the ten are Subchapter S corporations, according to their call reports. An S corporation passes its income through to its shareholders, who pay the tax on their own returns, so the bank reports little or no income tax and its after-tax ROA sits close to its pretax ROA. Five of the eight reported no income tax expense at all in the first half.
+
+S corporations are common in Georgia: 33 of the state's 122 banks, and 27 of the 104 community banks in the ranking pool. That is about one in four. In the ROA top ten, it is eight in ten.
+
+The tax line changes the order more than the gap. Ranked before taxes, United Bank, a C corporation, moves from tenth to fourth at 3.23%, and three other C corporations join the top ten. The leaders' median pretax ROA is 3.02%, against 1.88% for the state's median bank. Across the whole state, the S corporations' median pretax ROA is 1.92% and the C corporations' is 1.86%: much the same business, with a different tax line.
+
+:::pullquote
+Taxes explain the order of Georgia's list more than the gap. Before taxes, the ten leaders still earn a median 3.02% on assets, against 1.88% for the median bank.
+:::
+
+## Margin, Bought Cheap
+
+Strip out the tax line and the profitability leaders' edge is mostly margin. Their median net interest margin is 5.37%, against 4.50% statewide. They earn a little more on their loans and securities, a median 6.50% yield on earning assets against 6.12%. They pay a lot less for their money. Interest expense runs 0.95% of earning assets at the median leader and 1.58% at the median Georgia bank, and 32.2% of the leaders' domestic deposits pay no interest, against 25.3%.
+
+They do not run especially lean. The ROA leaders carry a median $6.7 million of assets per full-time employee, against $6.8 million statewide, and noninterest expense of 2.55% of average assets, against 2.78%.
+
+Sunmark Community Bank in Perry shows the model plainly. Its overhead is 3.60% of assets, well above the state median, spread across 10 offices. It still earns 2.77% because its margin is 6.47%: a 7.42% yield on earning assets, funding at 0.95%, and 38.1% of deposits in accounts that pay nothing.
+
+Farmers State Bank in Lincolnton keeps 48.1% of its deposits in noninterest-bearing accounts, and its funding costs 0.64% of earning assets. It lends out 54.7% of its deposits and still earns 2.67%. Durden Banking Company goes the other way on lending: it lends 95.4% of its deposits at a 6.85% yield, pays 0.77% for funding and runs a 6.08% margin.
+
+United Bank does it at scale. At $2.16 billion, the largest of the ROA leaders, it pays 0.50% for funding, the lowest of the ten, with 39.8% of deposits noninterest-bearing and fee income of 1.44% of assets. It lends 49.3% of its deposits.
+
+## Lean, Not Cheap
+
+The [efficiency ratio](/glossary/efficiency-ratio) leaders take the other road. Here are the ten lowest ratios among Georgia's community banks.
+
+| Bank | City | Assets | Efficiency | ROA |
+|---|---|---|---|---|
+| [Community Bank of Pickens County](/bank-snapshot/35513-community-bank-of-pickens-county) | Jasper | $629M | 38.1% | 2.35% |
+| [Thomasville National Bank](/bank-snapshot/34068-thomasville-national-bank) | Thomasville | $2.18B | 38.3% | 2.40% |
+| [The Citizens Bank of Georgia](/bank-snapshot/34229-the-citizens-bank-of-georgia) | Cumming | $599M | 38.7% | 1.86% |
+| [Classic City Bank](/bank-snapshot/59219-classic-city-bank) | Athens | $314M | 39.8% | 2.11% |
+| [Farmers and Merchants Bank](/bank-snapshot/16440-farmers-and-merchants-bank) | Sylvania | $171M | 40.0% | 2.05% |
+| The Commercial Bank | Crawford | $464M | 41.2% | 3.14% |
+| Douglas National Bank | Douglas | $327M | 41.7% | 3.51% |
+| Northeast Georgia Bank | Lavonia | $651M | 42.4% | 2.59% |
+| Bank of Monticello | Monticello | $158M | 42.4% | 3.21% |
+| [Community Bank of Georgia](/bank-snapshot/57579-community-bank-of-georgia) | Baxley | $269M | 43.9% | 1.85% |
+
+Their median ratio is 40.6%, against 59.4% for the state's median bank. Their margin is only modestly wider, 4.76% against 4.50%, and fee income is the same, 0.46% of assets against 0.45%. Overhead is the difference: noninterest expense of 2.04% of average assets at the leaders and 2.78% at the median bank.
+
+:::stat
+**$2.5 million a year**
+What 74 basis points of overhead is worth on a $334 million balance sheet, the size of Georgia's median bank. That is the distance between the median bank's noninterest expense ratio and the efficiency leaders'.
+:::
+
+They do not pay their people less. Salaries and benefits per employee annualize to a median of about $110,600 at the leaders and $102,800 statewide. They need fewer people: $9.5 million of assets per full-time employee, against $6.8 million. On a $334 million bank, that is about 35 people instead of 49. Salaries and benefits take 1.14% of assets at the leaders and 1.51% at the median bank; premises and equipment take 0.15% against 0.25%. Assets per office run a median $154 million at the leaders, against $92 million.
+
+Thomasville National Bank is the extreme. It runs $2.18 billion with 167 employees and four offices: $13.1 million of assets per employee and $545 million per office. It pays about $154,000 per employee, half again the state median. Its funding costs 2.16% of earning assets, above the state median, and only 16.3% of its deposits pay no interest. It gets to 38.3% on cost, plus fee income of 1.28% of assets, nearly three times the median.
+
+Classic City Bank in Athens, established in November 2020 according to the FDIC, already runs a 39.8% ratio: $314 million, 22 employees, one office, and 47.3% of deposits in noninterest-bearing accounts.
+
+:::pullquote
+Georgia's most efficient banks pay their people more than the median bank does. They need about 14 fewer of them for every $334 million of assets.
+:::
+
+## Four Banks That Do Both
+
+Four banks make both lists: The Commercial Bank, Douglas National Bank, Northeast Georgia Bank and Bank of Monticello. All four are S corporations, and all four pair cheap funding with a lean staff. Douglas National runs $327 million from one office with 34 employees, $9.6 million of assets each, with a 5.35% margin and fee income of 1.00% of assets.
+
+The leaders are not having one good quarter. Nine of the ten efficiency leaders posted ratios below 50% at the end of 2023, the end of 2024, June 2025 and the end of 2025. All ten ROA leaders earned more than 2% at each of those marks. Size does not explain them either: both lists run from Bank of Monticello, at $158 million, to banks above $2 billion, and each list's median bank holds $395 million, not far above the state's $334 million.
+
+Two caveats, in fairness. The whole state rode a tide: Georgia's median margin widened from 4.26% at the end of 2023 to 4.50%, and median ROA rose from 1.35% to 1.56%. And wide margins can carry risk the call report shows only later. Construction loans make up 28.5% of Bank of Monticello's loan book and 26.9% of Pickens County's, against a state median of 10.4%.
+
+## What the Median Bank Can Copy
+
+A median bank cannot easily change its tax status, and it cannot buy a deposit base built in Lincolnton since 1911. But the two operating levers the leaders pull, more accounts that pay nothing and fewer staff hours per dollar of assets, are set in the same two places: account opening and loan intake.
+
+On the deposit side, a checking account opened online, verified and funded in one sitting, is how a bank wins the noninterest-bearing balance before a competitor does. On the lending side, every hour a lender spends chasing a pay stub, calling an employer or re-keying a bank statement is overhead that grows with volume. Verification-first intake, with income, assets and identity confirmed from source data at application, lets the same team handle more loans. Clean files get a decision in minutes instead of weeks, and every check leaves an audit trail an examiner can follow.
+
+Georgia's leaders earn 2.75% on assets, against 1.56% for the median bank. Taxes set the order of the list. Deposits and staffing set the gap, and those can be redesigned.
+`,
+  },
   'south-carolina-most-efficient-banks-q2-2026': {
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:
