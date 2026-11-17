@@ -104,6 +104,96 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'community-first-51-million-georgia-bank': {
+    title: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    description:
+      "Community First Credit Union paid about $51 million, roughly 1.7 times equity, for a Georgia bank chartered in 1907. FDIC data shows 53% of First Southern's deposits sat in Florida, a third paid no interest and 69% of its loans were business credit.",
+    publishedDate: 'November 18, 2026',
+    readTime: '6 min read',
+    content: `
+# Community First's $51 Million Georgia Bank Was Mostly Florida
+
+*Published November 18, 2026*
+
+On October 2, Community First Credit Union of Florida closed its purchase of First Southern Bank. On paper it is a familiar Southeast story: a $3.2 billion Jacksonville credit union paying about $51 million in cash for a Georgia bank chartered in 1907 as The Patterson Bank and based in Waycross since 2019.
+
+The FDIC's branch data tells a different one. In the June 2025 Summary of Deposits, the last survey before the deal, First Southern held $300.3 million across six offices. Three were in Florida, in Sebring, Bradenton and Stuart, and they held $160.2 million of it. The bank's largest office wasn't its Waycross headquarters. It was Sebring.
+
+:::stat
+**53%**
+The share of First Southern Bank's deposits held in its three Florida branches at June 30, 2025. The Waycross headquarters held 21%. A Florida credit union bought a Georgia charter with a Florida deposit base.
+:::
+
+## Where the Deposits Were
+
+| Office | County | Deposits, June 2025 |
+|---|---|---|
+| Sebring, FL | Highlands | $82.7M |
+| Bradenton, FL | Manatee | $64.3M |
+| Waycross, GA (HQ) | Ware | $63.0M |
+| Patterson, GA | Pierce | $40.6M |
+| Jesup, GA | Wayne | $36.4M |
+| Stuart, FL | Martin | $13.2M |
+
+A seventh office, in Blackshear, opened after that survey. The Florida branches make more sense once you see the ownership: First Southern's holding company, FSBH Corp., is based in Bradenton.
+
+The Georgia half is a slow-growth franchise. Ware County had 36,222 residents in 2024, nine fewer than in 2020, by Census estimates. First Southern held 6.3% of Ware County's deposits, 8.4% of Wayne County's and 13.0% of Pierce County's. The leader in all three is [PrimeSouth Bank](/bank-snapshot/5694-primesouth-bank), a $1.6 billion Blackshear bank with 71.7% of Pierce County's deposits on its own. Manatee County, home of the Bradenton branch, added 13,895 residents in 2024 alone.
+
+Community First's charter followed the bank. At the November 2025 announcement, the credit union described its field of membership as anyone who lives or works on the First Coast. Its membership page now lists 19 Florida counties, Highlands, Manatee and Martin among them, plus eight Georgia counties, including Ware, Pierce and Wayne. Its June 30, 2026 call report counted 194,282 members against 10.08 million potential members: 1.9% penetration.
+
+## What $51 Million Bought
+
+FSBH stockholders received $17.14 a share in cash, about $51 million, according to the Jacksonville Daily Record. The thinly traded stock had last changed hands at $10 before the announcement. The price works out to roughly 1.7 times First Southern Bank's $30.2 million in equity at September 30, 2025, the last call report before the deal.
+
+What that bought, as of June 30, 2026: $347.2 million in assets, $312.9 million in deposits, $226.5 million in loans and 60 employees, earning a 0.94% return on assets at a 72.9% [efficiency ratio](/glossary/efficiency-ratio). A respectable small bank, not a spectacular one.
+
+The prize was the funding. $103.2 million of First Southern's deposits, 33.0%, paid no interest at all. Its interest expense annualized to about 1.2% of deposits in the first half of 2026. Community First's annualized to about 1.8% of its $2.80 billion in shares and deposits, where certificates make up 33.8% of the base and share drafts 20.9%. [Robins Financial](/blog/robins-financial-20-million-rebate), the cheapest funder in this series, runs 30.9% in share drafts.
+
+:::pullquote
+A third of First Southern's deposits paid nothing. A credit union can't build that kind of funding with a certificate special. It has to buy it.
+:::
+
+The loan books are near opposites. About $157 million of First Southern's $226.5 million, 69%, was business and commercial property lending: $84.2 million in nonfarm nonresidential real estate, $32.1 million in construction, $23.5 million in commercial and industrial loans, plus farmland, farm and multifamily credit. The whole book yielded about 7.0% annualized.
+
+Community First's $2.38 billion book is a consumer franchise: $958.6 million in vehicle loans, $712.4 million of them made indirectly through dealers, and $736.4 million in first mortgages, yielding about 5.8%. Commercial loans totaled $240.3 million, 10.1% of the book. Loans to members for commercial and industrial purposes came to $3.2 million, across 53 loans.
+
+## The Capital Math
+
+A bank buying a bank can pay in stock. A credit union has none to issue. Community First paid cash, and none of First Southern's $32.7 million in equity crosses over as credit union net worth. The purchase adds assets, not retained earnings.
+
+At June 30, Community First carried $393.8 million in net worth, a 12.26% ratio, comfortably above the 7% well-capitalized line. The $51 million price equals 13% of that cushion. Add First Southern's $347.2 million balance sheet, subtract the cash paid, and on June 30 figures the ratio falls to roughly 11.2% before any new earnings. Still well capitalized. Still a real step down.
+
+Earnings rebuild it slowly. First-half net income was $14.1 million, an annualized return on assets of about 0.88%, held back by $12.6 million in credit loss expense in six months.
+
+Then there is the rule that should have made this deal awkward. Federal rules cap a credit union's member business lending at the lesser of 1.75 times its net worth or 1.75 times the 7% net worth it needs to be well capitalized: 12.25% of assets. Community First's net member business loan balance was $222.4 million at June 30, 6.9% of assets. Count every business and property loan First Southern carried and the combined book reaches about $379 million, roughly 10.8% of a balance sheet near $3.5 billion. On that math, the cap would leave about $50 million of room.
+
+It doesn't apply. The same regulation exempts credit unions with a low-income designation, and NCUA's records list Community First as one.
+
+:::pullquote
+On June 30 math, the business lending cap would leave Community First about $50 million of room to run a business bank. Its low-income designation means the cap doesn't bind at all.
+:::
+
+## Two Systems Until Summer
+
+For now First Southern runs on its own rails. Its customers keep their account numbers, logins and debit cards, at a separate site branded "First Southern Powered by Community First," with online banking on a different host from the credit union's. They cannot transact at Community First branches until the systems merge in "early summer 2027." Their deposits are now NCUA-insured, and each customer is asked to file a membership opt-in form by December 31.
+
+The consumer front door they will inherit is solid. Fingerprinted November 17, 2026, membership, checking, auto loans, personal loans and cards all start at apply.communityfirstfl.org, a first-party subdomain. Mortgages and home equity start at borrower-portal.communityfirstfl.org, which promises an application in 10 minutes.
+
+The business door is thinner, and it is the one First Southern's best customers will need. Business checking can't be opened online: the options are a branch, a phone call or an inquiry form. Business lines and equipment loans apply on a third-party domain. Commercial real estate, the largest category in the book Community First just bought, has no online application at all. And the business banking FAQ's county list still omits Highlands, Manatee and every Georgia county: the markets the acquisition added.
+
+## What Was Actually for Sale
+
+Bank trade groups oppose these deals on tax grounds. When this one was announced, ICBA President Rebeca Romero Rainey called for policymakers to address "the harmful impact these deals have on local communities." [Palmetto Citizens](/blog/palmetto-citizens-90-year-wait), by comparison, closed on four Georgia bank branches with about $20 million in loans this August. Community First bought a whole bank, and a business bank at that.
+
+One caveat, in fairness: First Southern was not cheap to run at a 72.9% efficiency ratio, and the credit union says every First Southern employee is staying, so this deal was not bought for cost savings.
+
+The lesson for a community bank is in what Community First paid for. Not branch count; it already had 28. It paid about 1.7 times equity for a deposit base where a third of balances cost nothing, and for a business book a consumer lender would have needed years to build on its own. Those are the two things community banks still do best, and they are the two things the buyer's digital front door is least built to carry.
+
+Relationships like that transfer only when a business owner can open, verify and borrow without starting over: identity and beneficial ownership verified at intake, financials pulled from source instead of re-keyed, a decision in days instead of a branch appointment, and an audit trail an examiner can follow. A bank that already offers that holds the asset a credit union just paid a premium to buy.
+
+Community First paid 1.7 times equity for a bank whose best customers are businesses. By summer 2027, those businesses decide whether it was a bargain.
+    `,
+  },
   'south-carolina-most-efficient-banks-q2-2026': {
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:
