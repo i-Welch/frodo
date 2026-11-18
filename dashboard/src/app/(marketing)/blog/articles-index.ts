@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'digital-lending-audit-banks-credit-unions',
+    title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
+    description:
+      'We audited the digital lending journeys of 32 Southeast banks and credit unions. All 26 servicing apps we checked work, but only 25 of 180 new-customer steps passed. None of the 27 banks takes a business loan application online; 18 of 21 take no HELOC application online.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'south-carolina-most-efficient-banks-q2-2026',
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:
