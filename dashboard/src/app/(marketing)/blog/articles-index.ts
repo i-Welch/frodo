@@ -20,6 +20,11 @@ export const articles: Article[] = [
     title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
     description:
       "Georgia's ten most profitable community banks earned a median 2.75% ROA in the first half of 2026, against 1.56% statewide. Eight are S corporations that report little or no income tax. The rest of the edge is cheap deposits: funding costs of 0.95% vs. 1.58%.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'digital-lending-audit-banks-credit-unions',
     title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
     description:
