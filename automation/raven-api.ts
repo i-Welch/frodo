@@ -3,6 +3,9 @@
 // Credentials live outside the repo in %USERPROFILE%\.raven\automation.env:
 //   RAVEN_AUTOMATION_SECRET=...           (matches the Vercel env var)
 //   RAVEN_SITE=https://reportraven.tech   (optional)
+//   RAVEN_FIREWALL_BYPASS=...             (matches the "Allow RAVEN automation" Vercel
+//                                          firewall rule; without it Bot Protection
+//                                          answers every request with a 429 challenge)
 
 import { existsSync, readFileSync } from 'node:fs';
 import { homedir } from 'node:os';
@@ -26,6 +29,12 @@ export function siteUrl(): string {
   return (loadEnv()?.RAVEN_SITE ?? 'https://reportraven.tech').replace(/\/$/, '');
 }
 
+/** Headers for every request to the site, so Vercel Bot Protection lets the automation through. */
+export function siteHeaders(): Record<string, string> {
+  const token = loadEnv()?.RAVEN_FIREWALL_BYPASS;
+  return token ? { 'x-raven-automation': token } : {};
+}
+
 export function ravenApiReady(): boolean {
   return loadEnv() !== null;
 }
@@ -36,7 +45,11 @@ export async function ravenApi<T>(path: string, init: RequestInit = {}): Promise
   if (!env) throw new Error(`missing ${ENV_FILE} (RAVEN_AUTOMATION_SECRET)`);
   const res = await fetch(`${siteUrl()}/api/v1/admin${path}`, {
     ...init,
-    headers: { Authorization: `Bearer ${env.RAVEN_AUTOMATION_SECRET}`, 'Content-Type': 'application/json' },
+    headers: {
+      ...siteHeaders(),
+      Authorization: `Bearer ${env.RAVEN_AUTOMATION_SECRET}`,
+      'Content-Type': 'application/json',
+    },
   });
   if (!res.ok) throw new Error(`admin${path} ${res.status}: ${await res.text()}`);
   return res.json() as Promise<T>;
