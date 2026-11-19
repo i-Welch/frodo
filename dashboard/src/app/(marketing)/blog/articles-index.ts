@@ -24,6 +24,8 @@ export const articles: Article[] = [
     date: 'November 2026',
     category: 'creditunion',
     auditSlug: 'community-first-credit-union-of-florida',
+  },
+  {
     slug: 'digital-lending-audit-banks-credit-unions',
     title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
     description:
