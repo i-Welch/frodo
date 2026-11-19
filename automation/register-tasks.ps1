@@ -17,8 +17,12 @@ function Initialize-Clone([string]$Name) {
     return $path
 }
 
+# bun install runs on every update (a no-op in about a second when nothing changed)
+# so a clone missing node_modules, or a dependency added on master, repairs itself
+# instead of every run crashing at import.
 function Get-UpdateCommand([string]$Clone) {
-    "git -C '$Clone' fetch -q origin master; git -C '$Clone' checkout -q -f master; git -C '$Clone' reset -q --hard origin/master"
+    "git -C '$Clone' fetch -q origin master; git -C '$Clone' checkout -q -f master; git -C '$Clone' reset -q --hard origin/master; " +
+    "bun install --silent --cwd '$Clone\dashboard'"
 }
 
 $ArticleClone = Initialize-Clone 'frodo-automation'
