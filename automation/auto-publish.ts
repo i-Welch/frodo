@@ -27,7 +27,7 @@
 import { execFileSync, spawn } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { homedir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { browserReady, composeBrowserText, postViaBrowser } from './linkedin-browser';
 import { altText, loadAbLog, pickVariant, recordVariant, renderGraphic, type GraphicVariant } from './graphics';
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
@@ -36,6 +36,7 @@ import { alertFounder } from './alert';
 import { postingSlotOpen, publishWindowOpen } from './publish-schedule';
 import { ravenApi, siteHeaders } from './raven-api';
 import { fetchPageVisits, hotAccounts } from './warm-accounts';
+import { keepBothInsertions } from './merge-lists';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
 const REPO = resolve(import.meta.dir, '..');
@@ -89,19 +90,44 @@ function checksFailed(pr: PullRequest): boolean {
 }
 
 // Scheduled PRs that overlap (an article and a draft release, say) conflict on
-// the lists they both insert into. Merge master into the branch with the union
-// driver from .gitattributes and push; CI reruns and gates the result. Returns
-// false when a conflict remains that union cannot settle.
+// the lists they both insert into. Merge master into the branch, keep both
+// sides of each "both inserted here" conflict (merge-lists.ts), typecheck, and
+// push; CI reruns and gates the result. Returns false when a conflict changed
+// existing lines or the result does not typecheck.
 function resolveConflicts(pr: PullRequest): boolean {
-  const git = (...args: string[]) => run('git', ['-c', 'user.name=RAVEN automation', '-c', 'user.email=isaac@reportraven.tech', ...args]);
+  const git = (...args: string[]) =>
+    run('git', ['-c', 'user.name=RAVEN automation', '-c', 'user.email=isaac@reportraven.tech', '-c', 'merge.conflictStyle=diff3', '-c', 'rerere.enabled=false', ...args]);
   try {
+    // Branches opened before .gitattributes dropped merge=union still carry it,
+    // and a merge reads attributes from the branch it merges into.
+    // info/attributes outranks .gitattributes, so force the text driver there.
+    const attributes = resolve(REPO, git('rev-parse', '--git-path', 'info/attributes'));
+    mkdirSync(dirname(attributes), { recursive: true });
+    writeFileSync(attributes, '* merge=text\n');
     git('fetch', '-q', 'origin', 'master', pr.headRefName);
     git('checkout', '-q', '-B', 'auto-resolve', `origin/${pr.headRefName}`);
     try {
       git('merge', '--no-edit', 'origin/master');
     } catch {
-      git('merge', '--abort');
-      return false;
+      const conflicted = git('diff', '--name-only', '-z', '--diff-filter=U').split('\0').filter(Boolean);
+      const resolved = conflicted.length > 0 && conflicted.every((file) => {
+        const text = keepBothInsertions(readFileSync(join(REPO, file), 'utf8'));
+        if (text === null) return false;
+        writeFileSync(join(REPO, file), text);
+        git('add', '--', file);
+        return true;
+      });
+      if (!resolved) {
+        git('merge', '--abort');
+        return false;
+      }
+      git('commit', '-q', '--no-edit');
+      try {
+        execFileSync('bun', ['run', 'typecheck'], { cwd: join(REPO, 'dashboard'), stdio: 'ignore' });
+      } catch {
+        log(`#${pr.number}: merged master in but the result does not typecheck; not pushing`);
+        return false;
+      }
     }
     git('push', '-q', 'origin', `HEAD:${pr.headRefName}`);
     return true;
