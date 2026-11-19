@@ -725,6 +725,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     relatedArticles: [
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
       { slug: 'income-verification-fintech-vs-bank', title: 'The $70 Phone Call: How Fintechs Are Killing the Income Verification Tax' },
+      { slug: 'digital-lending-audit-banks-credit-unions', title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online' },
     ],
     relatedSolution: { slug: 'automated-income-verification', label: 'Automated income verification' },
   },

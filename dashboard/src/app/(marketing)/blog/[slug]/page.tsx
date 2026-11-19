@@ -186,6 +186,105 @@ For community banks, the lesson runs opposite to the usual one. Most institution
 Addition Financial merged its way to 262,040 members and $3.41 billion in shares. The next two years will show whether it can lend them.
 `,
   },
+  'digital-lending-audit-banks-credit-unions': {
+    title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
+    description:
+      'We audited the digital lending journeys of 32 Southeast banks and credit unions. All 26 servicing apps we checked work, but only 25 of 180 new-customer steps passed. None of the 27 banks takes a business loan application online; 18 of 21 take no HELOC application online.',
+    publishedDate: 'November 19, 2026',
+    readTime: '6 min read',
+    content: `
+# Digital Lending Audit: None of 27 Banks Takes Business Loans Online
+
+*Published November 19, 2026*
+
+Every bank and credit union whose online banking we checked, 26 of 26, gives its existing customers a working app. Balances, transfers, mobile deposit, bill pay. That part is solved.
+
+The front door is not. We graded 180 steps a new borrower or depositor would take at 32 Southeast banks and credit unions, from the mortgage page to the checking account application. Twenty-five passed. Ninety-six led to no online application at all: a phone number, an email address, a branch locator or a contact form.
+
+And not one of the 27 banks takes a business loan application online.
+
+## The Audit
+
+Since the summer we have published a digital lending audit for each bank and credit union we cover in depth. Each one is a channel-by-channel record of what a new customer finds on the institution's public website, taken from the live pages and dated. Every step gets one of three grades:
+
+- **Ok:** a working online path on the institution's own brand.
+- **Weak:** a path exists, but it hands the applicant to a third-party domain, stops at a lead form, or collects data with nothing verified.
+- **Missing:** no online path. Call, email or visit.
+
+The current records cover 27 banks and 5 credit unions, fingerprinted in October 2026. The banks range from $679 million to $33.6 billion in assets at June 30, 2026. Fifteen are in South Carolina, four in Georgia, and the rest in North Carolina, Florida, Virginia, Tennessee and Mississippi. The credit unions are in South Carolina, Georgia and Florida. Two banks we audited have since merged away, Beacon Community Bank on October 1 and First Reliance Bank on November 1, and are left out. On November 18 we re-checked six of the banks' sites against their records. The routing held at all six.
+
+Here is how the 32 institutions grade, channel by channel, on their best path in each:
+
+| Channel | Checked | Ok | Weak | Missing |
+|---|---|---|---|---|
+| Existing-customer banking | 26 | 26 | 0 | 0 |
+| Mortgage | 32 | 8 | 19 | 5 |
+| Deposit account opening | 26 | 10 | 13 | 3 |
+| Auto loans | 24 | 3 | 8 | 13 |
+| Personal loans | 23 | 3 | 6 | 14 |
+| Home equity | 21 | 1 | 2 | 18 |
+| Business lending | 32 | 0 | 4 | 28 |
+
+The pattern is plain. The more a product depends on a new relationship, the less of it is online.
+
+## Not One Business Loan Application
+
+Business lending is where community banks say they win: local decisions, a banker who knows the market. It is also where the online front door is gone.
+
+Twenty-five of the 27 banks have no online path of any kind for business credit. The two graded weak barely count. One offers a contact form on its business loan page. The other sends small business borrowers to a registration page run by a different lender. The pages list equipment loans, lines of credit, SBA loans and commercial real estate, and the first step for every one of them is a phone call, an email, a contact form or a branch visit.
+
+The substitutes are telling. [Coastal States Bank](/bank-snapshot/57756-coastal-states-bank) on Hilton Head Island markets a 48-hour small business loan, but in October its front end was an on-page inquiry form asking for revenue, loan amount and purpose, followed by a banker conversation. At another bank, "Submit a loan inquiry" opens a generic Microsoft Forms page.
+
+The credit unions do only slightly better. Two of the five, REV Federal Credit Union and Champions First, take business loan applications online, both on third-party domains. Palmetto Citizens, a CDFI-certified lender, takes no online application for SBA 7(a) loans, its flagship small business product.
+
+:::stat
+**0 of 27**
+Banks in the audit that take a business loan application online, from a $679 million thrift to a $33.6 billion regional. Two of five credit unions do, both through third-party portals.
+:::
+
+Nobody expects a $5 million construction loan to start with a web form. But a $50,000 equipment loan or a working capital line is a different sale, and the business owner shopping for one at 9 p.m. finds nowhere at these banks to start.
+
+## Mortgage: Online, but Somewhere Else
+
+Mortgage is the most digital channel in the audit. Twenty-seven of the 32 institutions take an application online. But 19 of those 27 grade weak, mostly because the application lives on someone else's domain.
+
+Fourteen of the 32 send mortgage applicants to a subdomain of mymortgage-online.com, the borrower portal for ICE Mortgage Technology's Encompass [loan origination system](/glossary/loan-origination-system). The applicant leaves the bank's domain at the moment they hand over a Social Security number. At five institutions the application starts from a loan officer's profile: pick a person first, then apply.
+
+The deeper problem is that each product line tends to have its own vendor. On November 18, [Colony Bank's](/bank-snapshot/22257-colony-bank) site sent a mortgage applicant to colonybank.mymortgage-online.com or mortgage.colonybank.com, a car buyer to colonybank.loanwebcenter.com, and a new depositor to apply.colony.bank. That is four web addresses for one bank. Colony now also serves the customers of [First Reliance](/blog/first-reliance-sells-at-the-top), which it absorbed on November 1 and whose own site ran three separate application portals in October. [Wilson Bank and Trust](/bank-snapshot/26962-wilson-bank-and-trust) in Lebanon, Tennessee, runs four as well: one portal for mortgages, a second for home equity lines, a third for vehicle loans and a fourth for account opening.
+
+:::pullquote
+The more a product depends on a new relationship, the less of it is online.
+:::
+
+## Where Credit Unions Pull Ahead
+
+Consumer lending is the clearest split between the two charters.
+
+Among the banks, none of the 20 with an auto loan page and none of the 19 with a personal loan page offers an on-brand online application. Thirteen and fourteen, respectively, offer no online path at all. Home equity is worse: 18 of the 21 banks that market a HELOC take no application online. [Southern Bank and Trust](/bank-snapshot/15359-southern-bank-and-trust-company) in Mount Olive, North Carolina, is the one exception graded ok, with an "Apply in Minutes" button on its HELOC page.
+
+Three of the five credit unions run on-brand consumer loan applications on their own subdomains. Palmetto Citizens uses applynow.palmettocitizens.org. Founders uses apply.foundersfcu.com. REV keeps auto and personal loans on join.revfcu.com. Across all channels, 12 of the credit unions' 31 new-member steps grade ok, or 39%. The banks' figure is 13 of 149, or 9%.
+
+:::stat
+**39% vs. 9%**
+Share of new-customer steps graded ok at the five credit unions and the 27 banks in the audit. The credit unions also have fewer steps that lead nowhere: 26% missing, against 59% at the banks.
+:::
+
+Two caveats, in fairness. Five credit unions is a small sample, and consumer lending is the core of the credit union model, so they have more reason to build it. And this audit sees only the public website. A bank can close loans quickly through a lender's inbox, and some of the least digital banks here are among the most efficient in their state. Five of them made our list of [South Carolina's ten most efficient community banks](/blog/south-carolina-most-efficient-banks-q2-2026). Relationship banking works. What the audit measures is how a stranger becomes a relationship.
+
+## What a Complete Front Door Looks Like
+
+One finding cuts across every institution. None of the 32 records documents a loan application that confirms income or assets from source data while the applicant is filling it in. Where the loan form itself was visible, it collected what the borrower typed, and verification came afterward: a rep calling back within one business day, documents chased after submission.
+
+:::pullquote
+Every institution we checked built a good door for the customers it already has. The next customer comes in through the other one.
+:::
+
+The fix does not require a new core or a new charter. These institutions already buy and run modern software: every servicing app we checked works. What is missing is the same quality on the way in. That means one application on the institution's own domain for consumer, mortgage and small business credit, so a borrower never meets four vendors. It means verification-first intake, with identity, income, assets and the funding account confirmed from source data at the moment of application. It means a small business owner can start at night and get a decision in minutes instead of weeks on a clean file, with every check leaving an audit trail an examiner can follow.
+
+Twenty-six of 26 institutions passed on the customers they have. On the ones they want, the passing grade was 25 of 180.
+`,
+  },
+
   'south-carolina-most-efficient-banks-q2-2026': {
     title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently",
     description:
