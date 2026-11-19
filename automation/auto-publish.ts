@@ -34,7 +34,7 @@ import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, 
 import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
 import { postingSlotOpen, publishWindowOpen } from './publish-schedule';
-import { ravenApi } from './raven-api';
+import { ravenApi, siteHeaders } from './raven-api';
 import { fetchPageVisits, hotAccounts } from './warm-accounts';
 import { getAudit } from '../dashboard/src/app/(whitelabel)/_config/audit-data';
 
@@ -247,7 +247,7 @@ export function toLittleText(text: string): string {
 
 async function isLive(url: string): Promise<boolean> {
   try {
-    const res = await fetch(url, { method: 'GET', redirect: 'follow' });
+    const res = await fetch(url, { method: 'GET', redirect: 'follow', headers: siteHeaders() });
     return res.status === 200;
   } catch {
     return false;
@@ -424,7 +424,7 @@ async function pingNewArticles() {
 // Any sitemap URL that is new or has a new lastmod (tracker updates, released
 // drafts, glossary and solution edits) gets pinged once it is live.
 async function pingSitemapChanges() {
-  const res = await fetch(`${siteUrl()}/sitemap.xml`, { signal: AbortSignal.timeout(15_000) });
+  const res = await fetch(`${siteUrl()}/sitemap.xml`, { headers: siteHeaders(), signal: AbortSignal.timeout(15_000) });
   if (!res.ok) throw new Error(`sitemap ${res.status}`);
   const first = !existsSync(SITEMAP_STATE);
   const seen: Record<string, string> = first ? {} : JSON.parse(readFileSync(SITEMAP_STATE, 'utf8'));
