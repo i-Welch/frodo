@@ -18,6 +18,7 @@ export const BLOG_SLUGS = [
   // — Institutional research (Nov 2026) —
   'digital-lending-audit-banks-credit-unions',
   // — Market (Nov 2026) —
+  'georgia-most-efficient-banks-q2-2026',
   'south-carolina-most-efficient-banks-q2-2026',
   // — Macro commentary (Oct 2026) —
   'fed-rate-hike-community-bank-deposits',
@@ -119,6 +120,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'georgia-most-efficient-banks-q2-2026': '2026-11-20',
   'digital-lending-audit-banks-credit-unions': '2026-11-19',
   'south-carolina-most-efficient-banks-q2-2026': '2026-11-06',
   'private-bank-trust-gainesville-de-novo': '2026-10-29',

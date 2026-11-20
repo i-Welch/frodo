@@ -104,6 +104,102 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'georgia-most-efficient-banks-q2-2026': {
+    title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently",
+    description:
+      "Georgia's ten most efficient community banks spent a median 40.6 cents to earn a revenue dollar in the first half of 2026; the median bank spent 59.4. They pay staff more, about $111K a head vs. $103K, but run $9.5M of assets per employee vs. $6.8M and far bigger offices.",
+    publishedDate: 'November 20, 2026',
+    readTime: '6 min read',
+    content: `
+# Q2 2026: What Georgia's Most Efficient Banks Do Differently
+
+*Published November 20, 2026*
+
+The median bank headquartered in Georgia spent 59.4 cents to earn a dollar of revenue in the first half of 2026. The state's ten most efficient community banks spent a median 40.6 cents.
+
+That gap of nearly 19 points is wider than the 12 we found in [South Carolina](/blog/south-carolina-most-efficient-banks-q2-2026). And Georgia's leaders do not close it by paying their people less. They pay them more.
+
+The figures come from the June 30, 2026 FDIC call reports behind our [Georgia bank rankings](/bank-rankings/georgia): 122 banks holding $102.90 billion in assets. The top-ten lists cover the 104 FDIC-designated community banks with at least $100 million in assets. June 30 is still the latest quarter in the FDIC's BankFind data; third-quarter reports were due October 30 and had not posted as of November 19.
+
+## The Leaders
+
+Here are the ten lowest [efficiency ratios](/glossary/efficiency-ratio) among Georgia's community banks, with year-to-date return on assets, annualized.
+
+| Bank | City | Assets | Efficiency | ROA |
+|---|---|---|---|---|
+| [Community Bank of Pickens County](/bank-snapshot/35513-community-bank-of-pickens-county) | Jasper | $629M | 38.1% | 2.35% |
+| [Thomasville National Bank](/bank-snapshot/34068-thomasville-national-bank) | Thomasville | $2.18B | 38.3% | 2.40% |
+| [Citizens Bank of Georgia](/bank-snapshot/34229-the-citizens-bank-of-georgia) | Cumming | $599M | 38.7% | 1.86% |
+| [Classic City Bank](/bank-snapshot/59219-classic-city-bank) | Athens | $314M | 39.8% | 2.11% |
+| [Farmers and Merchants](/bank-snapshot/16440-farmers-and-merchants-bank) | Sylvania | $171M | 40.0% | 2.05% |
+| [The Commercial Bank](/bank-snapshot/175-the-commercial-bank) | Crawford | $464M | 41.2% | 3.14% |
+| [Douglas National Bank](/bank-snapshot/57230-douglas-national-bank) | Douglas | $327M | 41.7% | 3.51% |
+| [Northeast Georgia Bank](/bank-snapshot/15771-northeast-georgia-bank) | Lavonia | $651M | 42.4% | 2.59% |
+| [Bank of Monticello](/bank-snapshot/2145-bank-of-monticello) | Monticello | $158M | 42.4% | 3.21% |
+| [Community Bank of Georgia](/bank-snapshot/57579-community-bank-of-georgia) | Baxley | $269M | 43.9% | 1.85% |
+
+The leaders' median ROA is 2.38%. The state's median bank earns 1.56%. [Durden Banking Company](/bank-snapshot/15336-durden-banking-company-incorporated) in Twin City missed the list by two thousandths of a point, with a 3.60% ROA, the highest among Georgia's community banks with at least $100 million in assets.
+
+This list needs no asterisk. None of the ten is riding a single quarter: all ten posted efficiency ratios of 50.3% or lower at the end of 2023, the end of 2024 and June 2025. The state's median bank ran 58.2% in June 2025.
+
+## Paying More, Needing Fewer
+
+Margins help a little. The leaders' median [net interest margin](/glossary/net-interest-margin) is 4.76%, against 4.50% for the state's median bank. Fee income is a wash: 0.46% of average assets against 0.45%.
+
+Overhead is where they separate. Noninterest expense runs a median 2.04% of average assets at the ten leaders and 2.78% at the median Georgia bank.
+
+:::stat
+**$2.5 million a year**
+What 74 basis points of overhead is worth on a $334 million balance sheet, the size of Georgia's median bank. That is the distance between the median bank's noninterest expense ratio and the leaders'.
+:::
+
+The difference is not thrift on wages. Salaries and benefits per employee annualize to a median of about $111,000 at the leaders and $103,000 statewide. The leaders spend more on each person and less on people overall, because each person carries more of the balance sheet: a median $9.5 million of assets per full-time employee, against $6.8 million. Salaries and benefits take 1.14% of assets at the leaders and 1.51% at the median bank.
+
+On a $334 million bank, $6.8 million per employee is about 49 people. At $9.5 million it is about 35.
+
+:::pullquote
+Georgia's leaders do not pay their people less. They pay them more, and need nearly 30% fewer of them per dollar of assets.
+:::
+
+## Fewer Offices, Bigger Ones
+
+The leaders also run fewer, larger offices. The median leader has 2.5 offices to the state's 3, and $154 million of assets per office against $92 million. Premises and equipment cost them 0.15% of assets, against 0.25%.
+
+Thomasville National Bank is the extreme. It runs $2.18 billion from four offices with 167 employees: $545 million per office and $13.1 million of assets per employee. It pays about $154,000 per employee annualized, half again the state median. It also has a fee business most banks lack: $12.0 million of fiduciary income in the first half, most of its $13.5 million of noninterest income.
+
+Classic City Bank in Athens shows the model can be built from scratch. The FDIC dates its establishment to November 2020. It now runs $314 million from one office with 22 employees, $14.3 million of assets per head, the most among the leaders, and pays them about $158,000 each. Gainesville's [Private Bank & Trust](/blog/private-bank-trust-gainesville-de-novo) opened September 28; Classic City shows how far a staffing model set on day one can carry a young bank.
+
+At the other end of the age range, Bank of Monticello, which the FDIC dates to 1909, runs $158 million from a single office with 22 employees and a 5.68% margin.
+
+## Funding Helps, Less Than in South Carolina
+
+Funding costs help too. Interest expense runs 1.17% of earning assets at the leaders and 1.58% statewide.
+
+In South Carolina, much of the leaders' edge came from deposits that pay nothing: 27.1% of their deposits, against 21.7% at the median bank. In Georgia that gap nearly disappears. At the median leader, 27.8% of domestic deposits pay no interest; at the median Georgia bank, 25.3%.
+
+Nor are Georgia's leaders lean because they lend less. Their median loan-to-deposit ratio is 79.4%, against 77.9% statewide. In South Carolina, two of the leaders lent out barely a third of their deposits.
+
+Some leaders do lean on cheap deposits. The Citizens Bank of Georgia in Cumming holds 39.4% of its deposits in noninterest-bearing accounts, and its noninterest expense, 1.60% of assets, is the lowest of the ten. Classic City holds 47.3% and pays 0.87% of earning assets for funding. Thomasville goes the other way: 16.3% noninterest-bearing, funding at 2.16% of earning assets, a 97.2% loan-to-deposit ratio, and still the second-lowest efficiency ratio on the list.
+
+## Size, Taxes and Other Fine Print
+
+Size is not the explanation. The leaders range from $158 million to $2.18 billion in assets, and the median leader holds $395 million, not far above the state's $334 million. Lean has not meant loose, either: noncurrent loans are a median 0.19% of loans at the leaders and 0.38% statewide.
+
+:::pullquote
+All ten of Georgia's leaders ran at 50.3% or better at every mark we checked since 2023. That is an operating model, not a good quarter.
+:::
+
+Two caveats, in fairness. First, the ROA comparison flatters some banks. Thirty-three of Georgia's 122 banks, and four of the ten leaders, are Subchapter S corporations, which pass income taxes through to shareholders, so their after-tax returns look higher than a taxable bank's. On a pre-tax basis the gap holds: 2.93% for the median leader, 1.88% for the median bank. Efficiency ratios are calculated before taxes and are unaffected. Second, Thomasville's fee income, 1.28% of average assets, is nearly three times the state median, and a trust department is not something a median bank can add in a year.
+
+## What the Median Bank Can Copy
+
+A median bank cannot copy a wealth business built over decades in Thomasville, or close branches its customers still use. But the lever Georgia's leaders pull hardest, more balance sheet per employee, is set mostly by how much of the daily work needs a person at all.
+
+Every hour a lender spends chasing a pay stub, calling an employer or re-keying a bank statement is overhead that grows with volume. Verification-first intake, with income, assets and identity confirmed from source data at application, lets the same team carry more loans. Clean files get a decision in minutes instead of weeks, and every check leaves an audit trail an examiner can follow. That is how a bank pays its people well and still needs fewer of them. On the deposit side, a checking account opened online, verified and funded in one sitting is a branch visit that never had to happen.
+
+Georgia's leaders spend 40.6 cents to earn a dollar, and pay their staff more to do it. The 18.8 cents between them and the median bank is not wages. It is work.
+`,
+  },
   'digital-lending-audit-banks-credit-unions': {
     title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
     description:
