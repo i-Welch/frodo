@@ -5,5 +5,6 @@
 | 2026-10-29 | 8 De Novo Watch | private-bank-trust-gainesville-de-novo | Private Bank & Trust, Gainesville, GA: opened Sept 28, 2026 (FDIC cert 59385) |
 | 2026-10-30 | 5 Macro news commentary | fed-rate-hike-community-bank-deposits | Fed's Sept 16 hike and Oct 28 hold (10-2, two dissents for a hike) vs. deposit rates and Southeast community bank interest expense |
 | 2026-11-06 | 7 State of the market | south-carolina-most-efficient-banks-q2-2026 | State rankings read: South Carolina, Q2 2026 (June 30, 2026 FDIC call reports, 43 banks) |
+| 2026-11-13 | 7 State of the market | georgia-most-profitable-banks-q2-2026 | State rankings read: Georgia, Q2 2026 (June 30, 2026 FDIC call reports, 122 banks) |
 | 2026-11-20 | 7 State of the market | georgia-most-efficient-banks-q2-2026 | State rankings read: Georgia, Q2 2026 (June 30, 2026 FDIC call reports, 122 banks) |
 | 2026-11-19 | 1 Institutional research drop | digital-lending-audit-banks-credit-unions | Digital lending audit data: 32 Southeast banks and credit unions (bank-audits.json currentJourney grades, fingerprinted Oct 2026, 6 re-checked Nov 18) |
