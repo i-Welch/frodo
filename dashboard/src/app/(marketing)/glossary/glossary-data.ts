@@ -943,6 +943,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
       { slug: 'fed-rate-hike-community-bank-deposits', title: "The Fed Turned Around. Deposit Rates Didn't." },
@@ -994,6 +995,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
     relatedArticles: [
+      { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
       { slug: 'community-first-51-million-georgia-bank', title: "Community First's $51 Million Georgia Bank Was Mostly Florida" },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
