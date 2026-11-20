@@ -25,6 +25,15 @@ export const articles: Article[] = [
     category: 'bank',
   },
   {
+    slug: 'georgia-most-efficient-banks-q2-2026',
+    title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently",
+    description:
+      "Georgia's ten most efficient community banks spent a median 40.6 cents to earn a revenue dollar in the first half of 2026; the median bank spent 59.4. They pay staff more, about $111K a head vs. $103K, but run $9.5M of assets per employee vs. $6.8M and far bigger offices.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'digital-lending-audit-banks-credit-unions',
     title: 'Digital Lending Audit: None of 27 Banks Takes Business Loans Online',
     description:
