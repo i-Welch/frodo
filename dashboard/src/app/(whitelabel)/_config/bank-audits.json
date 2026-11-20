@@ -3317,6 +3317,114 @@
     "sources": "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026, rechecked October 2026); newaccount.robinsfcu.org (MANTL), cp.decisionlender.solutions, robinsfcuportal.mymortgage-online.com, and onlinebanking.robinsfcu.org (Q2, fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica, EIN 580641605; CUToday and CUInsight coverage of the December 2025 $20M member rebate; 13WMAZ 2026 State of the Base coverage; Wikipedia for the 1954 founding and 2016 charter conversion."
   },
   {
+    "slug": "addition-financial-credit-union",
+    "bankName": "Addition Financial Credit Union",
+    "shortName": "Addition Financial",
+    "auditDate": "November 2026",
+    "demoSlug": "addition-financial-credit-union",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$3.75B (Sep 2026, member-owned)"
+      },
+      {
+        "label": "Members",
+        "value": "262,040"
+      },
+      {
+        "label": "Loan-to-share ratio",
+        "value": "62.1% (Florida CUs: 85.2%)"
+      },
+      {
+        "label": "Combined loan book vs. 2 years ago",
+        "value": "-$355M (shares +$280M)"
+      }
+    ],
+    "summary": "Addition Financial absorbed Tallahassee's Envision Credit Union on October 1, 2025 and now serves 262,040 members from 36 branches in Central Florida, the Big Bend and South Georgia. Its balance sheet runs opposite to most of this series: the two institutions' combined loans fell from $2.47B to $2.12B between September 2024 and September 2026 while shares grew from $3.13B to $3.41B, leaving a 62.1% loan-to-share ratio. Much of the decline was deliberate (participation sales of $149.9M in the first nine months of 2025, a smaller indirect auto book, tighter unsecured lending as delinquency rose to 1.30%). The digital stack is mainstream: Lumin Digital online banking, MeridianLink for membership and consumer loans, a separate mortgage portal, and no online path for business loans. With funding plentiful and the dealer channel shrinking on purpose, direct-application conversion is the growth lever.",
+    "currentJourney": [
+      {
+        "channel": "Online banking",
+        "detail": "Lumin Digital platform at olb.additionfi.com (hosted on lumindigitalhosting.com), fingerprinted November 10, 2026",
+        "status": "ok"
+      },
+      {
+        "channel": "Account opening / new membership",
+        "detail": "'Open an Account' redirects to MeridianLink's app.loanspq.com, a third-party domain; $10 membership fee and $5 minimum share savings payable by card or check",
+        "status": "weak"
+      },
+      {
+        "channel": "Consumer loans (auto, personal, credit card, RV)",
+        "detail": "Every 'Join & Apply' button routes to app.loanspq.com (lenderref AdditionFinancial); the same MeridianLink handoff used for membership",
+        "status": "weak"
+      },
+      {
+        "channel": "Mortgage",
+        "detail": "Separate borrower portal on an Addition subdomain, borrower-portal.additionfi.com; vendor not identified from the page",
+        "status": "ok"
+      },
+      {
+        "channel": "Business lending",
+        "detail": "Line of credit, term, vehicle, equipment and commercial real estate pages offer 'Schedule Appointment' and a loan checklist; no online application",
+        "status": "missing"
+      },
+      {
+        "channel": "Legacy Envision markets (North Florida, South Georgia)",
+        "detail": "Branches in Tallahassee, Quincy, Marianna, Bainbridge and Thomasville listed on additionfi.com/locations under the Addition brand; same digital flows as Central Florida",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "Funding is not the constraint; direct-application conversion is",
+        "severity": "gap",
+        "body": "Addition holds $1.29B more in member shares than in loans. At the 85.2% loan-to-share ratio Florida credit unions averaged at June 30, 2026, its $3.41B in shares would support about $2.90B in loans, roughly $785M more than it holds. For an institution in that position, the number that matters is how many direct applicants become funded loans, and that is decided inside a third-party application flow."
+      },
+      {
+        "title": "The dealer channel is shrinking on purpose, so direct auto has to replace it",
+        "severity": "friction",
+        "body": "Addition's indirect book fell from $505.0M to $373.0M in the year to September 2025, and combined vehicle loans are down 26.5% in two years. That is a prudent response to rising delinquency. It also means auto growth now depends on members who apply directly and compare the experience with a dealer's instant decision. Verifying income and identity from source at application is how a direct auto loan matches that speed without the credit risk Addition just stepped away from."
+      },
+      {
+        "title": "Three loan types, three front doors",
+        "severity": "friction",
+        "body": "Membership and consumer loans hand off to MeridianLink's app.loanspq.com, mortgages run on borrower-portal.additionfi.com, and business loans start with an appointment. A member verified when joining is re-collected for a mortgage and re-interviewed for a business line. One verification layer beneath all three keeps a verified member verified across products."
+      },
+      {
+        "title": "The merger integration is already lean",
+        "severity": "note",
+        "body": "The two credit unions employed 854 people in September 2025; Addition reported 750 a year later while serving 5,139 more members. Further efficiency has to come from automating the work per file (income, identity, employment and funding-account checks), not from more consolidation."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Joining as a new member",
+        "today": "Handoff to app.loanspq.com, a third-party domain",
+        "withRaven": "Verified membership on Addition's own domain in one sitting"
+      },
+      {
+        "dimension": "Direct auto loan decision",
+        "today": "MeridianLink application on a third-party domain",
+        "withRaven": "Income and identity verified from source, decision in minutes"
+      },
+      {
+        "dimension": "Funding the new account",
+        "today": "Card, debit card or check for the $10 fee and $5 deposit",
+        "withRaven": "Funding account linked and verified in-flow"
+      },
+      {
+        "dimension": "Business loan",
+        "today": "Schedule an appointment, bring the checklist",
+        "withRaven": "Digital intake with owner identity and business account verification"
+      },
+      {
+        "dimension": "Member applying for a second product",
+        "today": "Re-enters data in a different system (consumer, mortgage, business)",
+        "withRaven": "Verified once, reused across every product"
+      }
+    ],
+    "sources": "NCUA 5300 call report quarterly data files (Sept 2024 through June 2026) for charter #68702 (Addition Financial) and #67329 (Envision Credit Union); Addition's September 30, 2026 Form 5300 via the NCUA Credit Union Locator (mapping.ncua.gov); FFIEC HMDA data browser API 2024-2025, LEI 5493001ZUNE2DKEA4702; additionfi.com (merger, locations, apply-for-a-loan, open-account, business loans, mortgages, rate pages), olb.additionfi.com (Lumin Digital), app.loanspq.com (MeridianLink), borrower-portal.additionfi.com, all fingerprinted November 10, 2026; Census Bureau Vintage 2025 county population estimates."
+  },
+  {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",

@@ -1244,6 +1244,68 @@ export const ROI_BANKS: BankRoiInput[] = [
       'FDIC BankFind cert #22858; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
+    slug: 'addition-financial-credit-union',
+    name: 'Addition Financial Credit Union',
+    shortName: 'Addition Financial',
+    articleSlug: 'addition-financial-shrinking-loan-book',
+    articleTitle: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.',
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Addition Financial is a credit union with no FDIC cert. Populated with its
+    // NCUA charter number (68702) instead until this field is generalized.
+    // See `sources`.
+    fdicCert: 68702,
+    auditDate: 'November 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.75B (Sep 2026)' },
+      { label: 'Net worth ratio', value: '9.86% (Sep 2026)' },
+      { label: 'Members', value: '262,040' },
+      { label: 'Loan-to-share ratio', value: '62.1% (Florida CUs: 85.2%)' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 587,
+        source:
+          'Reported 2025 HMDA originations (action taken = originated) for Addition Financial Credit Union, LEI 5493001ZUNE2DKEA4702, totaling $87.3M, via the FFIEC HMDA data browser API (426 denials, 153 withdrawals, 102 closed incomplete). An actual filed figure, not an estimate. 2024: 483 originations, $51.9M; Envision Credit Union (LEI 2549006RTCWYNJPDX013) reported 51 in 2024 before merging in on October 1, 2025.',
+        estimated: false,
+      },
+      commercial: {
+        count: 60,
+        source:
+          'Addition markets business lines of credit, term, vehicle, equipment and commercial real estate loans, but every business loan page offers only an appointment button and a checklist, and the credit union publishes no business origination detail. Estimate reflects a $3.75B consumer-first credit union with a small, relationship-driven business book; not an NCUA-reported figure.',
+        estimated: true,
+      },
+      consumer: {
+        count: 14200,
+        source:
+          'The September 30, 2026 NCUA call report shows 11,185 loans of all types granted in the first nine months of 2026 ($456.9M), which annualizes to about 14,900. Subtracting roughly 600 HMDA-reportable home loans (2025 pace) and the modeled business count leaves about 14,200 consumer loans (auto, signature, lines of credit, cards). Derived from the call report count, not a reported consumer figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 17300,
+      source:
+        "Addition Financial's Florida state charter is a community field of membership (anyone who lives, works, worships, attends school or is an alum of an institution in a qualifying county, per additionfi.com). No FDIC Summary of Deposits equivalent exists for credit unions, so this is sized to the counties where Addition operates branches: Orange, Seminole, Osceola, Lake, Volusia, Leon, Gadsden and Jackson (FL) and Thomas and Decatur (GA). Census Vintage 2025 county estimates show those ten counties added 43,307 residents from July 2024 to July 2025, led by Osceola (+15,842), Lake (+12,614) and Orange (+7,014). At 2.5 persons per household that is roughly 17,300 new households a year.",
+    },
+    intro:
+      "Addition Financial merged Tallahassee's Envision Credit Union in on October 1, 2025 and now serves 262,040 members from 36 branches across Central Florida, the Big Bend and South Georgia. The combined balance sheet runs the opposite way from most of this series: member shares rose 9% in two years to $3.41B while the two institutions' combined loan book fell $355M to $2.12B, leaving a 62.1% loan-to-share ratio against 85.2% for Florida credit unions. Much of that was deliberate (participation sales, a smaller indirect auto book, tighter unsecured lending as delinquency rose to 1.30%). The open question is the replacement channel: direct member lending, which today runs through a MeridianLink handoff for consumer loans and membership, a separate mortgage portal, and an appointment button for business loans.",
+    strategic: [
+      {
+        title: '$1.29 Billion More in Shares Than Loans: The Constraint Is Intake, Not Funding',
+        body: "Addition holds $3.41B in member shares and $2.12B in loans. At the 85.2% loan-to-share ratio Florida credit unions averaged at June 30, 2026, its shares would support about $2.90B in loans. Unlike most institutions in this series, it does not need deposits to grow. It needs qualified direct applications that turn into funded loans, which makes conversion inside the application flow (identity, income, and the funding account verified from source in one sitting) the variable that decides whether the liquidity earns a loan yield or an investment yield.",
+      },
+      {
+        title: 'Replacing Dealer Paper With Direct Members Requires a Faster, Safer Front Door',
+        body: "Addition's indirect book fell from $505.0M to $373.0M in the year before the merger, and combined vehicle loans are down 26.5% in two years. Pulling back on dealer paper while delinquency rises is prudent; it also means auto growth now has to come from members who apply directly, at a moment when they are comparing a dealer's instant decision. A direct auto application that verifies income and identity from source and decisions in minutes is how a credit union competes with the finance office without taking on the credit risk it just stepped away from.",
+      },
+      {
+        title: 'Three Loan Types, Three Front Doors, Two States',
+        body: "Consumer loans and new membership route to MeridianLink's app.loanspq.com, mortgages to borrower-portal.additionfi.com, and business loans to a 'Schedule Appointment' button with no online application. That was a manageable patchwork for a Central Florida credit union. It is harder to defend across 36 branches stretching from Kissimmee to Bainbridge and Thomasville, Georgia. One verification layer underneath every product means a member verified once at joining is not re-collected for a car, a home, or a business line.",
+      },
+    ],
+    sources:
+      "NCUA 5300 call report quarterly data files (call-report-data-2024-09, 2025-06, 2025-09, 2025-12, 2026-03, 2026-06 from ncua.gov) for charter #68702 (Addition Financial) and #67329 (Envision Credit Union, merged October 1, 2025): loans, loan mix, indirect loans, participations sold, shares, members, staff, branches, delinquency, net income, net worth; Florida and national aggregates from the same June 2025 and June 2026 files; Addition's September 30, 2026 Form 5300 call report via the NCUA Credit Union Locator (mapping.ncua.gov): assets $3,746,759,936, loans $2,116,754,845, shares $3,406,614,378, members 262,040, net worth ratio 9.86%, YTD net income $20.2M, loans granted YTD; FFIEC HMDA data browser API 2024-2025, LEI 5493001ZUNE2DKEA4702 (Addition) and 2549006RTCWYNJPDX013 (Envision); additionfi.com (merger, locations, apply-for-a-loan, open-account, business loans, mortgages, vehicle and personal loan rate pages, fingerprinted November 10, 2026); olb.additionfi.com (Lumin Digital), app.loanspq.com (MeridianLink), borrower-portal.additionfi.com; Census Bureau Vintage 2025 county population estimates (co-est2025-alldata). fdicCert field holds Addition Financial's NCUA charter number, not an FDIC certificate; Addition Financial is a federally insured, Florida state-chartered credit union with no FDIC cert.",
+  },
+  {
     slug: 'robins-financial-credit-union',
     name: 'Robins Financial Credit Union',
     shortName: 'Robins Financial',
