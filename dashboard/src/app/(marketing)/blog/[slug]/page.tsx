@@ -1330,14 +1330,16 @@ That gap is about to get tested for real. A retiree in Summerville and a borrowe
     description:
       'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 600% of capital, all in the same quarter.',
     publishedDate: 'July 28, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `
 # The 98.7% Bank
 
 *Published July 28, 2026*
 
-*Updated October 22, 2026: corrected the loan yield, the Tier 1 capital figure behind the CRE concentration ratio (about 609%, not 570%), the bank's size when Moishe Gubin took over and Broward County deposits.*
+*Updated November 21, 2026, with third-quarter 2026 results. On October 22, 2026, we corrected the loan yield, the Tier 1 capital figure behind the CRE concentration ratio (about 609%, not 570%), the bank's size when Moishe Gubin took over and Broward County deposits.*
+
+*Q3 2026 update: OptimumBank Holdings reported third-quarter net income of $7.2 million, or $0.30 per diluted share, on November 12, 2026. Total assets reached $1.58 billion at September 30, up $175.2 million in the quarter. Gross loans grew $150.2 million, or 12.3%, to $1.37 billion, and deposits rose 10.6% to $1.34 billion. The [net interest margin](/glossary/net-interest-margin) was 4.63%, [return on average assets](/glossary/return-on-assets) 1.95%, and nonaccrual loans fell to $1.8 million from $2.2 million in June. In August the holding company issued $35.0 million of subordinated notes and contributed $31.0 million of capital to the bank (company release).*
 
 OptimumBank added $432.5 million in loans over the twelve months ending June 30, 2026. Commercial real estate accounted for $427.0 million of it.
 
@@ -2497,11 +2499,15 @@ The banks moving fastest stopped treating "we are on Fiserv" as a constraint. Th
     description:
       'First Reliance Bancshares just posted record growth, then agreed to sell to Colony Bankcorp for $163 million. Why a winning $1 billion bank chose to partner up, and what the four-state, $5 billion result says about Southeast consolidation.',
     publishedDate: 'June 26, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `# First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.
 
 *Published June 26, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results for both banks and the merger's November 1 closing.*
+
+*Q3 2026 update: First Reliance Bancshares reported third-quarter net income of $2.7 million, or $0.33 per diluted share, on October 28, 2026. Total assets were $1.11 billion at September 30, deposits rose $2.1 million to $922.4 million, and loans held for investment slipped $8.4 million to $812.3 million. Nonperforming assets rose to 0.59% of total assets from 0.06% in June, mainly on one $5.5 million loan. Colony Bankcorp reported the same day: net income of $10.5 million, or $0.50 per diluted share, total assets of $3.65 billion and a [net interest margin](/glossary/net-interest-margin) of 3.59%. The merger closed on November 1, 2026 (company releases and Colony's November 2 SEC filing).*
 
 First Reliance Bancshares just posted the best numbers of its life. Net income up 113% year over year, $1.1 billion in assets, nine branches across eight South Carolina cities. So on June 24, founder Rick Saunders agreed to sell it.
 
@@ -2514,7 +2520,7 @@ Colony Bankcorp, the $3.7 billion Georgia bank out of Fitzgerald, is buying Firs
 
 Here is the part worth sitting with. Most community banks sell because they are stuck. First Reliance sold because it was flying.
 
-*Update, October 22, 2026: Regulators approved the merger on September 17, and shareholders of both companies approved it on October 15. The companies expect to close in the fourth quarter of 2026.*
+*Update, November 21, 2026: Regulators approved the merger on September 17, shareholders of both companies approved it on October 15, and the merger closed on November 1, 2026. Colony expects systems conversion and customer integration in the second quarter of 2027.*
 
 ## The terms
 
@@ -3656,11 +3662,15 @@ For a bank that already has the market, the profitability and a new branch in it
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     description: "Security Federal, the Aiken CDFI bank with 19 branches and an ICE-powered mortgage stack, cut its efficiency ratio from 75.35% to 70.44% in a year. Still above 70%, and the missing piece is automated verification for its hardest borrower files.",
     publishedDate: 'May 21, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '7 min read',
     content: `# Security Federal Bank: CDFI Giant Navigating the Rate Rebound
 
 *Published May 21, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Security Federal Corporation reported third-quarter net income available to common shareholders of $3.6 million, or $1.16 per common share, up 13.0% from a year earlier, on October 30, 2026. Total assets were $1.62 billion at September 30, with net loans of $681.6 million and deposits of $1.39 billion. Nonperforming assets were 0.33% of total assets, down from 0.35% a year earlier, and the company made no provision for credit losses in the quarter (company release). The analysis below uses first-half 2026 call report figures.*
 
 The bank that calls itself South Carolina's largest certified bank CDFI isn't in Charleston. It isn't in Columbia. It's in Aiken, a small city most people associate with horse farms and the Masters, and it's sitting on $1.54 billion in assets with 19 branches spanning two states.
 
@@ -3734,11 +3744,15 @@ Open banking verification infrastructure is no longer experimental. It is produc
     title: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
     description: "CCNB grew from a 2009 de novo to a $1.35B bank on one of the fastest-growing coasts in the US. On October 1 it closed a merger of equals with Beacon, creating a $2.3B franchise that converts systems and rebrands in March 2027. The clock is running.",
     publishedDate: 'May 14, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `# CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast
 
 *Published May 14, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Coastal Carolina Bancshares reported third-quarter net income of $3.2 million, or $0.42 per diluted share, on October 29, 2026, or $3.4 million and $0.45 per diluted share excluding after-tax merger expenses. Total assets were $1.355 billion at September 30, before the Beacon merger closed on October 1, so the quarter excludes Beacon. Loans grew $17 million in the quarter to $1.004 billion, deposits held steady at $1.214 billion, [return on average assets](/glossary/return-on-assets) was 0.95%, and nonperforming assets were 0.09% of total assets (company release).*
 
 Here is the counterintuitive fact about Coastal Carolina National Bank: it was founded in June 2009, right in the teeth of the financial crisis, in a coastal resort market that was getting crushed by falling vacation-property values and tourist spending collapse. Most community banking veterans would have called that timing suicidal. Seventeen years later, CCNB had grown to $1.35 billion in assets by June 30, 2026, and on October 1 it closed a merger of equals with Beacon Holding Company that created a roughly $2.3 billion South Carolina franchise. Bad timing turned out to be very good timing.
 
@@ -4364,9 +4378,13 @@ Queensborough has been built to last. The next phase is built to move.
     title: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     description: "Southern Bank and Trust, chartered in Mount Olive, NC in 1901, cut its efficiency ratio from 69.4% to 52.6% in two years and switched on a new digital banking platform on October 19, 2026. What drove the turnaround, what its 2025 mortgage data shows, and where the next efficiency gain has to come from.",
     publishedDate: 'June 25, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '5 min read',
     content: `
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Southern BancShares (N.C.) reported third-quarter net income of $15.1 million, or $199.38 per share, in its quarterly report for September 30, 2026, against a net loss of $12.9 million a year earlier. Total assets were $5.68 billion at September 30. Net loans rose 9% from a year earlier to $3.63 billion and deposits rose 5% to $4.86 billion. The [net interest margin](/glossary/net-interest-margin) was 3.48%, up from 3.08%, and annualized [return on average assets](/glossary/return-on-assets) was 1.04%. The quarter's results include $7.6 million of unrealized losses on equity investments (company quarterly report).*
+
 On Monday, October 19, 2026, Southern Bank and Trust switched its customers to a new digital banking platform. Personal users got an update prompt, business users got a new app, and everyone got a new login. A bank chartered in Mount Olive, North Carolina, on January 29, 1901, rebuilt its online front door.
 
 The conversion is the visible part. The numbers behind it are the better story.
@@ -4843,10 +4861,12 @@ Twenty days isn't magic. It's the sum of several verifications that take seconds
     title: 'The Boat Bank of Beaufort County',
     description: 'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',
     publishedDate: 'June 12, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '5 min read',
     content: `
-*Updated October 22, 2026: corrected the date of the first dividend and the marine share of loans, and removed an unsourced share-price figure.*
+*Updated November 21, 2026, with third-quarter 2026 results and the bank's current branch count. On October 22, 2026, we corrected the date of the first dividend and the marine share of loans, and removed an unsourced share-price figure.*
+
+*Q3 2026 update: CoastalSouth Bancshares, the holding company for Coastal States Bank, reported third-quarter net income of $8.8 million, or $0.71 per diluted share, on October 19, 2026. Total assets were $2.42 billion at September 30. Loans held for investment grew $81.6 million in the quarter, 19.0% annualized, and deposits rose $53.1 million to $2.10 billion. The [net interest margin](/glossary/net-interest-margin) was 3.70%, [return on average assets](/glossary/return-on-assets) 1.45%, and nonperforming assets 0.62% of total assets. The bank now operates 12 branches, up from 11 (company release).*
 
 Coastal States Bank holds more deposits in Beaufort County than Wells Fargo. More than Bank of America. More than SouthState, Truist, or TD. And the loan book behind that #1 hometown franchise is, to a degree that surprises almost everyone who looks, made of boats.
 
@@ -4873,7 +4893,7 @@ That's the foundation national lenders dream about: cheap, sticky, locally gathe
 
 ## What the niches actually look like
 
-Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, about 19%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the bank's eleven branches sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
+Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, about 19%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the eleven branches the bank had this spring sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
 
 The model prints respectable numbers: 1.11% ROA, 3.61% NIM, a 59% efficiency ratio, and charge-offs of one basis point.
 
@@ -4906,10 +4926,12 @@ Q1 gave a cleanly positive read: $6.3 million in net income, core deposit growth
     title: 'The Quiet Comeback at Oconee Federal',
     description: 'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
     publishedDate: 'June 10, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the year of the Stephens Federal acquisition, the office count and the date of the buyback, and removed housing and migration figures we could not source.*
+*Updated November 21, 2026, with results for the quarter ended September 30, 2026, and the current count of consecutive quarterly dividends. On October 22, 2026, we corrected the year of the Stephens Federal acquisition, the office count and the date of the buyback, and removed housing and migration figures we could not source.*
+
+*Q3 2026 update: Oconee Federal reported net income of $1.5 million, or $0.26 per diluted share, for the quarter ended September 30, 2026, up from $1.3 million a year earlier, on October 19, 2026. Total assets were $668.2 million, down 1.4% from $677.4 million at June 30, and total loans rose to $503.6 million from $499.4 million. The company credited an improved interest margin, and its $0.10 quarterly dividend has now been paid for 60 consecutive quarters (company release).*
 
 Three years ago, Oconee Federal looked like a cautionary tale. The 102-year-old Seneca thrift earned a 0.30% return on assets in 2023, spent 83 cents to make every dollar of revenue, and watched its long-duration mortgage book get steamrolled by the fastest rate-hiking cycle in four decades.
 
@@ -4942,7 +4964,7 @@ Oconee Federal's deposit market share in Oconee County — the #1 position, ahea
 
 A century-old savings and loan, with a product menu you could fit on an index card, out-gathers three of the four largest banks in America on its home turf. Deposit franchises like this are why community banking still works. They're also nearly impossible to build from scratch, which is why the bank's $560.6 million in total deposits (up from $486.5 million at the end of 2023) is the asset that matters most on its balance sheet.
 
-And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 58 consecutive quarters, every quarter since December 2011.
+And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 60 consecutive quarters, every quarter since December 2011.
 
 ## Getting smaller in public, bigger in private
 

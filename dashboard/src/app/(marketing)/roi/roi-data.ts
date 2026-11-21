@@ -216,7 +216,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35430,
     auditDate: 'July 2026',
     stats: [
-      { label: 'Total assets', value: '$1.40B' },
+      { label: 'Total assets', value: '$1.58B (Q3 2026)' },
       { label: 'ROA', value: '2.04% (Q2 2026, annualized)' },
       { label: 'NIM', value: '4.57%' },
       { label: 'Branch count', value: '4' },
@@ -394,7 +394,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 31100,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.54B' },
+      { label: 'Total assets', value: '$1.62B (Q3 2026)' },
       { label: 'ROA', value: '0.86%' },
       { label: 'NIM', value: '3.30%' },
       { label: 'Branch count', value: '19' },
@@ -434,7 +434,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 58864,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.35B (Q2 2026); ~$2.3B combined with Beacon' },
+      { label: 'Total assets', value: '$1.36B (Q3 2026); ~$2.3B combined with Beacon' },
       { label: 'ROA', value: '1.05% (1H 2026)' },
       { label: 'NIM', value: '3.60% (1H 2026)' },
       { label: 'Branch count', value: '16 after the Oct 2026 Beacon merger' },
@@ -754,7 +754,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 15359,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$5.30B' },
+      { label: 'Total assets', value: '$5.68B (Q3 2026)' },
       { label: 'ROA', value: '1.40% (1H 2026)' },
       { label: 'Efficiency ratio', value: '52.6% (1H 2026)' },
       { label: 'Branch count', value: '57' },
@@ -796,7 +796,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35214,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$1.12B' },
+      { label: 'Total assets', value: '$1.11B (Q3 2026)' },
       { label: 'ROA', value: '1.25%' },
       { label: 'NIM', value: '3.77%' },
       { label: 'Loan growth (Q1 annualized)', value: '10.9%' },
@@ -838,7 +838,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 22257,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$3.7B' },
+      { label: 'Total assets', value: '$3.6B (Q3 2026)' },
       { label: 'Q1 2026 net income', value: '$8.2M' },
       { label: 'Wealth AUM', value: '$555M' },
       { label: 'Loan-to-deposit ratio', value: '79%' },
@@ -922,7 +922,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 57756,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$2.35B' },
+      { label: 'Total assets', value: '$2.42B (Q3 2026)' },
       { label: 'Beaufort County deposit share', value: '#1 (17.9%)' },
       { label: 'Loan book in marine vessels', value: '18.9%' },
       { label: '2024 HMDA originations', value: '42' },
@@ -964,7 +964,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 30111,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$663M' },
+      { label: 'Total assets', value: '$668M (Q3 2026)' },
       { label: 'Branches', value: '9 across SC & GA' },
       { label: 'Loan book in 1-4 family residential', value: '81%' },
       { label: 'Mortgage run-rate (HMDA)', value: '~150/yr' },
@@ -1170,7 +1170,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 20504,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '~$28.4B (Q2 2026)' },
+      { label: 'Total assets', value: '~$28.6B (Q3 2026)' },
       { label: 'States', value: 'GA, AL, FL, SC, NC' },
       { label: 'Online loan products', value: '1 of 6 (partial)' },
       { label: 'Mortgage', value: 'Third-party portal' },
@@ -1210,7 +1210,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 22858,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '~$33.6B (Q2 2026)' },
+      { label: 'Total assets', value: '~$34.2B (Q3 2026)' },
       { label: 'States', value: 'WV, VA, OH, MD, PA, NC, SC' },
       { label: 'Online loan products', value: '2 of 6 (partial)' },
       { label: 'HQ', value: 'Charleston, WV' },
@@ -1558,7 +1558,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 24919,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$1.25B' },
+      { label: 'Total assets', value: '$1.23B (Q3 2026)' },
       { label: 'Branches', value: '10, Stanly/Cabarrus/Anson/Mecklenburg, NC' },
       { label: 'ROA', value: '1.14%' },
       { label: 'Online lending channels', value: '4 of 6' },
@@ -1598,7 +1598,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 26962,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$5.99B' },
+      { label: 'Total assets', value: '$6.12B (Q3 2026)' },
       { label: 'Branches', value: '32, greater Nashville exurban ring, TN' },
       { label: 'ROA', value: '1.52%' },
       { label: 'Online lending channels', value: '5 of 6, on 3 different vendor portals' },
@@ -1678,7 +1678,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 6862,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$1.72B' },
+      { label: 'Total assets', value: '$1.74B (Q3 2026)' },
       { label: 'Branches', value: '19, Northern Neck & Middle Peninsula, VA' },
       { label: 'ROA', value: '1.49%' },
       { label: 'Online lending channels', value: '1 of 5 (mortgage only)' },
