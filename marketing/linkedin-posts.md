@@ -2,6 +2,8 @@
 # Publish one per day starting June 30, 2026
 # Schedule: Monday–Friday, skip weekends
 
+> Positioning (from 2026-11-22): RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm; verification software is one of its services. New posts close on the bank-technology takeaway (core, LOS, integration, AI governance, exam readiness, partnerships), not verification by default, and can run from Isaac's own profile as well as the company page. Posts below are the historical archive.
+
 ---
 
 ## POST 1 — June 30, 2026 (Monday)

@@ -1,5 +1,7 @@
 # RAVEN SEO + AEO Playbook
 
+> 2026-11-22 update: RAVEN repositioned as a bank technology consulting practice (see docs/superpowers/specs/2026-11-22-consulting-pivot-design.md). The money queries now lead with consulting buyer language (de novo bank consultant, bank technology consultant, AI governance for banks, core conversion consultant, Finxact implementation, Vesta LOS); the verification queries below still apply to the verification-software service and its /solutions pages. New /services pages are the primary landing pages.
+
 Researched and written 2026-07-18. Sources: four parallel research passes (income-verification vendor teardown: Truework/Truv/Argyle/Pinwheel; community-bank vendor teardown: MANTL/Narmi/Alloy/Abrigo/Ncontracts; AEO citation-source study; off-site authority research), plus Search Console export (marketing/search-console/, Apr 23 to Jul 11) and the July Semrush baseline.
 
 ## Where we are

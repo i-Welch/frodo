@@ -4,6 +4,13 @@ Queries for the monthly `/visibility-check`. One per line under `## Queries`. Us
 
 ## Queries
 
+de novo bank consultant
+bank technology consultant
+AI governance for banks
+core banking conversion consultant
+Finxact implementation
+Vesta LOS review
+fintech bank partnership consultant
 digital account opening software for community banks
 income verification for community banks
 employment verification for banks

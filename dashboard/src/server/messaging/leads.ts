@@ -157,7 +157,8 @@ export async function deliverAudit(lead: Lead, auditSlug: string, institutionNam
       `${first ? `Hi ${first},` : 'Hi,'}\n\nYour free digital lending audit for ${institutionName} is ready:\n${url}\n\n` +
       `It walks through your current borrower journey, where applicants drop off or wait, and what source-verified intake would ` +
       `save across your lending lines, with every figure tied to your public call report and HMDA filings (methodology at the bottom of the page).\n\n` +
-      `If any number looks off against what you see internally, reply and I'll rerun it. Happy to walk through it live, too:\n${CALENDLY_URL}` +
+      `If any number looks off against what you see internally, reply and I'll rerun it. Happy to walk through it live, too, ` +
+      `or to talk through anything else on your technology, operations or AI plans:\n${CALENDLY_URL}` +
       `\n\nIsaac Welch\nFounder, RAVEN\n${SITE}`,
   });
   await sendEmail({
