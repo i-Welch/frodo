@@ -6,6 +6,6 @@ export const DEFAULT_OG_IMAGES = [
     url: 'https://reportraven.tech/opengraph-image',
     width: 1200,
     height: 630,
-    alt: 'RAVEN: Borrower Verification for Community Banks',
+    alt: 'RAVEN: Bank Technology Consulting for New and Community Banks',
   },
 ];

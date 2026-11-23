@@ -226,3 +226,27 @@ describe('homepage', () => {
     expect(copyGuard(src)).toEqual([]);
   });
 });
+
+describe('site-wide positioning', () => {
+  it('default metadata and share image use the new positioning', () => {
+    for (const rel of ['app/layout.tsx', 'app/opengraph-image.tsx', 'app/og-default.ts']) {
+      const src = readSrc(rel);
+      expect(src, rel).not.toMatch(/Borrower Verification for Community Banks|Borrower verification for community banks/);
+      expect(src, rel).toMatch(/Bank Technology Consulting|bank technology consulting/i);
+    }
+  });
+
+  it('solutions hub is framed as the software service', () => {
+    const src = read('solutions/page.tsx');
+    expect(src).toContain('RAVEN Verification Software');
+    expect(src).toContain('href="/services"');
+  });
+
+  it('audit lead copy reads as a first step, not a product pitch', () => {
+    expect(read('lead-capture.tsx')).not.toMatch(/what verification automation would save/);
+  });
+
+  it('glossary no longer calls RAVEN only a software product', () => {
+    expect(read('glossary/glossary-data.ts')).not.toMatch(/RAVEN is (borrower )?verification software/);
+  });
+});
