@@ -5,6 +5,8 @@
  * new quarters post without any upkeep.
  */
 
+import { createFdicClient } from './fdic-client';
+
 const FDIC = 'https://api.fdic.gov/banks';
 const DAY = 86_400;
 
@@ -30,6 +32,7 @@ export interface Institution {
 
 export interface Financials {
   CERT: number;
+  STALP: string;
   REPDTE: string;
   ASSET: number;
   DEP: number;
@@ -64,16 +67,22 @@ export interface PeerReport {
   closestPeers: Pick<Institution, 'NAME' | 'CITY' | 'STALP' | 'ASSET' | 'CERT'>[];
 }
 
-const FIN_FIELDS = 'CERT,REPDTE,ASSET,DEP,LNLSNET,ROA,NIMY,EEFFR,NUMEMP';
+const FIN_FIELDS = 'CERT,STALP,REPDTE,ASSET,DEP,LNLSNET,ROA,NIMY,EEFFR,NUMEMP';
+const fdic = createFdicClient();
 
-async function fdic<T>(path: string, params: Record<string, string>): Promise<T[]> {
-  const res = await fetch(`${FDIC}/${path}?${new URLSearchParams(params)}`, {
-    next: { revalidate: DAY },
-    signal: AbortSignal.timeout(8000),
+// All bank pages share these small national datasets (currently <1 MB each).
+// A new bank URL no longer creates several unique FDIC requests.
+const activeInstitutions = () => fdic<Institution>('institutions', {
+  filters: 'ACTIVE:1', fields: 'NAME,CITY,STALP,ASSET,CERT,WEBADDR,ESTYMD,OFFICES,CB', limit: '10000',
+});
+const quarterFinancials = (repdte: string) => fdic<Financials>('financials', {
+  filters: `REPDTE:${repdte}`, fields: FIN_FIELDS, limit: '10000',
+});
+async function latestQuarter() {
+  const [latest] = await fdic<Pick<Financials, 'REPDTE'>>('financials', {
+    fields: 'REPDTE', sort_by: 'REPDTE', sort_order: 'DESC', limit: '1',
   });
-  if (!res.ok) throw new Error(`FDIC ${path} ${res.status}`);
-  const body = (await res.json()) as { data?: { data: T }[] };
-  return (body.data ?? []).map((d) => d.data);
+  return latest?.REPDTE;
 }
 
 export function median(values: number[]): number {
@@ -157,11 +166,7 @@ export function nearestBySize(bank: Pick<Financials, 'CERT' | 'ASSET'>, peers: P
 async function institutionsByCert(certs: number[]): Promise<PeerReport['closestPeers']> {
   if (certs.length === 0) return [];
   try {
-    const found = await fdic<Institution>('institutions', {
-      filters: `ACTIVE:1 AND CERT:(${certs.join(' OR ')})`,
-      fields: 'NAME,CITY,STALP,ASSET,CERT',
-      limit: String(certs.length),
-    });
+    const found = await activeInstitutions();
     return certs.map((c) => found.find((i) => i.CERT === c)).filter((i): i is Institution => !!i);
   } catch {
     return [];
@@ -173,35 +178,33 @@ function growth(latest: number, prior?: number): number | undefined {
 }
 
 export async function getInstitution(cert: number): Promise<Institution | undefined> {
-  const [inst] = await fdic<Institution>('institutions', {
-    filters: `CERT:${cert} AND ACTIVE:1`,
-    fields: 'NAME,CITY,STALP,ASSET,CERT,WEBADDR,ESTYMD,OFFICES',
-  });
-  return inst;
+  return (await activeInstitutions()).find((inst) => inst.CERT === cert);
 }
 
 /** Undefined when the bank is unknown, inactive, or has no call report yet. */
 export async function peerReport(cert: number): Promise<PeerReport | undefined> {
   const institution = await getInstitution(cert);
   if (!institution) return undefined;
-  const history = await fdic<Financials>('financials', {
-    filters: `CERT:${cert}`,
-    fields: FIN_FIELDS,
-    sort_by: 'REPDTE',
-    sort_order: 'DESC',
-    limit: '5',
-  });
-  const [latest] = history;
+  const repdte = await latestQuarter();
+  if (!repdte) return undefined;
+  let national = await quarterFinancials(repdte);
+  let latest = national.find((f) => f.CERT === cert);
+  // A newly published quarter may not yet contain this bank's filing.
+  if (!latest) {
+    [latest] = await fdic<Financials>('financials', {
+      filters: `CERT:${cert}`, fields: FIN_FIELDS, sort_by: 'REPDTE', sort_order: 'DESC', limit: '1',
+    });
+    if (latest) national = await quarterFinancials(latest.REPDTE);
+  }
   if (!latest) return undefined;
-  const yearAgo = history.find((r) => r.REPDTE === `${Number(latest.REPDTE.slice(0, 4)) - 1}${latest.REPDTE.slice(4)}`);
+  const yearAgoDate = `${Number(latest.REPDTE.slice(0, 4)) - 1}${latest.REPDTE.slice(4)}`;
+  const yearAgo = (await quarterFinancials(yearAgoDate)).find((r) => r.CERT === cert);
 
-  const band = `ASSET:[${Math.round(latest.ASSET / 2)} TO ${latest.ASSET * 2}]`;
-  const query = (scope: string) =>
-    fdic<Financials>('financials', { filters: `REPDTE:${latest.REPDTE} AND ${band}${scope}`, fields: FIN_FIELDS, limit: '1000' });
-  let peers = await query(` AND STALP:${institution.STALP}`);
+  const band = national.filter((f) => f.ASSET >= Math.round(latest.ASSET / 2) && f.ASSET <= latest.ASSET * 2);
+  let peers = band.filter((f) => f.STALP === institution.STALP);
   let peerScope = `${institution.STALP} banks with half to twice its assets`;
   if (peers.filter((p) => p.CERT !== cert).length < MIN_STATE_PEERS) {
-    peers = await query('');
+    peers = band;
     peerScope = 'U.S. banks with half to twice its assets';
   }
 
@@ -221,11 +224,7 @@ export async function peerReport(cert: number): Promise<PeerReport | undefined> 
 /** Active banks in the given states, for the sitemap. Empty if FDIC is unreachable. */
 export async function sitemapInstitutions(): Promise<Pick<Institution, 'NAME' | 'CERT'>[]> {
   try {
-    return await fdic<Pick<Institution, 'NAME' | 'CERT'>>('institutions', {
-      filters: `ACTIVE:1 AND STALP:(${SITEMAP_STATES.map((s) => `"${s}"`).join(' OR ')})`,
-      fields: 'NAME,CERT',
-      limit: '3000',
-    });
+    return (await activeInstitutions()).filter((inst) => SITEMAP_STATES.includes(inst.STALP));
   } catch {
     return [];
   }
@@ -305,21 +304,14 @@ export function topBanks(banks: RankedBank[], key: 'roa' | 'efficiency', n = 10)
 export async function stateRankings(stalp: string): Promise<StateRankings | undefined> {
   const stateName = STATE_NAMES[stalp];
   if (!stateName) return undefined;
-  const [latest] = await fdic<Pick<Financials, 'REPDTE'>>('financials', {
-    filters: `STALP:${stalp}`,
-    fields: 'REPDTE',
-    sort_by: 'REPDTE',
-    sort_order: 'DESC',
-    limit: '1',
-  });
-  if (!latest) return undefined;
+  const repdte = await latestQuarter();
+  if (!repdte) return undefined;
   const [fin, inst] = await Promise.all([
-    fdic<Financials>('financials', { filters: `STALP:${stalp} AND REPDTE:${latest.REPDTE}`, fields: FIN_FIELDS, limit: '2000' }),
-    fdic<Institution>('institutions', { filters: `STALP:${stalp} AND ACTIVE:1`, fields: 'NAME,CITY,CERT,CB,WEBADDR', limit: '2000' }),
+    quarterFinancials(repdte), activeInstitutions(),
   ]);
-  const byCert = new Map(inst.map((i) => [i.CERT, i]));
+  const byCert = new Map(inst.filter((i) => i.STALP === stalp).map((i) => [i.CERT, i]));
   const banks = fin
-    .filter((f) => byCert.has(f.CERT))
+    .filter((f) => f.STALP === stalp && byCert.has(f.CERT))
     .map((f) => ({
       cert: f.CERT,
       name: byCert.get(f.CERT)!.NAME,
@@ -337,8 +329,8 @@ export async function stateRankings(stalp: string): Promise<StateRankings | unde
   return {
     stalp,
     stateName,
-    quarter: quarterLabel(latest.REPDTE),
-    repdte: latest.REPDTE,
+    quarter: quarterLabel(repdte),
+    repdte,
     banks,
     medians: {
       roa: median(banks.map((b) => b.roa)),

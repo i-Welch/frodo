@@ -20,6 +20,7 @@ import { badgeSvg } from '../../src/app/(marketing)/bank-snapshot/badge';
 
 const row = (cert: number, over: Partial<Financials> = {}): Financials => ({
   CERT: cert,
+  STALP: 'SC',
   REPDTE: '20260630',
   ASSET: 1_000_000,
   DEP: 800_000,

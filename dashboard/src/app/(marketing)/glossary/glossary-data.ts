@@ -999,6 +999,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
+      { slug: 'community-first-51-million-georgia-bank', title: "Community First's $51 Million Georgia Bank Was Mostly Florida" },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
     ],

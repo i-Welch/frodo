@@ -1,0 +1,20 @@
+export const CLIENT_EVENTS = new Set<string>([
+  "analysis_completed",
+  "analysis_requested",
+  "application_error",
+  "bank_snapshot_search",
+  "checkout_created",
+  "cta_clicked",
+  "daily_log_saved",
+  "form_started",
+  "form_submitted",
+  "get_demo_click",
+  "import_completed",
+  "inquiry_created",
+  "interest_submitted",
+  "lead_created",
+  "lead_submitted",
+  "onboarding_completed",
+  "purchase_completed",
+  "whitelabel_prompt_shown"
+]);

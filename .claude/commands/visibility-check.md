@@ -5,7 +5,7 @@ argument-hint: "[auto]"
 
 # /visibility-check
 
-Measure whether the people RAVEN sells to can find it, then turn the gaps into article topics. Run monthly. `$ARGUMENTS` empty or `auto`: unattended, no questions.
+Measure whether the banks RAVEN works for can find it, then turn the gaps into article topics. Run monthly. `$ARGUMENTS` empty or `auto`: unattended, no questions.
 
 Background: `marketing/seo-aeo-playbook.md` (read its "Where we are" and "evidence" sections first). Authority, not on-page SEO, is the binding constraint, and third-party listicles and directories dominate AI citations for commercial queries. So this check tracks two things: whether our pages rank, and who ranks instead (the outreach targets).
 
@@ -15,8 +15,15 @@ Queries live in `marketing/visibility-queries.md` (one per line under `## Querie
 - whether any reportraven.tech page appears in the results, its position, and which page;
 - the top three results (domain and page type: vendor page, listicle, directory, news, forum).
 
-Seed queries (buyer language first; avoid "bank verification software", which the market reads as payee validation):
+Seed queries (buyer language first; consulting queries first since the 2026-11 pivot; avoid "bank verification software", which the market reads as payee validation):
 ```
+de novo bank consultant
+bank technology consultant
+AI governance for banks
+core banking conversion consultant
+Finxact implementation
+Vesta LOS review
+fintech bank partnership consultant
 digital account opening software for community banks
 income verification for community banks
 employment verification for banks

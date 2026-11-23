@@ -1,3 +1,5 @@
+import { recordProductEvent } from "@/lib/product-events";
+import { isTestSubmission } from "@/lib/product-events-policy";
 import { Elysia, t } from 'elysia';
 import { putItem } from '../../store/base-store';
 import { logger } from '../../logger';
@@ -11,7 +13,7 @@ import { bankSnapshot } from '../../messaging/lead-enrichment';
  */
 export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
   '/interest',
-  async ({ body, set }) => {
+  async ({ body, set, request }) => {
     const { email, name, bank, cert, source, website } = body;
     const kind = body.kind ?? 'demo';
     // Tracking a bank means emailing about one specific FDIC institution.
@@ -49,6 +51,8 @@ export const interestRoutes = new Elysia({ prefix: '/api/v1' }).post(
       GSI1PK: 'INTEREST',
       GSI1SK: email,
     });
+
+    await recordProductEvent("lead_captured", { kind, source: source ?? null }, { headers: request.headers, leadId: `SIGNUP#${timestamp}#${email}`, eventKey: `SIGNUP#${timestamp}#${email}`, path: "/api/v1/interest", isTest: isTestSubmission({ email, name, source }) });
 
     logger.info({ email, kind, source }, 'New interest signup');
     await notifyLead({ kind, email, name, bank, source, snapshot });

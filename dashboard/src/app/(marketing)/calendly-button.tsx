@@ -1,6 +1,6 @@
 'use client';
 
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 
 const CALENDLY_URL = 'https://calendly.com/welchcisaac/raven-intro';
 const WIDGET_CSS = 'https://assets.calendly.com/assets/external/widget.css';
@@ -36,7 +36,7 @@ function loadWidget(): Promise<void> {
 
 export function CalendlyButton({
   source,
-  label = 'Book a Demo',
+  label = 'Book a call',
   buttonClassName = 'demo-btn',
 }: {
   source: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 
 export function InterestForm({ source = 'landing' }: { source?: string }) {
   const [name, setName] = useState('');
@@ -66,7 +66,7 @@ export function InterestForm({ source = 'landing' }: { source?: string }) {
           className="form-input"
         />
         <button type="submit" disabled={status === 'submitting'} className="form-btn">
-          {status === 'submitting' ? 'Sending...' : 'Request a Demo'}
+          {status === 'submitting' ? 'Sending...' : 'Book a call'}
         </button>
       </div>
       {status === 'error' && <p className="form-error">{errorMsg}</p>}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 import { bankSlug } from './peer-data';
 import { searchBanks, searchUrl, type BankMatch } from './fdic-search';
 

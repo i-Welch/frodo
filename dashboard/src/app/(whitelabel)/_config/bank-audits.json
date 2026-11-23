@@ -8,7 +8,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.40B"
+        "value": "$1.58B"
       },
       {
         "label": "Branches",
@@ -23,7 +23,7 @@
         "value": "40.2% YoY"
       }
     ],
-    "summary": "OptimumBank grew total assets 40.2% in twelve months to $1.40 billion, posted a 2.04% ROA, and ranked 49th out of 3,465 U.S. community banks by S&P Global. It did all of that with a website whose title tag reads \"Traditional in-person banking.\" None of the bank's own lending products has an online application. Small business financing now hands off to a third party: \"OptimumBank Business Finance, Powered by Newtek Lending,\" with a button to a registration page on newtekadvantage.com. There is no digital deposit account opening. Online banking serves existing customers only. That posture was coherent for the roughly $190 million bank Moishe Gubin took over in 2010; it is a strange fit for a $1.4 billion commercial lender adding $126 million of loans per quarter from four offices. The gap here is not a retail mortgage funnel, which this bank does not want. It is verified commercial intake for the CRE, SBA, and HUD sponsors who now drive nearly all of the growth.",
+    "summary": "OptimumBank grew total assets 40.2% in the twelve months to June 2026 and reached $1.58 billion at September 30, posted a 2.04% second-quarter ROA, and ranked 49th out of 3,465 U.S. community banks by S&P Global. It did all of that with a website whose title tag reads \"Traditional in-person banking.\" None of the bank's own lending products has an online application. Small business financing now hands off to a third party: \"OptimumBank Business Finance, Powered by Newtek Lending,\" with a button to a registration page on newtekadvantage.com. There is no digital deposit account opening. Online banking serves existing customers only. That posture was coherent for the roughly $190 million bank Moishe Gubin took over in 2010; it is a strange fit for a $1.6 billion commercial lender adding $126 million of loans per quarter from four offices. The gap here is not a retail mortgage funnel, which this bank does not want. It is verified commercial intake for the CRE, SBA, and HUD sponsors who now drive nearly all of the growth.",
     "currentJourney": [
       {
         "channel": "Commercial real estate",
@@ -121,7 +121,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$5.30B"
+        "value": "~$5.68B"
       },
       {
         "label": "Branches",
@@ -136,7 +136,7 @@
         "value": "52.6% (1H 2026)"
       }
     ],
-    "summary": "Southern Bank and Trust runs $5.30 billion across 57 offices serving three distinct borrower economies: agricultural eastern North Carolina, military communities around Seymour Johnson AFB and Hampton Roads, and coastal vacation markets on the Outer Banks. It cut its efficiency ratio from 69.4% to 52.6% in two years and launched a new digital banking platform on October 19, 2026. Deposit accounts open online on a bank-branded site, the HELOC special has an \"Apply in Minutes\" button, and mortgages apply through a separate portal. Personal, auto, boat and RV loans, and all business and agricultural lending, still start with a phone number or a contact form. The next move is a single, branded, verify-as-you-go front door that handles the income of a pork farmer, a sergeant, and an Outer Banks vacation property buyer without treating them all the same.",
+    "summary": "Southern Bank and Trust runs $5.68 billion across 57 offices serving three distinct borrower economies: agricultural eastern North Carolina, military communities around Seymour Johnson AFB and Hampton Roads, and coastal vacation markets on the Outer Banks. It cut its efficiency ratio from 69.4% to 52.6% in two years and launched a new digital banking platform on October 19, 2026. Deposit accounts open online on a bank-branded site, the HELOC special has an \"Apply in Minutes\" button, and mortgages apply through a separate portal. Personal, auto, boat and RV loans, and all business and agricultural lending, still start with a phone number or a contact form. The next move is a single, branded, verify-as-you-go front door that handles the income of a pork farmer, a sergeant, and an Outer Banks vacation property buyer without treating them all the same.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -234,7 +234,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.13B"
+        "value": "~$1.11B"
       },
       {
         "label": "Branches",
@@ -249,7 +249,7 @@
         "value": "Apiture (digital banking)"
       }
     ],
-    "summary": "First Reliance Bank has done more than most community banks its size to put lending online, but the result is three disconnected front doors: deposit account opening on apply.firstreliance.com, a consumer loan application on a vendor portal (digitallending.online), and a separate mortgage application path. Each leaves the First Reliance brand for a generic vendor screen, and HELOC, auto/RV, and all commercial lending still end at 'apply in person or call.' Underneath, every portal collects identity, income, employment, and property the slow, manual way. The bank already runs a modern stack (a branded mobile app, Jack Henry Lending participation); what's missing is one branded, verify-as-you-go intake that spans every product. Update, October 2026: Colony Bankcorp agreed in June 2026 to acquire First Reliance for about $163 million; regulators and both companies' shareholders have approved, and the deal is expected to close in the fourth quarter of 2026.",
+    "summary": "First Reliance Bank has done more than most community banks its size to put lending online, but the result is three disconnected front doors: deposit account opening on apply.firstreliance.com, a consumer loan application on a vendor portal (digitallending.online), and a separate mortgage application path. Each leaves the First Reliance brand for a generic vendor screen, and HELOC, auto/RV, and all commercial lending still end at 'apply in person or call.' Underneath, every portal collects identity, income, employment, and property the slow, manual way. The bank already runs a modern stack (a branded mobile app, Jack Henry Lending participation); what's missing is one branded, verify-as-you-go intake that spans every product. Update, November 2026: Colony Bankcorp agreed in June 2026 to acquire First Reliance for about $163 million; regulators and both companies' shareholders approved, and the deal closed on November 1, 2026, with systems conversion scheduled for 2027.",
     "currentJourney": [
       {
         "channel": "Personal loans",
@@ -367,7 +367,7 @@
         "value": "Fiserv"
       }
     ],
-    "summary": "Colony Bank runs a modern Fiserv digital-banking stack for existing customers, but its self-serve front door for new lending is partial and fragmented. Mortgage and personal loans can be started online, yet each hands the borrower off to a different third-party domain with a different look. Auto, boat/RV/ATV, and home equity are marketing pages that end at 'see loan details' or a call to a lender, and business/SBA lending routes to a specialty team with no digital intake. Across a 33-office footprint spanning Georgia, Alabama, and north Florida, that means high-intent demand scatters across vendor portals or stalls at a phone call. The platform to do better is already in place; what is missing is one branded, verify-as-you-go intake. Update, October 2026: Colony is acquiring First Reliance Bancshares (expected to close in the fourth quarter of 2026), creating a bank of about $5 billion across Alabama, Florida, Georgia and South Carolina.",
+    "summary": "Colony Bank runs a modern Fiserv digital-banking stack for existing customers, but its self-serve front door for new lending is partial and fragmented. Mortgage and personal loans can be started online, yet each hands the borrower off to a different third-party domain with a different look. Auto, boat/RV/ATV, and home equity are marketing pages that end at 'see loan details' or a call to a lender, and business/SBA lending routes to a specialty team with no digital intake. Across a 33-office footprint spanning Georgia, Alabama, and north Florida, that means high-intent demand scatters across vendor portals or stalls at a phone call. The platform to do better is already in place; what is missing is one branded, verify-as-you-go intake. Update, November 2026: Colony completed its acquisition of First Reliance Bancshares on November 1, 2026, creating a bank of about $5 billion across Alabama, Florida, Georgia and South Carolina.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -593,7 +593,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$2.35B"
+        "value": "~$2.42B"
       },
       {
         "label": "Beaufort County deposit share",
@@ -711,7 +711,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$679M"
+        "value": "~$668M"
       },
       {
         "label": "Branches",
@@ -823,7 +823,7 @@
         "withRaven": "Synced to Fiserv automatically"
       }
     ],
-    "sources": "oconeefederal.com (/, /mortgage-lending, /locations, /online-banking, /who-we-are), Fiserv online-banking host. Oconee Federal Financial Corp (Nasdaq: OFED) earnings releases (~$663.1M total assets at 3/31/2026) and SEC EDGAR filings. FDIC BankFind cert #30111. NMLS #810392. Founded 1924, federal charter since 1991. Navy/white brand from the bank's logo and site. Reviewed October 2026."
+    "sources": "oconeefederal.com (/, /mortgage-lending, /locations, /online-banking, /who-we-are), Fiserv online-banking host. Oconee Federal Financial Corp (Nasdaq: OFED) earnings releases (~$668.2M total assets at 9/30/2026) and SEC EDGAR filings. FDIC BankFind cert #30111. NMLS #810392. Founded 1924, federal charter since 1991. Navy/white brand from the bank's logo and site. Reviewed October 2026."
   },
   {
     "slug": "anderson-brothers-bank",
@@ -1419,7 +1419,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$1.54B"
+        "value": "~$1.62B"
       },
       {
         "label": "Branches",
@@ -1434,7 +1434,7 @@
         "value": "SFDL / 1922"
       }
     ],
-    "summary": "Security Federal Bank offers a genuinely split digital lending experience: consumer products (auto, boat, RV, personal, personal line of credit, HELOC) each have an online apply button, but every one of them hands the borrower off to a different off-brand vendor domain (LoansPQ for vehicle and personal lending, MeridianLink for HELOC). Mortgage runs on a bank-branded subdomain (sfb-mortgage.securityfederalbank.com) powered by ICE Mortgage Technology, which is the closest thing to a cohesive digital experience on the site. Business lending is an entirely different story: term loans, lines of credit, commercial real estate, equipment, medical, and SBA products all end at 'Reach out to a lender,' with zero digital intake. With 19 branches across the Aiken/Augusta corridor and $1.54B in assets (June 30, 2026), the consumer front door is functional but fragmented, and the commercial front door does not exist.",
+    "summary": "Security Federal Bank offers a genuinely split digital lending experience: consumer products (auto, boat, RV, personal, personal line of credit, HELOC) each have an online apply button, but every one of them hands the borrower off to a different off-brand vendor domain (LoansPQ for vehicle and personal lending, MeridianLink for HELOC). Mortgage runs on a bank-branded subdomain (sfb-mortgage.securityfederalbank.com) powered by ICE Mortgage Technology, which is the closest thing to a cohesive digital experience on the site. Business lending is an entirely different story: term loans, lines of credit, commercial real estate, equipment, medical, and SBA products all end at 'Reach out to a lender,' with zero digital intake. With 19 branches across the Aiken/Augusta corridor and $1.62B in assets (September 30, 2026), the consumer front door is functional but fragmented, and the commercial front door does not exist.",
     "currentJourney": [
       {
         "channel": "Auto / Boat / RV loans",
@@ -1532,7 +1532,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$2.3B combined ($1.35B CCNB, Q2 2026)"
+        "value": "~$2.3B combined ($1.36B CCNB, Q3 2026)"
       },
       {
         "label": "Branches",
@@ -1547,7 +1547,7 @@
         "value": "2009"
       }
     ],
-    "summary": "Coastal Carolina National Bank ran a $1.35B balance sheet (June 30, 2026) across 10 branches from Columbia and the Upstate to Myrtle Beach and Ocean Isle Beach, NC, before its merger with Beacon added six Charleston-area branches, anchored by a wide mortgage lineup (conventional, jumbo, condotel, construction, portfolio, and bridge loans). Only mortgages can be started online, and that application routes borrowers off-brand to a third-party portal on myccnb.mymortgage-online.com. Personal loans (HELOC, auto, boat, personal, overdraft) and all commercial lending have no digital intake whatsoever: the site directs prospects to call (866) 418-9219 or walk into a branch. CCNB closed its merger of equals with Beacon Holding Company on October 1, 2026 (about $2.3B in assets, 16 branches); core systems convert in early 2027 and the bank rebrands as Beacon Bank, N.A. in mid-March 2027 -- a timeline that makes a unified, verified-intake front door both urgent and feasible before the conversion window closes.",
+    "summary": "Coastal Carolina National Bank ran a $1.36B balance sheet (September 30, 2026) across 10 branches from Columbia and the Upstate to Myrtle Beach and Ocean Isle Beach, NC, before its merger with Beacon added six Charleston-area branches, anchored by a wide mortgage lineup (conventional, jumbo, condotel, construction, portfolio, and bridge loans). Only mortgages can be started online, and that application routes borrowers off-brand to a third-party portal on myccnb.mymortgage-online.com. Personal loans (HELOC, auto, boat, personal, overdraft) and all commercial lending have no digital intake whatsoever: the site directs prospects to call (866) 418-9219 or walk into a branch. CCNB closed its merger of equals with Beacon Holding Company on October 1, 2026 (about $2.3B in assets, 16 branches); core systems convert in early 2027 and the bank rebrands as Beacon Bank, N.A. in mid-March 2027 -- a timeline that makes a unified, verified-intake front door both urgent and feasible before the conversion window closes.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -1634,7 +1634,7 @@
         "withRaven": "One above-core intake layer that survives the conversion and names the new brand"
       }
     ],
-    "sources": "myccnb.com (/, /personal-banking/personal-loans/, /personal-banking/home-equity-lines/, /mortgage/, /apply-now/, /mortgage/the-ccnb-difference/, /mortgage/mortgage-team/, /business-banking/, /business-banking/commercial-lending/, /locations/, /let-ccnb-help-grow-business/); myccnb.mymortgage-online.com (mortgage POS vendor portal); secure.myccnb.com/myccnbonline/ (FIS online banking, uux.aspx URL pattern consistent with FIS Digital One/Mobiliti); FDIC BankFind cert #58864 (established 2009, Myrtle Beach SC, 16 offices after the merger; $1.35B assets at 2026-06-30); merger announced May 29, 2026 and completed October 1, 2026 (myccnb.com/merger: ~$2.3B assets, 16 branches + 1 LPO, conversion early 2027, Beacon Bank N.A. rebrand mid-March 2027). Core inferred as FIS from the uux.aspx online banking URL pattern (low-to-medium confidence). Brand 'Green Wave' color scheme noted; primary green approximate from CCNB logo palette. Tagline 'We Can Do That' and secondary 'Life is complicated, but your banking doesn't need to be' from the live homepage. Reviewed June 2026."
+    "sources": "myccnb.com (/, /personal-banking/personal-loans/, /personal-banking/home-equity-lines/, /mortgage/, /apply-now/, /mortgage/the-ccnb-difference/, /mortgage/mortgage-team/, /business-banking/, /business-banking/commercial-lending/, /locations/, /let-ccnb-help-grow-business/); myccnb.mymortgage-online.com (mortgage POS vendor portal); secure.myccnb.com/myccnbonline/ (FIS online banking, uux.aspx URL pattern consistent with FIS Digital One/Mobiliti); FDIC BankFind cert #58864 (established 2009, Myrtle Beach SC, 16 offices after the merger; $1.36B assets at 2026-09-30); merger announced May 29, 2026 and completed October 1, 2026 (myccnb.com/merger: ~$2.3B assets, 16 branches + 1 LPO, conversion early 2027, Beacon Bank N.A. rebrand mid-March 2027). Core inferred as FIS from the uux.aspx online banking URL pattern (low-to-medium confidence). Brand 'Green Wave' color scheme noted; primary green approximate from CCNB logo palette. Tagline 'We Can Do That' and secondary 'Life is complicated, but your banking doesn't need to be' from the live homepage. Reviewed June 2026."
   },
   {
     "slug": "first-capital-bank-charleston",
@@ -2549,7 +2549,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$28.4B"
+        "value": "~$28.6B"
       },
       {
         "label": "States",
@@ -2564,11 +2564,11 @@
         "value": "Third-party domain"
       }
     ],
-    "summary": "Ameris Bank is the dominant Southeast-focused regional with $28.4 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party ICE (Encompass) portal that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck.",
+    "summary": "Ameris Bank is the dominant Southeast-focused regional with $28.6 billion in assets across five states. Mortgage is the bank's highest-volume lending product, but it routes applicants to mymortgage-online.com, a third-party ICE (Encompass) portal that breaks brand continuity at the single highest-stakes conversion step. Personal loans, HELOC, and home equity have no digital application path. Commercial is entirely relationship-based. For a bank generating this volume of mortgage originations, manual document collection is already the underwriting capacity bottleneck.",
     "currentJourney": [
       {
         "channel": "Mortgage",
-        "detail": "Online application routes to mymortgage-online.com (ICE Encompass third-party portal); off-brand at the critical conversion moment for a $28B bank",
+        "detail": "Online application routes to mymortgage-online.com (ICE Encompass third-party portal); off-brand at the critical conversion moment for a $29B bank",
         "status": "weak"
       },
       {
@@ -2601,7 +2601,7 @@
       {
         "title": "The mortgage portal breaks brand at the highest-value moment",
         "severity": "gap",
-        "body": "Ameris Bank is one of the largest mortgage originators in the Southeast, but every applicant who clicks Apply Now is handed to a third-party ICE (Encompass) portal on amerisbank.mymortgage-online.com. On mobile, this is a trust-breaking redirect before the first field. For a bank with $28B in assets and a brand built on Southeast market leadership, this is the digital equivalent of sending a borrower to a competitor's lobby to complete their application."
+        "body": "Ameris Bank is one of the largest mortgage originators in the Southeast, but every applicant who clicks Apply Now is handed to a third-party ICE (Encompass) portal on amerisbank.mymortgage-online.com. On mobile, this is a trust-breaking redirect before the first field. For a bank with $29B in assets and a brand built on Southeast market leadership, this is the digital equivalent of sending a borrower to a competitor's lobby to complete their application."
       },
       {
         "title": "Four product lines with no digital front door",
@@ -2662,7 +2662,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "~$33.6B"
+        "value": "~$34.2B"
       },
       {
         "label": "States",
@@ -2677,7 +2677,7 @@
         "value": "United Bankshares (UBSI)"
       }
     ],
-    "summary": "United Bank is the primary banking subsidiary of United Bankshares, a $33.6 billion Mid-Atlantic regional expanding aggressively into the Southeast. Its mortgage application starts from individual loan officer pages and hands off to SimpleNexus, with no automated verification visible: borrowers submit and then wait for manual document collection to begin. Personal and auto lending have no online application, HELOC has no standalone application path, and commercial is entirely relationship-based. The bank's Charlotte, NC office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline.",
+    "summary": "United Bank is the primary banking subsidiary of United Bankshares, a $34.2 billion Mid-Atlantic regional expanding aggressively into the Southeast. Its mortgage application starts from individual loan officer pages and hands off to SimpleNexus, with no automated verification visible: borrowers submit and then wait for manual document collection to begin. Personal and auto lending have no online application, HELOC has no standalone application path, and commercial is entirely relationship-based. The bank's Charlotte, NC office targets a market where Bank of America, Truist, and Wells Fargo set the digital baseline.",
     "currentJourney": [
       {
         "channel": "Mortgage",
@@ -2717,9 +2717,9 @@
         "body": "United Bank has an online mortgage application, which is better than most community banks, but the verification step that follows is still manual: a document request email, a VOE call, a days-long wait. The application is a lead form with extra steps. RAVEN replaces that follow-up cycle by verifying income, identity, employment, and assets in 90 seconds at the point of submission, so the loan officer receives a complete, verified file rather than a list of documents to chase."
       },
       {
-        "title": "HELOC and commercial are phone-only for a $33.6B bank",
+        "title": "HELOC and commercial are phone-only for a $34.2B bank",
         "severity": "gap",
-        "body": "With $33.6 billion in assets across eight states, United Bank's HELOC and commercial lending products have no digital intake path. In the Charlotte MSA, where the bank is actively growing, borrowers comparing home equity options will find Truist and Bank of America with digital applications and instant decisions. A regional bank competing in Charlotte without a HELOC apply button is not competing for the transaction-first borrower at all."
+        "body": "With $34.2 billion in assets across eight states, United Bank's HELOC and commercial lending products have no digital intake path. In the Charlotte MSA, where the bank is actively growing, borrowers comparing home equity options will find Truist and Bank of America with digital applications and instant decisions. A regional bank competing in Charlotte without a HELOC apply button is not competing for the transaction-first borrower at all."
       },
       {
         "title": "Charlotte expansion is the digital strategy inflection point",
@@ -3317,6 +3317,119 @@
     "sources": "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026, rechecked October 2026); newaccount.robinsfcu.org (MANTL), cp.decisionlender.solutions, robinsfcuportal.mymortgage-online.com, and onlinebanking.robinsfcu.org (Q2, fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica, EIN 580641605; CUToday and CUInsight coverage of the December 2025 $20M member rebate; 13WMAZ 2026 State of the Base coverage; Wikipedia for the 1954 founding and 2016 charter conversion."
   },
   {
+    "slug": "community-first-credit-union-of-florida",
+    "bankName": "Community First Credit Union of Florida",
+    "shortName": "Community First",
+    "auditDate": "November 2026",
+    "demoSlug": "community-first-credit-union-of-florida",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$3.21B (Jun 2026, before the bank deal)"
+      },
+      {
+        "label": "Members",
+        "value": "194,282"
+      },
+      {
+        "label": "Net worth ratio",
+        "value": "12.26% (Jun 2026)"
+      },
+      {
+        "label": "First Southern deposits in Florida",
+        "value": "53% (June 2025 SOD)"
+      }
+    ],
+    "summary": "Community First is a $3.21 billion Jacksonville consumer lender (vehicle loans 40.3% of the book, commercial 10.1%) that closed its purchase of First Southern Bank, a 1907 Waycross, Georgia charter, on October 2, 2026. The bank brought $347.2 million in assets, a loan book that is 69% business and commercial property credit, and deposits of which 33% pay no interest, 53% of them in Florida branches. Its consumer front door is first-party and modern: membership, checking, auto, personal and card applications run at apply.communityfirstfl.org and mortgages at borrower-portal.communityfirstfl.org. The gap is business: business checking cannot be opened online, commercial real estate has no online application, business lines apply on a third-party domain, and the business eligibility list omits the newly acquired markets. Every First Southern customer must opt in to membership by December 31, 2026, ahead of an early summer 2027 system conversion.",
+    "currentJourney": [
+      {
+        "channel": "Online banking",
+        "detail": "ebanking.communityfirstfl.org (ASP.NET login, enrollment assets served from cdn1.onlineaccess1.com); vendor not named on the site. Fingerprinted November 17, 2026",
+        "status": "ok"
+      },
+      {
+        "channel": "Account opening / new membership",
+        "detail": "apply.communityfirstfl.org/account-opening, a first-party subdomain; $5 share deposit, ID, SSN or ITIN, and a funding card or ACH account required",
+        "status": "ok"
+      },
+      {
+        "channel": "Consumer loans and cards",
+        "detail": "Auto, personal, line of credit and credit card applications start at apply.communityfirstfl.org/products/portal; the site says eligible borrowers are approved in minutes",
+        "status": "ok"
+      },
+      {
+        "channel": "Mortgage and home equity",
+        "detail": "borrower-portal.communityfirstfl.org, a first-party subdomain; the site says the application takes 10 minutes",
+        "status": "ok"
+      },
+      {
+        "channel": "Business deposit accounts",
+        "detail": "Business checking opens in a branch, by phone or via an inquiry form; no online opening. The business eligibility list omits Highlands, Manatee and all Georgia counties",
+        "status": "missing"
+      },
+      {
+        "channel": "Business lending",
+        "detail": "Business lines, business auto and equipment loans apply on a third-party domain (dblc.app); commercial real estate has no online application, call only",
+        "status": "weak"
+      },
+      {
+        "channel": "Acquired First Southern customers",
+        "detail": "Separate site (mycommunityfirst.org) and online banking host (web10.secureinternetbank.com) until an early summer 2027 conversion; customers cannot transact at Community First branches until then and are asked to call or visit a branch to submit a membership opt-in form by December 31, 2026",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "It bought a business bank; its business front door is a phone number",
+        "severity": "gap",
+        "body": "69% of First Southern's $226.5M loan book is business and commercial property credit: $84.2M nonfarm nonresidential real estate, $32.1M construction, $23.5M commercial and industrial. Community First's own business lending is 10.1% of its book, and its member C&I lending is $3.2M across 53 loans. Business checking cannot be opened online and commercial real estate has no online application. The relationships it just paid for have no digital path to renew, expand or add a deposit account once the systems merge."
+      },
+      {
+        "title": "The opt-in deadline is a re-onboarding event",
+        "severity": "friction",
+        "body": "Every First Southern customer is asked to submit a membership opt-in form by December 31, 2026, through a branch visit or call, ahead of the summer 2027 conversion. For depositors and borrowers in Sebring, Bradenton, Stuart and four Southeast Georgia towns, that is the moment they decide whether to stay. A verified digital opt-in, with identity, eligibility and funding account confirmed in one sitting, removes the trip."
+      },
+      {
+        "title": "A third of the acquired deposits cost nothing",
+        "severity": "note",
+        "body": "$103.2M of First Southern's $312.9M in deposits paid no interest at June 30, 2026, and its interest expense ran about 1.2% of deposits against about 1.8% at Community First. Those operating balances are mostly business money and are the main reason the deal priced at roughly 1.7 times equity. They are retained by keeping treasury, payment and credit requests easy through the conversion."
+      },
+      {
+        "title": "The cap is not the constraint; intake is",
+        "severity": "note",
+        "body": "On June 30 math the combined business book would be about 10.8% of assets, close to the 12.25% statutory cap on member business lending, but Community First's low-income designation exempts it. With capacity unconstrained, growth in the acquired business franchise depends on how quickly a business owner can apply, verify and get a decision, not on regulatory room."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Opening a business checking account",
+        "today": "Branch, phone or inquiry form",
+        "withRaven": "Online, with owner identity and beneficial ownership verified in-session"
+      },
+      {
+        "dimension": "Commercial real estate request",
+        "today": "Call a lender; documents collected by hand",
+        "withRaven": "Digital intake with entity, owner and financials verified from source"
+      },
+      {
+        "dimension": "First Southern customer membership opt-in",
+        "today": "Opt-in form by December 31 via branch or phone",
+        "withRaven": "Verified digital opt-in in one sitting"
+      },
+      {
+        "dimension": "New member funding account",
+        "today": "Card or ACH details entered by the applicant",
+        "withRaven": "Linked and verified in-flow"
+      },
+      {
+        "dimension": "Income behind a consumer loan",
+        "today": "Stated by the applicant, verified if flagged",
+        "withRaven": "Verified from source before approval"
+      }
+    ],
+    "sources": "communityfirstfl.org (home, membership, auto, personal, mortgage, home equity, credit card, checking, business banking and business loan pages; First Southern becomes Community First page), apply.communityfirstfl.org, borrower-portal.communityfirstfl.org, ebanking.communityfirstfl.org, dblc.app business loan portal, mycommunityfirst.org (fingerprinted November 17, 2026); NCUA 5300 call report bulk data, June 30, 2026, charter #67290; NCUA credit union locator API; FDIC BankFind financials, Summary of Deposits 2025 and history for First Southern Bank, cert #10055; FFIEC HMDA data browser API 2024, LEI 549300PIL90PE1ZLKI49 (1,150 originations, $165.7M); 12 CFR 723.8; Jacksonville Daily Record and Banking Dive coverage of the November 2025 announcement."
+  },
+  {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",
@@ -3325,7 +3438,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.22B"
+        "value": "$1.23B"
       },
       {
         "label": "Branches",
@@ -3423,7 +3536,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "$5.98B"
+        "value": "$6.12B"
       },
       {
         "label": "Branches",
@@ -3619,7 +3732,7 @@
     "stats": [
       {
         "label": "Total assets",
-        "value": "$1.72B"
+        "value": "$1.74B"
       },
       {
         "label": "Branches",

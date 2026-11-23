@@ -5,6 +5,7 @@ import { STACK_UPDATED } from './(marketing)/bank-tech-stack/stack-data';
 import { getRoiBank } from './(marketing)/roi/roi-data';
 import { GLOSSARY_TERMS } from './(marketing)/glossary/glossary-data';
 import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
+import { SERVICES } from './(marketing)/services/services-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES, BLOG_UPDATED } from './(marketing)/blog/published';
 import { bankSlug, financialsUpdated, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
@@ -21,12 +22,14 @@ function auditModified(auditDate: string): Date {
   return Number.isNaN(d.getTime()) || d < SITE_UPDATED ? SITE_UPDATED : d;
 }
 // Homepage: bump when its content changes (2026-10-19: free-audit card, De Novo Watch nav).
-const HOME_UPDATED = new Date('2026-10-19');
+const HOME_UPDATED = new Date('2026-11-22');
 // The blog index changes whenever an article is published.
 const BLOG_INDEX_UPDATED = new Date(Object.values(BLOG_DATES).sort().at(-1) ?? '2026-07-05');
 // About / AI-info pages: bump when their content changes. De Novo Watch uses
 // the tracker's own updated date, which the weekly /de-novo-update run sets.
-const PAGES_ADDED = new Date('2026-07-18');
+const PAGES_ADDED = new Date('2026-11-22');
+// Services hub: the newest service update.
+const SERVICES_UPDATED = new Date(SERVICES.map((s) => s.updated).sort().at(-1) ?? '2026-11-22');
 
 const LEGAL_PATHS = [
   'security',
@@ -76,6 +79,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })),
     { url: `${SITE}/blog`, lastModified: BLOG_INDEX_UPDATED, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE}/services`, lastModified: SERVICES_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
+    ...SERVICES.map((s) => ({
+      url: `${SITE}/services/${s.slug}`,
+      lastModified: new Date(s.updated),
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    })),
     { url: `${SITE}/solutions`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
     ...SOLUTIONS.map((s) => ({
       url: `${SITE}/solutions/${s.slug}`,

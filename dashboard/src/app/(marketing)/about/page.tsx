@@ -1,18 +1,20 @@
 import type { Metadata } from 'next';
 import { SiteShell } from '../site-shell';
 import { LeadCapture } from '../lead-capture';
+import { CalendlyButton } from '../calendly-button';
+import { FOUNDER, founderJsonLd } from '../founder';
+import { SERVICES } from '../services/services-data';
 import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
-  title: 'About',
+  title: 'About Isaac Welch and RAVEN',
   description:
-    'RAVEN (Real-time Aggregation and Verification Engine) is borrower verification and digital account opening software for community banks, founded by Isaac Welch in Greenville, South Carolina.',
+    'RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm and has helped traditional banks modernize their stack.',
   alternates: { canonical: 'https://reportraven.tech/about' },
   openGraph: {
     images: DEFAULT_OG_IMAGES,
-    title: 'About RAVEN',
-    description:
-      'Borrower verification and digital account opening software for community banks. Who builds RAVEN, why it exists, and what it is (and is not).',
+    title: 'About Isaac Welch and RAVEN',
+    description: FOUNDER.headline,
     url: 'https://reportraven.tech/about',
     siteName: 'RAVEN',
     type: 'website',
@@ -26,18 +28,17 @@ const jsonLd = {
       '@type': 'AboutPage',
       '@id': 'https://reportraven.tech/about',
       url: 'https://reportraven.tech/about',
-      name: 'About RAVEN',
-      mainEntity: { '@id': 'https://reportraven.tech/#organization' },
+      name: 'About Isaac Welch and RAVEN',
+      mainEntity: { '@id': 'https://reportraven.tech/about#founder' },
     },
     {
-      '@type': 'Organization',
+      '@type': ['Organization', 'ProfessionalService'],
       '@id': 'https://reportraven.tech/#organization',
       name: 'RAVEN',
       legalName: 'RAVEN (Real-time Aggregation and Verification Engine)',
       url: 'https://reportraven.tech',
       logo: 'https://reportraven.tech/raven-icon.svg',
-      description:
-        'RAVEN provides borrower verification and digital account opening software for community and regional banks. One link delivers identity, income, employment, and property data in minutes.',
+      description: FOUNDER.headline,
       founder: { '@id': 'https://reportraven.tech/about#founder' },
       contactPoint: {
         '@type': 'ContactPoint',
@@ -50,27 +51,7 @@ const jsonLd = {
         { '@type': 'Country', name: 'United States' },
       ],
     },
-    {
-      '@type': 'Person',
-      '@id': 'https://reportraven.tech/about#founder',
-      name: 'Isaac Welch',
-      jobTitle: 'Founder',
-      worksFor: { '@id': 'https://reportraven.tech/#organization' },
-      url: 'https://reportraven.tech/about',
-      email: 'isaac@reportraven.tech',
-      sameAs: [
-        'https://www.linkedin.com/in/isaac-welch-22a463179',
-        'https://github.com/i-Welch',
-      ],
-      homeLocation: { '@type': 'Place', name: 'Greenville, South Carolina' },
-      knowsAbout: [
-        'Borrower verification',
-        'Consumer lending infrastructure',
-        'Digital account opening',
-        'Fraud prevention',
-        'Community banking',
-      ],
-    },
+    { ...founderJsonLd(), worksFor: { '@id': 'https://reportraven.tech/#organization' } },
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
@@ -87,10 +68,16 @@ const styles = `
   .about-page h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
   .about-page h2 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; margin: 2.5rem 0 0.9rem; }
   .about-page p { font-size: 0.98rem; line-height: 1.75; color: var(--gray-300); margin-bottom: 1rem; }
+  .about-lede { font-size: 1.1rem !important; color: var(--gray-200) !important; }
   .about-page ul { margin: 0 0 1rem 1.2rem; }
   .about-page li { font-size: 0.95rem; line-height: 1.7; color: var(--gray-300); margin-bottom: 0.5rem; }
   .about-page a { color: var(--accent); text-decoration: none; }
   .about-page a:hover { text-decoration: underline; }
+  .about-experience { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1.25rem 0 0 !important; padding: 0; }
+  .about-experience li { font-size: 0.8rem !important; color: var(--gray-200) !important; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.3rem 0.8rem; margin: 0 !important; }
+  .about-cta { margin: 1.75rem 0 0.5rem; }
+  .about-btn { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; padding: 0.85rem 1.75rem; border-radius: 8px; border: none; background: var(--accent); color: var(--white); cursor: pointer; transition: opacity 200ms; }
+  .about-btn:hover { opacity: 0.85; }
   .about-contact { border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1.5rem; margin-top: 2.5rem; }
   .about-contact p { margin-bottom: 0.4rem; }
 `;
@@ -102,78 +89,68 @@ export default function AboutPage() {
       <style>{styles}</style>
       <div className="about-page">
         <div className="about-eyebrow">About</div>
-        <h1>About RAVEN</h1>
+        <h1>Isaac Welch and RAVEN</h1>
+        <p className="about-lede">{FOUNDER.headline}</p>
+
+        <h2>Who you work with</h2>
+        {FOUNDER.bio.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+        <ul className="about-experience" aria-label="Experience">
+          {FOUNDER.experience.map((e) => (
+            <li key={e}>{e}</li>
+          ))}
+        </ul>
+        <div className="about-cta">
+          <CalendlyButton source="about-hero" label="Book a call" buttonClassName="about-btn" />
+        </div>
+
+        <h2>What RAVEN does</h2>
         <p>
-          RAVEN (Real-time Aggregation and Verification Engine) is borrower verification and digital
-          account opening software for community and regional banks. A loan officer or account-opening
-          flow sends one link. The applicant connects their accounts in about five minutes. RAVEN
-          returns identity, income, employment, and property data cross-referenced from seven
-          providers, with a timestamped audit trail for examiners.
+          RAVEN helps new banks and community banks with their technology, from the first vendor
+          decision after conditional approval to the next IT exam. See all{' '}
+          <a href="/services">services</a>:
+        </p>
+        <ul>
+          {SERVICES.map((s) => (
+            <li key={s.slug}>
+              <a href={`/services/${s.slug}`}>{s.navLabel}</a>
+            </li>
+          ))}
+        </ul>
+
+        <h2>The software</h2>
+        <p>
+          RAVEN started as software, and the software is still available. Its borrower verification
+          product sends one link to the applicant and returns identity, income, employment and
+          property data with a timestamped audit trail for examiners. It works alongside the
+          bank&rsquo;s existing core and loan origination system. See the{' '}
+          <a href="/solutions">verification solutions</a> and the{' '}
+          <a href="/integrations">systems it works alongside</a>.
         </p>
 
-        <h2>Why RAVEN exists</h2>
+        <h2>The research</h2>
         <p>
-          Community banks lose loans and deposits at the intake step. The traditional process
-          collects documents and phone calls over weeks; applicants who are used to fintech-grade
-          onboarding abandon it. The banks that did move intake online often did it by accepting
-          whatever the applicant typed, and more than one bank turned digital account opening off
-          entirely after a fraud wave.
-        </p>
-        <p>
-          RAVEN takes the position that the fix is verification at the source: identity checked
-          against authoritative records, income and employment pulled from payroll and bank systems,
-          property data from public records, all in one borrower interaction. The bank keeps its
-          core and its loan origination system. RAVEN replaces the document chase in front of them.
-        </p>
-
-        <h2>Who builds it</h2>
-        <p>
-          RAVEN was founded by Isaac Welch, a software engineer based in Greenville, South Carolina,
-          who has spent more than eight years building consumer lending infrastructure: borrower
-          verification, underwriting decisioning, payments, and compliance systems used in regulated
-          production environments. RAVEN is the verification layer he kept rebuilding for lenders,
-          packaged for the community banks that fintech vendors skip.
-        </p>
-        <p>
-          RAVEN also publishes original research: FDIC call-report deep dives on Southeast community
-          banks, and the <a href="/de-novo-watch">De Novo Watch</a> series tracking newly chartered
-          banks and their technology choices.
+          RAVEN publishes free research from public filings: <a href="/de-novo-watch">De Novo Watch</a>{' '}
+          tracks every new bank filing, approval and opening; the{' '}
+          <a href="/bank-snapshot">Bank Peer Snapshot</a> and{' '}
+          <a href="/bank-rankings">state rankings</a> compare banks on FDIC call report data; and the{' '}
+          <a href="/blog">blog</a> runs deep dives on Southeast community banks.
         </p>
 
         <h2>The name</h2>
         <p>
-          RAVEN stands for Real-time Aggregation and Verification Engine. The product lives at
-          reportraven.tech. RAVEN is not affiliated with RavenPack (financial news analytics), Raven
-          Industries (agriculture technology), RavenDB (database software), or Raven Software (game
-          studio).
-        </p>
-
-        <h2>What RAVEN is not</h2>
-        <ul>
-          <li>Not a loan origination system or core banking replacement. RAVEN layers on top of both.</li>
-          <li>Not a marketplace or aggregator that competes with the bank for the customer.</li>
-          <li>Not blockchain-based and not crypto-related.</li>
-          <li>Not mortgage-only. RAVEN verifies for mortgage, HELOC, CRE, small business, consumer lending, and deposit account opening.</li>
-        </ul>
-
-        <h2>The provider stack</h2>
-        <ul>
-          <li>Identity and KYC: Socure RiskOS (identity validation, fraud scoring, synthetic identity detection, watchlist screening)</li>
-          <li>Income and assets: Plaid (bank-connected income, transactions, balances, liabilities)</li>
-          <li>Employment: Truework (employer-verified salary, title, dates, status)</li>
-          <li>Property: Melissa and ATTOM dual AVM (valuation, tax, comparables, ownership)</li>
-          <li>Contact: FullContact (cross-referenced email, phone, demographics)</li>
-        </ul>
-        <p>
-          See <a href="/integrations">all integrations</a>, including the core banking systems and
-          loan origination systems RAVEN works alongside.
+          RAVEN stands for Real-time Aggregation and Verification Engine, the name of the software it
+          began with. It lives at reportraven.tech. RAVEN is not affiliated with RavenPack (financial
+          news analytics), Raven Industries (agriculture technology), RavenDB (database software), or
+          Raven Software (game studio).
         </p>
 
         <div className="about-contact">
           <h2 style={{ marginTop: 0 }}>Contact</h2>
-          <p>Email: <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a></p>
+          <p>Email: <a href={`mailto:${FOUNDER.email}`}>{FOUNDER.email}</a></p>
           <p>Phone: <a href="tel:+12293796131">(229) 379-6131</a></p>
-          <p>Greenville, South Carolina</p>
+          <p>{FOUNDER.location}</p>
         </div>
 
         <LeadCapture variant="audit" source="about" title="Not ready for a call? Start with a free audit." />

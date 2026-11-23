@@ -450,7 +450,7 @@ export default function BlogIndex() {
             Original analysis of community bank performance, fintech competition, and the lending
             infrastructure gap. Built from public FDIC, HMDA, and earnings data.
           </p>
-          <CalendlyButton source="blog-index" label="Book a Demo" buttonClassName="blog-index-demo-btn" />
+          <CalendlyButton source="blog-index" label="Book a call" buttonClassName="blog-index-demo-btn" />
         </div>
 
         {/* Featured */}

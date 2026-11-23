@@ -4,9 +4,9 @@ import { SOLUTIONS } from './solutions-data';
 import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
-  title: 'Solutions for Community Banks',
+  title: 'RAVEN Verification Software for Community Banks',
   description:
-    'Verification-first infrastructure for community banks: borrower verification, digital account opening, KYC, and instant income and employment verification.',
+    'RAVEN Verification Software for community banks: borrower verification, digital account opening, KYC, and instant income and employment verification.',
   alternates: { canonical: 'https://reportraven.tech/solutions' },
   openGraph: {
     images: DEFAULT_OG_IMAGES,
@@ -59,10 +59,11 @@ export default function SolutionsIndex() {
       `}</style>
       <div className="solx">
         <div className="solx-tag">Solutions</div>
-        <h1>Verification-first infrastructure for community banks</h1>
+        <h1>RAVEN Verification Software</h1>
         <p className="solx-sub">
-          One borrower link, source-verified data back in minutes. Every solution below runs
-          without a core conversion and launches in days, not quarters.
+          The borrower verification software RAVEN built, and one of its{' '}
+          <a href="/services" style={{ color: 'var(--accent)' }}>services</a>. One borrower link,
+          source-verified data back in minutes. Every solution below runs without a core conversion.
         </p>
         <div className="solx-grid">
           {SOLUTIONS.map((s) => (
