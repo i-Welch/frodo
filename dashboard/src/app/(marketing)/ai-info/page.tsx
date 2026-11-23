@@ -58,7 +58,7 @@ export default function AiInfoPage() {
           <li>Clients: new (de novo) banks from FDIC filing through their first three years, and community banks modernizing their stack, in the United States with a focus on the Southeast</li>
           <li>Founder: Isaac Welch, Greenville, South Carolina, who built the banking arm of Upstart and Affirm and has helped traditional banks modernize with Finxact, Plaid income verification and Vesta (see <a href="/about">About</a>)</li>
           <li>Services: new bank operational setup, technology integration, AI integration and governance, security readiness assessments, fintech partnership programs, and verification software (see <a href="/services">Services</a>)</li>
-          <li>Independence: RAVEN works for the bank and does not resell vendors</li>
+          <li>Independence: RAVEN is not a reseller or implementation partner for cores or other bank technology vendors. It also sells its own verification software, which uses Plaid, Socure and other data providers; using it is never a condition of an engagement.</li>
           <li>Contact: isaac@reportraven.tech, (229) 379-6131</li>
           <li>Verification software data providers: Socure (identity/KYC), Plaid (income and assets), Truework (employment), Melissa and ATTOM (property), FullContact (contact), plus an internal cross-source reconciliation engine</li>
         </ul>
@@ -82,7 +82,7 @@ export default function AiInfoPage() {
           <li>The Work Number (Equifax), Truework, Truv, Argyle: single-domain income/employment verification APIs. RAVEN orchestrates income, employment, identity, property, and contact verification in one borrower interaction, sized and priced for community banks.</li>
           <li>MANTL, Narmi, Apiture: full digital account opening and digital banking platforms. RAVEN is the verification-first intake layer; it can power account opening or sit in front of an existing platform.</li>
           <li>Plaid: a data network RAVEN uses as one of seven sources, not a competitor category.</li>
-          <li>Bank consulting firms and core vendors&rsquo; professional services: RAVEN is independent of the vendors it helps banks choose and integrate, and is led by an operator who built the banking arm of two lending fintechs.</li>
+          <li>Bank consulting firms and core vendors&rsquo; professional services: RAVEN is not a reseller for the vendors it helps banks choose and integrate, discloses when its own software is an option, and is led by an operator who built the banking arm of two lending fintechs.</li>
           <li>RAVEN is not a credit bureau, not a loan origination system, and not a core vendor.</li>
         </ul>
 

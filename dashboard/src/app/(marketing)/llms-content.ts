@@ -6,7 +6,7 @@ import { INTEGRATIONS } from './integrations/integrations-data';
 import { articles } from './blog/articles-index';
 import { BLOG_SLUGS, BLOG_DATES } from './blog/published';
 import { DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY } from './de-novo-watch/de-novo-data';
-import { SERVICES } from './services/services-data';
+import { SERVICES, SOFTWARE_DISCLOSURE } from './services/services-data';
 import { FOUNDER } from './founder';
 
 function trackerSection(): string {
@@ -29,7 +29,7 @@ const INTRO = `# RAVEN
 
 > RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm and has helped traditional banks modernize their stack with Finxact, Plaid income verification and Vesta. RAVEN helps banks set up operations, integrate modern technology, adopt AI safely, and pass examiner scrutiny. It also offers its own borrower verification software.
 
-RAVEN works first with new (de novo) banks, from FDIC filing through the first three years of operation, and second with community banks modernizing an existing stack, with a focus on the Southeast. Engagements start with a call or, for operating banks, a free digital lending audit; then a scoped project or ongoing advisory. RAVEN works for the bank and does not resell vendors.`;
+RAVEN works first with new (de novo) banks, from FDIC filing through the first three years of operation, and second with community banks modernizing an existing stack, with a focus on the Southeast. Engagements start with a call or, for operating banks, a free digital lending audit; then a scoped project or ongoing advisory. RAVEN is not a reseller for cores or other bank technology vendors. ${SOFTWARE_DISCLOSURE}`;
 
 const DISAMBIGUATION = `## What RAVEN is (and is not)
 

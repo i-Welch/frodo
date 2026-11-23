@@ -68,7 +68,8 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
         }
         .site-nav-cta:hover { opacity: 0.85; }
         button.site-nav-cta { font-family: var(--font-dm-sans), 'DM Sans', sans-serif; font-size: 0.85rem; border: none; cursor: pointer; }
-        .site-nav-mobile-links { display: flex; gap: 0.5rem; }
+        .site-nav-mobile-links { display: flex; gap: 0.5rem; align-items: center; }
+        .site-nav-cta-mobile { display: none; }
         .site-nav-mobile-link {
           display: none;
           color: var(--gray-300);
@@ -125,6 +126,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           .site-shell > nav { padding: 1rem 1.5rem; }
           .site-nav-links { display: none; }
           .site-nav-mobile-link { display: inline-block; }
+          .site-nav-cta-mobile { display: inline-block; }
           .site-shell footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
         }
       `}</style>
@@ -141,6 +143,7 @@ export function SiteShell({ children, ctaSource }: { children: React.ReactNode; 
           <span className="site-nav-mobile-links">
             <a href="/services" className="site-nav-mobile-link">Services</a>
             <a href="/blog" className="site-nav-mobile-link">Blog</a>
+            <CalendlyButton source={`${ctaSource}-nav-mobile`} label="Book a call" buttonClassName="site-nav-cta site-nav-cta-mobile" />
           </span>
           <div className="site-nav-links">
             <a href="/services">Services</a>

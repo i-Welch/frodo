@@ -150,20 +150,15 @@ describe('services pages', () => {
   });
 });
 
-const CTA_FILES = [
-  'calendly-button.tsx',
-  'demo-modal.tsx',
-  'interest-form.tsx',
-  'site-shell.tsx',
-  'blog/layout.tsx',
-  'blog/page.tsx',
-  'blog/[slug]/page.tsx',
-  'solutions/[slug]/page.tsx',
-  'services/page.tsx',
-  'services/[slug]/page.tsx',
-  'about/page.tsx',
-  'page.tsx',
-];
+/** Every .tsx file under src/app/(marketing), relative to it. */
+function walkTsx(dir = ''): string[] {
+  return readdirSync(join(MARKETING, dir)).flatMap((f) => {
+    const rel = join(dir, f);
+    if (statSync(join(MARKETING, rel)).isDirectory()) return walkTsx(rel);
+    return f.endsWith('.tsx') ? [rel] : [];
+  });
+}
+const CTA_FILES = walkTsx();
 const readSrc = (rel: string) => readFileSync(join(SRC, rel), 'utf8');
 const OLD_CTA = /Request a Demo|Book a Demo|Get a Demo|Request a demo|Your RAVEN demo|live demo for your bank/;
 
@@ -268,5 +263,54 @@ describe('AI assistant sources', () => {
     expect(src).toMatch(/bank technology consulting/i);
     expect(src).not.toMatch(/Category: borrower verification and digital account opening software/);
     expect(src).toContain('href="/services"');
+  });
+});
+
+describe('review fixes', () => {
+  const claimSources = () => [
+    JSON.stringify([SERVICES, FOUNDER]),
+    buildLlmsFullTxt(),
+    read('page.tsx'),
+    read('ai-info/page.tsx'),
+    read('about/page.tsx'),
+  ];
+
+  it('makes no false independence claims (RAVEN software uses Plaid and Socure)', () => {
+    for (const src of claimSources())
+      expect(src).not.toMatch(/no commercial relationship|independent of all of them|not a vendor with something to sell|does not resell vendors|paid by the bank, not by vendors/i);
+  });
+
+  it('discloses that its own software is never a condition of an engagement', () => {
+    expect(buildLlmsTxt()).toMatch(/never a condition/i);
+    expect(JSON.stringify(getService('new-bank-launch'))).toMatch(/never a condition/i);
+    expect(JSON.stringify(getService('technology-integration'))).toMatch(/never a condition/i);
+  });
+
+  it('bio stays high level: no timing or implied build claims', () => {
+    const bio = FOUNDER.bio.join(' ');
+    expect(bio).not.toMatch(/Since then|a core, an origination system/);
+    const integ = JSON.stringify(getService('technology-integration'));
+    expect(integ).not.toMatch(/traditional community bank cores|to and from the core/);
+  });
+
+  it('mobile nav offers Book a call in every shell', () => {
+    for (const f of ['site-shell.tsx', 'blog/layout.tsx', 'page.tsx'])
+      expect(read(f), f).toMatch(/<CalendlyButton[^>]*-mobile"[^>]*label="Book a call"|<CalendlyButton[^>]*label="Book a call"[^>]*-mobile"/);
+  });
+
+  it('roi modal uses Book a call', () => {
+    expect(read('roi/roi-client.tsx')).not.toMatch(OLD_CTA);
+  });
+
+  it('de novo articles point to the new-bank service', () => {
+    const src = read('blog/[slug]/page.tsx');
+    expect(src).not.toContain('RAVEN gives de novo banks source-verified onboarding');
+    expect(src).toContain('/services/new-bank-launch');
+  });
+
+  it('sitemap keeps every glossary URL', async () => {
+    noFdic();
+    const urls = new Set((await sitemap()).map((e) => e.url));
+    for (const t of GLOSSARY_TERMS) expect(urls.has(`https://reportraven.tech/glossary/${t.slug}`), t.slug).toBe(true);
   });
 });

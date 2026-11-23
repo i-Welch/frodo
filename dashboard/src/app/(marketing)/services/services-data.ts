@@ -7,6 +7,14 @@ import type { SolutionSection } from '../solutions/solutions-data';
  * partners; no credentials claimed; no prices.
  */
 
+/**
+ * Disclosure for every place the site talks about vendor independence. RAVEN's
+ * own verification software pays data providers (Plaid, Socure and others), so
+ * the site never claims RAVEN has no commercial relationship with vendors.
+ */
+export const SOFTWARE_DISCLOSURE =
+  'RAVEN also sells its own borrower verification software, which uses data providers including Plaid and Socure. Using it is never a condition of an engagement, and when it is one of the options, RAVEN says so.';
+
 export interface Service {
   slug: string;
   /** ISO date of last substantive content update */
@@ -79,7 +87,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Do you resell any of the vendors?',
-        a: 'No. RAVEN is paid by the bank, not by vendors, and does not resell cores, digital banking platforms or origination systems.',
+        a: `No. RAVEN is not a reseller for cores, digital banking platforms or origination systems. ${SOFTWARE_DISCLOSURE}`,
       },
     ],
     related: [
@@ -107,11 +115,11 @@ export const SERVICES: Service[] = [
       {
         heading: 'Where the hands-on experience is',
         paragraphs: [
-          'The work below is direct implementation experience, not a vendor relationship. RAVEN is independent of all of them.',
+          'The work below is direct implementation experience, not a reseller or partner arrangement.',
         ],
         bullets: [
-          'Core: Finxact cloud core, plus integration work against traditional community bank cores',
-          'Loan origination: the Vesta LOS, including data flow to and from the core',
+          'Core: the Finxact cloud core',
+          'Loan origination: the Vesta LOS',
           'Income and asset verification: Plaid income verification and bank-connected data',
           'Digital account opening and identity verification flows',
         ],
@@ -140,7 +148,7 @@ export const SERVICES: Service[] = [
       },
       {
         q: 'Are you a reseller or implementation partner for these vendors?',
-        a: 'No. RAVEN works for the bank and has no commercial relationship with the vendors it helps integrate.',
+        a: `No. RAVEN is not a reseller or implementation partner for the vendors it helps integrate. ${SOFTWARE_DISCLOSURE}`,
       },
     ],
     related: [

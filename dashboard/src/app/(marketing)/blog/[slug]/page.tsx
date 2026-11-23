@@ -6479,10 +6479,13 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               <aside className="article-mid-cta">
                 <h2>Organizing a bank?</h2>
                 <p>
-                  Your business plan promised examiners a fraud program. RAVEN gives de novo banks
-                  source-verified onboarding from one link, live before day one.
+                  RAVEN helps de novo banks choose, sequence and stand up their technology between
+                  conditional approval and opening day, with the documentation examiners will ask for.
                 </p>
-                <a href="/solutions/de-novo-bank-technology" className="article-mid-cta-btn">See the day-one stack</a>
+                <CalendlyButton source="mid-article-denovo" label="Book a call" buttonClassName="article-mid-cta-btn" />
+                <p className="article-mid-cta-alt">
+                  See how it works: <a href="/services/new-bank-launch">new bank launch</a>.
+                </p>
                 <p className="article-mid-cta-alt">
                   Following new charters? <a href="/de-novo-watch">De Novo Watch</a> tracks every
                   filing, approval and opening.

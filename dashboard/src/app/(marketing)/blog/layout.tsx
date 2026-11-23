@@ -88,7 +88,8 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           transition: opacity 200ms !important;
         }
         .blog-nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
-        .blog-nav-mobile-links { display: flex; gap: 0.5rem; }
+        .blog-nav-mobile-links { display: flex; gap: 0.5rem; align-items: center; }
+        .blog-nav-cta-mobile { display: none; }
         .blog-nav-blog-mobile {
           display: none;
           color: var(--gray-300);
@@ -506,6 +507,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           .blog-shell > nav { padding: 1rem 1.5rem; }
           .blog-nav-links { display: none; }
           .blog-nav-blog-mobile { display: inline-block; }
+          .blog-nav-cta-mobile { display: inline-block; }
           .blog-main { padding-top: 4rem; }
           .blog-cta { padding: 3rem 1.5rem; }
           .blog-shell footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
@@ -530,6 +532,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           <span className="blog-nav-mobile-links">
             <a href="/services" className="blog-nav-blog-mobile">Services</a>
             <a href="/blog" className="blog-nav-blog-mobile">Blog</a>
+            <CalendlyButton source="blog-nav-mobile" label="Book a call" buttonClassName="blog-nav-cta blog-nav-cta-mobile" />
           </span>
           <div className="blog-nav-links">
             <a href="/services">Services</a>

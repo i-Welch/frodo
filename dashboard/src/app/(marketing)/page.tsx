@@ -3,7 +3,7 @@ import { CalendlyButton } from './calendly-button';
 import { ScrollReveal } from './scroll-reveal';
 import { LeadCapture } from './lead-capture';
 import { FOUNDER, founderJsonLd } from './founder';
-import { SERVICES, ENGAGEMENT_STEPS } from './services/services-data';
+import { SERVICES, ENGAGEMENT_STEPS, SOFTWARE_DISCLOSURE } from './services/services-data';
 import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
@@ -162,7 +162,7 @@ const jsonLd = {
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'No. RAVEN works for the bank and has no commercial relationship with the cores, origination systems or other vendors it helps banks choose and integrate.',
+              `No. RAVEN is not a reseller for cores, origination systems or other bank technology vendors. ${SOFTWARE_DISCLOSURE}`,
           },
         },
         {
@@ -592,7 +592,8 @@ export default function LandingPage() {
         .founder-experience li { font-size: 0.8rem; color: var(--gray-200); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.3rem 0.8rem; }
         .founder-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
         .founder-link:hover { text-decoration: underline; }
-        .nav-mobile-links { display: flex; gap: 0.5rem; }
+        .nav-mobile-links { display: flex; gap: 0.5rem; align-items: center; }
+        .nav-cta-mobile { display: none; }
 
         .free-data {
           padding: 6rem 3rem;
@@ -782,6 +783,7 @@ export default function LandingPage() {
           .landing nav { padding: 1rem 1.5rem; }
           .nav-links { display: none; }
           .nav-blog-mobile { display: inline-block; }
+          .nav-cta-mobile { display: inline-block; }
           .hero { padding: 7rem 1.5rem 4rem; }
           .hero h1 { font-size: 2.2rem; }
           .hero-watermark { width: 80vw; right: -20%; opacity: 0.03; }
@@ -808,6 +810,7 @@ export default function LandingPage() {
           <span className="nav-mobile-links">
             <a href="/services" className="nav-blog-mobile">Services</a>
             <a href="/blog" className="nav-blog-mobile">Blog</a>
+            <CalendlyButton source="landing-nav-mobile" label="Book a call" buttonClassName="nav-cta nav-cta-mobile" />
           </span>
           <div className="nav-links">
             <a href="/services">Services</a>

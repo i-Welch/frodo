@@ -14,9 +14,9 @@ export const FOUNDER = {
   headline:
     'A bank technology consultant who built the banking arm of Upstart and Affirm, helping banks set up operations, integrate modern technology, adopt AI safely, and pass examiner scrutiny, with software he has built himself.',
   bio: [
-    'Isaac Welch built the banking arm at Upstart and at Affirm: the side of a lending fintech that has to work with partner banks, their regulators, and the systems in between. It is the same machinery every bank runs on (a core, an origination system, verification, compliance) built to the standard a regulated partner bank and its examiners expect.',
-    'Since then he has helped traditional banks modernize their stack, with hands-on work on the Finxact cloud core, Plaid income verification, and the Vesta loan origination system. Along the way he built RAVEN’s borrower verification software.',
-    'RAVEN is the practice he runs from Greenville, South Carolina, for new banks and community banks that want an operator who has built this from the inside, not a vendor with something to sell or an advisor who has only read about it.',
+    'Isaac Welch built the banking arm at Upstart and at Affirm: the side of a lending fintech that works with partner banks and their regulators.',
+    'He has also helped traditional banks modernize their stack, with hands-on work on the Finxact cloud core, Plaid income verification, and the Vesta loan origination system. Along the way he built RAVEN’s borrower verification software.',
+    'RAVEN is the practice he runs from Greenville, South Carolina, for new banks and community banks that want an operator who has built this from the inside, not an advisor who has only read about it.',
   ],
   experience: [
     'Built the banking arm at Upstart',
