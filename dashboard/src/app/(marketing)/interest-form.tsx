@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 
 export function InterestForm({ source = 'landing' }: { source?: string }) {
   const [name, setName] = useState('');

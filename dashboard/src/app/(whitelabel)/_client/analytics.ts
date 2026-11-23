@@ -1,4 +1,4 @@
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 
 type Val = string | number | boolean | null | undefined;
 

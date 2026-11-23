@@ -1,5 +1,6 @@
+import { ProductMilestones } from "@/components/ProductMilestones";
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@/components/ProductAnalytics";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { dmSans, fraunces } from './fonts';
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+        <ProductMilestones />
         {/* The Neon Auth provider and its CSS live in the dashboard and sign-in/up
             layouts, so marketing pages don't download the auth UI bundle. */}
         {children}

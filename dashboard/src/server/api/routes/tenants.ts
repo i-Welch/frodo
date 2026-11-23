@@ -1,3 +1,5 @@
+import { recordProductEvent } from "@/lib/product-events";
+import { isTestSubmission } from "@/lib/product-events-policy";
 import crypto from 'node:crypto';
 import { Elysia, t } from 'elysia';
 import {
@@ -87,6 +89,7 @@ export const tenantRoutes = new Elysia({ prefix: '/api/v1/tenants' })
       };
 
       await createTenant(tenant);
+      await recordProductEvent("account_created", { source: "admin" }, { accountId: tenantId, eventKey: tenantId, objectType: "tenant", objectId: tenantId, isTest: isTestSubmission({ name: body.name }) });
 
       // Auto-generate a sandbox API key for the new tenant
       const generated = generateApiKey('sandbox');

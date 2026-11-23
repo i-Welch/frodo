@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 import { CalendlyButton } from '../calendly-button';
 
 /* ---------- Hook: fire once when an element scrolls into view ---------- */
