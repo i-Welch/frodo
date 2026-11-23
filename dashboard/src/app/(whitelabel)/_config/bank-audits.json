@@ -3317,6 +3317,119 @@
     "sources": "robinsfcu.org (auto-loans, personal-loans, checking, membership pages, reviewed August 2026, rechecked October 2026); newaccount.robinsfcu.org (MANTL), cp.decisionlender.solutions, robinsfcuportal.mymortgage-online.com, and onlinebanking.robinsfcu.org (Q2, fingerprinted August 2026); NCUA 5300 aggregation via ncuso.org for charter #68670 (Mar 31, 2026); FFIEC HMDA data browser API 2024, LEI 549300AUL77A8UKADB04 (1,457 originations, $173.3M); IRS Form 990 FY2024 via ProPublica, EIN 580641605; CUToday and CUInsight coverage of the December 2025 $20M member rebate; 13WMAZ 2026 State of the Base coverage; Wikipedia for the 1954 founding and 2016 charter conversion."
   },
   {
+    "slug": "community-first-credit-union-of-florida",
+    "bankName": "Community First Credit Union of Florida",
+    "shortName": "Community First",
+    "auditDate": "November 2026",
+    "demoSlug": "community-first-credit-union-of-florida",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$3.21B (Jun 2026, before the bank deal)"
+      },
+      {
+        "label": "Members",
+        "value": "194,282"
+      },
+      {
+        "label": "Net worth ratio",
+        "value": "12.26% (Jun 2026)"
+      },
+      {
+        "label": "First Southern deposits in Florida",
+        "value": "53% (June 2025 SOD)"
+      }
+    ],
+    "summary": "Community First is a $3.21 billion Jacksonville consumer lender (vehicle loans 40.3% of the book, commercial 10.1%) that closed its purchase of First Southern Bank, a 1907 Waycross, Georgia charter, on October 2, 2026. The bank brought $347.2 million in assets, a loan book that is 69% business and commercial property credit, and deposits of which 33% pay no interest, 53% of them in Florida branches. Its consumer front door is first-party and modern: membership, checking, auto, personal and card applications run at apply.communityfirstfl.org and mortgages at borrower-portal.communityfirstfl.org. The gap is business: business checking cannot be opened online, commercial real estate has no online application, business lines apply on a third-party domain, and the business eligibility list omits the newly acquired markets. Every First Southern customer must opt in to membership by December 31, 2026, ahead of an early summer 2027 system conversion.",
+    "currentJourney": [
+      {
+        "channel": "Online banking",
+        "detail": "ebanking.communityfirstfl.org (ASP.NET login, enrollment assets served from cdn1.onlineaccess1.com); vendor not named on the site. Fingerprinted November 17, 2026",
+        "status": "ok"
+      },
+      {
+        "channel": "Account opening / new membership",
+        "detail": "apply.communityfirstfl.org/account-opening, a first-party subdomain; $5 share deposit, ID, SSN or ITIN, and a funding card or ACH account required",
+        "status": "ok"
+      },
+      {
+        "channel": "Consumer loans and cards",
+        "detail": "Auto, personal, line of credit and credit card applications start at apply.communityfirstfl.org/products/portal; the site says eligible borrowers are approved in minutes",
+        "status": "ok"
+      },
+      {
+        "channel": "Mortgage and home equity",
+        "detail": "borrower-portal.communityfirstfl.org, a first-party subdomain; the site says the application takes 10 minutes",
+        "status": "ok"
+      },
+      {
+        "channel": "Business deposit accounts",
+        "detail": "Business checking opens in a branch, by phone or via an inquiry form; no online opening. The business eligibility list omits Highlands, Manatee and all Georgia counties",
+        "status": "missing"
+      },
+      {
+        "channel": "Business lending",
+        "detail": "Business lines, business auto and equipment loans apply on a third-party domain (dblc.app); commercial real estate has no online application, call only",
+        "status": "weak"
+      },
+      {
+        "channel": "Acquired First Southern customers",
+        "detail": "Separate site (mycommunityfirst.org) and online banking host (web10.secureinternetbank.com) until an early summer 2027 conversion; customers cannot transact at Community First branches until then and are asked to call or visit a branch to submit a membership opt-in form by December 31, 2026",
+        "status": "weak"
+      }
+    ],
+    "findings": [
+      {
+        "title": "It bought a business bank; its business front door is a phone number",
+        "severity": "gap",
+        "body": "69% of First Southern's $226.5M loan book is business and commercial property credit: $84.2M nonfarm nonresidential real estate, $32.1M construction, $23.5M commercial and industrial. Community First's own business lending is 10.1% of its book, and its member C&I lending is $3.2M across 53 loans. Business checking cannot be opened online and commercial real estate has no online application. The relationships it just paid for have no digital path to renew, expand or add a deposit account once the systems merge."
+      },
+      {
+        "title": "The opt-in deadline is a re-onboarding event",
+        "severity": "friction",
+        "body": "Every First Southern customer is asked to submit a membership opt-in form by December 31, 2026, through a branch visit or call, ahead of the summer 2027 conversion. For depositors and borrowers in Sebring, Bradenton, Stuart and four Southeast Georgia towns, that is the moment they decide whether to stay. A verified digital opt-in, with identity, eligibility and funding account confirmed in one sitting, removes the trip."
+      },
+      {
+        "title": "A third of the acquired deposits cost nothing",
+        "severity": "note",
+        "body": "$103.2M of First Southern's $312.9M in deposits paid no interest at June 30, 2026, and its interest expense ran about 1.2% of deposits against about 1.8% at Community First. Those operating balances are mostly business money and are the main reason the deal priced at roughly 1.7 times equity. They are retained by keeping treasury, payment and credit requests easy through the conversion."
+      },
+      {
+        "title": "The cap is not the constraint; intake is",
+        "severity": "note",
+        "body": "On June 30 math the combined business book would be about 10.8% of assets, close to the 12.25% statutory cap on member business lending, but Community First's low-income designation exempts it. With capacity unconstrained, growth in the acquired business franchise depends on how quickly a business owner can apply, verify and get a decision, not on regulatory room."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Opening a business checking account",
+        "today": "Branch, phone or inquiry form",
+        "withRaven": "Online, with owner identity and beneficial ownership verified in-session"
+      },
+      {
+        "dimension": "Commercial real estate request",
+        "today": "Call a lender; documents collected by hand",
+        "withRaven": "Digital intake with entity, owner and financials verified from source"
+      },
+      {
+        "dimension": "First Southern customer membership opt-in",
+        "today": "Opt-in form by December 31 via branch or phone",
+        "withRaven": "Verified digital opt-in in one sitting"
+      },
+      {
+        "dimension": "New member funding account",
+        "today": "Card or ACH details entered by the applicant",
+        "withRaven": "Linked and verified in-flow"
+      },
+      {
+        "dimension": "Income behind a consumer loan",
+        "today": "Stated by the applicant, verified if flagged",
+        "withRaven": "Verified from source before approval"
+      }
+    ],
+    "sources": "communityfirstfl.org (home, membership, auto, personal, mortgage, home equity, credit card, checking, business banking and business loan pages; First Southern becomes Community First page), apply.communityfirstfl.org, borrower-portal.communityfirstfl.org, ebanking.communityfirstfl.org, dblc.app business loan portal, mycommunityfirst.org (fingerprinted November 17, 2026); NCUA 5300 call report bulk data, June 30, 2026, charter #67290; NCUA credit union locator API; FDIC BankFind financials, Summary of Deposits 2025 and history for First Southern Bank, cert #10055; FFIEC HMDA data browser API 2024, LEI 549300PIL90PE1ZLKI49 (1,150 originations, $165.7M); 12 CFR 723.8; Jacksonville Daily Record and Banking Dive coverage of the November 2025 announcement."
+  },
+  {
     "slug": "uwharrie-bank",
     "bankName": "Uwharrie Bank",
     "shortName": "Uwharrie",

@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Credit Union Deep Dives (Nov 2026) —
+  'community-first-51-million-georgia-bank',
   // — Institutional research (Nov 2026) —
   'digital-lending-audit-banks-credit-unions',
   // — Market (Nov 2026) —
@@ -120,6 +122,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'community-first-51-million-georgia-bank': '2026-11-18',
   'georgia-most-efficient-banks-q2-2026': '2026-11-20',
   'digital-lending-audit-banks-credit-unions': '2026-11-19',
   'south-carolina-most-efficient-banks-q2-2026': '2026-11-06',

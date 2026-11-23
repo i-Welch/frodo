@@ -1244,6 +1244,68 @@ export const ROI_BANKS: BankRoiInput[] = [
       'FDIC BankFind cert #22858; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
   },
   {
+    slug: 'community-first-credit-union-of-florida',
+    name: 'Community First Credit Union of Florida',
+    shortName: 'Community First',
+    articleSlug: 'community-first-51-million-georgia-bank',
+    articleTitle: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Community First is a credit union with no FDIC cert. Populated with its
+    // NCUA charter number (67290) instead until this field is generalized.
+    // See `sources`.
+    fdicCert: 67290,
+    auditDate: 'November 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.21B (Jun 2026, before the bank deal)' },
+      { label: 'Net worth ratio', value: '12.26% (Jun 2026)' },
+      { label: 'Members', value: '194,282' },
+      { label: 'Bank acquired', value: 'First Southern Bank, $347.2M (closed Oct 2, 2026)' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 1150,
+        source:
+          'Reported 2024 HMDA originations (action taken = originated) for Community First Credit Union of Florida, LEI 549300PIL90PE1ZLKI49, totaling $165.7M, via the FFIEC HMDA data browser API: 195 home purchase, 536 home improvement, 315 other purpose, 87 cash-out refinance, 17 refinance. An actual filed figure, not an estimate. Excludes First Southern Bank, acquired October 2, 2026.',
+        estimated: false,
+      },
+      commercial: {
+        count: 200,
+        source:
+          "Modeled. Community First reported 20 commercial loans granted or purchased in the first half of 2026 (17 to members, 3 nonmember participations; NCUA 5300, June 30, 2026), about 40 a year. First Southern Bank adds roughly $157M of business and commercial property loans (69% of its $226.5M book, FDIC call report June 30, 2026); assuming about a quarter of that book originates or renews each year at a ~$250K average note gives ~160 more. Not a reported figure.",
+        estimated: true,
+      },
+      consumer: {
+        count: 9300,
+        source:
+          'Modeled at the ~4.8% of members per year used across this series, applied to 194,282 members (June 30, 2026). Conservative: the June 30, 2026 call report shows 13,263 loans of all types granted in the first half of 2026, but $712.4M of the $2.38B book is indirect dealer paper that never touches the credit union intake. Not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 21000,
+      source:
+        "Modeled. Community First's state-charter field of membership now covers 19 Florida and 8 Georgia counties (communityfirstfl.org membership page, November 2026); this sizes only the counties where it operates branches. Census 2024 population change: Duval +16,326, St. Johns +13,418, Clay +4,026, Nassau +2,797, Manatee +13,895, Highlands +1,627, Martin +1,425, Wayne +683, Pierce +226, Ware -41, about 54,400 people. At ~2.5 people per household, roughly 21,000 new households a year.",
+    },
+    intro:
+      "Community First Credit Union of Florida is a $3.21 billion Jacksonville consumer lender (vehicle loans are 40.3% of the book, commercial 10.1%) that just bought a business bank. First Southern Bank, chartered in 1907 and based in Waycross, Georgia, brought $347.2 million in assets, a loan book that is 69% business and commercial property credit, and deposits of which 33% pay no interest; 53% of those deposits sat in Florida branches. Its low-income designation exempts Community First from the business lending cap, so capacity is not the constraint. The constraint is the front door: business checking cannot be opened online, commercial real estate has no online application, and every First Southern customer is being asked to opt in to membership ahead of a summer 2027 system conversion.",
+    strategic: [
+      {
+        title: 'It Bought a Business Bank; Its Business Front Door Is a Phone Number',
+        body: "First Southern's book is $84.2M of nonfarm nonresidential real estate, $32.1M of construction and $23.5M of commercial and industrial loans. At Community First, business checking opens only in a branch, by phone or through an inquiry form, business lines and equipment loans apply on a third-party domain (dblc.app), and commercial real estate has no online application at all. Digital business intake, with owner identity, beneficial ownership and business financials verified from source in one session, is what lets the acquired relationships keep borrowing after the systems merge instead of shopping the renewal.",
+      },
+      {
+        title: 'The Opt-In Deadline Is the Retention Event',
+        body: 'Every First Southern customer is asked to submit a membership opt-in form by December 31, 2026, ahead of an "early summer 2027" conversion, and cannot transact at Community First branches until then. That is a re-onboarding event for every customer of a 119-year-old bank, none of whom bank at a Jacksonville branch today. A verified digital opt-in (identity, address within the new field of membership, and funding account confirmed in one sitting) turns a paperwork deadline into a retention tool instead of a reason to leave.',
+      },
+      {
+        title: 'A Third of the Deposits Cost Nothing. Defend Them Like an Asset',
+        body: "$103.2M of First Southern's $312.9M in deposits paid no interest at June 30, 2026, and its interest expense ran about 1.2% of deposits against about 1.8% at Community First, where certificates are 33.8% of shares. Those operating balances belong mostly to businesses and are the reason the deal priced at roughly 1.7 times equity. They stay when treasury, payments and credit requests keep working through the conversion; they leave when a business owner has to start over at a branch.",
+      },
+    ],
+    sources:
+      "NCUA 5300 call report bulk data, June 30, 2026, charter #67290 (assets, shares, share mix, loans, loan mix, member business loans, net worth, income statement, members, potential members, branches, employees); NCUA credit union locator API (charter 67290, state-chartered FISCU, low-income designation flag); 12 CFR 723.8 via eCFR (member business loan limit and low-income exemption); FDIC BankFind financials for First Southern Bank, cert #10055 (June 30, 2026 and September 30, 2025), FDIC Summary of Deposits 2025 and FDIC institution history; FFIEC HMDA data browser API, 2024, LEI 549300PIL90PE1ZLKI49; Census Vintage 2024 county population estimates; communityfirstfl.org (First Southern becomes Community First page, November 18, 2025 acquisition release, membership, loan and business banking pages), apply.communityfirstfl.org, borrower-portal.communityfirstfl.org, ebanking.communityfirstfl.org and mycommunityfirst.org (fingerprinted November 17, 2026); Jacksonville Daily Record (November 18 and 28, 2025) and Banking Dive (November 19, 2025) on deal terms and ICBA opposition. fdicCert field holds Community First's NCUA charter number, not an FDIC certificate.",
+  },
+  {
     slug: 'robins-financial-credit-union',
     name: 'Robins Financial Credit Union',
     shortName: 'Robins Financial',
