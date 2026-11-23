@@ -6,6 +6,8 @@ import { INTEGRATIONS } from './integrations/integrations-data';
 import { articles } from './blog/articles-index';
 import { BLOG_SLUGS, BLOG_DATES } from './blog/published';
 import { DE_NOVO_BANKS, STATUS_LABELS, TRACKER_SUMMARY } from './de-novo-watch/de-novo-data';
+import { SERVICES } from './services/services-data';
+import { FOUNDER } from './founder';
 
 function trackerSection(): string {
   const rows = DE_NOVO_BANKS.map(
@@ -25,21 +27,21 @@ const SITE = 'https://reportraven.tech';
 
 const INTRO = `# RAVEN
 
-> RAVEN (Real-time Aggregation and Verification Engine) is borrower verification and digital account opening software for community and regional banks. A loan officer or account-opening flow sends one link; the applicant connects their accounts in about 5 minutes; RAVEN returns identity, income, employment, and property data cross-referenced from seven providers with a full audit trail.
+> RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm and has helped traditional banks modernize their stack with Finxact, Plaid income verification and Vesta. RAVEN helps banks set up operations, integrate modern technology, adopt AI safely, and pass examiner scrutiny. It also offers its own borrower verification software.
 
-RAVEN is built for community banks, regional banks, and federal savings associations that originate mortgages, HELOCs, commercial real estate, and small business loans, or that open deposit accounts online. It replaces the multi-week document chase and the typed-in, unverified application with source-verified data, without replacing the bank's loan origination system or core.`;
+RAVEN works first with new (de novo) banks, from FDIC filing through the first three years of operation, and second with community banks modernizing an existing stack, with a focus on the Southeast. Engagements start with a call or, for operating banks, a free digital lending audit; then a scoped project or ongoing advisory. RAVEN works for the bank and does not resell vendors.`;
 
 const DISAMBIGUATION = `## What RAVEN is (and is not)
 
-- Category: borrower verification and digital account opening software for community banks (identity/KYC, income, employment, property, and account verification in one flow).
-- Often compared with: The Work Number (Equifax), Truework, Truv, and Argyle for income and employment verification; MANTL, Narmi, and Apiture for digital account opening. RAVEN differs by orchestrating multiple verification sources in one borrower interaction, built specifically for community banks.
+- Category: bank technology consulting practice that also offers borrower verification software.
+- Services: new bank operational setup, technology integration and stack modernization, AI integration and governance, security and IT exam readiness assessments, fintech partnership programs, and RAVEN verification software.
+- Security work is readiness and gap assessment against the FFIEC IT Examination Handbook and NIST CSF 2.0; formal audits and penetration tests are delivered with a partner.
 - Not affiliated with: RavenPack (financial news analytics), Raven Industries (agriculture technology), RavenDB (database software), or Raven Software (game studio). RAVEN is reportraven.tech.
-- Not a loan origination system or core banking replacement; RAVEN layers on top of the bank's existing LOS and core.
+- Not a core banking or loan origination system vendor, and does not resell them.
 - Not a marketplace or aggregator that competes with the bank.
-- Not blockchain-based and not crypto-related.
-- Not mortgage-only: RAVEN works for any lending or account-opening verification (mortgage, HELOC, CRE, small business, consumer, deposit accounts).`;
+- Not blockchain-based and not crypto-related.`;
 
-const CAPABILITIES = `## Core capabilities
+const CAPABILITIES = `## Verification software capabilities
 
 - Identity & KYC: Socure RiskOS (identity validation, fraud scoring, synthetic identity detection, OFAC/PEP/global watchlist)
 - Income & assets: Plaid (bank-connected income streams, transaction history, balances, liabilities)
@@ -49,7 +51,7 @@ const CAPABILITIES = `## Core capabilities
 - Cross-source reconciliation: confidence scores boost when providers agree; discrepancies are flagged before underwriting
 - Audit trail: every data point sourced and timestamped for examiners`;
 
-const STATS = `## Key numbers
+const STATS = `## Verification software key numbers
 
 - Borrower interaction: ~5 minutes
 - Verification providers: 7 (Socure, Plaid, Truework, Melissa, ATTOM, FullContact, plus internal cross-reference engine)
@@ -57,7 +59,7 @@ const STATS = `## Key numbers
 
 const CONTACT = `## Company and contact
 
-- Founder: Isaac Welch (isaac@reportraven.tech). RAVEN is headquartered in South Carolina and serves community banks across the Southeast and nationally.
+- Founder: Isaac Welch (isaac@reportraven.tech), who built the banking arm of Upstart and Affirm. RAVEN is headquartered in Greenville, South Carolina and serves new and community banks across the Southeast and nationally.
 - [About RAVEN](${SITE}/about)
 - [Information for AI assistants](${SITE}/ai-info)
 - [ProvenPool](${SITE}/provenpool): loan sale readiness software from RAVEN for community banks, credit unions and other non-mortgage loan sellers (https://provenpool.com)
@@ -70,9 +72,14 @@ const CONTACT = `## Company and contact
 - [Privacy Policy](https://reportraven.tech/legal/privacy-policy)
 - [Terms of Service](https://reportraven.tech/legal/terms-of-service)`;
 
+function servicesSection(): string {
+  const lines = SERVICES.map((s) => `- [${s.navLabel}](${SITE}/services/${s.slug}): ${s.metaDescription}`);
+  return `## Services\n\n${FOUNDER.headline}\n\n${lines.join('\n')}\n\nAll services: ${SITE}/services`;
+}
+
 function solutionsSection(): string {
   const lines = SOLUTIONS.map((s) => `- [${s.metaTitle}](${SITE}/solutions/${s.slug}): ${s.metaDescription}`);
-  return `## Solutions\n\n${lines.join('\n')}`;
+  return `## Verification software solutions\n\n${lines.join('\n')}`;
 }
 
 function integrationsSection(): string {
@@ -120,6 +127,7 @@ export function buildLlmsTxt(): string {
   return [
     INTRO,
     DISAMBIGUATION,
+    servicesSection(),
     solutionsSection(),
     integrationsSection(),
     glossarySection(false),
@@ -135,6 +143,7 @@ RAVEN never uses URL-encoded form submissions; all sensitive PII (SSNs, names, a
   return [
     INTRO,
     DISAMBIGUATION,
+    servicesSection(),
     CAPABILITIES,
     STATS,
     solutionsSection(),

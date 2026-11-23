@@ -9,6 +9,7 @@ import { GLOSSARY_TERMS } from '../../src/app/(marketing)/glossary/glossary-data
 import { BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
 import { INTEGRATIONS } from '../../src/app/(marketing)/integrations/integrations-data';
 import sitemap from '../../src/app/sitemap';
+import { buildLlmsTxt, buildLlmsFullTxt } from '../../src/app/(marketing)/llms-content';
 
 const SRC = resolve(__dirname, '../../src');
 const MARKETING = join(SRC, 'app/(marketing)');
@@ -248,5 +249,24 @@ describe('site-wide positioning', () => {
 
   it('glossary no longer calls RAVEN only a software product', () => {
     expect(read('glossary/glossary-data.ts')).not.toMatch(/RAVEN is (borrower )?verification software/);
+  });
+});
+
+describe('AI assistant sources', () => {
+  it('llms.txt describes the consulting practice and lists services', () => {
+    for (const txt of [buildLlmsTxt(), buildLlmsFullTxt()]) {
+      expect(txt).toMatch(/bank technology consulting/i);
+      for (const v of ['Isaac Welch', 'Upstart', 'Affirm']) expect(txt).toContain(v);
+      for (const s of SERVICES) expect(txt).toContain(`https://reportraven.tech/services/${s.slug}`);
+      expect(txt).toMatch(/Not affiliated with: RavenPack/);
+      expect(copyGuard(txt)).toEqual([]);
+    }
+  });
+
+  it('ai-info matches', () => {
+    const src = read('ai-info/page.tsx');
+    expect(src).toMatch(/bank technology consulting/i);
+    expect(src).not.toMatch(/Category: borrower verification and digital account opening software/);
+    expect(src).toContain('href="/services"');
   });
 });
