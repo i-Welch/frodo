@@ -146,3 +146,47 @@ describe('services pages', () => {
     for (const f of walk('de-novo-watch', 'page.tsx')) expect(read(f), f).not.toContain('variant="audit"');
   });
 });
+
+// Homepage and About join this list when Tasks 4 and 5 rewrite them.
+const CTA_FILES = [
+  'calendly-button.tsx',
+  'demo-modal.tsx',
+  'interest-form.tsx',
+  'site-shell.tsx',
+  'blog/layout.tsx',
+  'blog/page.tsx',
+  'blog/[slug]/page.tsx',
+  'solutions/[slug]/page.tsx',
+  'services/page.tsx',
+  'services/[slug]/page.tsx',
+];
+const readSrc = (rel: string) => readFileSync(join(SRC, rel), 'utf8');
+const OLD_CTA = /Request a Demo|Book a Demo|Get a Demo|Request a demo|Your RAVEN demo|live demo for your bank/;
+
+describe('calls to action', () => {
+  it('no demo CTA copy remains', () => {
+    for (const f of CTA_FILES) expect(read(f), f).not.toMatch(OLD_CTA);
+    expect(readSrc('app/(whitelabel)/audit/[slug]/page.tsx')).not.toMatch(OLD_CTA);
+    expect(readSrc('server/messaging/leads.ts')).not.toMatch(OLD_CTA);
+  });
+
+  it('Calendly defaults to Book a call', () => {
+    expect(read('calendly-button.tsx')).toMatch(/label = 'Book a call'/);
+  });
+
+  it('nav links services, research and about', () => {
+    const nav = read('site-shell.tsx');
+    for (const h of ['/services', '/de-novo-watch', '/blog', '/about']) expect(nav).toContain(`href="${h}"`);
+  });
+
+  it('mobile nav reaches services', () => {
+    expect(read('site-shell.tsx')).toMatch(
+      /<a[^>]*href="\/services"[^>]*site-nav-mobile-link|<a[^>]*site-nav-mobile-link[^>]*href="\/services"/,
+    );
+  });
+
+  it('footer keeps solutions, integrations and glossary', () => {
+    const shell = read('site-shell.tsx');
+    for (const h of ['/solutions', '/integrations', '/glossary', '/services']) expect(shell).toContain(`href="${h}"`);
+  });
+});

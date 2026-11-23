@@ -89,7 +89,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
         </div>
 
         <div className="sol-hero-cta">
-          <CalendlyButton source={`solutions:${slug}:hero`} label="Book a Demo" buttonClassName="sol-btn-primary" />
+          <CalendlyButton source={`solutions:${slug}:hero`} label="Book a call" buttonClassName="sol-btn-primary" />
           <a href="/blog/one-link-complete-verification" className="sol-btn-secondary">
             How RAVEN works
           </a>

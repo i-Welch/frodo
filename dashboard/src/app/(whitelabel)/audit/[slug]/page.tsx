@@ -151,7 +151,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             <a href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">Live demo ↗</a>
             <a href="/blog">Blog</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
-            <CalendlyButton source={`audit-nav:${audit.slug}`} label="Book a Demo" buttonClassName="aud-btn" />
+            <CalendlyButton source={`audit-nav:${audit.slug}`} label="Book a call" buttonClassName="aud-btn" />
           </div>
           <a href="/blog" className="aud-nav-blog-mobile">Blog</a>
         </nav>
@@ -400,8 +400,10 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             <p>
               We&rsquo;ll wire your actual product lineup, your rate card,{config.coreSync.system !== 'unknown' ? <> and a {config.coreSync.displayName} sync</> : ''}{' '}
               into a private demo, then pressure-test every number above against your real volumes.
+              Or use the call to talk through anything else in {audit.shortName}&rsquo;s technology,
+              operations or AI plans.
             </p>
-            <CalendlyButton source={`audit:${audit.slug}`} label="Book a Demo Call" buttonClassName="aud-cta-btn" />
+            <CalendlyButton source={`audit:${audit.slug}`} label="Book a call" buttonClassName="aud-cta-btn" />
           </div>
 
           <WhiteLabelPrompt bankName={audit.shortName} slug={audit.slug} />

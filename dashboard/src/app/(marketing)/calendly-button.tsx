@@ -36,7 +36,7 @@ function loadWidget(): Promise<void> {
 
 export function CalendlyButton({
   source,
-  label = 'Book a Demo',
+  label = 'Book a call',
   buttonClassName = 'demo-btn',
 }: {
   source: string;

@@ -7,7 +7,7 @@ import { InterestForm } from './interest-form';
 
 export function DemoModal({
   source,
-  label = 'Get a Demo',
+  label = 'Book a call',
   buttonClassName = 'demo-btn',
 }: {
   source: string;

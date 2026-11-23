@@ -88,6 +88,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
           transition: opacity 200ms !important;
         }
         .blog-nav-cta:hover { opacity: 0.85; color: var(--black) !important; }
+        .blog-nav-mobile-links { display: flex; gap: 0.5rem; }
         .blog-nav-blog-mobile {
           display: none;
           color: var(--gray-300);
@@ -526,15 +527,17 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             </svg>
             <span className="blog-nav-wordmark">RAVEN</span>
           </a>
-          <a href="/blog" className="blog-nav-blog-mobile">Blog</a>
+          <span className="blog-nav-mobile-links">
+            <a href="/services" className="blog-nav-blog-mobile">Services</a>
+            <a href="/blog" className="blog-nav-blog-mobile">Blog</a>
+          </span>
           <div className="blog-nav-links">
+            <a href="/services">Services</a>
+            <a href="/de-novo-watch">De Novo Watch</a>
             <a href="/blog">Blog</a>
-            <a href="/">Home</a>
-            <a href="/solutions">Solutions</a>
-            <a href="/integrations">Integrations</a>
-            <a href="/glossary">Glossary</a>
+            <a href="/about">About</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
-            <CalendlyButton source="blog-nav" label="Request a Demo" buttonClassName="blog-nav-cta" />
+            <CalendlyButton source="blog-nav" label="Book a call" buttonClassName="blog-nav-cta" />
           </div>
         </nav>
 
@@ -544,12 +547,12 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
 
         <section className="blog-cta">
           <div className="blog-cta-inner">
-            <h2>Ready to move faster?</h2>
+            <h2>Talk through your bank&apos;s technology</h2>
             <p>
-              See how RAVEN replaces weeks of manual verification with a single link.
-              Book a 20-minute call and we&apos;ll walk through a live demo for your bank.
+              A 20-minute call with Isaac about your core, your origination stack, your AI
+              plans or your next exam. No pitch deck.
             </p>
-            <CalendlyButton source="blog-footer" label="Book a Demo Call" buttonClassName="form-btn" />
+            <CalendlyButton source="blog-footer" label="Book a call" buttonClassName="form-btn" />
             <p className="blog-cta-alt">
               Or email us at{' '}
               <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
@@ -567,6 +570,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
             </span>
           </span>
           <div className="blog-footer-links">
+            <a href="/services">Services</a>
             <a href="/blog">Blog</a>
             <a href="/solutions">Solutions</a>
             <a href="/glossary">Glossary</a>

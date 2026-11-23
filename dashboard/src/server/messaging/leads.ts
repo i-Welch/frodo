@@ -133,9 +133,9 @@ You're set. When ${lead.snapshot?.name ?? lead.bank ?? 'the bank'} files its nex
         signoff,
     },
     demo: {
-      subject: 'Your RAVEN demo',
+      subject: 'Your call with RAVEN',
       text:
-        `${greeting}\n\nThanks for your interest in RAVEN. The fastest way to see it is a 20-minute call; pick any time that works:\n${CALENDLY_URL}\n\n` +
+        `${greeting}\n\nThanks for getting in touch. The easiest next step is a 20-minute call about your bank's technology, operations or AI plans; pick any time that works:\n${CALENDLY_URL}\n\n` +
         `Or reply with a couple of times and I'll send an invite.` +
         signoff,
     },

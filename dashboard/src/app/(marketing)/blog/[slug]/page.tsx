@@ -5667,7 +5667,7 @@ Community banks have something fintechs cannot build: decades of trust, local ma
 
 ---
 
-*Request a demo at [reportraven.tech](https://reportraven.tech).*`,
+*Book a call at [reportraven.tech](https://reportraven.tech).*`,
   },
 
   'next-generation-borrowers-wont-wait': {
@@ -6490,12 +6490,12 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               </aside>
               ) : (
               <aside className="article-mid-cta">
-                <h2>Verification shouldn&apos;t take weeks</h2>
+                <h2>Need help with your bank&apos;s technology?</h2>
                 <p>
-                  RAVEN gives community banks a complete borrower report from one link.
-                  Book a 20-minute call and see it live.
+                  RAVEN is run by Isaac Welch, who built the banking arm of Upstart and Affirm.
+                  Book a 20-minute call about your core, lending stack, AI plans or next exam.
                 </p>
-                <CalendlyButton source="mid-article" label="Book a Demo Call" buttonClassName="article-mid-cta-btn" />
+                <CalendlyButton source="mid-article" label="Book a call" buttonClassName="article-mid-cta-btn" />
                 {roiBank && (
                   <p className="article-mid-cta-alt">
                     Not ready to talk? We calculated what automation would save{' '}
