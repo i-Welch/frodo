@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 import { searchBanks, searchUrl, type BankMatch } from './bank-snapshot/fdic-search';
 
 type Variant = 'subscribe' | 'audit';
@@ -30,7 +30,7 @@ const COPY: Record<Variant, { tag: string; title: string; body: string; button: 
   audit: {
     tag: 'Free for your institution',
     title: 'Want this analysis for your bank?',
-    body: "Tell us your bank or credit union and we'll send a free digital lending audit: your current borrower journey, the gaps, and what verification automation would save, built from your public call report and HMDA data.",
+    body: "Tell us your bank or credit union and we'll send a free digital lending audit, the usual first step of working together: your current borrower journey, the gaps, and what to fix first, built from your public call report and HMDA data.",
     button: 'Request my free audit',
     done: "Request received. We'll email your audit within a few business days.",
   },

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 import { CalendlyButton } from '../calendly-button';
 
 /* ---------- Hook: fire once when an element scrolls into view ---------- */
@@ -218,7 +218,7 @@ export function WhiteLabelPrompt({ bankName, slug }: { bankName: string; slug: s
                 on the borrower flow and the verification report, so you can see exactly what your
                 customers would see.
               </p>
-              <CalendlyButton source={`roi-whitelabel:${slug}`} label="Book a Demo Call" buttonClassName="form-btn" />
+              <CalendlyButton source={`roi-whitelabel:${slug}`} label="Book a call" buttonClassName="form-btn" />
             </div>
           </div>,
           document.body,

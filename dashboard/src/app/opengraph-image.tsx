@@ -3,7 +3,7 @@ import { ImageResponse } from 'next/og';
 // Site-wide default OG image. Applies to every route that doesn't define its
 // own opengraph-image; LinkedIn/Twitter cards were blank without it.
 
-export const alt = 'RAVEN — Borrower Verification for Community Banks';
+export const alt = 'RAVEN — Bank Technology Consulting for New and Community Banks';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -54,7 +54,7 @@ export default function OgImage() {
             maxWidth: 900,
           }}
         >
-          Borrower verification for community banks
+          Bank technology consulting
         </div>
         <div
           style={{
@@ -65,7 +65,7 @@ export default function OgImage() {
             lineHeight: 1.4,
           }}
         >
-          One link. Identity, income, credit, employment, and property data verified in minutes.
+          For new and community banks, from someone who built the banking arm of Upstart and Affirm.
         </div>
         <div
           style={{

@@ -2,30 +2,30 @@ import type { Metadata } from 'next';
 import { CalendlyButton } from './calendly-button';
 import { ScrollReveal } from './scroll-reveal';
 import { LeadCapture } from './lead-capture';
+import { FOUNDER, founderJsonLd } from './founder';
+import { SERVICES, ENGAGEMENT_STEPS, SOFTWARE_DISCLOSURE } from './services/services-data';
 import { DEFAULT_OG_IMAGES } from '@/app/og-default';
 
 export const metadata: Metadata = {
-  title: { absolute: 'RAVEN — Borrower Verification Software for Community Banks' },
+  title: { absolute: 'RAVEN — Bank Technology Consulting for New and Community Banks' },
   description:
-    'RAVEN automates borrower verification for community banks. Identity, income, credit, employment, and property data from one link, verified in minutes.',
+    'Technology consulting for new and community banks from Isaac Welch, who built the banking arm of Upstart and Affirm: de novo setup, core and LOS integration, AI governance, security readiness.',
   keywords: [
+    'bank technology consulting',
+    'de novo bank consultant',
+    'community bank technology consultant',
+    'core banking integration',
+    'loan origination system integration',
+    'AI governance for banks',
+    'bank IT exam readiness',
+    'fintech bank partnership consulting',
     'borrower verification software',
-    'community bank verification',
-    'KYC for community banks',
-    'bank onboarding automation',
-    'borrower verification platform',
     'South Carolina banking technology',
-    'regional bank software',
-    'BSA compliance automation',
-    'loan officer verification tools',
-    'community bank fintech',
-    'identity verification banking',
-    'borrower report software',
   ],
   openGraph: {
     images: DEFAULT_OG_IMAGES,
-    title: 'RAVEN — Borrower Verification for Community Banks',
-    description: 'One verification link. Complete borrower report in minutes. Identity, income, credit, employment, and property data — all cross-referenced automatically.',
+    title: 'RAVEN — Bank Technology Consulting',
+    description: FOUNDER.headline,
     url: 'https://reportraven.tech',
     siteName: 'RAVEN',
     type: 'website',
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RAVEN — Borrower Verification for Community Banks',
-    description: 'One verification link. Complete borrower report in minutes. Built for community and regional banks.',
+    title: 'RAVEN — Bank Technology Consulting',
+    description: 'Technology help for new and community banks, from someone who built the banking arm of Upstart and Affirm.',
   },
   alternates: {
     canonical: 'https://reportraven.tech',
@@ -67,77 +67,71 @@ function RavenLogo({ size = 22, className }: { size?: number; className?: string
   );
 }
 
+const ORG_ID = 'https://reportraven.tech/#organization';
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
-      '@id': 'https://reportraven.tech/#organization',
+      '@type': ['Organization', 'ProfessionalService'],
+      '@id': ORG_ID,
       name: 'RAVEN',
       legalName: 'RAVEN (Real-time Aggregation and Verification Engine)',
       url: 'https://reportraven.tech',
       logo: 'https://reportraven.tech/raven-icon.svg',
-      description:
-        'RAVEN provides automated borrower verification software for community and regional banks. One link delivers identity, income, employment, and property data in minutes.',
+      description: FOUNDER.headline,
       areaServed: [
         { '@type': 'State', name: 'South Carolina' },
         { '@type': 'Country', name: 'United States' },
       ],
       knowsAbout: [
+        'De novo bank operations',
+        'Core banking conversion and modernization',
+        'Loan origination systems',
+        'AI governance and model risk management',
+        'Third-party risk management',
+        'IT examination readiness',
+        'Fintech bank partnerships',
         'Borrower verification',
-        'KYC automation',
-        'BSA/AML compliance',
-        'Identity verification',
-        'Income verification',
-        'Employment verification',
-        'Property valuation',
         'Community banking',
       ],
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'sales',
         email: 'isaac@reportraven.tech',
+        telephone: '+1-229-379-6131',
         url: 'https://reportraven.tech',
       },
-      founder: {
-        '@type': 'Person',
-        name: 'Isaac Welch',
-        jobTitle: 'Founder',
-        url: 'https://reportraven.tech/about',
-        sameAs: [
-          'https://www.linkedin.com/in/isaac-welch-22a463179',
-          'https://github.com/i-Welch',
-        ],
-      },
+      founder: { '@id': 'https://reportraven.tech/about#founder' },
       // Org-level sameAs: add LinkedIn company page, Crunchbase, and G2 profile
       // URLs here as each profile is created (see marketing/seo-aeo-playbook.md).
     },
+    { ...founderJsonLd(), worksFor: { '@id': ORG_ID } },
     {
       '@type': 'WebSite',
       '@id': 'https://reportraven.tech/#website',
       url: 'https://reportraven.tech',
       name: 'RAVEN',
-      publisher: { '@id': 'https://reportraven.tech/#organization' },
+      publisher: { '@id': ORG_ID },
       inLanguage: 'en-US',
     },
     {
       '@type': 'SoftwareApplication',
       '@id': 'https://reportraven.tech/#software',
-      name: 'RAVEN',
+      name: 'RAVEN Borrower Verification',
       applicationCategory: 'FinanceApplication',
       applicationSubCategory: 'Borrower Verification',
       operatingSystem: 'Web',
       description:
-        'Borrower verification platform for community and regional banks. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
-      url: 'https://reportraven.tech',
-      provider: { '@id': 'https://reportraven.tech/#organization' },
+        'Borrower verification software built and offered by RAVEN. Automates KYC, identity, income, credit, employment, and property verification through a single link.',
+      url: 'https://reportraven.tech/services/verification-software',
+      provider: { '@id': ORG_ID },
       featureList: [
         'KYC and identity verification',
         'OFAC/PEP watchlist screening',
         'Income and asset verification via bank connection',
         'Employer-verified employment',
         'Property valuation (AVM) and tax data',
-        'Cross-referenced confidence scoring',
         'Examiner-ready audit trail',
       ],
     },
@@ -150,43 +144,43 @@ const jsonLd = {
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'RAVEN automates borrower verification for community and regional banks. A loan officer sends one link; the borrower connects their bank in about 5 minutes; RAVEN returns identity, income, employment, and property data cross-referenced from seven providers with a full audit trail.',
+              'RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm. It helps new and community banks set up operations, integrate core, LOS and verification technology, adopt AI with proper governance, prepare for IT exams, and run fintech partnerships. It also offers its own borrower verification software.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Who is RAVEN built for?',
+          name: 'Who does RAVEN work with?',
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'Community banks, regional banks, and federal savings associations that originate mortgages, HELOCs, commercial real estate, and small business loans and want to compete with fintech speed without replacing their LOS.',
+              'New banks from FDIC filing through their first three years, and community banks modernizing an existing stack, with a focus on the Southeast.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Which data sources does RAVEN use?',
+          name: 'Does RAVEN resell technology vendors?',
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'Socure for KYC, fraud, and OFAC/PEP screening; Plaid for income, assets, and liabilities; Truework for employer-verified employment; Melissa and ATTOM for property AVM and tax data; FullContact for contact cross-reference.',
+              `No. RAVEN is not a reseller for cores, origination systems or other bank technology vendors. ${SOFTWARE_DISCLOSURE}`,
           },
         },
         {
           '@type': 'Question',
-          name: 'How long does a verification take?',
+          name: 'Do we have to use the RAVEN software?',
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'The borrower interaction takes about 5 minutes. Most verification data returns in minutes; employer-verified employment is asynchronous and typically completes in 1 to 3 days.',
+              'No. The verification software is one service among six. Most consulting work has nothing to do with it.',
           },
         },
         {
           '@type': 'Question',
-          name: 'Does RAVEN replace our loan origination system?',
+          name: 'How does an engagement start?',
           acceptedAnswer: {
             '@type': 'Answer',
             text:
-              'No. RAVEN is a verification layer that runs alongside your existing LOS. It works as a standalone dashboard from day one and integrates via API with Jack Henry, Fiserv, and FIS environments.',
+              'With a 20-minute call. Operating banks can also start with a free digital lending audit built from their public call report and HMDA data.',
           },
         },
       ],
@@ -449,34 +443,6 @@ export default function LandingPage() {
           margin: 0 3rem;
         }
 
-        /* --- Stats strip --- */
-        .stats {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1px;
-          background: rgba(255,255,255,0.06);
-          border-top: 1px solid rgba(255,255,255,0.06);
-          border-bottom: 1px solid rgba(255,255,255,0.06);
-        }
-        .stat {
-          padding: 3rem 2rem;
-          background: var(--black);
-          text-align: center;
-        }
-        .stat-num {
-          font-size: 2.5rem;
-          font-weight: 700;
-          letter-spacing: -0.03em;
-          color: var(--white);
-          margin-bottom: 0.3rem;
-        }
-        .stat-label {
-          font-size: 0.8rem;
-          color: var(--gray-500);
-          letter-spacing: 0.05em;
-        }
-
-        /* --- How it works --- */
         .how-it-works {
           padding: 7rem 3rem;
           max-width: 1100px;
@@ -613,142 +579,22 @@ export default function LandingPage() {
           transition: background 250ms;
         }
         .feature:hover { background: rgba(255,255,255,0.022); }
+        a.feature { display: block; text-decoration: none; color: inherit; border-top: 3px solid transparent; }
+        a.feature:hover { border-top-color: var(--accent); }
+        .feature-eyebrow { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); margin-bottom: 0.7rem; }
+        .features-header a { color: var(--accent); text-decoration: none; }
+        .features-header a:hover { text-decoration: underline; }
+        /* --- Founder --- */
+        .founder { padding: 7rem 3rem; max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.35fr; gap: 4rem; align-items: start; }
+        .founder h2 { font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
+        .founder p { font-size: 1rem; color: var(--gray-300); line-height: 1.75; margin-bottom: 1.1rem; }
+        .founder-experience { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; margin: 1.5rem 0; }
+        .founder-experience li { font-size: 0.8rem; color: var(--gray-200); border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; padding: 0.3rem 0.8rem; }
+        .founder-link { color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
+        .founder-link:hover { text-decoration: underline; }
+        .nav-mobile-links { display: flex; gap: 0.5rem; align-items: center; }
+        .nav-cta-mobile { display: none; }
 
-        /* --- Team split --- */
-        .team-split {
-          padding: 7rem 3rem;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        .team-split-header {
-          max-width: 560px;
-          margin-bottom: 4rem;
-        }
-        .team-split-header h2 {
-          font-size: 2rem;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          line-height: 1.2;
-          margin-bottom: 1rem;
-        }
-        .team-split-header p {
-          font-size: 1rem;
-          color: var(--gray-200);
-          line-height: 1.7;
-        }
-        .split-panels {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1px;
-          background: rgba(255,255,255,0.06);
-          border-radius: 12px;
-          overflow: hidden;
-          border: 1px solid rgba(255,255,255,0.06);
-        }
-        .split-panel {
-          padding: 3rem;
-          background: var(--black);
-        }
-        .split-panel-left {
-          background: linear-gradient(150deg, rgba(108,142,255,0.05) 0%, var(--black) 55%);
-        }
-        .split-panel-label {
-          font-size: 0.65rem;
-          font-weight: 500;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--gray-600);
-          margin-bottom: 1.25rem;
-        }
-        .split-panel h3 {
-          font-size: 1.15rem;
-          font-weight: 600;
-          letter-spacing: -0.015em;
-          line-height: 1.35;
-          margin-bottom: 1.75rem;
-        }
-        .split-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          list-style: none;
-        }
-        .split-list li {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.75rem;
-          font-size: 0.88rem;
-          color: var(--gray-300);
-          line-height: 1.55;
-        }
-        .split-check {
-          flex-shrink: 0;
-          margin-top: 0.2rem;
-          color: var(--accent);
-          opacity: 0.75;
-        }
-
-        /* --- Report grid --- */
-        .report-section {
-          padding: 7rem 3rem;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        .report-header {
-          max-width: 540px;
-          margin-bottom: 4rem;
-        }
-        .report-header h2 {
-          font-size: 2rem;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          line-height: 1.2;
-          margin-bottom: 1rem;
-        }
-        .report-header p {
-          font-size: 1rem;
-          color: var(--gray-200);
-          line-height: 1.7;
-        }
-        .report-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1px;
-          background: rgba(255,255,255,0.06);
-          border-radius: 12px;
-          overflow: hidden;
-          border: 1px solid rgba(255,255,255,0.06);
-        }
-        .report-item {
-          padding: 2.25rem;
-          background: var(--black);
-          transition: background 250ms;
-        }
-        .report-item:hover { background: rgba(255,255,255,0.022); }
-        .report-icon {
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          background: rgba(108,142,255,0.1);
-          color: rgba(108,142,255,0.75);
-          margin-bottom: 1rem;
-        }
-        .report-item h3 {
-          font-size: 0.9rem;
-          font-weight: 600;
-          margin-bottom: 0.4rem;
-          letter-spacing: -0.01em;
-        }
-        .report-item p {
-          font-size: 0.82rem;
-          color: var(--gray-300);
-          line-height: 1.6;
-        }
-
-        /* --- Core Integration --- */
         .free-data {
           padding: 6rem 3rem;
           max-width: 1100px;
@@ -760,106 +606,6 @@ export default function LandingPage() {
         .free-data-card:hover { border-color: rgba(108,142,255,0.35); background: var(--accent-dim); }
         .free-data-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem; }
         .free-data-card p { font-size: 0.9rem; color: var(--gray-300); line-height: 1.6; }
-        .core-integration {
-          padding: 7rem 3rem;
-          max-width: 1100px;
-          margin: 0 auto;
-        }
-        .core-integration-inner {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 6rem;
-          align-items: start;
-        }
-        .core-integration-copy h2 {
-          font-size: 2rem;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          line-height: 1.2;
-          margin-bottom: 1rem;
-        }
-        .core-integration-copy p {
-          font-size: 1rem;
-          color: var(--gray-200);
-          line-height: 1.7;
-          margin-bottom: 2rem;
-        }
-        .core-integration-promise {
-          display: flex;
-          flex-direction: column;
-          gap: 0.9rem;
-        }
-        .promise-item {
-          display: flex;
-          align-items: flex-start;
-          gap: 0.75rem;
-        }
-        .promise-check {
-          width: 20px;
-          height: 20px;
-          flex-shrink: 0;
-          margin-top: 0.05rem;
-          color: var(--gray-300);
-        }
-        .promise-item span {
-          font-size: 0.9rem;
-          color: var(--gray-300);
-          line-height: 1.5;
-        }
-        .core-logos-col {
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-        }
-        .core-logos-group-label {
-          font-size: 0.65rem;
-          font-weight: 500;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--gray-600);
-          margin-bottom: 0.75rem;
-        }
-        .core-logos-row {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-        .core-logo-chip {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding: 1rem 1.25rem;
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: 8px;
-          background: rgba(255,255,255,0.02);
-          transition: border-color 200ms, background 200ms;
-        }
-        .core-logo-chip:hover {
-          border-color: rgba(255,255,255,0.15);
-          background: rgba(255,255,255,0.04);
-        }
-        .core-logo-name {
-          font-size: 0.95rem;
-          font-weight: 600;
-          letter-spacing: -0.01em;
-          color: var(--gray-200);
-        }
-        .core-logo-platforms {
-          display: flex;
-          gap: 0.35rem;
-          flex-wrap: wrap;
-          justify-content: flex-end;
-        }
-        .core-logo-platforms span {
-          font-size: 0.65rem;
-          color: var(--gray-600);
-          padding: 0.2rem 0.5rem;
-          border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 100px;
-          white-space: nowrap;
-        }
-
-        /* --- CTA --- */
         .cta {
           padding: 7rem 3rem;
           text-align: center;
@@ -1037,22 +783,17 @@ export default function LandingPage() {
           .landing nav { padding: 1rem 1.5rem; }
           .nav-links { display: none; }
           .nav-blog-mobile { display: inline-block; }
+          .nav-cta-mobile { display: inline-block; }
           .hero { padding: 7rem 1.5rem 4rem; }
           .hero h1 { font-size: 2.2rem; }
           .hero-watermark { width: 80vw; right: -20%; opacity: 0.03; }
-          .stats { grid-template-columns: repeat(2, 1fr); }
           .how-it-works { padding: 4rem 1.5rem; }
           .steps { grid-template-columns: 1fr; }
           .features { padding: 4rem 1.5rem; }
           .features-grid { grid-template-columns: 1fr; }
-          .team-split { padding: 4rem 1.5rem; }
-          .split-panels { grid-template-columns: 1fr; }
-          .report-section { padding: 4rem 1.5rem; }
-          .report-grid { grid-template-columns: 1fr 1fr; }
-          .core-integration { padding: 4rem 1.5rem; }
+          .founder { padding: 4rem 1.5rem; grid-template-columns: 1fr; gap: 1.5rem; }
           .free-data { padding: 4rem 1.5rem; }
           .free-data-grid { grid-template-columns: 1fr; }
-          .core-integration-inner { grid-template-columns: 1fr; gap: 3rem; }
           .cta { padding: 4rem 1.5rem; }
           .landing footer { padding: 1.5rem; flex-direction: column; gap: 1rem; }
           .divider { margin: 0 1.5rem; }
@@ -1066,14 +807,18 @@ export default function LandingPage() {
             <RavenLogo />
             <span className="nav-wordmark">RAVEN</span>
           </div>
-          <a href="/blog" className="nav-blog-mobile">Blog</a>
+          <span className="nav-mobile-links">
+            <a href="/services" className="nav-blog-mobile">Services</a>
+            <a href="/blog" className="nav-blog-mobile">Blog</a>
+            <CalendlyButton source="landing-nav-mobile" label="Book a call" buttonClassName="nav-cta nav-cta-mobile" />
+          </span>
           <div className="nav-links">
-            <a href="/blog">Blog</a>
+            <a href="/services">Services</a>
             <a href="/de-novo-watch">De Novo Watch</a>
-            <a href="/solutions">Solutions</a>
-            <a href="/glossary">Glossary</a>
+            <a href="/blog">Blog</a>
+            <a href="/about">About</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
-            <CalendlyButton source="landing-nav" label="Request a Demo" buttonClassName="nav-cta" />
+            <CalendlyButton source="landing-nav" label="Book a call" buttonClassName="nav-cta" />
           </div>
         </nav>
 
@@ -1092,300 +837,93 @@ export default function LandingPage() {
             />
           </svg>
           <div className="hero-content">
-            <span className="hero-tag">Borrower verification software for community banks</span>
+            <span className="hero-tag">Bank technology consulting</span>
             <h1>
-              Complete borrower reports,
+              Bank technology, from someone
               <br />
-              <em>not paperwork.</em>
+              <em>who has built it.</em>
             </h1>
-            <p className="hero-sub">
-              RAVEN replaces weeks of manual data gathering with a single verification link. Your borrower
-              clicks, connects, and consents — you get a complete, print-ready report with identity,
-              income, credit, employment, and property data. Built for community and regional banks
-              in South Carolina and the Southeast.
-            </p>
+            <p className="hero-sub">{FOUNDER.headline}</p>
             <div className="hero-actions">
-              <CalendlyButton source="landing-hero" label="Request a Demo" buttonClassName="btn btn-white" />
-              <a href="#how-it-works" className="btn btn-ghost">
-                See How It Works
+              <CalendlyButton source="landing-hero" label="Book a call" buttonClassName="btn btn-white" />
+              <a href="/services" className="btn btn-ghost">
+                See services
               </a>
             </div>
           </div>
         </section>
 
-        <div className="stats reveal">
-          <div className="stat">
-            <div className="stat-num">18+</div>
-            <div className="stat-label">Data Sources</div>
+        {/* --- Founder --- */}
+        <section className="founder reveal">
+          <div>
+            <div className="section-tag">Who you work with</div>
+            <h2>Isaac Welch built the banking arm of Upstart and Affirm.</h2>
           </div>
-          <div className="stat">
-            <div className="stat-num">&lt;5 min</div>
-            <div className="stat-label">Borrower Experience</div>
+          <div>
+            {FOUNDER.bio.slice(0, 2).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <ul className="founder-experience" aria-label="Experience">
+              {FOUNDER.experience.map((e) => (
+                <li key={e}>{e}</li>
+              ))}
+            </ul>
+            <a href="/about" className="founder-link">More about Isaac &rarr;</a>
           </div>
-          <div className="stat">
-            <div className="stat-num">4–6 hrs</div>
-            <div className="stat-label">Saved Per Loan</div>
-          </div>
-          <div className="stat">
-            <div className="stat-num">100%</div>
-            <div className="stat-label">Encrypted at Rest</div>
-          </div>
-        </div>
+        </section>
 
-        {/* --- How it works --- */}
+        <div className="divider" />
+
+        {/* --- Services --- */}
+        <section className="features reveal">
+          <div className="features-header">
+            <div className="section-tag">Services</div>
+            <h2>Six ways RAVEN helps a bank.</h2>
+            <p>From the first vendor decision after conditional approval to the next IT exam.</p>
+          </div>
+          <div className="features-grid">
+            {SERVICES.map((s) => (
+              <a key={s.slug} href={`/services/${s.slug}`} className="feature">
+                <div className="feature-eyebrow">{s.eyebrow}</div>
+                <h3>{s.navLabel}</h3>
+                <p>{s.metaDescription}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <div className="divider" />
+
+        {/* --- How an engagement works --- */}
         <section id="how-it-works" className="how-it-works reveal">
           <div className="how-it-works-header">
             <div className="section-tag">How it works</div>
-            <h2>Three steps. No new workflows.</h2>
-            <p>
-              RAVEN slots into how your loan officers already work. No software to install,
-              no training sessions, no migration. You&apos;re collecting better data within
-              minutes of getting access.
-            </p>
+            <h2>How an engagement works.</h2>
+            <p>No prices on a website: every bank is different. Every engagement follows the same three steps.</p>
           </div>
           <div className="steps">
-            <div className="step">
-              <div className="step-num">01</div>
-              <div className="step-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 2L11 13"/><path d="M22 2L15 22L11 13L2 9L22 2Z"/></svg>
+            {ENGAGEMENT_STEPS.map((step, i) => (
+              <div className="step" key={step.title}>
+                <div className="step-num">{String(i + 1).padStart(2, '0')}</div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
               </div>
-              <h3>You send one link</h3>
-              <p>Enter a borrower&apos;s name, phone number, or email. RAVEN generates a branded verification link and delivers it by text or email — no portal, no login, no back-and-forth.</p>
-            </div>
-            <div className="step">
-              <div className="step-num">02</div>
-              <div className="step-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
-              <h3>Borrower completes in 5 minutes</h3>
-              <p>They confirm their identity, connect their bank account through Plaid, and consent to sharing their data — all from a browser on any device. No app to download.</p>
-            </div>
-            <div className="step">
-              <div className="step-num">03</div>
-              <div className="step-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              </div>
-              <h3>Your complete report is ready</h3>
-              <p>Identity, income, credit, employment, and property data — sourced, cross-referenced, and formatted into a print-ready PDF. Ready to drop directly into your loan file.</p>
-            </div>
+            ))}
           </div>
         </section>
 
         <div className="divider" />
 
-        {/* --- Team + Borrower split --- */}
-        <section className="team-split reveal">
-          <div className="team-split-header">
-            <div className="section-tag">Built for both sides</div>
-            <h2>Simple for your team. Painless for borrowers.</h2>
+        {/* --- Software we built --- */}
+        <section className="features reveal">
+          <div className="features-header">
+            <div className="section-tag">Software we built</div>
+            <h2>RAVEN borrower verification.</h2>
             <p>
-              RAVEN is designed around both the people sending the link and the people receiving it —
-              fast for loan officers, frictionless for the borrower on the other end.
+              RAVEN started as software. One link to the borrower returns identity, income, credit,
+              employment and property data with an examiner-ready audit trail, alongside the bank&apos;s
+              existing core and LOS. <a href="/services/verification-software">See the software &rarr;</a>
             </p>
-          </div>
-          <div className="split-panels">
-            <div className="split-panel split-panel-left">
-              <div className="split-panel-label">For your loan officers</div>
-              <h3>Get a complete report without chasing a single document.</h3>
-              <ul className="split-list">
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Send a verification link from your dashboard in seconds — by text or email
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Receive a print-ready PDF with every data point the loan file needs
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Track status in real time — see every step complete as it happens
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Sourced, timestamped audit trail ready for examiners — no manual assembly
-                </li>
-              </ul>
-            </div>
-            <div className="split-panel">
-              <div className="split-panel-label">For your borrowers</div>
-              <h3>Five minutes. No appointments, no paperwork.</h3>
-              <ul className="split-list">
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Opens on any phone, tablet, or computer — no download required
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Guided identity check in about 2 minutes — name, DOB, last 4 SSN
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Connects their bank through Plaid — read-only, no credentials ever shared
-                </li>
-                <li>
-                  <svg className="split-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Clear consent at every step — they control exactly what gets shared
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* --- Report contents --- */}
-        <section className="report-section reveal">
-          <div className="report-header">
-            <div className="section-tag">What you get</div>
-            <h2>Everything you need for the loan file.</h2>
-            <p>
-              One verification produces a comprehensive borrower report covering every dimension
-              lenders need — sourced from 18+ data providers and cross-referenced automatically.
-            </p>
-          </div>
-          <div className="report-grid">
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              </div>
-              <h3>Identity &amp; KYC</h3>
-              <p>Name, SSN, and DOB verified across sources. Fraud scoring, OFAC/PEP screening, and synthetic identity detection.</p>
-            </div>
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              </div>
-              <h3>Income &amp; Assets</h3>
-              <p>Bank balances, income streams, and 12 months of transactions. Categorized cash flow and spending patterns.</p>
-            </div>
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-              </div>
-              <h3>Credit History</h3>
-              <p>Scores, tradelines, payment history, liabilities, and utilization from all three bureaus.</p>
-            </div>
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              <h3>Employment</h3>
-              <p>Employer-verified job titles, salary, start dates, and employment history — confirmed directly with employers.</p>
-            </div>
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              </div>
-              <h3>Property &amp; Residence</h3>
-              <p>Address verification, AVM valuations, tax assessments, ownership history, and length of residence.</p>
-            </div>
-            <div className="report-item">
-              <div className="report-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              </div>
-              <h3>Full Audit Trail</h3>
-              <p>Every data point sourced and timestamped. Consent records and field-level provenance ready for regulatory review.</p>
-            </div>
-          </div>
-        </section>
-
-        <div className="divider" />
-
-        {/* --- Core Integration --- */}
-        <section className="core-integration reveal">
-          <div className="core-integration-inner">
-            <div className="core-integration-copy">
-              <div className="section-tag">Works with your core</div>
-              <h2>Live in your existing stack. In a week or less.</h2>
-              <p>
-                RAVEN connects directly to the core banking and loan origination systems your
-                team already runs. There is nothing to rip out, nothing to migrate, and no
-                IT project to scope. Our implementation team handles the integration from
-                start to finish — you focus on running your bank.
-              </p>
-              <div className="core-integration-promise">
-                <div className="promise-item">
-                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <span>Native API integrations — no middleware, no custom ETL pipelines</span>
-                </div>
-                <div className="promise-item">
-                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <span>Dedicated implementation support from day one through go-live</span>
-                </div>
-                <div className="promise-item">
-                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <span>Most banks are fully operational within 5 business days</span>
-                </div>
-                <div className="promise-item">
-                  <svg className="promise-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12"/>
-                  </svg>
-                  <span>Works standalone from day one if your core team needs more time</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="core-logos-col">
-              <div>
-                <div className="core-logos-group-label">Core banking platforms</div>
-                <div className="core-logos-row">
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">Jack Henry</span>
-                    <div className="core-logo-platforms">
-                      <span>SilverLake</span>
-                      <span>CIF 20/20</span>
-                      <span>Symitar</span>
-                    </div>
-                  </div>
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">Fiserv</span>
-                    <div className="core-logo-platforms">
-                      <span>DNA</span>
-                      <span>Premier</span>
-                      <span>Precision</span>
-                    </div>
-                  </div>
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">FIS</span>
-                    <div className="core-logo-platforms">
-                      <span>MBP</span>
-                      <span>IBS</span>
-                      <span>Horizon</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className="core-logos-group-label">Loan origination systems</div>
-                <div className="core-logos-row">
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">nCino</span>
-                    <div className="core-logo-platforms">
-                      <span>Bank Operating System</span>
-                    </div>
-                  </div>
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">Abrigo</span>
-                    <div className="core-logo-platforms">
-                      <span>Sageworks Lending</span>
-                    </div>
-                  </div>
-                  <div className="core-logo-chip">
-                    <span className="core-logo-name">Baker Hill</span>
-                    <div className="core-logo-platforms">
-                      <span>NextGen</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -1415,13 +953,12 @@ export default function LandingPage() {
         <section id="get-started" className="cta reveal">
           <div className="cta-inner">
             <div className="section-tag">Get started</div>
-            <h2>See it running in your bank.</h2>
+            <h2>Talk through your bank&apos;s technology.</h2>
             <p>
-              Book a 20-minute call. We&apos;ll walk through a live verification using your
-              bank&apos;s branding, show you the full report output, and answer every question
-              your compliance team will have.
+              Book a 20-minute call with Isaac. Bring the core decision, the LOS project, the AI tool your
+              team wants to try, or the exam on the calendar.
             </p>
-            <CalendlyButton source="landing-cta" label="Book a Demo Call" buttonClassName="btn btn-white" />
+            <CalendlyButton source="landing-cta" label="Book a call" buttonClassName="btn btn-white" />
             <p className="cta-alt">
               Prefer email?{' '}
               <a href="mailto:isaac@reportraven.tech">isaac@reportraven.tech</a>
@@ -1445,6 +982,7 @@ export default function LandingPage() {
             </span>
           </div>
           <div className="footer-links">
+            <a href="/services">Services</a>
             <a href="/blog">Blog</a>
             <a href="/solutions">Solutions</a>
             <a href="/glossary">Glossary</a>

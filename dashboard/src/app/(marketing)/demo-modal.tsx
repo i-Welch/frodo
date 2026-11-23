@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 import { InterestForm } from './interest-form';
 
 export function DemoModal({
   source,
-  label = 'Get a Demo',
+  label = 'Book a call',
   buttonClassName = 'demo-btn',
 }: {
   source: string;

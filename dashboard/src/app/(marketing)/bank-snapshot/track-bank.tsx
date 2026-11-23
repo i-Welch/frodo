@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { track } from '@vercel/analytics';
+import { trackProductAction as track } from "@/lib/product-events-client";
 
 /** "Email me when this bank's next call report posts" (see server/api/routes/bank-tracker.ts). */
 export function TrackBank({ name, cert, quarter }: { name: string; cert: number; quarter: string }) {

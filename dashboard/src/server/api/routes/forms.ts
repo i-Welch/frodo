@@ -1,3 +1,4 @@
+import { recordProductEvent } from "@/lib/product-events";
 import crypto from 'node:crypto';
 import { Elysia } from 'elysia';
 import { AuthError } from '../middleware/api-key-auth';
@@ -50,12 +51,16 @@ const OTP_EXPIRY_MS = 10 * 60 * 1000;
  * Update verification status by looking up the form token.
  * Fire and forget — doesn't block the request.
  */
-function updateVerificationFromFormToken(tenantId: string, formToken: string, status: VerificationStatus): void {
-  getVerificationByFormToken(tenantId, formToken)
-    .then((v) => {
-      if (v) return updateVerificationStatus(v.tenantId, v.requestId, status);
-    })
-    .catch((err) => log.warn({ formToken, status, error: String(err) }, 'Failed to update verification status'));
+async function updateVerificationFromFormToken(tenantId: string, formToken: string, status: VerificationStatus): Promise<void> {
+  try {
+    const verification = await getVerificationByFormToken(tenantId, formToken);
+    if (!verification) return;
+    await updateVerificationStatus(verification.tenantId, verification.requestId, status);
+    await recordProductEvent("verification_milestone", { stage: status }, {
+      accountId: tenantId, objectType: "verification", objectId: verification.requestId,
+      eventKey: `${verification.requestId}:${status}`, path: "/forms/verification",
+    });
+  } catch (error) { log.warn({ status, error: String(error) }, 'Failed to update verification status'); }
 }
 
 /** Maximum OTP attempts before lockout. */
@@ -200,7 +205,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     }
 
     // Update verification status to form_started (fire and forget)
-    updateVerificationFromFormToken(formToken.tenantId, params.token, 'form_started');
+    await updateVerificationFromFormToken(formToken.tenantId, params.token, 'form_started');
 
     const { type } = formToken.formDefinition;
 
@@ -547,7 +552,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
     }
 
     // Update verification status to form_completed
-    updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'form_completed');
+    await updateVerificationFromFormToken(formToken.tenantId, formToken.token, 'form_completed');
 
     // Auto-enrichment: if this form was created by /onboard, run enrichers
     const onboardModules = (formToken as unknown as Record<string, unknown>).onboardModules as string[] | undefined;
@@ -559,7 +564,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
 
     if (onboardModules && onboardModules.length > 0) {
       // Update status to enriching
-      updateVerificationFromFormToken(tokenTenantId, tokenStr, 'enriching');
+      await updateVerificationFromFormToken(tokenTenantId, tokenStr, 'enriching');
 
       log.info({ userId: tokenUserId, modules: onboardModules }, 'Auto-enriching after form completion');
       // Run enrichment in the background — don't block the user's response
@@ -573,7 +578,7 @@ export const formPublicRoutes = new Elysia({ prefix: '/forms' })
         const succeeded = results.filter((r) => r.status === 'fulfilled').length;
         log.info({ userId: tokenUserId, succeeded, total: results.length }, 'Auto-enrichment complete');
         // Update status to complete
-        updateVerificationFromFormToken(tokenTenantId, tokenStr, 'complete');
+        await updateVerificationFromFormToken(tokenTenantId, tokenStr, 'complete');
 
         // Notify webhook if configured
         if (onboardWebhookUrl) {

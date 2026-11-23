@@ -156,7 +156,7 @@ export default async function GlossaryTermPage({ params }: { params: Promise<{ s
               <div className="glos-solution-label">How RAVEN handles this</div>
               <a href={`/solutions/${term.relatedSolution.slug}`}>{term.relatedSolution.label} &rarr;</a>
             </div>
-            <CalendlyButton source={`glossary:${slug}`} label="Book a Demo" buttonClassName="glos-cta-btn" />
+            <CalendlyButton source={`glossary:${slug}`} label="Book a call" buttonClassName="glos-cta-btn" />
           </div>
         )}
 

@@ -95,7 +95,7 @@ export default async function IntegrationPage({ params }: { params: Promise<{ sl
         </div>
 
         <div className="int-hero-cta">
-          <CalendlyButton source={`integrations:${slug}:hero`} label="Book a Demo" buttonClassName="int-btn-primary" />
+          <CalendlyButton source={`integrations:${slug}:hero`} label="Book a call" buttonClassName="int-btn-primary" />
           <a href="/integrations" className="int-btn-secondary">
             All integrations
           </a>

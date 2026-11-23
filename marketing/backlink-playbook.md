@@ -18,7 +18,7 @@ local/entity SEO). Fill in the two bracketed items once and reuse everywhere.
 - Email: isaac@reportraven.tech
 - Phone: (229) 379-6131
 - Founder: Isaac Welch
-- HQ: [City, State]
+- HQ: Greenville, South Carolina
 - Founded: [Year]
 - LinkedIn: [company page URL — create one first if it doesn't exist; several directories require it]
 - Logo (hosted, ready to use): https://reportraven.tech/logo-1024.png (1024x1024), https://reportraven.tech/logo-400.png (400x400), https://reportraven.tech/icon.png (192x192)
@@ -26,21 +26,25 @@ local/entity SEO). Fill in the two bracketed items once and reuse everywhere.
 
 **One-liner (tagline fields, ~60 chars)**
 
-Borrower verification for community banks. One link, minutes.
+Technology consulting for new and community banks.
 
 **50-word blurb (short description fields)**
 
-RAVEN gives community banks fintech-grade borrower verification. One link to the borrower returns identity, income, employment, credit, bank, and property data, verified at the source in minutes instead of weeks. No core replacement, no LOS dependency, white-labeled to your bank, live in days.
+RAVEN is a bank technology consulting practice led by Isaac Welch, who built the banking arm of Upstart and Affirm. It helps new and community banks set up operations, integrate core, LOS and verification technology, adopt AI with proper governance, prepare for IT exams, and run fintech partnerships.
 
 **150-word blurb (standard description fields)**
 
-RAVEN is a borrower verification platform built for community banks and credit unions. Instead of collecting paystubs, calling employers, and faxing verification-of-deposit forms, the bank sends one link. The borrower authorizes their data once, and RAVEN returns a complete verification report: identity validated against authoritative sources, income and employment direct from payroll systems of record, bank balances and transaction history through consented account connections, plus credit and property data, all in one audit-ready file. Because verification runs on source data instead of borrower-supplied documents, RAVEN doubles as a fraud control: edited paystubs, fictitious employers, and synthetic identities have nothing to attach to. The borrower experience is fully white-labeled, there is no core conversion or LOS dependency, and banks send their first verification link within days of onboarding. RAVEN serves community banks across the Southeast and nationally.
+RAVEN is a bank technology consulting practice for new and community banks, led by Isaac Welch, who built the banking arm of Upstart and Affirm and has helped traditional banks modernize their stack with Finxact, Plaid income verification and Vesta. RAVEN works with de novo banks between conditional approval and opening day on vendor selection, operating processes and examiner-ready documentation, and with community banks on core, loan origination and verification integration. It helps banks adopt AI tools with the governance examiners expect (AI use policy, model risk, third-party risk), runs security and IT exam readiness assessments, and helps banks evaluate and oversee fintech lending partnerships. RAVEN is not a reseller for cores or other bank technology vendors. It also offers its own borrower verification software (built on data providers including Plaid and Socure, and never a condition of an engagement), and publishes free FDIC-data research including the De Novo Watch tracker. RAVEN is based in Greenville, South Carolina and serves banks across the Southeast and nationally.
 
 **Target market blurb ("who is it for" fields)**
 
-RAVEN is built for community banks and credit unions, roughly $100M to $5B in assets, that want to verify borrowers and open accounts digitally without replacing their core. Typical buyers are CEOs, COOs, chief credit officers, and heads of retail or lending at institutions still running verification on phone calls, faxes, and borrower-supplied documents. It fits banks on any core (Jack Henry, Fiserv, CSI, and others), with or without an existing LOS, including banks with no digital application channel at all.
+RAVEN works first with new (de novo) banks, from FDIC filing through their first three years, and second with community banks roughly $100M to $5B in assets that are modernizing their stack. Typical clients are organizers, CEOs, COOs and CTOs who need an operator who has built bank technology from the inside, on any core (Jack Henry, Fiserv, FIS, CSI, Finxact and others).
 
-**Category selections (pick whichever each directory offers, in this priority)**
+**Software listing copy (software directories such as G2 and Capterra only; the verification software is one RAVEN service)**
+
+RAVEN Borrower Verification gives community banks fintech-grade borrower verification. One link to the borrower returns identity, income, employment, credit, bank, and property data, verified at the source in minutes instead of weeks. No core replacement, no LOS dependency, white-labeled to your bank.
+
+**Category selections (consulting and business directories: Banking Consulting / Financial Services Consulting / IT Consulting first; software directories: the list below, in this priority)**
 1. Identity Verification / KYC Software
 2. Lending Software / Loan Origination Software
 3. Financial Services Software / Banking Software
@@ -51,7 +55,7 @@ RAVEN is built for community banks and credit unions, roughly $100M to $5B in as
 
 **Founder bio (for bylines and podcast pitches, 40 words)**
 
-Isaac Welch is the founder of RAVEN, a borrower verification platform for community banks. He writes data-driven analysis of community bank performance, lending speed, and verification fraud at reportraven.tech/blog.
+Isaac Welch built the banking arm of Upstart and Affirm and now runs RAVEN, a technology consulting practice for new and community banks. He writes data-driven analysis of community bank performance, de novo banks and bank technology at reportraven.tech/blog.
 
 ---
 

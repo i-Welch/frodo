@@ -26,6 +26,16 @@ export const articles: Article[] = [
     auditSlug: 'addition-financial-credit-union',
   },
   {
+    slug: 'community-first-51-million-georgia-bank',
+    title: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    description:
+      "Community First Credit Union paid about $51 million, roughly 1.7 times equity, for a Georgia bank chartered in 1907. FDIC data shows 53% of First Southern's deposits sat in Florida, a third paid no interest and 69% of its loans were business credit.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'creditunion',
+    auditSlug: 'community-first-credit-union-of-florida',
+  },
+  {
     slug: 'georgia-most-efficient-banks-q2-2026',
     title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently",
     description:

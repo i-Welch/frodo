@@ -1,5 +1,6 @@
+import { ProductMilestones } from "@/components/ProductMilestones";
 import type { Metadata } from 'next';
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@/components/ProductAnalytics";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { dmSans, fraunces } from './fonts';
@@ -7,11 +8,11 @@ import { dmSans, fraunces } from './fonts';
 export const metadata: Metadata = {
   metadataBase: new URL('https://reportraven.tech'),
   title: {
-    default: 'RAVEN — Borrower Verification for Community Banks',
+    default: 'RAVEN — Bank Technology Consulting',
     template: '%s — RAVEN',
   },
   description:
-    'RAVEN automates borrower verification for community and regional banks. One link delivers identity, income, employment, and property data in minutes — with a full audit trail.',
+    'Bank technology consulting for new and community banks from Isaac Welch, who built the banking arm of Upstart and Affirm: de novo setup, core and LOS integration, AI governance, security readiness.',
   applicationName: 'RAVEN',
   authors: [{ name: 'RAVEN', url: 'https://reportraven.tech' }],
   openGraph: {
@@ -19,15 +20,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://reportraven.tech',
-    title: 'RAVEN — Borrower Verification for Community Banks',
+    title: 'RAVEN — Bank Technology Consulting',
     description:
-      'One verification link. Complete borrower report in minutes. Identity, income, employment, and property data cross-referenced automatically.',
+      'Technology help for new and community banks, from someone who built the banking arm of Upstart and Affirm.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RAVEN — Borrower Verification for Community Banks',
+    title: 'RAVEN — Bank Technology Consulting',
     description:
-      'One verification link. Complete borrower report in minutes for community and regional banks.',
+      'Technology help for new and community banks, from someone who built the banking arm of Upstart and Affirm.',
   },
   robots: { index: true, follow: true },
   icons: {
@@ -47,6 +48,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
       <body className="min-h-screen bg-gray-50 text-gray-900 antialiased">
+        <ProductMilestones />
         {/* The Neon Auth provider and its CSS live in the dashboard and sign-in/up
             layouts, so marketing pages don't download the auth UI bundle. */}
         {children}
