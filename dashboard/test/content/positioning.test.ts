@@ -159,6 +159,7 @@ const CTA_FILES = [
   'solutions/[slug]/page.tsx',
   'services/page.tsx',
   'services/[slug]/page.tsx',
+  'about/page.tsx',
 ];
 const readSrc = (rel: string) => readFileSync(join(SRC, rel), 'utf8');
 const OLD_CTA = /Request a Demo|Book a Demo|Get a Demo|Request a demo|Your RAVEN demo|live demo for your bank/;
@@ -188,5 +189,17 @@ describe('calls to action', () => {
   it('footer keeps solutions, integrations and glossary', () => {
     const shell = read('site-shell.tsx');
     for (const h of ['/solutions', '/integrations', '/glossary', '/services']) expect(shell).toContain(`href="${h}"`);
+  });
+});
+
+describe('about page', () => {
+  it('is founder-led', () => {
+    const src = read('about/page.tsx');
+    expect(src).toContain('founderJsonLd()');
+    expect(src).toMatch(/FOUNDER.bio/);
+    expect(src).not.toContain('a software engineer based in');
+    expect(src).toContain('href="/services"');
+    expect(src).toMatch(/not affiliated with RavenPack/i);
+    expect(copyGuard(src)).toEqual([]);
   });
 });

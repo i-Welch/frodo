@@ -27,7 +27,7 @@ const HOME_UPDATED = new Date('2026-10-19');
 const BLOG_INDEX_UPDATED = new Date(Object.values(BLOG_DATES).sort().at(-1) ?? '2026-07-05');
 // About / AI-info pages: bump when their content changes. De Novo Watch uses
 // the tracker's own updated date, which the weekly /de-novo-update run sets.
-const PAGES_ADDED = new Date('2026-07-18');
+const PAGES_ADDED = new Date('2026-11-22');
 // Services hub: the newest service update.
 const SERVICES_UPDATED = new Date(SERVICES.map((s) => s.updated).sort().at(-1) ?? '2026-11-22');
 
