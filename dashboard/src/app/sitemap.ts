@@ -22,7 +22,7 @@ function auditModified(auditDate: string): Date {
   return Number.isNaN(d.getTime()) || d < SITE_UPDATED ? SITE_UPDATED : d;
 }
 // Homepage: bump when its content changes (2026-10-19: free-audit card, De Novo Watch nav).
-const HOME_UPDATED = new Date('2026-10-19');
+const HOME_UPDATED = new Date('2026-11-22');
 // The blog index changes whenever an article is published.
 const BLOG_INDEX_UPDATED = new Date(Object.values(BLOG_DATES).sort().at(-1) ?? '2026-07-05');
 // About / AI-info pages: bump when their content changes. De Novo Watch uses

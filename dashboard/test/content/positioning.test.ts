@@ -36,6 +36,8 @@ describe('copy guard', () => {
     expect(copyGuard('$250 per hour')).toHaveLength(1);
     expect(copyGuard('Affirm, 2019–2022')).toHaveLength(1);
     expect(copyGuard('Hands-on experience with Finxact, Plaid and Vesta.')).toEqual([]);
+    // CSS and form attributes are code, not copy.
+    expect(copyGuard('.form-input::placeholder { color: red; } <input placeholder="Bank" />')).toEqual([]);
   });
 });
 
@@ -147,7 +149,6 @@ describe('services pages', () => {
   });
 });
 
-// Homepage and About join this list when Tasks 4 and 5 rewrite them.
 const CTA_FILES = [
   'calendly-button.tsx',
   'demo-modal.tsx',
@@ -160,6 +161,7 @@ const CTA_FILES = [
   'services/page.tsx',
   'services/[slug]/page.tsx',
   'about/page.tsx',
+  'page.tsx',
 ];
 const readSrc = (rel: string) => readFileSync(join(SRC, rel), 'utf8');
 const OLD_CTA = /Request a Demo|Book a Demo|Get a Demo|Request a demo|Your RAVEN demo|live demo for your bank/;
@@ -200,6 +202,27 @@ describe('about page', () => {
     expect(src).not.toContain('a software engineer based in');
     expect(src).toContain('href="/services"');
     expect(src).toMatch(/not affiliated with RavenPack/i);
+    expect(copyGuard(src)).toEqual([]);
+  });
+});
+
+describe('homepage', () => {
+  it('leads with consulting', () => {
+    const src = read('page.tsx');
+    expect(src).toMatch(/title: { absolute: 'RAVEN — Bank Technology Consulting[^']*' }/);
+    expect(src).toContain("'ProfessionalService'");
+    expect(src).toContain('founderJsonLd()');
+    expect(src).toMatch(/SERVICES.map/);
+    expect(src).toMatch(/ENGAGEMENT_STEPS.map/);
+    for (const gone of [
+      'Three steps. No new workflows.',
+      'Everything you need for the loan file.',
+      'Live in your existing stack. In a week or less.',
+      'Borrower verification software for community banks',
+    ])
+      expect(src).not.toContain(gone);
+    expect(src).toContain('Research we publish from FDIC filings');
+    expect(src).toContain('href="/services"');
     expect(copyGuard(src)).toEqual([]);
   });
 });

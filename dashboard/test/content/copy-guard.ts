@@ -6,7 +6,8 @@ const RULES: { name: string; re: RegExp }[] = [
   { name: 'partner claim', re: /\b(official|certified|preferred|authorized) partner\b/gi },
   { name: 'vendor partnership', re: /\bpartner(ed|ship)? with (Finxact|Plaid|Vesta|Upstart|Affirm|Socure|Truework)\b/gi },
   { name: 'credential', re: /\b(CISSP|CISA|CISM|OSCP|CEH)\b/g },
-  { name: 'placeholder', re: /\b(TODO|TBD|lorem ipsum|placeholder)\b/gi },
+  // "placeholder" as a word, but not the CSS pseudo-element or a form attribute.
+  { name: 'placeholder', re: /\b(TODO|TBD|lorem ipsum)\b|(?<!:)\bplaceholder\b(?!\s*=)/gi },
   { name: 'fluff', re: /digital transformation journey|synerg|cutting-edge|best-in-class|in today's fast-paced/gi },
   { name: 'pricing', re: /\$\s?\d[\d,]*(\.\d+)?\s*(\/|per)\s*(hour|hr|month|mo|engagement)\b/gi },
   { name: 'employment dates', re: /\b(19|20)\d{2}\s*[–-]\s*((19|20)\d{2}|present)\b/gi },
