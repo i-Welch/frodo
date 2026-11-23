@@ -1,10 +1,29 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { copyGuard } from './copy-guard';
 import { FOUNDER, founderJsonLd } from '../../src/app/(marketing)/founder';
 import { SERVICES, ENGAGEMENT_STEPS, getService } from '../../src/app/(marketing)/services/services-data';
 import { SOLUTIONS } from '../../src/app/(marketing)/solutions/solutions-data';
 import { GLOSSARY_TERMS } from '../../src/app/(marketing)/glossary/glossary-data';
 import { BLOG_SLUGS } from '../../src/app/(marketing)/blog/published';
+import { INTEGRATIONS } from '../../src/app/(marketing)/integrations/integrations-data';
+import sitemap from '../../src/app/sitemap';
+
+const SRC = resolve(__dirname, '../../src');
+const MARKETING = join(SRC, 'app/(marketing)');
+/** Read a file under src/app/(marketing)/. */
+const read = (rel: string) => readFileSync(join(MARKETING, rel), 'utf8');
+/** Every file named `name` under src/app/(marketing)/<dir>, as paths relative to (marketing). */
+function walk(dir: string, name: string): string[] {
+  return readdirSync(join(MARKETING, dir)).flatMap((f) => {
+    const rel = join(dir, f);
+    if (statSync(join(MARKETING, rel)).isDirectory()) return walk(rel, name);
+    return f === name ? [rel] : [];
+  });
+}
+const noFdic = () => vi.stubGlobal('fetch', async () => new Response(JSON.stringify({ data: [] })));
+afterEach(() => vi.unstubAllGlobals());
 
 // The consulting pivot (docs/superpowers/specs/2026-11-22-consulting-pivot-design.md).
 
@@ -101,5 +120,29 @@ describe('founder', () => {
     expect(p.alumniOf.map((o) => o.name)).toEqual(['Upstart', 'Affirm']);
     expect(p.sameAs).toContain('https://www.linkedin.com/in/isaac-welch-22a463179');
     expect(JSON.stringify(p)).not.toMatch(/startDate|endDate|\b(19|20)\d{2}\b/);
+  });
+});
+
+describe('services pages', () => {
+  it('sitemap lists the hub and every service', async () => {
+    noFdic();
+    const urls = (await sitemap()).map((e) => e.url);
+    expect(urls).toContain('https://reportraven.tech/services');
+    for (const s of SERVICES) expect(urls).toContain(`https://reportraven.tech/services/${s.slug}`);
+  });
+
+  it('sitemap keeps every existing solutions and integrations URL', async () => {
+    noFdic();
+    const urls = new Set((await sitemap()).map((e) => e.url));
+    for (const s of SOLUTIONS) expect(urls.has(`https://reportraven.tech/solutions/${s.slug}`), s.slug).toBe(true);
+    for (const i of INTEGRATIONS) expect(urls.has(`https://reportraven.tech/integrations/${i.slug}`), i.slug).toBe(true);
+  });
+
+  it('service page shows the audit only when showAudit', () => {
+    expect(read('services/[slug]/page.tsx')).toMatch(/service\.showAudit\s*&&[\s\S]*variant="audit"/);
+  });
+
+  it('de novo pages render no audit form', () => {
+    for (const f of walk('de-novo-watch', 'page.tsx')) expect(read(f), f).not.toContain('variant="audit"');
   });
 });
