@@ -12,9 +12,9 @@ About a quarter came from Huawei's search crawler, which names itself. The other
 
 They weren't. They came from data centers, and they loaded 5,634 page scripts and files. The crawler that names itself loaded 18. That is a headless browser: real browser software with no person behind it.
 
-It read everything public and never tried to sign in. We blocked the two networks and turned on bot challenges.
+It read everything public and never tried to sign in. Harmless scraping, reconnaissance or a probe ahead of something worse: from the outside there is no way to know, and that is the problem. So we didn't wait to find out. We blocked the two networks and turned on bot challenges.
 
-The bigger lesson came after. In the two weeks since, 31% of requests to our sites got a challenge instead of a page. In the latest week, the largest source of challenged traffic was the United States, not China.
+In the two weeks since, 31% of requests to our sites got a challenge instead of a page. In the latest week, the largest source of challenged traffic was the United States, not China.
 
 Blocking a country stops the bot you already caught. Behavior catches the rest.
 

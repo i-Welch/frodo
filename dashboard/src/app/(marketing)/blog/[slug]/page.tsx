@@ -119,11 +119,11 @@ On November 5, two networks run by Huawei Cloud sent 141 requests to this websit
 
 Across the first ten days of November, the two networks made 15,266 requests. About a quarter came from a crawler that announced itself by name. The other three quarters said they were ordinary people using ordinary browsers. They were not.
 
-We publish data, not customer accounts, so nothing of value was at risk. But the traffic was a clean sample of the automation that hits every bank and credit union website, and what stopped it maps onto what they face at far larger scale.
+We publish data, not customer accounts. But the traffic was a clean sample of the automation that hits every bank and credit union website, and what stopped it maps onto what they face at far larger scale.
 
 ## What Hit Us
 
-The first sign was not a security alert. It was a burst of server activity. When a visitor asks for a page we have not built recently, our hosting platform builds it fresh, and something was asking for a great many of them.
+The first sign was not a security alert but a burst of server activity: something was asking our hosting platform to build a great many pages at once.
 
 The surge came from two networks registered to Huawei Cloud, the cloud computing arm of the Chinese technology company: one serving from Singapore (AS136907), with 9,246 requests from November 1 through 10, and one in mainland China (AS55990), with 6,020.
 
@@ -136,7 +136,7 @@ The surge came from two networks registered to Huawei Cloud, the cloud computing
 | Nov. 9 | 4,450 |
 | Nov. 10 | 6,669 |
 
-The traffic had two personalities. 3,973 requests identified themselves as PetalBot, the crawler for Huawei's Petal Search engine. PetalBot behaved like a search crawler: it asked for pages and almost nothing else, 18 scripts and other page files in ten days.
+The traffic had two personalities. 3,973 requests identified themselves as PetalBot, the crawler for Huawei's Petal Search engine. PetalBot asked for pages and almost nothing else: 18 scripts and other page files in ten days.
 
 The other 11,292 requests carried no bot name. The label each one sent, which a browser attaches to every request, claimed to be Chrome on a Windows or Mac computer. But they came from data center addresses, not homes or offices, and they loaded pages the way a real browser engine does: alongside 4,372 page requests came 5,634 requests for the scripts and style files that make those pages run. That is the signature of a headless browser, real browser software driven by a program with no person in front of it.
 
@@ -149,17 +149,19 @@ Page scripts and files loaded in ten days by the Huawei Cloud traffic that posed
 
 It read everything public: bank data pages, blog articles, glossary entries, demos, audits and legal pages, in an order that looked like a walk through our sitemap. In our review of the traffic on November 10 we found no attempts to sign in, no form submissions and almost no calls to the site's application interfaces.
 
-The most likely explanation is bulk collection, to train an AI model or stock a data broker's database. Our pages are built to be read, and most of what this scraper took, any visitor could have.
+That does not tell us what it was. It could have been bulk collection, to train an AI model or stock a data broker's database. It could have been reconnaissance, mapping pages and software ahead of a quieter second visit. It could have been a probe, testing how much traffic the site would take before anyone noticed. Against a login page or an application form, the same traffic could be the opening of a breach attempt or a fraud run. From the outside, for days, all of these look alike.
+
+Nor can we say who sent it. A network address says where a computer was rented, not who rented it or why. Huawei Cloud rents servers to customers, as every large cloud provider does, and nothing in our logs ties this traffic to the Chinese government or to Huawei itself. PetalBot names itself; the traffic posing as Chrome did not, and may not belong to the same operator.
 
 :::pullquote
-A crawler that tells you its name is asking permission. A headless browser that tells you it is Chrome is not.
+We will never know whether it was a harmless scraper, a scout or the first step of something worse. That uncertainty is the problem.
 :::
 
-Two caveats, in fairness. First, a network address says where a computer was rented, not who rented it or why. Huawei Cloud rents servers to customers, as every large cloud provider does, and nothing in our logs ties this traffic to the Chinese government or to Huawei itself. Second, PetalBot is a legitimate search crawler that names itself, and the disguised traffic may not belong to the same operator. We blocked both because almost none of our readers find us through Petal Search, a trade-off a business with customers in Asia might not make.
+By the time intent becomes clear, the traffic has done whatever it came to do. So the safe policy is to treat automation that hides what it is as hostile until it proves otherwise: detect it early and shut it out, without waiting for a motive. We blocked the crawler that names itself too, because almost none of our readers find us through Petal Search.
 
 ## How We Shut It Down
 
-We used two layers, both in front of the site.
+We did not wait to find out. We used two layers, both in front of the site.
 
 The first refuses every request from the two networks before it reaches a page. The refusals have not stopped: 335 on November 11, and still 114 on November 23. In the first week, about 94% of the refused requests came from the crawler that names itself. The traffic posing as Chrome mostly went quiet.
 
@@ -178,7 +180,7 @@ Our site holds no customer accounts. A bank's does, and the software that scrape
 
 Thales's annual Bad Bot Report found that bots made up more than 53% of all web traffic in 2025, and that financial services drew 24% of all bot attacks and 46% of account takeover incidents. The FBI's Internet Crime Complaint Center logged 1,008,597 complaints and $20.877 billion in reported losses in 2025, up 26%, and said its process for freezing stolen funds saw a rise in account takeover cases. One account takeover, the report warns, can involve 50 or more ACH transfers to accounts at multiple banks at once.
 
-The FFIEC's 2021 authentication guidance puts the mechanics plainly: "Attackers use technologies, such as automated password cracking tools, and these compromised credentials in their attacks against financial institutions." Credential stuffing is that sentence at scale: a headless browser trying stolen passwords against a login page, thousands at a time, each attempt posing as a customer.
+The FFIEC's 2021 authentication guidance puts the mechanics plainly: "Attackers use technologies, such as automated password cracking tools, and these compromised credentials in their attacks against financial institutions." Credential stuffing is that sentence at scale: a headless browser trying stolen passwords, thousands at a time, each attempt posing as a customer.
 
 Account opening is the other target. FinCEN's November 2024 deepfake alert reported an increase in suspicious activity reports describing fraudulent identity documents used "to circumvent identity verification and authentication methods." A bot that can fill out a form can submit a [synthetic identity](/glossary/synthetic-identity-fraud) hundreds of times, testing which version gets through. That is where [new account fraud](/glossary/new-account-fraud) starts.
 
