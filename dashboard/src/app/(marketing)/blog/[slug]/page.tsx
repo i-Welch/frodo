@@ -159,7 +159,7 @@ Two caveats, in fairness. First, a network address says where a computer was ren
 
 ## How We Shut It Down
 
-We used three layers, all in front of the site.
+We used two layers, both in front of the site.
 
 The first refuses every request from the two networks before it reaches a page. The refusals have not stopped: 335 on November 11, and still 114 on November 23. In the first week, about 94% of the refused requests came from the crawler that names itself. The traffic posing as Chrome mostly went quiet.
 
@@ -171,8 +171,6 @@ Share of the 66,004 requests to our sites in the two weeks after November 10 tha
 :::
 
 That second number is the real lesson. Blocking a country or a cloud provider handles the operator you already caught. Behavior gives bots away, not geography.
-
-The third layer is the one we got wrong at first. The challenge also stopped our own publishing scripts, which check that a new article is live before announcing it, until November 19, when we gave our automation a narrow, secret-keyed pass. A defense that cannot tell your own automation from an attacker's gets switched off by whoever needs the automation to run.
 
 ## Why It Matters More at a Bank
 
@@ -194,7 +192,7 @@ Behavior gives bots away, not geography. The largest source of challenged traffi
 
 At most community banks, no single team sees all of this traffic. A web agency runs the marketing site. The digital banking vendor runs the login. The mortgage application lives on the loan origination vendor's domain, the deposit application on another. Each sees its own slice. Nobody sees a scraper walk the whole front door.
 
-That makes bot defense a vendor oversight question as much as a technology one. The FFIEC guidance calls for layered security, which "incorporates multiple preventative, detective, and corrective controls," and warns that "relying only on a single control or authentication solution can increase risk to information systems." For a public website and the applications behind it, layered means a version of each thing that stopped our scraper: refusing known-bad networks, challenging automation by its behavior, and a controlled path for the legitimate automation the bank depends on, from data aggregators to its own vendors' integrations. It also means someone at the bank reads the reports. Ask every vendor that hosts a piece of the customer journey what bot controls run in front of it, what it logs, and how fast the bank would hear about a spike like ours. Then put the answers in the risk assessment the guidance calls for, where an examiner can find them.
+That makes bot defense a vendor oversight question as much as a technology one. The FFIEC guidance calls for layered security, which "incorporates multiple preventative, detective, and corrective controls," and warns that "relying only on a single control or authentication solution can increase risk to information systems." For a public website and the applications behind it, layered means a version of both things that stopped our scraper, refusing known-bad networks and challenging automation by its behavior, plus a controlled path for the legitimate automation the bank depends on, from data aggregators to its own vendors' integrations. It also means someone at the bank reads the reports. Ask every vendor that hosts a piece of the customer journey what bot controls run in front of it, what it logs, and how fast the bank would hear about a spike like ours. Then put the answers in the risk assessment the guidance calls for, where an examiner can find them.
 
 Our first sign of a 47-fold surge was a busy server. At a bank, it might be a customer's empty account.
 `,

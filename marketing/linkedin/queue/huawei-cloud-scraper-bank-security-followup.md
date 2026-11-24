@@ -5,13 +5,11 @@ description: Two Huawei Cloud networks sent us 15,266 requests in early November
 url: https://reportraven.tech/blog/huawei-cloud-scraper-bank-security
 notBefore: 2026-12-01
 ---
-When we turned on bot challenges to stop a scraper from Huawei Cloud, they also stopped us.
+Two weeks after we blocked two Huawei Cloud networks from our website, they were still knocking: 114 refused requests on November 23 alone.
 
-Our publishing scripts check that a new article is live before announcing it. The challenge treated them like the scraper until we gave our own automation a narrow, secret-keyed pass.
+What a scraper reads is the part banks should think about. Walk a bank's public site and you learn its rates, its officers' names for a phishing email, and which vendor runs each application.
 
-Banks have the same problem with more at stake. Data aggregators, vendor integrations and the bank's own scheduled jobs all look like automation, because they are.
-
-A control that can't tell them apart from an attacker gets switched off by whoever needs the job to run.
+In our digital lending audit, 14 of 32 Southeast banks and credit unions sent mortgage applicants to subdomains of the same vendor portal. A bot can map that for every bank in a state in an afternoon.
 
 And at most community banks, the web agency, the digital banking vendor and the loan origination vendor each see only their slice of the traffic. Nobody sees all of it.
 
