@@ -1967,7 +1967,7 @@ Someone should fix that.
 
 *Published July 18, 2026*
 
-Disclosure up front: RAVEN, which publishes this site, sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
+Disclosure up front: RAVEN, which publishes this site, is a bank technology consulting practice that also sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
 
 The Work Number, owned by Equifax, is the default answer to employment verification in US lending. It is a database of payroll records contributed by employers and payroll providers, and when a borrower's employer is in it, a verification that used to take three phone calls comes back in seconds. Two things push lenders to look for alternatives anyway. The first is price: Equifax raised the cost of Work Number employment verifications again effective January 1, 2026, on top of increases the Community Home Lenders of America was already protesting in 2024, when it put a single verification at $55 to $70 and a mortgage with two borrowers at as much as $280. The second is coverage, which runs thinnest exactly where community banks lend: small employers, farms, municipalities, and self-employed borrowers who are in nobody's payroll database.
 
@@ -2042,7 +2042,7 @@ Database reports are priced per pull, and The Work Number's prices rose again on
 
 *Published July 18, 2026*
 
-Disclosure: RAVEN, which publishes this guide, is one of the vendors below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
+Disclosure: RAVEN, which publishes this guide, is a bank technology consulting practice, and its own software is one of the options below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
 
 The benchmark numbers in this market are public and brutal. MANTL, the category's best-known platform, reports an average under five minutes to open a retail deposit account across online and in-branch channels. Megabank and neobank onboarding set borrower expectations, and an application that takes twenty minutes and ends with "visit a branch to fund your account" loses most of its applicants before the finish line. Meanwhile the banks that moved fast without verification learned the other lesson: an account-opening flow that accepts whatever the applicant types is a fraud vector, and more than one bank has [turned online account opening off entirely](/blog/account-opening-fraud-prevention) after a fraud wave.
 
@@ -6050,7 +6050,7 @@ When that plumbing is manual, it takes weeks. When it's automated, it takes minu
 
 ## How RAVEN Changes This
 
-RAVEN is a verification platform built specifically for community banks. Instead of collecting documents over weeks, a loan officer sends one link. The borrower verifies their identity, income, employment, and assets in under 5 minutes — on any device, no branch visit required.
+RAVEN's verification software is built specifically for community banks. Instead of collecting documents over weeks, a loan officer sends one link. The borrower verifies their identity, income, employment, and assets in under 5 minutes — on any device, no branch visit required.
 
 On the back end, RAVEN pulls from the same data sources the fintechs use: Plaid for financial accounts and income, Truework for employment, Socure for identity and fraud screening, ATTOM and Melissa for property data. Every data point is cross-referenced, timestamped, and delivered in an examiner-ready report with a full audit trail.
 
@@ -6166,7 +6166,7 @@ Each of these capabilities exists as a standalone service. The challenge for com
 
 ## How RAVEN Bridges the Gap
 
-RAVEN was built to solve exactly this problem. It is a verification platform designed for community banks — not a core replacement, not a loan origination system, and not an 18-month implementation project.
+RAVEN's verification software was built to solve exactly this problem. It is designed for community banks — not a core replacement, not a loan origination system, and not an 18-month implementation project.
 
 A loan officer sends one link to a borrower. The borrower opens it on any device, enters their information, and connects their financial accounts. In under 5 minutes, the bank receives a complete verification report: identity and fraud screening from Socure, financial accounts and income from Plaid, employment verification from Truework, and property data from ATTOM and Melissa.
 
@@ -6271,7 +6271,7 @@ Community banks do not need to build this infrastructure from scratch. They need
 
 ## RAVEN: The Fintech Borrower Experience, Through Your Bank
 
-RAVEN gives community banks the same automated verification layer that powers Figure, Better, and Rocket — without requiring a new LOS, a six-figure platform fee, or a dedicated IT team.
+RAVEN's verification software gives community banks the same automated verification layer that powers Figure, Better, and Rocket — without requiring a new LOS, a six-figure platform fee, or a dedicated IT team.
 
 Here is what the borrower experience looks like with RAVEN:
 
@@ -6378,7 +6378,7 @@ Community banks need the same automation outcomes — faster verification, lower
 
 ## What This Looks Like With RAVEN
 
-RAVEN was built to automate the verification layer specifically for community bank lending. Not the entire compliance program — the specific, labor-intensive process of verifying borrower identity, income, employment, assets, and property data against authoritative sources.
+RAVEN's verification software was built to automate the verification layer specifically for community bank lending. Not the entire compliance program — the specific, labor-intensive process of verifying borrower identity, income, employment, assets, and property data against authoritative sources.
 
 When a loan officer initiates a verification through RAVEN, one link to the borrower triggers a cascade of automated checks:
 
@@ -6549,7 +6549,7 @@ Figure proved that automated verification is the leverage point. Their own SEC f
 
 Community banks do not need to become fintechs. They need to verify like fintechs. The rest of their model is already stronger.
 
-**RAVEN gives community banks Figure-speed verification without Figure-sized engineering teams.** One integration. One link. Complete borrower verification in minutes.
+**RAVEN's software gives community banks Figure-speed verification without Figure-sized engineering teams.** One integration. One link. Complete borrower verification in minutes.
 
 [Request early access at reportraven.tech](https://reportraven.tech)`,
   },
