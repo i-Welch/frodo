@@ -1250,6 +1250,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['first-party-fraud', 'bust-out-fraud', 'ecbsv', 'new-account-fraud'],
     relatedArticles: [
+      { slug: 'huawei-cloud-scraper-bank-security', title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.' },
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
     ],
     relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
@@ -1468,6 +1469,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['synthetic-identity-fraud', 'ecbsv', 'bank-account-verification', 'first-party-fraud'],
     relatedArticles: [
+      { slug: 'huawei-cloud-scraper-bank-security', title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.' },
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },
