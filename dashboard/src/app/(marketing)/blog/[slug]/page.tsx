@@ -104,6 +104,101 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'huawei-cloud-scraper-bank-security': {
+    title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
+    description:
+      'Two Huawei Cloud networks sent us 15,266 requests in early November, up 47x in five days. Three in four posed as Chrome. How we shut them out, and why banks face the same bots: financial services drew 46% of account takeover incidents in 2025.',
+    publishedDate: 'November 24, 2026',
+    readTime: '6 min read',
+    content: `
+# 15,266 Requests From Huawei Cloud. Three in Four Posed as People.
+
+*Published November 24, 2026*
+
+On November 5, two networks run by Huawei Cloud sent 141 requests to this website. On November 9 they sent 4,450. On November 10 they sent 6,669 before we shut them out. That is a 47-fold jump in five days.
+
+Across the first ten days of November, the two networks made 15,266 requests. About a quarter came from a crawler that announced itself by name. The other three quarters said they were ordinary people using ordinary browsers. They were not.
+
+We publish data, not customer accounts, so nothing of value was at risk. But the traffic was a clean sample of the automation that hits every bank and credit union website, and what stopped it maps onto what they face at far larger scale.
+
+## What Hit Us
+
+The first sign was not a security alert. It was a burst of server activity. When a visitor asks for a page we have not built recently, our hosting platform builds it fresh, and something was asking for a great many of them.
+
+The surge came from two networks registered to Huawei Cloud, the cloud computing arm of the Chinese technology company: one serving from Singapore (AS136907), with 9,246 requests from November 1 through 10, and one in mainland China (AS55990), with 6,020.
+
+| Date | Requests from the two networks |
+|---|---|
+| Nov. 5 | 141 |
+| Nov. 6 | 614 |
+| Nov. 7 | 1,074 |
+| Nov. 8 | 1,651 |
+| Nov. 9 | 4,450 |
+| Nov. 10 | 6,669 |
+
+The traffic had two personalities. 3,973 requests identified themselves as PetalBot, the crawler for Huawei's Petal Search engine. PetalBot behaved like a search crawler: it asked for pages and almost nothing else, 18 scripts and other page files in ten days.
+
+The other 11,292 requests carried no bot name. The label each one sent, which a browser attaches to every request, claimed to be Chrome on a Windows or Mac computer. But they came from data center addresses, not homes or offices, and they loaded pages the way a real browser engine does: alongside 4,372 page requests came 5,634 requests for the scripts and style files that make those pages run. That is the signature of a headless browser, real browser software driven by a program with no person in front of it.
+
+:::stat
+**5,634 vs. 18**
+Page scripts and files loaded in ten days by the Huawei Cloud traffic that posed as Chrome, against the self-identified Huawei crawler. A crawler reads pages. A headless browser runs them, which is how bots get past defenses that only check what a visitor says it is.
+:::
+
+## What It Wanted
+
+It read everything public: bank data pages, blog articles, glossary entries, demos, audits and legal pages, in an order that looked like a walk through our sitemap. In our review of the traffic on November 10 we found no attempts to sign in, no form submissions and almost no calls to the site's application interfaces.
+
+The most likely explanation is bulk collection, to train an AI model or stock a data broker's database. Our pages are built to be read, and most of what this scraper took, any visitor could have.
+
+:::pullquote
+A crawler that tells you its name is asking permission. A headless browser that tells you it is Chrome is not.
+:::
+
+Two caveats, in fairness. First, a network address says where a computer was rented, not who rented it or why. Huawei Cloud rents servers to customers, as every large cloud provider does, and nothing in our logs ties this traffic to the Chinese government or to Huawei itself. Second, PetalBot is a legitimate search crawler that names itself, and the disguised traffic may not belong to the same operator. We blocked both because almost none of our readers find us through Petal Search, a trade-off a business with customers in Asia might not make.
+
+## How We Shut It Down
+
+We used three layers, all in front of the site.
+
+The first refuses every request from the two networks before it reaches a page. The refusals have not stopped: 335 on November 11, and still 114 on November 23. In the first week, about 94% of the refused requests came from the crawler that names itself. The traffic posing as Chrome mostly went quiet.
+
+The second challenges any visitor that claims to be a browser but behaves like automation. Verified search crawlers pass. In the two weeks after the block went up on November 10, our sites received 66,004 requests. 20,464 of them, 31%, got a challenge instead of a page. Another 3,318 were refused by the network block.
+
+:::stat
+**31%**
+Share of the 66,004 requests to our sites in the two weeks after November 10 that got a bot challenge instead of a page. From November 16 through 24, the largest source of challenged requests was the United States, with 2,635, ahead of Singapore with 1,154 and Brazil with 602.
+:::
+
+That second number is the real lesson. Blocking a country or a cloud provider handles the operator you already caught. Behavior gives bots away, not geography.
+
+The third layer is the one we got wrong at first. The challenge also stopped our own publishing scripts, which check that a new article is live before announcing it, until November 19, when we gave our automation a narrow, secret-keyed pass. A defense that cannot tell your own automation from an attacker's gets switched off by whoever needs the automation to run.
+
+## Why It Matters More at a Bank
+
+Our site holds no customer accounts. A bank's does, and the software that scraped us is a standard tool for attacking them.
+
+Thales's annual Bad Bot Report found that bots made up more than 53% of all web traffic in 2025, and that financial services drew 24% of all bot attacks and 46% of account takeover incidents. The FBI's Internet Crime Complaint Center logged 1,008,597 complaints and $20.877 billion in reported losses in 2025, up 26%, and said its process for freezing stolen funds saw a rise in account takeover cases. One account takeover, the report warns, can involve 50 or more ACH transfers to accounts at multiple banks at once.
+
+The FFIEC's 2021 authentication guidance puts the mechanics plainly: "Attackers use technologies, such as automated password cracking tools, and these compromised credentials in their attacks against financial institutions." Credential stuffing is that sentence at scale: a headless browser trying stolen passwords against a login page, thousands at a time, each attempt posing as a customer.
+
+Account opening is the other target. FinCEN's November 2024 deepfake alert reported an increase in suspicious activity reports describing fraudulent identity documents used "to circumvent identity verification and authentication methods." A bot that can fill out a form can submit a [synthetic identity](/glossary/synthetic-identity-fraud) hundreds of times, testing which version gets through. That is where [new account fraud](/glossary/new-account-fraud) starts.
+
+And the public website is reconnaissance. A scraper that reads a bank's site learns its rates, its officers' names for a phishing email, and which vendor runs each application. In our [digital lending audit](/blog/digital-lending-audit-banks-credit-unions), 14 of 32 Southeast banks and credit unions sent mortgage applicants to subdomains of the same vendor portal. A bot can map that for every bank in a state in an afternoon.
+
+:::pullquote
+Behavior gives bots away, not geography. The largest source of challenged traffic on our site was the United States.
+:::
+
+## Who Watches the Front Door
+
+At most community banks, no single team sees all of this traffic. A web agency runs the marketing site. The digital banking vendor runs the login. The mortgage application lives on the loan origination vendor's domain, the deposit application on another. Each sees its own slice. Nobody sees a scraper walk the whole front door.
+
+That makes bot defense a vendor oversight question as much as a technology one. The FFIEC guidance calls for layered security, which "incorporates multiple preventative, detective, and corrective controls," and warns that "relying only on a single control or authentication solution can increase risk to information systems." For a public website and the applications behind it, layered means a version of each thing that stopped our scraper: refusing known-bad networks, challenging automation by its behavior, and a controlled path for the legitimate automation the bank depends on, from data aggregators to its own vendors' integrations. It also means someone at the bank reads the reports. Ask every vendor that hosts a piece of the customer journey what bot controls run in front of it, what it logs, and how fast the bank would hear about a spike like ours. Then put the answers in the risk assessment the guidance calls for, where an examiner can find them.
+
+Our first sign of a 47-fold surge was a busy server. At a bank, it might be a customer's empty account.
+`,
+  },
   'georgia-most-profitable-banks-q2-2026': {
     title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
     description:
