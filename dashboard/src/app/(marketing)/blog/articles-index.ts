@@ -26,6 +26,15 @@ export const articles: Article[] = [
     auditSlug: 'vallant-bank',
   },
   {
+    slug: 'huawei-cloud-scraper-bank-security',
+    title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
+    description:
+      'Two Huawei Cloud networks sent us 15,266 requests in early November, up 47x in five days. Three in four posed as Chrome. How we shut them out, and why banks face the same bots: financial services drew 46% of account takeover incidents in 2025.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'georgia-most-profitable-banks-q2-2026',
     title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
     description:
