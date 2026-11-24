@@ -314,3 +314,32 @@ describe('review fixes', () => {
     for (const t of GLOSSARY_TERMS) expect(urls.has(`https://reportraven.tech/glossary/${t.slug}`), t.slug).toBe(true);
   });
 });
+
+describe('per-bank audit pages', () => {
+  const src = () => readSrc('app/(whitelabel)/audit/[slug]/page.tsx');
+
+  it('lead with findings, then how we would work on them, then the software', () => {
+    const s = src();
+    const found = s.indexOf('What we found');
+    const working = s.indexOf('Working on it');
+    const option = s.indexOf('One option');
+    const roi = s.indexOf('aud-roi-hero"');
+    expect(found).toBeGreaterThan(0);
+    expect(found).toBeLessThan(working);
+    expect(working).toBeLessThan(option);
+    expect(option).toBeLessThan(roi);
+  });
+
+  it('disclose the software and drop the demo pop-up and nav link', () => {
+    const s = src();
+    expect(s).toContain('{SOFTWARE_DISCLOSURE}');
+    expect(s).not.toContain('<WhiteLabelPrompt');
+    expect(s).not.toContain('Live demo ↗');
+    expect(s).not.toContain('white-label demo of what it could be');
+  });
+
+  it('link only to real services', () => {
+    for (const slug of src().match(/\['technology-integration'[^\]]*\]/)![0].match(/'([a-z-]+)'/g)!)
+      expect(getService(slug.slice(1, -1)), slug).toBeDefined();
+  });
+});
