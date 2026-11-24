@@ -8,3 +8,4 @@
 | 2026-11-18 | 6 Credit union deep dive | community-first-51-million-georgia-bank | Community First Credit Union of Florida, Jacksonville, FL (NCUA charter 67290): First Southern Bank acquisition closed Oct 2, 2026 |
 | 2026-11-20 | 7 State of the market | georgia-most-efficient-banks-q2-2026 | State rankings read: Georgia, Q2 2026 (June 30, 2026 FDIC call reports, 122 banks) |
 | 2026-11-19 | 1 Institutional research drop | digital-lending-audit-banks-credit-unions | Digital lending audit data: 32 Southeast banks and credit unions (bank-audits.json currentJourney grades, fingerprinted Oct 2026, 6 re-checked Nov 18) |
+| 2026-11-25 | 2 Bank deep dive | vallant-bank-95-million-deposits | Vallant Bank, Elberton, GA (FDIC cert 14065): Q3 2026 results (Oct 20) after the April 1 Pinnacle Bank and Morris Bank merger and June 17 conversion |
