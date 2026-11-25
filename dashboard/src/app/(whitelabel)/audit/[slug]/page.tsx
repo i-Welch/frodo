@@ -4,7 +4,8 @@ import { notFound } from 'next/navigation';
 import { CalendlyButton } from '../../../(marketing)/calendly-button';
 import { LeadCapture } from '../../../(marketing)/lead-capture';
 import { STACK_ROWS } from '../../../(marketing)/bank-tech-stack/stack-data';
-import { AnimatedBars, CountUp, ScenarioRange, WhiteLabelPrompt } from '../../../(marketing)/roi/roi-client';
+import { AnimatedBars, CountUp, ScenarioRange } from '../../../(marketing)/roi/roi-client';
+import { ENGAGEMENT_STEPS, SOFTWARE_DISCLOSURE, getService } from '../../../(marketing)/services/services-data';
 import { computeRoi, getRoiBank, METHODOLOGY_FOOTNOTES } from '../../../(marketing)/roi/roi-data';
 import { AUDITS, certForAudit, getAudit } from '../../_config/audit-data';
 import { bankSlug } from '../../../(marketing)/bank-snapshot/peer-data';
@@ -14,6 +15,21 @@ import { LoPreview } from '../../_components/lo-preview';
 
 const RAVEN_PATH =
   'M2162.9,2626.4c17.1-6.3,35.7-13.6,48.6-20.1-51.8-.7-99,.5-146.3-2.5-162.9-10.5-321.8-40.2-475.8-94.7-166.9-59.1-321-140.7-453.7-259.6-62.1-55.7-115.4-118.4-149.3-195.7-26.4-60.1-37.6-122.5-21.4-187.2,40.1-160.7,200.7-247.3,361.8-218-40.9,6.9-78.6,15.9-111.1,38.7-32.7,22.9-58.8,51.1-72.2,91.7,36.3-26.9,91.2-50.3,120.1-51.6-2.5,1.9-4.3,3.6-6.4,5-68.4,45.2-101.9,109.3-103.6,190.8-1.5,69.4,23.3,130.2,60.2,187.1,59.4,91.5,140.5,160.3,231.8,217.9,111.4,70.2,231,119.8,354.7,155.9,104,30.3,211.3,49.4,320,51.4,13.3.2,26.7,0,40,0-6.1-6.8-12.7-10.1-19-13.8-49-29.3-81.5-73.1-106-123.2-29.6-60.7-58.7-122.2-87.8-183.2-61.6-129.2-138.6-248-238.7-351.1-71.7-73.8-152.5-134.8-247.9-174.8-6.9-2.9-11.5-7.8-15.8-13.5-29.2-38.3-54-79.1-69.9-124.8-20.3-58.6-22.5-117.4.7-175.8,26.8-67.4,77.5-111.8,140.8-143.3,59.7-29.7,123.7-45.2,189.1-56.1,85.4-14.3,171.3-19.1,257.7-11.2,26.4,2.4,52.3,8.2,79.6,12.8-1.6-3.8-2.4-6.2-3.5-8.4-2.8-5.4-5.4-10.8-8.6-16-37.3-61.5-87.7-110.2-148.5-148.2-110.1-68.9-232.1-98.4-360.2-105.6-33.6-1.9-61.3-9.6-89.6-30.3-109.5-80.1-233.4-107.2-367.7-91.9-103.9,11.8-197.9,48.4-283.8,107.6-91.3,62.8-170.3,141.4-263.4,201.4,1.3,3.6,3.6,2.7,5.4,2.8,70.6,3.8,138.8-11.9,207.7-25.2-142.7,75.7-262.1,171.7-303,338.1,41.4-38.3,88-67.6,140.8-87.1-39,42-68.8,89.9-92.5,141.4-79.6,173.1-94.5,354.4-61,539.8,31.9,177,108.7,333.6,226.4,469.8,6.6,7.6,13.6,14.9,20.7,22.1,6.6,6.8,13.5,13.3,23.1,22.7l254,162c139.8,87.7,294.6,130.1,457.6,141.8,166.5,12,330.1-7.8,489.8-57.3,12.2-3.8,24.1-8.5,36-13.1s19.2-8.2,28.5-13.1l114-60.6c31.6-16.8,64.3-31.5,97.9-43.8ZM1326.1,1075.5c50.8-26.4,106-35.6,161.9-39.4,111.3-7.5,221.7-2.3,329.1,32,28.7,9.2,56.6,20.3,85.5,35-222-20.9-439.8-17.1-656.4,43.6,23-29.9,47.6-54.5,79.8-71.3ZM1150.4,943.8c31.7.5,57,26.5,56.9,58.5,0,30.6-26.9,56.6-57.6,55.9-31.8-.8-57-27-56.6-58.8.4-31.6,25.6-56,57.3-55.5Z';
+
+const AUDIT_SERVICES = ['technology-integration', 'ai-governance', 'security-readiness'].map((slug) => {
+  const svc = getService(slug);
+  if (!svc) throw new Error(`unknown service ${slug}`);
+  return svc;
+});
+
+// The free audit is already done here, so the first step is the call about it.
+const AUDIT_STEPS = [
+  {
+    title: 'A call on these findings',
+    body: 'Thirty minutes to check what this review got right and wrong, and to agree on what is worth fixing first. No cost and no obligation.',
+  },
+  ...ENGAGEMENT_STEPS.slice(1),
+];
 
 const STATUS_LABEL: Record<string, string> = { ok: 'Solid', weak: 'Friction', missing: 'No digital path' };
 
@@ -56,7 +72,7 @@ export async function generateMetadata({
   const audit = getAudit(slug);
   if (!audit) return {};
   const title = `Digital Lending Audit: ${audit.bankName}`;
-  const description = `${audit.bankName}'s current digital borrower experience, a live white-label demo of what it could be, and what automated verification would be worth, built from public data.`;
+  const description = `What a public-data review of ${audit.bankName}'s digital lending found, what we would fix first, and how RAVEN would work with the bank on it.`;
   return {
     title,
     description,
@@ -148,7 +164,7 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             <span className="aud-nav-wordmark">RAVEN</span>
           </a>
           <div className="aud-nav-links">
-            <a href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">Live demo ↗</a>
+            <a href="/services">Services</a>
             <a href="/blog">Blog</a>
             <a href="tel:+12293796131">(229) 379-6131</a>
             <CalendlyButton source={`audit-nav:${audit.slug}`} label="Book a call" buttonClassName="aud-btn" />
@@ -171,6 +187,144 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             ))}
           </div>
 
+          <p className="aud-sub">{bank.intro}</p>
+
+          {/* ── Section 01: Current experience ── */}
+          <div className="aud-section-label"><span className="aud-section-num">01</span> What we found</div>
+
+          <h2>The borrower journey today</h2>
+          <p className="aud-sub">
+            How a prospective borrower actually moves through {audit.shortName}&rsquo;s digital
+            properties right now, line by line.
+          </p>
+          <div className="aud-journey">
+            {audit.currentJourney.map((j) => (
+              <div className={`aud-jrow aud-${j.status}`} key={j.channel}>
+                <span className="aud-jchannel">{j.channel}</span>
+                <span className="aud-jdetail">{j.detail}</span>
+                <span className="aud-jstatus">{STATUS_LABEL[j.status]}</span>
+              </div>
+            ))}
+          </div>
+
+          <h2>What we&rsquo;d fix first</h2>
+          <div className="aud-findings">
+            {audit.findings.map((f) => (
+              <div className={`aud-finding aud-finding-${f.severity}`} key={f.title}>
+                <div className="aud-finding-head">
+                  <span className={`aud-finding-sev aud-finding-sev-${f.severity}`}>
+                    {f.severity === 'gap' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+                    )}
+                    {f.severity === 'friction' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    )}
+                    {f.severity === 'note' && (
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                    )}
+                    {SEVERITY_LABEL[f.severity]}
+                  </span>
+                </div>
+                <h3>{f.title}</h3>
+                <p>{renderFindingBody(f.body)}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Strategic context ── */}
+          <h2 className="aud-strategic-h">Why this matters for {bank.shortName}</h2>
+          <div className="aud-strategic">
+            {bank.strategic.map((s) => (
+              <div className="aud-card" key={s.title}>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* ── Section 02: Working on it ── */}
+          <div className="aud-section-label"><span className="aud-section-num">02</span> Working on it</div>
+          <h2>How we&rsquo;d work on this with {audit.shortName}</h2>
+          <p className="aud-sub">
+            This review was built from public information only. The findings are a starting point,
+            not a verdict: your team knows things the website and the filings don&rsquo;t show.
+          </p>
+          <div className="aud-steps">
+            {AUDIT_STEPS.map((step, i) => (
+              <div className="aud-card" key={step.title}>
+                <span className="aud-step-num">{i + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            ))}
+          </div>
+          <p className="aud-sub">
+            The same review usually opens wider questions. Related services:{' '}
+            {AUDIT_SERVICES.map((svc, i) => (
+              <Fragment key={svc.slug}>
+                {i > 0 && (i === AUDIT_SERVICES.length - 1 ? ', and ' : ', ')}
+                <a href={`/services/${svc.slug}`}>{svc.navLabel}</a>
+              </Fragment>
+            ))}
+            .
+          </p>
+
+          {/* ── Section 03: One option, our software ── */}
+          <div className="aud-section-label"><span className="aud-section-num">03</span> One option</div>
+          <h2>What our own software would look like here</h2>
+          <p className="aud-sub">
+            {SOFTWARE_DISCLOSURE} Below is a live white-label demo of it in {audit.shortName}&rsquo;s
+            branding: one front door for every product, with identity, income and property verified
+            automatically.
+          </p>
+          <div className="aud-demo">
+            <div className="aud-device">
+              <div className="aud-device-bar">
+                <span className="aud-device-dot" /><span className="aud-device-dot" /><span className="aud-device-dot" />
+                <span className="aud-device-url">{applyDomain}</span>
+              </div>
+              <iframe className="aud-iframe" src={`/wl/${audit.demoSlug}?chrome=0`} title={`${audit.bankName} white-label demo`} loading="lazy" />
+            </div>
+            <a className="aud-demo-open" href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">
+              Open the full demo ↗
+            </a>
+          </div>
+
+          <h2>Before &amp; after</h2>
+          <div className="aud-compare-grid">
+            <div className="aud-compare-header aud-compare-header-today">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Current state
+            </div>
+            <div className="aud-compare-arrow-head" aria-hidden="true"></div>
+            <div className="aud-compare-header aud-compare-header-raven">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              With RAVEN software
+            </div>
+            {audit.comparison.map((c) => (
+              <Fragment key={c.dimension}>
+                <div className="aud-compare-dim">{c.dimension}</div>
+                <div className="aud-compare-today">{c.today}</div>
+                <div className="aud-compare-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </div>
+                <div className="aud-compare-raven">{c.withRaven}</div>
+              </Fragment>
+            ))}
+          </div>
+
+          <h2>What your loan officer receives</h2>
+          <p className="aud-sub">
+            The instant a borrower finishes that flow, a fully verified application lands in the
+            RAVEN dashboard{config.coreSync.system !== 'unknown' && <> and syncs to {config.coreSync.displayName}</>}. No rekeying, no document
+            chase, full audit trail.
+          </p>
+          <div className="aud-lo">
+            <LoPreview config={config} summary={demoSummary} />
+          </div>
+
+          {/* ── Section 04: The math ── */}
+          <div className="aud-section-label"><span className="aud-section-num">04</span> The software math</div>
           {/* ── ROI Hero ── */}
           <div className="aud-roi-hero">
             <div className="aud-roi-glow" aria-hidden="true" />
@@ -204,108 +358,6 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
               </div>
             </div>
           </div>
-
-          <p className="aud-sub">{bank.intro}</p>
-
-          {/* ── Section 01: Current experience ── */}
-          <div className="aud-section-label"><span className="aud-section-num">01</span> Current experience</div>
-
-          <h2>The borrower journey today</h2>
-          <p className="aud-sub">
-            How a prospective borrower actually moves through {audit.shortName}&rsquo;s digital
-            properties right now, line by line.
-          </p>
-          <div className="aud-journey">
-            {audit.currentJourney.map((j) => (
-              <div className={`aud-jrow aud-${j.status}`} key={j.channel}>
-                <span className="aud-jchannel">{j.channel}</span>
-                <span className="aud-jdetail">{j.detail}</span>
-                <span className="aud-jstatus">{STATUS_LABEL[j.status]}</span>
-              </div>
-            ))}
-          </div>
-
-          <h2>What we&rsquo;d upgrade</h2>
-          <div className="aud-findings">
-            {audit.findings.map((f) => (
-              <div className={`aud-finding aud-finding-${f.severity}`} key={f.title}>
-                <div className="aud-finding-head">
-                  <span className={`aud-finding-sev aud-finding-sev-${f.severity}`}>
-                    {f.severity === 'gap' && (
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-                    )}
-                    {f.severity === 'friction' && (
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    )}
-                    {f.severity === 'note' && (
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-                    )}
-                    {SEVERITY_LABEL[f.severity]}
-                  </span>
-                </div>
-                <h3>{f.title}</h3>
-                <p>{renderFindingBody(f.body)}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* ── Section 02: The upgrade ── */}
-          <div className="aud-section-label"><span className="aud-section-num">02</span> The upgrade</div>
-
-          <h2>What it could look like</h2>
-          <p className="aud-sub">
-            Below is a live, interactive white-label demo in {audit.shortName}&rsquo;s own branding:
-            one front door, every product, with identity, income, and property verified
-            automatically. Try it, or open it full-screen.
-          </p>
-          <div className="aud-demo">
-            <div className="aud-device">
-              <div className="aud-device-bar">
-                <span className="aud-device-dot" /><span className="aud-device-dot" /><span className="aud-device-dot" />
-                <span className="aud-device-url">{applyDomain}</span>
-              </div>
-              <iframe className="aud-iframe" src={`/wl/${audit.demoSlug}?chrome=0`} title={`${audit.bankName} white-label demo`} loading="lazy" />
-            </div>
-            <a className="aud-demo-open" href={`/wl/${audit.demoSlug}`} target="_blank" rel="noreferrer">
-              Open the full demo ↗
-            </a>
-          </div>
-
-          <h2>Before &amp; after</h2>
-          <div className="aud-compare-grid">
-            <div className="aud-compare-header aud-compare-header-today">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              Current state
-            </div>
-            <div className="aud-compare-arrow-head" aria-hidden="true"></div>
-            <div className="aud-compare-header aud-compare-header-raven">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              With RAVEN
-            </div>
-            {audit.comparison.map((c) => (
-              <Fragment key={c.dimension}>
-                <div className="aud-compare-dim">{c.dimension}</div>
-                <div className="aud-compare-today">{c.today}</div>
-                <div className="aud-compare-arrow" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </div>
-                <div className="aud-compare-raven">{c.withRaven}</div>
-              </Fragment>
-            ))}
-          </div>
-
-          <h2>What your loan officer receives</h2>
-          <p className="aud-sub">
-            The instant a borrower finishes that flow, a fully verified application lands in the
-            RAVEN dashboard{config.coreSync.system !== 'unknown' && <> and syncs to {config.coreSync.displayName}</>}. No rekeying, no document
-            chase, full audit trail.
-          </p>
-          <div className="aud-lo">
-            <LoPreview config={config} summary={demoSummary} />
-          </div>
-
-          {/* ── Section 03: The math ── */}
-          <div className="aud-section-label"><span className="aud-section-num">03</span> The math</div>
 
           <h2>Where the time goes today</h2>
           <p className="aud-sub">
@@ -383,30 +435,17 @@ export default async function AuditPage({ params }: { params: Promise<{ slug: st
             </table>
           </div>
 
-          {/* ── Strategic context ── */}
-          <h2 className="aud-strategic-h">Why this matters for {bank.shortName}</h2>
-          <div className="aud-strategic">
-            {bank.strategic.map((s) => (
-              <div className="aud-card" key={s.title}>
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
-              </div>
-            ))}
-          </div>
-
           {/* ── CTA ── */}
           <div className="aud-cta">
-            <h2>Want this with {audit.shortName}&rsquo;s real products and rates?</h2>
+            <h2>Talk through these findings</h2>
             <p>
-              We&rsquo;ll wire your actual product lineup, your rate card,{config.coreSync.system !== 'unknown' ? <> and a {config.coreSync.displayName} sync</> : ''}{' '}
-              into a private demo, then pressure-test every number above against your real volumes.
-              Or use the call to talk through anything else in {audit.shortName}&rsquo;s technology,
-              operations or AI plans.
+              A 30-minute call with Isaac Welch, who built the banking arm of Upstart and Affirm. We&rsquo;ll
+              check these findings against what {audit.shortName} already knows, agree on what is worth
+              fixing first, and cover anything else in your technology, operations or AI plans.
             </p>
             <CalendlyButton source={`audit:${audit.slug}`} label="Book a call" buttonClassName="aud-cta-btn" />
           </div>
 
-          <WhiteLabelPrompt bankName={audit.shortName} slug={audit.slug} />
 
           {bank.articleSlug && bank.articleTitle && (
             <>
@@ -658,6 +697,9 @@ const styles = `
   .aud-article-link:hover { border-color: rgba(255,255,255,0.4); color: var(--white); }
 
   /* CTA */
+  .aud-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
+  .aud-step-num { display: inline-flex; align-items: center; justify-content: center; width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid var(--accent-border); color: var(--accent); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.6rem; }
+  @media (max-width: 768px) { .aud-steps { grid-template-columns: 1fr; } }
   .aud-cta { text-align: center; margin: 4.5rem 0 2rem; padding: 3.5rem 2rem; border: 1px solid var(--accent-border); border-radius: 16px; background: rgba(108,142,255,0.04); }
   .aud-cta h2 { margin: 0 0 0.75rem; }
   .aud-cta p { font-size: 0.95rem; color: var(--g400); margin-bottom: 2rem; max-width: 520px; margin-left: auto; margin-right: auto; line-height: 1.7; }

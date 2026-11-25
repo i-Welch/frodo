@@ -208,6 +208,64 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'vallant-bank',
+    name: 'Vallant Bank',
+    shortName: 'Vallant',
+    articleSlug: 'vallant-bank-95-million-deposits',
+    articleTitle: 'Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.',
+    fdicCert: 14065,
+    auditDate: 'November 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.86B (Sept. 30, 2026)' },
+      { label: 'ROAA', value: '1.73% (Q3 2026, annualized)' },
+      { label: 'NIM', value: '4.79% (Q3 2026)' },
+      { label: 'Branch count', value: '37' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 993,
+        source:
+          'HMDA 2025 originations (FFIEC data browser, actions_taken=1) for the two legacy charters: Pinnacle Bank, LEI 2549006MTEQ1VE0AAQ20, 851 loans totaling $282.9M; Morris Bank, LEI 254900VA7WQ1PZGYI558, 142 loans totaling $45.1M. 2024: 560 and 154 loans (714 combined).',
+        estimated: false,
+      },
+      commercial: {
+        count: 760,
+        source:
+          'Modeled from the June 30, 2026 FDIC call report (cert 14065): nonfarm nonresidential real estate $1,212.1M, construction $383.5M, farmland $377.2M, C&I $210.4M, multifamily $92.6M and farm production $7.9M, about $2.28B of business and farm credit. Assumes roughly 20% of that book is originated or renewed each year (~$457M) at an average note near $600K, about 760 files.',
+        estimated: true,
+      },
+      consumer: {
+        count: 1200,
+        source:
+          'Modeled: consumer loans of $25.9M at 6/30/26 (FDIC cert 14065) at an assumed ~$12K average note and two-year average life imply ~1,100 new consumer notes a year, plus HELOCs from the $658.4M 1-4 family book and MyFasTrack/Business FasTrack small-ticket loans. Rounded to 1,200.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 8100,
+      source:
+        'U.S. Census Bureau Vintage 2025 county estimates: the 16 footprint counties where Vallant holds a meaningful deposit share (Summary of Deposits, June 30, 2026) added about 20,300 residents between July 2024 and July 2025, led by Jackson (+4,963), Houston (+3,310), Hall (+3,023) and Walton (+2,418). Divided by ~2.5 people per household. Excludes Gwinnett, Columbia, Richmond and Clarke, where Vallant holds under 2% of deposits.',
+    },
+    intro:
+      "Vallant Bank is the combination of Pinnacle Bank of Elberton, chartered in 1934, and Morris Bank of Dublin, formed in 1954, which merged on April 1, 2026 and converted onto one system under the Vallant name on June 17. At June 30 it was the fourth-largest bank headquartered in Georgia by assets, with 36 offices and $3.46 billion of deposits in 20 counties in the FDIC's branch survey; it leads deposit share in Elbert (70.4%), Jones (52.5%), Franklin (40.3%), Laurens (34.3%) and Hart (31.1%) counties. The third quarter of 2026 delivered a 1.73% annualized ROAA and a 4.79% net interest margin, alongside a $95.0 million drop in noninterest-bearing deposits. The book is a farm-and-business franchise: $377.2 million of farmland loans and $1.21 billion of nonfarm commercial property at June 30, plus a mortgage operation that originated 993 loans across the two legacy charters in 2025.",
+    strategic: [
+      {
+        title: 'Win Back Operating Deposits With a Business Front Door',
+        body: "Noninterest-bearing deposits fell $95.0 million in the first full quarter after conversion, about 72% of the $132.0 million total decline, and the bank funded the outflow by drawing cash at other banks down $145.1 million. Those balances are business checking, payroll and treasury money. Today a business cannot open a checking account online at vallant.bank, and every business loan above $50,000 starts with a contact form. RAVEN's branded business intake verifies owner identity, beneficial ownership and business bank data at the first session, so a prospect leaving a competitor, or a legacy customer reconsidering after conversion, can open and borrow without waiting for a banker's calendar.",
+      },
+      {
+        title: 'Put Account Opening and Small-Ticket Lending in One Session',
+        body: "MyFasTrack ($3,500 to $30,000) and Business FasTrack ($3,500 to $50,000) promise a response in minutes and cash in three days, but both require an existing Vallant checking account, and account opening runs on a separate third-party site. A newcomer has to finish one flow before starting the other. Footprint counties added roughly 8,100 households in the latest Census year, mostly in Jackson, Houston, Hall and Walton counties, where Vallant's deposit shares run from 2.8% to 14.8%. A single verified session that opens the account and takes the application turns those arrivals into relationships instead of abandoned second steps.",
+      },
+      {
+        title: 'Standardize Verification Across Two Legacy Lending Cultures',
+        body: "Pinnacle and Morris brought different books: Pinnacle the farm lender with $293.3 million of farmland loans at March 31, 2026, Morris the construction lender with $180.7 million, about 15% of its loans. Merged teams carry merged document checklists. Source-verified income, asset and business financial data at intake gives roughly 760 commercial and farm files and nearly 1,000 mortgages a year one evidence standard, with an audit trail examiners can follow, while the integration is still fresh.",
+      },
+    ],
+    sources:
+      'Vallant Financial third quarter 2026 earnings release (October 20, 2026) and June 30, 2026 quarterly statement (vallantfinancial.com); Pinnacle Financial Corporation and Morris State Bancshares merger announcement (November 20, 2025); merger completion (April 1, 2026) and systems conversion (June 17, 2026) releases; FDIC BankFind call reports, cert #14065 (Pinnacle Bank, now Vallant Bank) and #17910 (Morris Bank); FDIC Summary of Deposits, June 30, 2026; FFIEC HMDA 2024 and 2025 (LEIs 2549006MTEQ1VE0AAQ20 and 254900VA7WQ1PZGYI558); U.S. Census Bureau Vintage 2025 county population estimates; vallant.bank, fingerprinted November 24, 2026.',
+  },
+  {
     slug: 'optimumbank',
     name: 'OptimumBank',
     shortName: 'OptimumBank',
