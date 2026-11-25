@@ -16,6 +16,16 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'vallant-bank-95-million-deposits',
+    title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
+    description:
+      "Vallant, the Georgia bank formed when Pinnacle and Morris merged April 1, earned a 1.73% ROA and a 4.79% margin in Q3 2026. It also lost $95.0 million of noninterest-bearing deposits, 9.1%, in its first full quarter after conversion, and drew down $145 million of cash.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+    auditSlug: 'vallant-bank',
+  },
+  {
     slug: 'huawei-cloud-scraper-bank-security',
     title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
     description:
