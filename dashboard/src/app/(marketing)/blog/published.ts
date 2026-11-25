@@ -18,6 +18,7 @@ export const BLOG_SLUGS = [
   // — Credit Union Deep Dives (Nov 2026) —
   'community-first-51-million-georgia-bank',
   // — Institutional research (Nov 2026) —
+  'how-many-new-banks-opened-2026',
   'huawei-cloud-scraper-bank-security',
   'digital-lending-audit-banks-credit-unions',
   // — Market (Nov 2026) —
@@ -124,6 +125,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'how-many-new-banks-opened-2026': '2026-11-26',
   'huawei-cloud-scraper-bank-security': '2026-11-24',
   'georgia-most-profitable-banks-q2-2026': '2026-11-13',
   'community-first-51-million-georgia-bank': '2026-11-18',

@@ -10,3 +10,4 @@
 | 2026-11-20 | 7 State of the market | georgia-most-efficient-banks-q2-2026 | State rankings read: Georgia, Q2 2026 (June 30, 2026 FDIC call reports, 122 banks) |
 | 2026-11-19 | 1 Institutional research drop | digital-lending-audit-banks-credit-unions | Digital lending audit data: 32 Southeast banks and credit unions (bank-audits.json currentJourney grades, fingerprinted Oct 2026, 6 re-checked Nov 18) |
 | 2026-11-24 | 1 Institutional research drop | huawei-cloud-scraper-bank-security | First-party traffic data: Huawei Cloud scraper (AS136907, AS55990) on reportraven.tech, Nov 1-24, 2026 (Vercel observability), tied to bank bot/ATO threats |
+| 2026-11-26 | 1 Institutional research drop | how-many-new-banks-opened-2026 | National 2026 de novo count from FDIC BankFind history (nine "New Institution" events, Jan 21-Sept 28), vs. Bauer, PCBB, American Banker and Banking Dive counts; Sept 30, 2026 call reports; FDIC pending list (Nov 17) and 2026 decisions |
