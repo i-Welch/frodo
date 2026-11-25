@@ -949,6 +949,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
       { slug: 'fed-rate-hike-community-bank-deposits', title: "The Fed Turned Around. Deposit Rates Didn't." },
+      { slug: 'vallant-bank-95-million-deposits', title: 'Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.' },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
