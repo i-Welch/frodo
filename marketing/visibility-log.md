@@ -51,3 +51,37 @@ Visible on 0 of 19 queries.
 | community bank peer comparison tool | absent | ffiec.gov (government tool), pcbb.com (newsletter), glama.ai (MCP server directory) |
 
 Changes since last check: no gains or losses (0/15 last time, 0/19 now). The four data-page queries for `/bank-snapshot` and `/bank-rankings` were added this month and start absent. A `reportraven.tech`-restricted search returns blog, audit, glossary and De Novo Watch pages, so the site is indexed and the gap is ranking, not crawling. SERP shifts: the spam template pages are gone from "employment verification for banks" (big-bank HR pages for employees replaced them, still the wrong intent) and from "The Work Number alternatives" (now Equifax plus software directories). Both roadmap pieces went live 2026-10-22 and do not surface yet. The 2026-11-06 South Carolina efficiency article is also absent, even though the only competition is VisBanking's single-city pages and consumer "best bank" lists. All of this fits the playbook's authority diagnosis.
+
+## 2026-11-23
+Visible on 0 of 26 queries.
+
+| Query | RAVEN (position, page) | Top 3 |
+|---|---|---|
+| de novo bank consultant | absent | bclplaw.com (law firm practice page), honigman.com (law firm practice page), podbean.com (podcast episode) |
+| bank technology consultant | absent | crowe.com (consulting firm), nttdata.com (consulting firm), bain.com (consulting firm) |
+| AI governance for banks | absent | sas.com (vendor white paper), wolterskluwer.com (vendor insight), deloitte.com (consulting research) |
+| core banking conversion consultant | absent | bankingjournal.aba.com (trade publication, 2024), dice.com (job ad), capgemini.com (consulting firm) |
+| Finxact implementation | absent | aws.amazon.com (partner blog), fintechfutures.com (news, 2020), fiserv.com (vendor) |
+| Vesta LOS review | absent | g2.com (directory, wrong product), capterra.es (directory, wrong product), cruisecritic.com (wrong product) |
+| fintech bank partnership consultant | absent | morganlewis.com (law firm practice page), reedsmith.com (law firm practice page), bankingjournal.aba.com (trade publication, 2021) |
+| digital account opening software for community banks | absent | meridianlink.com (vendor), softwareone.com (marketplace listing, Apiture), americanbanker.com (news) |
+| income verification for community banks | absent | experian.com (vendor blog), plaid.com (vendor), mastercard.com (vendor insight) |
+| employment verification for banks | absent | teamworks.wellsfargo.com (bank HR page, wrong intent), experian.com (vendor blog), usbank.com (bank HR PDF, wrong intent) |
+| borrower verification software | absent | sourceforge.net (directory), cotality.com (vendor), blend.com (vendor) |
+| MANTL alternatives | absent | cbinsights.com (company directory), alternativeto.net (directory, wrong "Mantle"), fitgap.com (listicle, Oct 2025) |
+| The Work Number alternatives for banks | absent | equifax.com (vendor newsroom and PDFs), slashdot.org (directory), sourceforge.net (directory) |
+| digital loan application credit union | absent | docusign.com (vendor blog), formassembly.com (vendor blog), cuinsight.com (trade publication) |
+| community bank digital lending | absent | wolterskluwer.com (vendor insight, 2022), fisglobal.com (vendor insight), icba.org (association) |
+| de novo banks 2026 | absent | spglobal.com (news/research), pcbb.com (newsletter), americanbanker.com (news) |
+| new bank charters Florida 2026 | absent | americanbanker.com (news), aol.com (syndicated news), bankingexchange.com (trade news) |
+| South Carolina de novo bank | absent | americanbanker.com (news, 2017), fintechfutures.com (news, 2018), law.justia.com (state statute) |
+| community bank fraud account opening | absent | icba.org (association), independentbanker.org (ICBA trade publication), fedpaymentsimprovement.org (Fed PDF) |
+| how long does it take to close a mortgage community bank | absent | peachstatefcu.org (credit union FAQ), rcbbank.bank (bank blog), medium.com (blog) |
+| fintech vs community bank personal loans | absent | bankbazaar.com (India comparison page), upstart.com (fintech lender), hashnode.com (blog) |
+| credit union digital lending audit | absent | docusign.com (vendor blog), creditxpert.com (vendor blog), cutimes.com (trade publication, 2022) |
+| most efficient banks in South Carolina | absent | smartasset.com (consumer listicle), benzinga.com (consumer listicle), visbanking.com (data directory, city-level pages only) |
+| Georgia bank rankings ROA | absent | research.jackhenry.com (data directory, undated state ROA table), americanbanker.com (data table, 2001), visbanking.com (data directory, city pages) |
+| Conway National Bank return on assets | absent | visbanking.com (data directory), conwaynationalbank.com (bank site), bankingscorecard.netlify.app (BlastPoint data directory) |
+| community bank peer comparison tool | absent | banks.data.fdic.gov (government tool), bankerandtradesman.com (trade news), ffiec.gov (government tool) |
+
+Changes since last check: no gains or losses (0/19 on 2026-11-16, 0/26 now). The seven consulting queries added after the 2026-11-22 pivot all start absent. Law firm practice pages own "de novo bank consultant" and "fintech bank partnership consultant", and large consultancies own "bank technology consultant", so the `/services` pages face authority competition there. "Vesta LOS review" returns no loan origination result at all (only payment-fraud, hosting and running-vest products named Vesta), and "Finxact implementation" returns 2020 news and partner pages with no implementation guide. A `reportraven.tech`-restricted search still returns blog, audit, glossary and De Novo Watch pages, so the site is indexed. But the indexed titles still read "Borrower Verification for Community Banks" and no `/services` page appears yet, so search has not recrawled the pivot. Two articles published this week are also absent: `digital-lending-audit-banks-credit-unions` (2026-11-19, for "credit union digital lending audit") and `georgia-most-efficient-banks-q2-2026` (2026-11-20, for "Georgia bank rankings ROA"), where an undated Jack Henry state ROA table is new at #1. Smaller SERP shifts: Upstart and a Hashnode post replaced Bankrate and Experian on "fintech vs community bank personal loans", and FDIC BankFind's peer-group page replaced the MCP-directory result on "community bank peer comparison tool".
