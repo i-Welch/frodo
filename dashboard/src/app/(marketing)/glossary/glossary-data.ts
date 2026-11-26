@@ -892,6 +892,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['net-interest-margin', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
     ],
@@ -947,6 +948,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
       { slug: 'fed-rate-hike-community-bank-deposits', title: "The Fed Turned Around. Deposit Rates Didn't." },
+      { slug: 'vallant-bank-95-million-deposits', title: 'Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.' },
     ],
     relatedSolution: { slug: 'deposit-account-opening-software', label: 'Deposit account opening software' },
   },
@@ -995,8 +997,10 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
     relatedArticles: [
+      { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
+      { slug: 'community-first-51-million-georgia-bank', title: "Community First's $51 Million Georgia Bank Was Mostly Florida" },
       { slug: '59-billion-compliance-burden', title: 'The $59 Billion Compliance Burden' },
       { slug: 'why-it-takes-42-days-to-close-a-mortgage', title: 'Why It Takes 42 Days to Close a Mortgage (And What That’s Costing Your Bank)' },
     ],
@@ -1245,6 +1249,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['first-party-fraud', 'bust-out-fraud', 'ecbsv', 'new-account-fraud'],
     relatedArticles: [
+      { slug: 'huawei-cloud-scraper-bank-security', title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.' },
       { slug: 'one-in-116-mortgage-fraud', title: 'One in 116 Mortgage Applications Is Lying to You' },
     ],
     relatedSolution: { slug: 'kyc-software', label: 'KYC software' },
@@ -1463,6 +1468,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['synthetic-identity-fraud', 'ecbsv', 'bank-account-verification', 'first-party-fraud'],
     relatedArticles: [
+      { slug: 'huawei-cloud-scraper-bank-security', title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.' },
       { slug: 'account-opening-fraud-prevention', title: 'Preventing Fraud at Account Opening Without Killing the Channel' },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'best-digital-account-opening-software-community-banks', title: 'Best Digital Account Opening Software for Community Banks (2026)' },

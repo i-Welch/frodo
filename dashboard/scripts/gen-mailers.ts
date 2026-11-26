@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 // Generates marketing/mailers/all-20-mailers.html
 import { writeFileSync, readFileSync } from "fs";
+import { fileURLToPath } from "url";
 
 const RPATH = `M2162.9,2626.4c17.1-6.3,35.7-13.6,48.6-20.1-51.8-.7-99,.5-146.3-2.5-162.9-10.5-321.8-40.2-475.8-94.7-166.9-59.1-321-140.7-453.7-259.6-62.1-55.7-115.4-118.4-149.3-195.7-26.4-60.1-37.6-122.5-21.4-187.2,40.1-160.7,200.7-247.3,361.8-218-40.9,6.9-78.6,15.9-111.1,38.7-32.7,22.9-58.8,51.1-72.2,91.7,36.3-26.9,91.2-50.3,120.1-51.6-2.5,1.9-4.3,3.6-6.4,5-68.4,45.2-101.9,109.3-103.6,190.8-1.5,69.4,23.3,130.2,60.2,187.1,59.4,91.5,140.5,160.3,231.8,217.9,111.4,70.2,231,119.8,354.7,155.9,104,30.3,211.3,49.4,320,51.4,13.3.2,26.7,0,40,0-6.1-6.8-12.7-10.1-19-13.8-49-29.3-81.5-73.1-106-123.2-29.6-60.7-58.7-122.2-87.8-183.2-61.6-129.2-138.6-248-238.7-351.1-71.7-73.8-152.5-134.8-247.9-174.8-6.9-2.9-11.5-7.8-15.8-13.5-29.2-38.3-54-79.1-69.9-124.8-20.3-58.6-22.5-117.4.7-175.8,26.8-67.4,77.5-111.8,140.8-143.3,59.7-29.7,123.7-45.2,189.1-56.1,85.4-14.3,171.3-19.1,257.7-11.2,26.4,2.4,52.3,8.2,79.6,12.8-1.6-3.8-2.4-6.2-3.5-8.4-2.8-5.4-5.4-10.8-8.6-16-37.3-61.5-87.7-110.2-148.5-148.2-110.1-68.9-232.1-98.4-360.2-105.6-33.6-1.9-61.3-9.6-89.6-30.3-109.5-80.1-233.4-107.2-367.7-91.9-103.9,11.8-197.9,48.4-283.8,107.6-91.3,62.8-170.3,141.4-263.4,201.4,1.3,3.6,3.6,2.7,5.4,2.8,70.6,3.8,138.8-11.9,207.7-25.2-142.7,75.7-262.1,171.7-303,338.1,41.4-38.3,88-67.6,140.8-87.1-39,42-68.8,89.9-92.5,141.4-79.6,173.1-94.5,354.4-61,539.8,31.9,177,108.7,333.6,226.4,469.8,6.6,7.6,13.6,14.9,20.7,22.1,6.6,6.8,13.5,13.3,23.1,22.7l254,162c139.8,87.7,294.6,130.1,457.6,141.8,166.5,12,330.1-7.8,489.8-57.3,12.2-3.8,24.1-8.5,36-13.1s19.2-8.2,28.5-13.1l114-60.6c31.6-16.8,64.3-31.5,97.9-43.8Z`;
 
@@ -11,20 +12,20 @@ const products = `
         <div class="products-list">
           <div class="product-item">
             <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-            <div><div class="product-name">Digital Onboarding</div><div class="product-desc">Branded deposit account opening and loan pre-qualification in minutes. Mobile-first, in your bank's domain, with no off-brand subdomains.</div></div>
+            <div><div class="product-name">Technology Integration</div><div class="product-desc">Digital lending, account opening, the core and the LOS: choosing vendors, sequencing the work, and getting the systems to talk to each other.</div></div>
           </div>
           <div class="product-item">
             <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg></div>
-            <div><div class="product-name">Online Loan Application</div><div class="product-desc">One front door for every product — mortgage, HELOC, personal, auto, business, and agricultural — in your branding, from first click to submitted file.</div></div>
+            <div><div class="product-name">AI Integration and Governance</div><div class="product-desc">An AI use policy, model risk management and vendor due diligence your examiners will accept, before staff adopt the tools on their own.</div></div>
           </div>
           <div class="product-item">
             <div class="product-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2e5897" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><polyline points="9 12 11 14 15 10"/></svg></div>
-            <div><div class="product-name">LO-Driven Data Collection + Verification</div><div class="product-desc">Identity, income, employment, and property verified in ~90 seconds via Plaid, Socure, Truework, and Melissa. Your loan officer receives a complete verified file — no document chase, no VOE calls.</div></div>
+            <div><div class="product-name">Security Readiness</div><div class="product-desc">A readiness assessment against the FFIEC IT Examination Handbook and NIST CSF 2.0, with a prioritized list of what to fix before your next IT exam.</div></div>
           </div>
         </div>
         <div class="integration-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
-          <span class="integration-note-text">Integrates with your existing core — FIS, Jack Henry, Fiserv, or similar. No rebuild, no rip-and-replace. RAVEN is a front-end layer that syncs verified data directly into the system you already run.</span>
+          <span class="integration-note-text">Led by Isaac Welch, who built the banking arm of Upstart and Affirm. RAVEN also sells its own verification software; using it is never a condition of working together.</span>
         </div>`;
 
 const contactBlock = `
@@ -846,16 +847,16 @@ function bankHtml(b: Bank, idx: number): string {
       <div class="cover-bank-name">${b.nameCover}</div>
       <div class="cover-date">June 2026</div>
       <div class="cover-rule"></div>
-      <div class="cover-tagline"><strong>Automated borrower verification,</strong> white-labeled in your brand and integrated with your existing core.</div>
+      <div class="cover-tagline"><strong>Bank technology consulting</strong> from an operator who built the banking arm of Upstart and Affirm.</div>
       <div class="cover-caps">
-        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">Digital onboarding and online loan application across all products</span></div>
-        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">LO-driven income, identity, and employment verification in 90 seconds</span></div>
-        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">Integrates with FIS, Jack Henry, Fiserv — no rebuild required</span></div>
+        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">What a public-data review of your digital lending found</span></div>
+        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">What we would fix first, and how we would work on it</span></div>
+        <div class="cover-cap"><div class="cover-cap-dot"></div><span class="cover-cap-text">Technology integration, AI governance and security readiness</span></div>
       </div>
     </div>
     <div class="cover-footer">
       <span class="cover-footer-url">reportraven.tech</span>
-      <span class="cover-footer-badge">Community bank infrastructure</span>
+      <span class="cover-footer-badge">Bank technology consulting</span>
     </div>
   </div>
 </div>
@@ -864,20 +865,20 @@ function bankHtml(b: Bank, idx: number): string {
 <div class="sheet">
   <div class="panel panel-inside">
     <div class="panel-half-top">
-      <div class="sec-head"><span class="sec-head-label">${b.leftTitle}</span></div>
+      <div class="sec-head"><span class="sec-head-label">${b.leftTitle.replace("What We'd Build for", "How We'd Help")}</span></div>
       <div class="sec-body">${products}</div>
     </div>
     <div class="sec-divider"></div>
     <div class="panel-half-bot">
-      <div class="sec-head"><span class="sec-head-label">${b.ctaTitle}</span></div>
+      <div class="sec-head"><span class="sec-head-label">${b.ctaTitle.replace(/^See the (.*) Experience Live$/, "Read the $1 Audit")}</span></div>
       <div class="sec-body">
-        <p class="cta-intro">We built a working demo of what ${b.nameShort}'s borrower experience could look like — every product, your branding, the full verification flow. <strong>Scan or visit to walk through it.</strong></p>
+        <p class="cta-intro">We reviewed ${b.nameShort}'s digital lending from public data: what works, what we would fix first, and how we would work on it with your team. <strong>Scan or visit to read it.</strong></p>
         <div class="cta-qr-row">
           <img class="cta-qr-img" src="${qr(b.slug, b.rslug)}" alt="QR — reportraven.tech/audit/${b.slug}">
           <div>
-            <div class="cta-scan-label">Full audit + live demo</div>
+            <div class="cta-scan-label">Full audit</div>
             <div class="cta-url">reportraven.tech/audit/<wbr>${b.slug}</div>
-            <div class="cta-url-note">${b.ctaNote}</div>
+            <div class="cta-url-note">${b.ctaNote.replace(/, and a live demo of .*$/, ", and what we would fix first.")}</div>
           </div>
         </div>
         <div class="cta-flex"></div>
@@ -887,7 +888,7 @@ function bankHtml(b: Bank, idx: number): string {
   </div>
   <div class="panel panel-inside panel-right">
     <div class="panel-half-top">
-      <div class="sec-head"><span class="sec-head-label">What It's Worth</span></div>
+      <div class="sec-head"><span class="sec-head-label">What Automation Is Worth</span></div>
       <div class="sec-body">
         <div class="roi-number">${b.roiExp}</div>
         <div class="roi-sublabel">estimated annual value — broken out below by driver</div>
@@ -944,7 +945,7 @@ ${gapRows(b.gaps)}
 }
 
 const css = readFileSync(
-  new URL("../marketing/mailers/southern-bank-trust.html", import.meta.url).pathname,
+  fileURLToPath(new URL("../../marketing/mailers/southern-bank-trust.html", import.meta.url)),
   "utf8"
 ).match(/<style>([\s\S]*?)<\/style>/)?.[1] ?? "";
 
@@ -973,6 +974,6 @@ ${banks.map((b, i) => bankHtml(b, i)).join("\n")}
 </body>
 </html>`;
 
-const outPath = new URL("../marketing/mailers/all-20-mailers.html", import.meta.url).pathname;
+const outPath = fileURLToPath(new URL("../../marketing/mailers/all-20-mailers.html", import.meta.url));
 writeFileSync(outPath, html);
 console.log(`Written ${html.length.toLocaleString()} chars to ${outPath}`);

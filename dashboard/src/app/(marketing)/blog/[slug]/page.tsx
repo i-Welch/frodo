@@ -104,6 +104,390 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'vallant-bank-95-million-deposits': {
+    title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
+    description:
+      "Vallant, the Georgia bank formed when Pinnacle and Morris merged April 1, earned a 1.73% ROA and a 4.79% margin in Q3 2026. It also lost $95.0 million of noninterest-bearing deposits, 9.1%, in its first full quarter after conversion, and drew down $145 million of cash.",
+    publishedDate: 'November 25, 2026',
+    readTime: '6 min read',
+    content: `
+# Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.
+
+*Published November 25, 2026*
+
+Vallant Financial's third quarter reads like a merger that worked. Net income: $16.7 million. Return on average assets: 1.73%, annualized. [Net interest margin](/glossary/net-interest-margin): 4.79%. Six months after Pinnacle Bank of Elberton and Morris Bank of Dublin merged into [Vallant Bank](/bank-snapshot/14065-vallant-bank), chief executive Jackson McConnell said the October 20 results "reflect the opportunity we envisioned."
+
+The balance sheet in the same release tells the other half. Between June 30 and September 30, noninterest-bearing deposits fell from $1.04 billion to $946.6 million. That was the first full quarter after the June 17 systems conversion, when two banks' customers moved onto one platform under one new name.
+
+:::stat
+**$95.0 million**
+The drop in Vallant's noninterest-bearing deposits in the third quarter of 2026, 9.1% of the balance. Total deposits fell $132.0 million, so about 72 cents of every dollar that left was a dollar the bank paid nothing for.
+:::
+
+## Two Banks, No Overlap
+
+The deal was announced on November 20, 2025, as a partnership of two of "Georgia's strongest community banks." Pinnacle, chartered in 1934, brought about $2.2 billion of assets and 26 branches across northeast and east Georgia, from Elberton to Gainesville, Athens and Augusta. Morris, formed in 1954, brought $1.5 billion and nine branches in central and southeast Georgia, including Dublin, Macon, Houston County and Statesboro. Each Morris share became 0.1095 shares of the combined company, leaving Morris holders with about 46%. The announcement promised "no market overlap."
+
+It closed on April 1. At June 30, Vallant Bank held $3.99 billion in assets, making it the fourth-largest of the 122 banks headquartered in Georgia in the FDIC data behind our [Georgia bank rankings](/bank-rankings/georgia), behind Ameris, RBC Bank (Georgia) and Metro City Bank.
+
+The FDIC's June 2026 branch survey shows what each side brought. The nine former Morris offices held $1.38 billion of the bank's $3.46 billion in deposits, 40%. The largest office in the combined bank is not the Elberton headquarters, at $252.9 million. It is Morris's main office in Dublin, at $303.1 million.
+
+The franchise is dominant at home and thin where Georgia is growing. In that survey Vallant held 70.4% of Elbert County's deposits and 34.3% of Laurens County's, home to Dublin. By Census estimates, Elbert lost 106 residents in the year to July 2025 and Laurens gained 456. Jackson, Houston and Hall counties added 4,963, 3,310 and 3,023, and Vallant held 3.1%, 12.8% and 2.8% of their deposits.
+
+They were different banks, too. In 2025, by their FDIC call reports, Morris earned a 1.87% return on assets at a 47.5% efficiency ratio. Pinnacle earned 1.29% at 66.0%. Pinnacle was the farm lender, with $293.3 million of farmland loans at March 31, 2026, against Morris's $49.7 million. Morris leaned on construction, $180.7 million, about 15% of its book.
+
+One more detail came with the name. In four counties where Vallant has offices, Houston, Bulloch, Walton and Clarke, the June 2026 deposit leader is a different Pinnacle Bank: the $128.8 billion Nashville-chartered bank. Vallant has not cited that overlap. McConnell called the new name "a thoughtful evolution of the word valiant."
+
+## Where the $132 Million Went
+
+The release puts the quarter's movement plainly.
+
+| Vallant Financial | June 30 | Sept. 30 | Change |
+|---|---|---|---|
+| Noninterest-bearing deposits | $1,041.7M | $946.6M | -$95.0M |
+| Interest-bearing deposits | $2,400.3M | $2,363.3M | -$37.0M |
+| Cash at other banks | $184.8M | $39.7M | -$145.1M |
+| Net loans | $2,946.9M | $2,972.3M | +$25.4M |
+
+The bank paid for the outflow with cash. Balances held at other institutions fell by $145.1 million, and total assets dropped $121.8 million to $3.86 billion. Loans still grew about 1%.
+
+Management called deposits "down slightly" and said they "have stabilized from post-merger disruption." A 3.8% decline in total deposits is modest. The mix is the harder number. The share of deposits that pay no interest fell from 30.3% to 28.6% in one quarter. A year earlier, before the deal was announced, the two banks' call reports showed $982.9 million of noninterest-bearing deposits between them. September's figure sits $36.3 million below that, on a slightly different reporting basis.
+
+:::pullquote
+The merger's income statement is working. Its funding base is the part still being tested.
+:::
+
+Noninterest-bearing balances are operating money: payroll accounts, business checking, the cash that follows a treasury management relationship. They are what made a 4.79% margin possible. When they leave, they are usually replaced by something that costs more, or, as here, by cash the bank had been holding.
+
+## The Earnings, With Caveats
+
+The income statement deserves its credit. Net interest income rose 12.7% in the quarter to $46.6 million. Interest paid on deposits barely moved, $12.19 million against $12.15 million, about 1.4% of deposits annualized. Second-quarter GAAP net income had been $9.8 million after $8.0 million of transaction expenses; stripped of those, it was $15.8 million, and the third quarter beat it. Expenses ran about 60.4% of revenue, close to the 59.7% of the second quarter excluding merger costs, though noninterest expense rose 10.6% from that adjusted base.
+
+Three caveats, in fairness.
+
+First, interest income on loans rose $6.1 million, or 12.9%, while net loans grew about 1%. The release does not say how much came from accreting the discount on Morris's acquired loans, a common post-merger source of income that fades as those loans pay off.
+
+Second, the allowance for credit losses rose $8.9 million to $38.9 million against a provision of $1.3 million, and goodwill and intangibles rose $2.8 million. The release explains neither. Purchase accounting adjustments in the year after a deal can move both without touching the income statement.
+
+Third, rates. Accumulated other comprehensive loss, the line that carries unrealized losses on available-for-sale securities, widened from $31.5 million to $47.9 million in a quarter when the [Fed raised rates](/blog/fed-rate-hike-community-bank-deposits). Equity slipped $3.4 million in a quarter that earned $16.7 million.
+
+## The Front Door After Conversion
+
+We fingerprinted vallant.bank on November 24, 2026. The consumer side converted cleanly. Four checking accounts, savings and a money market open online through a third-party account opening site. Consumer loans and home equity lines apply on an nCino-hosted portal. Mortgages start at apply.vallant.bank, lender by lender, and the two legacy banks' 2025 HMDA filings show 993 originations, up from 714 in 2024. MyFasTrack lends $3,500 to $30,000 online, with a response in minutes and cash within three days, to existing checking customers.
+
+The business side is thinner, and it is the side that holds operating deposits. Business checking cannot be opened online. Business FasTrack tops out at $50,000. SBA, agricultural, equipment and commercial real estate loans have no online application; the SBA page's "Choose a Lender" button still points to a rate tool at pinnaclebankx.mortgagewebcenter.com, five months after the Pinnacle name came down.
+
+## What the Next Two Quarters Test
+
+None of this says the merger failed. A 1.73% return and a 4.79% margin, two quarters after close, look like the "formidable earnings power" the announcement promised. [Community First](/blog/community-first-51-million-georgia-bank) paid about 1.7 times equity for a Georgia bank where a third of deposits paid nothing; Vallant already had $1.04 billion of that kind of money at June 30. The question is how much of it survives the year after conversion.
+
+That is the lesson for any bank heading into a merger. Legal close is paperwork. Conversion is when customers decide. A conversion hands every business customer a new login, often new cards and checks, and a treasury setup to re-learn. Each of those is a reason to take a call from another bank, and operating balances are the easiest money to move. [CCNB and Beacon](/blog/ccnb-myrtle-beach-merger-growth-2026) convert in early 2027 and face the same quarter.
+
+:::pullquote
+Legal close is paperwork. Conversion is when customers decide.
+:::
+
+The fix is operational, and it starts before conversion day: a conversion plan that treats noninterest-bearing balances as the asset at risk, account-level tracking of the largest operating relationships through cutover, treasury onboarding that does not require a business to start over, and a business account opening flow, with identity and beneficial ownership verified at intake, that lets a new business customer open online the week a competitor's conversion goes badly. Those are core and digital banking decisions, and they are cheapest to make before the platforms merge.
+
+Vallant has shown it can earn 1.73% as one bank. The fourth quarter shows whether it keeps the deposits that paid for the 4.79%.
+`,
+  },
+  'huawei-cloud-scraper-bank-security': {
+    title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
+    description:
+      'Two Huawei Cloud networks sent us 15,266 requests in early November, up 47x in five days. Three in four posed as Chrome. How we shut them out, and why banks face the same bots: financial services drew 46% of account takeover incidents in 2025.',
+    publishedDate: 'November 24, 2026',
+    readTime: '6 min read',
+    content: `
+# 15,266 Requests From Huawei Cloud. Three in Four Posed as People.
+
+*Published November 24, 2026*
+
+On November 5, two networks run by Huawei Cloud sent 141 requests to this website. On November 9 they sent 4,450. On November 10 they sent 6,669 before we shut them out. That is a 47-fold jump in five days.
+
+Across the first ten days of November, the two networks made 15,266 requests. About a quarter came from a crawler that announced itself by name. The other three quarters said they were ordinary people using ordinary browsers. They were not.
+
+We publish data, not customer accounts. But the traffic was a clean sample of the automation that hits every bank and credit union website, and what stopped it maps onto what they face at far larger scale.
+
+## What Hit Us
+
+The first sign was not a security alert but a burst of server activity: something was asking our hosting platform to build a great many pages at once.
+
+The surge came from two networks registered to Huawei Cloud, the cloud computing arm of the Chinese technology company: one serving from Singapore (AS136907), with 9,246 requests from November 1 through 10, and one in mainland China (AS55990), with 6,020.
+
+| Date | Requests from the two networks |
+|---|---|
+| Nov. 5 | 141 |
+| Nov. 6 | 614 |
+| Nov. 7 | 1,074 |
+| Nov. 8 | 1,651 |
+| Nov. 9 | 4,450 |
+| Nov. 10 | 6,669 |
+
+The traffic had two personalities. 3,973 requests identified themselves as PetalBot, the crawler for Huawei's Petal Search engine. PetalBot asked for pages and almost nothing else: 18 scripts and other page files in ten days.
+
+The other 11,292 requests carried no bot name. The label each one sent, which a browser attaches to every request, claimed to be Chrome on a Windows or Mac computer. But they came from data center addresses, not homes or offices, and they loaded pages the way a real browser engine does: alongside 4,372 page requests came 5,634 requests for the scripts and style files that make those pages run. That is the signature of a headless browser, real browser software driven by a program with no person in front of it.
+
+:::stat
+**5,634 vs. 18**
+Page scripts and files loaded in ten days by the Huawei Cloud traffic that posed as Chrome, against the self-identified Huawei crawler. A crawler reads pages. A headless browser runs them, which is how bots get past defenses that only check what a visitor says it is.
+:::
+
+## What It Wanted
+
+It read everything public: bank data pages, blog articles, glossary entries, demos, audits and legal pages, in an order that looked like a walk through our sitemap. In our review of the traffic on November 10 we found no attempts to sign in, no form submissions and almost no calls to the site's application interfaces.
+
+That does not tell us what it was. It could have been bulk collection, to train an AI model or stock a data broker's database. It could have been reconnaissance, mapping pages and software ahead of a quieter second visit. It could have been a probe, testing how much traffic the site would take before anyone noticed. Against a login page or an application form, the same traffic could be the opening of a breach attempt or a fraud run. From the outside, for days, all of these look alike.
+
+Nor can we say who sent it. A network address says where a computer was rented, not who rented it or why. Huawei Cloud rents servers to customers, as every large cloud provider does, and nothing in our logs ties this traffic to the Chinese government or to Huawei itself. PetalBot names itself; the traffic posing as Chrome did not, and may not belong to the same operator.
+
+:::pullquote
+We will never know whether it was a harmless scraper, a scout or the first step of something worse. That uncertainty is the problem.
+:::
+
+By the time intent becomes clear, the traffic has done whatever it came to do. So the safe policy is to treat automation that hides what it is as hostile until it proves otherwise: detect it early and shut it out, without waiting for a motive. We blocked the crawler that names itself too, because almost none of our readers find us through Petal Search.
+
+## How We Shut It Down
+
+We did not wait to find out. We used two layers, both in front of the site.
+
+The first refuses every request from the two networks before it reaches a page. The refusals have not stopped: 335 on November 11, and still 114 on November 23. In the first week, about 94% of the refused requests came from the crawler that names itself. The traffic posing as Chrome mostly went quiet.
+
+The second challenges any visitor that claims to be a browser but behaves like automation. Verified search crawlers pass. In the two weeks after the block went up on November 10, our sites received 66,004 requests. 20,464 of them, 31%, got a challenge instead of a page. Another 3,318 were refused by the network block.
+
+:::stat
+**31%**
+Share of the 66,004 requests to our sites in the two weeks after November 10 that got a bot challenge instead of a page. From November 16 through 24, the largest source of challenged requests was the United States, with 2,635, ahead of Singapore with 1,154 and Brazil with 602.
+:::
+
+That second number is the real lesson. Blocking a country or a cloud provider handles the operator you already caught. Behavior gives bots away, not geography.
+
+## Why It Matters More at a Bank
+
+Our site holds no customer accounts. A bank's does, and the software that scraped us is a standard tool for attacking them.
+
+Thales's annual Bad Bot Report found that bots made up more than 53% of all web traffic in 2025, and that financial services drew 24% of all bot attacks and 46% of account takeover incidents. The FBI's Internet Crime Complaint Center logged 1,008,597 complaints and $20.877 billion in reported losses in 2025, up 26%, and said its process for freezing stolen funds saw a rise in account takeover cases. One account takeover, the report warns, can involve 50 or more ACH transfers to accounts at multiple banks at once.
+
+The FFIEC's 2021 authentication guidance puts the mechanics plainly: "Attackers use technologies, such as automated password cracking tools, and these compromised credentials in their attacks against financial institutions." Credential stuffing is that sentence at scale: a headless browser trying stolen passwords, thousands at a time, each attempt posing as a customer.
+
+Account opening is the other target. FinCEN's November 2024 deepfake alert reported an increase in suspicious activity reports describing fraudulent identity documents used "to circumvent identity verification and authentication methods." A bot that can fill out a form can submit a [synthetic identity](/glossary/synthetic-identity-fraud) hundreds of times, testing which version gets through. That is where [new account fraud](/glossary/new-account-fraud) starts.
+
+And the public website is reconnaissance. A scraper that reads a bank's site learns its rates, its officers' names for a phishing email, and which vendor runs each application. In our [digital lending audit](/blog/digital-lending-audit-banks-credit-unions), 14 of 32 Southeast banks and credit unions sent mortgage applicants to subdomains of the same vendor portal. A bot can map that for every bank in a state in an afternoon.
+
+:::pullquote
+Behavior gives bots away, not geography. The largest source of challenged traffic on our site was the United States.
+:::
+
+## Who Watches the Front Door
+
+At most community banks, no single team sees all of this traffic. A web agency runs the marketing site. The digital banking vendor runs the login. The mortgage application lives on the loan origination vendor's domain, the deposit application on another. Each sees its own slice. Nobody sees a scraper walk the whole front door.
+
+That makes bot defense a vendor oversight question as much as a technology one. The FFIEC guidance calls for layered security, which "incorporates multiple preventative, detective, and corrective controls," and warns that "relying only on a single control or authentication solution can increase risk to information systems." For a public website and the applications behind it, layered means a version of both things that stopped our scraper, refusing known-bad networks and challenging automation by its behavior, plus a controlled path for the legitimate automation the bank depends on, from data aggregators to its own vendors' integrations. It also means someone at the bank reads the reports. Ask every vendor that hosts a piece of the customer journey what bot controls run in front of it, what it logs, and how fast the bank would hear about a spike like ours. Then put the answers in the risk assessment the guidance calls for, where an examiner can find them.
+
+Our first sign of a 47-fold surge was a busy server. At a bank, it might be a customer's empty account.
+`,
+  },
+  'georgia-most-profitable-banks-q2-2026': {
+    title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
+    description:
+      "Georgia's ten most profitable community banks earned a median 2.75% ROA in the first half of 2026, against 1.56% statewide. Eight are S corporations that report little or no income tax. The rest of the edge is cheap deposits: funding costs of 0.95% vs. 1.58%.",
+    publishedDate: 'November 13, 2026',
+    readTime: '6 min read',
+    content: `
+# Q2 2026: What Georgia's Most Profitable Banks Do Differently
+
+*Published November 13, 2026*
+
+The median bank headquartered in Georgia earned a 1.56% return on assets in the first half of 2026. The state's ten most profitable community banks earned a median 2.75%.
+
+Georgia already out-earns its neighbors. Its median bank runs a 4.50% net interest margin, against 3.68% in [South Carolina](/blog/south-carolina-most-efficient-banks-q2-2026), where the median bank earns 1.12% on assets. The gap inside Georgia comes from three places: the tax line, the deposit base and the payroll. Most of the leaders lean on one or two of them, not all three.
+
+The figures come from the June 30, 2026 FDIC call reports behind our [Georgia bank rankings](/bank-rankings/georgia): 122 banks holding $102.90 billion in assets. The top-ten lists cover the 104 FDIC-designated community banks with at least $100 million in assets. June 30 is still the latest quarter in the FDIC's BankFind data; third-quarter reports were due October 30 and had not posted as of November 12.
+
+## The Leaders
+
+Here are the ten highest [returns on assets](/glossary/return-on-assets) among Georgia's community banks, year to date and annualized, after and before taxes.
+
+| Bank | City | Assets | ROA | Pretax ROA |
+|---|---|---|---|---|
+| [Durden Banking Company](/bank-snapshot/15336-durden-banking-company-incorporated) | Twin City | $299M | 3.60% | 3.60% |
+| [Douglas National Bank](/bank-snapshot/57230-douglas-national-bank) | Douglas | $327M | 3.51% | 3.51% |
+| [Bank of Monticello](/bank-snapshot/2145-bank-of-monticello) | Monticello | $158M | 3.21% | 3.31% |
+| [The Commercial Bank](/bank-snapshot/175-the-commercial-bank) | Crawford | $464M | 3.14% | 3.14% |
+| [Sunmark Community Bank](/bank-snapshot/16825-sunmark-community-bank) | Perry | $557M | 2.77% | 2.90% |
+| [Bank of Dade](/bank-snapshot/17543-bank-of-dade) | Trenton | $162M | 2.72% | 2.72% |
+| [Farmers State Bank](/bank-snapshot/879-farmers-state-bank) | Lincolnton | $186M | 2.67% | 2.67% |
+| [FNB South](/bank-snapshot/17011-fnb-south) | Alma | $735M | 2.64% | 2.88% |
+| [Northeast Georgia Bank](/bank-snapshot/15771-northeast-georgia-bank) | Lavonia | $651M | 2.59% | 2.70% |
+| [United Bank](/bank-snapshot/172-united-bank) | Zebulon | $2.16B | 2.50% | 3.23% |
+
+Look at the last two columns. At five of the ten, they are identical.
+
+## The Tax Line
+
+Eight of the ten are Subchapter S corporations, according to their call reports. An S corporation passes its income through to its shareholders, who pay the tax on their own returns, so the bank reports little or no income tax and its after-tax ROA sits close to its pretax ROA. Five of the eight reported no income tax expense at all in the first half.
+
+S corporations are common in Georgia: 33 of the state's 122 banks, and 27 of the 104 community banks in the ranking pool. That is about one in four. In the ROA top ten, it is eight in ten.
+
+The tax line changes the order more than the gap. Ranked before taxes, United Bank, a C corporation, moves from tenth to fourth at 3.23%, and three other C corporations join the top ten. The leaders' median pretax ROA is 3.02%, against 1.88% for the state's median bank. Across the whole state, the S corporations' median pretax ROA is 1.92% and the C corporations' is 1.86%: much the same business, with a different tax line.
+
+:::pullquote
+Taxes explain the order of Georgia's list more than the gap. Before taxes, the ten leaders still earn a median 3.02% on assets, against 1.88% for the median bank.
+:::
+
+## Margin, Bought Cheap
+
+Strip out the tax line and the profitability leaders' edge is mostly margin. Their median net interest margin is 5.37%, against 4.50% statewide. They earn a little more on their loans and securities, a median 6.50% yield on earning assets against 6.12%. They pay a lot less for their money. Interest expense runs 0.95% of earning assets at the median leader and 1.58% at the median Georgia bank, and 32.2% of the leaders' domestic deposits pay no interest, against 25.3%.
+
+They do not run especially lean. The ROA leaders carry a median $6.7 million of assets per full-time employee, against $6.8 million statewide, and noninterest expense of 2.55% of average assets, against 2.78%.
+
+Sunmark Community Bank in Perry shows the model plainly. Its overhead is 3.60% of assets, well above the state median, spread across 10 offices. It still earns 2.77% because its margin is 6.47%: a 7.42% yield on earning assets, funding at 0.95%, and 38.1% of deposits in accounts that pay nothing.
+
+Farmers State Bank in Lincolnton keeps 48.1% of its deposits in noninterest-bearing accounts, and its funding costs 0.64% of earning assets. It lends out 54.7% of its deposits and still earns 2.67%. Durden Banking Company goes the other way on lending: it lends 95.4% of its deposits at a 6.85% yield, pays 0.77% for funding and runs a 6.08% margin.
+
+United Bank does it at scale. At $2.16 billion, the largest of the ROA leaders, it pays 0.50% for funding, the lowest of the ten, with 39.8% of deposits noninterest-bearing and fee income of 1.44% of assets. It lends 49.3% of its deposits.
+
+## Lean, Not Cheap
+
+The [efficiency ratio](/glossary/efficiency-ratio) leaders take the other road. Here are the ten lowest ratios among Georgia's community banks.
+
+| Bank | City | Assets | Efficiency | ROA |
+|---|---|---|---|---|
+| [Community Bank of Pickens County](/bank-snapshot/35513-community-bank-of-pickens-county) | Jasper | $629M | 38.1% | 2.35% |
+| [Thomasville National Bank](/bank-snapshot/34068-thomasville-national-bank) | Thomasville | $2.18B | 38.3% | 2.40% |
+| [The Citizens Bank of Georgia](/bank-snapshot/34229-the-citizens-bank-of-georgia) | Cumming | $599M | 38.7% | 1.86% |
+| [Classic City Bank](/bank-snapshot/59219-classic-city-bank) | Athens | $314M | 39.8% | 2.11% |
+| [Farmers and Merchants Bank](/bank-snapshot/16440-farmers-and-merchants-bank) | Sylvania | $171M | 40.0% | 2.05% |
+| The Commercial Bank | Crawford | $464M | 41.2% | 3.14% |
+| Douglas National Bank | Douglas | $327M | 41.7% | 3.51% |
+| Northeast Georgia Bank | Lavonia | $651M | 42.4% | 2.59% |
+| Bank of Monticello | Monticello | $158M | 42.4% | 3.21% |
+| [Community Bank of Georgia](/bank-snapshot/57579-community-bank-of-georgia) | Baxley | $269M | 43.9% | 1.85% |
+
+Their median ratio is 40.6%, against 59.4% for the state's median bank. Their margin is only modestly wider, 4.76% against 4.50%, and fee income is the same, 0.46% of assets against 0.45%. Overhead is the difference: noninterest expense of 2.04% of average assets at the leaders and 2.78% at the median bank.
+
+:::stat
+**$2.5 million a year**
+What 74 basis points of overhead is worth on a $334 million balance sheet, the size of Georgia's median bank. That is the distance between the median bank's noninterest expense ratio and the efficiency leaders'.
+:::
+
+They do not pay their people less. Salaries and benefits per employee annualize to a median of about $110,600 at the leaders and $102,800 statewide. They need fewer people: $9.5 million of assets per full-time employee, against $6.8 million. On a $334 million bank, that is about 35 people instead of 49. Salaries and benefits take 1.14% of assets at the leaders and 1.51% at the median bank; premises and equipment take 0.15% against 0.25%. Assets per office run a median $154 million at the leaders, against $92 million.
+
+Thomasville National Bank is the extreme. It runs $2.18 billion with 167 employees and four offices: $13.1 million of assets per employee and $545 million per office. It pays about $154,000 per employee, half again the state median. Its funding costs 2.16% of earning assets, above the state median, and only 16.3% of its deposits pay no interest. It gets to 38.3% on cost, plus fee income of 1.28% of assets, nearly three times the median.
+
+Classic City Bank in Athens, established in November 2020 according to the FDIC, already runs a 39.8% ratio: $314 million, 22 employees, one office, and 47.3% of deposits in noninterest-bearing accounts.
+
+:::pullquote
+Georgia's most efficient banks pay their people more than the median bank does. They need about 14 fewer of them for every $334 million of assets.
+:::
+
+## Four Banks That Do Both
+
+Four banks make both lists: The Commercial Bank, Douglas National Bank, Northeast Georgia Bank and Bank of Monticello. All four are S corporations, and all four pair cheap funding with a lean staff. Douglas National runs $327 million from one office with 34 employees, $9.6 million of assets each, with a 5.35% margin and fee income of 1.00% of assets.
+
+The leaders are not having one good quarter. Nine of the ten efficiency leaders posted ratios below 50% at the end of 2023, the end of 2024, June 2025 and the end of 2025. All ten ROA leaders earned more than 2% at each of those marks. Size does not explain them either: both lists run from Bank of Monticello, at $158 million, to banks above $2 billion, and each list's median bank holds $395 million, not far above the state's $334 million.
+
+Two caveats, in fairness. The whole state rode a tide: Georgia's median margin widened from 4.26% at the end of 2023 to 4.50%, and median ROA rose from 1.35% to 1.56%. And wide margins can carry risk the call report shows only later. Construction loans make up 28.5% of Bank of Monticello's loan book and 26.9% of Pickens County's, against a state median of 10.4%.
+
+## What the Median Bank Can Copy
+
+A median bank cannot easily change its tax status, and it cannot buy a deposit base built in Lincolnton since 1911. But the two operating levers the leaders pull, more accounts that pay nothing and fewer staff hours per dollar of assets, are set in the same two places: account opening and loan intake.
+
+On the deposit side, a checking account opened online, verified and funded in one sitting, is how a bank wins the noninterest-bearing balance before a competitor does. On the lending side, every hour a lender spends chasing a pay stub, calling an employer or re-keying a bank statement is overhead that grows with volume. Verification-first intake, with income, assets and identity confirmed from source data at application, lets the same team handle more loans. Clean files get a decision in minutes instead of weeks, and every check leaves an audit trail an examiner can follow.
+
+Georgia's leaders earn 2.75% on assets, against 1.56% for the median bank. Taxes set the order of the list. Deposits and staffing set the gap, and those can be redesigned.
+`,
+  },
+  'community-first-51-million-georgia-bank': {
+    title: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    description:
+      "Community First Credit Union paid about $51 million, roughly 1.7 times equity, for a Georgia bank chartered in 1907. FDIC data shows 53% of First Southern's deposits sat in Florida, a third paid no interest and 69% of its loans were business credit.",
+    publishedDate: 'November 18, 2026',
+    readTime: '6 min read',
+    content: `
+# Community First's $51 Million Georgia Bank Was Mostly Florida
+
+*Published November 18, 2026*
+
+On October 2, Community First Credit Union of Florida closed its purchase of First Southern Bank. On paper it is a familiar Southeast story: a $3.2 billion Jacksonville credit union paying about $51 million in cash for a Georgia bank chartered in 1907 as The Patterson Bank and based in Waycross since 2019.
+
+The FDIC's branch data tells a different one. In the June 2025 Summary of Deposits, the last survey before the deal, First Southern held $300.3 million across six offices. Three were in Florida, in Sebring, Bradenton and Stuart, and they held $160.2 million of it. The bank's largest office wasn't its Waycross headquarters. It was Sebring.
+
+:::stat
+**53%**
+The share of First Southern Bank's deposits held in its three Florida branches at June 30, 2025. The Waycross headquarters held 21%. A Florida credit union bought a Georgia charter with a Florida deposit base.
+:::
+
+## Where the Deposits Were
+
+| Office | County | Deposits, June 2025 |
+|---|---|---|
+| Sebring, FL | Highlands | $82.7M |
+| Bradenton, FL | Manatee | $64.3M |
+| Waycross, GA (HQ) | Ware | $63.0M |
+| Patterson, GA | Pierce | $40.6M |
+| Jesup, GA | Wayne | $36.4M |
+| Stuart, FL | Martin | $13.2M |
+
+A seventh office, in Blackshear, opened after that survey. The Florida branches make more sense once you see the ownership: First Southern's holding company, FSBH Corp., is based in Bradenton.
+
+The Georgia half is a slow-growth franchise. Ware County had 36,222 residents in 2024, nine fewer than in 2020, by Census estimates. First Southern held 6.3% of Ware County's deposits, 8.4% of Wayne County's and 13.0% of Pierce County's. The leader in all three is [PrimeSouth Bank](/bank-snapshot/5694-primesouth-bank), a $1.6 billion Blackshear bank with 71.7% of Pierce County's deposits on its own. Manatee County, home of the Bradenton branch, added 13,895 residents in 2024 alone.
+
+Community First's charter followed the bank. At the November 2025 announcement, the credit union described its field of membership as anyone who lives or works on the First Coast. Its membership page now lists 19 Florida counties, Highlands, Manatee and Martin among them, plus eight Georgia counties, including Ware, Pierce and Wayne. Its June 30, 2026 call report counted 194,282 members against 10.08 million potential members: 1.9% penetration.
+
+## What $51 Million Bought
+
+FSBH stockholders received $17.14 a share in cash, about $51 million, according to the Jacksonville Daily Record. The thinly traded stock had last changed hands at $10 before the announcement. The price works out to roughly 1.7 times First Southern Bank's $30.2 million in equity at September 30, 2025, the last call report before the deal.
+
+What that bought, as of June 30, 2026: $347.2 million in assets, $312.9 million in deposits, $226.5 million in loans and 60 employees, earning a 0.94% return on assets at a 72.9% [efficiency ratio](/glossary/efficiency-ratio). A respectable small bank, not a spectacular one.
+
+The prize was the funding. $103.2 million of First Southern's deposits, 33.0%, paid no interest at all. Its interest expense annualized to about 1.2% of deposits in the first half of 2026. Community First's annualized to about 1.8% of its $2.80 billion in shares and deposits, where certificates make up 33.8% of the base and share drafts 20.9%. [Robins Financial](/blog/robins-financial-20-million-rebate), the cheapest funder in this series, runs 30.9% in share drafts.
+
+:::pullquote
+A third of First Southern's deposits paid nothing. A credit union can't build that kind of funding with a certificate special. It has to buy it.
+:::
+
+The loan books are near opposites. About $157 million of First Southern's $226.5 million, 69%, was business and commercial property lending: $84.2 million in nonfarm nonresidential real estate, $32.1 million in construction, $23.5 million in commercial and industrial loans, plus farmland, farm and multifamily credit. The whole book yielded about 7.0% annualized.
+
+Community First's $2.38 billion book is a consumer franchise: $958.6 million in vehicle loans, $712.4 million of them made indirectly through dealers, and $736.4 million in first mortgages, yielding about 5.8%. Commercial loans totaled $240.3 million, 10.1% of the book. Loans to members for commercial and industrial purposes came to $3.2 million, across 53 loans.
+
+## The Capital Math
+
+A bank buying a bank can pay in stock. A credit union has none to issue. Community First paid cash, and none of First Southern's $32.7 million in equity crosses over as credit union net worth. The purchase adds assets, not retained earnings.
+
+At June 30, Community First carried $393.8 million in net worth, a 12.26% ratio, comfortably above the 7% well-capitalized line. The $51 million price equals 13% of that cushion. Add First Southern's $347.2 million balance sheet, subtract the cash paid, and on June 30 figures the ratio falls to roughly 11.2% before any new earnings. Still well capitalized. Still a real step down.
+
+Earnings rebuild it slowly. First-half net income was $14.1 million, an annualized return on assets of about 0.88%, held back by $12.6 million in credit loss expense in six months.
+
+Then there is the rule that should have made this deal awkward. Federal rules cap a credit union's member business lending at the lesser of 1.75 times its net worth or 1.75 times the 7% net worth it needs to be well capitalized: 12.25% of assets. Community First's net member business loan balance was $222.4 million at June 30, 6.9% of assets. Count every business and property loan First Southern carried and the combined book reaches about $379 million, roughly 10.8% of a balance sheet near $3.5 billion. On that math, the cap would leave about $50 million of room.
+
+It doesn't apply. The same regulation exempts credit unions with a low-income designation, and NCUA's records list Community First as one.
+
+:::pullquote
+On June 30 math, the business lending cap would leave Community First about $50 million of room to run a business bank. Its low-income designation means the cap doesn't bind at all.
+:::
+
+## Two Systems Until Summer
+
+For now First Southern runs on its own rails. Its customers keep their account numbers, logins and debit cards, at a separate site branded "First Southern Powered by Community First," with online banking on a different host from the credit union's. They cannot transact at Community First branches until the systems merge in "early summer 2027." Their deposits are now NCUA-insured, and each customer is asked to file a membership opt-in form by December 31.
+
+The consumer front door they will inherit is solid. Fingerprinted November 17, 2026, membership, checking, auto loans, personal loans and cards all start at apply.communityfirstfl.org, a first-party subdomain. Mortgages and home equity start at borrower-portal.communityfirstfl.org, which promises an application in 10 minutes.
+
+The business door is thinner, and it is the one First Southern's best customers will need. Business checking can't be opened online: the options are a branch, a phone call or an inquiry form. Business lines and equipment loans apply on a third-party domain. Commercial real estate, the largest category in the book Community First just bought, has no online application at all. And the business banking FAQ's county list still omits Highlands, Manatee and every Georgia county: the markets the acquisition added.
+
+## What Was Actually for Sale
+
+Bank trade groups oppose these deals on tax grounds. When this one was announced, ICBA President Rebeca Romero Rainey called for policymakers to address "the harmful impact these deals have on local communities." [Palmetto Citizens](/blog/palmetto-citizens-90-year-wait), by comparison, closed on four Georgia bank branches with about $20 million in loans this August. Community First bought a whole bank, and a business bank at that.
+
+One caveat, in fairness: First Southern was not cheap to run at a 72.9% efficiency ratio, and the credit union says every First Southern employee is staying, so this deal was not bought for cost savings.
+
+The lesson for a community bank is in what Community First paid for. Not branch count; it already had 28. It paid about 1.7 times equity for a deposit base where a third of balances cost nothing, and for a business book a consumer lender would have needed years to build on its own. Those are the two things community banks still do best, and they are the two things the buyer's digital front door is least built to carry.
+
+Relationships like that transfer only when a business owner can open, verify and borrow without starting over: identity and beneficial ownership verified at intake, financials pulled from source instead of re-keyed, a decision in days instead of a branch appointment, and an audit trail an examiner can follow. A bank that already offers that holds the asset a credit union just paid a premium to buy.
+
+Community First paid 1.7 times equity for a bank whose best customers are businesses. By summer 2027, those businesses decide whether it was a bargain.
+    `,
+  },
   'georgia-most-efficient-banks-q2-2026': {
     title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently",
     description:
@@ -1330,14 +1714,16 @@ That gap is about to get tested for real. A retiree in Summerville and a borrowe
     description:
       'OptimumBank added $432.5 million in loans over twelve months and $427.0 million of it was commercial real estate. A 2.04% ROA, a 48.78% efficiency ratio, and a concentration ratio north of 600% of capital, all in the same quarter.',
     publishedDate: 'July 28, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `
 # The 98.7% Bank
 
 *Published July 28, 2026*
 
-*Updated October 22, 2026: corrected the loan yield, the Tier 1 capital figure behind the CRE concentration ratio (about 609%, not 570%), the bank's size when Moishe Gubin took over and Broward County deposits.*
+*Updated November 21, 2026, with third-quarter 2026 results. On October 22, 2026, we corrected the loan yield, the Tier 1 capital figure behind the CRE concentration ratio (about 609%, not 570%), the bank's size when Moishe Gubin took over and Broward County deposits.*
+
+*Q3 2026 update: OptimumBank Holdings reported third-quarter net income of $7.2 million, or $0.30 per diluted share, on November 12, 2026. Total assets reached $1.58 billion at September 30, up $175.2 million in the quarter. Gross loans grew $150.2 million, or 12.3%, to $1.37 billion, and deposits rose 10.6% to $1.34 billion. The [net interest margin](/glossary/net-interest-margin) was 4.63%, [return on average assets](/glossary/return-on-assets) 1.95%, and nonaccrual loans fell to $1.8 million from $2.2 million in June. In August the holding company issued $35.0 million of subordinated notes and contributed $31.0 million of capital to the bank (company release).*
 
 OptimumBank added $432.5 million in loans over the twelve months ending June 30, 2026. Commercial real estate accounted for $427.0 million of it.
 
@@ -1669,7 +2055,7 @@ Someone should fix that.
 
 *Published July 18, 2026*
 
-Disclosure up front: RAVEN, which publishes this site, sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
+Disclosure up front: RAVEN, which publishes this site, is a bank technology consulting practice that also sells verification software to community banks and uses one of the vendors below as a data source. This guide says plainly what each option is good at, because a wrong-fit verification contract is expensive in both directions.
 
 The Work Number, owned by Equifax, is the default answer to employment verification in US lending. It is a database of payroll records contributed by employers and payroll providers, and when a borrower's employer is in it, a verification that used to take three phone calls comes back in seconds. Two things push lenders to look for alternatives anyway. The first is price: Equifax raised the cost of Work Number employment verifications again effective January 1, 2026, on top of increases the Community Home Lenders of America was already protesting in 2024, when it put a single verification at $55 to $70 and a mortgage with two borrowers at as much as $280. The second is coverage, which runs thinnest exactly where community banks lend: small employers, farms, municipalities, and self-employed borrowers who are in nobody's payroll database.
 
@@ -1744,7 +2130,7 @@ Database reports are priced per pull, and The Work Number's prices rose again on
 
 *Published July 18, 2026*
 
-Disclosure: RAVEN, which publishes this guide, is one of the vendors below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
+Disclosure: RAVEN, which publishes this guide, is a bank technology consulting practice, and its own software is one of the options below. Every "best software" list in this category is written by a vendor; at least this one says so in the second sentence and tells you when a competitor is the better buy.
 
 The benchmark numbers in this market are public and brutal. MANTL, the category's best-known platform, reports an average under five minutes to open a retail deposit account across online and in-branch channels. Megabank and neobank onboarding set borrower expectations, and an application that takes twenty minutes and ends with "visit a branch to fund your account" loses most of its applicants before the finish line. Meanwhile the banks that moved fast without verification learned the other lesson: an account-opening flow that accepts whatever the applicant types is a fraud vector, and more than one bank has [turned online account opening off entirely](/blog/account-opening-fraud-prevention) after a fraud wave.
 
@@ -2497,11 +2883,15 @@ The banks moving fastest stopped treating "we are on Fiserv" as a constraint. Th
     description:
       'First Reliance Bancshares just posted record growth, then agreed to sell to Colony Bankcorp for $163 million. Why a winning $1 billion bank chose to partner up, and what the four-state, $5 billion result says about Southeast consolidation.',
     publishedDate: 'June 26, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `# First Reliance Spent 27 Years Building a Bank. Then It Sold at the Top.
 
 *Published June 26, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results for both banks and the merger's November 1 closing.*
+
+*Q3 2026 update: First Reliance Bancshares reported third-quarter net income of $2.7 million, or $0.33 per diluted share, on October 28, 2026. Total assets were $1.11 billion at September 30, deposits rose $2.1 million to $922.4 million, and loans held for investment slipped $8.4 million to $812.3 million. Nonperforming assets rose to 0.59% of total assets from 0.06% in June, mainly on one $5.5 million loan. Colony Bankcorp reported the same day: net income of $10.5 million, or $0.50 per diluted share, total assets of $3.65 billion and a [net interest margin](/glossary/net-interest-margin) of 3.59%. The merger closed on November 1, 2026 (company releases and Colony's November 2 SEC filing).*
 
 First Reliance Bancshares just posted the best numbers of its life. Net income up 113% year over year, $1.1 billion in assets, nine branches across eight South Carolina cities. So on June 24, founder Rick Saunders agreed to sell it.
 
@@ -2514,7 +2904,7 @@ Colony Bankcorp, the $3.7 billion Georgia bank out of Fitzgerald, is buying Firs
 
 Here is the part worth sitting with. Most community banks sell because they are stuck. First Reliance sold because it was flying.
 
-*Update, October 22, 2026: Regulators approved the merger on September 17, and shareholders of both companies approved it on October 15. The companies expect to close in the fourth quarter of 2026.*
+*Update, November 21, 2026: Regulators approved the merger on September 17, shareholders of both companies approved it on October 15, and the merger closed on November 1, 2026. Colony expects systems conversion and customer integration in the second quarter of 2027.*
 
 ## The terms
 
@@ -3656,11 +4046,15 @@ For a bank that already has the market, the profitability and a new branch in it
     title: 'Security Federal Bank: CDFI Giant Navigating the Rate Rebound',
     description: "Security Federal, the Aiken CDFI bank with 19 branches and an ICE-powered mortgage stack, cut its efficiency ratio from 75.35% to 70.44% in a year. Still above 70%, and the missing piece is automated verification for its hardest borrower files.",
     publishedDate: 'May 21, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '7 min read',
     content: `# Security Federal Bank: CDFI Giant Navigating the Rate Rebound
 
 *Published May 21, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Security Federal Corporation reported third-quarter net income available to common shareholders of $3.6 million, or $1.16 per common share, up 13.0% from a year earlier, on October 30, 2026. Total assets were $1.62 billion at September 30, with net loans of $681.6 million and deposits of $1.39 billion. Nonperforming assets were 0.33% of total assets, down from 0.35% a year earlier, and the company made no provision for credit losses in the quarter (company release). The analysis below uses first-half 2026 call report figures.*
 
 The bank that calls itself South Carolina's largest certified bank CDFI isn't in Charleston. It isn't in Columbia. It's in Aiken, a small city most people associate with horse farms and the Masters, and it's sitting on $1.54 billion in assets with 19 branches spanning two states.
 
@@ -3734,11 +4128,15 @@ Open banking verification infrastructure is no longer experimental. It is produc
     title: "CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast",
     description: "CCNB grew from a 2009 de novo to a $1.35B bank on one of the fastest-growing coasts in the US. On October 1 it closed a merger of equals with Beacon, creating a $2.3B franchise that converts systems and rebrands in March 2027. The clock is running.",
     publishedDate: 'May 14, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `# CCNB's $2.3B Merger Bet on SC's Fastest-Growing Coast
 
 *Published May 14, 2026*
+
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Coastal Carolina Bancshares reported third-quarter net income of $3.2 million, or $0.42 per diluted share, on October 29, 2026, or $3.4 million and $0.45 per diluted share excluding after-tax merger expenses. Total assets were $1.355 billion at September 30, before the Beacon merger closed on October 1, so the quarter excludes Beacon. Loans grew $17 million in the quarter to $1.004 billion, deposits held steady at $1.214 billion, [return on average assets](/glossary/return-on-assets) was 0.95%, and nonperforming assets were 0.09% of total assets (company release).*
 
 Here is the counterintuitive fact about Coastal Carolina National Bank: it was founded in June 2009, right in the teeth of the financial crisis, in a coastal resort market that was getting crushed by falling vacation-property values and tourist spending collapse. Most community banking veterans would have called that timing suicidal. Seventeen years later, CCNB had grown to $1.35 billion in assets by June 30, 2026, and on October 1 it closed a merger of equals with Beacon Holding Company that created a roughly $2.3 billion South Carolina franchise. Bad timing turned out to be very good timing.
 
@@ -4364,9 +4762,13 @@ Queensborough has been built to last. The next phase is built to move.
     title: 'Southern Bank Rebuilt Its Digital Banking. The Loan Application Is Next',
     description: "Southern Bank and Trust, chartered in Mount Olive, NC in 1901, cut its efficiency ratio from 69.4% to 52.6% in two years and switched on a new digital banking platform on October 19, 2026. What drove the turnaround, what its 2025 mortgage data shows, and where the next efficiency gain has to come from.",
     publishedDate: 'June 25, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '5 min read',
     content: `
+*Updated November 21, 2026, with third-quarter 2026 results.*
+
+*Q3 2026 update: Southern BancShares (N.C.) reported third-quarter net income of $15.1 million, or $199.38 per share, in its quarterly report for September 30, 2026, against a net loss of $12.9 million a year earlier. Total assets were $5.68 billion at September 30. Net loans rose 9% from a year earlier to $3.63 billion and deposits rose 5% to $4.86 billion. The [net interest margin](/glossary/net-interest-margin) was 3.48%, up from 3.08%, and annualized [return on average assets](/glossary/return-on-assets) was 1.04%. The quarter's results include $7.6 million of unrealized losses on equity investments (company quarterly report).*
+
 On Monday, October 19, 2026, Southern Bank and Trust switched its customers to a new digital banking platform. Personal users got an update prompt, business users got a new app, and everyone got a new login. A bank chartered in Mount Olive, North Carolina, on January 29, 1901, rebuilt its online front door.
 
 The conversion is the visible part. The numbers behind it are the better story.
@@ -4843,10 +5245,12 @@ Twenty days isn't magic. It's the sum of several verifications that take seconds
     title: 'The Boat Bank of Beaufort County',
     description: 'Coastal States Bank out-deposits Wells Fargo and Bank of America in Beaufort County, but nearly 19% of its loans are boats. Inside the island bank that became a national specialty lender, and the 42-mortgage footnote in its HMDA data.',
     publishedDate: 'June 12, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '5 min read',
     content: `
-*Updated October 22, 2026: corrected the date of the first dividend and the marine share of loans, and removed an unsourced share-price figure.*
+*Updated November 21, 2026, with third-quarter 2026 results and the bank's current branch count. On October 22, 2026, we corrected the date of the first dividend and the marine share of loans, and removed an unsourced share-price figure.*
+
+*Q3 2026 update: CoastalSouth Bancshares, the holding company for Coastal States Bank, reported third-quarter net income of $8.8 million, or $0.71 per diluted share, on October 19, 2026. Total assets were $2.42 billion at September 30. Loans held for investment grew $81.6 million in the quarter, 19.0% annualized, and deposits rose $53.1 million to $2.10 billion. The [net interest margin](/glossary/net-interest-margin) was 3.70%, [return on average assets](/glossary/return-on-assets) 1.45%, and nonperforming assets 0.62% of total assets. The bank now operates 12 branches, up from 11 (company release).*
 
 Coastal States Bank holds more deposits in Beaufort County than Wells Fargo. More than Bank of America. More than SouthState, Truist, or TD. And the loan book behind that #1 hometown franchise is, to a degree that surprises almost everyone who looks, made of boats.
 
@@ -4873,7 +5277,7 @@ That's the foundation national lenders dream about: cheap, sticky, locally gathe
 
 ## What the niches actually look like
 
-Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, about 19%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the bank's eleven branches sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
+Pull apart the $1.8 billion loan book and the community-bank label dissolves. Income-producing CRE is 23.1%. Marine vessels, about 19%. Senior housing, 15.6%. Residential mortgages, just 12.4%. Add national SBA/USDA lending and warehouse lines for mortgage bankers, and five of the eleven branches the bank had this spring sitting in metro Atlanta, and you have something closer to a mini Live Oak than a coastal thrift.
 
 The model prints respectable numbers: 1.11% ROA, 3.61% NIM, a 59% efficiency ratio, and charge-offs of one basis point.
 
@@ -4906,10 +5310,12 @@ Q1 gave a cleanly positive read: $6.3 million in net income, core deposit growth
     title: 'The Quiet Comeback at Oconee Federal',
     description: 'The 102-year-old Seneca thrift saw core earnings triple while the headline number said decline. How a long-duration mortgage book repriced its way out of the rate shock, and why the next leg is harder.',
     publishedDate: 'June 10, 2026',
-    updatedDate: 'October 22, 2026',
+    updatedDate: 'November 21, 2026',
     readTime: '6 min read',
     content: `
-*Updated October 22, 2026: corrected the year of the Stephens Federal acquisition, the office count and the date of the buyback, and removed housing and migration figures we could not source.*
+*Updated November 21, 2026, with results for the quarter ended September 30, 2026, and the current count of consecutive quarterly dividends. On October 22, 2026, we corrected the year of the Stephens Federal acquisition, the office count and the date of the buyback, and removed housing and migration figures we could not source.*
+
+*Q3 2026 update: Oconee Federal reported net income of $1.5 million, or $0.26 per diluted share, for the quarter ended September 30, 2026, up from $1.3 million a year earlier, on October 19, 2026. Total assets were $668.2 million, down 1.4% from $677.4 million at June 30, and total loans rose to $503.6 million from $499.4 million. The company credited an improved interest margin, and its $0.10 quarterly dividend has now been paid for 60 consecutive quarters (company release).*
 
 Three years ago, Oconee Federal looked like a cautionary tale. The 102-year-old Seneca thrift earned a 0.30% return on assets in 2023, spent 83 cents to make every dollar of revenue, and watched its long-duration mortgage book get steamrolled by the fastest rate-hiking cycle in four decades.
 
@@ -4942,7 +5348,7 @@ Oconee Federal's deposit market share in Oconee County — the #1 position, ahea
 
 A century-old savings and loan, with a product menu you could fit on an index card, out-gathers three of the four largest banks in America on its home turf. Deposit franchises like this are why community banking still works. They're also nearly impossible to build from scratch, which is why the bank's $560.6 million in total deposits (up from $486.5 million at the end of 2023) is the asset that matters most on its balance sheet.
 
-And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 58 consecutive quarters, every quarter since December 2011.
+And that balance sheet is built like a vault: equity to assets of 12.4%, capital ratios management plausibly describes as among the highest in the industry, and a $0.10 quarterly dividend that has now been paid 60 consecutive quarters, every quarter since December 2011.
 
 ## Getting smaller in public, bigger in private
 
@@ -5732,7 +6138,7 @@ When that plumbing is manual, it takes weeks. When it's automated, it takes minu
 
 ## How RAVEN Changes This
 
-RAVEN is a verification platform built specifically for community banks. Instead of collecting documents over weeks, a loan officer sends one link. The borrower verifies their identity, income, employment, and assets in under 5 minutes — on any device, no branch visit required.
+RAVEN's verification software is built specifically for community banks. Instead of collecting documents over weeks, a loan officer sends one link. The borrower verifies their identity, income, employment, and assets in under 5 minutes — on any device, no branch visit required.
 
 On the back end, RAVEN pulls from the same data sources the fintechs use: Plaid for financial accounts and income, Truework for employment, Socure for identity and fraud screening, ATTOM and Melissa for property data. Every data point is cross-referenced, timestamped, and delivered in an examiner-ready report with a full audit trail.
 
@@ -5848,7 +6254,7 @@ Each of these capabilities exists as a standalone service. The challenge for com
 
 ## How RAVEN Bridges the Gap
 
-RAVEN was built to solve exactly this problem. It is a verification platform designed for community banks — not a core replacement, not a loan origination system, and not an 18-month implementation project.
+RAVEN's verification software was built to solve exactly this problem. It is designed for community banks — not a core replacement, not a loan origination system, and not an 18-month implementation project.
 
 A loan officer sends one link to a borrower. The borrower opens it on any device, enters their information, and connects their financial accounts. In under 5 minutes, the bank receives a complete verification report: identity and fraud screening from Socure, financial accounts and income from Plaid, employment verification from Truework, and property data from ATTOM and Melissa.
 
@@ -5953,7 +6359,7 @@ Community banks do not need to build this infrastructure from scratch. They need
 
 ## RAVEN: The Fintech Borrower Experience, Through Your Bank
 
-RAVEN gives community banks the same automated verification layer that powers Figure, Better, and Rocket — without requiring a new LOS, a six-figure platform fee, or a dedicated IT team.
+RAVEN's verification software gives community banks the same automated verification layer that powers Figure, Better, and Rocket — without requiring a new LOS, a six-figure platform fee, or a dedicated IT team.
 
 Here is what the borrower experience looks like with RAVEN:
 
@@ -6060,7 +6466,7 @@ Community banks need the same automation outcomes — faster verification, lower
 
 ## What This Looks Like With RAVEN
 
-RAVEN was built to automate the verification layer specifically for community bank lending. Not the entire compliance program — the specific, labor-intensive process of verifying borrower identity, income, employment, assets, and property data against authoritative sources.
+RAVEN's verification software was built to automate the verification layer specifically for community bank lending. Not the entire compliance program — the specific, labor-intensive process of verifying borrower identity, income, employment, assets, and property data against authoritative sources.
 
 When a loan officer initiates a verification through RAVEN, one link to the borrower triggers a cascade of automated checks:
 
@@ -6231,7 +6637,7 @@ Figure proved that automated verification is the leverage point. Their own SEC f
 
 Community banks do not need to become fintechs. They need to verify like fintechs. The rest of their model is already stronger.
 
-**RAVEN gives community banks Figure-speed verification without Figure-sized engineering teams.** One integration. One link. Complete borrower verification in minutes.
+**RAVEN's software gives community banks Figure-speed verification without Figure-sized engineering teams.** One integration. One link. Complete borrower verification in minutes.
 
 [Request early access at reportraven.tech](https://reportraven.tech)`,
   },

@@ -208,6 +208,64 @@ export const METHODOLOGY_FOOTNOTES: { id: number; title: string; body: string }[
 
 export const ROI_BANKS: BankRoiInput[] = [
   {
+    slug: 'vallant-bank',
+    name: 'Vallant Bank',
+    shortName: 'Vallant',
+    articleSlug: 'vallant-bank-95-million-deposits',
+    articleTitle: 'Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.',
+    fdicCert: 14065,
+    auditDate: 'November 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.86B (Sept. 30, 2026)' },
+      { label: 'ROAA', value: '1.73% (Q3 2026, annualized)' },
+      { label: 'NIM', value: '4.79% (Q3 2026)' },
+      { label: 'Branch count', value: '37' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 993,
+        source:
+          'HMDA 2025 originations (FFIEC data browser, actions_taken=1) for the two legacy charters: Pinnacle Bank, LEI 2549006MTEQ1VE0AAQ20, 851 loans totaling $282.9M; Morris Bank, LEI 254900VA7WQ1PZGYI558, 142 loans totaling $45.1M. 2024: 560 and 154 loans (714 combined).',
+        estimated: false,
+      },
+      commercial: {
+        count: 760,
+        source:
+          'Modeled from the June 30, 2026 FDIC call report (cert 14065): nonfarm nonresidential real estate $1,212.1M, construction $383.5M, farmland $377.2M, C&I $210.4M, multifamily $92.6M and farm production $7.9M, about $2.28B of business and farm credit. Assumes roughly 20% of that book is originated or renewed each year (~$457M) at an average note near $600K, about 760 files.',
+        estimated: true,
+      },
+      consumer: {
+        count: 1200,
+        source:
+          'Modeled: consumer loans of $25.9M at 6/30/26 (FDIC cert 14065) at an assumed ~$12K average note and two-year average life imply ~1,100 new consumer notes a year, plus HELOCs from the $658.4M 1-4 family book and MyFasTrack/Business FasTrack small-ticket loans. Rounded to 1,200.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 8100,
+      source:
+        'U.S. Census Bureau Vintage 2025 county estimates: the 16 footprint counties where Vallant holds a meaningful deposit share (Summary of Deposits, June 30, 2026) added about 20,300 residents between July 2024 and July 2025, led by Jackson (+4,963), Houston (+3,310), Hall (+3,023) and Walton (+2,418). Divided by ~2.5 people per household. Excludes Gwinnett, Columbia, Richmond and Clarke, where Vallant holds under 2% of deposits.',
+    },
+    intro:
+      "Vallant Bank is the combination of Pinnacle Bank of Elberton, chartered in 1934, and Morris Bank of Dublin, formed in 1954, which merged on April 1, 2026 and converted onto one system under the Vallant name on June 17. At June 30 it was the fourth-largest bank headquartered in Georgia by assets, with 36 offices and $3.46 billion of deposits in 20 counties in the FDIC's branch survey; it leads deposit share in Elbert (70.4%), Jones (52.5%), Franklin (40.3%), Laurens (34.3%) and Hart (31.1%) counties. The third quarter of 2026 delivered a 1.73% annualized ROAA and a 4.79% net interest margin, alongside a $95.0 million drop in noninterest-bearing deposits. The book is a farm-and-business franchise: $377.2 million of farmland loans and $1.21 billion of nonfarm commercial property at June 30, plus a mortgage operation that originated 993 loans across the two legacy charters in 2025.",
+    strategic: [
+      {
+        title: 'Win Back Operating Deposits With a Business Front Door',
+        body: "Noninterest-bearing deposits fell $95.0 million in the first full quarter after conversion, about 72% of the $132.0 million total decline, and the bank funded the outflow by drawing cash at other banks down $145.1 million. Those balances are business checking, payroll and treasury money. Today a business cannot open a checking account online at vallant.bank, and every business loan above $50,000 starts with a contact form. RAVEN's branded business intake verifies owner identity, beneficial ownership and business bank data at the first session, so a prospect leaving a competitor, or a legacy customer reconsidering after conversion, can open and borrow without waiting for a banker's calendar.",
+      },
+      {
+        title: 'Put Account Opening and Small-Ticket Lending in One Session',
+        body: "MyFasTrack ($3,500 to $30,000) and Business FasTrack ($3,500 to $50,000) promise a response in minutes and cash in three days, but both require an existing Vallant checking account, and account opening runs on a separate third-party site. A newcomer has to finish one flow before starting the other. Footprint counties added roughly 8,100 households in the latest Census year, mostly in Jackson, Houston, Hall and Walton counties, where Vallant's deposit shares run from 2.8% to 14.8%. A single verified session that opens the account and takes the application turns those arrivals into relationships instead of abandoned second steps.",
+      },
+      {
+        title: 'Standardize Verification Across Two Legacy Lending Cultures',
+        body: "Pinnacle and Morris brought different books: Pinnacle the farm lender with $293.3 million of farmland loans at March 31, 2026, Morris the construction lender with $180.7 million, about 15% of its loans. Merged teams carry merged document checklists. Source-verified income, asset and business financial data at intake gives roughly 760 commercial and farm files and nearly 1,000 mortgages a year one evidence standard, with an audit trail examiners can follow, while the integration is still fresh.",
+      },
+    ],
+    sources:
+      'Vallant Financial third quarter 2026 earnings release (October 20, 2026) and June 30, 2026 quarterly statement (vallantfinancial.com); Pinnacle Financial Corporation and Morris State Bancshares merger announcement (November 20, 2025); merger completion (April 1, 2026) and systems conversion (June 17, 2026) releases; FDIC BankFind call reports, cert #14065 (Pinnacle Bank, now Vallant Bank) and #17910 (Morris Bank); FDIC Summary of Deposits, June 30, 2026; FFIEC HMDA 2024 and 2025 (LEIs 2549006MTEQ1VE0AAQ20 and 254900VA7WQ1PZGYI558); U.S. Census Bureau Vintage 2025 county population estimates; vallant.bank, fingerprinted November 24, 2026.',
+  },
+  {
     slug: 'optimumbank',
     name: 'OptimumBank',
     shortName: 'OptimumBank',
@@ -216,7 +274,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35430,
     auditDate: 'July 2026',
     stats: [
-      { label: 'Total assets', value: '$1.40B' },
+      { label: 'Total assets', value: '$1.58B (Q3 2026)' },
       { label: 'ROA', value: '2.04% (Q2 2026, annualized)' },
       { label: 'NIM', value: '4.57%' },
       { label: 'Branch count', value: '4' },
@@ -394,7 +452,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 31100,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.54B' },
+      { label: 'Total assets', value: '$1.62B (Q3 2026)' },
       { label: 'ROA', value: '0.86%' },
       { label: 'NIM', value: '3.30%' },
       { label: 'Branch count', value: '19' },
@@ -434,7 +492,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 58864,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$1.35B (Q2 2026); ~$2.3B combined with Beacon' },
+      { label: 'Total assets', value: '$1.36B (Q3 2026); ~$2.3B combined with Beacon' },
       { label: 'ROA', value: '1.05% (1H 2026)' },
       { label: 'NIM', value: '3.60% (1H 2026)' },
       { label: 'Branch count', value: '16 after the Oct 2026 Beacon merger' },
@@ -754,7 +812,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 15359,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '$5.30B' },
+      { label: 'Total assets', value: '$5.68B (Q3 2026)' },
       { label: 'ROA', value: '1.40% (1H 2026)' },
       { label: 'Efficiency ratio', value: '52.6% (1H 2026)' },
       { label: 'Branch count', value: '57' },
@@ -796,7 +854,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 35214,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$1.12B' },
+      { label: 'Total assets', value: '$1.11B (Q3 2026)' },
       { label: 'ROA', value: '1.25%' },
       { label: 'NIM', value: '3.77%' },
       { label: 'Loan growth (Q1 annualized)', value: '10.9%' },
@@ -838,7 +896,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 22257,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$3.7B' },
+      { label: 'Total assets', value: '$3.6B (Q3 2026)' },
       { label: 'Q1 2026 net income', value: '$8.2M' },
       { label: 'Wealth AUM', value: '$555M' },
       { label: 'Loan-to-deposit ratio', value: '79%' },
@@ -922,7 +980,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 57756,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$2.35B' },
+      { label: 'Total assets', value: '$2.42B (Q3 2026)' },
       { label: 'Beaufort County deposit share', value: '#1 (17.9%)' },
       { label: 'Loan book in marine vessels', value: '18.9%' },
       { label: '2024 HMDA originations', value: '42' },
@@ -964,7 +1022,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 30111,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '$663M' },
+      { label: 'Total assets', value: '$668M (Q3 2026)' },
       { label: 'Branches', value: '9 across SC & GA' },
       { label: 'Loan book in 1-4 family residential', value: '81%' },
       { label: 'Mortgage run-rate (HMDA)', value: '~150/yr' },
@@ -1170,7 +1228,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 20504,
     auditDate: 'June 2026',
     stats: [
-      { label: 'Total assets', value: '~$28.4B (Q2 2026)' },
+      { label: 'Total assets', value: '~$28.6B (Q3 2026)' },
       { label: 'States', value: 'GA, AL, FL, SC, NC' },
       { label: 'Online loan products', value: '1 of 6 (partial)' },
       { label: 'Mortgage', value: 'Third-party portal' },
@@ -1210,7 +1268,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 22858,
     auditDate: 'October 2026',
     stats: [
-      { label: 'Total assets', value: '~$33.6B (Q2 2026)' },
+      { label: 'Total assets', value: '~$34.2B (Q3 2026)' },
       { label: 'States', value: 'WV, VA, OH, MD, PA, NC, SC' },
       { label: 'Online loan products', value: '2 of 6 (partial)' },
       { label: 'HQ', value: 'Charleston, WV' },
@@ -1242,6 +1300,68 @@ export const ROI_BANKS: BankRoiInput[] = [
     ],
     sources:
       'FDIC BankFind cert #22858; bankwithunited.com site review (June 2026); United Bankshares 10-K (FY2025); HMDA 2024 public data; MBA Quarterly Mortgage Bankers Performance Report (2025); BLS OEWS (2025).',
+  },
+  {
+    slug: 'community-first-credit-union-of-florida',
+    name: 'Community First Credit Union of Florida',
+    shortName: 'Community First',
+    articleSlug: 'community-first-51-million-georgia-bank',
+    articleTitle: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    // NOTE: this field is named for the FDIC certificate a bank carries;
+    // Community First is a credit union with no FDIC cert. Populated with its
+    // NCUA charter number (67290) instead until this field is generalized.
+    // See `sources`.
+    fdicCert: 67290,
+    auditDate: 'November 2026',
+    stats: [
+      { label: 'Total assets', value: '$3.21B (Jun 2026, before the bank deal)' },
+      { label: 'Net worth ratio', value: '12.26% (Jun 2026)' },
+      { label: 'Members', value: '194,282' },
+      { label: 'Bank acquired', value: 'First Southern Bank, $347.2M (closed Oct 2, 2026)' },
+    ],
+    volumes: {
+      mortgage: {
+        count: 1150,
+        source:
+          'Reported 2024 HMDA originations (action taken = originated) for Community First Credit Union of Florida, LEI 549300PIL90PE1ZLKI49, totaling $165.7M, via the FFIEC HMDA data browser API: 195 home purchase, 536 home improvement, 315 other purpose, 87 cash-out refinance, 17 refinance. An actual filed figure, not an estimate. Excludes First Southern Bank, acquired October 2, 2026.',
+        estimated: false,
+      },
+      commercial: {
+        count: 200,
+        source:
+          "Modeled. Community First reported 20 commercial loans granted or purchased in the first half of 2026 (17 to members, 3 nonmember participations; NCUA 5300, June 30, 2026), about 40 a year. First Southern Bank adds roughly $157M of business and commercial property loans (69% of its $226.5M book, FDIC call report June 30, 2026); assuming about a quarter of that book originates or renews each year at a ~$250K average note gives ~160 more. Not a reported figure.",
+        estimated: true,
+      },
+      consumer: {
+        count: 9300,
+        source:
+          'Modeled at the ~4.8% of members per year used across this series, applied to 194,282 members (June 30, 2026). Conservative: the June 30, 2026 call report shows 13,263 loans of all types granted in the first half of 2026, but $712.4M of the $2.38B book is indirect dealer paper that never touches the credit union intake. Not an NCUA-reported figure.',
+        estimated: true,
+      },
+    },
+    market: {
+      newHouseholdsPerYear: 21000,
+      source:
+        "Modeled. Community First's state-charter field of membership now covers 19 Florida and 8 Georgia counties (communityfirstfl.org membership page, November 2026); this sizes only the counties where it operates branches. Census 2024 population change: Duval +16,326, St. Johns +13,418, Clay +4,026, Nassau +2,797, Manatee +13,895, Highlands +1,627, Martin +1,425, Wayne +683, Pierce +226, Ware -41, about 54,400 people. At ~2.5 people per household, roughly 21,000 new households a year.",
+    },
+    intro:
+      "Community First Credit Union of Florida is a $3.21 billion Jacksonville consumer lender (vehicle loans are 40.3% of the book, commercial 10.1%) that just bought a business bank. First Southern Bank, chartered in 1907 and based in Waycross, Georgia, brought $347.2 million in assets, a loan book that is 69% business and commercial property credit, and deposits of which 33% pay no interest; 53% of those deposits sat in Florida branches. Its low-income designation exempts Community First from the business lending cap, so capacity is not the constraint. The constraint is the front door: business checking cannot be opened online, commercial real estate has no online application, and every First Southern customer is being asked to opt in to membership ahead of a summer 2027 system conversion.",
+    strategic: [
+      {
+        title: 'It Bought a Business Bank; Its Business Front Door Is a Phone Number',
+        body: "First Southern's book is $84.2M of nonfarm nonresidential real estate, $32.1M of construction and $23.5M of commercial and industrial loans. At Community First, business checking opens only in a branch, by phone or through an inquiry form, business lines and equipment loans apply on a third-party domain (dblc.app), and commercial real estate has no online application at all. Digital business intake, with owner identity, beneficial ownership and business financials verified from source in one session, is what lets the acquired relationships keep borrowing after the systems merge instead of shopping the renewal.",
+      },
+      {
+        title: 'The Opt-In Deadline Is the Retention Event',
+        body: 'Every First Southern customer is asked to submit a membership opt-in form by December 31, 2026, ahead of an "early summer 2027" conversion, and cannot transact at Community First branches until then. That is a re-onboarding event for every customer of a 119-year-old bank, none of whom bank at a Jacksonville branch today. A verified digital opt-in (identity, address within the new field of membership, and funding account confirmed in one sitting) turns a paperwork deadline into a retention tool instead of a reason to leave.',
+      },
+      {
+        title: 'A Third of the Deposits Cost Nothing. Defend Them Like an Asset',
+        body: "$103.2M of First Southern's $312.9M in deposits paid no interest at June 30, 2026, and its interest expense ran about 1.2% of deposits against about 1.8% at Community First, where certificates are 33.8% of shares. Those operating balances belong mostly to businesses and are the reason the deal priced at roughly 1.7 times equity. They stay when treasury, payments and credit requests keep working through the conversion; they leave when a business owner has to start over at a branch.",
+      },
+    ],
+    sources:
+      "NCUA 5300 call report bulk data, June 30, 2026, charter #67290 (assets, shares, share mix, loans, loan mix, member business loans, net worth, income statement, members, potential members, branches, employees); NCUA credit union locator API (charter 67290, state-chartered FISCU, low-income designation flag); 12 CFR 723.8 via eCFR (member business loan limit and low-income exemption); FDIC BankFind financials for First Southern Bank, cert #10055 (June 30, 2026 and September 30, 2025), FDIC Summary of Deposits 2025 and FDIC institution history; FFIEC HMDA data browser API, 2024, LEI 549300PIL90PE1ZLKI49; Census Vintage 2024 county population estimates; communityfirstfl.org (First Southern becomes Community First page, November 18, 2025 acquisition release, membership, loan and business banking pages), apply.communityfirstfl.org, borrower-portal.communityfirstfl.org, ebanking.communityfirstfl.org and mycommunityfirst.org (fingerprinted November 17, 2026); Jacksonville Daily Record (November 18 and 28, 2025) and Banking Dive (November 19, 2025) on deal terms and ICBA opposition. fdicCert field holds Community First's NCUA charter number, not an FDIC certificate.",
   },
   {
     slug: 'robins-financial-credit-union',
@@ -1558,7 +1678,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 24919,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$1.25B' },
+      { label: 'Total assets', value: '$1.23B (Q3 2026)' },
       { label: 'Branches', value: '10, Stanly/Cabarrus/Anson/Mecklenburg, NC' },
       { label: 'ROA', value: '1.14%' },
       { label: 'Online lending channels', value: '4 of 6' },
@@ -1598,7 +1718,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 26962,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$5.99B' },
+      { label: 'Total assets', value: '$6.12B (Q3 2026)' },
       { label: 'Branches', value: '32, greater Nashville exurban ring, TN' },
       { label: 'ROA', value: '1.52%' },
       { label: 'Online lending channels', value: '5 of 6, on 3 different vendor portals' },
@@ -1678,7 +1798,7 @@ export const ROI_BANKS: BankRoiInput[] = [
     fdicCert: 6862,
     auditDate: 'August 2026',
     stats: [
-      { label: 'Total assets', value: '$1.72B' },
+      { label: 'Total assets', value: '$1.74B (Q3 2026)' },
       { label: 'Branches', value: '19, Northern Neck & Middle Peninsula, VA' },
       { label: 'ROA', value: '1.49%' },
       { label: 'Online lending channels', value: '1 of 5 (mortgage only)' },

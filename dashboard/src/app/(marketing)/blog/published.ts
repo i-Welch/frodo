@@ -15,9 +15,15 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Bank Deep Dives (Nov 2026) —
+  'vallant-bank-95-million-deposits',
+  // — Credit Union Deep Dives (Nov 2026) —
+  'community-first-51-million-georgia-bank',
   // — Institutional research (Nov 2026) —
+  'huawei-cloud-scraper-bank-security',
   'digital-lending-audit-banks-credit-unions',
   // — Market (Nov 2026) —
+  'georgia-most-profitable-banks-q2-2026',
   'georgia-most-efficient-banks-q2-2026',
   'south-carolina-most-efficient-banks-q2-2026',
   // — Macro commentary (Oct 2026) —
@@ -120,6 +126,10 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'vallant-bank-95-million-deposits': '2026-11-25',
+  'huawei-cloud-scraper-bank-security': '2026-11-24',
+  'georgia-most-profitable-banks-q2-2026': '2026-11-13',
+  'community-first-51-million-georgia-bank': '2026-11-18',
   'georgia-most-efficient-banks-q2-2026': '2026-11-20',
   'digital-lending-audit-banks-credit-unions': '2026-11-19',
   'south-carolina-most-efficient-banks-q2-2026': '2026-11-06',
@@ -207,8 +217,9 @@ export const BLOG_UPDATED: Record<string, string> = {
   'anderson-brothers-bank-myrtle-beach-bet': '2026-10-22',
   'arthur-state-bank-upstate-bet': '2026-10-22',
   'beacon-community-bank-charleston-growth-capacity': '2026-10-22',
+  'ccnb-myrtle-beach-merger-growth-2026': '2026-11-21',
   'champions-first-fsu-rebrand': '2026-10-22',
-  'coastal-states-bank-boat-bank': '2026-10-22',
+  'coastal-states-bank-boat-bank': '2026-11-21',
   'community-bank-borrower-experience-roi': '2026-10-22',
   'community-bank-ceo-digital-lending-2026': '2026-10-22',
   'community-bank-compete-neobank-core': '2026-10-22',
@@ -221,7 +232,7 @@ export const BLOG_UPDATED: Record<string, string> = {
   'first-community-bank-sc-cre-merger-growth': '2026-10-22',
   'first-palmetto-bank-sc-performance-deep-dive': '2026-10-22',
   'first-party-fraud-community-banks': '2026-10-22',
-  'first-reliance-sells-at-the-top': '2026-10-22',
+  'first-reliance-sells-at-the-top': '2026-11-21',
   'foreclosure-wave-hiding-in-plain-sight': '2026-10-22',
   'founders-credit-union-mill-town': '2026-10-22',
   'glades-bank-broward-de-novo': '2026-10-22',
@@ -230,10 +241,10 @@ export const BLOG_UPDATED: Record<string, string> = {
   'huntington-bank-southeast-expansion': '2026-10-22',
   'income-verification-fintech-vs-bank': '2026-10-22',
   'next-generation-borrowers-wont-wait': '2026-10-22',
-  'oconee-federal-quiet-comeback': '2026-10-22',
+  'oconee-federal-quiet-comeback': '2026-11-21',
   'one-in-116-mortgage-fraud': '2026-10-22',
   'one-link-complete-verification': '2026-10-22',
-  'optimumbank-98-percent-cre-growth': '2026-10-22',
+  'optimumbank-98-percent-cre-growth': '2026-11-21',
   'optus-bank-cdfi-columbia-growth': '2026-10-22',
   'palmetto-citizens-90-year-wait': '2026-10-22',
   'portrait-bank-winter-park-de-novo': '2026-10-22',
@@ -241,7 +252,9 @@ export const BLOG_UPDATED: Record<string, string> = {
   'rev-credit-union-west-virginia-bet': '2026-10-22',
   'robins-financial-20-million-rebate': '2026-10-22',
   'rocket-mortgage-22-days-how': '2026-10-22',
+  'security-federal-bank-cdfi-rate-rebound-aiken': '2026-11-21',
   'south-carolina-de-novo-drought': '2026-10-22',
+  'southern-bank-nc-digital-bet': '2026-11-21',
   'southern-bank-spartanburg-side-door': '2026-10-22',
   'southern-first-bank-upstate-sc-bet': '2026-10-22',
   'trillion-dollar-ipo-wave-2026': '2026-10-22',

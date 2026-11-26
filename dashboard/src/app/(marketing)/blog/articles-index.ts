@@ -16,6 +16,44 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'vallant-bank-95-million-deposits',
+    title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
+    description:
+      "Vallant, the Georgia bank formed when Pinnacle and Morris merged April 1, earned a 1.73% ROA and a 4.79% margin in Q3 2026. It also lost $95.0 million of noninterest-bearing deposits, 9.1%, in its first full quarter after conversion, and drew down $145 million of cash.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+    auditSlug: 'vallant-bank',
+  },
+  {
+    slug: 'huawei-cloud-scraper-bank-security',
+    title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
+    description:
+      'Two Huawei Cloud networks sent us 15,266 requests in early November, up 47x in five days. Three in four posed as Chrome. How we shut them out, and why banks face the same bots: financial services drew 46% of account takeover incidents in 2025.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
+    slug: 'georgia-most-profitable-banks-q2-2026',
+    title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently",
+    description:
+      "Georgia's ten most profitable community banks earned a median 2.75% ROA in the first half of 2026, against 1.56% statewide. Eight are S corporations that report little or no income tax. The rest of the edge is cheap deposits: funding costs of 0.95% vs. 1.58%.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
+    slug: 'community-first-51-million-georgia-bank',
+    title: "Community First's $51 Million Georgia Bank Was Mostly Florida",
+    description:
+      "Community First Credit Union paid about $51 million, roughly 1.7 times equity, for a Georgia bank chartered in 1907. FDIC data shows 53% of First Southern's deposits sat in Florida, a third paid no interest and 69% of its loans were business credit.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'creditunion',
+    auditSlug: 'community-first-credit-union-of-florida',
+  },
+  {
     slug: 'georgia-most-efficient-banks-q2-2026',
     title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently",
     description:

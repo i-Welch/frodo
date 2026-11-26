@@ -17,6 +17,7 @@ import { firstCapitalBankCharleston } from './first-capital-bank-charleston';
 import { firstPalmettoBank } from './first-palmetto-bank';
 import { beaconCommunityBank } from './beacon-community-bank';
 import { queensboroughNationalBank } from './queensborough-national-bank';
+import { vallantBank } from './vallant-bank';
 import { firstCommunityBankSc } from './first-community-bank-sc';
 import { countybank } from './countybank';
 import { optusBank } from './optus-bank';
@@ -30,6 +31,7 @@ import { palmettoCitizensFcu } from './palmetto-citizens-federal-credit-union';
 import { championsFirstCreditUnion } from './champions-first-credit-union';
 import { foundersFederalCreditUnion } from './founders-federal-credit-union';
 import { robinsFinancialCreditUnion } from './robins-financial-credit-union';
+import { communityFirstCreditUnionOfFlorida } from './community-first-credit-union-of-florida';
 import { uwharrieBank } from './uwharrie-bank';
 import { wilsonBankAndTrust } from './wilson-bank-and-trust';
 import { cogentBank } from './cogent-bank';
@@ -57,6 +59,7 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   firstPalmettoBank,
   beaconCommunityBank,
   queensboroughNationalBank,
+  vallantBank,
   firstCommunityBankSc,
   countybank,
   optusBank,
@@ -69,6 +72,7 @@ export const WL_CONFIGS: WhiteLabelConfig[] = [
   championsFirstCreditUnion,
   foundersFederalCreditUnion,
   robinsFinancialCreditUnion,
+  communityFirstCreditUnionOfFlorida,
   uwharrieBank,
   wilsonBankAndTrust,
   cogentBank,

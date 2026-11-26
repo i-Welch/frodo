@@ -9,4 +9,5 @@ export const FDIC_CERTS: Record<string, number> = {
   'Solutions Plus Bank': 59362,
   'Southern Bank': 16288,
   'First City Bank': 16281,
+  'OakNorth Bank, N.A.': 59305,
 };
