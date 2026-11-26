@@ -11,3 +11,4 @@
 | 2026-11-19 | 1 Institutional research drop | digital-lending-audit-banks-credit-unions | Digital lending audit data: 32 Southeast banks and credit unions (bank-audits.json currentJourney grades, fingerprinted Oct 2026, 6 re-checked Nov 18) |
 | 2026-11-25 | 2 Bank deep dive | vallant-bank-95-million-deposits | Vallant Bank, Elberton, GA (FDIC cert 14065): Q3 2026 results (Oct 20) after the April 1 Pinnacle Bank and Morris Bank merger and June 17 conversion |
 | 2026-11-24 | 1 Institutional research drop | huawei-cloud-scraper-bank-security | First-party traffic data: Huawei Cloud scraper (AS136907, AS55990) on reportraven.tech, Nov 1-24, 2026 (Vercel observability), tied to bank bot/ATO threats |
+| 2026-11-27 | 9 Product scorecard | best-savings-accounts-southeast-november-2026 | Savings scorecard launch: 39 accounts (fintechs, big five, 24 SC/NC/GA/FL locals) from /scorecards/savings, verified 2026-11-26 |

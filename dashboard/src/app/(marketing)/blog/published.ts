@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Product Scorecards (Nov 2026) —
+  'best-savings-accounts-southeast-november-2026',
   // — Bank Deep Dives (Nov 2026) —
   'vallant-bank-95-million-deposits',
   // — Credit Union Deep Dives (Nov 2026) —
@@ -126,6 +128,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'best-savings-accounts-southeast-november-2026': '2026-11-27',
   'vallant-bank-95-million-deposits': '2026-11-25',
   'huawei-cloud-scraper-bank-security': '2026-11-24',
   'georgia-most-profitable-banks-q2-2026': '2026-11-13',
