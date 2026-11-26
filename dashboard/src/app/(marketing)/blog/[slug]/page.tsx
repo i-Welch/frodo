@@ -104,6 +104,122 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'how-many-new-banks-opened-2026': {
+    title: 'How Many New Banks Opened in 2026? FDIC Records Say Nine',
+    description:
+      'FDIC records show nine new banks opened in 2026, the most since 2022. Published counts ran from three to eight. One opener, Erebor, holds $8.67 billion; the other eight hold $490 million combined. And the industry lost 136 charters in the same nine months.',
+    publishedDate: 'November 26, 2026',
+    readTime: '6 min read',
+    content: `
+# How Many New Banks Opened in 2026? FDIC Records Say Nine
+
+*Published November 26, 2026*
+
+Nine. That is how many new banks opened in the United States in 2026, by the FDIC's own records: nine "New Institution" entries in the agency's BankFind history file, dated January 21 through September 28. When we queried it on November 25, nothing had been added since.
+
+That is the most [de novo banks](/glossary/de-novo-bank) in a year since 2022. It is not the number most readers have seen. Counts published this year ran from three to eight, depending on who counted, when, and what they decided a new bank is.
+
+## The Nine
+
+Here is every new FDIC-insured bank of 2026, with the date the FDIC lists it as established and its assets at September 30.
+
+| Bank | City | Opened | Assets |
+|---|---|---|---|
+| [Liberty Bank of New Jersey](/bank-snapshot/59369-liberty-bank-of-new-jersey) | Verona, NJ | Jan. 21 | $141.6M |
+| [Erebor Bank, N.A.](/bank-snapshot/59378-erebor-bank-n-a) | Columbus, OH | Feb. 6 | $8.67B |
+| [Generations Community Bank](/bank-snapshot/59365-generations-community-bank) | Indianapolis, IN | Mar. 9 | $33.6M |
+| [Houston Bank & Trust](/bank-snapshot/59360-houston-bank-and-trust) | Houston, TX | May 22 | $50.3M |
+| [Echelon Bank](/bank-snapshot/59377-echelon-bank) | Clearwater, FL | May 27 | $87.5M |
+| [Cornerstone Community Bank](/bank-snapshot/59379-cornerstone-community-bank) | Owensboro, KY | June 8 | $52.7M |
+| [Portrait Bank](/bank-snapshot/59381-portrait-bank) | Winter Park, FL | June 22 | $56.6M |
+| [Nola Bank](/bank-snapshot/59364-nola-bank) | New Orleans, LA | Sept. 14 | $28.8M |
+| [Private Bank & Trust](/bank-snapshot/59385-private-bank-and-trust) | Gainesville, GA | Sept. 28 | $39.3M |
+
+Eight of the nine are community banks in the ordinary sense: state charters, one to three offices each, between $28.8 million and $141.6 million in assets. Together they hold $490.4 million.
+
+Erebor is the ninth. It is a national bank chartered by the OCC, and when the FDIC approved its deposit insurance on December 16, 2025, it described a business focused on deposit and lending products for businesses and individuals in technology and related industries, including virtual currency market participants. At September 30 it reported $8.67 billion in assets and $7.11 billion in deposits, from one office with 118 employees.
+
+:::stat
+**$8.67 billion vs. $490 million**
+Erebor's assets at September 30, 2026, against the combined assets of the other eight banks that opened in 2026. One technology-focused national bank is 17.7 times the size of the year's whole community bank class.
+:::
+
+## Why the Counts Disagree
+
+Here is what four outlets reported this year:
+
+- **BauerFinancial, July 13:** "Seven de novo banks opened for business between January and June." Bauer named all seven, Erebor among them, and said six of the seven are community banks. FDIC records agree bank for bank.
+- **PCBB's BID Daily, July 2:** "Three de novos have opened so far this year." By FDIC records, seven had. PCBB did not name them.
+- **American Banker, September 15:** Nola Bank was "the seventh new institution to open in 2026."
+- **Banking Dive, September 21:** Nola was "the eighth de novo to open this year."
+
+Most of the gap comes from three places.
+
+The first is Erebor. In FDIC records, Nola is the eighth bank to open in 2026. Leave out Erebor, which few people would call a startup community bank, and it is the seventh. American Banker and Banking Dive differ by exactly one bank.
+
+The second is the baseline. American Banker said 2026's seven compared with "five in all of 2025." Bauer and PCBB said four, and FDIC records show four: BankMiami, Five Rivers Bank, Thrivent Bank and Solutions Plus Bank.
+
+The third is that approvals get counted as openings. The OCC's de novo page, as of November 23, lists 38 national bank charter applications and 21 approvals for 2026. The FDIC has issued 19 deposit insurance decisions dated 2026. Those numbers circulate as "new banks." Most of those banks do not exist yet.
+
+Our method, so anyone can check it: every "New Institution" event in the FDIC's BankFind history file, excluding bridge banks set up to resolve failures, deposit insurance national banks, credit unions and non-deposit trust companies. On that basis:
+
+| Year | New banks |
+|---|---|
+| 2021 | 9 |
+| 2022 | 15 |
+| 2023 | 6 |
+| 2024 | 6 |
+| 2025 | 4 |
+| 2026 | 9 |
+
+Bauer's counts for 2023, 2024 and 2025 match ours exactly. For the longer view, American Banker, citing Federal Reserve Bank of Kansas City research, reported that fewer than seven de novo banks were chartered a year on average from 2010 through 2024, against 185 a year from 1960 through 2006.
+
+:::pullquote
+Nine is a real recovery from four. It is still about one-twentieth of the pace the industry kept for nearly half a century.
+:::
+
+## The Pipeline Behind the Nine
+
+Four of the year's openings were also approved this year: Echelon (January 5), Cornerstone (January 30), Portrait (February 5) and Private Bank & Trust (April 3). Erebor's and Houston Bank & Trust's approvals were dated 2025.
+
+That leaves 15 banks the FDIC approved in 2026 that had not opened, by the agency's decisions table. Six of them have large corporate parents: Ford Credit Bank, GM Financial Bank, Stellantis Bank USA, Edward Jones Bank, OneMain Bank and the fintech Mercury. The other nine run from [New South Bank](/blog/new-south-bank-tampa-de-novo) in Tampa to Venture Coast Bank in Palo Alto. An FDIC approval order expires if the bank is not open within 12 months, unless the FDIC extends it, so most of the 15 should open in 2027 or lose the approval.
+
+Behind them sits the FDIC's pending list: 27 deposit insurance applications as of November 17, 25 of them received in 2026. Five are from Florida, and at least half the list comes from fintechs and consumer lenders, as our [charter rush roundup](/blog/fintech-bank-charter-rush-2026) found in October.
+
+The queue should move faster. On August 10 the FDIC announced a two-phase review in which qualifying de novo applicants can get "a contingent authorization within 120 days of receiving the application." The agency said the new procedures "are intended to encourage new bank formation, accelerate the speed of the review process."
+
+:::pullquote
+Fifteen banks already hold 2026 FDIC approvals and have not opened. That is more than this year's whole class.
+:::
+
+## Nine In, 136 Out
+
+Openings are half the ledger. 4,411 institutions filed call reports for December 31, 2025. 4,284 filed for September 30, 2026. Add the nine newcomers and roughly 136 charters left the industry in nine months.
+
+Four of them failed, by the FDIC's failed bank list: Metropolitan Capital Bank & Trust in Chicago (January 30), Community Bank and Trust - West Georgia in LaGrange (May 1), Kentland Federal Savings and Loan in Indiana (July 10) and Small Business Bank in Lenexa, Kansas (July 17). Nearly all the rest were absorbed in mergers or closed their charters voluntarily.
+
+:::stat
+**9 in, 136 out**
+New FDIC-insured banks in 2026, against the approximate number of charters that left through mergers, closures and four failures between December 31, 2025 and September 30, 2026. About 15 charters left for every one that arrived.
+:::
+
+The new class also starts small. At September 30 the eight community banks together held $244.8 million of equity, $234.6 million of deposits and $60.6 million of net loans, with 165 employees. All nine of the year's banks reported a net loss for the year to date, which is expected in a first year, when the costs of opening arrive before the loan book does.
+
+The Southeast's share is three banks: Echelon and Portrait in Florida, and Private Bank & Trust in Georgia. As our [Florida count](/blog/florida-new-bank-charters-2026) found, the state that files the most charters also loses the most. South Carolina, which [has not started a bank](/blog/south-carolina-de-novo-drought) since 2018, added none.
+
+## What It Means for Community Banks
+
+For an established community bank, a de novo opening across the street is still a rare event: nine in a year, in a country of more than 4,000 banks. The competition that matters is the consolidation behind the 136 and the charters on the approved and pending lists, many of which belong to automakers, brokerages and fintechs with national reach and no branches.
+
+For the new banks, the numbers set the job. The eight community banks of 2026 hold four dollars of equity for every dollar of loans. Their capital is raised; their balance sheets are not built. The [three-year de novo period](/glossary/de-novo-bank) is when examiners test whether the programs in the business plan exist, and when the bank has to turn capital into loans and deposits without a branch network to do it.
+
+That puts the weight on choices made before opening day: a core and a loan origination system that are integrated rather than bolted together, online account opening and loan intake that a customer can finish in one sitting, and identity, income and asset verification from source data so the fraud and BSA programs examiners test are running from the first application.
+
+Nine banks opened in 2026, and 15 more have approval in hand. Next year's question is whether the new class can grow faster than the old one shrinks.
+
+*We track every filing, approval and opening at [De Novo Watch](/de-novo-watch). See the [day-one stack](/solutions/de-novo-bank-technology) a new bank needs.*
+`,
+  },
   'vallant-bank-95-million-deposits': {
     title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
     description:

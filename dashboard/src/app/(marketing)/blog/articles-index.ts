@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'how-many-new-banks-opened-2026',
+    title: 'How Many New Banks Opened in 2026? FDIC Records Say Nine',
+    description:
+      'FDIC records show nine new banks opened in 2026, the most since 2022. Published counts ran from three to eight. One opener, Erebor, holds $8.67 billion; the other eight hold $490 million combined. And the industry lost 136 charters in the same nine months.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'vallant-bank-95-million-deposits',
     title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
     description:
