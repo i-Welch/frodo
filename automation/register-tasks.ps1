@@ -84,6 +84,16 @@ $visibilityTrigger = New-ScheduledTaskTrigger -Weekly -WeeksInterval 4 -DaysOfWe
 Register-ScheduledTask -TaskName 'RAVEN Visibility Check' -Action $visibilityAction -Trigger $visibilityTrigger `
     -Settings $Settings -Description 'Monthly search/AI visibility check; writes topic ideas for /article' -Force | Out-Null
 
+# Sundays 8:00: re-verify the Product Scorecards; every second week add a product
+# type or institutions and write the article (/scorecard-update). The audits clone
+# is idle on Sundays. Its PR merges Monday 10am ET after the 12h review window.
+$scorecardAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
+    -Argument ("-NoProfile -ExecutionPolicy Bypass -Command `"$(Get-UpdateCommand $AuditClone); if (Test-Path '$AuditClone\.claude\commands\scorecard-update.md') { & '$AuditClone\automation\run-article.ps1' " +
+        "-Prompt '/scorecard-update auto' -CloneName 'frodo-audits' -Port 3101 -LogName 'scorecard-update' }`"")
+$scorecardTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Sunday -At 8:00am
+Register-ScheduledTask -TaskName 'RAVEN Product Scorecards' -Action $scorecardAction -Trigger $scorecardTrigger `
+    -Settings $Settings -Description 'Re-verifies the Product Scorecards weekly, expands them every second week, and opens an auto-publish PR' -Force | Out-Null
+
 # Fridays 9:30: weekly newsletter of the week's articles (skipped when there are none).
 $newsletterLog = Join-Path $LogDir 'newsletter.log'
 $newsletterAction = New-ScheduledTaskAction -Execute 'powershell.exe' `
@@ -119,7 +129,7 @@ $publishTrigger = New-ScheduledTaskTrigger -Once -At (Get-Date).Date.AddMinutes(
 Register-ScheduledTask -TaskName 'RAVEN Auto-Publish' -Action $publishAction -Trigger $publishTrigger `
     -Settings $Settings -Description 'Merges auto-publish PRs at 10am ET on weekdays, posts LinkedIn updates, emails finished audits' -Force | Out-Null
 
-Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch', 'RAVEN Visibility Check' |
+Get-ScheduledTask -TaskName 'RAVEN Article', 'RAVEN Auto-Publish', 'RAVEN Audit Requests', 'RAVEN Newsletter', 'RAVEN Digest', 'RAVEN De Novo Watch', 'RAVEN Visibility Check', 'RAVEN Product Scorecards' |
     Select-Object TaskName, State, @{ n = 'NextRun'; e = { ($_ | Get-ScheduledTaskInfo).NextRunTime } }
 
 # New-ScheduledTaskTrigger stores StartBoundary with today's UTC offset, which
