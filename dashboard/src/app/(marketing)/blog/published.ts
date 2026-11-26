@@ -18,6 +18,8 @@ export const BLOG_SLUGS = [
   // — Bank Deep Dives (Nov 2026) —
   'vallant-bank-95-million-deposits',
   // — Credit Union Deep Dives (Nov 2026) —
+  'addition-financial-shrinking-loan-book',
+  // — Credit Union Deep Dives (Nov 2026) —
   'community-first-51-million-georgia-bank',
   // — Institutional research (Nov 2026) —
   'how-many-new-banks-opened-2026',
@@ -129,6 +131,7 @@ export const BLOG_SLUGS = [
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
   'south-carolina-most-profitable-banks-q3-2026': '2026-11-27',
+  'addition-financial-shrinking-loan-book': '2026-11-11',
   'how-many-new-banks-opened-2026': '2026-11-26',
   'vallant-bank-95-million-deposits': '2026-11-25',
   'huawei-cloud-scraper-bank-security': '2026-11-24',
