@@ -303,6 +303,8 @@ export default function DeNovoWatchPage() {
 
         <h2>Read the analysis</h2>
         <p>
+          <a href="/blog/how-many-new-banks-opened-2026">How Many New Banks Opened in 2026? FDIC Records Say Nine</a>
+          <br />
           <a href="/blog/private-bank-trust-gainesville-de-novo">Private Bank &amp; Trust: The 58 Days Gainesville Had No Hometown Bank</a>
           <br />
           <a href="/blog/new-south-bank-tampa-de-novo">New South Bank: A $25M Bet on a County Down to Five Banks</a>
