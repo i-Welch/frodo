@@ -27,8 +27,11 @@ The existing articles in `dashboard/src/app/(marketing)/blog/[slug]/page.tsx` ar
 | 6 | Credit union deep dive: one credit union, from its NCUA 5300 call report | `creditunion` | ROI audit, audit record, white-label demo, LinkedIn | `robins-financial-20-million-rebate`, `founders-credit-union-mill-town`, `champions-first-fsu-rebrand` |
 | 7 | State of the market: a periodic read on community banking (quarterly FDIC QBP, lending share, deposit flows) | `bank` | LinkedIn | `community-banks-are-losing-the-lending-race`, `community-banks-lose-loans-fintechs` |
 | 8 | De Novo Watch: a newly chartered or proposed bank | `denovo` | LinkedIn, de novo data row | `portrait-bank-winter-park-de-novo`, `glades-bank-broward-de-novo` |
+| 9 | Product scorecard: where to get the best savings account, HELOC, etc., from a `/scorecards` product scorecard | `bank` | LinkedIn | `best-savings-accounts-southeast-november-2026` |
 
 Types 1 and 6 match numbers used in earlier commit messages; the others were renumbered when this command was rebuilt.
+
+Type 9 is written by `/scorecard-update` (not the weekly rotation) whenever a scorecard gains a product type or institutions. Its reader is anyone choosing where to keep their money or borrow, not only a bank CEO: write plainly, lead with the answer (the top-scoring products and what each is best for), and use only numbers that are in the scorecard data (`dashboard/src/app/(marketing)/scorecards/`), with the scorecard's verified date. Link the scorecard page near the top and the state pages where relevant. **Never state or imply criterion weights** (say what each criterion measures, as the scorecard page does). Describe local institutions by what they lead on (branches, service, a strong rate) and never as losers. The final section carries the bank-leader angle: what the top-scoring products do that most community banks' products do not. RAVEN may be named once there, as the consulting practice.
 
 ### Weekly rotation (auto mode)
 

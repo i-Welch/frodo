@@ -33,7 +33,7 @@ import { altText, loadAbLog, pickVariant, recordVariant, renderGraphic, type Gra
 import { auditQueueReady, listAuditRequests, sendAuditFollowUp, setAuditStatus, siteUrl } from './audit-requests';
 import { changedSitemapUrls, pingIndexNow } from './indexnow';
 import { alertFounder } from './alert';
-import { postingSlotOpen, publishWindowOpen } from './publish-schedule';
+import { postingSlotOpen, publishWindowOpen, supersedingPullRequest, type PullRequestRef } from './publish-schedule';
 import { ravenApi, siteHeaders } from './raven-api';
 import { fetchPageVisits, hotAccounts } from './warm-accounts';
 import { keepBothInsertions } from './merge-lists';
@@ -89,6 +89,56 @@ function checksFailed(pr: PullRequest): boolean {
   );
 }
 
+// Commits a PR branch merged in from another PR's branch that has since been
+// squash-merged (a visibility check stacked on the previous week's, say).
+// Master holds their changes under a different commit, so git sees the same
+// lines inserted twice and conflicts with itself.
+function squashMergedBases(branch: string): string[] {
+  const secondParents = run('git', ['log', '--merges', '--format=%P', `origin/master..${branch}`])
+    .split('\n')
+    .flatMap((line) => line.split(' ').slice(1))
+    .filter(Boolean);
+  return secondParents.filter((sha) => {
+    try {
+      run('git', ['merge-base', '--is-ancestor', sha, 'origin/master']);
+      return false; // a merge of master itself
+    } catch {
+      // Not on master: it came from another branch.
+    }
+    try {
+      const merged = run('gh', ['api', `repos/i-Welch/frodo/commits/${sha}/pulls`, '--jq', '[.[] | select(.merged_at != null)] | length']);
+      return Number(merged) > 0;
+    } catch {
+      return false;
+    }
+  });
+}
+
+// Re-merges one conflicted file with a squash-merged commit as the base instead
+// of the real merge base. Master already has everything up to that commit, so
+// only the edits made on top of it are left to apply. Null if it still conflicts.
+function remergeOverSquash(file: string, bases: string[]): string | null {
+  const dir = join(STATE_DIR, 'tmp', 'remerge');
+  mkdirSync(dir, { recursive: true });
+  const show = (rev: string) =>
+    execFileSync('git', ['show', rev], { cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 * 1024 * 1024 });
+  for (const base of bases) {
+    try {
+      const [ours, baseFile, theirs] = ['ours', 'base', 'theirs'].map((name) => join(dir, name));
+      writeFileSync(ours, show(`:2:${file}`));
+      writeFileSync(baseFile, show(`${base}:${file}`));
+      writeFileSync(theirs, show(`:3:${file}`));
+      // Exits non-zero (and throws) when conflicts remain.
+      return execFileSync('git', ['merge-file', '-p', ours, baseFile, theirs], {
+        cwd: REPO, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 * 1024 * 1024,
+      });
+    } catch {
+      // Not in that commit, or still conflicting: try the next base.
+    }
+  }
+  return null;
+}
+
 // Scheduled PRs that overlap (an article and a draft release, say) conflict on
 // the lists they both insert into. Merge master into the branch, keep both
 // sides of each "both inserted here" conflict (merge-lists.ts), typecheck, and
@@ -106,12 +156,13 @@ function resolveConflicts(pr: PullRequest): boolean {
     writeFileSync(attributes, '* merge=text\n');
     git('fetch', '-q', 'origin', 'master', pr.headRefName);
     git('checkout', '-q', '-B', 'auto-resolve', `origin/${pr.headRefName}`);
+    const squashBases = squashMergedBases(`origin/${pr.headRefName}`);
     try {
       git('merge', '--no-edit', 'origin/master');
     } catch {
       const conflicted = git('diff', '--name-only', '-z', '--diff-filter=U').split('\0').filter(Boolean);
       const resolved = conflicted.length > 0 && conflicted.every((file) => {
-        const text = keepBothInsertions(readFileSync(join(REPO, file), 'utf8'));
+        const text = remergeOverSquash(file, squashBases) ?? keepBothInsertions(readFileSync(join(REPO, file), 'utf8'));
         if (text === null) return false;
         writeFileSync(join(REPO, file), text);
         git('add', '--', file);
@@ -153,10 +204,20 @@ async function mergeDuePullRequests(): Promise<number> {
       '--json', 'number,title,headRefName,createdAt,mergeable,isDraft,statusCheckRollup',
     ]),
   );
+  const recentlyMerged: PullRequestRef[] = JSON.parse(
+    run('gh', ['pr', 'list', '--state', 'merged', '--limit', '30', '--json', 'number,headRefName,createdAt']),
+  );
   for (const pr of prs) {
     const ageHours = (Date.now() - Date.parse(pr.createdAt)) / 3_600_000;
     const tag = `#${pr.number} "${pr.title}"`;
-    if (pr.isDraft) {
+    const newer = supersedingPullRequest(pr, [...prs, ...recentlyMerged]);
+    if (newer) {
+      if (!DRY_RUN) {
+        run('gh', ['pr', 'close', String(pr.number), '--delete-branch', '--comment',
+          `Superseded by #${newer}, a newer update of the same page. Closed by auto-publish.`]);
+      }
+      log(`${tag}: superseded by #${newer}; ${DRY_RUN ? 'would close (dry run)' : 'closed'}`);
+    } else if (pr.isDraft) {
       log(`${tag}: draft, skipping`);
     } else if (pr.mergeable === 'CONFLICTING' && !DRY_RUN && resolveConflicts(pr)) {
       log(`${tag}: merged master in to clear conflicts; waiting for CI`);
@@ -181,9 +242,23 @@ https://github.com/i-Welch/frodo/pull/${pr.number}/checks`);
     } else if (DRY_RUN) {
       log(`${tag}: would merge (dry run)`);
     } else {
-      run('gh', ['pr', 'merge', String(pr.number), '--squash', '--delete-branch']);
-      log(`${tag}: merged`);
-      merged++;
+      try {
+        run('gh', ['pr', 'merge', String(pr.number), '--squash', '--delete-branch']);
+        log(`${tag}: merged`);
+        merged++;
+      } catch (err) {
+        // A PR merged earlier in this run can leave this one conflicting before
+        // GitHub's mergeable flag catches up. Clear the conflict now; it merges
+        // on a later run once CI passes again.
+        const msg = (err as Error).message;
+        if (/merge conflicts/i.test(msg) && resolveConflicts(pr)) {
+          log(`${tag}: conflicted with a PR merged this run; merged master in, waiting for CI`);
+        } else {
+          log(`${tag}: merge failed: ${msg.split('\n').slice(0, 2).join(' ')}`);
+          await alertFounder(`pr-${pr.number}-merge`, `PR #${pr.number} did not merge`,
+            `${pr.title} was ready to merge, but the merge failed:\n${msg}\nhttps://github.com/i-Welch/frodo/pull/${pr.number}`);
+        }
+      }
     }
   }
   return merged;

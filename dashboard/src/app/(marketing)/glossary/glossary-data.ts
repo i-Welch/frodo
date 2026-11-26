@@ -537,6 +537,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['fdic-deposit-insurance-application', 'industrial-loan-company', 'banking-as-a-service', 'synthetic-identity-fraud'],
     relatedArticles: [
+      { slug: 'how-many-new-banks-opened-2026', title: 'How Many New Banks Opened in 2026? FDIC Records Say Nine' },
       { slug: 'de-novo-bank-day-one-fraud-program', title: 'The De Novo Bank’s Day-One Fraud Program' },
       { slug: 'how-to-start-a-bank', title: 'How to Start a Bank: The De Novo Playbook' },
       { slug: 'glades-bank-broward-de-novo', title: 'Glades Bank and Trust: A $45M Filing for the County the Banks Left Behind' },

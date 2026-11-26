@@ -265,7 +265,8 @@ export function graphicHtml(variant: RenderedVariant, post: GraphicPost): string
 
 /** Image alt text, or the document title LinkedIn shows on a carousel. */
 export function altText(variant: RenderedVariant, post: GraphicPost): string {
-  if (variant === 'carousel') return clip(post.title, 100);
+  // LinkedIn rejects a document title over 58 characters: Done stays open.
+  if (variant === 'carousel') return clip(post.title, 58);
   if (variant === 'stat') {
     const stat = leadStat(post)!;
     return `${stat.value}: ${stat.label}. RAVEN Research, reportraven.tech`;

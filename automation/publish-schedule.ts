@@ -32,3 +32,21 @@ export function postingSlotOpen(now: Date, lastPosted: Date | undefined): string
   if (lastPosted && now.getTime() - lastPosted.getTime() < POST_GAP_HOURS * 3_600_000) return 'posted recently';
   return undefined;
 }
+
+// A De Novo Watch update re-verifies the whole tracker, so once a newer one is
+// open or merged, an older open one is obsolete and only conflicts with it.
+const REPLACED_BY_NEWER = ['de-novo/'];
+
+export interface PullRequestRef {
+  number: number;
+  headRefName: string;
+  createdAt: string;
+}
+
+export function supersedingPullRequest(pr: PullRequestRef, others: PullRequestRef[]): number | undefined {
+  const prefix = REPLACED_BY_NEWER.find((p) => pr.headRefName.startsWith(p));
+  if (!prefix) return undefined;
+  return others.find(
+    (other) => other.number !== pr.number && other.headRefName.startsWith(prefix) && Date.parse(other.createdAt) > Date.parse(pr.createdAt),
+  )?.number;
+}
