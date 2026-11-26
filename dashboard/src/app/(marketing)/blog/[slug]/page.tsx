@@ -104,6 +104,104 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'south-carolina-most-profitable-banks-q3-2026': {
+    title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently",
+    description:
+      "South Carolina's ten most profitable community banks earned a median 1.64% ROA through Sept. 30, 2026, vs. 1.13% statewide, while their assets yielded less: 5.07% vs. 5.29%. The edge is funding: 0.92% of earning assets vs. 1.57%, a gap that has nearly doubled since 2023.",
+    publishedDate: 'November 27, 2026',
+    readTime: '6 min read',
+    content: `
+# Q3 2026: What South Carolina's Most Profitable Banks Do Differently
+
+*Published November 27, 2026*
+
+The median bank headquartered in South Carolina earned a 1.13% return on assets in the first nine months of 2026. The state's ten most profitable community banks earned a median 1.64%.
+
+They did not get there by earning more on their loans. The leaders' loans and securities yield a median 5.07%, less than the median bank's 5.29%. Their whole edge sits on the other side of the balance sheet. They pay a median 0.92% of earning assets for their funding. The median South Carolina bank pays 1.57%.
+
+The figures come from the September 30, 2026 FDIC call reports behind our [South Carolina bank rankings](/bank-rankings/south-carolina), as of the FDIC's November 19 BankFind update: 42 banks holding $63.69 billion in assets. The top-ten lists cover the 36 FDIC-designated community banks with at least $100 million in assets.
+
+## The Leaders
+
+Here are the ten highest [returns on assets](/glossary/return-on-assets) among South Carolina's community banks, year to date and annualized, with each bank's interest expense as a share of earning assets.
+
+| Bank | City | Assets | ROA | Funding cost |
+|---|---|---|---|---|
+| [Enterprise Bank of SC](/bank-snapshot/11539-enterprise-bank-of-south-carolina) | Ehrhardt | $539M | 4.98% | 1.04% |
+| [First Piedmont Federal](/bank-snapshot/28859-first-piedmont-federal-savings-and-loan-association-of-gaffney) | Gaffney | $592M | 1.83% | 0.62% |
+| [Carolina Bank & Trust](/bank-snapshot/16723-carolina-bank-and-trust-co) | Lamar | $820M | 1.74% | 1.32% |
+| [The Peoples Bank](/bank-snapshot/16968-the-peoples-bank) | Iva | $449M | 1.68% | 0.85% |
+| [Bank of York](/bank-snapshot/15104-bank-of-york) | York | $320M | 1.66% | 0.56% |
+| [The Bank of South Carolina](/bank-snapshot/26912-the-bank-of-south-carolina) | Charleston | $554M | 1.63% | 0.69% |
+| [Farmers and Merchants](/bank-snapshot/1660-farmers-and-merchants-bank-of-south-carolina) | Holly Hill | $442M | 1.60% | 0.27% |
+| [Bank of Clarendon](/bank-snapshot/15671-the-bank-of-clarendon) | Manning | $436M | 1.56% | 0.99% |
+| [Anderson Brothers Bank](/bank-snapshot/9923-anderson-brothers-bank) | Mullins | $2.44B | 1.51% | 1.89% |
+| [Bank of Travelers Rest](/bank-snapshot/16389-bank-of-travelers-rest) | Travelers Rest | $1.63B | 1.50% | 1.64% |
+
+Eight of the ten pay less for funding than the state's median bank. The two that pay more are the two largest, and they earn their way around it.
+
+## Less Yield, Cheaper Money
+
+The leaders' median [net interest margin](/glossary/net-interest-margin) is 4.17%, against 3.72% statewide. Six of the ten earn less on their loans and securities than the median bank does. What they pay for money explains the gap, and then some.
+
+:::stat
+**$3.3 million a year**
+What 65 basis points of funding cost is worth on $510 million of earning assets, the median South Carolina bank's. That is the distance between the median bank's interest expense and the profitability leaders'.
+:::
+
+The deposit mix shows where the 65 points come from. At the median leader, 28.4% of domestic deposits pay no interest, against 21.4% at the median bank. Time deposits make up 18.2% of the leaders' deposits and 25.0% statewide. Fourteen of the state's 42 banks hold brokered deposits. One of the ten leaders does.
+
+The gap has widened as rates rose. At the end of 2023, the leaders' median funding cost was 0.79% and the state's was 1.13%, a difference of 34 basis points. It is now 65.
+
+Farmers and Merchants Bank of South Carolina in Holly Hill is the clearest case. It paid 0.27% of earning assets for its funding through September, up from 0.17% at the end of 2023. Of its deposits, 42.6% pay no interest and 8.2% sit in time deposits.
+
+The Bank of South Carolina in Charleston keeps 4.0% of its deposits in time deposits and 37.6% in accounts that pay nothing, for a funding cost of 0.69% and a 4.78% margin.
+
+First Piedmont Federal in Gaffney has a different kind of free money. The savings and loan funds 29.6% of its balance sheet with equity, which pays no interest, and lends 127.5% of its deposits without a dollar of Federal Home Loan Bank advances. Three-quarters of its loans are home mortgages. It earns a 4.84% margin and, after Enterprise, the highest ROA on the list.
+
+:::pullquote
+South Carolina's most profitable banks earn less on their loans than the median bank does. They win on what they pay for deposits.
+:::
+
+## Not Leaner, Not Untaxed
+
+The leaders are not much cheaper to run. Noninterest expense is 2.54% of average assets at the median leader and 2.65% statewide. They carry less of the balance sheet per employee, $6.8 million against $7.2 million, and pay a little less per head: about $98,000 in salaries and benefits, annualized, against $103,000.
+
+Nor is this Georgia's tax story. In our [Georgia read](/blog/georgia-most-profitable-banks-q2-2026), eight of the ten ROA leaders were Subchapter S corporations, which pass income taxes through to their shareholders, and about one Georgia bank in four files as one. In South Carolina, 4 of 42 banks do, and only The Peoples Bank in Iva makes the top ten.
+
+Before taxes, the leaders' median ROA is 2.07%, against 1.41% for the median bank, and the list barely changes. The Peoples Bank and Bank of Travelers Rest fall out. [The Conway National Bank](/bank-snapshot/2102-the-conway-national-bank) and Southern Bank come in.
+
+## Two Exceptions and an Asterisk
+
+Anderson Brothers Bank in Mullins, at $2.44 billion the largest of the ten, pays up for money: 1.89% of earning assets, with $403.9 million of brokered deposits, 18.3% of its total. It earns its way past that. A quarter of its $1.93 billion loan book is consumer credit, $391.4 million of it auto loans, and its assets yield 7.99%, the most among the leaders, for a 6.10% margin. It spends 3.87% of assets to run 27 offices and 450 employees.
+
+[Bank of Travelers Rest](/blog/bank-travelers-rest-greenville-growth-engine) keeps only 15.2% of its deposits in noninterest-bearing accounts and pays 1.64% for funding. Part of its place on the list is the tax line: it reported $1.1 million of income tax on $19.1 million of pretax income.
+
+Enterprise Bank of South Carolina tops the list for the second straight quarter, and it still carries the asterisk from our [June read](/blog/south-carolina-most-efficient-banks-q2-2026). Of its $14.5 million of noninterest income this year, $10.7 million came in the first quarter, and the call report does not say what it was. It also carries $10.6 million of noncurrent loans, 3.51% of its book, the highest among the ten. This piece leans on medians, which one outlier barely moves.
+
+Two other one-time items sit outside the lists. [United Community Bank](/bank-snapshot/16889-united-community-bank), the state's largest at $28.8 billion and not an FDIC-designated community bank, booked a $366 million loss on securities in the third quarter, and its year-to-date ROA fell from 1.40% at June 30 to 0.27%. [Southern Bank](/blog/southern-bank-spartanburg-side-door) in Spartanburg went from eight offices to four during the quarter, its deposits fell $75 million, and its year-to-date noninterest income rose from $634,000 to $6.1 million.
+
+## The Same Banks, Both Lists
+
+Seven of the ten ROA leaders are also among the state's ten most efficient community banks. In Georgia in June, four were. The [efficiency ratio](/glossary/efficiency-ratio) leaders' median is 52.4%, against 60.8% statewide, and they win the same way: funding at 1.01% of earning assets against 1.57%, with 28.8% of deposits paying nothing. Their overhead is lower too, 2.23% of assets, but not their headcount. They run $7.2 million of assets per employee, the same as the median bank. In June they ran more.
+
+The profitability leaders are not having one good year. Nine of the ten, all but Enterprise, earned more on their assets than the state's median bank at the end of 2023, the end of 2024 and September 2025.
+
+:::pullquote
+The gap between what South Carolina's leaders and its median bank pay for money was 34 basis points at the end of 2023. It is now 65.
+:::
+
+Two caveats, in fairness. The whole state is rising. Across the same 42 banks, the median efficiency ratio improved from 62.4% at June 30 to 60.8%, and a year earlier the median bank earned 1.05% on assets. And cheap deposits are partly a choice to lend less. The leaders lend out a median 67.8% of their deposits, against 77.1%. Farmers and Merchants lends 32.2% and keeps 42.4% of its assets in securities. A bank lending a third of its deposits has fewer loans to lose, and fewer to grow on.
+
+## What the Median Bank Can Copy
+
+A median bank cannot buy a deposit base built in Holly Hill since 1912, and it cannot swap its time deposits for checking accounts by Friday. But noninterest-bearing balances are won one operating account at a time, at the moment a customer decides where to open one.
+
+That makes it a front-door problem. A consumer checking account opened online, verified and funded in one sitting, keeps a paycheck from landing at an app. A business operating account is harder: entity documents, beneficial ownership, signers, treasury setup. At many community banks it still starts with a branch appointment, and in our [digital lending audit](/blog/digital-lending-audit-banks-credit-unions), most institutions graded weak or missing on deposit account opening. Verification-first onboarding, with identity, ownership and the funding account confirmed from source data at application, lets a business open its operating account and move its payroll in days instead of weeks, with every check leaving an audit trail an examiner can follow. Those are the accounts that pay nothing.
+
+South Carolina's leaders earn less on their loans than the median bank and still earn 1.64% on their assets. The difference is 65 basis points of funding, and it is won at account opening.
+`,
+  },
   'vallant-bank-95-million-deposits': {
     title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
     description:

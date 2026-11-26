@@ -23,6 +23,7 @@ export const BLOG_SLUGS = [
   'huawei-cloud-scraper-bank-security',
   'digital-lending-audit-banks-credit-unions',
   // — Market (Nov 2026) —
+  'south-carolina-most-profitable-banks-q3-2026',
   'georgia-most-profitable-banks-q2-2026',
   'georgia-most-efficient-banks-q2-2026',
   'south-carolina-most-efficient-banks-q2-2026',
@@ -126,6 +127,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'south-carolina-most-profitable-banks-q3-2026': '2026-11-27',
   'vallant-bank-95-million-deposits': '2026-11-25',
   'huawei-cloud-scraper-bank-security': '2026-11-24',
   'georgia-most-profitable-banks-q2-2026': '2026-11-13',

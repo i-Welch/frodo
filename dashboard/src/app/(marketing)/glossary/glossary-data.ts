@@ -892,6 +892,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['net-interest-margin', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'south-carolina-most-profitable-banks-q3-2026', title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
@@ -944,6 +945,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'south-carolina-most-profitable-banks-q3-2026', title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
       { slug: 'southern-first-bank-upstate-sc-bet', title: 'The Bank That Bet on Upstate South Carolina (And Won)' },
@@ -997,6 +999,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'net-interest-margin', 'loan-origination-system'],
     relatedArticles: [
+      { slug: 'south-carolina-most-profitable-banks-q3-2026', title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-profitable-banks-q2-2026', title: "Q2 2026: What Georgia's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'south-carolina-most-efficient-banks-q2-2026', title: "Q2 2026: What South Carolina's Most Efficient Banks Do Differently" },
