@@ -104,6 +104,94 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'vallant-bank-95-million-deposits': {
+    title: "Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.",
+    description:
+      "Vallant, the Georgia bank formed when Pinnacle and Morris merged April 1, earned a 1.73% ROA and a 4.79% margin in Q3 2026. It also lost $95.0 million of noninterest-bearing deposits, 9.1%, in its first full quarter after conversion, and drew down $145 million of cash.",
+    publishedDate: 'November 25, 2026',
+    readTime: '6 min read',
+    content: `
+# Vallant Earned 1.73%. Its Free Deposits Fell $95 Million.
+
+*Published November 25, 2026*
+
+Vallant Financial's third quarter reads like a merger that worked. Net income: $16.7 million. Return on average assets: 1.73%, annualized. [Net interest margin](/glossary/net-interest-margin): 4.79%. Six months after Pinnacle Bank of Elberton and Morris Bank of Dublin merged into [Vallant Bank](/bank-snapshot/14065-vallant-bank), chief executive Jackson McConnell said the October 20 results "reflect the opportunity we envisioned."
+
+The balance sheet in the same release tells the other half. Between June 30 and September 30, noninterest-bearing deposits fell from $1.04 billion to $946.6 million. That was the first full quarter after the June 17 systems conversion, when two banks' customers moved onto one platform under one new name.
+
+:::stat
+**$95.0 million**
+The drop in Vallant's noninterest-bearing deposits in the third quarter of 2026, 9.1% of the balance. Total deposits fell $132.0 million, so about 72 cents of every dollar that left was a dollar the bank paid nothing for.
+:::
+
+## Two Banks, No Overlap
+
+The deal was announced on November 20, 2025, as a partnership of two of "Georgia's strongest community banks." Pinnacle, chartered in 1934, brought about $2.2 billion of assets and 26 branches across northeast and east Georgia, from Elberton to Gainesville, Athens and Augusta. Morris, formed in 1954, brought $1.5 billion and nine branches in central and southeast Georgia, including Dublin, Macon, Houston County and Statesboro. Each Morris share became 0.1095 shares of the combined company, leaving Morris holders with about 46%. The announcement promised "no market overlap."
+
+It closed on April 1. At June 30, Vallant Bank held $3.99 billion in assets, making it the fourth-largest of the 122 banks headquartered in Georgia in the FDIC data behind our [Georgia bank rankings](/bank-rankings/georgia), behind Ameris, RBC Bank (Georgia) and Metro City Bank.
+
+The FDIC's June 2026 branch survey shows what each side brought. The nine former Morris offices held $1.38 billion of the bank's $3.46 billion in deposits, 40%. The largest office in the combined bank is not the Elberton headquarters, at $252.9 million. It is Morris's main office in Dublin, at $303.1 million.
+
+The franchise is dominant at home and thin where Georgia is growing. In that survey Vallant held 70.4% of Elbert County's deposits and 34.3% of Laurens County's, home to Dublin. By Census estimates, Elbert lost 106 residents in the year to July 2025 and Laurens gained 456. Jackson, Houston and Hall counties added 4,963, 3,310 and 3,023, and Vallant held 3.1%, 12.8% and 2.8% of their deposits.
+
+They were different banks, too. In 2025, by their FDIC call reports, Morris earned a 1.87% return on assets at a 47.5% efficiency ratio. Pinnacle earned 1.29% at 66.0%. Pinnacle was the farm lender, with $293.3 million of farmland loans at March 31, 2026, against Morris's $49.7 million. Morris leaned on construction, $180.7 million, about 15% of its book.
+
+One more detail came with the name. In four counties where Vallant has offices, Houston, Bulloch, Walton and Clarke, the June 2026 deposit leader is a different Pinnacle Bank: the $128.8 billion Nashville-chartered bank. Vallant has not cited that overlap. McConnell called the new name "a thoughtful evolution of the word valiant."
+
+## Where the $132 Million Went
+
+The release puts the quarter's movement plainly.
+
+| Vallant Financial | June 30 | Sept. 30 | Change |
+|---|---|---|---|
+| Noninterest-bearing deposits | $1,041.7M | $946.6M | -$95.0M |
+| Interest-bearing deposits | $2,400.3M | $2,363.3M | -$37.0M |
+| Cash at other banks | $184.8M | $39.7M | -$145.1M |
+| Net loans | $2,946.9M | $2,972.3M | +$25.4M |
+
+The bank paid for the outflow with cash. Balances held at other institutions fell by $145.1 million, and total assets dropped $121.8 million to $3.86 billion. Loans still grew about 1%.
+
+Management called deposits "down slightly" and said they "have stabilized from post-merger disruption." A 3.8% decline in total deposits is modest. The mix is the harder number. The share of deposits that pay no interest fell from 30.3% to 28.6% in one quarter. A year earlier, before the deal was announced, the two banks' call reports showed $982.9 million of noninterest-bearing deposits between them. September's figure sits $36.3 million below that, on a slightly different reporting basis.
+
+:::pullquote
+The merger's income statement is working. Its funding base is the part still being tested.
+:::
+
+Noninterest-bearing balances are operating money: payroll accounts, business checking, the cash that follows a treasury management relationship. They are what made a 4.79% margin possible. When they leave, they are usually replaced by something that costs more, or, as here, by cash the bank had been holding.
+
+## The Earnings, With Caveats
+
+The income statement deserves its credit. Net interest income rose 12.7% in the quarter to $46.6 million. Interest paid on deposits barely moved, $12.19 million against $12.15 million, about 1.4% of deposits annualized. Second-quarter GAAP net income had been $9.8 million after $8.0 million of transaction expenses; stripped of those, it was $15.8 million, and the third quarter beat it. Expenses ran about 60.4% of revenue, close to the 59.7% of the second quarter excluding merger costs, though noninterest expense rose 10.6% from that adjusted base.
+
+Three caveats, in fairness.
+
+First, interest income on loans rose $6.1 million, or 12.9%, while net loans grew about 1%. The release does not say how much came from accreting the discount on Morris's acquired loans, a common post-merger source of income that fades as those loans pay off.
+
+Second, the allowance for credit losses rose $8.9 million to $38.9 million against a provision of $1.3 million, and goodwill and intangibles rose $2.8 million. The release explains neither. Purchase accounting adjustments in the year after a deal can move both without touching the income statement.
+
+Third, rates. Accumulated other comprehensive loss, the line that carries unrealized losses on available-for-sale securities, widened from $31.5 million to $47.9 million in a quarter when the [Fed raised rates](/blog/fed-rate-hike-community-bank-deposits). Equity slipped $3.4 million in a quarter that earned $16.7 million.
+
+## The Front Door After Conversion
+
+We fingerprinted vallant.bank on November 24, 2026. The consumer side converted cleanly. Four checking accounts, savings and a money market open online through a third-party account opening site. Consumer loans and home equity lines apply on an nCino-hosted portal. Mortgages start at apply.vallant.bank, lender by lender, and the two legacy banks' 2025 HMDA filings show 993 originations, up from 714 in 2024. MyFasTrack lends $3,500 to $30,000 online, with a response in minutes and cash within three days, to existing checking customers.
+
+The business side is thinner, and it is the side that holds operating deposits. Business checking cannot be opened online. Business FasTrack tops out at $50,000. SBA, agricultural, equipment and commercial real estate loans have no online application; the SBA page's "Choose a Lender" button still points to a rate tool at pinnaclebankx.mortgagewebcenter.com, five months after the Pinnacle name came down.
+
+## What the Next Two Quarters Test
+
+None of this says the merger failed. A 1.73% return and a 4.79% margin, two quarters after close, look like the "formidable earnings power" the announcement promised. [Community First](/blog/community-first-51-million-georgia-bank) paid about 1.7 times equity for a Georgia bank where a third of deposits paid nothing; Vallant already had $1.04 billion of that kind of money at June 30. The question is how much of it survives the year after conversion.
+
+That is the lesson for any bank heading into a merger. Legal close is paperwork. Conversion is when customers decide. A conversion hands every business customer a new login, often new cards and checks, and a treasury setup to re-learn. Each of those is a reason to take a call from another bank, and operating balances are the easiest money to move. [CCNB and Beacon](/blog/ccnb-myrtle-beach-merger-growth-2026) convert in early 2027 and face the same quarter.
+
+:::pullquote
+Legal close is paperwork. Conversion is when customers decide.
+:::
+
+The fix is operational, and it starts before conversion day: a conversion plan that treats noninterest-bearing balances as the asset at risk, account-level tracking of the largest operating relationships through cutover, treasury onboarding that does not require a business to start over, and a business account opening flow, with identity and beneficial ownership verified at intake, that lets a new business customer open online the week a competitor's conversion goes badly. Those are core and digital banking decisions, and they are cheapest to make before the platforms merge.
+
+Vallant has shown it can earn 1.73% as one bank. The fourth quarter shows whether it keeps the deposits that paid for the 4.79%.
+`,
+  },
   'huawei-cloud-scraper-bank-security': {
     title: '15,266 Requests From Huawei Cloud. Three in Four Posed as People.',
     description:

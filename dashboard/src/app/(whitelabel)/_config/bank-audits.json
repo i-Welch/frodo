@@ -1,5 +1,118 @@
 [
   {
+    "slug": "vallant-bank",
+    "bankName": "Vallant Bank",
+    "shortName": "Vallant",
+    "auditDate": "November 2026",
+    "demoSlug": "vallant-bank",
+    "stats": [
+      {
+        "label": "Total assets",
+        "value": "$3.86B (Sept. 30, 2026)"
+      },
+      {
+        "label": "Branches",
+        "value": "37 in 22 Georgia counties"
+      },
+      {
+        "label": "Business loans online",
+        "value": "Up to $50K only"
+      },
+      {
+        "label": "Noninterest-bearing deposits",
+        "value": "-$95.0M in Q3 2026"
+      }
+    ],
+    "summary": "Vallant Bank is the April 1, 2026 combination of Pinnacle Bank of Elberton (chartered 1934) and Morris Bank of Dublin (formed 1954), rebranded and converted onto one system on June 17. Its third quarter was strong on earnings: $16.7 million of net income, a 1.73% annualized ROAA and a 4.79% net interest margin. It also lost $95.0 million of noninterest-bearing deposits, 9.1% of the balance, and $132.0 million of total deposits in the first full quarter after conversion, funding the outflow by drawing cash at other banks down $145.1 million. The consumer front door converted cleanly: checking and savings open online, consumer loans and HELOCs apply on an nCino-hosted portal, mortgages start at apply.vallant.bank and MyFasTrack lends up to $30,000 online. The business side, which holds the operating balances that left, is thinner: business checking cannot be opened online, Business FasTrack stops at $50,000, and SBA, agricultural, equipment and commercial real estate loans offer only a contact form.",
+    "currentJourney": [
+      {
+        "channel": "Deposit account opening (consumer)",
+        "detail": "Four checking accounts, simple savings and a money market open online at vallantbank.apps.ilendx.tech, a third-party account opening site (fingerprinted November 24, 2026)",
+        "status": "ok"
+      },
+      {
+        "channel": "Consumer loans and HELOC",
+        "detail": "MyFlexFund personal loans and home equity lines apply online on an nCino-hosted portal (vallantbank.omni.ncino.com). MyFasTrack lends $3,500 to $30,000 at myfastrack.vallant.bank with a response in minutes, but only to existing Vallant checking customers",
+        "status": "ok"
+      },
+      {
+        "channel": "Residential mortgage",
+        "detail": "Applications start at apply.vallant.bank through a named loan officer's link on the Find a Lender page. The two legacy banks filed 993 HMDA originations for 2025 (Pinnacle 851, Morris 142), up from 714 in 2024",
+        "status": "ok"
+      },
+      {
+        "channel": "Business deposit account opening",
+        "detail": "No online opening path for business checking. The business checking page lists account features and links to treasury management services, with no application",
+        "status": "missing"
+      },
+      {
+        "channel": "Small business credit up to $50,000",
+        "detail": "Business FasTrack takes applications online for $3,500 to $50,000 at businessfastrack.vallant.bank, with a response in minutes, for existing Vallant checking customers only",
+        "status": "weak"
+      },
+      {
+        "channel": "SBA, agricultural, equipment and CRE loans",
+        "detail": "No online application. Equipment, capital expansion, commercial line of credit, construction and agricultural pages offer a message form; the SBA page's Choose a Lender button still points to pinnaclebankx.mortgagewebcenter.com, a legacy Pinnacle-branded rate tool",
+        "status": "missing"
+      },
+      {
+        "channel": "Existing-customer banking",
+        "detail": "Personal and business online banking on a third-party host (web9.secureinternetbank.com), with mobile banking, Zelle, external transfers, bill pay, Positive Pay, ACH origination and wires for treasury clients. Servicing works",
+        "status": "ok"
+      }
+    ],
+    "findings": [
+      {
+        "title": "The deposits that left are the ones the business front door is least built to win back",
+        "severity": "gap",
+        "body": "Noninterest-bearing deposits fell from $1,041.7 million to $946.6 million between June 30 and September 30, 2026, about 72% of a $132.0 million total deposit decline. Those are operating balances: business checking, payroll and treasury relationships. Vallant's consumer channels open and lend online, but a business cannot open a checking account online, and every business loan above $50,000 starts with a contact form. A bank rebuilding operating deposits after a conversion needs a business onboarding path, with owner identity and beneficial ownership verified at intake, that a prospect can finish without a branch appointment."
+      },
+      {
+        "title": "Conversion seams are still visible five months later",
+        "severity": "friction",
+        "body": "The SBA loans page's Choose a Lender button points to pinnaclebankx.mortgagewebcenter.com, a Pinnacle-branded tool, five months after the June 17 rebrand. Online banking runs on a third-party host under a path that begins PBI. Neither breaks anything, but each tells a former Morris customer, or a prospect, that the integration is still in progress, at the moment the bank most needs its business customers to stay."
+      },
+      {
+        "title": "Small-ticket digital lending is gated behind an existing checking account",
+        "severity": "friction",
+        "body": "MyFasTrack ($3,500 to $30,000) and Business FasTrack ($3,500 to $50,000) promise a response in minutes and cash within three days, a strong product. Both require a Vallant checking account. A new household or business that finds Vallant through a loan search has to open a deposit account first, through two separate flows on two separate domains, before it can apply. Combining account opening and loan intake in one verified session removes the second hand-off."
+      },
+      {
+        "title": "Growth is in the counties where the bank is smallest",
+        "severity": "note",
+        "body": "In the June 2026 Summary of Deposits, Vallant held 70.4% of Elbert County's deposits and 34.3% of Laurens County's. Census estimates show Elbert lost 106 residents and Laurens gained 456 in the year to July 2025. Jackson (+4,963), Houston (+3,310) and Hall (+3,023) added far more, and Vallant held 3.1%, 12.8% and 2.8% of those markets. Winning share where people are arriving depends on a front door that a newcomer can use before they ever see a branch."
+      }
+    ],
+    "comparison": [
+      {
+        "dimension": "Business deposit account opening",
+        "today": "No online path",
+        "withRaven": "Online, with owner identity and beneficial ownership verified at intake"
+      },
+      {
+        "dimension": "Business loans above $50,000",
+        "today": "Contact form or call a lender",
+        "withRaven": "Branded application with business financials pulled from source"
+      },
+      {
+        "dimension": "New-customer small-ticket loans",
+        "today": "Open checking first, then apply on a second site",
+        "withRaven": "Account opening and loan intake in one verified session"
+      },
+      {
+        "dimension": "Conversion deposit tracking",
+        "today": "Quarter-end balance sheet",
+        "withRaven": "Verified onboarding data on every new relationship, ready for retention reporting"
+      },
+      {
+        "dimension": "Mortgage intake",
+        "today": "Loan-officer links to apply.vallant.bank",
+        "withRaven": "Income, assets and employment verified from source before the file reaches a processor"
+      }
+    ],
+    "sources": "vallant.bank (homepage, Open an Account, Personal Loans, MyFasTrack, Business FasTrack, MyFlexFund, HELOC, Find a Lender, Business Loans, SBA, Agricultural, Equipment, Construction, Capital Expansion, Commercial Line of Credit, Business Checking and Business Online Banking pages), fingerprinted November 24, 2026. Vallant Financial third quarter 2026 earnings release (October 20, 2026) and second quarter 2026 statement (vallantfinancial.com); Pinnacle Financial Corporation and Morris State Bancshares merger announcement (November 20, 2025); merger completion and systems conversion releases (April 1 and June 17, 2026); FDIC BankFind cert #14065 (Pinnacle Bank, now Vallant Bank) and #17910 (Morris Bank) call reports; FDIC Summary of Deposits, June 30, 2026; FFIEC HMDA 2024 and 2025 (LEIs 2549006MTEQ1VE0AAQ20 and 254900VA7WQ1PZGYI558); U.S. Census Bureau Vintage 2025 county population estimates. Core system not publicly disclosed."
+  },
+  {
     "slug": "optimumbank",
     "bankName": "OptimumBank",
     "shortName": "OptimumBank",
