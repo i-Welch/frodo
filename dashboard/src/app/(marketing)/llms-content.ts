@@ -1,5 +1,7 @@
 import { GLOSSARY_TERMS } from './glossary/glossary-data';
 import { trackerFaqs } from './de-novo-watch/tracker-faq';
+import { PRODUCT_TYPES, scorecardPath } from './scorecards/products';
+import { scorecardFaqs } from './scorecards/faq';
 import { STACK_UPDATED, stackFaqs } from './bank-tech-stack/stack-data';
 import { SOLUTIONS } from './solutions/solutions-data';
 import { INTEGRATIONS } from './integrations/integrations-data';
@@ -114,13 +116,13 @@ function articlesSection(): string {
     .filter((a): a is NonNullable<typeof a> => a !== null)
     .sort((a, b) => b.date.localeCompare(a.date));
   const lines = published.map((a) => `- [${a.title}](${SITE}/blog/${a.slug}): ${a.description}`);
-  return `## Research and articles\n\nRAVEN publishes FDIC-data-backed research on community bank performance, de novo banks, fraud, and verification at [${SITE}/blog](${SITE}/blog). The [De Novo Watch tracker](${SITE}/de-novo-watch) follows newly chartered and in-organization banks, the [Bank Tech Stack Tracker](${SITE}/bank-tech-stack) lists the digital banking, lending and account-opening vendors Southeast banks and credit unions run (data for both as [CSV](${SITE}/de-novo-watch/data.csv), free to cite with attribution). The [Bank Peer Snapshot](${SITE}/bank-snapshot) compares any FDIC-insured bank with same-size banks in its state on ROA, net interest margin, efficiency ratio, assets per employee, and loan-to-deposit ratio, from the latest call report. [Bank rankings by state](${SITE}/bank-rankings) rank every bank headquartered in each state by ROA and efficiency ratio.\n\n${lines.join('\n')}`;
+  return `## Research and articles\n\nRAVEN publishes FDIC-data-backed research on community bank performance, de novo banks, fraud, and verification at [${SITE}/blog](${SITE}/blog). The [De Novo Watch tracker](${SITE}/de-novo-watch) follows newly chartered and in-organization banks, the [Bank Tech Stack Tracker](${SITE}/bank-tech-stack) lists the digital banking, lending and account-opening vendors Southeast banks and credit unions run (data for both as [CSV](${SITE}/de-novo-watch/data.csv), free to cite with attribution). The [Bank Peer Snapshot](${SITE}/bank-snapshot) compares any FDIC-insured bank with same-size banks in its state on ROA, net interest margin, efficiency ratio, assets per employee, and loan-to-deposit ratio, from the latest call report. [Bank rankings by state](${SITE}/bank-rankings) rank every bank headquartered in each state by ROA and efficiency ratio. The [Product Scorecards](${SITE}/scorecards) score consumer products (savings accounts first) at fintechs, the big five banks and Southeast community banks and credit unions on rate, fees, money movement, in-person access and protections, with a page per state and a CSV for each product.\n\n${lines.join('\n')}`;
 }
 
 // Tracker answers in Q&A form, generated from the same data as the pages.
 function trackersSection(): string {
   const qa = (faqs: { q: string; a: string }[]) => faqs.map((f) => `**${f.q}**\n${f.a}`).join('\n\n');
-  return `## Tracker data\n\n### De Novo Watch (${SITE}/de-novo-watch, updated ${TRACKER_SUMMARY.updated})\n\n${qa(trackerFaqs())}\n\n### Bank Tech Stack Tracker (${SITE}/bank-tech-stack, updated ${STACK_UPDATED})\n\n${qa(stackFaqs())}`;
+  return `## Tracker data\n\n### De Novo Watch (${SITE}/de-novo-watch, updated ${TRACKER_SUMMARY.updated})\n\n${qa(trackerFaqs())}\n\n### Bank Tech Stack Tracker (${SITE}/bank-tech-stack, updated ${STACK_UPDATED})\n\n${qa(stackFaqs())}${PRODUCT_TYPES.map((p) => `\n\n### ${p.label} Scorecard (${SITE}${scorecardPath(p.slug)}, verified ${p.updated})\n\n${qa(scorecardFaqs(p, 'all'))}`).join('')}`;
 }
 
 export function buildLlmsTxt(): string {

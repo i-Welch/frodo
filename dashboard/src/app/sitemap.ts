@@ -8,6 +8,8 @@ import { SOLUTIONS } from './(marketing)/solutions/solutions-data';
 import { SERVICES } from './(marketing)/services/services-data';
 import { INTEGRATIONS } from './(marketing)/integrations/integrations-data';
 import { BLOG_SLUGS, BLOG_DATES, BLOG_UPDATED } from './(marketing)/blog/published';
+import { PRODUCT_TYPES, scorecardPath } from './(marketing)/scorecards/products';
+import { SCORECARD_STATES } from './(marketing)/scorecards/types';
 import { bankSlug, financialsUpdated, sitemapInstitutions, STATE_NAMES, stateSlug } from './(marketing)/bank-snapshot/peer-data';
 
 const SITE = 'https://reportraven.tech';
@@ -111,6 +113,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })),
     { url: `${SITE}/bank-tech-stack`, lastModified: new Date(STACK_UPDATED), changeFrequency: 'monthly', priority: 0.8 },
+    {
+      url: `${SITE}/scorecards`,
+      lastModified: new Date(PRODUCT_TYPES.map((p) => p.updated).sort().at(-1)!),
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...PRODUCT_TYPES.flatMap((p) =>
+      [undefined, ...SCORECARD_STATES].map((s) => ({
+        url: `${SITE}${scorecardPath(p.slug, s)}`,
+        lastModified: new Date(p.updated),
+        changeFrequency: 'weekly' as const,
+        priority: 0.8,
+      })),
+    ),
     { url: `${SITE}/glossary`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
     ...GLOSSARY_TERMS.map((t) => ({
       url: `${SITE}/glossary/${t.slug}`,
