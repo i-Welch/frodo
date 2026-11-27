@@ -3,7 +3,7 @@
 // guess. apy and conditionalApy are what a $10,000 balance earns (blended when
 // a rate applies to only part of it). /scorecard-update re-verifies weekly.
 
-import type { ProductRow, SavingsFacts } from './types';
+import type { ProductRow, SavingsFacts, UnpublishedRate } from './types';
 
 export const SAVINGS_UPDATED = '2026-11-26';
 
@@ -414,13 +414,13 @@ export const SAVINGS_ROWS: ProductRow<SavingsFacts>[] = [
     "url": "https://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/",
     "asOf": "2026-11-26",
     "facts": {
-      "apy": null,
+      "apy": 3.2,
       "conditionalApy": null,
       "condition": null,
       "conditionMonthlyCost": 0,
       "noRateWithoutCondition": false,
-      "apyNote": "Rate not verifiable today: the product page, the savings hub, capitalone.com/360savings, and the account disclosure (dated 11/17/2026) all render the APY as 'NaN'; the rate is filled in client-side and the rate feed could not be reached. Page says the rate is variable, effective 11/25/2026, and applies to all balances (not tiered).",
-      "rateAsOf": null,
+      "apyNote": "3.20% APY on all balances (not tiered: every balance tier in the feed, from $0 to $100,000+, carries the same 3.20% APY and 3.154% interest rate), so $10,000 earns 3.20%. Read on 2026-11-26 from Capital One's own deposit-products rate feed, the endpoint the product page's scripts call to fill the rate client-side (POST https://api.capitalone.com/deposits/products/~/search with body {\"include\":[\"RATES\"],\"isRenewableRate\":true} and header Accept: application/json;v=4). Product code 3800 (360 Performance Savings, shortName PSA, matching the page's ${rates:psa:rateType=Standard Rate...} placeholder), rateType 'Standard Rate', rateStatus 'Active'. The feed gives rateEffectiveDate 2026-10-21; the product page labels the rate as variable and effective as of the current date, so rateAsOf is the date the feed was read. Rate is variable.",
+      "rateAsOf": "2026-11-26",
       "monthlyFee": 0,
       "waive": "none-needed",
       "waiveBalance": null,
@@ -440,8 +440,16 @@ export const SAVINGS_ROWS: ProductRow<SavingsFacts>[] = [
     },
     "sources": [
       {
+        "url": "https://api.capitalone.com/deposits/products/~/search",
+        "what": "Capital One rate feed (POST, include RATES): product 3800 360 Performance Savings, Standard Rate, Active, 3.20% APY / 3.154% interest at every balance tier, effective 2026-10-21"
+      },
+      {
         "url": "https://www.capitalone.com/bank/savings-accounts/online-performance-savings-account/",
-        "what": "No fees or minimums, no ATM withdrawals, multiple savings accounts, support hours, APY shown as NaN"
+        "what": "Product page: rate placeholder ${rates:psa:rateType=Standard Rate:interestRateType=APY:productType=simple}, applies to all balances, variable, effective as of current date"
+      },
+      {
+        "url": "https://www.capitalone.com/assets/shell/bank/scripts/",
+        "what": "Page's bank JS bundle: maps psa to product code 3800 and loads rates from productApiUrl https://api.capitalone.com + /deposits/products/~/search"
       },
       {
         "url": "https://www.capitalone.com/bank/disclosures/savings-accounts/online-performance-savings-account/",
@@ -2341,5 +2349,1413 @@ export const SAVINGS_ROWS: ProductRow<SavingsFacts>[] = [
       }
     ],
     "notes": []
+  },
+  {
+    "institution": "founders-federal-credit-union",
+    "name": "Regular Savings Account",
+    "url": "https://www.foundersfcu.com/savings-accounts",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.1,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.10% dividend rate and 0.10% APY on the dividend rates page, Rates Effective November 25, 2026. Dividends compound and credit monthly. Loyalty Select pays 4.07% APY but cannot take member deposits (it is funded only by Founders loyalty programs, with Edge Up round-ups capped at $100 a month), so it is excluded. Money Market Plus is a money market and is excluded.",
+      "rateAsOf": "2026-11-25",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "No monthly service fee with eStatements; accounts without eStatements are charged $2 for each periodic statement by mail. Fee schedule lists a $25 monthly dormant fee after 21 months with no member activity.",
+      "minOpen": 5,
+      "minBalanceForApy": null,
+      "withdrawalsPerMonth": null,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No savings withdrawal limit or excess withdrawal fee stated on the pages read; the product page says withdrawals at Founders ATMs are unlimited at no charge",
+      "externalTransfers": true,
+      "instantTransfers": null,
+      "transferNotes": "Founders Online lets members link external accounts for electronic transfers. Founders Pay sends money only to other Founders members by account number; no Zelle mention found on the pages read.",
+      "atmAccess": true,
+      "subAccounts": true,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.foundersfcu.com/dividend-rates",
+        "what": "Dividend rates page: Regular Savings 0.10% APY, $5 opening deposit, monthly compounding, Rates Effective November 25, 2026, Loyalty Select and Money Market Plus rates"
+      },
+      {
+        "url": "https://www.foundersfcu.com/savings-accounts",
+        "what": "Product page: $5 minimum deposit, no monthly fee with eStatements, $2 mailed statement charge, unlimited Founders ATM withdrawals, CO-OP ATMs, joint owner, additional savings accounts"
+      },
+      {
+        "url": "https://www.foundersfcu.com/loyalty-products-terms-and-conditions",
+        "what": "Loyalty Select terms: members cannot make deposits into the account"
+      },
+      {
+        "url": "https://www.foundersfcu.com/truth-savings-rates-and-fees-schedule",
+        "what": "Rates and fees schedule as of November 24, 2026: dormant fee, statement by mail fee, ATM fees"
+      },
+      {
+        "url": "https://www.foundersfcu.com/founders-online",
+        "what": "Online banking: external transfers, mobile deposit, Founders Pay"
+      },
+      {
+        "url": "https://www.foundersfcu.com/founders-pay",
+        "what": "Founders Pay sends money only to other Founders members"
+      },
+      {
+        "url": "https://www.foundersfcu.com/contact-information",
+        "what": "Member Care phone, Call 24 line, Rock Hill Center has no teller or ATM services"
+      },
+      {
+        "url": "https://www.foundersfcu.com/founders-locations-county",
+        "what": "Branch list by county and office hours"
+      },
+      {
+        "url": "https://www.foundersfcu.com/locations",
+        "what": "Locations page: 49 offices across the Carolinas"
+      }
+    ],
+    "notes": [
+      "Membership eligibility is not published on the Founders site (the Become a Member link goes to an application app that did not render), so membership is left null.",
+      "The Regular Savings Account is the primary share account that establishes membership; the product page says it requires a credit evaluation.",
+      "Withdrawal limits and any excess withdrawal fee for savings are not stated on the pages read.",
+      "Cash deposits are inferred from the branch offices offering teller service (the contact page names Rock Hill Center as the one site without teller service); no page states cash deposits to savings directly.",
+      "Membership is taken from the field of membership in Founders' federal charter, as reported in RAVEN's Founders deep dive (/blog/founders-credit-union-mill-town); foundersfcu.com's membership pages refused automated reads on 2026-11-26."
+    ]
+  },
+  {
+    "institution": "allsouth-federal-credit-union",
+    "name": "Membership Savings",
+    "url": "https://www.allsouth.org/membership-savings/",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.2,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.20% dividend rate and 0.20% APY on the rates page, Rates effective as of November 1, 2026, with a $100 minimum average daily balance to earn the APY. Super Saver and Savings (Secondary) pay the same 0.20%. Premium Checking pays more but is a checking account; Money Market is a money market. Both are excluded.",
+      "rateAsOf": "2026-11-01",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "No monthly maintenance fee. Fee schedule lists a $10 monthly dormant fee after 12 months with no activity and a $10 fee if the membership savings account is closed within 90 days of opening.",
+      "minOpen": 10,
+      "minBalanceForApy": 100,
+      "withdrawalsPerMonth": 6,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No more than six preauthorized, automatic or telephone transfers per month (Truth-in-Savings disclosure); the limits do not apply at a branch, by mail or at any ATM. Going over may bring a fee or account closure, but the fee schedule lists no amount.",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Online and Mobile Banking can transfer between AllSouth accounts and accounts at other financial institutions. Zelle is available in Online and Mobile Banking; the Zelle page says you choose a deposit account at enrollment but does not say whether savings can be used.",
+      "atmAccess": null,
+      "subAccounts": true,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.allsouth.org/rates/",
+        "what": "Rates page: Membership Savings 0.20% APY, $100 minimum average daily balance, rates effective November 1, 2026"
+      },
+      {
+        "url": "https://www.allsouth.org/membership-savings/",
+        "what": "Product page: $10 opening deposit and minimum balance, 0.20% APY at $100 average daily balance, no monthly maintenance fee, joint members"
+      },
+      {
+        "url": "https://www.allsouth.org/bank/savings/",
+        "what": "Savings comparison: Membership Savings, Super Saver, Christmas Club, Cookie Jar Club"
+      },
+      {
+        "url": "https://www.allsouth.org/fee-schedule/",
+        "what": "Fee schedule effective January 28, 2026: dormant savings fee, early closing fee, ATM fees"
+      },
+      {
+        "url": "https://www.allsouth.org/wp-content/uploads/2022/06/Membership_Disclosure_Booklet.pdf",
+        "what": "Membership disclosure booklet: six-transfer limit, $10 membership share, joint accounts, dividend rate may change quarterly"
+      },
+      {
+        "url": "https://www.allsouth.org/bank/online-and-mobile-banking/",
+        "what": "Online and Mobile Banking: transfers to accounts at other financial institutions"
+      },
+      {
+        "url": "https://www.allsouth.org/bank/zelle/",
+        "what": "Zelle in Online and Mobile Banking"
+      },
+      {
+        "url": "https://www.allsouth.org/faqs/",
+        "what": "Night deposit for cash and checks at branches with a drive-thru"
+      },
+      {
+        "url": "https://www.allsouth.org/contact-us/",
+        "what": "Call Center phone numbers and 24/7 lost card line"
+      },
+      {
+        "url": "https://www.allsouth.org/open-new-account/",
+        "what": "Membership eligibility and partner associations"
+      },
+      {
+        "url": "https://www.allsouth.org/locations/",
+        "what": "Branch locator: 21 South Carolina branches"
+      }
+    ],
+    "notes": [
+      "Membership requires the Membership Savings account with a $10 deposit, and $10 must stay in it.",
+      "Call Center hours are labeled business hours on the contact page, but the times are not published.",
+      "The disclosure booklet was uploaded in 2022; it is the only Truth-in-Savings text linked from the disclosures page.",
+      "ATM access to savings is not stated directly; the booklet only says transfer limits do not apply at an ATM.",
+      "No excess withdrawal fee amount is listed in the fee schedule."
+    ]
+  },
+  {
+    "institution": "palmetto-citizens-federal-credit-union",
+    "name": "Prime Share (Savings)",
+    "url": "https://www.palmettocitizens.org/personal/savings/",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.25,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.25% dividend rate and 0.25% APY on balances of $100 or more; the rates page says savings APYs and dividend rates are accurate as of October 1, 2026. Dividends are paid quarterly. Money Market and Premium Money Market are money markets and are excluded.",
+      "rateAsOf": "2026-10-01",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "No minimum balance fee on Prime Share (the rates page shows a $0 minimum balance to avoid a fee). The fee schedule lists a $3 monthly statement mailing fee for personal accounts (no cost for ages 17 and under or 65 and older), a $5 monthly dormant fee after 12 months inactive, and a $15 fee for closing within 90 days.",
+      "minOpen": 5,
+      "minBalanceForApy": 100,
+      "withdrawalsPerMonth": 2,
+      "excessWithdrawalFee": 3,
+      "withdrawalLimit": "Excessive withdrawal fee of $3 for each withdrawal over 2 per month",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Digital banking transfers between Palmetto Citizens accounts, to your accounts at other financial institutions, to other members, and to anyone else by email address or mobile phone number. The pages read do not name the person-to-person service.",
+      "atmAccess": true,
+      "subAccounts": true,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.palmettocitizens.org/rates/",
+        "what": "Rates page: Prime Share 0.25% APY at $100+, accurate as of October 1, 2026; fee schedule: $5 par value, excessive withdrawal fee, dormant fee, early closing fee, statement mailing fee, ATM fees"
+      },
+      {
+        "url": "https://www.palmettocitizens.org/personal/savings/",
+        "what": "Savings page: $5 to open, additional savings accounts, quarterly dividends on $100+, phone hours"
+      },
+      {
+        "url": "https://www.palmettocitizens.org/accounts/",
+        "what": "Account access: external transfers, member transfers, transfers by email or mobile number, ATM and branch access"
+      },
+      {
+        "url": "https://www.palmettocitizens.org/other/",
+        "what": "Free coin counting machines for members at each office"
+      },
+      {
+        "url": "https://www.palmettocitizens.org/locations/",
+        "what": "Branch list (15 SC, 4 GA), branch and drive-thru hours, phone numbers"
+      },
+      {
+        "url": "https://www.palmettocitizens.org/team/",
+        "what": "Membership eligibility"
+      }
+    ],
+    "notes": [
+      "Membership requires the share savings account with $5 par value, which must stay in savings.",
+      "Joint ownership is not stated on the pages read.",
+      "Cash deposits are inferred from the branches and the free coin counting machines at each office; no page states cash deposits to savings directly."
+    ]
+  },
+  {
+    "institution": "sharonview-federal-credit-union",
+    "name": "High-Yield Savings Account",
+    "url": "https://www.sharonview.org/banking/savings/high-yield-savings-account",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.05,
+      "conditionalApy": 3.2,
+      "condition": "Each calendar month, keep a $100 average daily balance and receive at least $100 in aggregate ACH deposits into the account",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "3.15% dividend rate and 3.20% APY on average daily balances from $100 to $100,000 when the monthly requirements are met; 0.05% APY if they are not. A $10,000 balance sits in the $100 to $100,000 tier, so no blending is needed. The rates page says APYs are current as of November 18, 2026; the product page says accurate as of August 1, 2026, with the same rates. The Regular Share pays 0.05% APY with no condition.",
+      "rateAsOf": "2026-11-18",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "No monthly maintenance fee. The fee schedule lists a $10 monthly paper statement fee, a $20 monthly inactivity fee after 12 months without activity, and a $5 fee for closing within 90 days.",
+      "minOpen": 100,
+      "minBalanceForApy": 100,
+      "withdrawalsPerMonth": 6,
+      "excessWithdrawalFee": 25,
+      "withdrawalLimit": "$25 fee for each withdrawal over six per month",
+      "externalTransfers": true,
+      "instantTransfers": null,
+      "transferNotes": "The fee schedule lists external transfers in and out (free under $2,500 standard delivery, $3 outgoing over $2,500, $5 next business day). No Zelle or person-to-person service found on the pages read.",
+      "atmAccess": false,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": null
+    },
+    "sources": [
+      {
+        "url": "https://www.sharonview.org/resources/rates-fees/savings-rates-checking-rates",
+        "what": "Rates page: High-Yield Savings tiers and APYs, requirements, $100 to open, current as of November 18, 2026, Regular Share rate"
+      },
+      {
+        "url": "https://www.sharonview.org/banking/savings/high-yield-savings-account",
+        "what": "Product page: 3.20% APY, ACH deposit requirement, no monthly maintenance fee, $100 minimum, no debit card access, excess withdrawal fee"
+      },
+      {
+        "url": "https://www.sharonview.org/banking/savings/savings-accounts",
+        "what": "Regular share: $5 deposit opens membership"
+      },
+      {
+        "url": "https://www.sharonview.org/resources/rates-fees/fee-schedule",
+        "what": "Fee schedule effective November 1, 2025: excessive withdrawal, paper statement, inactivity, early closure, external transfer fees"
+      },
+      {
+        "url": "https://www.sharonview.org/resources/join-us/eligibility",
+        "what": "Membership eligibility"
+      },
+      {
+        "url": "https://www.sharonview.org/about/locations",
+        "what": "Branch locator: 15 branches (5 SC, 10 NC)"
+      },
+      {
+        "url": "https://www.sharonview.org/about/get-in-touch/contact-us",
+        "what": "Phone numbers and weekday hours"
+      }
+    ],
+    "notes": [
+      "Membership is opened with a Regular Share savings account and a $5 deposit; the High-Yield Savings Account needs its own $100 opening deposit.",
+      "The account does not permit debit card access, so atmAccess is false.",
+      "Joint accounts, sub-accounts and cash deposits are not stated on the pages read."
+    ]
+  },
+  {
+    "institution": "state-employees-credit-union",
+    "name": "Share Account",
+    "url": "https://www.ncsecu.org/accounts/savings/share.html",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.25,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.25% dividend rate and 0.25% APY on the Share and Deposit Account Rates page and rate summary PDF, rates as of 10/1/26. Variable; may change daily. Dividends accrue when the balance is greater than zero, compound daily and are paid monthly.",
+      "rateAsOf": "2026-10-01",
+      "monthlyFee": 1,
+      "waive": "easy",
+      "waiveBalance": null,
+      "feeWaiver": "$1 monthly maintenance fee if the balance is below $25 on the statement cut-off date; a $25 balance must be kept to retain membership.",
+      "minOpen": 25,
+      "minBalanceForApy": 0.01,
+      "withdrawalsPerMonth": "unlimited",
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No count limit stated; the product page advertises unlimited transfers between SECU accounts and the fee schedule lists no excess-withdrawal fee",
+      "externalTransfers": true,
+      "instantTransfers": false,
+      "transferNotes": "Share Accounts are not eligible for ACH withdrawals or debits. Member Access transfers move money between SECU accounts and to other SECU members in real time (Member-to-Member). Outgoing wires can be sent from a Share Account at a branch or through Member Services ($15 domestic). No Zelle or external ACH transfer service found on the pages read.",
+      "atmAccess": true,
+      "subAccounts": null,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.ncsecu.org/rates-fees/account-rates.html",
+        "what": "Rates page: Share 0.25% / 0.25% APY, rates as of 10/1/26, accrual and minimum balance disclosures"
+      },
+      {
+        "url": "https://www.ncsecu.org/content/dam/ncsecu/pdfs/rates/SECUShareAndDepositAccountRateSummary.pdf",
+        "what": "Rate summary PDF as of October 1, 2026: Share $25 minimum, 0.25% APY"
+      },
+      {
+        "url": "https://www.ncsecu.org/accounts/savings/share.html",
+        "what": "Product page: $25 opening deposit, $1 fee below $25, unlimited internal transfers, ATM and branch access, no ACH withdrawals"
+      },
+      {
+        "url": "https://www.ncsecu.org/rates-fees/account-fees.html",
+        "what": "Fee schedule: $1 Share monthly maintenance fee charged if below minimum on statement date, outgoing domestic wire $15"
+      },
+      {
+        "url": "https://www.ncsecu.org/accounts/services/transfer-funds.html",
+        "what": "Transfers between SECU accounts and to other members, no fee"
+      },
+      {
+        "url": "https://www.ncsecu.org/services/member-access.html",
+        "what": "Member-to-Member real-time transfers in Member Access"
+      },
+      {
+        "url": "https://www.ncsecu.org/accounts/services/wire-transfer.html",
+        "what": "Wires can be sent from a Share Account via branch or Member Services"
+      },
+      {
+        "url": "https://www.ncsecu.org/content/dam/ncsecu/pdfs/account-disclosures/AccountRulesAndRegulations.pdf",
+        "what": "Account Rules and Regulations: joint accounts"
+      },
+      {
+        "url": "https://www.ncsecu.org/join.html",
+        "what": "Membership eligibility, in-person or mail joining, $25 share deposit, 275 branch locations"
+      },
+      {
+        "url": "https://www.ncsecu.org/contact-us.html",
+        "what": "Member Services Support 24/7 helpline, branch hours, live chat"
+      },
+      {
+        "url": "https://www.ncsecu.org/accounts/savings/summer-cash.html",
+        "what": "Summer Cash Account limited to certain school system employees via payroll"
+      },
+      {
+        "url": "https://locations.ncsecu.org/",
+        "what": "Branch locator: 275 locations in North Carolina"
+      }
+    ],
+    "notes": [
+      "Membership is limited to the field of membership described on the join page; new members open the Share Account at a branch or by mail.",
+      "The $25 opening deposit is the membership share; a $25 balance must stay in the Share Account.",
+      "Summer Cash (3.75% APY) was not used: it is open only to school system employees paid 9, 10 or 11 months a year and is funded by payroll. Holiday Cash Club pays the same 0.25% as the Share Account. Money Market Share and Share Term Certificates are excluded by the method.",
+      "instantTransfers set to false: SECU offers real-time Member-to-Member transfers only within SECU; no Zelle, RTP or FedNow service found.",
+      "externalTransfers true only because outgoing wires can be sent from a Share Account; there are no online or ACH transfers to other banks from this account.",
+      "subAccounts not stated on the pages read."
+    ]
+  },
+  {
+    "institution": "civic-federal-credit-union",
+    "name": "Select Savings Account",
+    "url": "https://www.civicfcu.org/bank/savings/select-savings",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.25,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.25% rate and 0.25% APY on the rates page, personal savings section Effective Date: 11/03/2026. APY applies to a minimum balance of $1; dividends compound daily and are paid monthly.",
+      "rateAsOf": "2026-11-03",
+      "monthlyFee": 1,
+      "waive": "easy",
+      "waiveBalance": null,
+      "feeWaiver": "$1 fee each month the balance falls below $5. Fee schedule also lists a $5 monthly inactive account fee after 18 months of inactivity, which does not apply if you have logged into online banking within the last 18 months.",
+      "minOpen": 5,
+      "minBalanceForApy": 1,
+      "withdrawalsPerMonth": 10,
+      "excessWithdrawalFee": 1,
+      "withdrawalLimit": "Fee schedule charges $1 per transaction starting with the 11th transaction in a calendar month on Savings and Money Market accounts; the product page says funds are available with no restrictions",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Product page: you can use Zelle and make external transfers from your Select Savings Account in the Civic app. No external transfer fee listed. Overdraft transfers from savings cost $0.50.",
+      "atmAccess": true,
+      "subAccounts": true,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.civicfcu.org/rates",
+        "what": "Rates page: Select Savings 0.25% / 0.25% APY, Steady Save 0.40%, effective 11/03/2026"
+      },
+      {
+        "url": "https://www.civicfcu.org/bank/savings/select-savings",
+        "what": "Product page: $5 opening deposit, $1 fee below $5, Zelle and external transfers, debit card on request, multiple accounts, joint holder"
+      },
+      {
+        "url": "https://www.civicfcu.org/fees",
+        "what": "Fee schedule: $1 below $5, $1 per transaction from the 11th per month, inactive fee, ATM fee reimbursement"
+      },
+      {
+        "url": "https://www.civicfcu.org/bank/savings/steady-save-savings-account",
+        "what": "Steady Save terms: funds held until set distribution dates"
+      },
+      {
+        "url": "https://www.civicfcu.org/bank/savings/savings-overview",
+        "what": "Savings FAQ: debit card access for savings-only members, multiple account types"
+      },
+      {
+        "url": "https://www.civicfcu.org/why-civic",
+        "what": "Field of membership"
+      },
+      {
+        "url": "https://www.civicfoundationnc.org/friends",
+        "what": "Friend of the Civic Foundation: $15 annual donation plus $25 membership deposit"
+      },
+      {
+        "url": "https://www.civicfcu.org/faq-library",
+        "what": "Experience Center available 24/7, chat hours, membership FAQs, conflicting $5 and $25 minimums"
+      },
+      {
+        "url": "https://www.civicfcu.org/contact-us",
+        "what": "Experience Center phone number"
+      },
+      {
+        "url": "https://www.civicfcu.org/locations/raleigh-branch",
+        "what": "Branch hours"
+      },
+      {
+        "url": "https://www.civicfcu.org/services/transfers-payments/add-cash-barcode",
+        "what": "Fee-free cash deposits to Civic accounts at retailers"
+      },
+      {
+        "url": "https://www.civicfcu.org/locations/branches",
+        "what": "Branch list: 11 branches, all in NC"
+      }
+    ],
+    "notes": [
+      "Select Savings is the membership account. The product page and some FAQs give a $5 minimum opening deposit, while other FAQs and the Civic Foundation page give $25; $5 is used for minOpen.",
+      "Steady Save Savings (0.40% APY) was not used: funds are held until fixed distribution dates in March and October, and other withdrawals require contacting Civic, so it works like a club account rather than a regular savings account. Money Market and Choice Money Market accounts are excluded by the method.",
+      "withdrawalsPerMonth is 10 based on the fee schedule's per-transaction fee from the 11th transaction; the fee schedule says transaction, not only withdrawal.",
+      "Support: Civic's FAQ library says the Experience Center and its representatives are available 24/7, including holidays; the contact page itself lists no hours.",
+      "jointAccounts true: the product page requires an adult joint account holder on minor accounts; adult joint ownership terms were not read in an account agreement.",
+      "Fee schedule shows no effective date."
+    ]
+  },
+  {
+    "institution": "self-help-credit-union",
+    "name": "Savings Account",
+    "url": "https://www.self-help.org/personal/checking-savings-loans/savings/personal-savings",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.3,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate, 0.30% APR and 0.30% APY for Savings Account on the account rates page, rates effective as of November 1, 2026. No minimum balance to earn dividends per the product page.",
+      "rateAsOf": "2026-11-01",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": null,
+      "minOpen": 5,
+      "minBalanceForApy": 0,
+      "withdrawalsPerMonth": 6,
+      "excessWithdrawalFee": 1,
+      "withdrawalLimit": "Up to 6 preauthorized, automatic, telephone or online banking transfers per statement period; $1 each after 6 per month, not to exceed $10. Transfers to your own Self-Help accounts and ATM, mail or in-person withdrawals do not count.",
+      "externalTransfers": true,
+      "instantTransfers": false,
+      "transferNotes": "The new online and mobile banking platform lists external transfers and member-to-member transfers among its features. Zelle is described as coming soon, not yet available. Outgoing domestic wire $15.",
+      "atmAccess": true,
+      "subAccounts": null,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.self-help.org/rates/account-rates",
+        "what": "Account rates: Savings Account 0.30% / 0.30% APY, effective November 1, 2026"
+      },
+      {
+        "url": "https://www.self-help.org/rates",
+        "what": "Charter split: Self-Help Credit Union serves FL, GA, NC, SC and VA; Self-Help FCU serves CA, CT, IL, WA and WI"
+      },
+      {
+        "url": "https://www.self-help.org/personal/checking-savings-loans/savings/personal-savings",
+        "what": "Product page: $5 opening deposit, no minimum balance, nationwide ATM access"
+      },
+      {
+        "url": "https://www.self-help.org/getContentAsset/54a573f7-6a4b-4bbe-9795-2f5190f257ee/c03b315a-46e9-462a-9072-f0e24631b193/SHCU-Fee-Schedule-October-2025_ENG.pdf?language=en",
+        "what": "Self-Help CU fee schedule effective October 1, 2025: no savings monthly fee, $1 excess transactions after 6 (max $10), dormant fee, wire fee"
+      },
+      {
+        "url": "https://www.self-help.org/getContentAsset/00789b44-704d-4d21-bdcd-1a28350ccecb/c03b315a-46e9-462a-9072-f0e24631b193/SHCU-Consumer-Account-Agreement-7-1-2025.pdf?language=en",
+        "what": "Self-Help CU account agreement and Truth-in-Savings: $5 par value share, savings transfer limitations, joint accounts"
+      },
+      {
+        "url": "https://www.self-help.org/disclosures/fees",
+        "what": "Web fee schedule (same savings fees)"
+      },
+      {
+        "url": "https://www.self-help.org/personal/checking-savings-loans/savings/safe-home-savings",
+        "what": "SAFE Home Savings limited to Equity Boost home loan borrowers"
+      },
+      {
+        "url": "https://www.self-help.org/digital-experience-upgrades-cu",
+        "what": "New digital banking for FL, GA, NC, SC and VA members: external and member-to-member transfers, Zelle coming soon"
+      },
+      {
+        "url": "https://www.self-help.org/personal/join-us/how-to-become-a-member",
+        "what": "Membership eligibility, join at a branch, member service center 24/7 statement"
+      },
+      {
+        "url": "https://www.self-help.org/member-services-contacts",
+        "what": "Member Support phone (800) 966-7353 for GA, FL, SC, NC and VA"
+      },
+      {
+        "url": "https://www.self-help.org/personal/services-support/member-support-center/banking-faqs",
+        "what": "24/7 automated audio banking"
+      },
+      {
+        "url": "https://www.self-help.org/personal/services-support/branch-atm-locations/north-carolina-branches",
+        "what": "NC branch list and hours"
+      },
+      {
+        "url": "https://www.self-help.org/personal/services-support/branch-atm-locations/south-carolina-branches",
+        "what": "SC branch list: 5"
+      },
+      {
+        "url": "https://www.self-help.org/personal/services-support/branch-atm-locations/georgia-branches",
+        "what": "GA branch list: 1"
+      },
+      {
+        "url": "https://www.self-help.org/personal/services-support/branch-atm-locations/florida-branches",
+        "what": "FL branch list: 10"
+      }
+    ],
+    "notes": [
+      "Charter: Self-Help Credit Union (state-chartered, routing 253184841) is the charter that serves North Carolina consumers; Self-Help Federal Credit Union serves CA, CT, IL, WA and WI. Rates, fee schedule and account agreement used here are Self-Help Credit Union documents.",
+      "Membership requires a $5 par value share, which can be held in any savings, checking or certificate account; the $5 Savings Account opening deposit covers it.",
+      "Dormant account fee: $10 quarterly after 12 months of inactivity unless the combined balance is $100 or more and there is activity; not counted as a monthly fee.",
+      "supportLevel unknown: the join page says the member service center is available 24/7, but the only 24/7 service described elsewhere is automated audio banking; live-agent hours are not stated.",
+      "Club Account (0.30%) and Youth Savings (0.30%) pay the same rate; Money Market, IRA savings and certificates are excluded by the method.",
+      "The site blocks automated fetches; pages were read in a browser.",
+      "subAccounts not stated on the pages read."
+    ]
+  },
+  {
+    "institution": "skyla-credit-union",
+    "name": "Purpose Savings",
+    "url": "https://www.skylacu.com/bank/savings/purpose",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.1,
+      "conditionalApy": 4.1,
+      "condition": "Deposit at least $25 into the Purpose Savings account each calendar month (the Truth-in-Savings disclosure words this as at least one direct deposit of $25 or more) and enroll in eStatements.",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Qualified tiers: 4.889% rate / 5.00% APY on the first $1,000, 3.928% / 4.00% APY on $1,000.01 to $10,000, 0.10% on balances above $10,000. Each rate applies only to the portion of the balance in its tier. Blended at $10,000: $48.89 + $353.52 = $402.41 a year, a 4.024% rate, or 4.10% APY with monthly compounding; this blended figure is our calculation, and it matches the low end of the 4.10% to 5.00% APY range Skyla prints for that tier. Non-qualifying accounts earn 0.10% APY on the whole balance. Rates as of 11/01/2026.",
+      "rateAsOf": "2026-11-01",
+      "monthlyFee": 2,
+      "waive": "easy",
+      "waiveBalance": null,
+      "feeWaiver": "No monthly maintenance fee. A $2 monthly paper statement fee applies unless you enroll in eStatements, which is also required for the qualified rate.",
+      "minOpen": 25,
+      "minBalanceForApy": 0,
+      "withdrawalsPerMonth": "unlimited",
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No limit stated; the rates page shows no account limitation for Purpose Savings, unlike Holiday Savings and IRA accounts",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Digital Banking can link accounts at other financial institutions for transfers. Zelle is available free in the Skyla Mobile App; the Zelle page does not say which Skyla accounts can send. Mobile deposit is available.",
+      "atmAccess": true,
+      "subAccounts": false,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.skylacu.com/rates",
+        "what": "Rates page: Primary Savings 0.10%, Purpose Savings up to 5.00%, Holiday Savings 0.05%, Purpose tier footnote, rates as of 11/01/2026, account limitations column"
+      },
+      {
+        "url": "https://www.skylacu.com/bank/savings/purpose",
+        "what": "Product page: tiers, $25 monthly deposit and eStatements requirement, $25 opening deposit, no monthly fee, $2 paper statement fee, 6 free foreign ATM withdrawals, one account per member"
+      },
+      {
+        "url": "https://www.skylacu.com/hubfs/Website/PDFs/TIS.pdf",
+        "what": "Truth-in-Savings, effective 11.01.2026: Purpose rate schedule and qualification rules, tier method, $5 par value share, paper statement and inactivity fees"
+      },
+      {
+        "url": "https://www.skylacu.com/bank/digital-banking/account-linking",
+        "what": "Linking external accounts for transfers"
+      },
+      {
+        "url": "https://www.skylacu.com/zelle",
+        "what": "Zelle in the Skyla Mobile App, no fee"
+      },
+      {
+        "url": "https://www.skylacu.com/about-skyla/overview",
+        "what": "Membership eligibility, including the American Consumer Council option"
+      },
+      {
+        "url": "https://www.skylacu.com/resources/insured-savings/",
+        "what": "NCUA $250,000 plus $250,000 Excess Share Insurance (ESI)"
+      },
+      {
+        "url": "https://www.skylacu.com/about-skyla/contact-us/",
+        "what": "Contact center hours and phone numbers"
+      },
+      {
+        "url": "https://www.skylacu.com/locations/",
+        "what": "Branch list: 16 NC, 1 SC"
+      }
+    ],
+    "notes": [
+      "Membership requires a Primary Savings account; the Truth-in-Savings disclosure sets the par value of one share at $5 and the rates page gives a $5 Primary Savings opening deposit.",
+      "The product page says the $25 monthly requirement is a deposit; the Truth-in-Savings disclosure says a direct deposit of $25 or more. The condition text gives both.",
+      "The product page and rates page give a $25 minimum opening deposit for Purpose Savings; the Truth-in-Savings rate table layout is hard to read for this account, so the web pages were used.",
+      "Excess share insurance above $250,000 is private coverage through ESI, not federal insurance.",
+      "Inactivity fee of $5 a month after six months with no activity applies to Primary Savings, Checking and Holiday Savings with aggregate balance under $250; Purpose Savings is not named in it.",
+      "subAccounts false: only one Purpose Savings account per primary member; savings goals can be tracked in Digital Banking.",
+      "jointAccounts not stated for this account on the pages read.",
+      "Brand name is Skyla Credit Union; the insured savings page says Skyla is federally chartered."
+    ]
+  },
+  {
+    "institution": "georgia-united-credit-union",
+    "name": "High Earning Savings",
+    "url": "https://gucu.org/bank/savings/high-earning-savings-account",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 1.75,
+      "conditionalApy": 3.15,
+      "condition": "Make net deposits totaling $100 or more during the monthly qualification cycle; balances up to $25,000 then earn 3.15% APY.",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Without qualifying deposits, the $10,000.00 to $24,999.99 tier pays a 1.74% dividend rate (1.75% APY); the Truth-in-Savings disclosure says the rate for the balance range reached applies to the full balance, so $10,000 earns 1.75% APY. Balances under $10,000 earn 0.10% APY. With $100 or more in net deposits in the month, balances under $25,000 earn a 3.11% dividend rate (3.15% APY). The rates page shows a 'Rates current as of' label with no date; the Truth-in-Savings disclosure lists the same rates with a last dividend declaration date of 2/26/2026.",
+      "rateAsOf": null,
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": null,
+      "minOpen": 100,
+      "minBalanceForApy": 10000,
+      "withdrawalsPerMonth": 2,
+      "excessWithdrawalFee": 5,
+      "withdrawalLimit": "Two free withdrawals per month, then a $5.00 fee per withdrawal",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Online Banking supports one-time or recurring transfers to and from accounts at other financial institutions with no Georgia United fee (setup can take up to 5 business days). Zelle is offered; the pages read do not say whether Zelle can draw on this savings account.",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://gucu.org/bank/savings/high-earning-savings-account",
+        "what": "Product page: tiers, APY, $100 opening deposit, two free withdrawals, qualifying deposit footnote"
+      },
+      {
+        "url": "https://gucu.org/rates",
+        "what": "Rates page: High Earning Savings and Share Savings rates, withdrawal fee, membership share and fee"
+      },
+      {
+        "url": "https://gucu.org/docs/default-source/account-disclosures/truth-in-savings.pdf?sfvrsn=b34b0591_419",
+        "what": "Truth-in-Savings disclosure and fee schedule: full-balance tier method, qualification cycle, no service fee, inactive and dormant fees, declaration date"
+      },
+      {
+        "url": "https://gucu.org/open-an-account",
+        "what": "Membership share requirement and joint owners on new accounts"
+      },
+      {
+        "url": "https://gucu.org/open-an-account/become-a-member",
+        "what": "Membership eligibility"
+      },
+      {
+        "url": "https://gucu.org/about-us/locations",
+        "what": "Branch locator: 14 open Georgia branches"
+      },
+      {
+        "url": "https://gucu.org/about-us/contact-us",
+        "what": "Member Care Center phone numbers and hours"
+      },
+      {
+        "url": "https://gucu.org/bank-on-the-go/online-banking/transfers",
+        "what": "External account transfers"
+      },
+      {
+        "url": "https://gucu.org/bank-on-the-go/online-banking/zelle",
+        "what": "Zelle offered"
+      },
+      {
+        "url": "https://gucu.org/learn/faqs",
+        "what": "ATM network cash and check deposits, branch services"
+      }
+    ],
+    "notes": [
+      "Membership requires a Prime Share Savings account with a $5 opening deposit plus a $5 one-time, nonrefundable membership fee.",
+      "The $100 net deposit requirement is treated as a condition, so the no-condition 1.75% is used as apy and 3.15% as conditionalApy. The product page notes that withdrawals can reduce the month's net deposit total.",
+      "The fee schedule lists a $5.00 monthly inactive account fee between 6 and 12 months of inactivity and a dormant fee after 60 months, with combined fees capped at $60.00 for the life of the membership.",
+      "atmAccess null: the FAQ says members can withdraw at network ATMs, but ATM access to this specific account is not stated.",
+      "subAccounts null: not stated whether more than one High Earning Savings account can be opened."
+    ]
+  },
+  {
+    "institution": "lge-community-credit-union",
+    "name": "Savings",
+    "url": "https://www.lgeccu.org/bank/personal-accounts/savings-and-certificates.html",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.25,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "The Savings tier starting at a $100.00 minimum balance pays a 0.250% dividend rate (0.25% APY); the next tier starts at $25,000.00, so $10,000 earns 0.25% APY. Savings rates effective 4/1/2025 per the deposit rates page. A $100 minimum balance is required to earn dividends.",
+      "rateAsOf": "2025-04-01",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "No monthly maintenance fee while the account is active. The account becomes inactive after 12 months with no activity and a balance of $250 or less; the inactive fee amount is in the fee schedule, which is only available in online and mobile banking.",
+      "minOpen": null,
+      "minBalanceForApy": 100,
+      "withdrawalsPerMonth": 5,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "Excessive withdrawal fees apply to withdrawals over 5 per month; the fee amount is not published on the public site",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "The External Transfer Service Agreement covers transfers between linked LGE personal deposit accounts and accounts at other financial institutions. Zelle is available in the LGE app; the pages read do not say whether Zelle can draw on a savings account. Access also through Memberline 24-hour automated phone banking, online and mobile banking, and LGE locations.",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.lgeccu.org/bank/personal-accounts/savings-and-certificates.html",
+        "what": "Savings product details: no monthly fee when active, withdrawal limit, $100 balance to earn dividends, account access"
+      },
+      {
+        "url": "https://www.lgeccu.org/rates/deposit-rates.html",
+        "what": "Deposit rates page: Savings tiers and APY, effective 4/1/2025; Nest rate and terms"
+      },
+      {
+        "url": "https://www.lgeccu.org/bank/personal-accounts/savings-and-certificates/nest.html",
+        "what": "Nest account opening deposit and funding limits"
+      },
+      {
+        "url": "https://www.lgeccu.org/join/membership.html",
+        "what": "Membership eligibility, joint owners"
+      },
+      {
+        "url": "https://www.lgeccu.org/locations/branch-locations.html",
+        "what": "Branch locator: 17 Georgia branches"
+      },
+      {
+        "url": "https://www.lgeccu.org/connect/about-lge-community-credit-union/contact-us.html",
+        "what": "Contact Center hours and phone, Memberline"
+      },
+      {
+        "url": "https://www.lgeccu.org/content/docs/ExternalTransferAgreement.pdf",
+        "what": "External transfers to and from other financial institutions"
+      },
+      {
+        "url": "https://www.lgeccu.org/bank/digital-services/mobile-banking/pay-it-safe-with-zellesupsup.html",
+        "what": "Zelle in the LGE app"
+      },
+      {
+        "url": "https://www.lgeccu.org/planned-partnership.html",
+        "what": "Merger with Ascend Federal Credit Union"
+      }
+    ],
+    "notes": [
+      "The Nest account (3.00% APY) was not used: it opens with a one-time deposit of $1 to $1,000 and can only be added to through transferred dividends, credit card cash back rewards and debit card round-ups, so it cannot be funded to $10,000.",
+      "Youth and Young Adult Savings were not used: they are limited to members through age 22 and pay the higher rate only on the first $1,000.",
+      "LGE members approved a merger with Ascend Federal Credit Union, expected to be legally effective January 1, 2027; LGE will become a division of Ascend and eventually operate under the Ascend name.",
+      "minOpen null: no opening deposit for Savings is stated on the public pages read.",
+      "excessWithdrawalFee null: the fee schedule is only available in online and mobile banking.",
+      "atmAccess null: ATM access to the savings account is not stated.",
+      "subAccounts null: not stated whether more than one Savings account can be opened."
+    ]
+  },
+  {
+    "institution": "banksouth",
+    "name": "Added Advantage Savings",
+    "url": "https://banksouth.com/checking-savings-account-rates",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.7,
+      "conditionalApy": 2.22,
+      "condition": "Each statement cycle: have a BankSouth Complete, Simple or Young Adult consumer checking account, be enrolled in eStatements for this account, receive at least $500 in direct deposits, make at least 10 debit card transactions (ATM withdrawals do not count) and at least 3 online bill pay transactions.",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Rates page footnote: if qualifications are not met, the rate is 0.70% (0.70% APY). With qualifications met, the $0.01 to $499,999.99 tier pays a 2.20% interest rate (2.22% APY), so $10,000 earns 2.22%. Rates are listed as effective and revised 9/28/2026. The Personal Savings account pays 0.20% APY with no conditions.",
+      "rateAsOf": "2026-09-28",
+      "monthlyFee": null,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": "Not published: the rates page is the only BankSouth page that describes this account, and neither it nor the fee schedule lists a maintenance fee for it.",
+      "minOpen": 50,
+      "minBalanceForApy": 0.01,
+      "withdrawalsPerMonth": 5,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "Withdrawal restrictions are the same as Personal Savings: 15 free withdrawals per quarterly statement cycle",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Online banking External Transfers move money between BankSouth and your accounts at other U.S. banks, typically posting the next business day. Pay a Person is a free service to send money to anyone in the U.S., instant to BankSouth customers and next business day otherwise. The pages do not say whether savings accounts can be used for either.",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": null
+    },
+    "sources": [
+      {
+        "url": "https://banksouth.com/checking-savings-account-rates",
+        "what": "Rates page: Added Advantage Savings tiers, APY, qualifications, unqualified rate, opening deposit, effective date"
+      },
+      {
+        "url": "https://banksouth.com/personal/savings/",
+        "what": "Personal Savings withdrawal limit (15 per quarterly statement cycle), $50 minimums"
+      },
+      {
+        "url": "https://banksouth.com/wp-content/uploads/2025/02/20250401-BankSouth-Schedule-of-Fees-With-Message-V2.pdf",
+        "what": "Schedule of fees effective April 1, 2025: no savings maintenance or excess-withdrawal fee listed"
+      },
+      {
+        "url": "https://banksouth.com/help/",
+        "what": "Customer care phone numbers and hours, 24-hour telephone banking"
+      },
+      {
+        "url": "https://banksouth.com/help/banking-support/online-banking-faqs/external-transfers-faqs/",
+        "what": "External transfers to accounts at other U.S. banks"
+      },
+      {
+        "url": "https://banksouth.com/help/banking-support/online-banking-faqs/person-to-person-faqs/",
+        "what": "Pay a Person service"
+      }
+    ],
+    "notes": [
+      "BankSouth has no product page for Added Advantage Savings; every account fact comes from the rates page.",
+      "monthlyFee null: no maintenance fee or waiver is published for this account. The fee schedule lists no savings maintenance fee, but it does not say it is complete for this account.",
+      "The qualifications list checking as one of the requirements for the premium rate, so 0.70% is used as apy. The rates page does not say whether the account can be opened without a BankSouth checking account.",
+      "excessWithdrawalFee null: the fee for withdrawals over the limit is not published.",
+      "atmAccess, subAccounts, jointAccounts and cashDeposit null: not stated for this account."
+    ]
+  },
+  {
+    "institution": "center-parc-credit-union",
+    "name": "Kasasa Saver",
+    "url": "https://www.mycenterparc.com/personal/savings/kasasa-saver/",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.05,
+      "conditionalApy": 4.0,
+      "condition": "Hold a linked Kasasa Cash or Kasasa Cash Back Checking account (required to have Kasasa Saver) and, each monthly qualification cycle, make at least 12 debit card purchases, have at least one direct deposit or ACH credit and be enrolled in eStatements on the checking account.",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "When the linked Kasasa checking qualifications are met, daily balances up to $100,000 earn a 3.930% dividend rate (4.00% APY), so $10,000 earns 4.00%; when they are not met, the entire balance earns 0.050% (0.05% APY). Rates page and consumer rate sheet list these Kasasa Saver rates as effective November 1, 2026; the product page says the APY is accurate as of 03/31/2025 and shows the same figures.",
+      "rateAsOf": "2026-11-01",
+      "monthlyFee": 0,
+      "waive": "none-needed",
+      "waiveBalance": null,
+      "feeWaiver": null,
+      "minOpen": 1,
+      "minBalanceForApy": null,
+      "withdrawalsPerMonth": null,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "The rate sheet says account transfer and withdrawal limitations apply but gives no number for Kasasa Saver",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Checking earnings and ATM fee refunds transfer automatically into Kasasa Saver. The fee schedule lists External Transfer Services (account to account, standard and next-day, in and out) and Zelle person-to-person transfers at $0.00. The pages do not say whether Zelle can draw on Kasasa Saver.",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.mycenterparc.com/personal/savings/kasasa-saver/",
+        "what": "Product page: 4.00% and 0.05% APY, qualifications, $1 opening deposit, no monthly fee, checking requirement"
+      },
+      {
+        "url": "https://www.mycenterparc.com/resources/rates/",
+        "what": "Rates page: Kasasa Saver, Primary Savings and Round Up Savings rates, effective dates"
+      },
+      {
+        "url": "https://www.mycenterparc.com/wp-content/uploads/Rates-Consumer-Account.pdf",
+        "what": "Consumer rate sheet and disclosures: tier method, unqualified rate on entire balance, Round Up Savings funding rules"
+      },
+      {
+        "url": "https://www.mycenterparc.com/wp-content/uploads/FeeSchedule.pdf",
+        "what": "Fee schedule effective April 15, 2026: $0 Kasasa Saver service charge, inactive fee, external transfer and Zelle fees"
+      },
+      {
+        "url": "https://www.mycenterparc.com/about-us/membership/",
+        "what": "Membership eligibility, $1 Primary Savings share"
+      },
+      {
+        "url": "https://www.mycenterparc.com/about-us/locations",
+        "what": "Branch locator: 9 Georgia branches, deposit services"
+      },
+      {
+        "url": "https://www.mycenterparc.com/about-us/contact-us",
+        "what": "Member service phone numbers and hours"
+      }
+    ],
+    "notes": [
+      "Membership requires a Primary Savings (Share) account opened with $1 or more; the Kasasa Cash Checking account also opens with $1.",
+      "apy is the 0.05% Kasasa Saver base rate paid when the checking qualifications are not met; holding the account requires a Kasasa checking account. Primary Savings shows its 4th quarter 2026 rate as Not Yet Declared (0.10% APY for the 3rd quarter).",
+      "Round Up Savings (7.00% APY on the first $1,000, 0.10% above) was not used: it is funded only by debit card round-ups and deposits or transfers into it are not allowed, so it cannot be funded to $10,000.",
+      "The fee schedule lists a $5.00 monthly inactive account fee (up to $60.00) after 12 months without member-initiated activity, unless the member has a Center Parc credit card, IRA, CD or $250 or more in deposits.",
+      "withdrawalsPerMonth and excessWithdrawalFee null: the fee schedule's $10.00 fee for more than six withdrawals per month is listed under Money Market fees, and no Kasasa Saver limit is stated.",
+      "atmAccess, subAccounts and jointAccounts null: not stated for this account."
+    ]
+  },
+  {
+    "institution": "first-federal-bank-lake-city",
+    "name": "Statement Savings",
+    "url": "https://www.ffbf.com/personal/savings",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.01,
+      "conditionalApy": 0.16,
+      "condition": "Cash Management Account, a separate savings account that requires keeping a First Federal Bank checking account: 0.16% APY on the $10,000 to $49,999.99 tier. It carries a $14 monthly service charge waived with a $2,500 daily balance and allows 6 telephone, preauthorized or customer-ordered transfers per month ($10 each after).",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Single rate: the rates page lists Personal or Business Savings at 0.01% APY for $1,000 and up, and the product page says Statement Savings earns interest on daily balances over $1,000. Rates & APY Last Updated: October 25, 2025. The rates page calls the account Personal Savings; both pages say this account credits interest quarterly, which identifies it as Statement Savings.",
+      "rateAsOf": "2025-10-25",
+      "monthlyFee": 4.33,
+      "waive": "balance",
+      "waiveBalance": 500,
+      "feeWaiver": "$13 service charge per quarter (4.33 a month), waived by keeping a $500 daily balance.",
+      "minOpen": 50,
+      "minBalanceForApy": 1000,
+      "withdrawalsPerMonth": 3,
+      "excessWithdrawalFee": 6,
+      "withdrawalLimit": "9 withdrawals per quarter including in-person withdrawals, $6 for each withdrawal after",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Online banking External Transfers move money between your accounts at different institutions. Zelle is in the mobile app and online banking (Bill Pay or Transfer and Pay tab); the pages do not say whether Zelle can be funded from a savings account. Mobile eDeposit limit is $2,500 per day.",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.ffbf.com/personal/savings",
+        "what": "Savings comparison: Statement Savings eligibility, $50 opening deposit, $13 quarterly charge and $500 waiver, interest over $1,000, withdrawal limit and fee; Cash Management Account checking requirement, $14 charge, $2,500 waiver and transfer limit"
+      },
+      {
+        "url": "https://www.ffbf.com/rates",
+        "what": "Rates page: Personal or Business Savings 0.01% APY, Cash Management Account tiers (0.16% at $10,000 to $49,999.99), last updated October 25, 2025"
+      },
+      {
+        "url": "https://www.ffbf.com/fees",
+        "what": "Miscellaneous fee schedule, last updated July 29, 2026: no savings excess-withdrawal fee beyond the product page, $25 early closing fee within 90 days"
+      },
+      {
+        "url": "https://www.ffbf.com/personal/online-banking",
+        "what": "Online banking: External Transfers to accounts at other institutions, Zelle"
+      },
+      {
+        "url": "https://www.ffbf.com/zelle",
+        "what": "Zelle enrollment in mobile app and online banking"
+      },
+      {
+        "url": "https://www.ffbf.com/contact-us",
+        "what": "Customer Care phone number, hours and chat"
+      }
+    ],
+    "notes": [
+      "The Cash Management Account is labeled a savings account (not a money market) on the bank's savings page, so its rate is used as the conditional rate. It is a different account from Statement Savings.",
+      "The rates were last updated October 25, 2025 according to the rates page, more than a year before this read.",
+      "The rates page does not say whether Cash Management tier rates apply to the whole balance; $10,000 falls in the $10,000 to $49,999.99 tier.",
+      "atmAccess, subAccounts and jointAccounts are not stated on the pages read.",
+      "Vacation and Christmas Club savings also pay 0.01% and require an Elite or Enhanced checking account; Student Savers is limited to ages 0 to 24."
+    ]
+  },
+  {
+    "institution": "crews-bank-and-trust",
+    "name": "Personal Savings",
+    "url": "https://crews.bank/personal/banking/savings",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.07,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Deposit rate sheet, Effective: 10/05/26: Personal Savings pays 0.04% rate and APY at $200.00 to $2,499.99, 0.07% rate and APY at $2,500.00 to $49,999.99, 2.55% rate (2.58% APY) at $50,000.00 to $499,999.99 and 2.85% rate (2.89% APY) at $500,000.00 or higher. A $10,000 balance falls in the 0.07% tier. The sheet says its rates apply to accounts located in Central and Southwest Florida.",
+      "rateAsOf": "2026-10-05",
+      "monthlyFee": 5,
+      "waive": "balance",
+      "waiveBalance": 200,
+      "feeWaiver": "$5 Maintenance Charge avoided by keeping a $200 minimum daily balance; a separate $3 Maintenance Charge is avoided by enrolling in Online Statements. No Maintenance Charges for account holders under 18.",
+      "minOpen": 0,
+      "minBalanceForApy": 200,
+      "withdrawalsPerMonth": null,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": null,
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "Online and mobile banking transfer funds to and from another bank. Zelle (no Crews fee, $1,500 rolling seven-day send limit) is in the mobile app. Rapid Transfer sends to or pulls from an external account by debit card for a fee (1.75% out, 0.75% in, $0.50 minimum).",
+      "atmAccess": null,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://crews.bank/personal/banking/savings",
+        "what": "Product page: no minimum opening deposit, $5 and $3 Maintenance Charges and how to avoid them, interest on balances of $200 or more, online opening, mobile deposit"
+      },
+      {
+        "url": "https://www.crews.bank/hubfs/_CBT/PDFs/Deposits%20Rate%20Sheet.pdf",
+        "what": "Deposit rate sheet effective 10/05/26: Personal Savings tiers and APYs, minimum to obtain interest, Central and Southwest Florida scope"
+      },
+      {
+        "url": "https://www.crews.bank/contact",
+        "what": "Phone number and hours, automated telephone banking"
+      },
+      {
+        "url": "https://www.crews.bank/personal/online-banking",
+        "what": "Online banking: transfers to and from another bank, Zelle"
+      },
+      {
+        "url": "https://www.crews.bank/personal/online-banking/mobile-banking",
+        "what": "Mobile app: external transfers, Zelle pay-a-person"
+      },
+      {
+        "url": "https://www.crews.bank/zelle",
+        "what": "Zelle: no Crews fee, delivery in minutes"
+      },
+      {
+        "url": "https://www.crews.bank/personal/online-banking/rapid-transfer",
+        "what": "Rapid Transfer fees and timing"
+      },
+      {
+        "url": "https://www.crews.bank/faq",
+        "what": "FAQ: Zelle send limit, mobile banking transfers to other institutions, ATM network"
+      }
+    ],
+    "notes": [
+      "The product page does not say how often the $5 and $3 Maintenance Charges apply, and no fee schedule or deposit agreement is linked from the site. monthlyFee records the $5 charge as printed, not converted to a monthly figure.",
+      "The rate sheet lists tier ranges but does not say whether a tier rate applies to the whole balance. If 0.04% applied to the first $2,499.99 and 0.07% only to the rest, a $10,000 balance would earn about 0.06%.",
+      "Withdrawal limits for Personal Savings are not stated on the pages read.",
+      "atmAccess, subAccounts and jointAccounts are not stated on the pages read.",
+      "Personal Money Market (0.75% APY at $2,500 to $24,999.99) and the HSA (3.05% APY) were excluded as a money market and a health savings account."
+    ]
+  },
+  {
+    "institution": "fairwinds-credit-union",
+    "name": "Emergency Savings",
+    "url": "https://www.fairwinds.org/personal/savings-accounts/emergency-savings-account",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.59,
+      "conditionalApy": 3.1,
+      "condition": "Save Smart Savings, which must be opened and kept together with a Spend Smart Checking account (no monthly service charge, $25 to open): 3.10% APY on the first $100,000 and 0.10% APY above it.",
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Emergency Savings pays 5.00% APY (4.89% dividend rate) on the portion of the balance up to $1,000 and 0.10% APY (0.10% dividend rate) on the portion above $1,000, per the Truth-in-Savings disclosure. At $10,000 that blends to 0.59% (5.00% on $1,000 and 0.10% on $9,000); the blended figure is our calculation, not one FAIRWINDS prints. Truth-in-Savings: Last Dividend Declaration Date: 11/23/2026. The standard Freedom Savings pays 0.10% APY.",
+      "rateAsOf": "2026-11-23",
+      "monthlyFee": 5,
+      "waive": "balance",
+      "waiveBalance": 300,
+      "feeWaiver": "$5 monthly service charge waived with any one of: a $300 average monthly balance, $25 or more deposited or transferred into the account each month, a $10,000 average monthly combined savings balance (excluding checking), a Signature Checking account, or at least one Change it Up round-up deposit a month.",
+      "minOpen": 10,
+      "minBalanceForApy": null,
+      "withdrawalsPerMonth": "unlimited",
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No withdrawal or deposit transaction limitations apply (Truth-in-Savings); every FAIRWINDS savings account lists no withdrawal fee",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "FAIRWINDS Online and the mobile app can request account-to-account transfers with accounts at other financial institutions. Zelle is free in the mobile app and online banking. Emergency Savings cannot be used for overdraft transfers to checking.",
+      "atmAccess": null,
+      "subAccounts": false,
+      "jointAccounts": true,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://www.fairwinds.org/personal/savings-accounts/emergency-savings-account",
+        "what": "Product page: 5.00% APY on the first $1,000, rate above $1,000, $10 opening deposit, $5 charge and waivers, limit one per member, no overdraft transfers"
+      },
+      {
+        "url": "https://www.fairwinds.org/rates",
+        "what": "Rates page: Emergency, Freedom, Signature, Save Smart and Investor Savings APYs"
+      },
+      {
+        "url": "https://assets.ctfassets.net/dmzde5ytz0gs/1UKjsCJCxACIKZ73qqZsQj/bf439c01aab7e9db031e66ecbdccc9e2/Consumer_TIS_11.23.2026.pdf",
+        "what": "Truth-in-Savings disclosure, last dividend declaration 11/23/2026: dividend rates and APYs, tier method, $5 membership share, Save Smart and Spend Smart pairing, no transaction limitations"
+      },
+      {
+        "url": "https://www.fairwinds.org/personal/savings-accounts",
+        "what": "Savings comparison: service charges, account requirements, no withdrawal fee"
+      },
+      {
+        "url": "https://www.fairwinds.org/personal/smart-bundle",
+        "what": "Smart Bundle: Save Smart Savings 3.10% on the first $100,000, required Spend Smart Checking, no monthly charges"
+      },
+      {
+        "url": "https://assets.ctfassets.net/dmzde5ytz0gs/5Yf7BTz8TNI6Tt3YsgrLEW/7819b31e14c682ffc6fac836ad2df1a5/26-MKT-1203_Update_Service_Charge_Schedule_9.18.26_Update.pdf",
+        "what": "Consumer Service Charge Schedule effective January 30, 2026: Emergency Savings $5 charge and waivers, $10 monthly dormant fee after 12 months under $500"
+      },
+      {
+        "url": "https://www.fairwinds.org/move-money",
+        "what": "Transfers with other financial institutions, branch cash deposits and withdrawals"
+      },
+      {
+        "url": "https://www.fairwinds.org/personal/zelle",
+        "what": "Zelle in the mobile app and online banking"
+      },
+      {
+        "url": "https://assets.ctfassets.net/dmzde5ytz0gs/5Z6hCspIg61WyFq7bX9ZRH/c52d4ef38797ab8c6ed6c48c6a1466f1/Member_Handbook_Reg_CC_Revisions_9.10.26-_MS-011_PROOF.pdf",
+        "what": "Member Handbook (Membership and Account Agreement): joint accounts"
+      },
+      {
+        "url": "https://www.fairwinds.org/support/knowledge-base/5ce2aa5324c06747be090fc9",
+        "what": "Membership requirements: U.S. resident, age 18 or older"
+      },
+      {
+        "url": "https://www.fairwinds.org/locations",
+        "what": "Branch locator: 30 Florida locations"
+      },
+      {
+        "url": "https://www.fairwinds.org/support/contact-us",
+        "what": "Member Services phone numbers, 24/7 availability, chat"
+      }
+    ],
+    "notes": [
+      "Membership requires a $5 Membership Share in addition to the $10 Emergency Savings opening deposit.",
+      "Each savings rate on the rates page shows 'Last updated 11/27/2026', which matched the server's UTC date at the time of the read, so the Truth-in-Savings dividend declaration date (11/23/2026) is used as rateAsOf.",
+      "The conditional rate is from Save Smart Savings, a different account from Emergency Savings; it has no monthly service charge and no minimum balance.",
+      "Signature Savings (2.15% at $10,000) requires Signature Checking; Investor Savings (3.10%) requires $25,000 in LPL investments; My First Home Savings (3.57%) is a 12-month certificate. All were excluded.",
+      "subAccounts false: Emergency Savings is limited to one per member.",
+      "atmAccess null: ATM access to this savings account is not stated.",
+      "Member Services is labeled 24/7 on the contact page; the page does not say whether live agents, rather than the virtual assistant, answer at all hours."
+    ]
+  },
+  {
+    "institution": "campus-usa-credit-union",
+    "name": "Savings",
+    "url": "https://campuscu.com/personal/banking/savings/",
+    "asOf": "2026-11-26",
+    "facts": {
+      "apy": 0.1,
+      "conditionalApy": null,
+      "condition": null,
+      "conditionMonthlyCost": 0,
+      "noRateWithoutCondition": false,
+      "apyNote": "Savings rate table: $5.00 to $1,999 earns 0.00%; $2,000 to $24,999 earns a 0.10% dividend rate and 0.10% APY; higher tiers pay 0.15% to 0.25%. A $10,000 balance falls in the 0.10% tier. Rates page: Effective as of 11/24/2026. The same savings tiers show for every market area on the rates page (Gainesville, Ocala, Lake City, Tallahassee, Crawfordville, The Villages, Leesburg and Outside Market Area).",
+      "rateAsOf": "2026-11-24",
+      "monthlyFee": 8,
+      "waive": "balance",
+      "waiveBalance": 250,
+      "feeWaiver": "$8.00 a month if the cumulative average daily balance in your deposit accounts is less than $250. No fee if you are under 18, 55 or over, have an active loan or credit card balance, or have Free Checking.",
+      "minOpen": 5,
+      "minBalanceForApy": 2000,
+      "withdrawalsPerMonth": 6,
+      "excessWithdrawalFee": null,
+      "withdrawalLimit": "No more than 6 preauthorized, automatic, internet, telephone, check, draft or debit card transfers and withdrawals per month; going over may bring a fee or account closure. ATM cash withdrawals are not limited in number.",
+      "externalTransfers": true,
+      "instantTransfers": true,
+      "transferNotes": "The Online Banking External Funds Transfer Service moves money by ACH between eligible CAMPUS accounts and verified accounts at other institutions (requests after 3 p.m. Eastern process the next business day). Zelle is in the CAMPUS mobile app; the pages do not say whether Zelle can be funded from savings. The ATM card can deposit to, withdraw from and transfer from savings.",
+      "atmAccess": true,
+      "subAccounts": null,
+      "jointAccounts": null,
+      "cashDeposit": true
+    },
+    "sources": [
+      {
+        "url": "https://campuscu.com/rates/?market_area=Gainesville",
+        "what": "Rates page: savings tiers, dividend rates and APYs, effective 11/24/2026; club, Kids and money market rates"
+      },
+      {
+        "url": "https://campuscu.com/fee-schedule/",
+        "what": "Fee schedule effective 01/2025: $8 monthly savings fee, $250 balance waiver and other waivers, $15 monthly dormant fee"
+      },
+      {
+        "url": "https://campuscu.com/online-disclosures/",
+        "what": "EFT and online services disclosures: 6 transfers per month limit, ATM card access to savings, External Funds Transfer Service"
+      },
+      {
+        "url": "https://campuscu.com/personal/banking/savings/",
+        "what": "Banking page: savings, club, Kids and money market account descriptions, Zelle"
+      },
+      {
+        "url": "https://campuscu.com/campus-online-mobile-banking/faq/",
+        "what": "Online banking FAQ: external transfer cut-off, Zelle, live chat hours"
+      },
+      {
+        "url": "https://campuscu.com/contact/",
+        "what": "Phone numbers"
+      },
+      {
+        "url": "https://campuscu.com/atmslocations/",
+        "what": "Locations: 23 locations, service center hours"
+      }
+    ],
+    "notes": [
+      "Membership requires credit approval and a $5 initial deposit to a savings account.",
+      "No truth-in-savings disclosure was found on the site, so the method for applying tier rates is not stated. If 0.10% applied only to the portion above $2,000, a $10,000 balance would earn 0.08%.",
+      "excessWithdrawalFee null: the disclosure says excess transfers may be subject to a fee but the fee schedule lists no amount. The fee schedule separately lists $7.50 for each withdrawal check after the first.",
+      "Holiday and Vacation Club accounts (1.00%) pay out once a year on a fixed date and CAMPUS Kids (1.00%) is for ages 17 and under, so they were excluded; Money Market Checking was excluded as a money market.",
+      "subAccounts and jointAccounts are not stated for this account on the pages read."
+    ]
+  }
+];
+
+// Institutions checked whose own pages publish no savings rate, so they cannot
+// be scored. Shown on the scorecard pages; re-checked with every expansion.
+export const SAVINGS_UNPUBLISHED: UnpublishedRate[] = [
+  {
+    "name": "Southern First Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 35295,
+    "url": "https://www.southernfirst.com/personal/savings",
+    "checked": "2026-11-26",
+    "note": "Its savings page and site publish no savings rate. FIRST Savings lists no APY, and the site says to call 877-679-9646 for rates. The site map has no rate page or rate disclosure."
+  },
+  {
+    "name": "Coastal States Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 57756,
+    "url": "https://www.coastalstatesbank.com/personal/personal-savings/savings-account",
+    "checked": "2026-11-26",
+    "note": "The Savings Account page and the online account opening page say only competitive interest rates. The site publishes rates only for CDs and money markets."
+  },
+  {
+    "name": "First Community Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 34047,
+    "url": "https://www.firstcommunitybankers.com/personal/savings-cds",
+    "checked": "2026-11-26",
+    "note": "The site (now firstcommunitybankers.com) lists terms for Regular and Premium Savings but no interest rate or APY for any account, and it links no rate sheet."
+  },
+  {
+    "name": "South Atlantic Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 58689,
+    "url": "https://southatlantic.bank/personal/savings/personal-savings/",
+    "checked": "2026-11-26",
+    "note": "The Personal Savings page says only that the rate is competitive. The site publishes no rate page or rate disclosure."
+  },
+  {
+    "name": "Security Federal Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 31100,
+    "url": "https://www.securityfederalbank.com/personal/savings/compare-savings-accounts",
+    "checked": "2026-11-26",
+    "note": "The savings comparison page says only that Regular savings offers competitive interest on balances of $100 or more. The site publishes a checking APY but no savings rate, and its site map has no rates page."
+  },
+  {
+    "name": "First Capital Bank",
+    "kind": "community-bank",
+    "state": "SC",
+    "fdicCert": 34966,
+    "url": "https://www.bankwithfirstcapital.com/savings/",
+    "checked": "2026-11-26",
+    "note": "The Personal Savings page compares Capital Savings and First Savings and says both earn interest, but it lists no rate or APY. The site links no rate sheet. The FDIC web address (bankwithfirstcapitalbank.com) redirects to a placeholder page; the bank's site is bankwithfirstcapital.com."
+  },
+  {
+    "name": "First Bank",
+    "kind": "community-bank",
+    "state": "NC",
+    "fdicCert": 15019,
+    "url": "https://localfirstbank.com/personal/savings-accounts-cds/everywhere-savings/",
+    "checked": "2026-11-26",
+    "note": "localfirstbank.com shows no savings rate: the Everywhere Savings, compare-accounts, money market and CD pages list fees and minimums but no APY, the site has no deposit rates page (/rates/ redirects to an image), and the fee sheet carries no rates."
+  },
+  {
+    "name": "The Fidelity Bank",
+    "kind": "community-bank",
+    "state": "NC",
+    "fdicCert": 11507,
+    "url": "https://www.fidelitybanknc.com/personal-banking/savings/personal-savings/",
+    "checked": "2026-11-26",
+    "note": "fidelitybanknc.com publishes no savings rate. The Personal Savings page gives fees and terms only, and the personal fee disclosure says current rate and yield information is available by contacting your local branch."
+  },
+  {
+    "name": "Southern Bank and Trust Company",
+    "kind": "community-bank",
+    "state": "NC",
+    "fdicCert": 15359,
+    "url": "https://www.southernbank.com/personal/savings/",
+    "checked": "2026-11-26",
+    "note": "southernbank.com publishes no savings rate. The savings page lists features only, the site has no rates page, and the online account opening data shows the Regular Savings rate and APY as TBD."
+  },
+  {
+    "name": "HomeTrust Bank",
+    "kind": "community-bank",
+    "state": "NC",
+    "fdicCert": 27677,
+    "url": "https://htb.com/personal-banking/accounts/savings/",
+    "checked": "2026-11-26",
+    "note": "htb.com publishes no savings rate. The savings page describes Statement Savings and Super Savers with competitive market rates but no APY, and the site map has no deposit rates page."
+  },
+  {
+    "name": "Metro City Bank",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 58181,
+    "url": "https://www.metrocitybank.bank/personal/products/gold-diamond-and-premium-installment-savings",
+    "checked": "2026-11-26",
+    "note": "The personal savings page (Personal, Gold and Diamond Personal Savings) says only 'competitive interest' or 'enhanced rates' with no rate figures, and the site and sitemap have no rates page or rate disclosure."
+  },
+  {
+    "name": "Vallant Bank",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 14065,
+    "url": "https://vallant.bank/personal/savings-plans/simple-savings/",
+    "checked": "2026-11-26",
+    "note": "The Simple Savings and savings plans pages print no rate or APY, and no rates page was found on vallant.bank (the FAQ also gives no rate)."
+  },
+  {
+    "name": "Colony Bank",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 22257,
+    "url": "https://colony.bank/personal/savings/regular-savings/",
+    "checked": "2026-11-26",
+    "note": "The Regular Savings page says it earns interest on the average daily balance but prints no rate (its comparison table lists interest as N/A), and no rates page was found on colony.bank."
+  },
+  {
+    "name": "Queensborough National Bank & Trust",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 2138,
+    "url": "https://www.qnbtrust.bank/Personal/Accounts/Savings",
+    "checked": "2026-11-26",
+    "note": "The savings page (Q Savings, Q Young Savers, Q Money Market) prints no rate or APY, and no rates page was found on qnbtrust.bank."
+  },
+  {
+    "name": "Associated Credit Union",
+    "kind": "credit-union",
+    "state": "GA",
+    "fdicCert": null,
+    "url": "https://www.acuonline.org/home/rates/personal/savings-iras",
+    "checked": "2026-11-26",
+    "note": "Its current-quarter savings rates read 'Not Yet Decided': the rates page lists the Q4 2026 (good through December 31, 2026) dividend rate and APY for every savings account that way. The only printed figures are Q3 2026 rates good through September 30, 2026."
+  },
+  {
+    "name": "Thomasville National Bank",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 34068,
+    "url": "https://tnbank.com/personal-banking/savings-accounts",
+    "checked": "2026-11-26",
+    "note": "The savings page lists the Personal Savings and Personal Gold Investment Money Market interest rate as 'variable' with no figure, and no rates page or rate disclosure was found on tnbank.com."
+  },
+  {
+    "name": "PeoplesSouth Bank",
+    "kind": "community-bank",
+    "state": "GA",
+    "fdicCert": 21292,
+    "url": "https://www.peoplessouth.com/products-and-services/checking-savings-and-time-deposits",
+    "checked": "2026-11-26",
+    "note": "The Personal Savings Account description gives minimums and fees but no rate or APY, and refers to a Truth-In-Savings disclosure that is not posted; no rates page was found on peoplessouth.com."
+  },
+  {
+    "name": "Capital City Bank",
+    "kind": "community-bank",
+    "state": "FL",
+    "fdicCert": 9622,
+    "url": "https://www.ccbg.com/personal/savings",
+    "checked": "2026-11-26",
+    "note": "Its savings page and site describe Everyday Savings as having tiered interest rates but publish no rate or APY; no rate sheet is linked."
+  },
+  {
+    "name": "The Bank of Tampa",
+    "kind": "community-bank",
+    "state": "FL",
+    "fdicCert": 21031,
+    "url": "https://www.bankoftampa.com/personal/personal-banking/",
+    "checked": "2026-11-26",
+    "note": "Its personal banking page says to speak with a personal banker for current rates on Minaret Savings; no savings rate is published."
   }
 ];

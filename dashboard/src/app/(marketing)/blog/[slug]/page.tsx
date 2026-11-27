@@ -104,6 +104,105 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'community-banks-no-published-savings-rate': {
+    title: "18 of 21 Community Banks We Checked Don't Publish a Savings Rate",
+    description:
+      "We tried to add the Southeast's largest community banks to RAVEN's savings scorecard. 18 of the 21 we checked in SC, NC, GA and FL publish no savings rate on their own sites. 13 of the 14 credit unions we could read do, and three pay over 3% for a small monthly deposit.",
+    publishedDate: 'November 30, 2026',
+    readTime: '5 min read',
+    content: `
+# 18 of 21 Community Banks We Checked Don't Publish a Savings Rate
+
+*Published November 30, 2026*
+
+This week we set out to add the Southeast's largest community banks to RAVEN's [savings account scorecard](/scorecards/savings). We worked down each state's list by assets, from FDIC data, skipping banks over $25 billion and banks already on the scorecard.
+
+We checked 21 community banks in South Carolina, North Carolina, Georgia and Florida. Eighteen publish no savings rate anywhere on their own websites.
+
+The scorecard only ranks what it can read on an institution's own pages, so those 18 could not be scored. Three banks do publish one: [First Federal Bank](/bank-snapshot/31313-first-federal-bank) of Lake City, [Crews Bank & Trust](/bank-snapshot/8021-crews-bank-and-trust) and [BankSouth](/bank-snapshot/16418-banksouth). BankSouth is listed but not yet ranked, because its savings fee is not published. The credit unions went the other way. Of the 14 we could read, 13 publish a savings rate, and all 13 are now on the scorecard.
+
+:::stat
+**18 of 21**
+Community banks we checked in SC, NC, GA and FL whose own websites publish no savings rate, checked November 26, 2026. Each is listed on the scorecard as checked but not scored.
+:::
+
+## What the Pages Say Instead
+
+The savings pages are not empty. They list minimum balances, fees and features. They just stop short of the number.
+
+| State | Bank | What the savings page says |
+|---|---|---|
+| SC | [Southern First Bank](/bank-snapshot/35295-southern-first-bank) | Call for rates |
+| SC | [Coastal States Bank](/bank-snapshot/57756-coastal-states-bank) | "Competitive interest rates" |
+| SC | [First Community Bank](/bank-snapshot/34047-first-community-bank) | Terms, no rate |
+| SC | [South Atlantic Bank](/bank-snapshot/58689-south-atlantic-bank) | The rate is competitive |
+| SC | [Security Federal Bank](/bank-snapshot/31100-security-federal-bank) | "Competitive interest" |
+| SC | [First Capital Bank](/bank-snapshot/34966-first-capital-bank) | Accounts earn interest, no rate |
+| NC | [First Bank](/bank-snapshot/15019-first-bank) | No rate on any deposit page |
+| NC | [The Fidelity Bank](/bank-snapshot/11507-the-fidelity-bank) | Contact your local branch |
+| NC | [Southern Bank and Trust](/bank-snapshot/15359-southern-bank-and-trust-company) | Online opening lists the rate as "TBD" |
+| NC | [HomeTrust Bank](/bank-snapshot/27677-hometrust-bank) | "Competitive market rates" |
+| GA | [Metro City Bank](/bank-snapshot/58181-metro-city-bank) | "Competitive interest" |
+| GA | [Vallant Bank](/bank-snapshot/14065-vallant-bank) | No rate or rates page |
+| GA | [Colony Bank](/bank-snapshot/22257-colony-bank) | Earns interest, no rate |
+| GA | [Queensborough National Bank & Trust](/bank-snapshot/2138-queensborough-national-bank-and-trust-company) | No rate or rates page |
+| GA | [Thomasville National Bank](/bank-snapshot/34068-thomasville-national-bank) | The rate is "variable" |
+| GA | [PeoplesSouth Bank](/bank-snapshot/21292-peoplessouth-bank) | Refers to a disclosure not posted online |
+| FL | [Capital City Bank](/bank-snapshot/9622-capital-city-bank) | Tiered rates, none shown |
+| FL | [The Bank of Tampa](/bank-snapshot/21031-the-bank-of-tampa) | Ask a personal banker |
+
+At least one, Coastal States Bank, publishes CD and money market rates on the same site. It is the plain savings account, the one most people open for an emergency fund, that goes unpriced in public.
+
+None of this means the rates are bad. A bank that tells you to call may quote a good rate on the phone. It means a saver comparing accounts online cannot see the number at all.
+
+:::pullquote
+A rate you have to call for is a rate nobody can compare.
+:::
+
+## The Credit Unions Post Theirs
+
+The 13 credit unions added this week publish their savings rates, conditions included, and several of the conditions are easy to meet.
+
+[Georgia United Credit Union](/scorecards/savings/georgia) pays 1.75% on a $10,000 balance with no conditions, and 3.15% with $100 or more in net deposits each month. It has 14 Georgia branches and no monthly fee. It is now the second-highest-scoring local institution in Georgia, at 7.1 out of 10, behind American Pride Bank.
+
+Skyla Credit Union, based in Charlotte, pays 4.10% on $10,000 in its Purpose Savings account when you deposit $25 a month and take eStatements, and 0.10% without. Sharonview Federal Credit Union pays 3.20% with $100 a month in ACH deposits and a $100 average balance, and 0.05% without.
+
+Others tie their best rate to checking. Center Parc Credit Union in Atlanta pays 4.00% on its Kasasa Saver when the linked checking account meets its monthly activity rules. FAIRWINDS Credit Union in Orlando pays 3.10% on Save Smart Savings, held with its free Spend Smart Checking, and 0.59% on $10,000 in its Emergency Savings account with no checking needed.
+
+Some lead on reach rather than rate. State Employees' Credit Union pays 0.25% and has 275 North Carolina branches, more than any other institution on the [North Carolina page](/scorecards/savings/north-carolina). Its membership is limited to state employees, retirees, their families and a few other groups.
+
+One credit union we checked, Associated Credit Union in Norcross, lists every savings rate for the current quarter as "Not Yet Decided". We will check it again.
+
+## What the New Rows Changed
+
+Each of the four states now has 10 local banks and credit unions headquartered there on the scorecard: 55 savings accounts in all, 53 of them ranked.
+
+The top of the Southeast ranking did not move: X Money at 8.9, Wealthfront at 8.4, and American Pride Bank and Coastal Credit Union tied at 8.0. Capital One joined the ranked rows at seventh, 7.3, once we read its 3.20% rate from Capital One's own rate feed.
+
+On the state pages, the new credit unions moved up near the top of the local rankings:
+
+- **Georgia:** Georgia United at 7.1, with 14 branches.
+- **Florida:** [FAIRWINDS](/scorecards/savings/florida) at 6.7, with 30 branches, ahead of Suncoast at 6.4.
+- **North Carolina:** Skyla at 6.7, with 16 branches.
+- **South Carolina:** [AllSouth Federal Credit Union](/scorecards/savings/south-carolina) at 6.0, with 21 branches.
+
+Among accounts on the scorecard with a no-strings rate, the median is 0.20% at the 14 community banks and 0.25% at the 25 credit unions. At the big five banks it is 0.04%.
+
+## What Bank Leaders Can Take From It
+
+There are reasons a bank keeps its savings rate off the website. Relationship pricing is one: the rate a banker quotes depends on the rest of the relationship. Rate-chasing money is another: a posted rate invites balances that leave when someone else posts a higher one. Both are fair.
+
+The cost is the customer who is shopping. More of that shopping now runs through search results and AI assistants answering "where is the best savings account near me", and those answers are built from what institutions publish. A bank that publishes nothing is not in the answer, however good its rate is.
+
+:::pullquote
+A bank that publishes nothing is not in the answer, however good its rate is.
+:::
+
+The credit unions above show what the alternative looks like. They post the rate and the condition in the same sentence, and they make the condition something a member can meet from a phone: a monthly deposit, eStatements, checking activity. That is product design as much as pricing, and it is the kind of work RAVEN, as a bank technology consulting practice, does with community institutions.
+
+Eighteen banks have a savings rate. Nobody shopping online can see it.
+    `,
+  },
   'addition-financial-shrinking-loan-book': {
     title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.',
     description:

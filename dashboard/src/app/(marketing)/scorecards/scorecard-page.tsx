@@ -6,7 +6,7 @@ import { scorecardFaqs } from './faq';
 import { bestOn, rankedRows } from './scoring';
 import { tableData } from './view-data';
 import { SITE, scorecardPath } from './products';
-import { NATIONAL_KINDS, SCORECARD_STATES, STATE_LABELS, type ProductType, type ScorecardView } from './types';
+import { KIND_LABELS, NATIONAL_KINDS, SCORECARD_STATES, STATE_LABELS, type ProductType, type ScorecardView } from './types';
 
 // Shared body of the Southeast-wide and per-state scorecard pages.
 
@@ -31,6 +31,7 @@ export function ScorecardPage({ type, view }: { type: ProductType<any>; view: Sc
   const rows = rankedRows(type, view);
   const ranked = rows.filter((r) => r.overall !== null);
   const faqs = scorecardFaqs(type, view);
+  const unpublished = type.unpublished.filter((u) => view === 'all' || u.state === view);
   const where = view === 'all' ? 'the Southeast' : STATE_LABELS[view].name;
   const url = `${SITE}${scorecardPath(type.slug, view === 'all' ? undefined : view)}`;
   const local = rows.filter((r) => !NATIONAL_KINDS.includes(r.inst.kind)).length;
@@ -146,6 +147,26 @@ export function ScorecardPage({ type, view }: { type: ProductType<any>; view: Sc
           No institution pays to be listed or ranked, and the scorecard carries no affiliate links. Rates change often: check the
           institution&rsquo;s own page before you open an account.
         </p>
+
+        {unpublished.length > 0 && (
+          <>
+            <h2 id="no-published-rate">Checked, no published rate</h2>
+            <p>
+              These {view === 'all' ? '' : `${STATE_LABELS[view].name} `}institutions were checked for this scorecard, but their own
+              pages publish no {type.singular} rate, so they cannot be scored. Ask them for their current rate directly.
+            </p>
+            <ul className="sc-unpublished">
+              {unpublished.map((u) => (
+                <li key={u.url}>
+                  <a href={u.url} rel="nofollow noopener" target="_blank">
+                    {u.name}
+                  </a>{' '}
+                  ({KIND_LABELS[u.kind]}, {STATE_LABELS[u.state].name}, checked {u.checked}): {u.note}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
 
         <h2 id="faq">Frequently asked questions</h2>
         {faqs.map((f) => (

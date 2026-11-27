@@ -1,4 +1,4 @@
-import { SAVINGS_ROWS, SAVINGS_UPDATED } from './savings-data';
+import { SAVINGS_ROWS, SAVINGS_UNPUBLISHED, SAVINGS_UPDATED } from './savings-data';
 import { SAVINGS_RATE_TOP } from './weights';
 import { accessScore, clamp10, yesNo } from './scoring';
 import type { ProductRow, ProductType, SavingsFacts } from './types';
@@ -122,4 +122,5 @@ export const SAVINGS: ProductType<SavingsFacts> = {
     'Rates are what a $10,000 balance earns. When a rate applies to only part of the balance, the scorecard uses the blended rate for $10,000.',
     'Every fact was read on the institution’s own pages on the date shown; a rate we could not verify is marked not published, and that row is not ranked until it is.',
   ],
+  unpublished: SAVINGS_UNPUBLISHED,
 };
