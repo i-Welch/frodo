@@ -25,6 +25,15 @@ export const articles: Article[] = [
     category: 'bank',
   },
   {
+    slug: 'south-carolina-most-profitable-banks-q3-2026',
+    title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently",
+    description:
+      "South Carolina's ten most profitable community banks earned a median 1.64% ROA through Sept. 30, 2026, vs. 1.13% statewide, while their assets yielded less: 5.07% vs. 5.29%. The edge is funding: 0.92% of earning assets vs. 1.57%, a gap that has nearly doubled since 2023.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'addition-financial-shrinking-loan-book',
     title: 'Addition Financial Got Bigger. Its Loan Book Got Smaller.',
     description:
