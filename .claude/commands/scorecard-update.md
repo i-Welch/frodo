@@ -35,7 +35,9 @@ Code lives in `dashboard/src/app/(marketing)/scorecards/`:
 
 For every row of every live product type, re-check the facts that drive scores (rate, conditional rate and its condition, fees and waivers, withdrawal limits, transfer features) against the row's sources, update anything that changed, set `asOf`, and bump the product's `<PRODUCT>_UPDATED` date. Use parallel subagents when there are many rows (one per group: national, big five, each state), each told these rules and the exact fields to return. Recount branches monthly (first run of the month).
 
-Rows with `null` rates: try again. Capital One's rate is rendered client-side; try its rates API or disclosure PDF.
+Rows with `null` rates: try again. Capital One's rate is rendered client-side; read it from the feed the page calls (`POST https://api.capitalone.com/deposits/products/~/search` with body `{"include":["RATES"],"isRenewableRate":true}`, product code 3800 for 360 Performance Savings).
+
+Re-check the `<PRODUCT>_UNPUBLISHED` list (institutions whose own pages publish no rate) on every expansion: when one starts publishing, move it into the data as a row. A site that could not be read (bot check, outage) is not "unpublished"; note it in the PR body instead.
 
 Note in the PR body every rate that moved by 0.25 points or more, and every rank change in the top five of any view (compare `rankedRows` before and after; a scratch `bun` script printing both is the easy way).
 

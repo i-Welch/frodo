@@ -68,6 +68,14 @@ export function scorecardFaqs(type: ProductType<any>, view: ScorecardView): Faq[
       a: `${named(local)} is the highest-scoring community bank or credit union ${view === 'all' ? 'in SC, NC, GA and FL' : `serving ${where}`} on the scorecard.`,
     });
   }
+  const unpublished = type.unpublished.filter((u) => view === 'all' || u.state === view);
+  if (unpublished.length > 0) {
+    const one = unpublished.length === 1;
+    faqs.push({
+      q: `Why are some local banks and credit unions missing from the ${type.singular} scorecard?`,
+      a: `The scorecard ranks only rates published on an institution's own pages. ${list(unpublished.map((u) => u.name))} ${one ? 'was' : 'were'} checked and ${one ? 'publishes' : 'publish'} no ${type.singular} rate online, so ${one ? 'it is' : 'they are'} listed as checked but not scored. Ask ${one ? 'it' : 'them'} for a current rate directly.`,
+    });
+  }
   faqs.push({
     q: 'How often is the scorecard updated?',
     a: `Every row is re-checked against the institution's own pages weekly, and each row shows the date it was last verified. Rates that cannot be verified are marked not published rather than estimated, and those rows are not ranked until they are.`,

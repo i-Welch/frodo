@@ -108,6 +108,19 @@ describe.each(PRODUCT_TYPES.map((p) => [p.slug, p] as const))('%s scorecard', (_
     expect(/weight/i.test(csv)).toBe(false);
   });
 
+  it('lists checked-but-unpublished institutions with a source, outside the scored rows', () => {
+    const scored = new Set(INSTITUTIONS.map((i) => i.name.toLowerCase()));
+    for (const u of type.unpublished) {
+      expect(u.url, u.name).toMatch(/^https:\/\//);
+      expect(u.checked, u.name).toMatch(DATE);
+      expect(SCORECARD_STATES as readonly string[]).toContain(u.state);
+      expect(NATIONAL_KINDS.includes(u.kind), u.name).toBe(false);
+      expect(u.note.length, u.name).toBeGreaterThan(10);
+      expect(EM_DASH.test(u.name + u.note), u.name).toBe(false);
+      expect(scored.has(u.name.toLowerCase()), `${u.name} is also scored`).toBe(false);
+    }
+  });
+
   it('criterion descriptions never state weights', () => {
     for (const c of type.criteria) expect(/weight|\d+\s?%/i.test(c.description), c.description).toBe(false);
   });

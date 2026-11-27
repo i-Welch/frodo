@@ -112,6 +112,20 @@ export interface Criterion<F> {
   score: (row: ProductRow<F>, inst: Institution, state: StateCode) => number | null;
 }
 
+/** An institution checked for a scorecard whose own pages publish no rate for the product. */
+export interface UnpublishedRate {
+  name: string;
+  kind: InstitutionKind;
+  /** Headquarters state. */
+  state: StateCode;
+  fdicCert: number | null;
+  /** The product page that was checked. */
+  url: string;
+  checked: string;
+  /** What the page says instead of a rate, in plain words. */
+  note: string;
+}
+
 export interface ProductType<F> {
   slug: string;
   /** "Savings accounts" */
@@ -129,4 +143,6 @@ export interface ProductType<F> {
   facts: { label: string; value: (row: ProductRow<F>, inst: Institution) => string }[];
   /** One sentence each on how the scorecard defines the product, for the method section. */
   method: string[];
+  /** Institutions checked that publish no rate online, so cannot be scored. */
+  unpublished: UnpublishedRate[];
 }

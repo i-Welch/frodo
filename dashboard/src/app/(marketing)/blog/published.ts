@@ -15,6 +15,8 @@
 // Phase 8 (Aug 11): uncomment jack-henry + fiserv (core-specific SEO)
 
 export const BLOG_SLUGS = [
+  // — Product Scorecards (Nov 2026) —
+  'community-banks-no-published-savings-rate',
   // — Bank Deep Dives (Nov 2026) —
   'vallant-bank-95-million-deposits',
   // — Credit Union Deep Dives (Nov 2026) —
@@ -129,6 +131,7 @@ export const BLOG_SLUGS = [
 // reflect actual content dates. Extracted from publishedDate/updatedDate in
 // blog/[slug]/page.tsx — keep in sync when adding or updating articles.
 export const BLOG_DATES: Record<string, string> = {
+  'community-banks-no-published-savings-rate': '2026-11-30',
   'addition-financial-shrinking-loan-book': '2026-11-11',
   'how-many-new-banks-opened-2026': '2026-11-26',
   'vallant-bank-95-million-deposits': '2026-11-25',

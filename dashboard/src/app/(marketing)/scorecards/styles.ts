@@ -25,6 +25,8 @@ export const scorecardStyles = `
   .sc-leader-label { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-500); }
   .sc-leader-name { font-weight: 700; color: var(--white); margin-top: 0.3rem; line-height: 1.35; }
   .sc-leader-detail { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.2rem; }
+  .sc-unpublished { padding-left: 1.2rem; font-size: 0.9rem; line-height: 1.7; color: var(--gray-300); }
+  .sc-unpublished li { margin: 0.3rem 0; }
   .sc-criteria dt { font-weight: 600; color: var(--white); margin-top: 0.9rem; font-size: 0.95rem; }
   .sc-criteria dd { margin: 0.25rem 0 0; font-size: 0.92rem; line-height: 1.7; color: var(--gray-300); }
 `;
