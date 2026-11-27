@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'best-savings-accounts-southeast-november-2026',
+    title: 'The Best Savings Accounts in the Southeast, Ranked (November 2026)',
+    description:
+      'We scored 39 savings accounts from fintechs, the big five banks and 24 SC, NC, GA and FL banks and credit unions. X Money leads at 8.9 out of 10. The big five pay a median 0.04% on $10,000; a Macon bank and a North Carolina credit union tie for third at 3.00% to 4.00%.',
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'south-carolina-most-profitable-banks-q3-2026',
     title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently",
     description:

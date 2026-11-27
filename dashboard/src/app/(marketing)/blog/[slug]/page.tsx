@@ -104,6 +104,116 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'best-savings-accounts-southeast-november-2026': {
+    title: 'The Best Savings Accounts in the Southeast, Ranked (November 2026)',
+    description:
+      "We scored 39 savings accounts from fintechs, the big five banks and 24 SC, NC, GA and FL banks and credit unions. X Money leads at 8.9 out of 10. The big five pay a median 0.04% on $10,000; a Macon bank and a North Carolina credit union tie for third at 3.00% to 4.00%.",
+    publishedDate: 'November 27, 2026',
+    readTime: '6 min read',
+    content: `
+# The Best Savings Accounts in the Southeast, Ranked (November 2026)
+
+*Published November 27, 2026*
+
+Put $10,000 in a standard savings account at Chase or Wells Fargo and it earns 0.01%. At 0.01%, $10,000 earns $1 a year. At 4.00%, it earns $400.
+
+The four top-scoring accounts on RAVEN's new [savings account scorecard](/scorecards/savings) pay 3.00% to 4.00% on that balance with no conditions. Two of them are national fintechs. The other two are a community bank based in Macon, Georgia, and a credit union in North Carolina.
+
+We scored 39 savings accounts: fintech apps, online banks, the big five banks, and 24 community banks and credit unions in South Carolina, North Carolina, Georgia and Florida. Every fact was read on the institution's own pages and verified November 26, 2026. Thirty-seven are ranked. Nobody paid to be listed.
+
+## The Short Answer
+
+| Rank | Account | Score | APY on $10,000 | SE branches |
+|---|---|---|---|---|
+| 1 | X Money | 8.9 | 4.00% | 0 |
+| 2 | Wealthfront Cash Account | 8.4 | 3.55% | 0 |
+| 3 | American Pride Bank High Yield Savings | 8.0 | 4.00% | 11 |
+| 3 | Coastal Credit Union High Yield Savings | 8.0 | 3.00% | 17 |
+| 5 | Marcus Online Savings | 7.8 | 3.50% | 0 |
+| 6 | Live Oak Bank Personal High-Yield Savings | 7.7 | 4.00% | 0 |
+| 7 | Ally Savings | 7.2 | 3.20% | 0 |
+
+Scores are out of 10 for the Southeast view; branches are counted in SC, NC, GA and FL.
+
+**X Money** has the top score: 4.00% APY for everyone, 6.00% with a paid X subscription or $1,000 or more in direct deposits over 34 days, no monthly fee and free ACH transfers. Three caveats. X says the account is still rolling out to U.S. residents, so not everyone can open one yet. From December 1, the 6.00% applies only to the first $150,000. New York residents earn no interest.
+
+**Wealthfront** pays 3.55% on the whole balance, with free instant withdrawals to eligible accounts. It is a brokerage cash sweep to program banks, not a bank account.
+
+**[American Pride Bank](/bank-snapshot/58584-american-pride-bank)** is the highest-scoring local institution: 4.00% APY with no tiers, and a $6 monthly fee waived with a $100 average daily balance. It has branches in all four states. New accounts are opened at a branch, and its savings page dates the rate to January 15, 2026.
+
+**Coastal Credit Union** pays 3.00% on the entire balance once the month's average daily balance reaches $10,000 (0.10% below that), with no monthly fee and 24/7 phone support. Membership is open through partner employers, listed North Carolina towns, family of members, or an $18 contribution to the Coastal Credit Union Foundation.
+
+**[Live Oak Bank](/bank-snapshot/58665-live-oak-banking-company)** matches the 4.00% top rate. It is a branchless digital bank in Wilmington that takes no cash deposits, so it trails on in-person access.
+
+## What the Scores Measure
+
+Each account gets a score from 0 to 10 on five criteria, and an overall score built from them:
+
+- **Rate:** the APY a $10,000 balance earns with no strings attached, plus some credit for a higher rate reachable with a condition such as direct deposit. A rate that needs a paid subscription counts net of the subscription's cost.
+- **Fees:** monthly maintenance fees and how easy they are to avoid.
+- **Money movement:** withdrawal limits, ATM access, transfers to other banks, and instant or person-to-person payments.
+- **In-person access:** branches in your state, from FDIC and credit union branch data. Institutions with no branches are scored on how you reach a person.
+- **Protections and features:** direct FDIC or NCUA insurance, coverage above $250,000, joint accounts, savings buckets and cash deposits.
+
+Tiered rates are blended to what $10,000 actually earns. An account whose rate or fees could not be verified on the institution's own pages is listed but not ranked. Two are in that group this month: Capital One 360 Performance Savings, whose rate rendered as "NaN" on every page we read, and North State Bank, which publishes a savings rate only for customers who already have a checking account or loan there.
+
+## The Big Five Gap
+
+:::stat
+**0.04%**
+The median no-strings APY on savings at Chase, Bank of America, Wells Fargo, Citi and U.S. Bank. The median at the five online banks scored is 2.10%.
+:::
+
+The best no-strings rate among the big five is 0.05%, at Citi and U.S. Bank. All five charge a monthly fee, from $4.50 at Citi to $12 at Wells Fargo, and each can be waived: a $300 balance at Chase, $500 at Bank of America and Citi, $3,500 at Wells Fargo, or a linked Smartly checking account at U.S. Bank.
+
+Higher rates exist at these banks, but they sit behind large balances. Wells Fargo's 3.50% promotion for new savings customers needs $25,000 within 30 days. Citi's 3.50% Premium Boost needs $30,000 or more in combined balances.
+
+What the big five lead on is access. Bank of America and Wells Fargo score a full 10 on in-person access across the region, with 712 and 948 branches in the four states. The best-scoring big bank overall is a tie between Chase and Citi, at 5.3.
+
+:::pullquote
+At 0.01%, $10,000 earns $1 a year. At 4.00%, it earns $400.
+:::
+
+## Read the Conditions
+
+Many of the highest advertised rates come with a condition, and the scorecard ranks the rate you get without one.
+
+Chime pays 1.00% standard and 4.00% with $3,000 or more in qualifying direct deposits in the past 34 days. SoFi pays 0.80% without direct deposit and 3.30% with it. Robinhood pays 3.60% only to Robinhood Gold members, at $5 a month, and publishes no rate for anyone else. Net of the subscription, that is 3.00% on $10,000. Truliant Federal Credit Union pays 3.40% on up to $25,000 when the member's Truliant checking account gets $500 or more in outside deposits and 10 or more withdrawals a month, and 0.10% when it does not.
+
+These are real rates, and for someone whose paycheck already lands at Chime or SoFi, they are the rates that matter. They score lower here for a simple reason. A savings account that pays 4% only while your paycheck lands there is a different product from one that pays 4% for simply holding the money. Each row on the scorecard shows both numbers and the condition.
+
+:::pullquote
+A savings account that pays 4% only while your paycheck lands there is a different product from one that pays 4% for simply holding the money.
+:::
+
+## State by State
+
+The national accounts appear on every state page. The local ones change.
+
+- **South Carolina** ([state scorecard](/scorecards/savings/south-carolina)): American Pride Bank ranks third at 7.9, with one South Carolina branch. SRP Federal Credit Union scores 6.5, with 13 branches in the state and 1.50% on a $10,000 balance.
+- **North Carolina** ([state scorecard](/scorecards/savings/north-carolina)): Coastal Credit Union ranks second at 8.5, behind only X Money, with 17 branches.
+- **Georgia** ([state scorecard](/scorecards/savings/georgia)): American Pride Bank scores 8.0 with five branches. SRP scores 6.4 with eight Georgia branches, and Delta Community Credit Union 6.1 with 31.
+- **Florida** ([state scorecard](/scorecards/savings/florida)): American Pride Bank scores 8.0 with three branches. Suncoast Credit Union scores 6.4 with 78 branches, and MIDFLORIDA Credit Union 6.1 with 69.
+
+Across the 24 local institutions, the median no-strings rate is 0.25%, and nine pay 0.10% or less. Four pay 1% or more: American Pride Bank and Live Oak Bank at 4.00%, Coastal at 3.00% and SRP at 1.50%.
+
+What the locals lead on is the branch: Suncoast's 78 in Florida, Delta Community's 31 in Georgia, [Anderson Brothers Bank](/bank-snapshot/9923-anderson-brothers-bank)'s 27 in South Carolina. For anyone who deposits cash or wants a person across a desk, no app matches that.
+
+## What the Top Scorers Do Differently
+
+The top-scoring accounts are not exotic. They share three traits that most of the local accounts on the scorecard do not.
+
+**A real rate with nothing to qualify for.** X Money, Wealthfront, American Pride Bank, Live Oak, Marcus and Ally each pay at least 3.20% on a $10,000 balance without direct deposit, a subscription or a second account.
+
+**No fee, or one that is easy to avoid.** Six of the top seven charge no monthly fee. American Pride's $6 fee goes away at a $100 balance.
+
+**Money that moves.** Free transfers to other banks, and at X Money and Wealthfront, instant ones.
+
+For community bank and credit union leaders, the rate is a pricing decision, and many institutions have sound reasons to keep savings rates where they are. The rest is not pricing. American Pride's account, the top local score in the region, is opened at a branch, while every national account in the top seven opens online. As [Chime's two-minute account opening](/blog/chime-account-opening-deposit-war) showed, the front door decides where the next deposit goes. Account opening that finishes online, and transfers to other banks that simply work, are the part RAVEN, as a bank technology consulting practice, helps community institutions build.
+
+At the big five, $10,000 in savings earns $1 to $5 a year. A bank in Macon shows the $400 version can come with a branch down the street.
+    `,
+  },
   'south-carolina-most-profitable-banks-q3-2026': {
     title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently",
     description:
