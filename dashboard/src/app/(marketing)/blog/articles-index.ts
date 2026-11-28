@@ -16,6 +16,15 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: 'united-fidelity-bank-failure',
+    title: 'United Fidelity Failed on a Negative Margin and 89% Multifamily',
+    description:
+      "United Fidelity Bank's noncurrent loans went from $16.7 million to $2.16 billion in one quarter. 89% of its loans were multifamily, its net interest income was negative every year from 2023, and the FDIC expects a $1.83 billion loss, the costliest failure since 2023.",
+    readTime: '6 min read',
+    date: 'November 2026',
+    category: 'bank',
+  },
+  {
     slug: 'best-savings-accounts-southeast-november-2026',
     title: 'The Best Savings Accounts in the Southeast, Ranked (November 2026)',
     description:

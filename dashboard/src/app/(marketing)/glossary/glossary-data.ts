@@ -946,6 +946,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['return-on-assets', 'efficiency-ratio', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'united-fidelity-bank-failure', title: 'United Fidelity Failed on a Negative Margin and 89% Multifamily' },
       { slug: 'south-carolina-most-profitable-banks-q3-2026', title: "Q3 2026: What South Carolina's Most Profitable Banks Do Differently" },
       { slug: 'georgia-most-efficient-banks-q2-2026', title: "Q2 2026: What Georgia's Most Efficient Banks Do Differently" },
       { slug: 'chime-account-opening-deposit-war', title: 'Chime Opens Accounts in Two Minutes. What Community Banks Can Actually Copy' },
@@ -1109,6 +1110,7 @@ export const GLOSSARY_TERMS: GlossaryTerm[] = [
     ],
     relatedTerms: ['call-report', 'return-on-assets', 'loan-to-deposit-ratio'],
     relatedArticles: [
+      { slug: 'united-fidelity-bank-failure', title: 'United Fidelity Failed on a Negative Margin and 89% Multifamily' },
       { slug: 'optimumbank-98-percent-cre-growth', title: 'The 98.7% Bank' },
       { slug: 'first-community-bank-sc-cre-merger-growth', title: 'First Community Bank SC: A $2.4B Bank, a Georgia Deal and a New CEO' },
     ],

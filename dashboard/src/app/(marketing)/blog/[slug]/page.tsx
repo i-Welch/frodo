@@ -104,6 +104,98 @@ interface Article {
 }
 
 const articles: Record<string, Article> = {
+  'united-fidelity-bank-failure': {
+    title: 'United Fidelity Failed on a Negative Margin and 89% Multifamily',
+    description:
+      "United Fidelity Bank's noncurrent loans went from $16.7 million to $2.16 billion in one quarter. 89% of its loans were multifamily, its net interest income was negative every year from 2023, and the FDIC expects a $1.83 billion loss, the costliest failure since 2023.",
+    publishedDate: 'November 30, 2026',
+    readTime: '6 min read',
+    content: `
+# United Fidelity Failed on a Negative Margin and 89% Multifamily
+
+*Published November 30, 2026*
+
+On June 30, 2026, [United Fidelity Bank](/bank-snapshot/29566-united-fidelity-bank-fsb) reported $16.7 million of noncurrent loans, 0.49% of its book. Ninety-two days later the figure was $2.16 billion. That was 70.6% of every loan the Evansville, Indiana, thrift held.
+
+Eight weeks after that, on November 27, the OCC closed the bank and named the FDIC receiver. [First-Citizens Bank & Trust](/bank-snapshot/11063-first-citizens-bank-and-trust-company) of Raleigh, North Carolina, assumed substantially all of the deposits, except certain brokered deposits, and bought substantially all of the assets. United Fidelity's 22 branches in Indiana, Illinois, Florida, Colorado and the U.S. Virgin Islands reopened as First Citizens.
+
+The FDIC estimates the failure will cost the Deposit Insurance Fund $1.83 billion. The bank had about $5.9 billion in assets. Measured by the FDIC's own failure data, it is the largest bank failure since First Republic in May 2023, slightly bigger than Republic First, which had $5.87 billion when it failed in April 2024. Republic First cost the fund $710 million. United Fidelity will cost about 2.6 times as much.
+
+:::stat
+**$1.83 billion**
+The FDIC's estimated loss on United Fidelity, about 31% of the bank's $5.9 billion in assets. Republic First, a failure of almost the same size in 2024, cost the fund $710 million.
+:::
+
+A loss that size usually means the problems were years in the making. The call reports show they were.
+
+## A bank that was mostly one loan type
+
+At September 30, United Fidelity had $3.06 billion in gross loans. $2.72 billion of them, 89.0%, were secured by multifamily property. In June the share was 89.9%. That was the business: the bank's parent is Pedcor Financial LLC of Carmel, Indiana, and Carmel's local paper, Current, has reported that the bank is owned by Carmel-based developer Pedcor. In 2024 a bank spokesperson told Current that the bank "was highly successful in its affordable housing finance activities and as a result, the bank grew very quickly."
+
+Regulators measure [CRE concentration](/glossary/cre-concentration) against tier 1 capital plus the allowance for credit losses, and the 2006 interagency guidance uses 300% of that base, for all CRE combined, as a screen for closer supervisory review. United Fidelity's multifamily loans alone were 684% of it at the end of 2022. The bank brought that down every year after, to 428% in June 2026, which never got it near 300%. After the third-quarter losses ate its capital, the ratio was back to 728%.
+
+Concentration on its own does not sink a bank. Plenty of lenders specialize. Concentration does mean that when one loan type goes wrong, nothing else in the portfolio can soften the hit.
+
+:::pullquote
+Concentration does mean that when one loan type goes wrong, nothing else in the portfolio can soften the hit.
+:::
+
+## Paying more for money than the loans earned
+
+The odder number is the margin. A bank's [net interest margin](/glossary/net-interest-margin) is what it earns on loans and securities minus what it pays on deposits and borrowings. For the FDIC-insured industry it was 3.39% in the third quarter of 2026. United Fidelity's was negative.
+
+Through the first nine months of 2026 the bank collected $127.4 million of interest and paid out $151.3 million, which comes to negative $23.9 million of net interest income. This was not new. Net interest income was positive in 2022 at $63.0 million, then turned negative: minus $18.4 million for 2023, minus $49.5 million for 2024 and minus $40.2 million for 2025. Year-to-date net interest income has been negative in every quarterly report since September 2023.
+
+The bank stayed profitable for a while because of fees. Noninterest income was $210.8 million in 2022, the year it earned $153.2 million. That is the "approximately $200 million in profits" over two years the spokesperson cited in 2024, and 2022 and 2023 together come to $199.5 million. But fee income fell every year: $163.9 million in 2023, $150.2 million in 2024, $118.8 million in 2025. Net income went from $153.2 million to $46.3 million to $9.9 million, and then to a $5.6 million loss in 2025. A bank that loses money on its spread has to earn it back somewhere else every quarter. When the fee income shrinks, nothing is left underneath.
+
+:::stat
+**Negative $23.9 million**
+United Fidelity's net interest income for the first nine months of 2026: $127.4 million of interest earned, $151.3 million paid. It was negative every year from 2023 on.
+:::
+
+The funding side shows the strain. Brokered deposits, the most rate-sensitive money a bank can raise, were $2.53 billion at the end of 2023. The bank brought them down to $1.01 billion by September 2026, but it was still paying more for its funding than its multifamily book earned.
+
+## The regulators were already there
+
+None of this caught supervisors by surprise. In November 2023 the OCC announced a consent order against the bank for unsafe or unsound practices "relating to corporate governance and enterprise risk management, credit underwriting and administration, liquidity risk management, and interest rate risk management." Current reported that the order, signed in October 2023, described the bank as in "troubled condition."
+
+On June 18, 2024, the Federal Reserve signed a written agreement with the holding companies: Pedcor Financial LLC, Pedcor Financial Bancorp and Fidelity Federal Bancorp.
+
+So the bank spent its last three years under formal orders from both regulators. Through June 2026 its reported credit stayed clean. Noncurrent loans never topped $30 million in any quarter from 2022 through June 2026. Then came the third quarter:
+
+| Sept. 30, 2026 vs. June 30 | June 30 | Sept. 30 |
+|---|---|---|
+| Noncurrent loans | $16.7M | $2.16B |
+| Noncurrent share of loans | 0.49% | 70.6% |
+| Total equity | $652.5M | $389.7M |
+| Common equity tier 1 ratio | 11.08% | 4.74% |
+| Total risk-based capital ratio | 15.09% | 7.26% |
+
+Year-to-date net charge-offs reached $362.6 million and the year-to-date provision was $319.0 million. The allowance for credit losses, $81.7 million in June, was $6.3 million at September 30, because the charge-offs ran straight through it. A total risk-based capital ratio of 7.26% is below the 8% minimum for an adequately capitalized bank. The call report does not say what moved $2 billion of loans to noncurrent status in one quarter. For a loan book this concentrated, a single reappraisal or a single exam finding applied across a portfolio of similar loans can do it.
+
+## Two caveats, in fairness
+
+First, this is not a broad multifamily story. In the same third quarter, the FDIC reported that asset quality across 4,205 insured institutions "remained stable," with past-due and nonaccrual rates up only slightly and net charge-offs down slightly. The fund's reserve ratio rose to 1.50%. A bank with 89% of its loans in one niche, a negative margin and three years of formal orders is an outlier, not a bellwether.
+
+:::pullquote
+A bank with 89% of its loans in one niche, a negative margin and three years of formal orders is an outlier, not a bellwether.
+:::
+
+Second, depositors were protected. Customers whose accounts moved to First Citizens kept their full balances, their checks, cards and direct deposits. The loss lands on the Deposit Insurance Fund, which every insured bank pays into through assessments.
+
+That is why community bankers in Raleigh, Tampa or Columbia should care about a thrift in southern Indiana. Their assessments are what refill the fund.
+
+## What a community bank should take from it
+
+United Fidelity's problems show up in public data. The concentration ratio appeared in every call report. The negative margin appeared in every call report. The shift from fee income to losses took three years. An outside analyst with FDIC data could have seen most of it, and the bank's own board had far more detail.
+
+The OCC's order points at what was missing inside: governance, credit underwriting and administration, and risk management. Those are everyday operations, not just strategy. A bank that is concentrated in one property type needs to know, loan by loan and every quarter, what each property is worth, what it earns, and how each borrower's debt service coverage holds up if rents or rates move. That information has to come from source documents (rent rolls, operating statements, appraisals) and arrive in a form the board can read, not in a spreadsheet someone rebuilds by hand before each exam.
+
+For most community banks the lesson is not "avoid CRE." It is to run concentration reporting and stress testing like a production system: data pulled from the source, refreshed on a schedule, with limits that trigger action before an examiner has to. The 2006 guidance asks for exactly that from any bank over the 300% line.
+
+The numbers that sank United Fidelity were public for three years. The failure came in one quarter.
+`,
+  },
   'best-savings-accounts-southeast-november-2026': {
     title: 'The Best Savings Accounts in the Southeast, Ranked (November 2026)',
     description:
